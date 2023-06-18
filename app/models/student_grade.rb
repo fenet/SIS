@@ -5,7 +5,9 @@ class StudentGrade < ApplicationRecord
   after_save :add_course_registration
   after_save :update_grade_report
   ##validation
-
+   validates :student, presence: true
+   validates :course, presence: true
+  #  validates :course_registration, presence: true
   ##assocations
     belongs_to :course_registration, optional: true
     belongs_to :student
@@ -16,6 +18,7 @@ class StudentGrade < ApplicationRecord
   	accepts_nested_attributes_for :assessments, reject_if: :all_blank, allow_destroy: true
     has_many :grade_changes
     has_many :makeup_exams
+
 
   def add_course_registration
     if !self.course_registration.present?

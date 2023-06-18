@@ -75,6 +75,8 @@ class Student < ApplicationRecord
   # end
   
   validate :password_complexity
+	# validates :student_grades, presence: true
+
   def password_complexity
     if password.present?
        if !password.match(/^(?=.*[a-z])(?=.*[A-Z])/) 

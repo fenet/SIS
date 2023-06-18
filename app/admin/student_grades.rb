@@ -3,15 +3,15 @@ menu parent: "Grade"
   permit_params :department_approval,:department_head_name,:department_head_date_of_response, :course_registration_id,:student_id,:letter_grade,:grade_point,:assesment_total,:grade_point,:course_id,assessments_attributes: [:id,:student_grade_id,:assessment_plan_id,:student_id,:course_id,:result,:created_by,:updated_by, :_destroy]
 
       active_admin_import validate: true,
+                      # back: "/admin/student_grades",
                       headers_rewrites: { :'id'=> :student_id },
                       timestamps: true,
                       batch_size: 1000,
                       before_batch_import: ->(importer) {
                         student_ids = importer.values_at(:student_id)
-                        students = Student.where(student_id: student_ids).pluck(:student_id, :id)
-                        options = Hash[*students.flatten]
-                        p options
-                        p options.size
+                        students = Student.where(id: student_ids).pluck(:student_id, :id)
+                          options = Hash[*students.flatten]
+                     
                         importer.batch_replace(:student_id, options)
                       }
                       
@@ -98,7 +98,7 @@ menu parent: "Grade"
   filter :created_by
 
   
-  form :title => proc{|student| student.student.name.full } do |f|
+  form :title => "New Student Grade" do |f|
     f.semantic_errors
     
     if object.new_record?
@@ -158,6 +158,8 @@ menu parent: "Grade"
     if (current_admin_user.role == "registrar head") || (current_admin_user.role == "admin")
       link_to 'Add Grade Change', new_admin_grade_change_path(course_id: "#{student_grade.course.id}", section_id: "#{student_grade.course_registration.semester_registration.section.id}", academic_calendar_id: "#{student_grade.course_registration.academic_calendar.id}", semester: "#{student_grade.course_registration.semester}", year: "#{student_grade.course_registration.year}", student_id: "#{student_grade.student.id}", course_registration_id: "#{student_grade.course_registration.id}", student_grade_id: "#{student_grade.id}", department_id: "#{student_grade.student.program.department.id}", program_id: "#{student_grade.student.program.id}")
     end
+    rescue NoMethodError 
+      flash['error'] = "There is error"
   end
 
   action_item :new, only: :show, priority: 0 do

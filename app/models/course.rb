@@ -2,12 +2,13 @@ class Course < ApplicationRecord
 	before_save :attribute_assignment
 	
 	#validations
-    validates :semester, :presence => true
+        validates :semester, :presence => true
 		validates :year, :presence => true
 		validates :credit_hour, :presence => true
 		validates :lecture_hour, :presence => true
 		validates :ects, :presence => true
 		validates :course_code, :presence => true
+		# validates :student_grades, presence: true
   ##associations
   	belongs_to :course_module
   	belongs_to :curriculum
