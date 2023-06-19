@@ -23,24 +23,30 @@ ActiveAdmin.register Student do
                                                                                       }
                                                                                     }
   batch_action "Approve document verification status for", method: :put, confirm: "Are you sure?" do |ids|
-    Student.where(id: ids).find_each do |stud|
-      stud.update(document_verification_status: 'approved')
-    end
-    redirect_to admin_students_path, notice: "#{ids.size} students document verification status approved "
+    Student.where(id: ids).update(document_verification_status: 'approved')
+    redirect_to admin_students_path, notice: "#{'student'.pluralize(ids.size)} document verification status Approved"
   end
 
-  batch_action "Denied document verification status for", method: :put, confirm: "Are you sure?" do |ids|
-    Student.where(id: ids).find_each do |stud|
-      stud.update(document_verification_status: 'denied')
-    end
-    redirect_to admin_students_path, notice: "#{ids.size} students document verification status denied "
+  batch_action "Denie document verification status for", method: :put, confirm: "Are you sure?" do |ids|
+    Student.where(id: ids).update(document_verification_status: 'denied')
+    redirect_to admin_students_path, notice: "#{'student'.pluralize(ids.size)} document verification status denied"
   end
-
   batch_action "Incomplete document verification status for", method: :put, confirm: "Are you sure?" do |ids|
-    Student.where(id: ids).find_each do |stud|
-      stud.update(document_verification_status: 'incomplete')
-    end
-    redirect_to admin_students_path, notice: "#{ids.size} students document verification status incomplete "
+    Student.where(id: ids).update(document_verification_status: 'incomplete')
+    redirect_to admin_students_path, notice: "#{'student'.pluralize(ids.size)} document verification status incompleted "
+  end
+
+  batch_action 'Denie account verification status for', method: :put, confirm: "Are you sure?" do |ids|
+    Student.where(id: ids).update(account_verification_status: 'denied')
+    redirect_to admin_students_path, notice: "#{'student'.pluralize(ids.size)} account verification status denied"
+  end
+  batch_action 'Approve account verification status for', method: :put, confirm: "Are you sure?" do |ids|
+    Student.where(id: ids).update(account_verification_status: 'approved')
+    redirect_to admin_students_path, notice: "#{'student'.pluralize(ids.size)} account verification status Approved"
+  end
+  batch_action 'Incomplete account verification status for', method: :put, confirm: "Are you sure?" do |ids|
+    Student.where(id: ids).update(account_verification_status: 'incomplete')
+    redirect_to admin_students_path, notice: "#{'student'.pluralize(ids.size)} account verification status incompleted "
   end
 
 
@@ -75,8 +81,11 @@ ActiveAdmin.register Student do
       type.admission_type.capitalize
     end
     # column :year
-    column 'Verification' do |s|
+    column 'Document Verification' do |s|
       status_tag s.document_verification_status
+    end
+    column 'Account Verification' do |s|
+      status_tag s.account_verification_status
     end
     column 'Admission', sortable: true do |c|
       c.created_at.strftime('%b %d, %Y')
