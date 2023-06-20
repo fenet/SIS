@@ -6,7 +6,7 @@ ActiveAdmin.register AdminUser, as: "DepartmentHead"  do
       super.where("role = ?", "department head")
     end
     def update_resource(object, attributes)
-      update_method = attributes.first[:password].present? ? :update_attributes : :update_without_password
+      update_method = attributes.first[:password].present? ? :update : :update_without_password
       object.send(update_method, *attributes)
     end
   end
