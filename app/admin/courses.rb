@@ -103,7 +103,7 @@ permit_params(:course_outline,:course_module_id,:curriculum_id,:program_id,:cour
             a.input :created_by, as: :hidden, :input_html => { :value => current_admin_user.name.full} 
           else
             a.input :updated_by, as: :hidden, :input_html => { :value => current_admin_user.name.full}      
-          end  
+          end
           a.label :_destroy
         end
       end

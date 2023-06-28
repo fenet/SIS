@@ -3,7 +3,7 @@ class GradeReportsController < ApplicationController
 
   # GET /grade_reports or /grade_reports.json
   def index
-    @grade_reports = current_student.grade_reports.where(department_approval: "approved", registrar_approval: "approved",dean_approval: "approved")
+    @grade_reports = current_student.grade_reports.where(department_approval: "approved", registrar_approval: "approved", dean_approval: "approved")
   end
 
   # GET /grade_reports/1 or /grade_reports/1.json

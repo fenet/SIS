@@ -50,7 +50,6 @@ menu parent: "Program"
       f.input :assessment_title
       f.input :assessment_weight,:input_html => { :min => 1, :max => 100  } 
       f.input :final_exam
-
       if f.object.new_record?
         f.input :created_by, as: :hidden, :input_html => { :value => current_admin_user.name.full}
       else

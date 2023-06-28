@@ -57,6 +57,7 @@ class SemesterRegistration < ApplicationRecord
 						if ((self.course_registrations.joins(:student_grade).pluck(:letter_grade).include?("I")) || (self.course_registrations.joins(:student_grade).pluck(:letter_grade).include?("NG")))
 							report.academic_status = "Incomplete"
 						else
+							p report.cgpa
 							report.academic_status = self.student.program.grade_systems.last.academic_statuses.where("min_value < ?", report.cgpa).where("max_value > ?", report.cgpa).last.status
 							if (report.academic_status != "Dismissal") || (report.academic_status != "Incomplete")
 								if self.program.program_semester > self.student.semester

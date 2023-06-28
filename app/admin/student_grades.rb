@@ -3,7 +3,6 @@ menu parent: "Grade"
   permit_params :department_approval,:department_head_name,:department_head_date_of_response, :course_registration_id,:student_id,:letter_grade,:grade_point,:assesment_total,:grade_point,:course_id,assessments_attributes: [:id,:student_grade_id,:assessment_plan_id,:student_id,:course_id,:result,:created_by,:updated_by, :_destroy]
 
       active_admin_import validate: true,
-                      # back: "/admin/student_grades",
                       headers_rewrites: { :'id'=> :student_id },
                       timestamps: true,
                       batch_size: 1000,
@@ -13,6 +12,7 @@ menu parent: "Grade"
                           options = Hash[*students.flatten]
                      
                         importer.batch_replace(:student_id, options)
+                        p importer
                       }
                       
   scoped_collection_action :scoped_collection_update, title: 'Approve Grade', form: -> do
@@ -25,8 +25,17 @@ menu parent: "Grade"
     @student_grade.generate_grade
     redirect_back(fallback_location: admin_student_grade_path)
   end
-  # action_item :update, only: :show do
-  #   link_to 'Generate Grade', generate_grade_admin_student_grade_path(student_grade.id), method: :put, data: { confirm: 'Are you sure?' }        
+
+  # member_action :generate_grade, method: :put do
+  #   @student_grade = StudentGrade.find(params[:id])
+  #   @student_grade.generate_grade
+  #   redirect_back(fallback_location: admin_student_grade_path)
+  # end
+  # collection_action :grade, method: :get do
+  #   @list = "Student list"
+  # end
+  # action_item :grade, method: :get do
+  #   link_to 'Grade', collection_path, notice: "CSV imported successfully!"
   # end
 
   batch_action "Generate Grade for", method: :put, confirm: "Are you sure?" do |ids|
@@ -47,11 +56,9 @@ menu parent: "Grade"
     end
     redirect_to collection_path, notice: "Grade Is Denied Successfully"
   end
-  index do
+  index do 
     selectable_column
     column "full name", sortable: true do |n|
-      p "=============================="
-      p n
       n.student.name.full if n.student.name.present?
     end
     column "Student ID" do |si|
@@ -67,7 +74,7 @@ menu parent: "Grade"
     end
     column :letter_grade
     column :grade_point
-    column :assesment_total
+    column :assesment_total 
     column :department_approval do |c|
       status_tag c.department_approval
     end
@@ -115,33 +122,33 @@ menu parent: "Grade"
           a.input :course_id, as: :search_select, url: proc { admin_courses_path },
              fields: [:course_title, :id], display_name: 'course_title', minimum_input_length: 2,
              order_by: 'created_at_asc'
+          # a.input :assessment_plan_id, as: :search_select, url: proc { admin_assessment_plans_path },
+          #    fields: [:assessment_title, :id], display_name: 'assessment_title', minimum_input_length: 2,
+          #    order_by: 'created_at_asc'
           a.input :assessment_plan_id, as: :search_select, url: proc { admin_assessment_plans_path },
              fields: [:assessment_title, :id], display_name: 'assessment_title', minimum_input_length: 2,
-             order_by: 'created_at_asc'
-          a.input :assessment_plan_id, as: :search_select, url: proc { admin_assessment_plans_path },
-             fields: [:assessment_title, :id], display_name: 'assessment_title', minimum_input_length: 2,
-             order_by: 'created_at_asc',lebel: "Assessment Plan", :input_html => { :disabled => true } 
+             order_by: 'created_at_asc', lebel: "Assessment Plan", :input_html => { :disabled => false } 
           a.input :result
           a.label :_destroy
         end
       end
     end
-    if (current_admin_user.role == "instructor") || (current_admin_user.role == "admin")
-      inputs 'Student Assessment' do
-        f.input :updated_by, as: :hidden, :input_html => { :value => current_admin_user.name.full}
-        table(class: 'form-table') do
-          tr do
-            th 'Assessment Plan', class: 'form-table__col'
-            th 'Assessment Weight', class: 'form-table__col'
-            th 'Result', class: 'form-table__col'
-          end
-          f.semantic_fields_for :assessments, f.object.assessments do |a|
-            render 'assessment', a: a
-            a.input :updated_by, as: :hidden, :input_html => { :value => current_admin_user.name.full}
-          end
-        end
-      end
-    end
+    # if (current_admin_user.role == "instructor") || (current_admin_user.role == "admin")
+    #   inputs 'Student Assessment' do
+    #     f.input :updated_by, as: :hidden, :input_html => { :value => current_admin_user.name.full}
+    #     table(class: 'form-table') do
+    #       tr do
+    #         th 'Assessment Plan', class: 'form-table__col'
+    #         th 'Assessment Weight', class: 'form-table__col'
+    #         th 'Result', class: 'form-table__col'
+    #       end
+    #       f.semantic_fields_for :assessments, f.object.assessments do |a|
+    #         render 'assessment', a: a
+    #         a.input :updated_by, as: :hidden, :input_html => { :value => current_admin_user.name.full}
+    #       end
+    #     end
+    #   end
+    # end
     if !f.object.new_record? && (params[:page_name] == "grade_approve") 
       inputs 'Department Approval' do
         f.input :department_approval, as: :select, :collection => ["pending","approved", "denied"], :include_blank => false
@@ -150,7 +157,6 @@ menu parent: "Grade"
       end
     end
     f.actions
-     
   end
 
 

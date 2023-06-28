@@ -310,7 +310,7 @@ class Ability
         can :read, AcademicCalendar
 
         can :read, Section, program: {department_id: user.department.id}
-        can :read, Student, department: "#{user.department.department_name}"
+        can :read, Student, department_id: "#{user.department_id}"
         can :read, CourseRegistration, department_id: user.department.id
         can :read, SemesterRegistration, department_id: user.department.id
         can :read, Attendance, program: {department_id: user.department.id}

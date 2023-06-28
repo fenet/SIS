@@ -1,7 +1,7 @@
 class StudentGrade < ApplicationRecord
   after_create :generate_assessment
   after_save :update_subtotal
-  after_save :generate_grade
+  # after_save :generate_grade
   after_save :add_course_registration
   after_save :update_grade_report
   ##validation
@@ -26,17 +26,18 @@ class StudentGrade < ApplicationRecord
       self.update_columns(course_registration_id: cr)
     end
   end
-	def assesment_total
+	def assesment_total1
     # assessments.collect { |oi| oi.valid? ? (oi.result) : 0 }.sum
     assessments.sum(:result)
   end
+  
   def update_subtotal
     self.update_columns(assesment_total: self.assessments.sum(:result))
   end
   def generate_grade
     if assessments.where(result: nil).empty?
-      grade_in_letter = self.student.program.grade_systems.last.grades.where("min_row_mark <= ?", self.assesment_total).where("max_row_mark >= ?", self.assesment_total).last.letter_grade
-      grade_letter_value = self.student.program.grade_systems.last.grades.where("min_row_mark <= ?", self.assesment_total).where("max_row_mark >= ?", self.assesment_total).last.grade_point * self.course.credit_hour
+      grade_in_letter = self.student.program.grade_systems.last.grades.where("min_row_mark <= ?", self.assesment_total1).where("max_row_mark >= ?", self.assesment_total1).last.letter_grade
+      grade_letter_value = self.student.program.grade_systems.last.grades.where("min_row_mark <= ?", self.assesment_total1).where("max_row_mark >= ?", self.assesment_total1).last.grade_point * self.course.credit_hour
     	self.update_columns(letter_grade: grade_in_letter)
       self.update_columns(grade_point: grade_letter_value)
     elsif self.assessments.where(result: nil, final_exam: true).present?
