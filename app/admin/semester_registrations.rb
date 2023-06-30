@@ -1,15 +1,14 @@
 ActiveAdmin.register SemesterRegistration do
   menu parent: "Student managment"
 
-  permit_params :department_id, :section_id, :student_full_name,:student_id_number, :student_id,:total_price,:registration_fee,:late_registration_fee,:remaining_amount,:mode_of_payment,:semester,:year,:total_enrolled_course,:academic_calendar_id,:registrar_approval_status,:finance_approval_status,:created_by,:last_updated_by,course_registrations_attributes: [:id, :student_id,:semester_registration_id,:course_id,:academic_calendar_id,:student_full_name,:enrollment_status,:course_title,:department_id, :program_id, :section_id, :year, :semester, :created_by,:updated_by, :_destroy]
+  permit_params :department_id, :program_id, :section_id, :student_full_name,:student_id_number, :student_id,:total_price,:registration_fee,:late_registration_fee,:remaining_amount,:mode_of_payment,:semester,:year,:total_enrolled_course,:academic_calendar_id,:registrar_approval_status,:finance_approval_status,:created_by,:last_updated_by,course_registrations_attributes: [:id, :student_id,:semester_registration_id,:course_id,:academic_calendar_id,:student_full_name,:enrollment_status,:course_title,:department_id, :program_id, :section_id, :year, :semester, :created_by,:updated_by, :_destroy]
 
       active_admin_import validate: true,
-                      headers_rewrites: { 'ID': :student_id },
+                      headers_rewrites: { 'student id': :student_id },
                       before_batch_import: ->(importer) {
                         student_ids = importer.values_at(:student_id)
-                        # replacing author name with author id
                         students   = Student.where(student_id: student_ids).pluck(:student_id, :id)
-                        options = Hash[*students.flatten] # #{"Jane" => 2, "John" => 1}
+                        options = Hash[*students.flatten] 
                         importer.batch_replace(:student_id, options)
                       }
       scoped_collection_action :scoped_collection_update, title: 'Batch Action', form: -> do
@@ -20,6 +19,27 @@ ActiveAdmin.register SemesterRegistration do
                                             
                                           }
                                         end
+
+        batch_action 'Deny finance status for', method: :put, confirm: "Are you sure?" do |ids|
+          SemesterRegistration.where(id: ids).update(finance_approval_status: 'denied')
+          redirect_to admin_semester_registrations_path, notice: "#{'student'.pluralize(ids.size)} finance verification status denied"
+        end
+        batch_action 'Approve finance status for', method: :put, confirm: "Are you sure?" do |ids|
+          SemesterRegistration.where(id: ids).update(finance_approval_status: 'approved')
+          redirect_to admin_semester_registrations_path, notice: "#{'student'.pluralize(ids.size)} finance verification status Approved"
+        end
+
+
+        batch_action 'Deny registrar status for', method: :put, confirm: "Are you sure?" do |ids|
+          SemesterRegistration.where(id: ids).update(registrar_approval_status: 'denied')
+          redirect_to admin_semester_registrations_path, notice: "#{'student'.pluralize(ids.size)} registrar verification status denied"
+        end
+        batch_action 'Approve registrar status for', method: :put, confirm: "Are you sure?" do |ids|
+          SemesterRegistration.where(id: ids).update(registrar_approval_status: 'approved')
+          redirect_to admin_semester_registrations_path, notice: "#{'student'.pluralize(ids.size)} registrar verification status Approved"
+        end
+
+
   csv do
     column "username" do |username|
       username.student.student_id
@@ -112,9 +132,12 @@ ActiveAdmin.register SemesterRegistration do
   index do
     selectable_column
     column "student name", sortable: true do |n|
-      n.student_full_name
+      n.student.name.full
     end
-    column :program_name
+    column "Program" do |n|
+      n.program.program_name
+
+    end
     # column :study_level
     column "Academic Year", sortable: true do |n|
       link_to n.academic_calendar.calender_year, admin_academic_calendar_path(n.academic_calendar)

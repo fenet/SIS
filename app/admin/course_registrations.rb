@@ -2,7 +2,7 @@ ActiveAdmin.register CourseRegistration do
   menu parent: "Student managment"
   config.batch_actions = true
   permit_params :course_section,:enrollment_status,:course_section_id
-
+  # active_admin_import
   scoped_collection_action :scoped_collection_update, title: 'Set Section', form: -> do
                                          { 
                                             section_id: Section.all.map { |section| [section.section_full_name, section.id] },
@@ -24,7 +24,9 @@ ActiveAdmin.register CourseRegistration do
   end
   index do
     selectable_column
-    column :student_full_name
+    column "Student Name" do |s|
+      s.student.name.full
+    end
     column :id do |c|
       c.student.student_id
     end
