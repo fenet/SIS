@@ -1,7 +1,7 @@
 class SemesterRegistration < ApplicationRecord
 	after_save :change_course_registration_status
 	after_save :assign_section_to_course_registration
-	after_create :semester_course_registration
+	after_save :semester_course_registration
 	after_save :generate_invoice
 	##validations
 	  # validates :semester, :presence => true
@@ -144,7 +144,11 @@ class SemesterRegistration < ApplicationRecord
 	  	end
 	  	def semester_course_registration
 		  	self.program.curriculums.where(curriculum_version: self.student.curriculum_version).last.courses.where(year: self.year, semester: self.semester).each do |co|
-		  		CourseRegistration.create do |course_registration|
+		  		p "=========================="
+				p self.id
+				p "=========================="
+
+				CourseRegistration.create do |course_registration|
 		  			course_registration.semester_registration_id = self.id
 		  			course_registration.program_id = self.program.id
 		  			course_registration.department_id = self.department.id
