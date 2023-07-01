@@ -9,6 +9,6 @@ menu parent: "Student managment"
                         options = Hash[*students.flatten] # #{"Jane" => 2, "John" => 1}
                         importer.batch_replace(:student_id, options)
                       }
- permit_params :country,:city,:region,:zone,:sub_city,:house_number,:cell_phone,:house_phone,:pobox,:woreda,:created_by,:last_updated_by,:created_at
+ permit_params :special_location, :moblie_number, :telephone_number, :country, :student_id,:city,:region,:zone,:sub_city,:house_number,:cell_phone,:house_phone,:pobox,:woreda,:created_by,:last_updated_by,:created_at
   
 end

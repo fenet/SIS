@@ -241,16 +241,9 @@ permit_params(:course_outline,:course_module_id,:curriculum_id,:program_id,:cour
       # 
       tab "Currently enrolled students" do
         panel "currently enrolled students" do
-          # students  =  course.course_registrations.where(enrollment_status: "enrolled").where(academic_calendar_id: current_academic_calendar(course.program.study_level, course.program.admission_type)).where(semester: current_semester(course.program.study_level, course.program.admission_type)).order('student_full_name ASC')
-
           table_for course.course_registrations.where(enrollment_status: "enrolled").where(academic_calendar_id: current_academic_calendar(course.program.study_level, course.program.admission_type)).where(semester: SemesterRegistration.find_by(study_level: course.program.study_level, admission_type: course.program.admission_type).semester).order('student_full_name ASC') do
-          # p "==============================================="
-          
-          # p "Result = #{students.size}"
             column "Student Full Name" do |n|
               link_to n.student_full_name, admin_student_path(n.student)
-          # p "Not working #{n.student_full_name}"
-
             end
             column "Student ID" do |n|
               n.student.student_id
