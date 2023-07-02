@@ -23,18 +23,18 @@ default: &default
 
 development:
   <<: *default
-  database: hope_portal_system_development
+  database: portalsys
   port: 5432
   host : localhost
   username: postgres
-  password: 12345678
+  password: 123
 test:
   <<: *default
-  database: hope_portal_system_test
+  database: portalsys
   port: 5432
   host : localhost
   username: postgres
-  password: 12345678
+  password: 123
 production:
   <<: *default
   database: portal_system_production
