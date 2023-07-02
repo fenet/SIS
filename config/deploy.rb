@@ -2,12 +2,13 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.16.0"
 
-set :application, "portal_system"
-set :repo_url, "https://github.com/senaygui/huc_portal_system.git"
+set :application, "yic_production"
+set :repo_url, "https://github.com/fenet/yic_portal.git"
 # set :ssh_options, { :forward_agent => true, :port => 4321 }
 set :user, "deploy"
 set :passenger_restart_with_touch, true
 # set :rbenv_path, '/home/deploy/.rbenv/'
+set :deploy_to, "/home/deploy/yic_production"
 set :stages, %w(production staging)
 # append :linked_files, "config/database.yml", "config/master.key"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
@@ -47,3 +48,4 @@ set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
+
