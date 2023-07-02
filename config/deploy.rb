@@ -1,6 +1,6 @@
 # config valid for current version and patch releases of Capistrano
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.16.0"
+lock "~> 3.17.3"
 
 set :application, "yic_production"
 set :repo_url, "https://github.com/fenet/yic_portal.git"
