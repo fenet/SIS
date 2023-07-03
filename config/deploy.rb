@@ -16,7 +16,7 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bund
 set :keep_releases, 5
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
-# set :git_ssh_command, "ssh -o ForwardAgent=yes"
+set :git_ssh_command, "ssh -o ForwardAgent=yes"
 
 # set :ssh_options, { :forward_agent => true }
 # Default branch is :master
