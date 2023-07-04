@@ -3,7 +3,7 @@
 lock "~> 3.17.3"
 
 set :application, "yic_production"
-set :repo_url, "https://fenet:fenet 1986&@github.com/fenet/yic_portal.git"
+set :repo_url, "https://fenetgucci@gmail.com:fenet 1986&@github.com/fenet/yic_portal.git"
 # set :ssh_options, { :forward_agent => true, :port => 4321 }
 set :user, "deploy"
 set :passenger_restart_with_touch, true
