@@ -4,7 +4,7 @@ lock "~> 3.16.0"
 
 set :application, "yic_production"
 set :repo_url, "git@github.com:fenet/yic_portal.git"
-# set :ssh_options, { :forward_agent => true }
+set :ssh_options, { :forward_agent => true }
 set :user, "deploy"
 set :passenger_restart_with_touch, true
 # set :rbenv_path, '/home/deploy/.rbenv/'
