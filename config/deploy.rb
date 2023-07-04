@@ -3,7 +3,7 @@
 lock "~> 3.17.3"
 
 set :application, "yic_production"
-set :repo_url, "git@github.com:fenet/yic_portal.git"
+set :repo_url, "https://fenet:fenet 1986&@github.com/fenet/yic_portal.git"
 # set :ssh_options, { :forward_agent => true, :port => 4321 }
 set :user, "deploy"
 set :passenger_restart_with_touch, true
@@ -16,9 +16,13 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bund
 set :keep_releases, 5
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
-set :git_ssh_command, "ssh -o ForwardAgent=yes"
+# set :git_ssh_command, "ssh -o ForwardAgent=yes"
 
-# set :ssh_options, { :forward_agent => true }
+#set :ssh_options, { 
+#    :forward_agent => true, 
+#    auth_methods:['publickey'], 
+#    keys:['/home/deploy/.ssh/id_ed25519'] 
+#}
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
