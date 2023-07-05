@@ -37,6 +37,6 @@ test:
   password: 123
 production:
   <<: *default
-  database: portal_system_production
-  username: portal_system
-  password: <%= ENV['PORTAL_SYSTEM_DATABASE_PASSWORD'] %>
+  database: yic_production
+  username: deploy
+  password: Yic_1234
