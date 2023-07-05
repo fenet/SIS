@@ -6,7 +6,7 @@ set :application, "yic_production"
 # set :ssh_options, { :forward_agent => true }
 set :repo_url, "git@github.com:fenet/yic_portal.git"
 
-set :user, "deploy"
+# set :user, "deploy"
 # set :passenger_restart_with_touch, true
 # set :rbenv_path, '/home/deploy/.rbenv/'
 set :deploy_to, "/home/deploy/yic_production"
