@@ -1,6 +1,3 @@
-# Load DSL and set up stages
-# require "capistrano/setup"
-
 require 'capistrano/rails'
 require 'capistrano/passenger'
 require 'capistrano/rbenv'
