@@ -1,8 +1,8 @@
-server '148.113.8.52', user: 'deploy', roles: %w{app db web}
+# server '148.113.8.52', user: 'deploy', roles: %w{app db web}
 
-# role :app, %w{deploy@192.168.0.200}
-# role :web, %w{deploy@192.168.0.200}
-# role :db, %w{deploy@192.168.0.200}, :primary => true
+role :app, %w{deploy@148.113.8.52}
+role :web, %w{deploy@148.113.8.52}
+role :db, %w{deploy@148.113.8.52}, :primary => true
 
 set :branch, "main"
 set :rails_env, "production"
