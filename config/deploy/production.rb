@@ -4,7 +4,7 @@ server '148.113.8.52', user: 'deploy', roles: %w{app db web}
 # role :web, %w{deploy@192.168.0.200}
 # role :db, %w{deploy@192.168.0.200}, :primary => true
 
-set :branch, "master"
+set :branch, "main"
 set :rails_env, "production"
 
 # set :deploy_to, '/home/deploy/portal_system'
