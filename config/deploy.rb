@@ -19,7 +19,8 @@ set :keep_releases, 5
 
 # set :git_ssh_command, "ssh -o ForwardAgent=yes"
 
-set :ssh_options, { keys:['/home/deploy/.ssh/id_rsa'] }
+
+# set :ssh_options, { keys:['/home/deploy/.ssh/id_rsa'] }
 #
 
 # :forward_agent => true, 
