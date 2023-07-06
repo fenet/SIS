@@ -7,7 +7,7 @@ role :db, %w{deploy@148.113.8.52}, :primary => true
 set :branch, "main"
 set :rails_env, "production"
 
-# set :deploy_to, '/home/deploy/portal_system'
+set :deploy_to, '/home/deploy/yic_production' 
 
 # server-based syntax
 # ======================
