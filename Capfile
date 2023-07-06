@@ -1,12 +1,8 @@
-require 'capistrano/rails'
-require 'capistrano/passenger'
-require 'capistrano/rbenv'
-
-set :rbenv_type, :user
-set :rbenv_ruby, '3.1.2'
+# Load DSL and set up stages
+require "capistrano/setup"
 
 # Include default deployment tasks
-# require "capistrano/deploy"
+require "capistrano/deploy"
 
 # Load the SCM plugin appropriate to your project:
 #
@@ -18,19 +14,20 @@ set :rbenv_ruby, '3.1.2'
 # or
 
 # If you are using rbenv add these lines:
+require 'capistrano/rbenv'
+set :rbenv_type, :user
+set :rbenv_ruby, '3.1.2'          
 
-          
+require 'capistrano/bundler'
+require 'capistrano/rails'
+require 'capistrano/rails/db'
+require 'capistrano/rails/assets'
+require 'capistrano/rails/migrations'
+require 'capistrano/passenger'
+require "whenever/capistrano"
 
-# require 'capistrano/bundler'
-
-# require 'capistrano/rails/db'
-# require 'capistrano/rails/assets'
-# require 'capistrano/rails/migrations'
-
-# require "whenever/capistrano"
-
-# require "capistrano/scm/git"
-# install_plugin Capistrano::SCM::Git
+require "capistrano/scm/git"
+install_plugin Capistrano::SCM::Git
 
 # Include tasks from other gems included in your Gemfile
 #
