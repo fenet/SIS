@@ -1,8 +1,8 @@
 # config valid for current version and patch releases of Capistrano
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.17.3"
+lock "~> 3.16.0"
 
-set :application, "leadtest"
+set :application, "portal_system"
 # set :ssh_options, { :forward_agent => true }
 set :repo_url, "https://github.com/fenet/Portal-System.git"
 
@@ -18,7 +18,7 @@ set :stages, %w(production staging)
 # append :linked_files, "config/database.yml", "config/master.key"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
 
-set :keep_releases, 5
+set :keep_releases, 10
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
 # set :git_ssh_command, "ssh -o ForwardAgent=yes"
