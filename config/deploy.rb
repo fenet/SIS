@@ -3,11 +3,11 @@
 lock "~> 3.17.3"
 
 set :application, "yic_production"
-set :ssh_options, { :forward_agent => true }
+# set :ssh_options, { :forward_agent => true }
 set :repo_url, "https://github.com/fenet/yic_portal.git"
 
 # set :user, "deploy"
-# set :passenger_restart_with_touch, true
+ set :passenger_restart_with_touch, true
 # set :rbenv_path, '/home/deploy/.rbenv/'
 # set :deploy_to, "/home/deploy/yic_production"
 set :stages, %w(production staging)
@@ -15,7 +15,7 @@ set :stages, %w(production staging)
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
 
 set :keep_releases, 5
-# set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
 # set :git_ssh_command, "ssh -o ForwardAgent=yes"
 
