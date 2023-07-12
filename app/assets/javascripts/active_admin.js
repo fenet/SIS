@@ -61,7 +61,7 @@ $(document).ready(function(){
     }
   });
 
-  $('#header').before("<div class='headline'><div class='banner-logo'></div> <h1 class='banner-title'>Yardstick International College Registrar Portal</h1></div>");
+  $('#header').before("<div class='headline'><div class='banner-logo'></div> <h1 class='banner-title'>Hope Enterprise University College Registrar Portal</h1></div>");
 
 
 
