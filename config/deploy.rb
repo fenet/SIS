@@ -2,12 +2,16 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.17.3"
 
-set :application, "yic_production"
+set :application, "leadtest"
 # set :ssh_options, { :forward_agent => true }
 set :repo_url, "https://github.com/fenet/yic_portal.git"
 
+set :git_http_username, 'fenet' 
+ask(:github_token, "github_token", echo: false) 
+set :git_http_password, fetch((:github_token))
+
 # set :user, "deploy"
- set :passenger_restart_with_touch, true
+set :passenger_restart_with_touch, true
 # set :rbenv_path, '/home/deploy/.rbenv/'
 # set :deploy_to, "/home/deploy/yic_production"
 set :stages, %w(production staging)
@@ -58,4 +62,7 @@ set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
+
+
+
 
