@@ -1,6 +1,6 @@
 # config valid for current version and patch releases of Capistrano
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.16.0"
+lock "~> 3.17.3"
 
 set :application, "portal_system"
 # set :ssh_options, { :forward_agent => true }
