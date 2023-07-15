@@ -50,7 +50,6 @@ ActiveAdmin.register Student do
   end
 
 
-
   controller do
     def update_resource(object, attributes)
       update_method = attributes.first[:password].present? ? :update : :update_without_password
