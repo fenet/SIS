@@ -9,7 +9,7 @@
 
 
 AdminUser.create!(first_name: "Meshu",   last_name: "Amare",
-									email: "meshu.amare@gmail.com", 
+									email: "admin@gmail.com", 
 									password: "12345678",  
 									role: "admin") 
  AdminUser.create!(first_name: "#{Rails.application.credentials.production[:first_name]}",   
