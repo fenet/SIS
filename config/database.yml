@@ -26,8 +26,8 @@ development:
   database: hope_dev
   port: 5432
   host : localhost
-  username: hopedeveloper
-  password: Hope_1234
+  username: postgres
+  password: 123
 test:
   <<: *default
   database: portalsys
@@ -37,6 +37,6 @@ test:
   password: 123
 production:
   <<: *default
-  database: portal_system_production  
-  username: portal_system
-  password: <%= ENV['PORTAL_SYSTEM_DATABASE_PASSWORD'] %>
+  database: hope_production_db 
+  username: deploy
+  password: Hope_1234
