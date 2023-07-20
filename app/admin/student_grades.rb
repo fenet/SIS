@@ -1,18 +1,19 @@
 ActiveAdmin.register StudentGrade do
 menu parent: "Grade"
+# index download_links: [:csv,:json, :xml, :pdf]
+# index download_links: [:xml, :pdf, :csv, :json]
+
   permit_params :department_approval,:department_head_name,:department_head_date_of_response, :course_registration_id,:student_id,:letter_grade,:grade_point,:assesment_total,:grade_point,:course_id,assessments_attributes: [:id,:student_grade_id,:assessment_plan_id,:student_id,:course_id,:result,:created_by,:updated_by, :_destroy]
 
       active_admin_import validate: true,
-                      headers_rewrites: { :'id'=> :student_id },
+                      headers_rewrites: { "ID"=> :student_id },
                       timestamps: true,
                       batch_size: 1000,
                       before_batch_import: ->(importer) {
                         student_ids = importer.values_at(:student_id)
                         students = Student.where(id: student_ids).pluck(:student_id, :id)
                           options = Hash[*students.flatten]
-                     
                         importer.batch_replace(:student_id, options)
-                        p importer
                       }
                       
   scoped_collection_action :scoped_collection_update, title: 'Approve Grade', form: -> do
@@ -31,12 +32,8 @@ menu parent: "Grade"
   #   @student_grade.generate_grade
   #   redirect_back(fallback_location: admin_student_grade_path)
   # end
-  # collection_action :grade, method: :get do
-  #   @list = "Student list"
-  # end
-  # action_item :grade, method: :get do
-  #   link_to 'Grade', collection_path, notice: "CSV imported successfully!"
-  # end
+
+  
 
   batch_action "Generate Grade for", method: :put, confirm: "Are you sure?" do |ids|
     StudentGrade.find(ids).each do |student_grade|
@@ -56,6 +53,8 @@ menu parent: "Grade"
     end
     redirect_to collection_path, notice: "Grade Is Denied Successfully"
   end
+#  index download_links: [:xml, :pdf, :csv, :json]
+
   index do 
     selectable_column
     column "full name", sortable: true do |n|
@@ -83,6 +82,7 @@ menu parent: "Grade"
     end
     actions
   end
+#  index download_links: [:xml, :pdf, :csv, :json]
 
   filter :student_id, as: :search_select_filter, url: proc { admin_students_path },
          fields: [:student_id, :id], display_name: 'student_id', minimum_input_length: 2,

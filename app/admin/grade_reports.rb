@@ -3,6 +3,20 @@ ActiveAdmin.register GradeReport do
 actions :all, :except => [:new]
 permit_params :semester_registration_id,:student_id,:academic_calendar_id,:program_id,:department_id,:section_id,:admission_type,:study_level,:total_course,:total_credit_hour,:total_grade_point,:cumulative_total_credit_hour,:cumulative_total_grade_point,:cgpa,:sgpa,:semester,:year,:academic_status,:registrar_approval,:registrar_name,:dean_approval,:dean_name,:department_approval,:department_head_name,:updated_by,:created_by
   
+collection_action :pdf_report, method: :get do
+  students = GradeReport.all
+  respond_to do |format|
+    format.html 
+    format.pdf do
+      pdf = StudentGradeReport.new(students)
+      send_data pdf.render, filename: "student grade #{Time.zone.now}.pdf", type: "application/pdf", disposition: 'inline'  
+    end
+  end
+end
+
+action_item :pdf, method: :get, priority: 0 do
+  link_to 'Generate Pdf Report', pdf_report_admin_grade_reports_path(format: 'pdf'), notice: "CSV imported successfully!"
+end
 
   batch_action "Approve Grade Report For", if: proc{ current_admin_user.role == "department head" }, method: :put, confirm: "Are you sure?" do |ids|
     GradeReport.find(ids).each do |grade_report|
