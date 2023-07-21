@@ -16,10 +16,18 @@ class StudentGradeReport < Prawn::Document
          move_down 20
          table each_data_in_table(stud, index) do 
             row(0).font_style = :bold
-            self.header = true
+            row(0).size = 12
+
          end
          move_down 10
-         table preview_table(stud)
+         table preview_table(stud) do
+            column(1..3).style :align => :center
+            row(0).font_style = :bold
+            row(0).size = 12
+
+
+
+         end
         end
         start_new_page
         header_footer
@@ -53,7 +61,7 @@ class StudentGradeReport < Prawn::Document
     def each_data_in_table(data, index)
        [
         [ "No", "Course title","Course Code", "Cr.Hrs", "Letter Grade", "Grade Point", "Remark"],
-       ]+  data.semester_registration.course_registrations.includes(:student_grade).map.with_index do |course, index|
+       ]+  data.semester_registration.course_registrations.where(enrollment_status: 'enrolled').includes(:student_grade).map.with_index do |course, index|
             [index+1, course.course.course_title, course.course.course_code, course.course.credit_hour, StudentGrade.find_by(course: course.course).letter_grade, StudentGrade.find_by(course: course.course).grade_point, "" ]
        end
     end
