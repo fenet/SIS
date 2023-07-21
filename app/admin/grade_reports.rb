@@ -15,7 +15,10 @@ collection_action :pdf_report, method: :get do
 end
 
 action_item :pdf, method: :get, priority: 0 do
-  link_to 'Generate Pdf Report', pdf_report_admin_grade_reports_path(format: 'pdf'), notice: "CSV imported successfully!"
+  
+  # link_to 'Generate Pdf Report', pdf_report_admin_grade_reports_path(format: 'pdf'), notice: "CSV imported successfully!"
+
+  link_to 'Generate Pdf Report', pdf_gread_report_path, target: "_blank"
 end
 
   batch_action "Approve Grade Report For", if: proc{ current_admin_user.role == "department head" }, method: :put, confirm: "Are you sure?" do |ids|

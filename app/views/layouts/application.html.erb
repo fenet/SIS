@@ -15,7 +15,7 @@
   <%if !student_signed_in?%>
     <body class="hold-transition control-sidebar-slide-open sidebar-collapse">
       <div class="wrapper">
-        <%= render 'layouts/registration_navbar'%>
+        <%= render 'layouts/registration_navbar' unless @disable_nav%> 
         <%= yield %>
       </div>
     </body>

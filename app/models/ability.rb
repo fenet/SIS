@@ -34,6 +34,7 @@ class Ability
         can :manage, Grade
         can :manage, AdminUser
         can :manage, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
+        # can :manage, ActiveAdmin::Page, name: "Report", namespace_name: "admin"
         can :manage, Program
         can :manage, College
         can :manage, Faculty
@@ -42,6 +43,7 @@ class Ability
         cannot :destroy, College, id: 1
 
         can :manage, Department
+        # can :manage, Report
         can :manage, CourseModule
         can :manage, Course
         can :manage, Student
