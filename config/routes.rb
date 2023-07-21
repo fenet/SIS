@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'pdf_grade_reports/index', as: "pdf_gread_report"
+  get 'prepare_pdf.pdf', to: "pdf_grade_reports#prepare_pdf"
+
   
   resources :grade_reports
   resources :academic_calendars, only: [:show, :index]
@@ -11,6 +14,7 @@ Rails.application.routes.draw do
     root 'pages#dashboard', as: 'authenticated_user_root'
   end
   
+  post 'prepare_pdf', to: "pdf_grade_reports#prepare_pdf", as: 'prepare_pdf'
   get 'admission' => 'pages#admission'
   get 'documents' => 'pages#documents'
   get 'profile' => 'pages#profile'

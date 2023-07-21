@@ -86,6 +86,8 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'prawn'
   gem 'prawn-table', '~> 0.2.2'
+  gem "rubocop"
+
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   # gem 'spring'
