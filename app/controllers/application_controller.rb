@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-
+  protect_from_forgery prepend: true, with: :exception
   def home
     render html: "welcome to yic online"
   end

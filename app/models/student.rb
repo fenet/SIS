@@ -13,6 +13,7 @@ class Student < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
+        #  , :authentication_keys => [:email]
   has_person_name    
   ##associations
     belongs_to :department, optional: true
@@ -104,11 +105,11 @@ class Student < ApplicationRecord
   end
   def attributies_assignment
     if (self.document_verification_status == "approved") && (!self.academic_calendar.present?)
-      self.update_columns(academic_calendar_id: AcademicCalendar.where(study_level: self.study_level, admission_type: self.admission_type).order("created_at DESC").first.id)
+      self.update_columns(academic_calendar_id: AcademicCalendar.where(study_level: self.program.study_level, admission_type: self.program.admission_type).order("created_at DESC").first.id)
       self.update_columns(department_id: program.department_id)
       self.update_columns(curriculum_version: program.curriculums.where(active_status: "active").last.curriculum_version)
       self.update_columns(payment_version: program.payments.order("created_at DESC").first.version)
-      self.update_columns(batch: AcademicCalendar.where(study_level: self.study_level).where(admission_type: self.admission_type).order("created_at DESC").first.calender_year_in_gc)
+      self.update_columns(batch: AcademicCalendar.where(study_level: self.program.study_level).where(admission_type: self.program.admission_type).order("created_at DESC").first.calender_year_in_gc)
     end
   end
   def student_id_generator
@@ -129,12 +130,12 @@ class Student < ApplicationRecord
       registration.student_id_number = self.student_id
       registration.created_by = "#{self.created_by}"
       ## TODO: find the calender of student admission type and study level
-      registration.academic_calendar_id = AcademicCalendar.where(admission_type: self.admission_type).where(study_level: self.study_level).order("created_at DESC").first.id
+      registration.academic_calendar_id = AcademicCalendar.where(admission_type: self.program.admission_type).where(study_level: self.program.study_level).order("created_at DESC").first.id
       registration.year = self.year
       registration.semester = self.semester
       registration.program_name = self.program.program_name
-      registration.admission_type = self.admission_type
-      registration.study_level = self.study_level
+      registration.admission_type = self.program.admission_type
+      registration.study_level = self.program.study_level
       registration.created_by = self.last_updated_by
       # registration.registrar_approval_status ="approved"
       # registration.finance_approval_status ="approved"

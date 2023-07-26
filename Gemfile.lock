@@ -460,6 +460,7 @@ DEPENDENCIES
   activeadmin (~> 2.9)
   activeadmin_addons (~> 1.7, >= 1.7.1)
   barby (~> 0.6.8)
+  bcrypt
   bootsnap (>= 1.1.0)
   bootstrap (~> 4.6)
   byebug
@@ -474,7 +475,7 @@ DEPENDENCIES
   chunky_png (~> 1.4)
   coffee-rails (~> 4.2)
   country_select (~> 3.1, >= 3.1.1)
-  devise (~> 4.8)
+  devise
   dotenv-rails (~> 2.7, >= 2.7.6)
   execjs
   flatpickr (~> 4.6, >= 4.6.3.1)

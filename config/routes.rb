@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   resources :almunis
   resources :semester_registrations
   resources :invoices
+  resources :profiles
+
   resources :payment_methods
   resources :payment_transactions
   devise_for :admin_users, ActiveAdmin::Devise.config

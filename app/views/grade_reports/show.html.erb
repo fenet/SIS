@@ -94,7 +94,7 @@
 						  </thead>
 
 						  <tbody>
-						    <% @grade_report.semester_registration.course_registrations.each do |grade_report_course| %>
+						    <% @grade_report.semester_registration.course_registrations.where(enrollment_status: 'enrolled', student: current_student).each do |grade_report_course| %>
 						      <tr>     
 						        <td><%= grade_report_course.course.course_title %></td>
 						        <td><%= grade_report_course.course.course_module.module_code %></td>

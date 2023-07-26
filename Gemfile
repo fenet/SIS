@@ -27,7 +27,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -38,7 +38,7 @@ gem 'jquery-rails'
 gem 'jquery-datatables', '~> 1.10', '>= 1.10.20'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
-gem 'devise', '~> 4.8'
+gem 'devise'
 gem 'activeadmin', '~> 2.9'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'activeadmin_addons', '~> 1.7', '>= 1.7.1'
