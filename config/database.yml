@@ -37,6 +37,6 @@ test:
   password: Hope_1234
 production:
   <<: *default
-  database: hope_production_db 
-  username: deploy
-  password: Hope_1234
+  database: leadstar_portal 
+  username: newdeploy
+  password: 1234567
