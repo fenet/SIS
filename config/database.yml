@@ -23,11 +23,11 @@ default: &default
 
 development:
   <<: *default
-  database: hope_dev
+  database: leadstar_dev
   port: 5432
   host : localhost
-  username: hopedeveloper
-  password: Hope_1234
+  username: leadeveloper
+  password: Lead_1234
 test:
   <<: *default
   database: hope_dev

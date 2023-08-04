@@ -9,12 +9,12 @@
 
 
 AdminUser.create!(first_name: "fenet",   last_name: "Assefa",
-									email: "fena@gmail.com", 
-									password: "12345678",  
+									email: "andu@gmail.com", 
+									password: "Leadstar_1234",  
 									role: "admin") 
 AdminUser.create!(first_name: "#{Rails.application.credentials.production[:first_name]}",   
 	               last_name: "#{Rails.application.credentials.production[:last_name]}",
  				   email: "#{Rails.application.credentials.production[:admin_email]}", 
- 				   password: "#{Rails.application.credentials.production[:_password]}",
-				   password_confirmation: "#{Rails.application.credentials.production[:_password]}",  
+ 				   password: "#{Rails.application.credentials.production[:seed_password]}",
+				   password_confirmation: "#{Rails.application.credentials.production[:seed_password]}",  
  				   role: "#{Rails.application.credentials.production[:role]}") if Rails.env.production?
