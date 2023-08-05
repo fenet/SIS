@@ -485,6 +485,7 @@ DEPENDENCIES
   jquery-datatables (~> 1.10, >= 1.10.20)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
+  matrix (~> 0.4.2)
   name_of_person (~> 1.1, >= 1.1.1)
   nested_form
   pg (>= 0.18, < 2.0)
