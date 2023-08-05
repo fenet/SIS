@@ -69,6 +69,9 @@ gem 'active_admin_flat_skin', github: 'ayann/active_admin_flat_skin'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'prawn'
+gem 'prawn-table', '~> 0.2.2'
+
 group :development, :test do
   gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -84,8 +87,7 @@ group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  #gem 'prawn'
-  #gem 'prawn-table', '~> 0.2.2'
+ 
   gem "rubocop"
 
 

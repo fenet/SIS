@@ -1,4 +1,4 @@
-=begin class StudentGradeReport < Prawn::Document
+class StudentGradeReport < Prawn::Document
     def initialize(students)
         super(:page_size => 'A4')
         @students = students
@@ -94,4 +94,4 @@
     end
     
 
-end =end
+end 
