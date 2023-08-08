@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_27_115307) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_08_113913) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -1064,7 +1064,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_27_115307) do
     t.string "entrance_exam_result_status"
     t.string "batch"
     t.string "account_status", default: "active"
-    t.string "graduation_status"
+    t.string "graduation_status", default: "pending"
     t.string "sponsorship_status"
     t.string "institution_transfer_status"
     t.string "program_transfer_status"

@@ -28,6 +28,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt'
+gem "chartkick"
+# gem "font-awesome-rails"
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -57,7 +59,8 @@ gem 'nested_form'
 gem 'whenever', require: false
 gem "active_admin_import"
 gem "rqrcode", "~> 2.1"
-
+gem 'prawn'
+gem 'prawn-table', '~> 0.2.2'
 gem "chunky_png", "~> 1.4"
 
 gem "barby", "~> 0.6.8"
@@ -84,8 +87,7 @@ group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'prawn'
-  gem 'prawn-table', '~> 0.2.2'
+
   gem "rubocop"
 
 

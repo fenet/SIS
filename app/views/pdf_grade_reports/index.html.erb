@@ -4,7 +4,7 @@
     <br>
     <div class="filed">
         <label>Departement Name: </label>
-        <%= collection_select(:department, :name, Department.select(:department_name, :id), :id, :department_name,  {prompt: 'Select a Department'},required: true) %> 
+        <%= collection_select(:department, :name, @department, :id, :department_name,  {prompt: 'Select a Department'}, required: true) %> 
     </div>
      <div class="filed">
         <label>Year: </label>
