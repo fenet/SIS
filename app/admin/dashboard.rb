@@ -2,13 +2,13 @@ ActiveAdmin.register_page "Dashboard" do
   menu priority: 1, label: proc { I18n.t("active_admin.dashboard") }
 
   content title: proc { I18n.t("active_admin.dashboard") } do
-    div class: "blank_slate_container", id: "dashboard_default_message" do
-      span class: "blank_slate" do
-        div image_tag("logo.jpg", size: "250x150")
-        span "Welcome To Hope Enterprise University College"
-        small "This is Hope Enterprise University College's registrar and school management portal system."
-      end
-    end
+    #div class: "blank_slate_container", id: "dashboard_default_message" do
+     # span class: "blank_slate" do
+      #  div image_tag("banner.jpg", size: "250x150")
+       # span "Welcome To Hope Enterprise University College"
+       # small "This is Hope Enterprise University College registrar and school management portal system."
+     # end
+    #end
 
     # Here is an example of a simple dashboard with columns and panels.
     #

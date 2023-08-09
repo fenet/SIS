@@ -79,13 +79,14 @@
 						  </thead>
 
 						  <tbody>
-						    <% @semester_registration.course_registrations.each do |course_registration| %>
+						    <% current_student.program.curriculums.where(active_status: "active").first.courses.where(year: current_student.year, semester: current_student.semester).order('year ASC
+','semester ASC').each do |course_registration| %>
 						      <tr>
 						        
-						        <td><%= course_registration.course.course_title %></td>
-						        <td><%= course_registration.course.course_module.module_code %></td>
-						        <td><%= course_registration.course.course_code %></td>
-						        <td><%= course_registration.course.credit_hour %></td>
+						        <td><%= course_registration.course_title %></td>
+						        <td><%= course_registration.course_module.module_code %></td>
+						        <td><%= course_registration.course_code %></td>
+						        <td><%= course_registration.credit_hour %></td>
 						      </tr>
 						    <% end %>
 						  </tbody>
