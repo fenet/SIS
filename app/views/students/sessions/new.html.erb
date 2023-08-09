@@ -11,8 +11,7 @@
 
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="input-group mb-3">
-            <%= f.email_field :email, autofocus: true, auApp > views > layouts 
-            tocomplete: "email",  class: "form-control", placeholder: "Email" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",  class: "form-control", placeholder: "Email" %>
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-envelope"></span>
