@@ -82,11 +82,13 @@
               <div class="card-header">
                 <h3 class="card-title">Emregncy Contact Information</h3>
               </div>
+              <% if @emergency_contact.present?%>
               <div class="card-body box-profile">
                 <ul class="list-group list-group-unbordered mb-3">
                   <li class="list-group-item mx-3">
-                    <b>Full Name</b> <a class="text-muted float-right"><%= @emergency_contact.full_name%></a>
+                    <b>Full Name</b> <a class="text-muted float-right"><%= @emergency_contact.full_name.present? ? @emergency_contact.full_name : "" %></a>
                   </li>
+                  
                   <li class="list-group-item mx-3">
                     <b>Relationship</b> <a class="text-muted float-right"><%= @emergency_contact.relationship%></a>
                   </li>
@@ -125,6 +127,8 @@
                   </li>
                 </ul>
               </div>
+              <%end%>
+
               <!-- /.card-body -->
             </div>
           </div>
@@ -165,6 +169,7 @@
           <div class="card-header">
             <h3 class="card-title">Address Information</h3>
           </div>
+          <% if @address.present?%>
           <div class="card-body box-profile">
             <ul class="list-group list-group-unbordered mb-3">
               <li class="list-group-item mx-3">
@@ -202,6 +207,7 @@
 
 
           </div>
+          <%end%>
           <!-- /.card-body -->
         </div>
       </div>

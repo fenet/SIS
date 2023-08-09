@@ -7,13 +7,11 @@ ActiveAdmin.register Student do
   active_admin_import validate: false,
                       before_batch_import: proc { |import|
                                              import.csv_lines.length.times do |i|
-                                               import.csv_lines[i][3] =
-                     Student.new(password: import.csv_lines[i][3]).encrypted_password
+                                               import.csv_lines[i][1] =
+                     Student.new(password: import.csv_lines[i][1]).encrypted_password
                                              end
                                            },
-                      # :template_object => ActiveAdminImport::Model.new(
-                      #     :hint => "file will be imported with such header format: 'email', 'first_name','last_name','encrypted_password','middle_name','gender','student_id','date_of_birth','program_id','department','admission_type','study_level','marital_status','year','semester','account_verification_status','document_verification_status','account_status','graduation_status','student_password'"
-                      # ),
+                    
                       timestamps: true,
                       batch_size: 1000
   scoped_collection_action :scoped_collection_update, title: 'Batch Approve', form: lambda {

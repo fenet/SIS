@@ -57,9 +57,8 @@ class SemesterRegistration < ApplicationRecord
 						if ((self.course_registrations.joins(:student_grade).pluck(:letter_grade).include?("I")) || (self.course_registrations.joins(:student_grade).pluck(:letter_grade).include?("NG")))
 							report.academic_status = "Incomplete"
 						else
-							p report.cgpa
 							report.academic_status = self.student.program.grade_systems.last.academic_statuses.where("min_value < ?", report.cgpa).where("max_value >= ?", report.cgpa).last.status
-							if (report.academic_status != "Dismissal") || (report.academic_status != "Incomplete")
+							if (report.academic_status.strip != "Dismissal") || (report.academic_status.strip != "Incomplete")
 								if self.program.program_semester > self.student.semester
 									promoted_semester = self.student.semester + 1
 									self.student.update_columns(semester: promoted_semester)
@@ -144,11 +143,8 @@ class SemesterRegistration < ApplicationRecord
 	  	end
 	  	def semester_course_registration
 		  	self.program.curriculums.where(curriculum_version: self.student.curriculum_version).last.courses.where(year: self.year, semester: self.semester).each do |co|
-		  		p "=========================="
-				p self.id
-				p "=========================="
-
-				CourseRegistration.create do |course_registration|
+		 
+			 	CourseRegistration.create do |course_registration|
 		  			course_registration.semester_registration_id = self.id
 		  			course_registration.program_id = self.program.id
 		  			course_registration.department_id = self.department.id

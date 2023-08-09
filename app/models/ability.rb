@@ -20,6 +20,7 @@ class Ability
         can :manage, CourseRegistration
         can :manage, Attendance
         can :manage, Session
+        # can :manage, Graduation
         can :manage, PaymentTransaction
         can :manage, StudentAddress
         can :manage, EmergencyContact
@@ -34,7 +35,7 @@ class Ability
         can :manage, Grade
         can :manage, AdminUser
         can :manage, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
-        # can :manage, ActiveAdmin::Page, name: "Report", namespace_name: "admin"
+        can :manage, ActiveAdmin::Page, name: "Graduation", namespace_name: "admin"
         can :manage, Program
         can :manage, College
         can :manage, Faculty
@@ -95,6 +96,9 @@ class Ability
         can :manage, Invoice
     when "registrar head"
         can :manage, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
+        can :manage, ActiveAdmin::Page, name: "Graduation", namespace_name: "admin"
+
+
         can :manage, AcademicCalendar
         can :manage, AdminUser, role: "instructor"
         can :manage, Faculty

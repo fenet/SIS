@@ -1,12 +1,13 @@
 class PdfGradeReportsController < ApplicationController
+  # before_action :set_filter
   def index
     @disable_nav =true
+    @department = Department.select(:department_name, :id)
   end
 
   def prepare_pdf
-    department= params[:department][:name]
+    department= params[:department][:name] 
     year= params[:student][:year]
-
     section = params[:section][:id]
     semester= params[:semester]
 
@@ -23,4 +24,6 @@ class PdfGradeReportsController < ApplicationController
     end
   end
   end
+
+ 
 end

@@ -1,6 +1,10 @@
 <%provide(:title, "Sign In")%>
 <div class="login-page" style="background-image: url(<%= asset_path('sign-in.jpg')%>) background-repeat: no-repeat;">
   <div class="login-box mt-5">
+  <%= devise_error_messages! %>
+    <% flash.each do |key, value| %>
+       <div class="flash <%= key %>"><%= value %></div>
+    <% end %>
     <!-- /.login-logo -->
     <div class="card card-outline card-primary">
       <div class="card-header text-center">

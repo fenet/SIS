@@ -5,7 +5,8 @@
 //= require active_storage_drag_and_drop
 //= require active_admin_scoped_collection_actions
 //= require active_admin_sidebar
-
+//= require chartkick
+//= require Chart.bundle
 $(document).ready(function(){
 
   $("#student_photo").change(function(data){

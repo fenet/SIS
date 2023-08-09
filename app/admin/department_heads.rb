@@ -21,7 +21,7 @@ ActiveAdmin.register AdminUser, as: "DepartmentHead"  do
     column :email
     column :role
     column "Department", sortable: true do |d|
-      link_to d.department.department_name, [:admin, d.department]
+      # link_to d.department.department_name, [:admin, d.department] if d.department.department_name.present?
     end
     column :current_sign_in_at
     column :sign_in_count
