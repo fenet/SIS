@@ -458,22 +458,25 @@ ActiveAdmin.register Student do
                 end
               end
             end
-            panel 'Certificate Of Competency(COC)' do
+            panel "Certificate Of Competency(COC)" do
               if student.coc.attached?
                 if student.coc.variable?
-                  div class: 'preview-card text-center' do
+                  div class: "preview-card text-center" do
                     span link_to image_tag(student.coc, size: '200x270'), student.coc
                   end
                 elsif student.coc.previewable?
-                  div class: 'preview-card text-center' do
-                    span link_to image_tag(student.coc.preview(resize: '200x200')), student.coc
+                  div class: "preview-card text-center" do
+                    span link_to "view document", rails_blob_path(student.coc, disposition: 'preview')
+                    # span link_to image_tag(student.coc.preview(resize: '200x200')), student.coc
                   end
+                else
+                  span link_to "view document", rails_blob_path(student.coc, disposition: 'preview')
                 end
               else
-                h3 class: 'text-center no-recent-data' do
-                  'Document Not Uploaded Yet'
+                h3 class: "text-center no-recent-data" do
+                  "Document Not Uploaded Yet"
                 end
-              end
+              end 
             end
           end
           column do
