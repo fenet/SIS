@@ -189,7 +189,7 @@
                         </div>
                       <%elsif current_student.coc.previewable?%>
                         <div class= "preview-card text-center no-recent-data">
-                          <span> <%= link_to image_tag(current_student.coc.preview(resize: '200x200')), current_student.coc%></span> 
+                          <span> <%= link_to "view document", rails_blob_path(current_student.coc, disposition: 'preview')%></span> 
                         </div>
                       <%end%>
                     <%else%>
