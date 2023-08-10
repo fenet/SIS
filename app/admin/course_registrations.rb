@@ -27,6 +27,9 @@ ActiveAdmin.register CourseRegistration do
     column "Student Name" do |s|
       s.student.name.full
     end
+    column "Academic Year" do |s|
+      s.get_academic_year
+    end
     column :id do |c|
       c.student.student_id
     end

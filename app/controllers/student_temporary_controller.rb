@@ -7,8 +7,8 @@ class StudentTemporaryController < ApplicationController
 
   def approved
     ids = session[:student_ids]
-    approve = Student.where(id: ids).update(graduation_status: 'approved')
-    if approve
+    graduation_status = Student.where(id: ids).update(graduation_status: 'approved', graduation_year: Date.current.year)
+    if graduation_status
       redirect_to admin_graduation_url, notice: "#{ids.size} #{"student".pluralize(ids.size)} got approved for graduation"
     else
       redirect_to graduation_approval_form_url, alert: "Something went wrong for the selected student" 
