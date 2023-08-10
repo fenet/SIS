@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_08_113913) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_09_201329) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -362,6 +362,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_08_113913) do
     t.string "updated_by"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.integer "academic_year"
     t.index ["academic_calendar_id"], name: "index_course_registrations_on_academic_calendar_id"
     t.index ["course_id"], name: "index_course_registrations_on_course_id"
     t.index ["department_id"], name: "index_course_registrations_on_department_id"
@@ -1075,6 +1076,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_08_113913) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.string "payment_version"
+    t.date "admission_date"
+    t.integer "graduation_year"
     t.index ["academic_calendar_id"], name: "index_students_on_academic_calendar_id"
     t.index ["department_id"], name: "index_students_on_department_id"
     t.index ["email"], name: "index_students_on_email", unique: true

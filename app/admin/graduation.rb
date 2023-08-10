@@ -8,7 +8,6 @@ ActiveAdmin.register_page "Graduation" do
     columns do
   column  do
     panel "Generate Student Temporary and Student Copy" do
-      # render partial: "admin/graduations/form"
       div do
         link_to "Student Graduation Approval", graduation_approval_form_path, target: "_blank"
        end
@@ -16,7 +15,7 @@ ActiveAdmin.register_page "Graduation" do
        link_to "Generate Student Temporary", student_temporary_path, target: "_blank"
       end
       div do
-       link_to "Generate Student Copy", root_path
+       link_to "Generate Student Copy", student_copy_path, target: "_blank"
       end
     end
   end
