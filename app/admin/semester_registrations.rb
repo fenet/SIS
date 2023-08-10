@@ -11,12 +11,11 @@ ActiveAdmin.register SemesterRegistration do
                         options = Hash[*students.flatten] 
                         importer.batch_replace(:student_id, options)
                       }
-      scoped_collection_action :scoped_collection_update, title: 'Batch Action', form: -> do
+                       scoped_collection_action :scoped_collection_update, title: 'Batch Action', form: -> do
                                          { 
-                                           section_id: Section.all.map { |section| [section.section_full_name, section.id] },
+                                          section_id: Section.all.map { |section| [section.section_full_name, section.id] },
                                           registrar_approval_status: ["pending","approved", "denied", "incomplete"],
-                                          mode_of_payment: [ "Monthly Payment", "Half Semester Payment","Full Semester Payment"]
-                                            
+                                          mode_of_payment: [ "Monthly Payment", "Half Semester Payment","Full Semester Payment"]   
                                           }
                                         end
 
@@ -25,7 +24,11 @@ ActiveAdmin.register SemesterRegistration do
           redirect_to admin_semester_registrations_path, notice: "#{'student'.pluralize(ids.size)} finance verification status denied"
         end
         batch_action 'Approve finance status for', method: :put, confirm: "Are you sure?" do |ids|
-          SemesterRegistration.where(id: ids).update(finance_approval_status: 'approved')
+          smr = SemesterRegistration.where(id: ids)
+          smr.update(finance_approval_status: 'approved')
+          smr.each do |smr|
+            smr.approve_enrollment_status
+          end
           redirect_to admin_semester_registrations_path, notice: "#{'student'.pluralize(ids.size)} finance verification status Approved"
         end
 
@@ -35,6 +38,11 @@ ActiveAdmin.register SemesterRegistration do
           redirect_to admin_semester_registrations_path, notice: "#{'student'.pluralize(ids.size)} registrar verification status denied"
         end
         batch_action 'Approve registrar status for', method: :put, confirm: "Are you sure?" do |ids|
+          smr = SemesterRegistration.where(id: ids)
+          smr.update(registrar_approval_status: 'approved')
+          smr.each do |smr|
+            smr.approve_enrollment_status
+          end
           SemesterRegistration.where(id: ids).update(registrar_approval_status: 'approved')
           redirect_to admin_semester_registrations_path, notice: "#{'student'.pluralize(ids.size)} registrar verification status Approved"
         end

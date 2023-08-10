@@ -14,9 +14,9 @@ class Course < ApplicationRecord
   	belongs_to :curriculum
   	belongs_to :program, optional: true
  		# has_many :programs, through: :curriculums, dependent: :destroy
- 		has_many :student_grades, dependent: :destroy
+ 	has_many :student_grades, dependent: :destroy
 
- 		has_many :student_courses, dependent: :destroy
+ 	has_many :student_courses, dependent: :destroy
  		has_many :assessments
 	  has_many :course_registrations, dependent: :destroy
 	  has_many :invoice_items

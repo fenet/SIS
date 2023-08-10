@@ -18,7 +18,10 @@ class CourseRegistration < ApplicationRecord
 		has_many :makeup_exams
 		# validates_associated :student_grades
         
-		
+		def get_academic_year
+		  "#{self.academic_year}/#{self.academic_year+1}"
+		end
+
 		def add_grade
 			if self.section.present? && !self.student_grade.present?
 				StudentGrade.create do |student_grade|
