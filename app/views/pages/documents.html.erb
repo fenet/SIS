@@ -43,7 +43,7 @@
                         </div>
                       <%elsif current_student.highschool_transcript.previewable?%>
                         <div class= "preview-card text-center no-recent-data">
-                          <span> <%= link_to image_tag(current_student.highschool_transcript.preview(resize: '200x200')), current_student.highschool_transcript%></span> 
+                          <span> <%= link_to "view document", rails_blob_path(current_student.highschool_transcript, disposition: 'preview')%></span> 
                         </div>
                       <%end%>
                     <%else%>
@@ -73,7 +73,7 @@
                         </div>
                       <%elsif current_student.grade_10_matric.previewable?%>
                         <div class= "preview-card text-center no-recent-data">
-                          <span> <%= link_to image_tag(current_student.grade_10_matric.preview(resize: '200x200')), current_student.grade_10_matric%></span> 
+                          <span> <%= link_to "view document", rails_blob_path(current_student.grade_10_matric, disposition: 'preview') %></span> 
                         </div>
                       <%end%>
                     <%else%>
@@ -102,7 +102,7 @@
                         </div>
                       <%elsif current_student.grade_12_matric.previewable?%>
                         <div class= "preview-card text-center no-recent-data">
-                          <span> <%= link_to image_tag(current_student.grade_12_matric.preview(resize: '200x200')), current_student.grade_12_matric%></span> 
+                          <span> <%= link_to "view document", rails_blob_path(current_student.grade_12_matric, disposition: 'preview')%></span> 
                         </div>
                       <%end%>
                     <%else%>
@@ -125,13 +125,16 @@
                   </div>
                   <div class="card-body">
                     <% if current_student.degree_certificate.attached? %>
+                      <div class= "preview-card text-center no-recent-data" >
+                          <span> <%=link_to "view document", rails_blob_path(current_student.degree_certificate, disposition: 'preview')%></span>
+                        </div>
                       <%if current_student.degree_certificate.variable?%>
                         <div class= "preview-card text-center no-recent-data" >
-                          <span> <%=link_to image_tag(current_student.degree_certificate, size: '200x270'), current_student.degree_certificate%></span>
+                          <span> <%=link_to "view document", rails_blob_path(current_student.degree_certificate, disposition: 'preview')%></span>
                         </div>
                       <%elsif current_student.degree_certificate.previewable?%>
                         <div class= "preview-card text-center no-recent-data">
-                          <span> <%= link_to image_tag(current_student.degree_certificate.preview(resize: '200x200')), current_student.degree_certificate%></span> 
+                          <span> <%= link_to "view document", rails_blob_path(current_student.degree_certificate, disposition: 'preview') %></span> 
                         </div>
                       <%end%>
                     <%else%>
@@ -160,7 +163,7 @@
                         </div>
                       <%elsif current_student.diploma_certificate.previewable?%>
                         <div class= "preview-card text-center no-recent-data">
-                          <span> <%= link_to image_tag(current_student.diploma_certificate.preview(resize: '200x200')), current_student.diploma_certificate%></span> 
+                          <span> <%= link_to "view document", rails_blob_path(current_student.diploma_certificate, disposition: 'preview')%></span> 
                         </div>
                       <%end%>
                     <%else%>
@@ -189,7 +192,7 @@
                         </div>
                       <%elsif current_student.coc.previewable?%>
                         <div class= "preview-card text-center no-recent-data">
-                          <span> <%= link_to image_tag(current_student.coc.preview(resize: '200x200')), current_student.coc%></span> 
+                          <span> <%= link_to "view document", rails_blob_path(current_student.coc, disposition: 'preview')%></span> 
                         </div>
                       <%end%>
                     <%else%>

@@ -366,7 +366,7 @@ ActiveAdmin.register_page "Dashboard" do
       #  div image_tag("leadstar.jpg", size: "250x150")
        # span "Welcome To Leadstar College"
        # small "This is Leadstar College's registrar and school management portal syst
-     # end
+      end
 
 
  hr
