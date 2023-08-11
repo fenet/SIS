@@ -2,7 +2,6 @@ class SemesterRegistration < ApplicationRecord
 	after_save :change_course_registration_status
 	after_save :assign_section_to_course_registration
 	after_save :semester_course_registration 
-	# :if => (registrar_approval_status=="approve" && finance_approval_status=="approve")
 	after_save :generate_invoice
 	after_save :add_admission_date
 	##validations
@@ -103,8 +102,14 @@ class SemesterRegistration < ApplicationRecord
 
 	def approve_enrollment_status
 		if self.finance_approval_status == "approved" && self.registrar_approval_status=="approved"
-	 	  self.course_registrations.update(enrollment_status: 'approved')
+	 	  self.course_registrations.update(enrollment_status: 'enrolled')
 		end
+	end
+
+	def denied_enrollment_status
+		if self.finance_approval_status == "denied" && self.registrar_approval_status=="denied"
+			self.course_registrations.update(enrollment_status: 'denied')
+		 end
 	end
 	
   	private	
