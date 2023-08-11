@@ -32,23 +32,27 @@ class StudentGrade < ApplicationRecord
   end
   
   def update_subtotal
-    self.update_columns(assesment_total: self.assessments.sum(:result))
+    if self.assessments.any?
+      self.update_columns(assesment_total: self.assessments.sum(:result))
+    end
   end
+
   def generate_grade
-    if assessments.where(result: nil).empty?
-      grade_in_letter = self.student.program.grade_systems.last.grades.where("min_row_mark <= ?", self.assesment_total1).where("max_row_mark >= ?", self.assesment_total1).last.letter_grade
-      grade_letter_value = self.student.program.grade_systems.last.grades.where("min_row_mark <= ?", self.assesment_total1).where("max_row_mark >= ?", self.assesment_total1).last.grade_point * self.course.credit_hour
-    	self.update_columns(letter_grade: grade_in_letter)
-      self.update_columns(grade_point: grade_letter_value)
-    elsif self.assessments.where(result: nil, final_exam: true).present?
-      self.update_columns(letter_grade: "NG")
-      
-      # needs to be empty and after a week changes to f
-      self.update_columns(grade_point: 0)
-    elsif assessments.where(result: nil, final_exam: false).present?
-      self.update_columns(letter_grade: "I")
-      # needs to be empty and after a week changes to f
-      self.update_columns(grade_point: 0)
+      if self.assessments.any?
+        if assessments.where(result: nil).empty?
+          grade_in_letter = self.student.program.grade_systems.last.grades.where("min_row_mark <= ?", self.assesment_total1).where("max_row_mark >= ?", self.assesment_total1).last.letter_grade
+          grade_letter_value = self.student.program.grade_systems.last.grades.where("min_row_mark <= ?", self.assesment_total1).where("max_row_mark >= ?", self.assesment_total1).last.grade_point * self.course.credit_hour
+          self.update_columns(letter_grade: grade_in_letter)
+          self.update_columns(grade_point: grade_letter_value)
+        elsif self.assessments.where(result: nil, final_exam: true).present?
+          self.update_columns(letter_grade: "NG")
+          # needs to be empty and after a week changes to f
+          self.update_columns(grade_point: 0)
+        elsif assessments.where(result: nil, final_exam: false).present?
+          self.update_columns(letter_grade: "I")
+          # needs to be empty and after a week changes to f
+          self.update_columns(grade_point: 0)
+        end
     end
   	# self[:grade_in_letter] = grade_in_letter
   end
@@ -74,14 +78,10 @@ class StudentGrade < ApplicationRecord
         total_credit_hour = self.course_registration.semester_registration.course_registrations.where(enrollment_status: "enrolled").collect { |oi| ((oi.student_grade.letter_grade != "I") && (oi.student_grade.letter_grade != "NG")) ? (oi.course.credit_hour) : 0 }.sum
         total_grade_point = self.course_registration.semester_registration.course_registrations.where(enrollment_status: "enrolled").collect { |oi| ((oi.student_grade.letter_grade != "I") && (oi.student_grade.letter_grade != "NG")) ? (oi.student_grade.grade_point) : 0 }.sum  
         sgpa = total_credit_hour == 0 ? 0 : (total_grade_point / total_credit_hour).round(1)
-        
         cumulative_total_credit_hour = total_credit_hour
         cumulative_total_grade_point = total_grade_point
         cgpa = cumulative_total_credit_hour == 0 ? 0 : (cumulative_total_grade_point / cumulative_total_credit_hour).round(1)
-        
-
         self.course_registration.semester_registration.grade_report.update(total_credit_hour: total_credit_hour, total_grade_point: total_grade_point, sgpa: sgpa, cumulative_total_credit_hour: cumulative_total_credit_hour, cumulative_total_grade_point: cumulative_total_grade_point, cgpa: cgpa)
-
         if (self.course_registration.semester_registration.course_registrations.joins(:student_grade).pluck(:letter_grade).include?("I").present?) || (self.course_registration.semester_registration.course_registrations.joins(:student_grade).pluck(:letter_grade).include?("NG").present?)
           academic_status = "Incomplete"
         else
