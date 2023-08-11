@@ -551,7 +551,7 @@ ActiveAdmin.register Student do
                   "Not Uploaded Yet"
                 end
               end
-            end
+            end 
           end
         end
       end
