@@ -23,20 +23,20 @@ default: &default
 
 development:
   <<: *default
-  database: hope_portal_system_development
+  database: leadstar_dev
   port: 5432
   host : localhost
-  username: postgres
-  password: 12345678
+  username: leadeveloper
+  password: Lead_1234
 test:
   <<: *default
-  database: hope_portal_system_test
+  database: hope_dev
   port: 5432
   host : localhost
-  username: postgres
-  password: 12345678
+  username: hopedeveloper
+  password: Hope_1234
 production:
   <<: *default
-  database: portal_system_production
-  username: portal_system
-  password: <%= ENV['PORTAL_SYSTEM_DATABASE_PASSWORD'] %>
+  database: leadstar_portal 
+  username: newdeploy
+  password: 1234567

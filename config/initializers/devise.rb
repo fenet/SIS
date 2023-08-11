@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'fb393db967fb9addf28e6c65f2398fa91922282af30c35c78ac0cbe63b28766db317dc4d8933c8f1f117e7bfc3fd60b8e7f03232c2b809bee4af2109d2b04dad'
+  # config.secret_key = '8d06fead0225f5fbb429406618588d5533de82eb0c2913b5c6b240717dbe86644171b68300da7636de51de4fe8dc5e68fac48e3ba509bc1ea73cf6edadce8253'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -157,7 +157,7 @@ Devise.setup do |config|
   # initial account confirmation) to be applied. Requires additional unconfirmed_email
   # db field (see migrations). Until confirmed, new email is stored in
   # unconfirmed_email column, and copied to email column on successful confirmation.
-  config.reconfirmable = true
+  # config.reconfirmable = true
 
   # Defines which key will be used when confirming an account
   # config.confirmation_keys = [:email]
@@ -167,7 +167,7 @@ Devise.setup do |config|
   # config.remember_for = 2.weeks
 
   # Invalidates all the remember me tokens when the user signs out.
-  config.expire_all_remember_me_on_sign_out = true
+  # config.expire_all_remember_me_on_sign_out = true
 
   # If true, extends the user's remember period when remembered via cookie.
   # config.extend_remember_period = false

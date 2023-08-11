@@ -134,7 +134,7 @@ GEM
     autoprefixer-rails (10.4.13.0)
       execjs (~> 2)
     barby (0.6.8)
-    bcrypt (3.1.18)
+    bcrypt (3.1.19)
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
@@ -488,6 +488,7 @@ DEPENDENCIES
   jquery-datatables (~> 1.10, >= 1.10.20)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
+  matrix (~> 0.4.2)
   name_of_person (~> 1.1, >= 1.1.1)
   nested_form
   pg (>= 0.18, < 2.0)
