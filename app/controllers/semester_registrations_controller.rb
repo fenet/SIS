@@ -18,9 +18,17 @@ class SemesterRegistrationsController < ApplicationController
   # GET /registrations/1/edit
   def edit
     # @course_registrations = semester_registration.course_registrations.where(year: current_student.year, semester: current_student.semester)
-
-    @registration_fee = CollegePayment.where(study_level: @semester_registration.study_level.strip,admission_type: @semester_registration.admission_type.strip).first.registration_fee 
-    @tution_fee = (@semester_registration.course_registrations.collect { |oi| oi.valid? ? (CollegePayment.where(study_level: @semester_registration.study_level.strip,admission_type: @semester_registration.admission_type.strip).first.tution_per_credit_hr * oi.course.credit_hour) : 0 }.sum)
+   
+    @registration_fee = CollegePayment.where(study_level: @semester_registration.study_level,admission_type: @semester_registration.admission_type).first.registration_fee 
+    
+    if current_student.year == 1 && current_student.semester == 1
+      @tution_fee = (@semester_registration.course_registrations.collect { |oi| oi.valid? ? (CollegePayment.where(study_level: @semester_registration.study_level,admission_type: @semester_registration.admission_type).first.tution_per_credit_hr * oi.course.credit_hour) : 0 }.sum) + 2100
+    
+    else 
+      @tution_fee = (@semester_registration.course_registrations.collect { |oi| oi.valid? ? (CollegePayment.where(study_level: @semester_registration.study_level,admission_type: @semester_registration.admission_type).first.tution_per_credit_hr * oi.course.credit_hour) : 0 }.sum)
+    end
+    
+    @total = @registration_fee + @tution_fee
   end
 
   # POST /registrations or /registrations.json
