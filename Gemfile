@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.2'
-gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+# gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
 gem 'execjs'
@@ -62,7 +62,7 @@ gem "rqrcode", "~> 2.1"
 gem 'prawn'
 gem 'prawn-table', '~> 0.2.2'
 gem "chunky_png", "~> 1.4"
-
+gem 'matrix', '~> 0.4.2'
 gem "barby", "~> 0.6.8"
 gem 'active_admin_scoped_collection_actions'
 gem 'active_admin_sidebar'
@@ -71,6 +71,9 @@ gem 'active_admin_flat_skin', github: 'ayann/active_admin_flat_skin'
 # gem 'active_admin-subnav'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+
+gem 'prawn'
+gem 'prawn-table', '~> 0.2.2'
 
 group :development, :test do
   gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'

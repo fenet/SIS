@@ -110,13 +110,13 @@
 				      				<th style="width:50%">Montly Subtotal:</th>
 				      				<td><%= @tution_fee /4%> ETB</td>
 				      			</tr>
-				      			<tr>
+				      			<tr> <!--
 				      				<th>Registration Fee:</th>
 				      				<td><%= @registration_fee %> ETB</td>
-				      			</tr>
+				      			</tr> -->
 				      			<tr>
 				      				<th>Total:</th>
-				      				<td><b><%= (@tution_fee /4) + @registration_fee %> ETB</b></td>
+				      				<td><b><%= (@total /4) %> ETB</b></td>
 				      			</tr>
 			      			</tbody>
 			      		</table>
@@ -137,13 +137,13 @@
 				      				<th style="width:50%">Half Semester Subtotal:</th>
 				      				<td><%= @tution_fee /2%> ETB</td>
 				      			</tr>
-				      			<tr>
+				      			<tr> <!--
 				      				<th>Registration Fee:</th>
 				      				<td><%= @registration_fee %> ETB</td>
-				      			</tr>
+				      			</tr> -->
 				      			<tr>
 				      				<th>Total:</th>
-				      				<td><b><%= (@tution_fee /2) + @registration_fee %> ETB</b></td>
+				      				<td><b><%= (@total /2) %> ETB</b></td>
 				      			</tr>
 			      			</tbody>
 			      		</table>
@@ -164,13 +164,13 @@
 				      				<th style="width:50%">Full Subtotal:</th>
 				      				<td><%= @tution_fee%> ETB</td>
 				      			</tr>
-				      			<tr>
+				      			<tr> <!--
 				      				<th>Registration Fee:</th>
 				      				<td><%= @registration_fee %> ETB</td>
-				      			</tr>
+				      			</tr> -->
 				      			<tr>
 				      				<th>Total:</th>
-				      				<td><b><%= (@tution_fee) + @registration_fee %> ETB</b></td>
+				      				<td><b><%= @total %> ETB</b></td>
 				      			</tr>
 			      			</tbody>
 			      		</table>

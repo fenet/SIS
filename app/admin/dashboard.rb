@@ -3,6 +3,7 @@ ActiveAdmin.register_page "Dashboard" do
 
   content title: proc { I18n.t("active_admin.dashboard") } do
     div class: "blank_slate_container", id: "dashboard_default_message" do
+
       tabs do
         tab :student_related_report do
           div class: 'widget-container' do
@@ -360,7 +361,12 @@ ActiveAdmin.register_page "Dashboard" do
           end
         end
         end
-      end
+
+     # span class: "blank_slate" do
+      #  div image_tag("leadstar.jpg", size: "250x150")
+       # span "Welcome To Leadstar College"
+       # small "This is Leadstar College's registrar and school management portal syst
+     # end
 
 
  hr
