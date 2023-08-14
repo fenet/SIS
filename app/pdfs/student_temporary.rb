@@ -3,7 +3,6 @@ class StudentTemporary < Prawn::Document
             super(:page_size => 'A4',:top_margin => 80,:bottom_margin => 40)
             @students = students
             @students.each_with_index do |stud, index|
-            text "Generated at #{Time.zone.now.strftime('%v-%R')}"
              move_down 100
             #  text "Full Name: <u>#{stud.name.full.capitalize}</u>         Sex: <u>#{stud.gender.capitalize}</u>           Year: <u>#{stud.student.year}</u> ",:inline_format => true, size: 12, font_style: :bold
              move_down 10
