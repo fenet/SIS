@@ -3,7 +3,6 @@ class StudentGradeReport < Prawn::Document
         super(:page_size => 'A4')
         @students = students
         @students.each_with_index do |stud, index|
-        text "Generated at #{Time.zone.now.strftime('%v-%R')}"
          move_down 200
          text "Full Name: <u>#{stud.student.name.full.capitalize}</u>         Sex: <u>#{stud.student.gender.capitalize}</u>           Year: <u>#{stud.student.year}</u> ",:inline_format => true, size: 12, font_style: :bold
          move_down 10
@@ -24,9 +23,6 @@ class StudentGradeReport < Prawn::Document
             column(1..3).style :align => :center
             row(0).font_style = :bold
             row(0).size = 12
-
-
-
          end
         end
         start_new_page

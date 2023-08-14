@@ -21,11 +21,15 @@ ActiveAdmin.register SemesterRegistration do
 
         batch_action 'Deny finance status for', method: :put, confirm: "Are you sure?" do |ids|
           smr =  SemesterRegistration.where(id: ids)
-          smr.update(finance_approval_status: 'denied')
+
+         result = smr.update(finance_approval_status: 'denied')
+         if ewault
           smr.each do |smr|
               smr.denied_enrollment_status
           end  
           redirect_to admin_semester_registrations_path, notice: "#{'student'.pluralize(ids.size)} finance verification status denied"
+        end
+        
         end
         batch_action 'Approve finance status for', method: :put, confirm: "Are you sure?" do |ids|
           smr = SemesterRegistration.where(id: ids)

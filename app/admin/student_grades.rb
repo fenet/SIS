@@ -57,7 +57,7 @@ menu parent: "Grade"
 
   index do 
     selectable_column
-    column "full name", sortable: true do |n|
+    column "Full name", sortable: true do |n|
       n.student.name.full if n.student.name.present?
     end
     column "Student ID" do |si|
