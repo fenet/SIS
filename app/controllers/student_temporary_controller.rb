@@ -37,7 +37,7 @@ class StudentTemporaryController < ApplicationController
   def generate_pdf
     program_id = params[:program][:name] 
     degree = params[:degree]
-    gc_date = params[:gc_date]
+    gc_date = params[:gc][:date]
     study = params[:study]
 
     program = Program.find(program_id)
