@@ -57,13 +57,14 @@ class GradeReportsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_grade_report
-      @grade_report = GradeReport.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def grade_report_params
-      params.require(:grade_report).permit(:show, :index)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_grade_report
+    @grade_report = GradeReport.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def grade_report_params
+    params.require(:grade_report).permit(:show, :index)
+  end
 end

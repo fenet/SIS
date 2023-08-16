@@ -6,9 +6,9 @@ class PdfGradeReportsController < ApplicationController
   end
 
   def prepare_pdf
-    department= params[:department][:name] 
+      department= params[:department][:name] 
     year= params[:student][:year]
-    section = params[:section][:id]
+       section = params[:section][:id]
     semester= params[:semester]
 
     students = GradeReport.where(section_id: section).where(department_id: department).where(year: year).where(semester: semester)

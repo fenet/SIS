@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_09_201329) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_14_205105) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -405,6 +405,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_09_201329) do
     t.string "last_updated_by"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.boolean "major", default: false
     t.index ["course_module_id"], name: "index_courses_on_course_module_id"
     t.index ["curriculum_id"], name: "index_courses_on_curriculum_id"
     t.index ["program_id"], name: "index_courses_on_program_id"
@@ -1016,10 +1017,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_09_201329) do
     t.string "updated_by"
     t.string "created_by"
     t.string "department_approval", default: "pending"
-    t.string "department_head_name"
-    t.datetime "department_head_date_of_response", precision: nil
+    t.string "approved_by"
+    t.datetime "approval_date", precision: nil
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.string "approving_person_role"
     t.index ["course_id"], name: "index_student_grades_on_course_id"
     t.index ["course_registration_id"], name: "index_student_grades_on_course_registration_id"
     t.index ["department_id"], name: "index_student_grades_on_department_id"
