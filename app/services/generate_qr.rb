@@ -10,14 +10,13 @@ class GenerateQr < ApplicationService
   require "rqrcode"
 
   def call
-    qr_url = url_for(controller: 'almunis',
-            action: 'show',
-            id: almuni.id,
-            only_path: false,
-            host: 'yic.edu.et',
-            protocol: 'https',
-            source: 'from_qr'
-            )
+    qr_url = url_for(controller: "almunis",
+                     action: "show",
+                     id: almuni.id,
+                     only_path: false,
+                     host: "yic.edu.et",
+                     protocol: "https",
+                     source: "from_qr")
 
     qrcode = RQRCode::QRCode.new(qr_url)
 
@@ -31,7 +30,7 @@ class GenerateQr < ApplicationService
       module_px_size: 6,
       resize_exactly_to: false,
       resize_gte_to: false,
-      size: 120
+      size: 120,
     )
 
     image_name = SecureRandom.hex
@@ -41,7 +40,7 @@ class GenerateQr < ApplicationService
     blob = ActiveStorage::Blob.create_after_upload!(
       io: File.open("tmp/#{image_name}.png"),
       filename: image_name,
-      content_type: 'png'
+      content_type: "png",
     )
 
     almuni.qr_code.attach(blob)
