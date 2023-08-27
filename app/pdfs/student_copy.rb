@@ -1,6 +1,6 @@
 class StudentCopy < Prawn::Document
   def initialize(students, gc_date)
-    super( :page_layout => :landscape, background: open("app/assets/images/logo.png"))
+    super(:page_layout => :landscape, background: open("app/assets/images/logo.png"))
     @students = students
     gc_date = Date.parse(gc_date)
     @students.each_with_index do |stud, index|
@@ -50,13 +50,12 @@ class StudentCopy < Prawn::Document
       ["Course Code", "Course title", "Cr.Hrs", "Letter Grade", "Grade Point", "Remark"],
     ] + value.map.with_index do |cr, index|
       [cr.course.course_code, cr.course.course_title, cr.course.credit_hour, cr.course.student_grades.last.letter_grade, cr.course.student_grades.last.grade_point, ""]
-    end + [[" ", "", "", "", "", " "], ["SGPA", student_grade.sgpa, student_grade.total_credit_hour, "", student_grade.total_grade_point, ""], semester == 1 ? [" ", " ", "", "", "", " "] : ["CGPA", student_grade.sgpa, student_grade.total_credit_hour, "", student_grade.total_grade_point, ""]]
+    end + [[" ", "", "", "", "", " "], ["SGPA", student_grade.sgpa, student_grade.total_credit_hour, "", student_grade.total_grade_point, ""], semester == 1 ? [" ", " ", "", "", "", " "] : ["CGPA", student_grade.cgpa, student_grade.total_credit_hour, "", student_grade.total_grade_point, ""]] + get_major_cumulative(value)
   end
 
-  def get_major_cumulative(stud)
-     
-    stud.course_registrations.map do |course|
-    end
+  def get_major_cumulative(crg)
+    major = Major.major_point_and_hour(crg)
+    [[" ", "Major Cumulative Average(MGPA)", "#{major[0]}", " ", "#{major[1]}", " "]]
   end
 
   def header_footer
