@@ -130,12 +130,12 @@ class Student < ApplicationRecord
       registration.student_id_number = self.student_id
       registration.created_by = "#{self.created_by}"
       ## TODO: find the calender of student admission type and study level
-      registration.academic_calendar_id = AcademicCalendar.where(admission_type: self.program.admission_type).where(study_level: self.program.study_level).order("created_at DESC").first.id
+      registration.academic_calendar_id = self.academic_calendar.id
       registration.year = self.year
       registration.semester = self.semester
       registration.program_name = self.program.program_name
-      registration.admission_type = self.program.admission_type
-      registration.study_level = self.program.study_level
+      registration.admission_type = self.admission_type
+      registration.study_level = self.study_level
       registration.created_by = self.last_updated_by
       # registration.registrar_approval_status ="approved"
       # registration.finance_approval_status ="approved"
