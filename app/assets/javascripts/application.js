@@ -17,7 +17,6 @@
 //= require jquery.overlayScrollbars.min
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require datatables
 //= require bs-stepper.min.js
 //= require flatpickr
@@ -25,9 +24,9 @@
 //= require jquery.slideform.js
 //= require bs-stepper.min.js
 
+import "@hotwired/turbo-rails"
 
-
-$(document).on('turbolinks:load', function(){
+$(document).on('turbo:load', function(){
   
   //Datemask dd/mm/yyyy
   $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
@@ -43,10 +42,10 @@ $(document).on('turbolinks:load', function(){
 
 
 // BS-Stepper Init
-document.addEventListener('turbolinks:load', function () {
+document.addEventListener('turbo:load', function () {
   window.stepper = new Stepper(document.querySelector('.bs-stepper'))
 })
 
-document.addEventListener('turbolinks:load', function() {
+document.addEventListener('turbo:load', function() {
   flatpickr('.datepicker');
 })
