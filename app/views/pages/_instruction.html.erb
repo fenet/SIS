@@ -29,8 +29,44 @@
         </div>
       </div>
     </div>
+  <%elsif !@invoice.nil? && @invoice.invoice_status.strip == "unpaid"%>
+    <div class="col-12">
+      <div class="card card-warning">
+        <%= render "card_header"%>
+        <div class="card-body">
+          <p class="text-center text-danger">
+            You have not paid your invoice yet. Please pay your invoice to get enrolled to the courses.
+          </p>
+        </div>
+        <div class="card-footer">
+          <%= link_to '<i class="far fa-credit-card"></i> Submit Payment'.html_safe, {controller: "payment_methods", action: "index", invoice_id: @invoice.id}, class: "btn btn-success float-right"%>
+        </div>
+      </div>
+    </div>
+  <%elsif !@invoice.nil? && @invoice.invoice_status.strip == "pending"%>
+    <div class="col-12">
+      <div class="card card-warning">
+        <%= render "card_header"%>
+        <div class="card-body">
+          <p class="text-center text-danger">
+            Your invoice is pending for approval!
+          </p>
+        </div>
+      </div>
+    </div>
+  <%elsif !@invoice.nil? && @invoice.invoice_status.strip == "denied"%>
+    <div class="col-12">
+      <div class="card card-danger">
+        <%= render "card_header"%>
+        <div class="card-body">
+          <p class="text-center text-danger">
+            Your invoice is got denied please contact the finance head!
+          </p>
+        </div>
+      </div>
+    </div>
   <%elsif @smr.registrar_approval_status == "pending" || @smr.finance_approval_status == "pending" %>
-    <%=render "pending", registrar: @smr.registrar_approval_status == "pending"%>
+    <%=render "pending", registrar: @smr.registrar_approval_status == "pending", finance: @smr.finance_approval_status == "pending" %>
   <%elsif @smr.registrar_approval_status=="approved" && @smr.finance_approval_status=="approved"%>
     <div class="col-12">
       <div class="card card-success">
@@ -49,14 +85,8 @@
   <%elsif @smr.registrar_approval_status=="denied" || @smr.finance_approval_status=="denied"%>
     <div class="col-12">
       <div class="card card-success">
-        <%= reader "card_header"%>
-        <!-- /.card-header -->
+        <%= render "card_header"%>
         <div class="card-body">
-          <div class="card-body">
-            <strong class="text-success">Your have been Approved. Click the button to go to learning platfrom.</strong>
-          </div>
-        </div>
-        <div class="card-footer">
           <p class="text-center text-danger">
             <%if @smr.registrar_approval_status == "denied"%>
               <strong>Your semester registration have benn denied by registrar, please contact the office</strong>
@@ -211,7 +241,7 @@
       <%elsif current_student.invoices.last.payment_transaction.finance_approval_status == "approved"%>
         <div class="col-12">
           <div class="card card-success">
-            <%= reader "card_header"%>
+            <%= render "card_header"%>
             <!-- /.card-header -->
             <div class="card-body">
               <div class="card-body">

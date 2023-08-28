@@ -4,18 +4,25 @@ class StudentGradeReport < Prawn::Document
     @students = students
     @students.each_with_index do |stud, index|
       move_down 200
-      text "Full Name: <u>#{stud.student.name.full.capitalize}</u>         Sex: <u>#{stud.student.gender.capitalize}</u>           Year: <u>#{stud.student.year}</u> ", :inline_format => true, size: 12, font_style: :bold
-      move_down 10
-      text "Faculty: <u>#{stud.department.faculty.faculty_name.capitalize}</u>          Department: <u> #{stud.department.department_name.capitalize} </u>", :inline_format => true, size: 12, font_style: :bold
-      move_down 10
-      text "Program: <u>#{stud.program.admission_type.capitalize}</u>          Academic Year: <u>#{stud.academic_calendar.calender_year}</u>        Semester: <u>#{stud.semester}</u>   ", inline_format: true, size: 12, font_style: :bold
-      move_down 10
+      # text "Full Name: <u>#{stud.student.name.full.capitalize}</u>         Sex: <u>#{stud.student.gender.capitalize}</u>           Year: <u>#{stud.student.year}</u> ", :inline_format => true, size: 12, font_style: :bold
+      # move_down 10
+      # text "Faculty: <u>#{stud.department.faculty.faculty_name.capitalize}</u>          Department: <u> #{stud.department.department_name.capitalize} </u>", :inline_format => true, size: 12, font_style: :bold
+      # move_down 10
+      # text "Program: <u>#{stud.program.admission_type.capitalize}</u>          Academic Year: <u>#{stud.academic_calendar.calender_year}</u>        Semester: <u>#{stud.semester}</u>   ", inline_format: true, size: 12, font_style: :bold
+      # move_down 10
+      # text "Program: <u>#{stud.program.admission_type.capitalize}</u> "
+      table [
+        ["Full Name: #{stud.student.name.full.capitalize} #{stud.student.middle_name}", "Sex: #{stud.student.gender.capitalize}", "Year #{stud.student.year}"],
+        ["Faculty: #{stud.department.faculty.faculty_name.capitalize}","Department : #{stud.department.department_name.capitalize}", ""],
+        ["Program: #{stud.program.admission_type.capitalize}", "Academic Year: #{stud.academic_calendar.calender_year}", "Semester: #{stud.semester}"],
+      ], width: 600, :cell_style => { :border_width => 0, padding: 2, font_style: :bold, size: 11 }
 
       stroke_horizontal_rule
       move_down 20
       table each_data_in_table(stud, index) do
         row(0).font_style = :bold
         row(0).size = 12
+
       end
       move_down 10
       table preview_table(stud) do
@@ -23,6 +30,8 @@ class StudentGradeReport < Prawn::Document
         row(0).font_style = :bold
         row(0).size = 12
       end
+      move_down 10
+
     end
     start_new_page
     header_footer

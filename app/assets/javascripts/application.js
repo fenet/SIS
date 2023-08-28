@@ -1,3 +1,5 @@
+import "@hotwired/turbo-rails"
+
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -24,7 +26,6 @@
 //= require jquery.slideform.js
 //= require bs-stepper.min.js
 
-import "@hotwired/turbo-rails"
 
 $(document).on('turbo:load', function(){
   
