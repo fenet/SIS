@@ -25,6 +25,7 @@ class PagesController < ApplicationController
   def dashboard
     @address = current_student.student_address
     @emergency_contact = current_student.emergency_contact
+    @invoice = Invoice.find_by(student: current_student, semester: current_student.semester, year: current_student.year)
     @smr = current_student.semester_registrations.where(year: current_student.year, semester: current_student.semester).last
   end
 
@@ -55,8 +56,6 @@ class PagesController < ApplicationController
     registration.total_enrolled_course = total_course
     respond_to do |format|
       if registration.save
-        # format.html { redirect_to invoice_path(@semester_registration.invoices.last.id), notice: "Registration was successfully updated." }
-
         format.html { redirect_to invoice_path(registration.invoices.last.id), notice: "Registration was successfully created." }
         format.json { render :show, status: :ok, location: registration }
       else

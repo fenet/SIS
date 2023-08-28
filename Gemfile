@@ -23,6 +23,7 @@ gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 # gem 'turbolinks', '~> 5'
 # gem 'hotwire-rails'
+gem 'importmap-rails'
 gem 'stimulus-rails'
 gem 'turbo-rails'
 

@@ -1,4 +1,3 @@
-    
 <div class="col-12">
   <div class="card card-primary">
     <div class="card-header">
@@ -18,10 +17,12 @@
     <!-- /.card-header -->
     <div class="card-body">
       <p class="text-center">
-        <%if registrar%>
-          <strong class="text-blue">Please wait until the registrar approves your status.</strong>
-        <%else%>
+        <%if registrar && finance%>
+          <strong class="text-blue">Please wait until the registrar and finance approves your status.</strong>
+        <%elsif finance%>
           <strong class="text-blue">Please wait until the finance approves your status.</strong>
+        <%else%>
+          <strong class="text-blue">Please wait until the registrar approves your status.</strong>
         <%end%>
       </p>
     </div>
