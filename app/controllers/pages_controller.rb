@@ -30,13 +30,15 @@ class PagesController < ApplicationController
   end
 
   def enrollement
-    @total_course = current_student.program.curriculums.where(active_status: "active").first.courses.where(year: current_student.year, semester: current_student.semester).order("year ASC
-      ", "semester ASC")
+    @total_course = Student.get_current_courses(current_student)
+    @registration_fee = Student.get_registration_fee(current_student)
+    @tution_fee = Student.get_tution_fee(current_student)
+    # @total = @registration_fee + tution_fee
   end
 
   def create_semester_registration
     mode_of_payment = params[:mode_of_payment]
-    total_course = params[:total_course]
+    total_course = Student.get_current_courses(current_student).size
     registration = SemesterRegistration.new
     registration.student_id = current_student.id
     registration.program_id = current_student.program.id

@@ -37,7 +37,7 @@
             <h1 class="profile-username text-center"><b><%= current_student.name.full.upcase%></b></h1>
 
 
-            <% if !current_student.document_verification_status == "approved"%>
+            <% unless current_student.document_verification_status == "approved"%>
                 <%= link_to "Edit Profile", edit_student_registration_path, class: "btn btn-outline-primary btn-flat"%>
               <%end%>
             <ul class="list-group list-group-unbordered mb-3">
@@ -51,7 +51,7 @@
                 <b>Prorgam</b> <a class="text-muted float-right"><%= current_student.program.program_name%></a>
               </li>
               <li class="list-group-item mx-3">
-                <b>Department</b> <a class="text-muted float-right"><%= current_student.department%></a>
+                <b>Department</b> <a class="text-muted float-right"><%= current_student.department.department_name%></a>
               </li>
               <li class="list-group-item mx-3">
                 <b>Admission Type</b> <a class="text-muted float-right"><%= current_student.admission_type%></a>

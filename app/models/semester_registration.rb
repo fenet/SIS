@@ -154,7 +154,7 @@ class SemesterRegistration < ApplicationRecord
         # invoice.registration_fee = CollegePayment.where(study_level: self.study_level,admission_type: self.admission_type).first.pluck(:registration_fee)
 
         if Activity.where(category: "registration", academic_calendar_id: AcademicCalendar.where(study_level: self.study_level, admission_type: self.admission_type).where("starting_date <= ? AND ending_date >= ?", Time.zone.now, Time.zone.now).order("created_at DESC").first).where("starting_date <= ? AND ending_date >= ?", Time.zone.now, Time.zone.now).order("created_at DESC").first
-          invoice.registration_fee = CollegePayment.where(study_level: self.study_level, admission_type: self.admission_type).first.registration_fee
+          invoice.registration_fee = Student.get_registration_fee(self.student)
         elsif Activity.where(category: "late registration", academic_calendar_id: AcademicCalendar.where(study_level: self.study_level, admission_type: self.admission_type).where("starting_date <= ? AND ending_date >= ?", Time.zone.now, Time.zone.now).order("created_at DESC").first).where("starting_date <= ? AND ending_date >= ?", Time.zone.now, Time.zone.now).order("created_at DESC").first
           invoice.late_registration_fee = CollegePayment.where(study_level: self.study_level, admission_type: self.admission_type).pluck(:late_registration_fee).first
         end
