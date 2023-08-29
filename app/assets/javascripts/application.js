@@ -1,5 +1,3 @@
-import "@hotwired/turbo-rails"
-
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -18,6 +16,7 @@ import "@hotwired/turbo-rails"
 //= require adminlte.min.js
 //= require jquery.overlayScrollbars.min
 //= require rails-ujs
+//= require turbolinks
 //= require activestorage
 //= require datatables
 //= require bs-stepper.min.js
@@ -27,7 +26,7 @@ import "@hotwired/turbo-rails"
 //= require bs-stepper.min.js
 
 
-$(document).on('turbo:load', function(){
+$(document).on('turbolinks:load', function(){
   
   //Datemask dd/mm/yyyy
   $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
@@ -43,10 +42,10 @@ $(document).on('turbo:load', function(){
 
 
 // BS-Stepper Init
-document.addEventListener('turbo:load', function () {
+document.addEventListener('turbolinks:load', function () {
   window.stepper = new Stepper(document.querySelector('.bs-stepper'))
 })
 
-document.addEventListener('turbo:load', function() {
+document.addEventListener('turbolinks:load', function() {
   flatpickr('.datepicker');
 })
