@@ -1,5 +1,4 @@
 class Semester < ApplicationRecord
-
 	##associations
   	belongs_to :academic_calendar
 

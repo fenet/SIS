@@ -7,102 +7,123 @@ class Student < ApplicationRecord
   before_create :set_pwd
   after_save :student_course_assign
 
-  
   # after_save :course_registration
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
-        #  , :authentication_keys => [:email]
-  has_person_name    
+  #  , :authentication_keys => [:email]
+  has_person_name
   ##associations
-    belongs_to :department, optional: true
-    belongs_to :program
-    belongs_to :academic_calendar, optional: true
-    has_one :student_address, dependent: :destroy
-    accepts_nested_attributes_for :student_address
-    has_one :emergency_contact, dependent: :destroy
-    accepts_nested_attributes_for :emergency_contact
-    has_many :semester_registrations, dependent: :destroy
-    has_many :invoices, dependent: :destroy
-    has_one_attached :grade_10_matric, dependent: :destroy
-    has_one_attached :grade_12_matric, dependent: :destroy
-    has_one_attached :coc, dependent: :destroy
-    has_one_attached :highschool_transcript, dependent: :destroy
-    has_one_attached :diploma_certificate, dependent: :destroy 
-    has_one_attached :degree_certificate, dependent: :destroy 
-    has_one_attached :undergraduate_transcript, dependent: :destroy 
-    has_one_attached :photo, dependent: :destroy
-    has_many :student_grades, dependent: :destroy
-    has_many :grade_reports
-    has_many :course_registrations
-    has_many :student_attendances
-    has_many :assessments
-    has_many :grade_changes
-    has_one :school_or_university_information, dependent: :destroy
-    accepts_nested_attributes_for :school_or_university_information
-    has_many :student_courses, dependent: :destroy
-    has_many :withdrawals, dependent: :destroy
-    has_many :recurring_payments, dependent: :destroy
-    has_many :add_and_drops, dependent: :destroy
-    has_many :makeup_exams, dependent: :destroy
+  belongs_to :department, optional: true
+  belongs_to :program
+  belongs_to :academic_calendar, optional: true
+  has_one :student_address, dependent: :destroy
+  accepts_nested_attributes_for :student_address
+  has_one :emergency_contact, dependent: :destroy
+  accepts_nested_attributes_for :emergency_contact
+  has_many :semester_registrations, dependent: :destroy
+  has_many :invoices, dependent: :destroy
+  has_one_attached :grade_10_matric, dependent: :destroy
+  has_one_attached :grade_12_matric, dependent: :destroy
+  has_one_attached :coc, dependent: :destroy
+  has_one_attached :highschool_transcript, dependent: :destroy
+  has_one_attached :diploma_certificate, dependent: :destroy
+  has_one_attached :degree_certificate, dependent: :destroy
+  has_one_attached :undergraduate_transcript, dependent: :destroy
+  has_one_attached :photo, dependent: :destroy
+  has_many :student_grades, dependent: :destroy
+  has_many :grade_reports
+  has_many :course_registrations
+  has_many :student_attendances
+  has_many :assessments
+  has_many :grade_changes
+  has_one :school_or_university_information, dependent: :destroy
+  accepts_nested_attributes_for :school_or_university_information
+  has_many :student_courses, dependent: :destroy
+  has_many :withdrawals, dependent: :destroy
+  has_many :recurring_payments, dependent: :destroy
+  has_many :add_and_drops, dependent: :destroy
+  has_many :makeup_exams, dependent: :destroy
   ##validations
-    # validates :first_name , :presence => true,:length => { :within => 2..100 }
-    # validates :middle_name , :presence => true,:length => { :within => 2..100 }
-    # validates :current_location , :presence => true,:length => { :within => 2..100 }
-    # validates :last_name , :presence => true,:length => { :within => 2..100 }
-    # validates :student_id , uniqueness: true
-    # validates :gender, :presence => true
-    # validates :date_of_birth , :presence => true
-    # validates :study_level, :presence => true
-    # validates :admission_type, :presence => true,:length => { :within => 2..10 }
-    # validates :nationality, :presence => true
-    # validates :photo, attached: true, content_type: ['image/gif', 'image/png', 'image/jpg', 'image/jpeg']
-    # validates :highschool_transcript, attached: true
-    # validates :grade_12_matric, attached: true
-    # validates :diploma_certificate, attached: true, if: :grade_12_matric?
-    # validates :coc, attached: true, if: :grade_12_matric?
+  # validates :first_name , :presence => true,:length => { :within => 2..100 }
+  # validates :middle_name , :presence => true,:length => { :within => 2..100 }
+  # validates :current_location , :presence => true,:length => { :within => 2..100 }
+  # validates :last_name , :presence => true,:length => { :within => 2..100 }
+  # validates :student_id , uniqueness: true
+  # validates :gender, :presence => true
+  # validates :date_of_birth , :presence => true
+  # validates :study_level, :presence => true
+  # validates :admission_type, :presence => true,:length => { :within => 2..10 }
+  # validates :nationality, :presence => true
+  # validates :photo, attached: true, content_type: ['image/gif', 'image/png', 'image/jpg', 'image/jpeg']
+  # validates :highschool_transcript, attached: true
+  # validates :grade_12_matric, attached: true
+  # validates :diploma_certificate, attached: true, if: :grade_12_matric?
+  # validates :coc, attached: true, if: :grade_12_matric?
 
-    # validates :degree_certificate, attached: true, if: :apply_graduate?
-    # /def apply_graduate?
-    #   self.study_level == "graduate" 
-    # end
-    # def grade_12_matric?
-    #   !self.grade_12_matric.attached?
-    # end
+  # validates :degree_certificate, attached: true, if: :apply_graduate?
+  # /def apply_graduate?
+  #   self.study_level == "graduate"
+  # end
+  # def grade_12_matric?
+  #   !self.grade_12_matric.attached?
+  # end
 
   # def assign_curriculum
   #   self[:curriculum_version] = program.curriculums.where(active_status: "active").last.curriculum_version
   # end
-  
+
   validate :password_complexity
-	# validates :student_grades, presence: true
+  # validates :student_grades, presence: true
 
   def password_complexity
     if password.present?
-       if !password.match(/^(?=.*[a-z])(?=.*[A-Z])/) 
-         errors.add :password, "must be between 5 to 20 characters which contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character"
-       end
+      if !password.match(/^(?=.*[a-z])(?=.*[A-Z])/)
+        errors.add :password, "must be between 5 to 20 characters which contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character"
+      end
     end
   end
+
   ##scope
-    scope :recently_added, lambda { where('created_at >= ?', 1.week.ago)}
-    scope :undergraduate, lambda { where(study_level: "undergraduate")}
-    scope :graduate, lambda { where(study_level: "graduate")}
-    scope :online, lambda { where(admission_type: "online")}
-    scope :regular, lambda { where(admission_type: "regular")}
-    scope :extention, lambda { where(admission_type: "extention")}
-    scope :distance, lambda { where(admission_type: "distance")}
-    scope :pending, lambda { where(document_verification_status: "pending")}
-    scope :approved, lambda { where(document_verification_status: "approved")}
-    scope :denied, lambda { where(document_verification_status: "denied")}
-    scope :incomplete, lambda { where(document_verification_status: "incomplete")}
+  scope :recently_added, lambda { where("created_at >= ?", 1.week.ago) }
+  scope :undergraduate, lambda { where(study_level: "undergraduate") }
+  scope :graduate, lambda { where(study_level: "graduate") }
+  scope :online, lambda { where(admission_type: "online") }
+  scope :regular, lambda { where(admission_type: "regular") }
+  scope :extention, lambda { where(admission_type: "extention") }
+  scope :distance, lambda { where(admission_type: "distance") }
+  scope :pending, lambda { where(document_verification_status: "pending") }
+  scope :approved, lambda { where(document_verification_status: "approved") }
+  scope :denied, lambda { where(document_verification_status: "denied") }
+  scope :incomplete, lambda { where(document_verification_status: "incomplete") }
+
+  def self.get_current_courses(student)
+    student.program.curriculums.where(active_status: "active").first.courses.where(year: student.year, semester: student.semester).order("year ASC
+    ", "semester ASC")
+  end
+
+  def self.get_registration_fee(student)
+    return nil if college_payment(student).nil?
+    college_payment(student).registration_fee
+  end
+
+  def self.get_tution_fee(current_student)
+    return nil if college_payment(current_student).nil?
+    get_current_courses(current_student).collect { |oi| oi.valid? ? (college_payment(current_student).tution_per_credit_hr * oi.credit_hour) : 0 }.sum
+  end
+
+  def self.college_payment(current_student)
+    CollegePayment.find_by(study_level: current_student.study_level.strip, admission_type: current_student.admission_type.strip)
+  end
 
   private
+
   ## callback methods
   def set_pwd
     self[:student_password] = self.password
   end
+
   def attributies_assignment
     if (self.document_verification_status == "approved") && (!self.academic_calendar.present?)
       self.update_columns(academic_calendar_id: AcademicCalendar.where(study_level: self.program.study_level, admission_type: self.program.admission_type).order("created_at DESC").first.id)
@@ -112,6 +133,7 @@ class Student < ApplicationRecord
       self.update_columns(batch: AcademicCalendar.where(study_level: self.program.study_level).where(admission_type: self.program.admission_type).order("created_at DESC").first.calender_year_in_gc)
     end
   end
+
   def student_id_generator
     if self.document_verification_status == "approved" && !(self.student_id.present?)
       begin
@@ -121,30 +143,30 @@ class Student < ApplicationRecord
   end
 
   def student_semester_registration
-   if self.document_verification_status == "approved" && self.semester_registrations.empty? && self.year == 1 && self.semester == 1 && self.program.entrance_exam_requirement_status == false
-    SemesterRegistration.create do |registration|
-      registration.student_id = self.id
-      registration.program_id = self.program.id
-      registration.department_id = self.program.department.id
-      registration.student_full_name = "#{self.first_name.upcase} #{self.middle_name.upcase} #{self.last_name.upcase}"
-      registration.student_id_number = self.student_id
-      registration.created_by = "#{self.created_by}"
-      ## TODO: find the calender of student admission type and study level
-      registration.academic_calendar_id = self.academic_calendar.id
-      registration.year = self.year
-      registration.semester = self.semester
-      registration.program_name = self.program.program_name
-      registration.admission_type = self.admission_type
-      registration.study_level = self.study_level
-      registration.created_by = self.last_updated_by
-      # registration.registrar_approval_status ="approved"
-      # registration.finance_approval_status ="approved"
+    if self.document_verification_status == "approved" && self.semester_registrations.empty? && self.year == 1 && self.semester == 1 && self.program.entrance_exam_requirement_status == false
+      SemesterRegistration.create do |registration|
+        registration.student_id = self.id
+        registration.program_id = self.program.id
+        registration.department_id = self.program.department.id
+        registration.student_full_name = "#{self.first_name.upcase} #{self.middle_name.upcase} #{self.last_name.upcase}"
+        registration.student_id_number = self.student_id
+        registration.created_by = "#{self.created_by}"
+        ## TODO: find the calender of student admission type and study level
+        registration.academic_calendar_id = self.academic_calendar.id
+        registration.year = self.year
+        registration.semester = self.semester
+        registration.program_name = self.program.program_name
+        registration.admission_type = self.admission_type
+        registration.study_level = self.study_level
+        registration.created_by = self.last_updated_by
+        # registration.registrar_approval_status ="approved"
+        # registration.finance_approval_status ="approved"
+      end
     end
-   end 
   end
 
   def student_course_assign
-    if self.student_courses.empty? && self.document_verification_status == "approved"  && self.program.entrance_exam_requirement_status == false
+    if self.student_courses.empty? && self.document_verification_status == "approved" && self.program.entrance_exam_requirement_status == false
       self.program.curriculums.where(curriculum_version: self.curriculum_version).last.courses.each do |course|
         StudentCourse.create do |student_course|
           student_course.student_id = self.id
@@ -171,7 +193,6 @@ class Student < ApplicationRecord
           student_course.course_code = course.course_code
         end
       end
-    end 
+    end
   end
-
 end

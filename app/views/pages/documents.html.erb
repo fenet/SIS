@@ -12,9 +12,9 @@
         </ol>
       </div>
     </div>
-  </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.container-fluid -->
 </section>
-
 <section class="content">
   <div class="container-fluid">
     <div class="row">
@@ -43,18 +43,17 @@
                         </div>
                       <%elsif current_student.highschool_transcript.previewable?%>
                         <div class= "preview-card text-center no-recent-data">
-                          <span> <%= link_to "view document", rails_blob_path(current_student.highschool_transcript, disposition: 'preview')%></span> 
+                          <span> <%= link_to "view document", rails_blob_path(current_student.highschool_transcript, disposition: 'preview')%></span>
                         </div>
                       <%end%>
                     <%else%>
                       <div class= "text-center no-recent-data" >
-                        Document Not Uploaded Yet
+                        <button class="btn btn-primary"> Add Attachement</button>
                       </div>
                     <%end%>
                   </div>
                 </div>
               </div>
-              
               <div class="col-12 col-md-3">
                 <div class="card card-primary">
                   <div class="card-header">
@@ -73,12 +72,14 @@
                         </div>
                       <%elsif current_student.grade_10_matric.previewable?%>
                         <div class= "preview-card text-center no-recent-data">
-                          <span> <%= link_to "view document", rails_blob_path(current_student.grade_10_matric, disposition: 'preview') %></span> 
+                          <span> <%= link_to "view document", rails_blob_path(current_student.grade_10_matric, disposition: 'preview') %></span>
                         </div>
                       <%end%>
                     <%else%>
                       <div class= "text-center no-recent-data" >
-                        Document Not Uploaded Yet
+                        <%# Document Not Uploaded Yet %>
+                        <button class="btn btn-primary"> Add Attachement</button>
+
                       </div>
                     <%end%>
                   </div>
@@ -102,12 +103,15 @@
                         </div>
                       <%elsif current_student.grade_12_matric.previewable?%>
                         <div class= "preview-card text-center no-recent-data">
-                          <span> <%= link_to "view document", rails_blob_path(current_student.grade_12_matric, disposition: 'preview')%></span> 
+                          <span> <%= link_to "view document", rails_blob_path(current_student.grade_12_matric, disposition: 'preview')%></span>
                         </div>
                       <%end%>
                     <%else%>
                       <div class= "text-center no-recent-data" >
-                        Document Not Uploaded Yet
+                        <%# Document Not Uploaded Yet
+                         %>
+                        <button class="btn btn-primary"> Add Attachement</button>
+
                       </div>
                     <%end%>
                   </div>
@@ -126,20 +130,22 @@
                   <div class="card-body">
                     <% if current_student.degree_certificate.attached? %>
                       <div class= "preview-card text-center no-recent-data" >
-                          <span> <%=link_to "view document", rails_blob_path(current_student.degree_certificate, disposition: 'preview')%></span>
-                        </div>
+                        <span> <%=link_to "view document", rails_blob_path(current_student.degree_certificate, disposition: 'preview')%></span>
+                      </div>
                       <%if current_student.degree_certificate.variable?%>
                         <div class= "preview-card text-center no-recent-data" >
                           <span> <%=link_to "view document", rails_blob_path(current_student.degree_certificate, disposition: 'preview')%></span>
                         </div>
                       <%elsif current_student.degree_certificate.previewable?%>
                         <div class= "preview-card text-center no-recent-data">
-                          <span> <%= link_to "view document", rails_blob_path(current_student.degree_certificate, disposition: 'preview') %></span> 
+                          <span> <%= link_to "view document", rails_blob_path(current_student.degree_certificate, disposition: 'preview') %></span>
                         </div>
                       <%end%>
                     <%else%>
                       <h3 class= "text-center no-recent-data" >
-                        Document Not Uploaded Yet
+                        <%# Document Not Uploaded Yet %>
+                        <button class="btn btn-primary"> Add Attachement</button>
+
                       </h3>
                     <%end%>
                   </div>
@@ -163,12 +169,14 @@
                         </div>
                       <%elsif current_student.diploma_certificate.previewable?%>
                         <div class= "preview-card text-center no-recent-data">
-                          <span> <%= link_to "view document", rails_blob_path(current_student.diploma_certificate, disposition: 'preview')%></span> 
+                          <span> <%= link_to "view document", rails_blob_path(current_student.diploma_certificate, disposition: 'preview')%></span>
                         </div>
                       <%end%>
                     <%else%>
                       <div class= "text-center no-recent-data" >
-                        Document Not Uploaded Yet
+                        <%# Document Not Uploaded Yet %>
+                        <button class="btn btn-primary"> Add Attachement</button>
+
                       </div>
                     <%end%>
                   </div>
@@ -192,30 +200,29 @@
                         </div>
                       <%elsif current_student.coc.previewable?%>
                         <div class= "preview-card text-center no-recent-data">
-                          <span> <%= link_to "view document", rails_blob_path(current_student.coc, disposition: 'preview')%></span> 
+                          <span> <%= link_to "view document", rails_blob_path(current_student.coc, disposition: 'preview')%></span>
                         </div>
                       <%end%>
                     <%else%>
                       <div class= "text-center no-recent-data" >
-                        Document Not Uploaded Yet
+                        <%# Document Not Uploaded Yet %>
+                        <button class="btn btn-primary"> Add Attachement</button>
+
                       </div>
                     <%end%>
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
           <!-- /.card-body -->
         </div>
-        
       </div>
-      
     </div>
     <!-- /.row -->
-  </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.container-fluid -->
 </section>
-
 <style type="text/css">
   .card-title{
     font-size: 1rem;
