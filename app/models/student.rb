@@ -98,23 +98,43 @@ class Student < ApplicationRecord
   scope :denied, lambda { where(document_verification_status: "denied") }
   scope :incomplete, lambda { where(document_verification_status: "incomplete") }
 
-  def self.get_current_courses(student)
-    student.program.curriculums.where(active_status: "active").first.courses.where(year: student.year, semester: student.semester).order("year ASC
+  def get_current_courses
+    self.program.curriculums.where(active_status: "active").first.courses.where(year: self.year, semester: self.semester).order("year ASC
     ", "semester ASC")
   end
 
-  def self.get_registration_fee(student)
-    return nil if college_payment(student).nil?
-    college_payment(student).registration_fee
+  def get_registration_fee
+    return nil if college_payment.nil?
+    college_payment.registration_fee
   end
 
-  def self.get_tution_fee(current_student)
-    return nil if college_payment(current_student).nil?
-    get_current_courses(current_student).collect { |oi| oi.valid? ? (college_payment(current_student).tution_per_credit_hr * oi.credit_hour) : 0 }.sum
+  def get_tution_fee
+    return nil if college_payment.nil?
+    get_current_courses.collect { |oi| oi.valid? ? (college_payment.tution_per_credit_hr * oi.credit_hour) : 0 }.sum
   end
 
-  def self.college_payment(current_student)
-    CollegePayment.find_by(study_level: current_student.study_level.strip, admission_type: current_student.admission_type.strip)
+  def college_payment
+    CollegePayment.find_by(study_level: self.study_level.strip, admission_type: self.admission_type.strip)
+  end
+
+  def add_student_registration(mode_of_payment: nil)
+    SemesterRegistration.create do |registration|
+      registration.student_id = self.id
+      registration.program_id = self.program.id
+      registration.department_id = self.program.department.id
+      registration.student_full_name = "#{self.first_name.upcase} #{self.middle_name.upcase} #{self.last_name.upcase}"
+      registration.student_id_number = self.student_id
+      registration.created_by = "#{self.created_by}"
+      registration.academic_calendar_id = self.academic_calendar.id
+      registration.year = self.year
+      registration.semester = self.semester
+      registration.program_name = self.program.program_name
+      registration.admission_type = self.admission_type
+      registration.study_level = self.study_level
+      registration.created_by = self.last_updated_by
+      registration.mode_of_payment = mode_of_payment unless mode_of_payment.nil?
+      # registration.total_enrolled_course = total_course
+    end
   end
 
   private
@@ -144,24 +164,7 @@ class Student < ApplicationRecord
 
   def student_semester_registration
     if self.document_verification_status == "approved" && self.semester_registrations.empty? && self.year == 1 && self.semester == 1 && self.program.entrance_exam_requirement_status == false
-      SemesterRegistration.create do |registration|
-        registration.student_id = self.id
-        registration.program_id = self.program.id
-        registration.department_id = self.program.department.id
-        registration.student_full_name = "#{self.first_name.upcase} #{self.middle_name.upcase} #{self.last_name.upcase}"
-        registration.student_id_number = self.student_id
-        registration.created_by = "#{self.created_by}"
-        ## TODO: find the calender of student admission type and study level
-        registration.academic_calendar_id = self.academic_calendar.id
-        registration.year = self.year
-        registration.semester = self.semester
-        registration.program_name = self.program.program_name
-        registration.admission_type = self.admission_type
-        registration.study_level = self.study_level
-        registration.created_by = self.last_updated_by
-        # registration.registrar_approval_status ="approved"
-        # registration.finance_approval_status ="approved"
-      end
+      add_student_registration
     end
   end
 

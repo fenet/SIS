@@ -95,26 +95,31 @@
       <div class="col-12">
         <!-- <p class="lead">Amount Due 2/22/2014</p> -->
         <div class="row">
-          <div class="col-12 col-md-4">
-            <div class="card card-primary shadow">
-              <div class="card-header">
-                <h3 class="card-title">Montly Pricing Option</h3>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table">
-                    <tbody>
-                      <tr>
-                        <th style="width:50%">Montly Subtotal:</th>
-                        <td><%= @tution_fee %> ETB</td>
-                      </tr>
-                      <tr> <!--
-				      				<th>Registration Fee:</th>
-				      				<td><%= @registration_fee %> ETB</td>
-				      			</tr> -->
+          <% if @tution_fee.nil? || @registration_fee.nil?%>
+            <div class="m-3">
+              <h2 class="card-title text-danger">Collage payment is not set yet, please contact finance head </h2>
+            </div>
+          <%else%>
+            <div class="col-12 col-md-4">
+              <div class="card card-primary shadow">
+                <div class="card-header">
+                  <h3 class="card-title">Montly Pricing Option</h3>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <tbody>
+                        <tr>
+                          <th style="width:50%">Montly Subtotal:</th>
+                          <td><%= sub_total(@tution_fee, 4) %> ETB</td>
+                        </tr>
+                        <tr>
+                          <th>Registration Fee:</th>
+                          <td><%= @registration_fee %> ETB</td>
+                        </tr>
                         <tr>
                           <th>Total:</th>
-                          <td><b><%= (@total) %> ETB</b></td>
+                          <td><b><%= total(@tution_fee, 4 , @registration_fee) %> ETB</b></td>
                         </tr>
                       </tbody>
                     </table>
@@ -133,66 +138,67 @@
                       <tbody>
                         <tr>
                           <th style="width:50%">Half Semester Subtotal:</th>
-                          <td><%= @tution_fee /2%> ETB</td>
+                          <td><%= sub_total(@tution_fee, 2) %> ETB</td>
                         </tr>
-                        <tr> <!--
-				      				<th>Registration Fee:</th>
-				      				<td><%= @registration_fee %> ETB</td>
-				      			</tr> -->
-                          <tr>
-                            <th>Total:</th>
-                            <td><b><%= @total %> ETB</b></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-4">
-                <div class="card card-warning shadow">
-                  <div class="card-header">
-                    <h3 class="card-title">Full Semester payment Mode</h3>
-                  </div>
-                  <div class="card-body">
-                    <div class="table-responsive">
-                      <table class="table">
-                        <tbody>
-                          <tr>
-                            <th style="width:50%">Full Subtotal:</th>
-                            <td><%= @tution_fee%> ETB</td>
-                          </tr>
-                          <tr> <!--
-				      				<th>Registration Fee:</th>
-				      				<td><%= @registration_fee %> ETB</td>
-				      			</tr> -->
-                            <tr>
-                              <th>Total:</th>
-                              <td><b><%= @total %> ETB</b></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
+                        <tr>
+                          <th>Registration Fee:</th>
+                          <td><%= @registration_fee %> ETB</td>
+                        </tr>
+                        <tr>
+                          <th>Total:</th>
+                          <td><b><%= total(@tution_fee, 2 , @registration_fee) %> ETB</b></td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-12 col-md-12">
-              <div class="card card-primary">
+            <div class="col-12 col-md-4">
+              <div class="card card-warning shadow">
                 <div class="card-header">
-                  <h3 class="card-title">Select payment Mode</h3>
+                  <h3 class="card-title">Full Semester payment Mode</h3>
                 </div>
                 <div class="card-body">
-                  <%= render 'form', semester_registration: @semester_registration %>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <tbody>
+                        <tr>
+                          <th style="width:50%">Full Subtotal:</th>
+                          <td><%= sub_total(@tution_fee, 1) %> ETB</td>
+                        </tr>
+                        <tr>
+                          <th>Registration Fee:</th>
+                          <td><%= @registration_fee %> ETB</td>
+                        </tr>
+                        <tr>
+                          <th>Total:</th>
+                          <td><b><%= total(@tution_fee, 1 , @registration_fee) %> ETB</b></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
-      <script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.12/js/dataTables.checkboxes.min.js"></script>
-      <!-- 
+        <div class="col-12 col-md-12">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Select payment Mode</h3>
+            </div>
+            <div class="card-body">
+              <%= render 'form', semester_registration: @semester_registration %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</section>
+<script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.12/js/dataTables.checkboxes.min.js"></script>
+<!-- 
 <script>
   $(document).ready(function() {
     var oTable = $("#ordersTable").DataTable({

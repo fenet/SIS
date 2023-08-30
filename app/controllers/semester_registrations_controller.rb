@@ -32,8 +32,8 @@ class SemesterRegistrationsController < ApplicationController
    # @total = @registration_fee + @tution_fee
 
 
-    @registration_fee = CollegePayment.where(study_level: @semester_registration.study_level.strip,admission_type: @semester_registration.admission_type.strip).first.registration_fee 
-    @tution_fee = (@semester_registration.course_registrations.collect { |oi| oi.valid? ? (CollegePayment.where(study_level: @semester_registration.study_level.strip,admission_type: @semester_registration.admission_type.strip).first.tution_per_credit_hr * oi.course.credit_hour) : 0 }.sum)
+    @registration_fee = current_student.get_registration_fee
+    @tution_fee =  current_student.get_tution_fee
 
   end
 

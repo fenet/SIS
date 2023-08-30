@@ -30,32 +30,16 @@ class PagesController < ApplicationController
   end
 
   def enrollement
-    @total_course = Student.get_current_courses(current_student)
-    @registration_fee = Student.get_registration_fee(current_student)
-    @tution_fee = Student.get_tution_fee(current_student)
+    @total_course = current_student.get_current_courses
+    @registration_fee = current_student.get_registration_fee
+    @tution_fee = current_student.get_tution_fee
     # @total = @registration_fee + tution_fee
   end
 
   def create_semester_registration
     mode_of_payment = params[:mode_of_payment]
-    total_course = Student.get_current_courses(current_student).size
-    registration = SemesterRegistration.new
-    registration.student_id = current_student.id
-    registration.program_id = current_student.program.id
-    registration.department_id = current_student.program.department.id
-    registration.student_full_name = "#{current_student.first_name.upcase} #{current_student.middle_name.upcase} #{current_student.last_name.upcase}"
-    registration.student_id_number = current_student.student_id
-    registration.created_by = "#{current_student.created_by}"
-    ## TODO: find the calender of student admission type and study level
-    registration.academic_calendar_id = current_student.academic_calendar.id
-    registration.year = current_student.year
-    registration.semester = current_student.semester
-    registration.program_name = current_student.program.program_name
-    registration.admission_type = current_student.admission_type
-    registration.study_level = current_student.study_level
-    registration.created_by = current_student.last_updated_by
-    registration.mode_of_payment = mode_of_payment
-    registration.total_enrolled_course = total_course
+    # total_course = Student.get_current_courses(current_student).size
+    registration = current_student.add_student_registration(mode_of_payment: mode_of_payment)
     respond_to do |format|
       if registration.save
         format.html { redirect_to invoice_path(registration.invoices.last.id), notice: "Registration was successfully created." }
