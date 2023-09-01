@@ -359,7 +359,7 @@ ActiveAdmin.register_page "Dashboard" do
           #     end
           #   end 
           end
-        end
+         end
         end
 
 
@@ -368,7 +368,7 @@ ActiveAdmin.register_page "Dashboard" do
        # span "Welcome To Leadstar College"
        # small "This is Leadstar College's registrar and school management portal syst
 
-      end
+     #end
 
 
  hr
