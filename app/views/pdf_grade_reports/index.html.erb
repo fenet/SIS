@@ -10,10 +10,10 @@
         <label>Year: </label>
         <%= collection_select(:student, :year, Student.select(:year).distinct, :year, :year, {prompt: 'Select a Year'},required: true) %> 
     </div>
-    <div class="filed">
+    <!-- <div class="filed">
         <label>Section: </label>
         <%= collection_select(:section, :id, Section.select(:id, :section_full_name).distinct, :id, :section_full_name,{prompt: 'Select a Section'},required: true) %> 
-    </div>
+    </div> -->
 
     <div class="filed">
         <label>Semester: </label>
