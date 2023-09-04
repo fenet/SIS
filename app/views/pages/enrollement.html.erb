@@ -78,8 +78,7 @@
                 </tr>
               </thead>
               <tbody>
-                <% current_student.program.curriculums.where(active_status: "active").first.courses.where(year: current_student.year, semester: current_student.semester).order('year ASC
-','semester ASC').each do |course_registration| %>
+                <% @total_course.each do |course_registration| %>
                   <tr>
                     <td><%= course_registration.course_title %></td>
                     <td><%= course_registration.course_module.module_code %></td>
@@ -103,14 +102,14 @@
             <div class="col-12 col-md-4">
               <div class="card card-primary shadow">
                 <div class="card-header">
-                  <h3 class="card-title">Montly Pricing Option</h3>
+                  <h3 class="card-title">Monthly Pricing Option </h3>
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
                     <table class="table">
                       <tbody>
                         <tr>
-                          <th style="width:50%">Montly Subtotal:</th>
+                          <th style="width:50%">Monthly Subtotal:</th>
                           <td><%= sub_total(@tution_fee, 4) %> ETB</td>
                         </tr>
                         <tr>
@@ -189,7 +188,14 @@
               <h3 class="card-title">Select payment Mode</h3>
             </div>
             <div class="card-body">
-              <%= render 'form', semester_registration: @semester_registration %>
+              <%= form_with(url: create_semester_registration_path, method: :post) do |f|%>
+                <div class="col-12 col-md-12 form-group">
+                  <%= f.select :mode_of_payment, [ "Monthly Payment", "Half Semester Payment","Full Semester Payment"], class: "form-control custom-select", :required => true%>
+                </div>
+                <div class="form-actions">
+                  <%= f.submit "Finish", class: "btn btn-primary btn-user" %>
+                </div>
+              <%end%>
             </div>
           </div>
         </div>

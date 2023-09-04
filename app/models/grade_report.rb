@@ -14,7 +14,7 @@ class GradeReport < ApplicationRecord
 		validates :year, :presence => true
 		validates :academic_status, :presence => true
   ##associations
-  	belongs_to :department
+ 	  belongs_to :department
 	  belongs_to :semester_registration
 	  belongs_to :student
 	  belongs_to :academic_calendar

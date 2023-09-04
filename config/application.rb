@@ -11,7 +11,7 @@ module PortalSystem
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
     config.assets.initialize_on_precompile = false
-
+    config.action_view.form_with_generates_remote_forms = false
     # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
     config.assets.precompile += %w(active_admin.css active_admin/print.css active_admin.js )
 

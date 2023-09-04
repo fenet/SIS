@@ -5,10 +5,10 @@ class GenerateBarcode < ApplicationService
     @almuni = almuni
   end
 
-  require 'barby'
-  require 'barby/barcode/code_128'
-  require 'barby/outputter/ascii_outputter'
-  require 'barby/outputter/png_outputter'
+  require "barby"
+  require "barby/barcode/code_128"
+  require "barby/outputter/ascii_outputter"
+  require "barby/outputter/png_outputter"
 
   def call
     barcode = Barby::Code128B.new(almuni.fullname)
@@ -22,7 +22,7 @@ class GenerateBarcode < ApplicationService
     blob = ActiveStorage::Blob.create_after_upload!(
       io: File.open("tmp/#{image_name}.png"),
       filename: image_name,
-      content_type: 'png'
+      content_type: "png",
     )
 
     almuni.barcode.attach(blob)

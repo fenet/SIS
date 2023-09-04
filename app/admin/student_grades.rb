@@ -3,7 +3,7 @@ menu parent: "Grade"
 # index download_links: [:csv,:json, :xml, :pdf]
 # index download_links: [:xml, :pdf, :csv, :json]
 
-  permit_params :department_approval,:department_head_name,:department_head_date_of_response, :course_registration_id,:student_id,:letter_grade,:grade_point,:assesment_total,:grade_point,:course_id,assessments_attributes: [:id,:student_grade_id,:assessment_plan_id,:student_id,:course_id,:result,:created_by,:updated_by, :_destroy]
+  permit_params :department_approval,:approved_by,:approval_date, :course_registration_id,:student_id,:letter_grade,:grade_point,:assesment_total,:grade_point,:course_id,assessments_attributes: [:id,:student_grade_id,:assessment_plan_id,:student_id,:course_id,:result,:created_by,:updated_by, :_destroy]
 
       active_admin_import validate: true,
                       headers_rewrites: { "ID"=> :student_id },
@@ -36,20 +36,20 @@ menu parent: "Grade"
   
 
   batch_action "Generate Grade for", method: :put, confirm: "Are you sure?" do |ids|
-    StudentGrade.find(ids).each do |student_grade|
-      student_grade.generate_grade
+    StudentGrade.find(ids).each do |sg|
+      sg.generate_grade
     end
     redirect_to collection_path, notice: "Grade Is Generated Successfully"
   end
   batch_action "Approve Grade for", method: :put, confirm: "Are you sure?" do |ids|
     StudentGrade.find(ids).each do |student_grade|
-      student_grade.update(department_approval: "approved", department_head_name: "#{current_admin_user.name.full}", department_head_date_of_response: Time.now)
+      student_grade.update(department_approval: "approved", approved_by: "#{current_admin_user.name.full}", approval_date: Time.now)
     end
-    redirect_to collection_path, notice: "Grade Is Approved Successfully"
+    redirect_to collection_path, notice: "Grade is Approved Successfully"
   end
   batch_action "Denied Grade for", method: :put, if: proc{ current_admin_user.role == "department head" }, confirm: "Are you sure?" do |ids|
     StudentGrade.find(ids).each do |student_grade|
-      student_grade.update(department_approval: "denied", department_head_name: "#{current_admin_user.name.full}", department_head_date_of_response: Time.now)
+      student_grade.update(department_approval: "denied", approved_by: "#{current_admin_user.name.full}", approval_date: Time.now)
     end
     redirect_to collection_path, notice: "Grade Is Denied Successfully"
   end
@@ -57,7 +57,7 @@ menu parent: "Grade"
 
   index do 
     selectable_column
-    column "full name", sortable: true do |n|
+    column "Full name", sortable: true do |n|
       n.student.name.full if n.student.name.present?
     end
     column "Student ID" do |si|
@@ -152,8 +152,8 @@ menu parent: "Grade"
     if !f.object.new_record? && (params[:page_name] == "grade_approve") 
       inputs 'Department Approval' do
         f.input :department_approval, as: :select, :collection => ["pending","approved", "denied"], :include_blank => false
-        f.input :department_head_name, as: :hidden, :input_html => { :value => current_admin_user.name.full}
-        f.input :department_head_date_of_response, as: :hidden, :input_html => { :value => Time.now}   
+        f.input :approved_by, as: :hidden, :input_html => { :value => current_admin_user.name.full}
+        f.input :approval_date, as: :hidden, :input_html => { :value => Time.now}   
       end
     end
     f.actions
@@ -202,9 +202,9 @@ menu parent: "Grade"
             row :department_approval do |c|
               status_tag c.department_approval
             end
-            row :department_head_name
+            row :approved_by
             row "approval date" do |a|
-              a.department_head_date_of_response
+              a.approval_date
             end
             row :created_at
             row :updated_at

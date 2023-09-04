@@ -28,7 +28,7 @@
 								</div>
 							</div>
 							
-							<%= simple_form_for(@payment_transaction) do |f| %>
+							<%= simple_form_for(@payment_transaction, local: true) do |f| %>
 							  <%= f.error_notification %>
 							  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 							  <%=f.input :invoiceable_type, as: :hidden, :input_html => { :value => "Invoice"}%>
@@ -49,7 +49,7 @@
 													</div>
 													<!-- /.card-header -->
 													<div class="card-body">
-														<p  class="text-center"><strong>Please, transfer <%=Invoice.find_by(id: params[:invoice_id]).total_price if Invoice.find_by(id: params[:invoice_id]).present?%> ETB to the account we provide you and fill the form with in your bank information.</strong></p>   
+														<p  class="text-center"><strong>Please, transfer <%=(@invoice.total_price + @invoice.registration_fee) if @invoice.present?%> ETB to the account we provide you and fill the form with in your bank information.</strong></p>   
 														<hr>
 													</div>
 													<!-- /.card-body -->

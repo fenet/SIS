@@ -22,6 +22,13 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
+# gem "sprockets-rails"
+# gem 'turbolinks', '~> 5'
+# gem 'hotwire-rails'
+# gem 'importmap-rails'
+# gem 'stimulus-rails'
+# gem 'turbo-rails'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -59,8 +66,6 @@ gem 'nested_form'
 gem 'whenever', require: false
 gem "active_admin_import"
 gem "rqrcode", "~> 2.1"
-gem 'prawn'
-gem 'prawn-table', '~> 0.2.2'
 gem "chunky_png", "~> 1.4"
 gem 'matrix', '~> 0.4.2'
 gem "barby", "~> 0.6.8"

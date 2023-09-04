@@ -16,15 +16,14 @@
 //= require adminlte.min.js
 //= require jquery.overlayScrollbars.min
 //= require rails-ujs
-//= require activestorage
 //= require turbolinks
+//= require activestorage
 //= require datatables
 //= require bs-stepper.min.js
 //= require flatpickr
 //= require jquery.inputmask.min.js
 //= require jquery.slideform.js
 //= require bs-stepper.min.js
-
 
 
 $(document).on('turbolinks:load', function(){
