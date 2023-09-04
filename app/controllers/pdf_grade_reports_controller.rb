@@ -11,8 +11,8 @@ class PdfGradeReportsController < ApplicationController
        #section = params[:section][:id]
     semester= params[:semester]
 
-    students = GradeReport.where(section_id: section).where(department_id: department).where(year: year).where(semester: semester)
-
+    #students = GradeReport.where(section_id: section).where(department_id: department).where(year: year).where(semester: semester)
+    students = GradeReport.where(department_id: department).where(year: year).where(semester: semester)
     redirect_to pdf_gread_report_url, alert: "We could not find a student matching your search criteria. Please try again" if students.empty?
     if students.any?
       respond_to do |format|
