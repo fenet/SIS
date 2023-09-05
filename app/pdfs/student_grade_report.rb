@@ -13,7 +13,7 @@ class StudentGradeReport < Prawn::Document
       # text "Program: <u>#{stud.program.admission_type.capitalize}</u> "
       table [
         ["Full Name: #{stud.student.name.full.capitalize} #{stud.student.middle_name}", "Sex: #{stud.student.gender.capitalize}", "Year #{stud.student.year}"],
-        ["Faculty: #{stud.department.faculty.faculty_name.capitalize}","Department : #{stud.department.department_name.capitalize}", ""],
+        ["Faculty: #{stud.department.faculty.faculty_name.capitalize}", "Department : #{stud.department.department_name.capitalize}", ""],
         ["Program: #{stud.program.admission_type.capitalize}", "Academic Year: #{stud.academic_calendar.calender_year}", "Semester: #{stud.semester}"],
       ], width: 600, :cell_style => { :border_width => 0, padding: 2, font_style: :bold, size: 11 }
 
@@ -22,7 +22,6 @@ class StudentGradeReport < Prawn::Document
       table each_data_in_table(stud, index) do
         row(0).font_style = :bold
         row(0).size = 12
-
       end
       move_down 10
       table preview_table(stud) do
@@ -31,9 +30,8 @@ class StudentGradeReport < Prawn::Document
         row(0).size = 12
       end
       move_down 10
-
+      start_new_page
     end
-    start_new_page
     header_footer
   end
 
@@ -59,20 +57,20 @@ class StudentGradeReport < Prawn::Document
 
   def each_data_in_table(data, index)
     [
-         ["No", "Course title", "Course Code", "Cr.Hrs", "Letter Grade", "Grade Point", "Remark"],
-       ] + data.semester_registration.course_registrations.where(enrollment_status: "enrolled").includes(:student_grade).map.with_index do |course, index|
+      ["No", "Course title", "Course Code", "Cr.Hrs", "Letter Grade", "Grade Point", "Remark"],
+    ] + data.semester_registration.course_registrations.where(enrollment_status: "enrolled").includes(:student_grade).map.with_index do |course, index|
       [index + 1, course.course.course_title, course.course.course_code, course.course.credit_hour, StudentGrade.find_by(course: course.course).letter_grade, StudentGrade.find_by(course: course.course).grade_point, ""]
     end
   end
 
   def preview_table(data)
     [
-          ["", "Cr.Hrs", "Grade Point", "Cumlative Grade Point\nAverage(CGPA)"],
-          ["Current Semester Total", data.total_credit_hour, data.total_grade_point, data.cgpa],
-          ["Previous Total"] + get_previous_total(data.student, data.semester),
-          ["Cumulative"] + get_cumulative(get_previous_total(data.student, data.semester), data.total_credit_hour, data.total_grade_point, data.cgpa),
-    
-        ]
+      ["", "Cr.Hrs", "Grade Point", "Cumlative Grade Point\nAverage(CGPA)"],
+      ["Current Semester Total", data.total_credit_hour, data.total_grade_point, data.cgpa],
+      ["Previous Total"] + get_previous_total(data.student, data.semester),
+      ["Cumulative"] + get_cumulative(get_previous_total(data.student, data.semester), data.total_credit_hour, data.total_grade_point, data.cgpa),
+
+    ]
   end
 
   def get_previous_total(student, current_semester)

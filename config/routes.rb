@@ -11,13 +11,14 @@ Rails.application.routes.draw do
   post "student_copy/generate_student_copy", as: "generate_student_copy"
   get "new/semester/registration", to: "pages#enrollement", as: "enrollement"
   post "create/semester/registration", to: "pages#create_semester_registration", as: "create_semester_registration"
+  get "student/grade/report/:year/:semester", to: "grade_reports#student_grade_report", as: "student_grade_report"
   resources :grade_reports
   resources :academic_calendars, only: [:show, :index]
   # devise_for :students
 
   devise_for :students, controllers: {
-               registrations: "registrations",
-             }
+                          registrations: "registrations",
+                        }
   authenticated :student do
     root "pages#dashboard", as: "authenticated_user_root"
   end
