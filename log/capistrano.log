@@ -707,3 +707,272 @@ You have deleted from the Gemfile:
 	from /home/newdeploy/leadstar_portal/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/exe/bundle:33:in `<top (required)>'
 	from /home/newdeploy/.rbenv/versions/3.1.2/bin/bundle:25:in `load'
 	from /home/newdeploy/.rbenv/versions/3.1.2/bin/bundle:25:in `<main>'
+  INFO ---------------------------------------------------------------------------
+  INFO START 2023-09-04 08:12:16 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [692bfb19] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as newdeploy@139.99.131.12
+ DEBUG [692bfb19] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+ DEBUG [692bfb19] Finished in 8.943 seconds with exit status 0 (successful).
+ DEBUG [cc36e017] Running /usr/bin/env which passenger as newdeploy@139.99.131.12
+ DEBUG [cc36e017] Command: /usr/bin/env which passenger
+ DEBUG [cc36e017] 	/usr/bin/passenger
+ DEBUG [cc36e017] Finished in 7.678 seconds with exit status 0 (successful).
+  INFO [4f7024bc] Running /usr/bin/env mkdir -p /tmp as newdeploy@139.99.131.12
+ DEBUG [4f7024bc] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /tmp )
+  INFO [4f7024bc] Finished in 4.398 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-241169fc6ccf764b44e6.sh 0.0%
+  INFO Uploading /tmp/git-ssh-241169fc6ccf764b44e6.sh 100.0%
+  INFO [fd511801] Running /usr/bin/env chmod 700 /tmp/git-ssh-241169fc6ccf764b44e6.sh as newdeploy@139.99.131.12
+ DEBUG [fd511801] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env chmod 700 /tmp/git-ssh-241169fc6ccf764b44e6.sh )
+  INFO [fd511801] Finished in 1.639 seconds with exit status 0 (successful).
+  INFO [bb393635] Running /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD as newdeploy@139.99.131.12
+ DEBUG [bb393635] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-241169fc6ccf764b44e6.sh" ; /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD )
+ DEBUG [bb393635] 	a80fc731db93a41c5d90bf31548ea73e0228f425	HEAD
+  INFO [bb393635] Finished in 2.999 seconds with exit status 0 (successful).
+  INFO [bc5d808b] Running /usr/bin/env mkdir -p /home/newdeploy/leadstar_portal/shared /home/newdeploy/leadstar_portal/releases as newdeploy@139.99.131.12
+ DEBUG [bc5d808b] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/leadstar_portal/shared /home/newdeploy/leadstar_portal/releases )
+  INFO [bc5d808b] Finished in 6.826 seconds with exit status 0 (successful).
+  INFO [7fb5ad8d] Running /usr/bin/env mkdir -p /home/newdeploy/leadstar_portal/shared/log /home/newdeploy/leadstar_portal/shared/tmp/pids /home/newdeploy/leadstar_portal/shared/tmp/cache /home/newdeploy/leadstar_portal/shared/tmp/sockets /home/newdeploy/leadstar_portal/shared/vendor/bundle /home/newdeploy/leadstar_portal/shared/public/system /home/newdeploy/leadstar_portal/shared/public/uploads /home/newdeploy/leadstar_portal/shared/public/assets as newdeploy@139.99.131.12
+ DEBUG [7fb5ad8d] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/leadstar_portal/shared/log /home/newdeploy/leadstar_portal/shared/tmp/pids /home/newdeploy/leadstar_portal/shared/tmp/cache /home/newdeploy/leadstar_portal/shared/tmp/sockets /home/newdeploy/leadstar_portal/shared/vendor/bundle /home/newdeploy/leadstar_portal/shared/public/system /home/newdeploy/leadstar_portal/shared/public/uploads /home/newdeploy/leadstar_portal/shared/public/assets )
+  INFO [7fb5ad8d] Finished in 4.294 seconds with exit status 0 (successful).
+ DEBUG [ea2ef7aa] Running [ -f /home/newdeploy/leadstar_portal/current/REVISION ] as newdeploy@139.99.131.12
+ DEBUG [ea2ef7aa] Command: [ -f /home/newdeploy/leadstar_portal/current/REVISION ]
+ DEBUG [ea2ef7aa] Finished in 3.787 seconds with exit status 0 (successful).
+ DEBUG [d175461a] Running /usr/bin/env cat /home/newdeploy/leadstar_portal/current/REVISION 2>/dev/null as newdeploy@139.99.131.12
+ DEBUG [d175461a] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env cat /home/newdeploy/leadstar_portal/current/REVISION 2>/dev/null )
+ DEBUG [d175461a] 	a714187c803b4d33e5e50cf6523826571478ead2
+ DEBUG [d175461a] Finished in 2.764 seconds with exit status 0 (successful).
+ DEBUG [fdebe0c6] Running [ -f /home/newdeploy/leadstar_portal/repo/HEAD ] as newdeploy@139.99.131.12
+ DEBUG [fdebe0c6] Command: [ -f /home/newdeploy/leadstar_portal/repo/HEAD ]
+ DEBUG [fdebe0c6] Finished in 2.050 seconds with exit status 0 (successful).
+  INFO The repository mirror is at /home/newdeploy/leadstar_portal/repo
+ DEBUG [23c6f2ec] Running if test ! -d /home/newdeploy/leadstar_portal/repo; then echo "Directory does not exist '/home/newdeploy/leadstar_portal/repo'" 1>&2; false; fi as newdeploy@139.99.131.12
+ DEBUG [23c6f2ec] Command: if test ! -d /home/newdeploy/leadstar_portal/repo; then echo "Directory does not exist '/home/newdeploy/leadstar_portal/repo'" 1>&2; false; fi
+ DEBUG [23c6f2ec] Finished in 1.630 seconds with exit status 0 (successful).
+  INFO [85439ac0] Running /usr/bin/env git remote set-url origin https://fenet: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@github.com/fenet/leadstarlatest.git as newdeploy@139.99.131.12
+ DEBUG [85439ac0] Command: cd /home/newdeploy/leadstar_portal/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-241169fc6ccf764b44e6.sh" ; /usr/bin/env git remote set-url origin https://fenet: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@github.com/fenet/leadstarlatest.git )
+  INFO [85439ac0] Finished in 2.354 seconds with exit status 0 (successful).
+  INFO [f6c23a62] Running /usr/bin/env git remote update --prune as newdeploy@139.99.131.12
+ DEBUG [f6c23a62] Command: cd /home/newdeploy/leadstar_portal/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-241169fc6ccf764b44e6.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [f6c23a62] 	Fetching origin
+ DEBUG [f6c23a62] 	From https://github.com/fenet/leadstarlatest
+   f9ddad38..a80fc731  main       -> main
+  INFO [f6c23a62] Finished in 3.585 seconds with exit status 0 (successful).
+ DEBUG [b9866876] Running if test ! -d /home/newdeploy/leadstar_portal/repo; then echo "Directory does not exist '/home/newdeploy/leadstar_portal/repo'" 1>&2; false; fi as newdeploy@139.99.131.12
+ DEBUG [b9866876] Command: if test ! -d /home/newdeploy/leadstar_portal/repo; then echo "Directory does not exist '/home/newdeploy/leadstar_portal/repo'" 1>&2; false; fi
+ DEBUG [b9866876] Finished in 1.634 seconds with exit status 0 (successful).
+  INFO [6dbb2a43] Running /usr/bin/env mkdir -p /home/newdeploy/leadstar_portal/releases/20230904051309 as newdeploy@139.99.131.12
+ DEBUG [6dbb2a43] Command: cd /home/newdeploy/leadstar_portal/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-241169fc6ccf764b44e6.sh" ; /usr/bin/env mkdir -p /home/newdeploy/leadstar_portal/releases/20230904051309 )
+  INFO [6dbb2a43] Finished in 1.888 seconds with exit status 0 (successful).
+  INFO [7e7658b0] Running /usr/bin/env git archive main | /usr/bin/env tar -x -f - -C /home/newdeploy/leadstar_portal/releases/20230904051309 as newdeploy@139.99.131.12
+ DEBUG [7e7658b0] Command: cd /home/newdeploy/leadstar_portal/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-241169fc6ccf764b44e6.sh" ; /usr/bin/env git archive main | /usr/bin/env tar -x -f - -C /home/newdeploy/leadstar_portal/releases/20230904051309 )
+  INFO [7e7658b0] Finished in 2.103 seconds with exit status 0 (successful).
+ DEBUG [814d21ff] Running if test ! -d /home/newdeploy/leadstar_portal/repo; then echo "Directory does not exist '/home/newdeploy/leadstar_portal/repo'" 1>&2; false; fi as newdeploy@139.99.131.12
+ DEBUG [814d21ff] Command: if test ! -d /home/newdeploy/leadstar_portal/repo; then echo "Directory does not exist '/home/newdeploy/leadstar_portal/repo'" 1>&2; false; fi
+ DEBUG [814d21ff] Finished in 4.811 seconds with exit status 0 (successful).
+ DEBUG [942ad423] Running /usr/bin/env git rev-list --max-count=1 main as newdeploy@139.99.131.12
+ DEBUG [942ad423] Command: cd /home/newdeploy/leadstar_portal/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-241169fc6ccf764b44e6.sh" ; /usr/bin/env git rev-list --max-count=1 main )
+ DEBUG [942ad423] 	a80fc731db93a41c5d90bf31548ea73e0228f425
+ DEBUG [942ad423] Finished in 3.995 seconds with exit status 0 (successful).
+ DEBUG [c85fd756] Running if test ! -d /home/newdeploy/leadstar_portal/releases/20230904051309; then echo "Directory does not exist '/home/newdeploy/leadstar_portal/releases/20230904051309'" 1>&2; false; fi as newdeploy@139.99.131.12
+ DEBUG [c85fd756] Command: if test ! -d /home/newdeploy/leadstar_portal/releases/20230904051309; then echo "Directory does not exist '/home/newdeploy/leadstar_portal/releases/20230904051309'" 1>&2; false; fi
+ DEBUG [c85fd756] Finished in 3.684 seconds with exit status 0 (successful).
+  INFO [9d7b5113] Running /usr/bin/env echo "a80fc731db93a41c5d90bf31548ea73e0228f425" > REVISION as newdeploy@139.99.131.12
+ DEBUG [9d7b5113] Command: cd /home/newdeploy/leadstar_portal/releases/20230904051309 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "a80fc731db93a41c5d90bf31548ea73e0228f425" > REVISION )
+  INFO [9d7b5113] Finished in 3.378 seconds with exit status 0 (successful).
+  INFO [9077d2e2] Running /usr/bin/env mkdir -p /home/newdeploy/leadstar_portal/releases/20230904051309 /home/newdeploy/leadstar_portal/releases/20230904051309/tmp /home/newdeploy/leadstar_portal/releases/20230904051309/vendor /home/newdeploy/leadstar_portal/releases/20230904051309/public as newdeploy@139.99.131.12
+ DEBUG [9077d2e2] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/leadstar_portal/releases/20230904051309 /home/newdeploy/leadstar_portal/releases/20230904051309/tmp /home/newdeploy/leadstar_portal/releases/20230904051309/vendor /home/newdeploy/leadstar_portal/releases/20230904051309/public )
+  INFO [9077d2e2] Finished in 3.679 seconds with exit status 0 (successful).
+ DEBUG [ec074a54] Running [ -L /home/newdeploy/leadstar_portal/releases/20230904051309/log ] as newdeploy@139.99.131.12
+ DEBUG [ec074a54] Command: [ -L /home/newdeploy/leadstar_portal/releases/20230904051309/log ]
+ DEBUG [ec074a54] Finished in 1.433 seconds with exit status 1 (failed).
+ DEBUG [d1c8ae95] Running [ -d /home/newdeploy/leadstar_portal/releases/20230904051309/log ] as newdeploy@139.99.131.12
+ DEBUG [d1c8ae95] Command: [ -d /home/newdeploy/leadstar_portal/releases/20230904051309/log ]
+ DEBUG [d1c8ae95] Finished in 4.956 seconds with exit status 0 (successful).
+  INFO [6dd3c0ed] Running /usr/bin/env rm -rf /home/newdeploy/leadstar_portal/releases/20230904051309/log as newdeploy@139.99.131.12
+ DEBUG [6dd3c0ed] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env rm -rf /home/newdeploy/leadstar_portal/releases/20230904051309/log )
+  INFO [6dd3c0ed] Finished in 2.415 seconds with exit status 0 (successful).
+  INFO [34cab8af] Running /usr/bin/env ln -s /home/newdeploy/leadstar_portal/shared/log /home/newdeploy/leadstar_portal/releases/20230904051309/log as newdeploy@139.99.131.12
+ DEBUG [34cab8af] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/leadstar_portal/shared/log /home/newdeploy/leadstar_portal/releases/20230904051309/log )
+  INFO [34cab8af] Finished in 2.866 seconds with exit status 0 (successful).
+ DEBUG [208bf07c] Running [ -L /home/newdeploy/leadstar_portal/releases/20230904051309/tmp/pids ] as newdeploy@139.99.131.12
+ DEBUG [208bf07c] Command: [ -L /home/newdeploy/leadstar_portal/releases/20230904051309/tmp/pids ]
+ DEBUG [208bf07c] Finished in 3.071 seconds with exit status 1 (failed).
+ DEBUG [addfdb6c] Running [ -d /home/newdeploy/leadstar_portal/releases/20230904051309/tmp/pids ] as newdeploy@139.99.131.12
+ DEBUG [addfdb6c] Command: [ -d /home/newdeploy/leadstar_portal/releases/20230904051309/tmp/pids ]
+ DEBUG [addfdb6c] Finished in 5.121 seconds with exit status 1 (failed).
+  INFO [8a6d722e] Running /usr/bin/env ln -s /home/newdeploy/leadstar_portal/shared/tmp/pids /home/newdeploy/leadstar_portal/releases/20230904051309/tmp/pids as newdeploy@139.99.131.12
+ DEBUG [8a6d722e] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/leadstar_portal/shared/tmp/pids /home/newdeploy/leadstar_portal/releases/20230904051309/tmp/pids )
+  INFO [8a6d722e] Finished in 0.939 seconds with exit status 0 (successful).
+ DEBUG [8c851485] Running [ -L /home/newdeploy/leadstar_portal/releases/20230904051309/tmp/cache ] as newdeploy@139.99.131.12
+ DEBUG [8c851485] Command: [ -L /home/newdeploy/leadstar_portal/releases/20230904051309/tmp/cache ]
+ DEBUG [8c851485] Finished in 2.726 seconds with exit status 1 (failed).
+ DEBUG [57a8d1fa] Running [ -d /home/newdeploy/leadstar_portal/releases/20230904051309/tmp/cache ] as newdeploy@139.99.131.12
+ DEBUG [57a8d1fa] Command: [ -d /home/newdeploy/leadstar_portal/releases/20230904051309/tmp/cache ]
+ DEBUG [57a8d1fa] Finished in 3.704 seconds with exit status 0 (successful).
+  INFO [91e5c8cb] Running /usr/bin/env rm -rf /home/newdeploy/leadstar_portal/releases/20230904051309/tmp/cache as newdeploy@139.99.131.12
+ DEBUG [91e5c8cb] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env rm -rf /home/newdeploy/leadstar_portal/releases/20230904051309/tmp/cache )
+  INFO [91e5c8cb] Finished in 5.119 seconds with exit status 0 (successful).
+  INFO [fd9bc59a] Running /usr/bin/env ln -s /home/newdeploy/leadstar_portal/shared/tmp/cache /home/newdeploy/leadstar_portal/releases/20230904051309/tmp/cache as newdeploy@139.99.131.12
+ DEBUG [fd9bc59a] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/leadstar_portal/shared/tmp/cache /home/newdeploy/leadstar_portal/releases/20230904051309/tmp/cache )
+  INFO [fd9bc59a] Finished in 5.596 seconds with exit status 0 (successful).
+ DEBUG [cfe9eb42] Running [ -L /home/newdeploy/leadstar_portal/releases/20230904051309/tmp/sockets ] as newdeploy@139.99.131.12
+ DEBUG [cfe9eb42] Command: [ -L /home/newdeploy/leadstar_portal/releases/20230904051309/tmp/sockets ]
+ DEBUG [cfe9eb42] Finished in 0.959 seconds with exit status 1 (failed).
+ DEBUG [c5522758] Running [ -d /home/newdeploy/leadstar_portal/releases/20230904051309/tmp/sockets ] as newdeploy@139.99.131.12
+ DEBUG [c5522758] Command: [ -d /home/newdeploy/leadstar_portal/releases/20230904051309/tmp/sockets ]
+ DEBUG [c5522758] Finished in 4.811 seconds with exit status 1 (failed).
+  INFO [6ab14551] Running /usr/bin/env ln -s /home/newdeploy/leadstar_portal/shared/tmp/sockets /home/newdeploy/leadstar_portal/releases/20230904051309/tmp/sockets as newdeploy@139.99.131.12
+ DEBUG [6ab14551] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/leadstar_portal/shared/tmp/sockets /home/newdeploy/leadstar_portal/releases/20230904051309/tmp/sockets )
+  INFO [6ab14551] Finished in 1.781 seconds with exit status 0 (successful).
+ DEBUG [5451f367] Running [ -L /home/newdeploy/leadstar_portal/releases/20230904051309/vendor/bundle ] as newdeploy@139.99.131.12
+ DEBUG [5451f367] Command: [ -L /home/newdeploy/leadstar_portal/releases/20230904051309/vendor/bundle ]
+ DEBUG [5451f367] Finished in 2.234 seconds with exit status 1 (failed).
+ DEBUG [28fe7243] Running [ -d /home/newdeploy/leadstar_portal/releases/20230904051309/vendor/bundle ] as newdeploy@139.99.131.12
+ DEBUG [28fe7243] Command: [ -d /home/newdeploy/leadstar_portal/releases/20230904051309/vendor/bundle ]
+ DEBUG [28fe7243] Finished in 1.445 seconds with exit status 1 (failed).
+  INFO [6a3916d7] Running /usr/bin/env ln -s /home/newdeploy/leadstar_portal/shared/vendor/bundle /home/newdeploy/leadstar_portal/releases/20230904051309/vendor/bundle as newdeploy@139.99.131.12
+ DEBUG [6a3916d7] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/leadstar_portal/shared/vendor/bundle /home/newdeploy/leadstar_portal/releases/20230904051309/vendor/bundle )
+  INFO [6a3916d7] Finished in 3.206 seconds with exit status 0 (successful).
+ DEBUG [1e6593e1] Running [ -L /home/newdeploy/leadstar_portal/releases/20230904051309/public/system ] as newdeploy@139.99.131.12
+ DEBUG [1e6593e1] Command: [ -L /home/newdeploy/leadstar_portal/releases/20230904051309/public/system ]
+ DEBUG [1e6593e1] Finished in 2.403 seconds with exit status 1 (failed).
+ DEBUG [e1801e91] Running [ -d /home/newdeploy/leadstar_portal/releases/20230904051309/public/system ] as newdeploy@139.99.131.12
+ DEBUG [e1801e91] Command: [ -d /home/newdeploy/leadstar_portal/releases/20230904051309/public/system ]
+ DEBUG [e1801e91] Finished in 1.925 seconds with exit status 1 (failed).
+  INFO [b3d3b4fb] Running /usr/bin/env ln -s /home/newdeploy/leadstar_portal/shared/public/system /home/newdeploy/leadstar_portal/releases/20230904051309/public/system as newdeploy@139.99.131.12
+ DEBUG [b3d3b4fb] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/leadstar_portal/shared/public/system /home/newdeploy/leadstar_portal/releases/20230904051309/public/system )
+  INFO [b3d3b4fb] Finished in 5.119 seconds with exit status 0 (successful).
+ DEBUG [c39dc327] Running [ -L /home/newdeploy/leadstar_portal/releases/20230904051309/public/uploads ] as newdeploy@139.99.131.12
+ DEBUG [c39dc327] Command: [ -L /home/newdeploy/leadstar_portal/releases/20230904051309/public/uploads ]
+ DEBUG [c39dc327] Finished in 2.253 seconds with exit status 1 (failed).
+ DEBUG [6fcad123] Running [ -d /home/newdeploy/leadstar_portal/releases/20230904051309/public/uploads ] as newdeploy@139.99.131.12
+ DEBUG [6fcad123] Command: [ -d /home/newdeploy/leadstar_portal/releases/20230904051309/public/uploads ]
+ DEBUG [6fcad123] Finished in 2.866 seconds with exit status 1 (failed).
+  INFO [3c86cee3] Running /usr/bin/env ln -s /home/newdeploy/leadstar_portal/shared/public/uploads /home/newdeploy/leadstar_portal/releases/20230904051309/public/uploads as newdeploy@139.99.131.12
+ DEBUG [3c86cee3] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/leadstar_portal/shared/public/uploads /home/newdeploy/leadstar_portal/releases/20230904051309/public/uploads )
+  INFO [3c86cee3] Finished in 2.250 seconds with exit status 0 (successful).
+ DEBUG [02f97af0] Running [ -L /home/newdeploy/leadstar_portal/releases/20230904051309/public/assets ] as newdeploy@139.99.131.12
+ DEBUG [02f97af0] Command: [ -L /home/newdeploy/leadstar_portal/releases/20230904051309/public/assets ]
+ DEBUG [02f97af0] Finished in 4.008 seconds with exit status 1 (failed).
+ DEBUG [e3567c98] Running [ -d /home/newdeploy/leadstar_portal/releases/20230904051309/public/assets ] as newdeploy@139.99.131.12
+ DEBUG [e3567c98] Command: [ -d /home/newdeploy/leadstar_portal/releases/20230904051309/public/assets ]
+ DEBUG [e3567c98] Finished in 2.545 seconds with exit status 1 (failed).
+  INFO [046034b5] Running /usr/bin/env ln -s /home/newdeploy/leadstar_portal/shared/public/assets /home/newdeploy/leadstar_portal/releases/20230904051309/public/assets as newdeploy@139.99.131.12
+ DEBUG [046034b5] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/leadstar_portal/shared/public/assets /home/newdeploy/leadstar_portal/releases/20230904051309/public/assets )
+  INFO [046034b5] Finished in 3.072 seconds with exit status 0 (successful).
+ DEBUG [c895b397] Running if test ! -d /home/newdeploy/leadstar_portal/releases/20230904051309; then echo "Directory does not exist '/home/newdeploy/leadstar_portal/releases/20230904051309'" 1>&2; false; fi as newdeploy@139.99.131.12
+ DEBUG [c895b397] Command: if test ! -d /home/newdeploy/leadstar_portal/releases/20230904051309; then echo "Directory does not exist '/home/newdeploy/leadstar_portal/releases/20230904051309'" 1>&2; false; fi
+ DEBUG [c895b397] Finished in 2.557 seconds with exit status 0 (successful).
+  INFO [b9b96ea1] Running $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true as newdeploy@139.99.131.12
+ DEBUG [b9b96ea1] Command: cd /home/newdeploy/leadstar_portal/releases/20230904051309 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true )
+  INFO [b9b96ea1] Finished in 4.811 seconds with exit status 0 (successful).
+  INFO [ce6bad11] Running $HOME/.rbenv/bin/rbenv exec bundle config --local path /home/newdeploy/leadstar_portal/shared/bundle as newdeploy@139.99.131.12
+ DEBUG [ce6bad11] Command: cd /home/newdeploy/leadstar_portal/releases/20230904051309 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local path /home/newdeploy/leadstar_portal/shared/bundle )
+  INFO [ce6bad11] Finished in 4.299 seconds with exit status 0 (successful).
+  INFO [7a31804e] Running $HOME/.rbenv/bin/rbenv exec bundle config --local without development:test as newdeploy@139.99.131.12
+ DEBUG [7a31804e] Command: cd /home/newdeploy/leadstar_portal/releases/20230904051309 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local without development:test )
+  INFO [7a31804e] Finished in 3.687 seconds with exit status 0 (successful).
+ DEBUG [af740299] Running if test ! -d /home/newdeploy/leadstar_portal/releases/20230904051309; then echo "Directory does not exist '/home/newdeploy/leadstar_portal/releases/20230904051309'" 1>&2; false; fi as newdeploy@139.99.131.12
+ DEBUG [af740299] Command: if test ! -d /home/newdeploy/leadstar_portal/releases/20230904051309; then echo "Directory does not exist '/home/newdeploy/leadstar_portal/releases/20230904051309'" 1>&2; false; fi
+ DEBUG [af740299] Finished in 4.502 seconds with exit status 0 (successful).
+ DEBUG [f8c5dd0e] Running $HOME/.rbenv/bin/rbenv exec bundle check as newdeploy@139.99.131.12
+ DEBUG [f8c5dd0e] Command: cd /home/newdeploy/leadstar_portal/releases/20230904051309 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle check )
+ DEBUG [f8c5dd0e] 	The Gemfile's dependencies are satisfied
+ DEBUG [f8c5dd0e] Finished in 5.120 seconds with exit status 0 (successful).
+  INFO The Gemfile's dependencies are satisfied, skipping installation
+ DEBUG [752bdf23] Running if test ! -d /home/newdeploy/leadstar_portal/releases/20230904051309; then echo "Directory does not exist '/home/newdeploy/leadstar_portal/releases/20230904051309'" 1>&2; false; fi as newdeploy@139.99.131.12
+ DEBUG [752bdf23] Command: if test ! -d /home/newdeploy/leadstar_portal/releases/20230904051309; then echo "Directory does not exist '/home/newdeploy/leadstar_portal/releases/20230904051309'" 1>&2; false; fi
+ DEBUG [752bdf23] Finished in 3.692 seconds with exit status 0 (successful).
+  INFO [9b7d1a8d] Running $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile as newdeploy@139.99.131.12
+ DEBUG [9b7d1a8d] Command: cd /home/newdeploy/leadstar_portal/releases/20230904051309 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" RAILS_GROUPS="" ; $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile )
+ DEBUG [9b7d1a8d] 	I, [2023-09-04T05:15:40.360231 #1734918]  INFO -- : Writing /home/newdeploy/leadstar_portal/releases/20230904051309/public/assets/application-79ffbb47363027e76279fae1172539b8ed6a07002c77a2f8bbd38ce6e7fc2d1e.js
+ DEBUG [9b7d1a8d] 	I, [2023-09-04T05:15:40.360624 #1734918]  INFO -- : Writing /home/newdeploy/leadstar_portal/releases/20230904051309/public/assets/application-79ffbb47363027e76279fae1172539b8ed6a07002c77a2f8bbd38ce6e7fc2d1e.js.gz
+  INFO [9b7d1a8d] Finished in 13.306 seconds with exit status 0 (successful).
+ DEBUG [fdfdd548] Running if test ! -d /home/newdeploy/leadstar_portal/releases/20230904051309; then echo "Directory does not exist '/home/newdeploy/leadstar_portal/releases/20230904051309'" 1>&2; false; fi as newdeploy@139.99.131.12
+ DEBUG [fdfdd548] Command: if test ! -d /home/newdeploy/leadstar_portal/releases/20230904051309; then echo "Directory does not exist '/home/newdeploy/leadstar_portal/releases/20230904051309'" 1>&2; false; fi
+ DEBUG [fdfdd548] Finished in 3.992 seconds with exit status 0 (successful).
+  INFO [04c3af74] Running /usr/bin/env mkdir -p /home/newdeploy/leadstar_portal/releases/20230904051309/assets_manifest_backup as newdeploy@139.99.131.12
+ DEBUG [04c3af74] Command: cd /home/newdeploy/leadstar_portal/releases/20230904051309 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/leadstar_portal/releases/20230904051309/assets_manifest_backup )
+  INFO [04c3af74] Finished in 3.685 seconds with exit status 0 (successful).
+ DEBUG [abe46f3c] Running /usr/bin/env ls /home/newdeploy/leadstar_portal/releases/20230904051309/public/assets/.sprockets-manifest* as newdeploy@139.99.131.12
+ DEBUG [abe46f3c] Command: cd /home/newdeploy/leadstar_portal/releases/20230904051309 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls /home/newdeploy/leadstar_portal/releases/20230904051309/public/assets/.sprockets-manifest* )
+ DEBUG [abe46f3c] 	/home/newdeploy/leadstar_portal/releases/20230904051309/public/assets/.sprockets-manifest-0e7cdf4e44dc71e18c4cc312f28e5231.json
+ DEBUG [abe46f3c] Finished in 7.064 seconds with exit status 0 (successful).
+ DEBUG [d4ae7fee] Running /usr/bin/env ls /home/newdeploy/leadstar_portal/releases/20230904051309/public/assets/.sprockets-manifest* as newdeploy@139.99.131.12
+ DEBUG [d4ae7fee] Command: cd /home/newdeploy/leadstar_portal/releases/20230904051309 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls /home/newdeploy/leadstar_portal/releases/20230904051309/public/assets/.sprockets-manifest* )
+ DEBUG [d4ae7fee] 	/home/newdeploy/leadstar_portal/releases/20230904051309/public/assets/.sprockets-manifest-0e7cdf4e44dc71e18c4cc312f28e5231.json
+ DEBUG [d4ae7fee] Finished in 4.301 seconds with exit status 0 (successful).
+  INFO [39742be1] Running /usr/bin/env cp /home/newdeploy/leadstar_portal/releases/20230904051309/public/assets/.sprockets-manifest-0e7cdf4e44dc71e18c4cc312f28e5231.json /home/newdeploy/leadstar_portal/releases/20230904051309/assets_manifest_backup as newdeploy@139.99.131.12
+ DEBUG [39742be1] Command: cd /home/newdeploy/leadstar_portal/releases/20230904051309 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env cp /home/newdeploy/leadstar_portal/releases/20230904051309/public/assets/.sprockets-manifest-0e7cdf4e44dc71e18c4cc312f28e5231.json /home/newdeploy/leadstar_portal/releases/20230904051309/assets_manifest_backup )
+  INFO [39742be1] Finished in 3.694 seconds with exit status 0 (successful).
+  INFO [deploy:migrate] Run `rake db:migrate`
+ DEBUG [cc71e83b] Running if test ! -d /home/newdeploy/leadstar_portal/releases/20230904051309; then echo "Directory does not exist '/home/newdeploy/leadstar_portal/releases/20230904051309'" 1>&2; false; fi as newdeploy@139.99.131.12
+ DEBUG [cc71e83b] Command: if test ! -d /home/newdeploy/leadstar_portal/releases/20230904051309; then echo "Directory does not exist '/home/newdeploy/leadstar_portal/releases/20230904051309'" 1>&2; false; fi
+ DEBUG [cc71e83b] Finished in 4.488 seconds with exit status 0 (successful).
+  INFO [847a1f84] Running $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate as newdeploy@139.99.131.12
+ DEBUG [847a1f84] Command: cd /home/newdeploy/leadstar_portal/releases/20230904051309 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" ; $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate )
+ DEBUG [847a1f84] 	== 20230811213557 ChangeDepartmentApprovalToApprovedByStudentGrade: migrating =
+-- rename_column(:student_grades, :department_head_name, :approved_by)
+   -> 0.0652s
+-- rename_column(:student_grades, :department_head_date_of_response, :approval_date)
+   -> 0.0043s
+-- add_column(:student_grades, :approving_person_role, :string)
+   -> 0.0010s
+== 20230811213557 ChangeDepartmentApprovalToApprovedByStudentGrade: migrated (0.0706s) 
+
+== 20230814205105 AddMajorToCourse: migrating =================================
+-- add_column(:courses, :major, :boolean, {:default=>false})
+   -> 0.0029s
+== 20230814205105 AddMajorToCourse: migrated (0.0030s) ========================
+
+  INFO [847a1f84] Finished in 5.940 seconds with exit status 0 (successful).
+ DEBUG [ec5f8443] Running if test ! -d /home/newdeploy/leadstar_portal/releases/20230904051309; then echo "Directory does not exist '/home/newdeploy/leadstar_portal/releases/20230904051309'" 1>&2; false; fi as newdeploy@139.99.131.12
+ DEBUG [ec5f8443] Command: if test ! -d /home/newdeploy/leadstar_portal/releases/20230904051309; then echo "Directory does not exist '/home/newdeploy/leadstar_portal/releases/20230904051309'" 1>&2; false; fi
+ DEBUG [ec5f8443] Finished in 2.557 seconds with exit status 0 (successful).
+  INFO [34c4f6c9] Running $HOME/.rbenv/bin/rbenv exec bundle exec whenever --update-crontab leadstar_portal_production --set environment=production --roles=app,web,db  as newdeploy@139.99.131.12
+ DEBUG [34c4f6c9] Command: cd /home/newdeploy/leadstar_portal/releases/20230904051309 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" ; $HOME/.rbenv/bin/rbenv exec bundle exec whenever --update-crontab leadstar_portal_production --set environment=production --roles=app,web,db  )
+ DEBUG [34c4f6c9] 	[write] crontab file updated
+  INFO [34c4f6c9] Finished in 3.994 seconds with exit status 0 (successful).
+  INFO [b35bf349] Running /usr/bin/env ln -s /home/newdeploy/leadstar_portal/releases/20230904051309 /home/newdeploy/leadstar_portal/releases/current as newdeploy@139.99.131.12
+ DEBUG [b35bf349] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/leadstar_portal/releases/20230904051309 /home/newdeploy/leadstar_portal/releases/current )
+  INFO [b35bf349] Finished in 3.682 seconds with exit status 0 (successful).
+  INFO [961e9107] Running /usr/bin/env mv /home/newdeploy/leadstar_portal/releases/current /home/newdeploy/leadstar_portal as newdeploy@139.99.131.12
+ DEBUG [961e9107] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mv /home/newdeploy/leadstar_portal/releases/current /home/newdeploy/leadstar_portal )
+  INFO [961e9107] Finished in 2.558 seconds with exit status 0 (successful).
+ DEBUG [ff7765bd] Running /usr/bin/env pwd as newdeploy@139.99.131.12
+ DEBUG [ff7765bd] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env pwd )
+ DEBUG [ff7765bd] 	/home/newdeploy
+ DEBUG [ff7765bd] Finished in 2.559 seconds with exit status 0 (successful).
+ DEBUG [4043134e] Running if test ! -d /home/newdeploy; then echo "Directory does not exist '/home/newdeploy'" 1>&2; false; fi as newdeploy@139.99.131.12
+ DEBUG [4043134e] Command: if test ! -d /home/newdeploy; then echo "Directory does not exist '/home/newdeploy'" 1>&2; false; fi
+ DEBUG [4043134e] Finished in 3.686 seconds with exit status 0 (successful).
+  INFO [cebfdf23] Running /usr/bin/env mkdir -p /home/newdeploy/leadstar_portal/releases/20230904051309/tmp as newdeploy@139.99.131.12
+ DEBUG [cebfdf23] Command: cd /home/newdeploy && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/leadstar_portal/releases/20230904051309/tmp )
+  INFO [cebfdf23] Finished in 2.560 seconds with exit status 0 (successful).
+  INFO [08d204cd] Running /usr/bin/env touch /home/newdeploy/leadstar_portal/releases/20230904051309/tmp/restart.txt as newdeploy@139.99.131.12
+ DEBUG [08d204cd] Command: cd /home/newdeploy && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env touch /home/newdeploy/leadstar_portal/releases/20230904051309/tmp/restart.txt )
+  INFO [08d204cd] Finished in 3.376 seconds with exit status 0 (successful).
+ DEBUG [ec5809e1] Running /usr/bin/env ls -x /home/newdeploy/leadstar_portal/releases as newdeploy@139.99.131.12
+ DEBUG [ec5809e1] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls -x /home/newdeploy/leadstar_portal/releases )
+ DEBUG [ec5809e1] 	20230809142605	20230811082055	20230811140217	20230812123555	20230812134219
+20230813092919	20230813115607	20230817145143	20230901134522	20230901135634
+20230904050712	20230904051309
+ DEBUG [ec5809e1] Finished in 4.808 seconds with exit status 0 (successful).
+  INFO Keeping 10 of 12 deployed releases on 139.99.131.12
+ DEBUG [230a47a7] Running [ -d /home/newdeploy/leadstar_portal/current ] as newdeploy@139.99.131.12
+ DEBUG [230a47a7] Command: [ -d /home/newdeploy/leadstar_portal/current ]
+ DEBUG [230a47a7] Finished in 3.026 seconds with exit status 0 (successful).
+ DEBUG [47708a8e] Running /usr/bin/env readlink /home/newdeploy/leadstar_portal/current as newdeploy@139.99.131.12
+ DEBUG [47708a8e] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env readlink /home/newdeploy/leadstar_portal/current )
+ DEBUG [47708a8e] 	/home/newdeploy/leadstar_portal/releases/20230904051309
+ DEBUG [47708a8e] Finished in 6.906 seconds with exit status 0 (successful).
+  INFO [78fbe458] Running /usr/bin/env rm -rf /home/newdeploy/leadstar_portal/releases/20230809142605 /home/newdeploy/leadstar_portal/releases/20230811082055 as newdeploy@139.99.131.12
+ DEBUG [78fbe458] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env rm -rf /home/newdeploy/leadstar_portal/releases/20230809142605 /home/newdeploy/leadstar_portal/releases/20230811082055 )
+  INFO [78fbe458] Finished in 3.685 seconds with exit status 0 (successful).
+ DEBUG [f0f34123] Running if test ! -d /home/newdeploy/leadstar_portal/releases; then echo "Directory does not exist '/home/newdeploy/leadstar_portal/releases'" 1>&2; false; fi as newdeploy@139.99.131.12
+ DEBUG [f0f34123] Command: if test ! -d /home/newdeploy/leadstar_portal/releases; then echo "Directory does not exist '/home/newdeploy/leadstar_portal/releases'" 1>&2; false; fi
+ DEBUG [f0f34123] Finished in 5.118 seconds with exit status 0 (successful).
+  INFO [9b4aab36] Running /usr/bin/env echo "Branch main (at a80fc731db93a41c5d90bf31548ea73e0228f425) deployed as release 20230904051309 by fena" >> /home/newdeploy/leadstar_portal/revisions.log as newdeploy@139.99.131.12
+ DEBUG [9b4aab36] Command: cd /home/newdeploy/leadstar_portal/releases && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "Branch main (at a80fc731db93a41c5d90bf31548ea73e0228f425) deployed as release 20230904051309 by fena" >> /home/newdeploy/leadstar_portal/revisions.log )
+  INFO [9b4aab36] Finished in 4.504 seconds with exit status 0 (successful).
