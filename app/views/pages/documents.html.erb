@@ -41,15 +41,24 @@
                         <div class= "preview-card text-center no-recent-data" >
                           <span> <%=link_to image_tag(current_student.highschool_transcript, size: '200x270'), current_student.highschool_transcript%></span>
                         </div>
+                        <%= simple_form_for(current_student, url: update_highschool_transcript_path, wrapper: :input_group, method: :put,multiple: true) do |f| %>
+                          <div class="flex">
+                            <%= f.input :highschool_transcript, as: :file, label: 'File',class: 'form-1'%>
+                            <%= f.submit :Update, class: 'btn btn-primary'%>
+                          </div>
+                        <%end%>
                       <%elsif current_student.highschool_transcript.previewable?%>
                         <div class= "preview-card text-center no-recent-data">
                           <span> <%= link_to "view document", rails_blob_path(current_student.highschool_transcript, disposition: 'preview')%></span>
                         </div>
                       <%end%>
                     <%else%>
-                      <div class= "text-center no-recent-data" >
-                        <button class="btn btn-primary"> Add Attachement</button>
-                      </div>
+                      <%= simple_form_for(current_student, url: update_highschool_transcript_path, wrapper: :input_group, method: :put,multiple: true) do |f| %>
+                        <div class="flex">
+                          <%= f.input :highschool_transcript, as: :file, label: "Add transcripts",class: 'form-control'%>
+                          <%= f.submit :Add, class: 'btn btn-primary'%>
+                        </div>
+                      <%end%>
                     <%end%>
                   </div>
                 </div>
@@ -76,11 +85,12 @@
                         </div>
                       <%end%>
                     <%else%>
-                      <div class= "text-center no-recent-data" >
-                        <%# Document Not Uploaded Yet %>
-                        <button class="btn btn-primary"> Add Attachement</button>
-
-                      </div>
+                      <%= simple_form_for(current_student, url: update_grade_10_matric_path, wrapper: :input_group, method: :put,multiple: true) do |f| %>
+                        <div class="flex">
+                          <%= f.input :grade_10_matric, as: :file, label: "Add transcripts",class: 'form-control'%>
+                          <%= f.submit :Add, class: 'btn btn-primary'%>
+                        </div>
+                      <%end%>
                     <%end%>
                   </div>
                 </div>
@@ -107,50 +117,53 @@
                         </div>
                       <%end%>
                     <%else%>
-                      <div class= "text-center no-recent-data" >
-                        <%# Document Not Uploaded Yet
-                         %>
-                        <button class="btn btn-primary"> Add Attachement</button>
-
-                      </div>
+                      <%= simple_form_for(current_student, url: update_grade_12_matric_path, wrapper: :input_group, method: :put,multiple: true) do |f| %>
+                        <div class="flex">
+                          <%= f.input :grade_12_matric, as: :file, label: "Add transcripts",class: 'form-control'%>
+                          <%= f.submit :Add, class: 'btn btn-primary'%>
+                        </div>
+                      <%end%>
                     <%end%>
                   </div>
                 </div>
               </div>
-              <div class="col-12 col-md-3">
-                <div class="card card-primary">
-                  <div class="card-header">
-                    <h3 class="card-title">Degree Certificate</h3>
-                    <div class="card-tools">
-                      <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                        <i class="fas fa-minus"></i>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="card-body">
-                    <% if current_student.degree_certificate.attached? %>
-                      <div class= "preview-card text-center no-recent-data" >
-                        <span> <%=link_to "view document", rails_blob_path(current_student.degree_certificate, disposition: 'preview')%></span>
+              <%if current_student.study_level.strip == "graduate"%>
+                <div class="col-12 col-md-3">
+                  <div class="card card-primary">
+                    <div class="card-header">
+                      <h3 class="card-title">Degree Certificate</h3>
+                      <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                          <i class="fas fa-minus"></i>
+                        </button>
                       </div>
-                      <%if current_student.degree_certificate.variable?%>
+                    </div>
+                    <div class="card-body">
+                      <% if current_student.degree_certificate.attached? %>
                         <div class= "preview-card text-center no-recent-data" >
                           <span> <%=link_to "view document", rails_blob_path(current_student.degree_certificate, disposition: 'preview')%></span>
                         </div>
-                      <%elsif current_student.degree_certificate.previewable?%>
-                        <div class= "preview-card text-center no-recent-data">
-                          <span> <%= link_to "view document", rails_blob_path(current_student.degree_certificate, disposition: 'preview') %></span>
-                        </div>
+                        <%if current_student.degree_certificate.variable?%>
+                          <div class= "preview-card text-center no-recent-data" >
+                            <span> <%=link_to "view document", rails_blob_path(current_student.degree_certificate, disposition: 'preview')%></span>
+                          </div>
+                        <%elsif current_student.degree_certificate.previewable?%>
+                          <div class= "preview-card text-center no-recent-data">
+                            <span> <%= link_to "view document", rails_blob_path(current_student.degree_certificate, disposition: 'preview') %></span>
+                          </div>
+                        <%end%>
+                      <%else%>
+                        <%= simple_form_for(current_student, url: update_degree_certificate_path, wrapper: :input_group, method: :put,multiple: true) do |f| %>
+                          <div class="flex">
+                            <%= f.input :degree_certificate, as: :file, label: "Undergraduate degree certificate",class: 'form-control'%>
+                            <%= f.submit :Add%>
+                          </div>
+                        <%end%>
                       <%end%>
-                    <%else%>
-                      <h3 class= "text-center no-recent-data" >
-                        <%# Document Not Uploaded Yet %>
-                        <button class="btn btn-primary"> Add Attachement</button>
-
-                      </h3>
-                    <%end%>
+                    </div>
                   </div>
                 </div>
-              </div>
+              <%end%>
               <div class="col-12 col-md-3">
                 <div class="card card-primary">
                   <div class="card-header">
@@ -173,11 +186,12 @@
                         </div>
                       <%end%>
                     <%else%>
-                      <div class= "text-center no-recent-data" >
-                        <%# Document Not Uploaded Yet %>
-                        <button class="btn btn-primary"> Add Attachement</button>
-
-                      </div>
+                      <%= simple_form_for(current_student, url: update_diploma_certificate_path, wrapper: :input_group, method: :put,multiple: true) do |f| %>
+                        <div class="flex">
+                          <%= f.input :diploma_certificate, as: :file, label: "Add transcripts",class: 'form-control'%>
+                          <%= f.submit :Add, class: 'btn btn-primary'%>
+                        </div>
+                      <%end%>
                     <%end%>
                   </div>
                 </div>
@@ -204,11 +218,12 @@
                         </div>
                       <%end%>
                     <%else%>
-                      <div class= "text-center no-recent-data" >
-                        <%# Document Not Uploaded Yet %>
-                        <button class="btn btn-primary"> Add Attachement</button>
-
-                      </div>
+                     <%= simple_form_for(current_student, url: update_coc_path, wrapper: :input_group, method: :put,multiple: true) do |f| %>
+                        <div class="flex">
+                          <%= f.input :coc, as: :file, label: "Add transcripts",class: 'form-control'%>
+                          <%= f.submit :Add, class: 'btn btn-primary'%>
+                        </div>
+                      <%end%>
                     <%end%>
                   </div>
                 </div>

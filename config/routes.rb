@@ -22,10 +22,18 @@ Rails.application.routes.draw do
   authenticated :student do
     root "pages#dashboard", as: "authenticated_user_root"
   end
+  devise_scope :student do
+    put "update/highschool/transcript", to: "registrations#update_highschool_transcript", as: "update_highschool_transcript"
+    put "update/grade/10/matric", to: "registrations#update_grade_10_matric", as: "update_grade_10_matric"
+    put "update/grade/12/matric", to: "registrations#update_grade_12_matric", as: "update_grade_12_matric"
+    put "update/coc", to: "registrations#update_coc", as: "update_coc"
+    put "update/diploma/certificate", to: "registrations#update_diploma_certificate", as: "update_diploma_certificate"
+    put "update/degree/certificate", to: "registrations#update_degree_certificate", as: "update_degree_certificate"
+  end
 
   post "prepare_pdf", to: "pdf_grade_reports#prepare_pdf", as: "prepare_pdf"
   get "admission" => "pages#admission"
-  get "documents" => "pages#documents"
+  get "documents" => "pages#documents", as: "documents"
   get "profile" => "pages#profile"
   get "grade_report" => "pages#grade_report"
   get "digital-iteracy-quiz" => "pages#digital_iteracy_quiz"
