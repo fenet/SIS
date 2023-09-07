@@ -17,7 +17,7 @@ class StudentTemporary < Prawn::Document
       text "#{stud.name.full.upcase} #{stud.middle_name.upcase}", inline_format: true, size: 18, align: :center
       stroke_horizontal_rule
       move_down 20
-      text "Graduated from Leadstar College", inline_format: true, size: 18, align: :center
+      text "Graduated from LEADSTAR COLLEGE", inline_format: true, size: 18, align: :center
       move_down 20
       text "with", inline_format: true, size: 18, align: :center
       move_down 20

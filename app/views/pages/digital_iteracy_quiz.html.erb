@@ -225,7 +225,7 @@
 
     if(numCorrect >= 6){
       resultsContainer.innerHTML = `<p class="mb-2" style="color:green;">${numCorrect} out of ${myQuestions.length}</p>
-      <p style="color:green;">Congratulations you have passed the technical knowledge requirement to enroll to Leadstar online. Please continue to the registration process.</p>
+      <p style="color:green;">Congratulations you have passed the technical knowledge requirement to enroll to Leadstar College. Please continue to the registration process.</p>
       <%= link_to "Apply Now", new_student_registration_path(modality: "online", study_level: "graduate"), class: "btn btn-primary btn-lg"%>`;
     }
     else{

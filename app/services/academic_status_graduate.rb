@@ -29,17 +29,17 @@ class AcademicStatusGraduate
     end
   end
 
-  private
+  #private
 
-  def is_semester_year?(student:, year:, semester:)
+  def self.is_semester_year?(student:, year:, semester:)
     student.year == year && student.semester == semester
   end
 
-  def is_pass_first_semester?(student:)
+  def self.is_pass_first_semester?(student:)
     GradeReport.where(student: student, semester: 1, academic_status: "Academic Pass").any?
   end
 
-  def is_probation_first_semester?(student:)
+  def self.is_probation_first_semester?(student:)
     GradeReport.where(student: student, semester: 1, academic_status: "Academic Probation").any?
   end
 end

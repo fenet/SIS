@@ -103,23 +103,23 @@
             <div class="col-12 col-md-4">
               <div class="card card-primary shadow">
                 <div class="card-header">
-                  <h3 class="card-title">Montly Pricing Option</h3>
+                  <h3 class="card-title">Monthly Pricing Option</h3>
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
                     <table class="table">
                       <tbody>
                         <tr>
-                          <th style="width:50%">Montly Subtotal:</th>
+                          <th style="width:50%">Monthly Subtotal:</th>
                           <td><%= sub_total(@tution_fee, 4) %> ETB</td>
                         </tr>
                         <tr>
                           <th>Registration Fee:</th>
-                          <td><%= @registration_fee %> ETB</td>
+                          <td><%= (@registration_fee / 4) %> ETB</td>
                         </tr>
                         <tr>
                           <th>Total:</th>
-                          <td><b><%= total(@tution_fee, 4 , @registration_fee) %> ETB</b></td>
+                          <td><b><%= total(@tution_fee, 4 , @registration_fee / 4) %> ETB</b></td>
                         </tr>
                       </tbody>
                     </table>
@@ -142,11 +142,11 @@
                         </tr>
                         <tr>
                           <th>Registration Fee:</th>
-                          <td><%= @registration_fee %> ETB</td>
+                          <td><%= @registration_fee / 2 %> ETB</td>
                         </tr>
                         <tr>
                           <th>Total:</th>
-                          <td><b><%= total(@tution_fee, 2 , @registration_fee) %> ETB</b></td>
+                          <td><b><%= total(@tution_fee, 2 , @registration_fee / 2) %> ETB</b></td>
                         </tr>
                       </tbody>
                     </table>

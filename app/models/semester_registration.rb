@@ -63,10 +63,11 @@ class SemesterRegistration < ApplicationRecord
             if self.student.study_level == "undergraduate"
               report.academic_status = AddAcademicStatus.academic_status({ sgpa: report.sgpa, cgpa: report.cgpa }, self.student)
             else
-              report.academic_status = AcademicStatusGraduate.academic_status(report: report, student: student)
+              #report.academic_status = AcademicStatusGraduate.get_academic_status(report: report, student: student)
+              report.academic_status = "Excellent"
               # report.academic_status = self.student.program.grade_systems.last.academic_statuses.where("min_value < ?", report.cgpa).where("max_value >= ?", report.cgpa).last.status
             end
-            if (report.academic_status.strip != "Academic Dismissal") || (report.academic_status.strip != "Incomplete")
+            if (report.academic_status != "Academic Dismissal") || (report.academic_status != "Incomplete")
               if self.program.program_semester > self.student.semester
                 promoted_semester = self.student.semester + 1
                 self.student.update_columns(semester: promoted_semester)
@@ -162,6 +163,7 @@ class SemesterRegistration < ApplicationRecord
         if self.mode_of_payment == "Monthly Payment"
           # if self.year == 1 && self.semester == 1
             tution_price = self.student.get_tution_fee
+            registration_fee = self.student.get_registration_fee
             # (self.course_registrations.collect { |oi| oi.valid? ? (CollegePayment.where(study_level: self.study_level.strip, admission_type: self.admission_type.strip).first.tution_per_credit_hr * oi.course.credit_hour) : 0 }.sum) + invoice.registration_fee + invoice.late_registration_fee
           # else
             # tution_price = self.student.get_tution_fee
@@ -169,6 +171,7 @@ class SemesterRegistration < ApplicationRecord
           # end
 
           invoice.total_price = tution_price / 4
+          invoice.registration_fee = registration_fee / 4
         elsif self.mode_of_payment == "Full Semester Payment"
           # if self.year == 1 && self.semester == 1
           #   tution_price = (self.course_registrations.collect { |oi| oi.valid? ? (CollegePayment.where(study_level: self.study_level, admission_type: self.admission_type).first.tution_per_credit_hr * oi.course.credit_hour) : 0 }.sum)  + invoice.registration_fee + invoice.late_registration_fee
@@ -183,10 +186,12 @@ class SemesterRegistration < ApplicationRecord
           #   tution_price = (self.course_registrations.collect { |oi| oi.valid? ? (CollegePayment.where(study_level: self.study_level, admission_type: self.admission_type).first.tution_per_credit_hr * oi.course.credit_hour) : 0 }.sum)  + invoice.registration_fee + invoice.late_registration_fee
           # else
             tution_price = self.student.get_tution_fee
+            registration_fee = self.student.get_registration_fee
             # (self.course_registrations.collect { |oi| oi.valid? ? (CollegePayment.where(study_level: self.study_level, admission_type: self.admission_type).first.tution_per_credit_hr * oi.course.credit_hour) : 0 }.sum) + invoice.registration_fee + invoice.late_registration_fee
           # end
 
           invoice.total_price = tution_price / 2
+          invoice.registration_fee = registration_fee / 2
         end
 
         # self.total_price = (self.course_registrations.collect { |oi| oi.valid? ? (CollegePayment.where(study_level: self.study_level,admission_type: self.admission_type).first.tution_per_credit_hr * oi.curriculum.credit_hour) : 0 }.sum) + CollegePayment.where(study_level: self.study_level,admission_type: self.admission_type).first.registration_fee
