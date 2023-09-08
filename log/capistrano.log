@@ -1485,3 +1485,8 @@ You have deleted from the Gemfile:
   INFO [9668ccd8] Running /usr/bin/env echo "Branch main (at 03ea9acb0c8f18b85c5dbe03cfd0a5f5bf80e5c4) deployed as release 20230907213136 by fena" >> /home/newdeploy/leadstar_portal/revisions.log as newdeploy@139.99.131.12
  DEBUG [9668ccd8] Command: cd /home/newdeploy/leadstar_portal/releases && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "Branch main (at 03ea9acb0c8f18b85c5dbe03cfd0a5f5bf80e5c4) deployed as release 20230907213136 by fena" >> /home/newdeploy/leadstar_portal/revisions.log )
   INFO [9668ccd8] Finished in 1.868 seconds with exit status 0 (successful).
+  INFO ---------------------------------------------------------------------------
+  INFO START 2023-09-08 08:00:02 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [1b2333b8] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as newdeploy@148.113.8.52
+ DEBUG [1b2333b8] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
