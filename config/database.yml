@@ -37,6 +37,6 @@ test:
   password: Hope_1234
 production:
   <<: *default
-  database: leadstar_portal 
-  username: newdeploy
-  password: 1234567
+  database: heucbackup
+  username: deploy
+  password: Yic_1234
