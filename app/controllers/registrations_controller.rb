@@ -21,6 +21,11 @@ class RegistrationsController < Devise::RegistrationsController
     respond_with self.resource
   end
 
+  def update_profile_photo
+    current_student.photo.attach(check_permit[:photo])
+    redirect_to profile_url
+  end
+
   def update_highschool_transcript
     current_student.highschool_transcript.attach(check_permit[:highschool_transcript])
     redirect_to documents_url
@@ -51,8 +56,6 @@ class RegistrationsController < Devise::RegistrationsController
     redirect_to documents_url
   end
 
-
-
   protected
 
   def update_resource(resource, params)
@@ -62,14 +65,7 @@ class RegistrationsController < Devise::RegistrationsController
   private
 
   def check_permit
-    # p "===================permited====="
-    # p devise_parameter_sanitizer
-    # p "============================"
-    # devise_parameter_sanitizer.permit(:student) do |student_params|
-    # params[:student].permit(:highschool_transcript, :grade_10_matric)
-    params.require(:student).permit(:highschool_transcript, :grade_10_matric, :grade_12_matric, :coc, :diploma_certificate, :degree_certificate)
-
-    # end
+    params.require(:student).permit(:highschool_transcript, :photo, :grade_10_matric, :grade_12_matric, :coc, :diploma_certificate, :degree_certificate)
   end
 
   # def configure_permitted_parameters
