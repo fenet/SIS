@@ -41,22 +41,22 @@
                         <div class= "preview-card text-center no-recent-data" >
                           <span> <%=link_to image_tag(current_student.highschool_transcript, size: '200x270'), current_student.highschool_transcript%></span>
                         </div>
-                        <%= simple_form_for(current_student, url: update_highschool_transcript_path, wrapper: :input_group, method: :put,multiple: true) do |f| %>
-                          <div class="flex">
-                            <%= f.input :highschool_transcript, as: :file, label: 'File',class: 'form-1'%>
-                            <%= f.submit :Update, class: 'btn btn-primary'%>
-                          </div>
-                        <%end%>
                       <%elsif current_student.highschool_transcript.previewable?%>
                         <div class= "preview-card text-center no-recent-data">
-                          <span> <%= link_to "view document", rails_blob_path(current_student.highschool_transcript, disposition: 'preview')%></span>
+                          <span> <%= link_to "View document", rails_blob_path(current_student.highschool_transcript, disposition: 'preview')%></span>
                         </div>
                       <%end%>
                     <%else%>
                       <%= simple_form_for(current_student, url: update_highschool_transcript_path, wrapper: :input_group, method: :put,multiple: true) do |f| %>
                         <div class="flex">
-                          <%= f.input :highschool_transcript, as: :file, label: "Add transcripts",class: 'form-control'%>
-                          <%= f.submit :Add, class: 'btn btn-primary'%>
+                          <%= f.input :highschool_transcript, as: :file, label: "Add transcripts",class: 'form-control', input_html: {onchange: 'this.form.submit()'}%>
+                        </div>
+                      <%end%>
+                    <%end%>
+                    <%if current_student.allow_editing?%>
+                      <%= simple_form_for(current_student, url: update_highschool_transcript_path, wrapper: :input_group, method: :put,multiple: true) do |f| %>
+                        <div class="flex">
+                          <%= f.input :highschool_transcript, as: :file, label: "Add transcripts",class: 'form-control', input_html: {onchange: 'this.form.submit()'}%>
                         </div>
                       <%end%>
                     <%end%>
@@ -87,8 +87,14 @@
                     <%else%>
                       <%= simple_form_for(current_student, url: update_grade_10_matric_path, wrapper: :input_group, method: :put,multiple: true) do |f| %>
                         <div class="flex">
-                          <%= f.input :grade_10_matric, as: :file, label: "Add transcripts",class: 'form-control'%>
-                          <%= f.submit :Add, class: 'btn btn-primary'%>
+                          <%= f.input :grade_10_matric, as: :file, label: "Add transcripts",class: 'form-control',input_html: {onchange: 'this.form.submit()'}%>
+                        </div>
+                      <%end%>
+                    <%end%>
+                    <% if current_student.allow_editing?%>
+                      <%= simple_form_for(current_student, url: update_grade_10_matric_path, wrapper: :input_group, method: :put,multiple: true) do |f| %>
+                        <div class="flex">
+                          <%= f.input :grade_10_matric, as: :file, label: "Add transcripts",class: 'form-control',input_html: {onchange: 'this.form.submit()'}%>
                         </div>
                       <%end%>
                     <%end%>
@@ -119,8 +125,14 @@
                     <%else%>
                       <%= simple_form_for(current_student, url: update_grade_12_matric_path, wrapper: :input_group, method: :put,multiple: true) do |f| %>
                         <div class="flex">
-                          <%= f.input :grade_12_matric, as: :file, label: "Add transcripts",class: 'form-control'%>
-                          <%= f.submit :Add, class: 'btn btn-primary'%>
+                          <%= f.input :grade_12_matric, as: :file, label: "Add transcripts",class: 'form-control',input_html: {onchange: 'this.form.submit()'}%>
+                        </div>
+                      <%end%>
+                    <%end%>
+                    <% if current_student.allow_editing?%>
+                      <%= simple_form_for(current_student, url: update_grade_12_matric_path, wrapper: :input_group, method: :put,multiple: true) do |f| %>
+                        <div class="flex">
+                          <%= f.input :grade_12_matric, as: :file, label: "Add transcripts",class: 'form-control',input_html: {onchange: 'this.form.submit()'}%>
                         </div>
                       <%end%>
                     <%end%>
@@ -155,8 +167,14 @@
                       <%else%>
                         <%= simple_form_for(current_student, url: update_degree_certificate_path, wrapper: :input_group, method: :put,multiple: true) do |f| %>
                           <div class="flex">
-                            <%= f.input :degree_certificate, as: :file, label: "Undergraduate degree certificate",class: 'form-control'%>
-                            <%= f.submit :Add%>
+                            <%= f.input :degree_certificate, as: :file, label: "Undergraduate degree certificate",class: 'form-control',input_html: {onchange: 'this.form.submit()'}%>
+                          </div>
+                        <%end%>
+                      <%end%>
+                      <%if current_student.allow_editing?%>
+                        <%= simple_form_for(current_student, url: update_degree_certificate_path, wrapper: :input_group, method: :put,multiple: true) do |f| %>
+                          <div class="flex">
+                            <%= f.input :degree_certificate, as: :file, label: "Undergraduate degree certificate",class: 'form-control',input_html: {onchange: 'this.form.submit()'}%>
                           </div>
                         <%end%>
                       <%end%>
@@ -182,14 +200,20 @@
                         </div>
                       <%elsif current_student.diploma_certificate.previewable?%>
                         <div class= "preview-card text-center no-recent-data">
-                          <span> <%= link_to "view document", rails_blob_path(current_student.diploma_certificate, disposition: 'preview')%></span>
+                          <span> <%= link_to "View document", rails_blob_path(current_student.diploma_certificate, disposition: 'preview')%></span>
                         </div>
                       <%end%>
                     <%else%>
                       <%= simple_form_for(current_student, url: update_diploma_certificate_path, wrapper: :input_group, method: :put,multiple: true) do |f| %>
                         <div class="flex">
-                          <%= f.input :diploma_certificate, as: :file, label: "Add transcripts",class: 'form-control'%>
-                          <%= f.submit :Add, class: 'btn btn-primary'%>
+                          <%= f.input :diploma_certificate, as: :file, label: "Add transcripts",class: 'form-control',input_html: {onchange: 'this.form.submit()'}%>
+                        </div>
+                      <%end%>
+                    <%end%>
+                    <%if current_student.allow_editing?%>
+                      <%= simple_form_for(current_student, url: update_diploma_certificate_path, wrapper: :input_group, method: :put,multiple: true) do |f| %>
+                        <div class="flex">
+                          <%= f.input :diploma_certificate, as: :file, label: "Add transcripts",class: 'form-control',input_html: {onchange: 'this.form.submit()'}%>
                         </div>
                       <%end%>
                     <%end%>
@@ -218,10 +242,16 @@
                         </div>
                       <%end%>
                     <%else%>
-                     <%= simple_form_for(current_student, url: update_coc_path, wrapper: :input_group, method: :put,multiple: true) do |f| %>
+                      <%= simple_form_for(current_student, url: update_coc_path, wrapper: :input_group, method: :put,multiple: true) do |f| %>
                         <div class="flex">
-                          <%= f.input :coc, as: :file, label: "Add transcripts",class: 'form-control'%>
-                          <%= f.submit :Add, class: 'btn btn-primary'%>
+                          <%= f.input :coc, as: :file, label: "Add transcripts",class: 'form-control',input_html: {onchange: 'this.form.submit()'}%>
+                        </div>
+                      <%end%>
+                    <%end%>
+                    <% if current_student.allow_editing?%>
+                      <%= simple_form_for(current_student, url: update_coc_path, wrapper: :input_group, method: :put,multiple: true) do |f| %>
+                        <div class="flex">
+                          <%= f.input :coc, as: :file, label: "Add transcripts",class: 'form-control',input_html: {onchange: 'this.form.submit()'}%>
                         </div>
                       <%end%>
                     <%end%>
