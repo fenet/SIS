@@ -670,13 +670,17 @@ body.index.active_admin {
   flex-wrap: wrap;
   gap: 24px;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   padding: 15px;
   margin-bottom: 15px;
   background-color: #fff;
   border-bottom: 1px solid #1C6EA4;
   border-radius: 20px;
+}
 
+.widgetContainer{
+  height: 120px;
+  overflow: hidden;
 }
 
 .widget {
