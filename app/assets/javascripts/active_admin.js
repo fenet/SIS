@@ -65,6 +65,23 @@ $(document).ready(function(){
   $('#header').before("<div class='headline'><div class='banner-logo'></div> <h1 class='banner-title'>Leadstar College Registrar Portal</h1></div>");
 
 
+  $('.link').click(function (e) {
+    e.preventDefault();
+    let $container = $(this).closest('.widgetContainer').first();
+    if ($container.css('overflow')=="hidden") {
+      $container.css({
+        height: 'auto',
+        overflow: 'visible'
+      });
+    } else {
+      $container.css({
+        height: '120px',
+        overflow: 'hidden'
+      });
+   }
+
+   
+  })
 
 
 });
