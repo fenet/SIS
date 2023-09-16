@@ -1,17 +1,17 @@
 class RegistrationsController < Devise::RegistrationsController
-	# before_action :configure_permitted_parameters, if: :devise_controller?
-	# private
+  before_action :check_permit, only: [:update_document]
+  # private
 
-	# def after_sign_up_path_for(resource)
-	# 	# if user_signed_in?
-	# 	# 	payment_path
-	# 	# end
-	# end
-	# def new
- #    super do |resource|
- #      resource.build_student_address
- #    end
- #  end
+  # def after_sign_up_path_for(resource)
+  # 	# if user_signed_in?
+  # 	# 	payment_path
+  # 	# end
+  # end
+  # def new
+  #    super do |resource|
+  #      resource.build_student_address
+  #    end
+  #  endp
   def new
 
     # Override Devise default behaviour and create a profile as well
@@ -21,20 +21,52 @@ class RegistrationsController < Devise::RegistrationsController
     respond_with self.resource
   end
 
-
-	protected
-
-  def update_resource(resource, params)
-    # Require current password if user is trying to change password.
-    # return super if params["password"]&.present?
-
-    # Allows user to update registration information without password.
-    resource.update_without_password(params.except('current_password'))
+  def update_profile_photo
+    current_student.photo.attach(check_permit[:photo])
+    redirect_to profile_url
   end
 
-    
+  def update_highschool_transcript
+    current_student.highschool_transcript.attach(check_permit[:highschool_transcript])
+    redirect_to documents_url
+  end
 
-  
+  def update_grade_10_matric
+    current_student.grade_10_matric.attach(check_permit[:grade_10_matric])
+    redirect_to documents_url
+  end
+
+  def update_grade_12_matric
+    current_student.grade_12_matric.attach(check_permit[:grade_12_matric])
+    redirect_to documents_url
+  end
+
+  def update_coc
+    current_student.coc.attach(check_permit[:coc])
+    redirect_to documents_url
+  end
+
+  def update_diploma_certificate
+    current_student.diploma_certificate.attach(check_permit[:diploma_certificate])
+    redirect_to documents_url
+  end
+
+  def update_degree_certificate
+    current_student.degree_certificate.attach(check_permit[:degree_certificate])
+    redirect_to documents_url
+  end
+
+  protected
+
+  def update_resource(resource, params)
+    resource.update_without_password(params.except("current_password"))
+  end
+
+  private
+
+  def check_permit
+    params.require(:student).permit(:highschool_transcript, :photo, :grade_10_matric, :grade_12_matric, :coc, :diploma_certificate, :degree_certificate)
+  end
 
   # def configure_permitted_parameters
   #   devise_parameter_sanitizer.permit(:sign_up) do |student_params|

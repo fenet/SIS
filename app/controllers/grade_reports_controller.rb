@@ -15,6 +15,19 @@ class GradeReportsController < ApplicationController
     @grade_report = GradeReport.new
   end
 
+  def student_grade_report
+    year = params[:year]
+    semester = params[:semester]
+    students = GradeReport.where(student: current_student, year: year, semester: semester)
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = StudentGradeReport.new(students)
+        send_data pdf.render, filename: "student grade #{Time.zone.now}.pdf", type: "application/pdf", disposition: "inline"
+      end
+    end
+  end
+
   # GET /grade_reports/1/edit
   def edit
   end

@@ -47,6 +47,17 @@ ActiveAdmin.register Student do
     redirect_to admin_students_path, notice: "#{'student'.pluralize(ids.size)} account verification status incompleted "
   end
 
+  batch_action 'Allow to edit their profile for', method: :put, confirm: "Are you sure?" do |ids|
+    Student.where(id: ids).update(allow_editing: true)
+    redirect_to admin_students_path, notice: "#{'student'.pluralize(ids.size)} allowed to edit their profile"
+  end
+
+  batch_action 'Denie to edit their profile for', method: :put, confirm: "Are you sure?" do |ids|
+    Student.where(id: ids).update(allow_editing: false)
+    redirect_to admin_students_path, notice: "#{'student'.pluralize(ids.size)} denied to edit their profile"
+  end
+
+
 
   controller do
     def update_resource(object, attributes)

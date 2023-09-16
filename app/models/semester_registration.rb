@@ -64,17 +64,17 @@ class SemesterRegistration < ApplicationRecord
               report.academic_status = AddAcademicStatus.academic_status({ sgpa: report.sgpa, cgpa: report.cgpa }, self.student)
             else
               report.academic_status = AcademicStatusGraduate.get_academic_status(report: report, student: student)
-              #report.academic_status = "Excellent"
               # report.academic_status = self.student.program.grade_systems.last.academic_statuses.where("min_value < ?", report.cgpa).where("max_value >= ?", report.cgpa).last.status
             end
-            if (report.academic_status != "Academic Dismissal") || (report.academic_status != "Incomplete")
+
+            if (report.academic_status.strip != "Academic Dismissal") || (report.academic_status.strip != "Incomplete")
               if self.program.program_semester > self.student.semester
                 promoted_semester = self.student.semester + 1
                 self.student.update_columns(semester: promoted_semester)
               elsif (self.program.program_semester == self.student.semester) && (self.program.program_duration > self.student.year)
-                promoted_year = self.student.year + 1 
-                self.student.update_columns(semester: 1) 
-                self.student.update_columns(year: promoted_year) 
+                promoted_year = self.student.year + 1
+                self.student.update_columns(semester: 1)
+                self.student.update_columns(year: promoted_year)
               end
             end
           end
@@ -92,7 +92,7 @@ class SemesterRegistration < ApplicationRecord
             if self.student.study_level == "undergraduate"
               report.academic_status = AcademicStatusGraduate.get_academic_status(report: report, student: student)
             else
-              report.academic_status = AcademicStatusGraduate.academic_status(report: report, student: student)
+              report.academic_status = AcademicStatusGraduate.get_academic_status(report: report, student: student)
               # report.academic_status = self.student.program.grade_systems.last.academic_statuses.where("min_value <= ?", report.cgpa).where("max_value >= ?", report.cgpa).last.status
             end
             if (report.academic_status != "Academic Dismissal") || (report.academic_status != "Incomplete")
@@ -154,7 +154,7 @@ class SemesterRegistration < ApplicationRecord
         invoice.invoice_status = "unpaid"
         # invoice.registration_fee = CollegePayment.where(study_level: self.study_level,admission_type: self.admission_type).first.pluck(:registration_fee)
         # -> back if Activity.where(category: "registration", academic_calendar_id: AcademicCalendar.where(study_level: self.study_level.strip, admission_type: self.admission_type.strip).where("starting_date <= ? AND ending_date >= ?", Time.zone.now, Time.zone.now).order("created_at DESC").first).where("starting_date <= ? AND ending_date >= ?", Time.zone.now, Time.zone.now).order("created_at DESC").first
-          invoice.registration_fee = self.student.get_registration_fee
+        invoice.registration_fee = self.student.get_registration_fee
         # -> back  elsif Activity.where(category: "late registration", academic_calendar_id: AcademicCalendar.where(study_level: self.study_level, admission_type: self.admission_type).where("starting_date <= ? AND ending_date >= ?", Time.zone.now, Time.zone.now).order("created_at DESC").first).where("starting_date <= ? AND ending_date >= ?", Time.zone.now, Time.zone.now).order("created_at DESC").first
         #   invoice.late_registration_fee = CollegePayment.where(study_level: self.study_level, admission_type: self.admission_type).pluck(:late_registration_fee).first
         # end
@@ -162,12 +162,11 @@ class SemesterRegistration < ApplicationRecord
         invoice.invoice_number = SecureRandom.random_number(10000000)
         if self.mode_of_payment == "Monthly Payment"
           # if self.year == 1 && self.semester == 1
-            tution_price = self.student.get_tution_fee
-            registration_fee = self.student.get_registration_fee
-            # (self.course_registrations.collect { |oi| oi.valid? ? (CollegePayment.where(study_level: self.study_level.strip, admission_type: self.admission_type.strip).first.tution_per_credit_hr * oi.course.credit_hour) : 0 }.sum) + invoice.registration_fee + invoice.late_registration_fee
+          tution_price = self.student.get_tution_fee
+          # (self.course_registrations.collect { |oi| oi.valid? ? (CollegePayment.where(study_level: self.study_level.strip, admission_type: self.admission_type.strip).first.tution_per_credit_hr * oi.course.credit_hour) : 0 }.sum) + invoice.registration_fee + invoice.late_registration_fee
           # else
-            # tution_price = self.student.get_tution_fee
-            #  (self.course_registrations.collect { |oi| oi.valid? ? (CollegePayment.where(study_level: self.study_level.strip, admission_type: self.admission_type.strip).first.tution_per_credit_hr * oi.course.credit_hour) : 0 }.sum) + invoice.registration_fee + invoice.late_registration_fee
+          # tution_price = self.student.get_tution_fee
+          #  (self.course_registrations.collect { |oi| oi.valid? ? (CollegePayment.where(study_level: self.study_level.strip, admission_type: self.admission_type.strip).first.tution_per_credit_hr * oi.course.credit_hour) : 0 }.sum) + invoice.registration_fee + invoice.late_registration_fee
           # end
 
           invoice.total_price = tution_price / 4
@@ -176,8 +175,8 @@ class SemesterRegistration < ApplicationRecord
           # if self.year == 1 && self.semester == 1
           #   tution_price = (self.course_registrations.collect { |oi| oi.valid? ? (CollegePayment.where(study_level: self.study_level, admission_type: self.admission_type).first.tution_per_credit_hr * oi.course.credit_hour) : 0 }.sum)  + invoice.registration_fee + invoice.late_registration_fee
           # else
-            tution_price = self.student.get_tution_fee
-            # (self.course_registrations.collect { |oi| oi.valid? ? (CollegePayment.where(study_level: self.study_level, admission_type: self.admission_type).first.tution_per_credit_hr * oi.course.credit_hour) : 0 }.sum) + invoice.registration_fee + invoice.late_registration_fee
+          tution_price = self.student.get_tution_fee
+          # (self.course_registrations.collect { |oi| oi.valid? ? (CollegePayment.where(study_level: self.study_level, admission_type: self.admission_type).first.tution_per_credit_hr * oi.course.credit_hour) : 0 }.sum) + invoice.registration_fee + invoice.late_registration_fee
           # end
 
           invoice.total_price = tution_price
@@ -185,9 +184,8 @@ class SemesterRegistration < ApplicationRecord
           # if self.year == 1 && self.semester == 1
           #   tution_price = (self.course_registrations.collect { |oi| oi.valid? ? (CollegePayment.where(study_level: self.study_level, admission_type: self.admission_type).first.tution_per_credit_hr * oi.course.credit_hour) : 0 }.sum)  + invoice.registration_fee + invoice.late_registration_fee
           # else
-            tution_price = self.student.get_tution_fee
-            registration_fee = self.student.get_registration_fee
-            # (self.course_registrations.collect { |oi| oi.valid? ? (CollegePayment.where(study_level: self.study_level, admission_type: self.admission_type).first.tution_per_credit_hr * oi.course.credit_hour) : 0 }.sum) + invoice.registration_fee + invoice.late_registration_fee
+          tution_price = self.student.get_tution_fee
+          # (self.course_registrations.collect { |oi| oi.valid? ? (CollegePayment.where(study_level: self.study_level, admission_type: self.admission_type).first.tution_per_credit_hr * oi.course.credit_hour) : 0 }.sum) + invoice.registration_fee + invoice.late_registration_fee
           # end
 
           invoice.total_price = tution_price / 2
@@ -202,7 +200,7 @@ class SemesterRegistration < ApplicationRecord
   def semester_course_registration
     if self.finance_approval_status == "pending" && self.registrar_approval_status == "pending"
       # self.program.curriculums.where(curriculum_version: self.student.curriculum_version).last.courses.where(year: self.year, semester: self.semester).each do |co|
-      all_courses = [] 
+      all_courses = []
       self.student.get_current_courses.each do |co|
         all_courses << CourseRegistration.new do |course_registration|
           course_registration.semester_registration_id = self.id

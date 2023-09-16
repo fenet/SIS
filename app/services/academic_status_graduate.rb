@@ -1,33 +1,34 @@
-class AcademicStatusGraduate
-  def self.get_academic_status(report:, student:)
-    if is_semester_year?(student: student, year: 1, semester: 1)
-      if report.sgpa >= 3 && report.sgpa <= 4
-        "Academic Pass"
-      elsif report.sgpa >= 2.5 && report.sgpa < 3
-        "Academic Probation"
-      elsif report.sgpa < 2.5
-        "Academic Dismissal"
-      end
-    else
-      if is_pass_first_semester?(student: student)
+module AcademicStatusGraduate
+  class << self
+    def get_academic_status(report:, student:)
+      if is_semester_year?(student: student, year: 1, semester: 1)
         if report.sgpa >= 3 && report.sgpa <= 4
           "Academic Pass"
-        elsif report.sgpa >= 2.5 && report.sgpa < 3 && report.cgpa >= 3 # need some checking to see if
+        elsif report.sgpa >= 2.5 && report.sgpa < 3
           "Academic Probation"
-        elsif (report.sgpa >= 2.5 && report.sgpa < 3) && (report.cgpa >= 2.5 && report.cgpa < 3)
-          "Academic Probation"
-        end
-      elsif is_probation_first_semester?(student: student)
-        if report.sgpa < 3
+        elsif report.sgpa < 2.5
           "Academic Dismissal"
-        elsif report.sgpa >= 3 && report.cgpa < 3
-          "Final Probation"
-        else
-          "Academic Pass"
+        end
+      else
+        if is_pass_first_semester?(student: student)
+          if report.sgpa >= 3 && report.sgpa <= 4
+            "Academic Pass"
+          elsif report.sgpa >= 2.5 && report.sgpa < 3 && report.cgpa >= 3 # need some checking to see if
+            "Academic Probation"
+          elsif (report.sgpa >= 2.5 && report.sgpa < 3) && (report.cgpa >= 2.5 && report.cgpa < 3)
+            "Academic Probation"
+          end
+        elsif is_probation_first_semester?(student: student)
+          if report.sgpa < 3
+            "Academic Dismissal"
+          elsif report.sgpa >= 3 && report.cgpa < 3
+            "Final Probation"
+          else
+            "Academic Pass"
+          end
         end
       end
     end
-  end
 
   #private
 
