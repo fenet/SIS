@@ -1490,3 +1490,318 @@ You have deleted from the Gemfile:
   INFO ---------------------------------------------------------------------------
  DEBUG [1b2333b8] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as newdeploy@148.113.8.52
  DEBUG [1b2333b8] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+  INFO ---------------------------------------------------------------------------
+  INFO START 2023-09-08 08:02:08 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [70dcad9e] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as deploy@148.113.8.52
+ DEBUG [70dcad9e] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+ DEBUG [70dcad9e] Finished in 13.469 seconds with exit status 0 (successful).
+ DEBUG [b9abcb0c] Running /usr/bin/env which passenger as deploy@148.113.8.52
+ DEBUG [b9abcb0c] Command: /usr/bin/env which passenger
+ DEBUG [b9abcb0c] 	/usr/bin/passenger
+ DEBUG [b9abcb0c] Finished in 2.149 seconds with exit status 0 (successful).
+  INFO [9e0f853b] Running /usr/bin/env mkdir -p /tmp as deploy@148.113.8.52
+ DEBUG [9e0f853b] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /tmp )
+  INFO [9e0f853b] Finished in 2.861 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-dce628f777bf9d882193.sh 0.0%
+  INFO Uploading /tmp/git-ssh-dce628f777bf9d882193.sh 100.0%
+  INFO [676888a0] Running /usr/bin/env chmod 700 /tmp/git-ssh-dce628f777bf9d882193.sh as deploy@148.113.8.52
+ DEBUG [676888a0] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env chmod 700 /tmp/git-ssh-dce628f777bf9d882193.sh )
+  INFO [676888a0] Finished in 1.849 seconds with exit status 0 (successful).
+  INFO [26d36505] Running /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD as deploy@148.113.8.52
+ DEBUG [26d36505] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-dce628f777bf9d882193.sh" ; /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD )
+ DEBUG [26d36505] 	85ae08272b4acf5a3d83dbe6dd19bd59c3c72afe	HEAD
+  INFO [26d36505] Finished in 2.085 seconds with exit status 0 (successful).
+  INFO [cea0d094] Running /usr/bin/env mkdir -p /home/deploy/yic_production/shared /home/deploy/yic_production/releases as deploy@148.113.8.52
+ DEBUG [cea0d094] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/deploy/yic_production/shared /home/deploy/yic_production/releases )
+  INFO [cea0d094] Finished in 1.488 seconds with exit status 0 (successful).
+  INFO [9a4de2a0] Running /usr/bin/env mkdir -p /home/deploy/yic_production/shared/log /home/deploy/yic_production/shared/tmp/pids /home/deploy/yic_production/shared/tmp/cache /home/deploy/yic_production/shared/tmp/sockets /home/deploy/yic_production/shared/vendor/bundle /home/deploy/yic_production/shared/public/system /home/deploy/yic_production/shared/public/uploads /home/deploy/yic_production/shared/public/assets as deploy@148.113.8.52
+ DEBUG [9a4de2a0] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/deploy/yic_production/shared/log /home/deploy/yic_production/shared/tmp/pids /home/deploy/yic_production/shared/tmp/cache /home/deploy/yic_production/shared/tmp/sockets /home/deploy/yic_production/shared/vendor/bundle /home/deploy/yic_production/shared/public/system /home/deploy/yic_production/shared/public/uploads /home/deploy/yic_production/shared/public/assets )
+  INFO [9a4de2a0] Finished in 1.629 seconds with exit status 0 (successful).
+ DEBUG [625a1397] Running [ -f /home/deploy/yic_production/current/REVISION ] as deploy@148.113.8.52
+ DEBUG [625a1397] Command: [ -f /home/deploy/yic_production/current/REVISION ]
+ DEBUG [625a1397] Finished in 2.250 seconds with exit status 0 (successful).
+ DEBUG [6277f355] Running /usr/bin/env cat /home/deploy/yic_production/current/REVISION 2>/dev/null as deploy@148.113.8.52
+ DEBUG [6277f355] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env cat /home/deploy/yic_production/current/REVISION 2>/dev/null )
+ DEBUG [6277f355] 	7688abd57cbe9ef9dd0fa696e07c84c3a2f33a0a
+ DEBUG [6277f355] Finished in 3.175 seconds with exit status 0 (successful).
+ DEBUG [6f0f1b9d] Running [ -f /home/deploy/yic_production/repo/HEAD ] as deploy@148.113.8.52
+ DEBUG [6f0f1b9d] Command: [ -f /home/deploy/yic_production/repo/HEAD ]
+ DEBUG [6f0f1b9d] Finished in 2.510 seconds with exit status 0 (successful).
+  INFO The repository mirror is at /home/deploy/yic_production/repo
+ DEBUG [2a7ba16d] Running if test ! -d /home/deploy/yic_production/repo; then echo "Directory does not exist '/home/deploy/yic_production/repo'" 1>&2; false; fi as deploy@148.113.8.52
+ DEBUG [2a7ba16d] Command: if test ! -d /home/deploy/yic_production/repo; then echo "Directory does not exist '/home/deploy/yic_production/repo'" 1>&2; false; fi
+ DEBUG [2a7ba16d] Finished in 2.296 seconds with exit status 0 (successful).
+  INFO [11fe2dfa] Running /usr/bin/env git remote set-url origin https://fenet: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@github.com/fenet/leadstarlatest.git as deploy@148.113.8.52
+ DEBUG [11fe2dfa] Command: cd /home/deploy/yic_production/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-dce628f777bf9d882193.sh" ; /usr/bin/env git remote set-url origin https://fenet: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@github.com/fenet/leadstarlatest.git )
+  INFO [11fe2dfa] Finished in 2.196 seconds with exit status 0 (successful).
+  INFO [171b514d] Running /usr/bin/env git remote update --prune as deploy@148.113.8.52
+ DEBUG [171b514d] Command: cd /home/deploy/yic_production/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-dce628f777bf9d882193.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [171b514d] 	Fetching origin
+ DEBUG [171b514d] 	warning: no common commits
+ DEBUG [171b514d] 	From https://github.com/fenet/leadstarlatest
+ + 7688abd5...85ae0827 main       -> main  (forced update)
+  INFO [171b514d] Finished in 4.866 seconds with exit status 0 (successful).
+ DEBUG [c4bed87d] Running if test ! -d /home/deploy/yic_production/repo; then echo "Directory does not exist '/home/deploy/yic_production/repo'" 1>&2; false; fi as deploy@148.113.8.52
+ DEBUG [c4bed87d] Command: if test ! -d /home/deploy/yic_production/repo; then echo "Directory does not exist '/home/deploy/yic_production/repo'" 1>&2; false; fi
+ DEBUG [c4bed87d] Finished in 2.148 seconds with exit status 0 (successful).
+  INFO [0aa6a491] Running /usr/bin/env mkdir -p /home/deploy/yic_production/releases/20230908050244 as deploy@148.113.8.52
+ DEBUG [0aa6a491] Command: cd /home/deploy/yic_production/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-dce628f777bf9d882193.sh" ; /usr/bin/env mkdir -p /home/deploy/yic_production/releases/20230908050244 )
+  INFO [0aa6a491] Finished in 1.636 seconds with exit status 0 (successful).
+  INFO [6ba0751b] Running /usr/bin/env git archive main | /usr/bin/env tar -x -f - -C /home/deploy/yic_production/releases/20230908050244 as deploy@148.113.8.52
+ DEBUG [6ba0751b] Command: cd /home/deploy/yic_production/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-dce628f777bf9d882193.sh" ; /usr/bin/env git archive main | /usr/bin/env tar -x -f - -C /home/deploy/yic_production/releases/20230908050244 )
+  INFO [6ba0751b] Finished in 2.762 seconds with exit status 0 (successful).
+ DEBUG [7c5026ff] Running if test ! -d /home/deploy/yic_production/repo; then echo "Directory does not exist '/home/deploy/yic_production/repo'" 1>&2; false; fi as deploy@148.113.8.52
+ DEBUG [7c5026ff] Command: if test ! -d /home/deploy/yic_production/repo; then echo "Directory does not exist '/home/deploy/yic_production/repo'" 1>&2; false; fi
+ DEBUG [7c5026ff] Finished in 2.149 seconds with exit status 0 (successful).
+ DEBUG [95296375] Running /usr/bin/env git rev-list --max-count=1 main as deploy@148.113.8.52
+ DEBUG [95296375] Command: cd /home/deploy/yic_production/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-dce628f777bf9d882193.sh" ; /usr/bin/env git rev-list --max-count=1 main )
+ DEBUG [95296375] 	85ae08272b4acf5a3d83dbe6dd19bd59c3c72afe
+ DEBUG [95296375] Finished in 3.071 seconds with exit status 0 (successful).
+ DEBUG [7ddb0990] Running if test ! -d /home/deploy/yic_production/releases/20230908050244; then echo "Directory does not exist '/home/deploy/yic_production/releases/20230908050244'" 1>&2; false; fi as deploy@148.113.8.52
+ DEBUG [7ddb0990] Command: if test ! -d /home/deploy/yic_production/releases/20230908050244; then echo "Directory does not exist '/home/deploy/yic_production/releases/20230908050244'" 1>&2; false; fi
+ DEBUG [7ddb0990] Finished in 1.943 seconds with exit status 0 (successful).
+  INFO [afd9afa2] Running /usr/bin/env echo "85ae08272b4acf5a3d83dbe6dd19bd59c3c72afe" > REVISION as deploy@148.113.8.52
+ DEBUG [afd9afa2] Command: cd /home/deploy/yic_production/releases/20230908050244 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "85ae08272b4acf5a3d83dbe6dd19bd59c3c72afe" > REVISION )
+  INFO [afd9afa2] Finished in 1.791 seconds with exit status 0 (successful).
+  INFO [ded06508] Running /usr/bin/env mkdir -p /home/deploy/yic_production/releases/20230908050244 /home/deploy/yic_production/releases/20230908050244/tmp /home/deploy/yic_production/releases/20230908050244/vendor /home/deploy/yic_production/releases/20230908050244/public as deploy@148.113.8.52
+ DEBUG [ded06508] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/deploy/yic_production/releases/20230908050244 /home/deploy/yic_production/releases/20230908050244/tmp /home/deploy/yic_production/releases/20230908050244/vendor /home/deploy/yic_production/releases/20230908050244/public )
+  INFO [ded06508] Finished in 2.708 seconds with exit status 0 (successful).
+ DEBUG [d5100f89] Running [ -L /home/deploy/yic_production/releases/20230908050244/log ] as deploy@148.113.8.52
+ DEBUG [d5100f89] Command: [ -L /home/deploy/yic_production/releases/20230908050244/log ]
+ DEBUG [d5100f89] Finished in 1.432 seconds with exit status 1 (failed).
+ DEBUG [280478bd] Running [ -d /home/deploy/yic_production/releases/20230908050244/log ] as deploy@148.113.8.52
+ DEBUG [280478bd] Command: [ -d /home/deploy/yic_production/releases/20230908050244/log ]
+ DEBUG [280478bd] Finished in 1.944 seconds with exit status 0 (successful).
+  INFO [8769ec98] Running /usr/bin/env rm -rf /home/deploy/yic_production/releases/20230908050244/log as deploy@148.113.8.52
+ DEBUG [8769ec98] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env rm -rf /home/deploy/yic_production/releases/20230908050244/log )
+  INFO [8769ec98] Finished in 2.556 seconds with exit status 0 (successful).
+  INFO [28bb87fb] Running /usr/bin/env ln -s /home/deploy/yic_production/shared/log /home/deploy/yic_production/releases/20230908050244/log as deploy@148.113.8.52
+ DEBUG [28bb87fb] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/deploy/yic_production/shared/log /home/deploy/yic_production/releases/20230908050244/log )
+  INFO [28bb87fb] Finished in 1.944 seconds with exit status 0 (successful).
+ DEBUG [17011058] Running [ -L /home/deploy/yic_production/releases/20230908050244/tmp/pids ] as deploy@148.113.8.52
+ DEBUG [17011058] Command: [ -L /home/deploy/yic_production/releases/20230908050244/tmp/pids ]
+ DEBUG [17011058] Finished in 2.268 seconds with exit status 1 (failed).
+ DEBUG [04e8ba19] Running [ -d /home/deploy/yic_production/releases/20230908050244/tmp/pids ] as deploy@148.113.8.52
+ DEBUG [04e8ba19] Command: [ -d /home/deploy/yic_production/releases/20230908050244/tmp/pids ]
+ DEBUG [04e8ba19] Finished in 1.622 seconds with exit status 1 (failed).
+  INFO [9e97ddcc] Running /usr/bin/env ln -s /home/deploy/yic_production/shared/tmp/pids /home/deploy/yic_production/releases/20230908050244/tmp/pids as deploy@148.113.8.52
+ DEBUG [9e97ddcc] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/deploy/yic_production/shared/tmp/pids /home/deploy/yic_production/releases/20230908050244/tmp/pids )
+  INFO [9e97ddcc] Finished in 1.764 seconds with exit status 0 (successful).
+ DEBUG [fd13d3ce] Running [ -L /home/deploy/yic_production/releases/20230908050244/tmp/cache ] as deploy@148.113.8.52
+ DEBUG [fd13d3ce] Command: [ -L /home/deploy/yic_production/releases/20230908050244/tmp/cache ]
+ DEBUG [fd13d3ce] Finished in 2.330 seconds with exit status 1 (failed).
+ DEBUG [a1bf90af] Running [ -d /home/deploy/yic_production/releases/20230908050244/tmp/cache ] as deploy@148.113.8.52
+ DEBUG [a1bf90af] Command: [ -d /home/deploy/yic_production/releases/20230908050244/tmp/cache ]
+ DEBUG [a1bf90af] Finished in 2.252 seconds with exit status 0 (successful).
+  INFO [b291bf16] Running /usr/bin/env rm -rf /home/deploy/yic_production/releases/20230908050244/tmp/cache as deploy@148.113.8.52
+ DEBUG [b291bf16] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env rm -rf /home/deploy/yic_production/releases/20230908050244/tmp/cache )
+  INFO [b291bf16] Finished in 1.696 seconds with exit status 0 (successful).
+  INFO [ff23c3a3] Running /usr/bin/env ln -s /home/deploy/yic_production/shared/tmp/cache /home/deploy/yic_production/releases/20230908050244/tmp/cache as deploy@148.113.8.52
+ DEBUG [ff23c3a3] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/deploy/yic_production/shared/tmp/cache /home/deploy/yic_production/releases/20230908050244/tmp/cache )
+  INFO [ff23c3a3] Finished in 2.090 seconds with exit status 0 (successful).
+ DEBUG [4cf313ed] Running [ -L /home/deploy/yic_production/releases/20230908050244/tmp/sockets ] as deploy@148.113.8.52
+ DEBUG [4cf313ed] Command: [ -L /home/deploy/yic_production/releases/20230908050244/tmp/sockets ]
+ DEBUG [4cf313ed] Finished in 1.944 seconds with exit status 1 (failed).
+ DEBUG [8561883a] Running [ -d /home/deploy/yic_production/releases/20230908050244/tmp/sockets ] as deploy@148.113.8.52
+ DEBUG [8561883a] Command: [ -d /home/deploy/yic_production/releases/20230908050244/tmp/sockets ]
+ DEBUG [8561883a] Finished in 2.047 seconds with exit status 1 (failed).
+  INFO [7dc4acc5] Running /usr/bin/env ln -s /home/deploy/yic_production/shared/tmp/sockets /home/deploy/yic_production/releases/20230908050244/tmp/sockets as deploy@148.113.8.52
+ DEBUG [7dc4acc5] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/deploy/yic_production/shared/tmp/sockets /home/deploy/yic_production/releases/20230908050244/tmp/sockets )
+  INFO [7dc4acc5] Finished in 1.842 seconds with exit status 0 (successful).
+ DEBUG [94d260cc] Running [ -L /home/deploy/yic_production/releases/20230908050244/vendor/bundle ] as deploy@148.113.8.52
+ DEBUG [94d260cc] Command: [ -L /home/deploy/yic_production/releases/20230908050244/vendor/bundle ]
+ DEBUG [94d260cc] Finished in 1.657 seconds with exit status 1 (failed).
+ DEBUG [d0d662c1] Running [ -d /home/deploy/yic_production/releases/20230908050244/vendor/bundle ] as deploy@148.113.8.52
+ DEBUG [d0d662c1] Command: [ -d /home/deploy/yic_production/releases/20230908050244/vendor/bundle ]
+ DEBUG [d0d662c1] Finished in 2.308 seconds with exit status 1 (failed).
+  INFO [9e4d34ac] Running /usr/bin/env ln -s /home/deploy/yic_production/shared/vendor/bundle /home/deploy/yic_production/releases/20230908050244/vendor/bundle as deploy@148.113.8.52
+ DEBUG [9e4d34ac] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/deploy/yic_production/shared/vendor/bundle /home/deploy/yic_production/releases/20230908050244/vendor/bundle )
+  INFO [9e4d34ac] Finished in 1.357 seconds with exit status 0 (successful).
+ DEBUG [614813ce] Running [ -L /home/deploy/yic_production/releases/20230908050244/public/system ] as deploy@148.113.8.52
+ DEBUG [614813ce] Command: [ -L /home/deploy/yic_production/releases/20230908050244/public/system ]
+ DEBUG [614813ce] Finished in 2.251 seconds with exit status 1 (failed).
+ DEBUG [13e2ace4] Running [ -d /home/deploy/yic_production/releases/20230908050244/public/system ] as deploy@148.113.8.52
+ DEBUG [13e2ace4] Command: [ -d /home/deploy/yic_production/releases/20230908050244/public/system ]
+ DEBUG [13e2ace4] Finished in 1.638 seconds with exit status 1 (failed).
+  INFO [a0b0984e] Running /usr/bin/env ln -s /home/deploy/yic_production/shared/public/system /home/deploy/yic_production/releases/20230908050244/public/system as deploy@148.113.8.52
+ DEBUG [a0b0984e] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/deploy/yic_production/shared/public/system /home/deploy/yic_production/releases/20230908050244/public/system )
+  INFO [a0b0984e] Finished in 1.638 seconds with exit status 0 (successful).
+ DEBUG [b6b7f968] Running [ -L /home/deploy/yic_production/releases/20230908050244/public/uploads ] as deploy@148.113.8.52
+ DEBUG [b6b7f968] Command: [ -L /home/deploy/yic_production/releases/20230908050244/public/uploads ]
+ DEBUG [b6b7f968] Finished in 1.841 seconds with exit status 1 (failed).
+ DEBUG [95a28edd] Running [ -d /home/deploy/yic_production/releases/20230908050244/public/uploads ] as deploy@148.113.8.52
+ DEBUG [95a28edd] Command: [ -d /home/deploy/yic_production/releases/20230908050244/public/uploads ]
+ DEBUG [95a28edd] Finished in 1.638 seconds with exit status 1 (failed).
+  INFO [1cdd4350] Running /usr/bin/env ln -s /home/deploy/yic_production/shared/public/uploads /home/deploy/yic_production/releases/20230908050244/public/uploads as deploy@148.113.8.52
+ DEBUG [1cdd4350] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/deploy/yic_production/shared/public/uploads /home/deploy/yic_production/releases/20230908050244/public/uploads )
+  INFO [1cdd4350] Finished in 2.251 seconds with exit status 0 (successful).
+ DEBUG [b501ceb9] Running [ -L /home/deploy/yic_production/releases/20230908050244/public/assets ] as deploy@148.113.8.52
+ DEBUG [b501ceb9] Command: [ -L /home/deploy/yic_production/releases/20230908050244/public/assets ]
+ DEBUG [b501ceb9] Finished in 1.660 seconds with exit status 1 (failed).
+ DEBUG [85af3beb] Running [ -d /home/deploy/yic_production/releases/20230908050244/public/assets ] as deploy@148.113.8.52
+ DEBUG [85af3beb] Command: [ -d /home/deploy/yic_production/releases/20230908050244/public/assets ]
+ DEBUG [85af3beb] Finished in 2.127 seconds with exit status 1 (failed).
+  INFO [edd1da89] Running /usr/bin/env ln -s /home/deploy/yic_production/shared/public/assets /home/deploy/yic_production/releases/20230908050244/public/assets as deploy@148.113.8.52
+ DEBUG [edd1da89] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/deploy/yic_production/shared/public/assets /home/deploy/yic_production/releases/20230908050244/public/assets )
+  INFO [edd1da89] Finished in 1.944 seconds with exit status 0 (successful).
+ DEBUG [f2636674] Running if test ! -d /home/deploy/yic_production/releases/20230908050244; then echo "Directory does not exist '/home/deploy/yic_production/releases/20230908050244'" 1>&2; false; fi as deploy@148.113.8.52
+ DEBUG [f2636674] Command: if test ! -d /home/deploy/yic_production/releases/20230908050244; then echo "Directory does not exist '/home/deploy/yic_production/releases/20230908050244'" 1>&2; false; fi
+ DEBUG [f2636674] Finished in 2.377 seconds with exit status 0 (successful).
+  INFO [9293f59d] Running $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true as deploy@148.113.8.52
+ DEBUG [9293f59d] Command: cd /home/deploy/yic_production/releases/20230908050244 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true )
+  INFO [9293f59d] Finished in 2.124 seconds with exit status 0 (successful).
+  INFO [9f14500a] Running $HOME/.rbenv/bin/rbenv exec bundle config --local path /home/deploy/yic_production/shared/bundle as deploy@148.113.8.52
+ DEBUG [9f14500a] Command: cd /home/deploy/yic_production/releases/20230908050244 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local path /home/deploy/yic_production/shared/bundle )
+  INFO [9f14500a] Finished in 1.636 seconds with exit status 0 (successful).
+  INFO [d90fd776] Running $HOME/.rbenv/bin/rbenv exec bundle config --local without development:test as deploy@148.113.8.52
+ DEBUG [d90fd776] Command: cd /home/deploy/yic_production/releases/20230908050244 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local without development:test )
+  INFO [d90fd776] Finished in 1.841 seconds with exit status 0 (successful).
+ DEBUG [1c66ace0] Running if test ! -d /home/deploy/yic_production/releases/20230908050244; then echo "Directory does not exist '/home/deploy/yic_production/releases/20230908050244'" 1>&2; false; fi as deploy@148.113.8.52
+ DEBUG [1c66ace0] Command: if test ! -d /home/deploy/yic_production/releases/20230908050244; then echo "Directory does not exist '/home/deploy/yic_production/releases/20230908050244'" 1>&2; false; fi
+ DEBUG [1c66ace0] Finished in 1.842 seconds with exit status 0 (successful).
+ DEBUG [63997426] Running $HOME/.rbenv/bin/rbenv exec bundle check as deploy@148.113.8.52
+ DEBUG [63997426] Command: cd /home/deploy/yic_production/releases/20230908050244 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle check )
+ DEBUG [63997426] 	The Gemfile's dependencies are satisfied
+ DEBUG [63997426] Finished in 2.049 seconds with exit status 0 (successful).
+  INFO The Gemfile's dependencies are satisfied, skipping installation
+ DEBUG [0cdc0c0f] Running if test ! -d /home/deploy/yic_production/releases/20230908050244; then echo "Directory does not exist '/home/deploy/yic_production/releases/20230908050244'" 1>&2; false; fi as deploy@148.113.8.52
+ DEBUG [0cdc0c0f] Command: if test ! -d /home/deploy/yic_production/releases/20230908050244; then echo "Directory does not exist '/home/deploy/yic_production/releases/20230908050244'" 1>&2; false; fi
+ DEBUG [0cdc0c0f] Finished in 2.554 seconds with exit status 0 (successful).
+  INFO [c38cf9e2] Running $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile as deploy@148.113.8.52
+ DEBUG [c38cf9e2] Command: cd /home/deploy/yic_production/releases/20230908050244 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" RAILS_GROUPS="" ; $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile )
+ DEBUG [c38cf9e2] 	I, [2023-09-08T05:04:22.372545 #2039634]  INFO -- : Writing /home/deploy/yic_production/releases/20230908050244/public/assets/active_admin-72dd49d2370cc79f194b703b06041598ac7cf5d9871bbb0edb2a700abe0b262b.css
+ DEBUG [c38cf9e2] 	I, [2023-09-08T05:04:22.373061 #2039634]  INFO -- : Writing /home/deploy/yic_production/releases/20230908050244/public/assets/active_admin-72dd49d2370cc79f194b703b06041598ac7cf5d9871bbb0edb2a700abe0b262b.css.gz
+ DEBUG [c38cf9e2] 	I, [2023-09-08T05:04:26.457007 #2039634]  INFO -- : Writing /home/deploy/yic_production/releases/20230908050244/public/assets/active_admin-aea484d96f8b87d7b69457a3ad22f3e2c34adb678b8a6a383e6578cb13e9ee3a.js
+ DEBUG [c38cf9e2] 	I, [2023-09-08T05:04:26.457194 #2039634]  INFO -- : Writing /home/deploy/yic_production/releases/20230908050244/public/assets/active_admin-aea484d96f8b87d7b69457a3ad22f3e2c34adb678b8a6a383e6578cb13e9ee3a.js.gz
+ DEBUG [c38cf9e2] 	I, [2023-09-08T05:04:26.690650 #2039634]  INFO -- : Writing /home/deploy/yic_production/releases/20230908050244/public/assets/yesu-bc5e28386442d43a3d8b55b0752340faea6d75b3a78d26ecee296540956ed515.jpg
+ DEBUG [c38cf9e2] 	I, [2023-09-08T05:04:26.691851 #2039634]  INFO -- : Writing /home/deploy/yic_production/releases/20230908050244/public/assets/yesu-78cecd857aa2a446dd4ae260357aafdb1d02a5750dcf61d4d78add09f5f4209d.png
+ DEBUG [c38cf9e2] 	I, [2023-09-08T05:04:29.157223 #2039634]  INFO -- : Writing /home/deploy/yic_production/releases/20230908050244/public/assets/application-79ffbb47363027e76279fae1172539b8ed6a07002c77a2f8bbd38ce6e7fc2d1e.js
+ DEBUG [c38cf9e2] 	I, [2023-09-08T05:04:29.157306 #2039634]  INFO -- : Writing /home/deploy/yic_production/releases/20230908050244/public/assets/application-79ffbb47363027e76279fae1172539b8ed6a07002c77a2f8bbd38ce6e7fc2d1e.js.gz
+ DEBUG [c38cf9e2] 	autoprefixer: /home/deploy/yic_production/releases/20230908050244/app/assets/stylesheets/application.css.scss:20507:3: Replace color-adjust to print-color-adjust. The color-adjust shorthand is currently deprecated.
+  INFO [c38cf9e2] Finished in 16.177 seconds with exit status 0 (successful).
+ DEBUG [2db6fda5] Running if test ! -d /home/deploy/yic_production/releases/20230908050244; then echo "Directory does not exist '/home/deploy/yic_production/releases/20230908050244'" 1>&2; false; fi as deploy@148.113.8.52
+ DEBUG [2db6fda5] Command: if test ! -d /home/deploy/yic_production/releases/20230908050244; then echo "Directory does not exist '/home/deploy/yic_production/releases/20230908050244'" 1>&2; false; fi
+ DEBUG [2db6fda5] Finished in 3.380 seconds with exit status 0 (successful).
+  INFO [51afbd55] Running /usr/bin/env mkdir -p /home/deploy/yic_production/releases/20230908050244/assets_manifest_backup as deploy@148.113.8.52
+ DEBUG [51afbd55] Command: cd /home/deploy/yic_production/releases/20230908050244 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/deploy/yic_production/releases/20230908050244/assets_manifest_backup )
+  INFO [51afbd55] Finished in 1.635 seconds with exit status 0 (successful).
+ DEBUG [e7c08164] Running /usr/bin/env ls /home/deploy/yic_production/releases/20230908050244/public/assets/.sprockets-manifest* as deploy@148.113.8.52
+ DEBUG [e7c08164] Command: cd /home/deploy/yic_production/releases/20230908050244 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls /home/deploy/yic_production/releases/20230908050244/public/assets/.sprockets-manifest* )
+ DEBUG [e7c08164] 	/home/deploy/yic_production/releases/20230908050244/public/assets/.sprockets-manifest-ddaaa6471932018956bc8ff9bfcbffaf.json
+ DEBUG [e7c08164] Finished in 2.866 seconds with exit status 0 (successful).
+ DEBUG [78d9e29b] Running /usr/bin/env ls /home/deploy/yic_production/releases/20230908050244/public/assets/.sprockets-manifest* as deploy@148.113.8.52
+ DEBUG [78d9e29b] Command: cd /home/deploy/yic_production/releases/20230908050244 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls /home/deploy/yic_production/releases/20230908050244/public/assets/.sprockets-manifest* )
+ DEBUG [78d9e29b] 	/home/deploy/yic_production/releases/20230908050244/public/assets/.sprockets-manifest-ddaaa6471932018956bc8ff9bfcbffaf.json
+ DEBUG [78d9e29b] Finished in 2.559 seconds with exit status 0 (successful).
+  INFO [b5d2f119] Running /usr/bin/env cp /home/deploy/yic_production/releases/20230908050244/public/assets/.sprockets-manifest-ddaaa6471932018956bc8ff9bfcbffaf.json /home/deploy/yic_production/releases/20230908050244/assets_manifest_backup as deploy@148.113.8.52
+ DEBUG [b5d2f119] Command: cd /home/deploy/yic_production/releases/20230908050244 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env cp /home/deploy/yic_production/releases/20230908050244/public/assets/.sprockets-manifest-ddaaa6471932018956bc8ff9bfcbffaf.json /home/deploy/yic_production/releases/20230908050244/assets_manifest_backup )
+  INFO [b5d2f119] Finished in 2.060 seconds with exit status 0 (successful).
+  INFO [deploy:migrate] Run `rake db:migrate`
+ DEBUG [2fe6d1f8] Running if test ! -d /home/deploy/yic_production/releases/20230908050244; then echo "Directory does not exist '/home/deploy/yic_production/releases/20230908050244'" 1>&2; false; fi as deploy@148.113.8.52
+ DEBUG [2fe6d1f8] Command: if test ! -d /home/deploy/yic_production/releases/20230908050244; then echo "Directory does not exist '/home/deploy/yic_production/releases/20230908050244'" 1>&2; false; fi
+ DEBUG [2fe6d1f8] Finished in 1.925 seconds with exit status 0 (successful).
+  INFO [b3a70957] Running $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate as deploy@148.113.8.52
+ DEBUG [b3a70957] Command: cd /home/deploy/yic_production/releases/20230908050244 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" ; $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate )
+ DEBUG [b3a70957] 	== 20230612095453 AddServiceNameToActiveStorageBlobs: migrating ===============
+-- table_exists?(:active_storage_blobs)
+   -> 0.0004s
+-- column_exists?(:active_storage_blobs, :service_name)
+   -> 0.0009s
+-- add_column(:active_storage_blobs, :service_name, :string)
+   -> 0.0003s
+-- change_column(:active_storage_blobs, :service_name, :string, {:null=>false})
+   -> 0.0004s
+== 20230612095453 AddServiceNameToActiveStorageBlobs: migrated (0.0091s) ======
+
+== 20230612095454 CreateActiveStorageVariantRecords: migrating ================
+-- table_exists?(:active_storage_blobs)
+   -> 0.0012s
+-- create_table(:active_storage_variant_records, {:id=>:primary_key, :if_not_exists=>true})
+   -> 0.1335s
+== 20230612095454 CreateActiveStorageVariantRecords: migrated (0.1349s) =======
+
+== 20230612095455 RemoveNotNullOnActiveStorageBlobsChecksum: migrating ========
+-- table_exists?(:active_storage_blobs)
+   -> 0.0012s
+-- change_column_null(:active_storage_blobs, :checksum, true)
+   -> 0.0007s
+== 20230612095455 RemoveNotNullOnActiveStorageBlobsChecksum: migrated (0.0020s) 
+
+== 20230627115307 AdddefaulttoGreadreport: migrating ==========================
+-- change_column_default(:grade_reports, :dean_approval, {:from=>"pending", :to=>"approved"})
+   -> 0.0053s
+== 20230627115307 AdddefaulttoGreadreport: migrated (0.0054s) =================
+
+== 20230808113913 AddDefaultValue: migrating ==================================
+-- change_column(:students, :graduation_status, :string, {:default=>"pending"})
+   -> 0.0020s
+== 20230808113913 AddDefaultValue: migrated (0.0020s) =========================
+
+== 20230809134022 AddAcademicYearToCourseRegistration: migrating ==============
+-- add_column(:course_registrations, :academic_year, :integer)
+   -> 0.0012s
+== 20230809134022 AddAcademicYearToCourseRegistration: migrated (0.0012s) =====
+
+== 20230809194957 AddAdmissionDateToStudent: migrating ========================
+-- add_column(:students, :admission_date, :date)
+   -> 0.0010s
+== 20230809194957 AddAdmissionDateToStudent: migrated (0.0011s) ===============
+
+== 20230809201329 AddGraduationYearToStudent: migrating =======================
+-- add_column(:students, :graduation_year, :integer)
+   -> 0.0012s
+== 20230809201329 AddGraduationYearToStudent: migrated (0.0012s) ==============
+
+== 20230811213557 ChangeDepartmentApprovalToApprovedByStudentGrade: migrating =
+-- rename_column(:student_grades, :department_head_name, :approved_by)
+   -> 0.0061s
+-- rename_column(:student_grades, :department_head_date_of_response, :approval_date)
+   -> 0.0018s
+-- add_column(:student_grades, :approving_person_role, :string)
+   -> 0.0002s
+== 20230811213557 ChangeDepartmentApprovalToApprovedByStudentGrade: migrated (0.0081s) 
+
+== 20230814205105 AddMajorToCourse: migrating =================================
+-- add_column(:courses, :major, :boolean, {:default=>false})
+   -> 0.0014s
+== 20230814205105 AddMajorToCourse: migrated (0.0015s) ========================
+
+  INFO [b3a70957] Finished in 3.485 seconds with exit status 0 (successful).
+ DEBUG [b3525c9d] Running if test ! -d /home/deploy/yic_production/releases/20230908050244; then echo "Directory does not exist '/home/deploy/yic_production/releases/20230908050244'" 1>&2; false; fi as deploy@148.113.8.52
+ DEBUG [b3525c9d] Command: if test ! -d /home/deploy/yic_production/releases/20230908050244; then echo "Directory does not exist '/home/deploy/yic_production/releases/20230908050244'" 1>&2; false; fi
+ DEBUG [b3525c9d] Finished in 1.835 seconds with exit status 0 (successful).
+  INFO [bff7eebc] Running $HOME/.rbenv/bin/rbenv exec bundle exec whenever --update-crontab yic_portal_production --set environment=production --roles=app,web,db  as deploy@148.113.8.52
+ DEBUG [bff7eebc] Command: cd /home/deploy/yic_production/releases/20230908050244 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" ; $HOME/.rbenv/bin/rbenv exec bundle exec whenever --update-crontab yic_portal_production --set environment=production --roles=app,web,db  )
+ DEBUG [bff7eebc] 	[write] crontab file updated
+  INFO [bff7eebc] Finished in 2.354 seconds with exit status 0 (successful).
+  INFO [e1886b35] Running /usr/bin/env ln -s /home/deploy/yic_production/releases/20230908050244 /home/deploy/yic_production/releases/current as deploy@148.113.8.52
+ DEBUG [e1886b35] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/deploy/yic_production/releases/20230908050244 /home/deploy/yic_production/releases/current )
+  INFO [e1886b35] Finished in 1.430 seconds with exit status 0 (successful).
+  INFO [391eab6c] Running /usr/bin/env mv /home/deploy/yic_production/releases/current /home/deploy/yic_production as deploy@148.113.8.52
+ DEBUG [391eab6c] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mv /home/deploy/yic_production/releases/current /home/deploy/yic_production )
+  INFO [391eab6c] Finished in 1.636 seconds with exit status 0 (successful).
+ DEBUG [1f08d83a] Running /usr/bin/env pwd as deploy@148.113.8.52
+ DEBUG [1f08d83a] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env pwd )
+ DEBUG [1f08d83a] 	/home/deploy
+ DEBUG [1f08d83a] Finished in 1.944 seconds with exit status 0 (successful).
+ DEBUG [55a47512] Running if test ! -d /home/deploy; then echo "Directory does not exist '/home/deploy'" 1>&2; false; fi as deploy@148.113.8.52
+ DEBUG [55a47512] Command: if test ! -d /home/deploy; then echo "Directory does not exist '/home/deploy'" 1>&2; false; fi
+ DEBUG [55a47512] Finished in 1.661 seconds with exit status 0 (successful).
+  INFO [ee7c6b66] Running /usr/bin/env mkdir -p /home/deploy/yic_production/releases/20230908050244/tmp as deploy@148.113.8.52
+ DEBUG [ee7c6b66] Command: cd /home/deploy && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/deploy/yic_production/releases/20230908050244/tmp )
+  INFO [ee7c6b66] Finished in 1.817 seconds with exit status 0 (successful).
+  INFO [a40d857a] Running /usr/bin/env touch /home/deploy/yic_production/releases/20230908050244/tmp/restart.txt as deploy@148.113.8.52
+ DEBUG [a40d857a] Command: cd /home/deploy && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env touch /home/deploy/yic_production/releases/20230908050244/tmp/restart.txt )
+  INFO [a40d857a] Finished in 1.739 seconds with exit status 0 (successful).
+ DEBUG [1f10d76f] Running /usr/bin/env ls -x /home/deploy/yic_production/releases as deploy@148.113.8.52
+ DEBUG [1f10d76f] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls -x /home/deploy/yic_production/releases )
+ DEBUG [1f10d76f] 	20230708141246	20230708141539	20230708143539	20230711120815	20230711130911
+20230816124014	20230908050244
+ DEBUG [1f10d76f] Finished in 2.045 seconds with exit status 0 (successful).
+ DEBUG [3ec05863] Running if test ! -d /home/deploy/yic_production/releases; then echo "Directory does not exist '/home/deploy/yic_production/releases'" 1>&2; false; fi as deploy@148.113.8.52
+ DEBUG [3ec05863] Command: if test ! -d /home/deploy/yic_production/releases; then echo "Directory does not exist '/home/deploy/yic_production/releases'" 1>&2; false; fi
+ DEBUG [3ec05863] Finished in 1.771 seconds with exit status 0 (successful).
+  INFO [7bce054b] Running /usr/bin/env echo "Branch main (at 85ae08272b4acf5a3d83dbe6dd19bd59c3c72afe) deployed as release 20230908050244 by fena" >> /home/deploy/yic_production/revisions.log as deploy@148.113.8.52
+ DEBUG [7bce054b] Command: cd /home/deploy/yic_production/releases && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "Branch main (at 85ae08272b4acf5a3d83dbe6dd19bd59c3c72afe) deployed as release 20230908050244 by fena" >> /home/deploy/yic_production/revisions.log )
+  INFO [7bce054b] Finished in 1.377 seconds with exit status 0 (successful).

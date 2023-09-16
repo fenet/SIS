@@ -23,11 +23,12 @@ default: &default
 
 development:
   <<: *default
-  database: leadstar_dev
+  #database: leadstar_dev
+  database: heucbackup
   port: 5432
   host : localhost
-  username: leadeveloper
-  password: Lead_1234
+  username: postgres
+  password: Fena_1234
 test:
   <<: *default
   database: hope_dev

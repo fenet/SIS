@@ -108,7 +108,7 @@ ActiveAdmin.register Student do
   filter :batch
   filter :current_occupation
   filter :nationality
-
+  filter :curriculum_version
   filter :account_verification_status, as: :select, collection: %w[pending approved denied incomplete]
   filter :document_verification_status, as: :select, collection: %w[pending approved denied incomplete]
   filter :entrance_exam_result_status
