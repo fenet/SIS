@@ -27,6 +27,7 @@ class PagesController < ApplicationController
     @emergency_contact = current_student.emergency_contact
     @invoice = Invoice.find_by(student: current_student, semester: current_student.semester, year: current_student.year)
     @smr = current_student.semester_registrations.where(year: current_student.year, semester: current_student.semester).last
+    @payment_remaining = current_student.semester_registrations.where("remaining_amount > ?", 0).last if @smr.nil?
   end
 
   def enrollement

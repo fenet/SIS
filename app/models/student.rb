@@ -97,6 +97,8 @@ class Student < ApplicationRecord
   scope :approved, lambda { where(document_verification_status: "approved") }
   scope :denied, lambda { where(document_verification_status: "denied") }
   scope :incomplete, lambda { where(document_verification_status: "incomplete") }
+   
+ 
 
   def get_current_courses
     self.program.curriculums.where(active_status: "active").first.courses.where(year: self.year, semester: self.semester).order("year ASC

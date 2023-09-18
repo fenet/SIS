@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_09_104149) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_16_155107) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -914,6 +914,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_09_104149) do
     t.string "created_by"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.integer "actual_payment"
+    t.boolean "is_back_invoice_created", default: false
     t.index ["academic_calendar_id"], name: "index_semester_registrations_on_academic_calendar_id"
     t.index ["department_id"], name: "index_semester_registrations_on_department_id"
     t.index ["program_id"], name: "index_semester_registrations_on_program_id"

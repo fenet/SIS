@@ -1,12 +1,9 @@
 class Invoice < ApplicationRecord
   after_create :add_invoice_item
-  # after_update :update_total_price
   after_save :update_status
-  ##validations
   validates :invoice_number, :presence => true
   validates :semester, :presence => true
   validates :year, :presence => true
-  ##associations
   belongs_to :semester_registration
   belongs_to :student
   belongs_to :academic_calendar
@@ -15,14 +12,8 @@ class Invoice < ApplicationRecord
   has_one :payment_transaction, as: :invoiceable, dependent: :destroy
   accepts_nested_attributes_for :payment_transaction, reject_if: :all_blank, allow_destroy: true
   has_many :invoice_items, as: :itemable, dependent: :destroy
-  ##scope
+
   scope :recently_added, lambda { where("created_at >= ?", 1.week.ago) }
-  # scope :undergraduate, lambda { self.registration.where(study_level: "undergraduate")}
-  # scope :graduate, lambda { self.registration.where(study_level: "graduate")}
-  # scope :online, lambda { self.registration.where(admission_type: "online")}
-  # scope :regular, lambda { self.registration.where(admission_type: "regular")}
-  # scope :extention, lambda { self.registration.where(admission_type: "extention")}
-  # scope :distance, lambda { self.registration.where(admission_type: "distance")}
   scope :unpaid, lambda { where(invoice_status: "unpaid") }
   scope :pending, lambda { where(invoice_status: "pending") }
   scope :approved, lambda { where(invoice_status: "approved") }
@@ -30,14 +21,11 @@ class Invoice < ApplicationRecord
   scope :incomplete, lambda { where(invoice_status: "incomplete") }
   scope :due_date_passed, lambda { where("due_date < ?", Time.now) }
 
-  # def total_price
-  #    self.invoice_items.collect { |oi| oi.valid? ? (CollegePayment.where(study_level: self.semester_registration.study_level,admission_type: self.semester_registration.admission_type).first.tution_per_credit_hr * oi.course_registration.curriculum.credit_hour) : 0 }.sum + self.registration_fee
-  #  end
-
   private
 
   def add_invoice_item
     self.semester_registration.course_registrations.each do |course|
+      
       InvoiceItem.create do |invoice_item|
         invoice_item.itemable_id = self.id
         invoice_item.itemable_type = "Invoice"
@@ -65,12 +53,12 @@ class Invoice < ApplicationRecord
         tution_price = self.student.get_tution_fee + self.registration_fee + self.late_registration_fee
         remaining_amount = (tution_price - (self.total_price + self.registration_fee)).abs
         total_enrolled_course = self.student.get_current_courses.size
-        self.semester_registration.update_columns(total_enrolled_course: total_enrolled_course, remaining_amount: remaining_amount, late_registration_fee: self.late_registration_fee, registration_fee: self.registration_fee, total_price: tution_price)
+        self.semester_registration.update_columns(total_enrolled_course: total_enrolled_course, remaining_amount: remaining_amount, late_registration_fee: self.late_registration_fee, registration_fee: self.registration_fee, total_price: tution_price, actual_payment: self.total_price)
+      else
+        remaining_amount = self.semester_registration.remaining_amount
+        new_remaining_amount = remaining_amount - self.total_price
+        self.semester_registration.update_columns(remaining_amount: new_remaining_amount, is_back_invoice_created: false)
       end
     end
   end
-
-  # def update_semester_registration
-  #   self[:total_price] = total_price
-  # end
 end

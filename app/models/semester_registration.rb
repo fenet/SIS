@@ -2,15 +2,8 @@ class SemesterRegistration < ApplicationRecord
   after_save :change_course_registration_status
   after_save :assign_section_to_course_registration
   after_commit :semester_course_registration, on: :create
-
-  # :if => (registrar_approval_status=="approve" && finance_approval_status=="approve")
-
   after_save :generate_invoice
   after_save :add_admission_date
-  ##validations
-  # validates :semester, :presence => true
-  # validates :year, :presence => true
-  ##scope
   scope :recently_added, lambda { where("created_at >= ?", 1.week.ago) }
   scope :undergraduate, lambda { where(study_level: "undergraduate") }
   scope :graduate, lambda { where(study_level: "graduate") }
@@ -139,6 +132,8 @@ class SemesterRegistration < ApplicationRecord
 
   def generate_invoice
     if self.mode_of_payment.present? && self.invoices.where(year: self.year, semester: self.semester).empty?
+      self.update_columns(is_back_invoice_created: true)
+         
       Invoice.create do |invoice|
         invoice.semester_registration_id = self.id
         invoice.student_id = self.student.id
@@ -152,45 +147,16 @@ class SemesterRegistration < ApplicationRecord
         invoice.created_by = self.last_updated_by
         invoice.due_date = self.created_at + 10.day
         invoice.invoice_status = "unpaid"
-        # invoice.registration_fee = CollegePayment.where(study_level: self.study_level,admission_type: self.admission_type).first.pluck(:registration_fee)
-        # -> back if Activity.where(category: "registration", academic_calendar_id: AcademicCalendar.where(study_level: self.study_level.strip, admission_type: self.admission_type.strip).where("starting_date <= ? AND ending_date >= ?", Time.zone.now, Time.zone.now).order("created_at DESC").first).where("starting_date <= ? AND ending_date >= ?", Time.zone.now, Time.zone.now).order("created_at DESC").first
         invoice.registration_fee = self.student.get_registration_fee
-        # -> back  elsif Activity.where(category: "late registration", academic_calendar_id: AcademicCalendar.where(study_level: self.study_level, admission_type: self.admission_type).where("starting_date <= ? AND ending_date >= ?", Time.zone.now, Time.zone.now).order("created_at DESC").first).where("starting_date <= ? AND ending_date >= ?", Time.zone.now, Time.zone.now).order("created_at DESC").first
-        #   invoice.late_registration_fee = CollegePayment.where(study_level: self.study_level, admission_type: self.admission_type).pluck(:late_registration_fee).first
-        # end
-
+        tution_price = self.student.get_tution_fee
         invoice.invoice_number = SecureRandom.random_number(10000000)
         if self.mode_of_payment == "Monthly Payment"
-          # if self.year == 1 && self.semester == 1
-          tution_price = self.student.get_tution_fee
-          # (self.course_registrations.collect { |oi| oi.valid? ? (CollegePayment.where(study_level: self.study_level.strip, admission_type: self.admission_type.strip).first.tution_per_credit_hr * oi.course.credit_hour) : 0 }.sum) + invoice.registration_fee + invoice.late_registration_fee
-          # else
-          # tution_price = self.student.get_tution_fee
-          #  (self.course_registrations.collect { |oi| oi.valid? ? (CollegePayment.where(study_level: self.study_level.strip, admission_type: self.admission_type.strip).first.tution_per_credit_hr * oi.course.credit_hour) : 0 }.sum) + invoice.registration_fee + invoice.late_registration_fee
-          # end
-
           invoice.total_price = tution_price / 4
         elsif self.mode_of_payment == "Full Semester Payment"
-          # if self.year == 1 && self.semester == 1
-          #   tution_price = (self.course_registrations.collect { |oi| oi.valid? ? (CollegePayment.where(study_level: self.study_level, admission_type: self.admission_type).first.tution_per_credit_hr * oi.course.credit_hour) : 0 }.sum)  + invoice.registration_fee + invoice.late_registration_fee
-          # else
-          tution_price = self.student.get_tution_fee
-          # (self.course_registrations.collect { |oi| oi.valid? ? (CollegePayment.where(study_level: self.study_level, admission_type: self.admission_type).first.tution_per_credit_hr * oi.course.credit_hour) : 0 }.sum) + invoice.registration_fee + invoice.late_registration_fee
-          # end
-
           invoice.total_price = tution_price
         elsif self.mode_of_payment == "Half Semester Payment"
-          # if self.year == 1 && self.semester == 1
-          #   tution_price = (self.course_registrations.collect { |oi| oi.valid? ? (CollegePayment.where(study_level: self.study_level, admission_type: self.admission_type).first.tution_per_credit_hr * oi.course.credit_hour) : 0 }.sum)  + invoice.registration_fee + invoice.late_registration_fee
-          # else
-          tution_price = self.student.get_tution_fee
-          # (self.course_registrations.collect { |oi| oi.valid? ? (CollegePayment.where(study_level: self.study_level, admission_type: self.admission_type).first.tution_per_credit_hr * oi.course.credit_hour) : 0 }.sum) + invoice.registration_fee + invoice.late_registration_fee
-          # end
-
           invoice.total_price = tution_price / 2
         end
-
-        # self.total_price = (self.course_registrations.collect { |oi| oi.valid? ? (CollegePayment.where(study_level: self.study_level,admission_type: self.admission_type).first.tution_per_credit_hr * oi.curriculum.credit_hour) : 0 }.sum) + CollegePayment.where(study_level: self.study_level,admission_type: self.admission_type).first.registration_fee
       end
     end
   end
