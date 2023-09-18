@@ -43,12 +43,14 @@
               <td><%= sm.semester %></td>
               <td><%= sm.remaining_amount %> ETB</td>
               <td><%= (sm.total_price - sm.registration_fee - sm.remaining_amount)%> ETB</td>
-              <%if sm.remaining_amount.zero?%>
+              <%if sm.remaining_amount.zero? && sm.finance_approval_status=='approved'%>
                 <td><a class="ml-2 badge badge-success p-2 text-white">Completed</a></td>
-
+              <%elsif sm.is_back_invoice_created?%>
+                <td><a class="ml-2 badge badge-warning p-2 text-white">Waiting for approval</a></td>
               <%else%>
-                <td><a class="ml-2 badge badge-warning p-2 text-white">Pay</a></td>
-
+                <td>
+                  <%= link_to "Pay", prepare_payment_path(sm), :class => 'btn-sm btn-primary' %>
+                </td>
               <%end%>
               <td class="actions">
                 <%= link_to("View", invoice_path(sm), :class => 'btn-sm btn-primary') %>
