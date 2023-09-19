@@ -650,6 +650,11 @@ body.index.active_admin {
   background-color: #68bb2f;
 }
 
+#wrapper .flashes .flash_alert{
+  background-color: #ee652f;
+
+}
+
 // site title
 .site_title a {
   display: none;
@@ -836,4 +841,22 @@ font-size: 14px;
       font-size: 30px;
     }
   }
+}
+
+.filter_form_field{
+  display: flex;
+  justify-content: space-between;
+}
+
+.filter_form_field label{
+font-size: 14px;
+
+}
+
+.filter_form_field select{
+  font-size: 16px;
+}
+
+#payment-report-student-list{
+  text-transform: capitalize;
 }
