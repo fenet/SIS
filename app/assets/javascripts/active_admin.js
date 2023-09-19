@@ -7,51 +7,52 @@
 //= require active_admin_sidebar
 //= require chartkick
 //= require Chart.bundle
-$(document).ready(function(){
+//= require custom
+$(document).ready(function () {
 
-  $("#student_photo").change(function(data){
-
-    var imageFile = data.target.files[0];
-    var reader = new FileReader();
-    reader.readAsDataURL(imageFile);
-
-    reader.onload = function(evt){
-      $('#imagePreview').attr('src', evt.target.result);
-      $('#imagePreview').hide();
-      $('#imagePreview').fadeIn(650);
-    }
-    
-  });
-  $("#payment_method_bank_logo").change(function(data){
+  $("#student_photo").change(function (data) {
 
     var imageFile = data.target.files[0];
     var reader = new FileReader();
     reader.readAsDataURL(imageFile);
 
-    reader.onload = function(evt){
+    reader.onload = function (evt) {
       $('#imagePreview').attr('src', evt.target.result);
       $('#imagePreview').hide();
       $('#imagePreview').fadeIn(650);
     }
-    
+
+  });
+  $("#payment_method_bank_logo").change(function (data) {
+
+    var imageFile = data.target.files[0];
+    var reader = new FileReader();
+    reader.readAsDataURL(imageFile);
+
+    reader.onload = function (evt) {
+      $('#imagePreview').attr('src', evt.target.result);
+      $('#imagePreview').hide();
+      $('#imagePreview').fadeIn(650);
+    }
+
   });
 
-  if ($('#purchase_type_of_supplier').val() == ""){
+  if ($('#purchase_type_of_supplier').val() == "") {
     $('.grp1').hide();
     $('.grp2').hide();
-  }else if($('#purchase_type_of_supplier').val() == 'International Supplier'){
+  } else if ($('#purchase_type_of_supplier').val() == 'International Supplier') {
     $('.grp1').show();
     $('.grp2').hide();
-  }else if($('#purchase_type_of_supplier').val() == 'Local Vender'){
+  } else if ($('#purchase_type_of_supplier').val() == 'Local Vender') {
     $('.grp1').hide();
     $('.grp2').show();
   }
-  
-  
-  
-  $('#purchase_type_of_supplier').change( function() {
+
+
+
+  $('#purchase_type_of_supplier').change(function () {
     var value;
-    
+
     value = $(this).val();
     if (value === 'International Supplier') {
       $('.grp1').show();
@@ -65,10 +66,10 @@ $(document).ready(function(){
   $('#header').before("<div class='headline'><div class='banner-logo'></div> <h1 class='banner-title'>Leadstar College Registrar Portal</h1></div>");
 
 
-  $('.link').click(function (e) {
+  $('.link').on('click', function (e) {
     e.preventDefault();
     let $container = $(this).closest('.widgetContainer').first();
-    if ($container.css('overflow')=="hidden") {
+    if ($container.css('overflow') == "hidden") {
       $container.css({
         height: 'auto',
         overflow: 'visible'
@@ -78,9 +79,9 @@ $(document).ready(function(){
         height: '120px',
         overflow: 'hidden'
       });
-   }
+    }
 
-   
+
   })
 
 

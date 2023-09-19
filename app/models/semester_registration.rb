@@ -25,6 +25,10 @@ class SemesterRegistration < ApplicationRecord
   has_many :recurring_payments, dependent: :destroy
   has_many :add_and_drops, dependent: :destroy
 
+  def self.fetch_student_semester_registrations(id)
+    self.where(department_id: id, is_back_invoice_created: false).where("remaining_amount=?", 0.0).includes(:department).includes(:student)
+  end
+
   def generate_grade_report
     if !self.grade_report.present?
       GradeReport.create do |report|
@@ -133,7 +137,7 @@ class SemesterRegistration < ApplicationRecord
   def generate_invoice
     if self.mode_of_payment.present? && self.invoices.where(year: self.year, semester: self.semester).empty?
       self.update_columns(is_back_invoice_created: true)
-         
+
       Invoice.create do |invoice|
         invoice.semester_registration_id = self.id
         invoice.student_id = self.student.id

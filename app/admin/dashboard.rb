@@ -1,12 +1,8 @@
 ActiveAdmin.register_page "Dashboard" do
   menu priority: 1, label: proc { I18n.t("active_admin.dashboard") }
-
+ 
   content title: proc { I18n.t("active_admin.dashboard") } do
-    div do
-      link_to "Prepare Report", root_path
-    end
     div class: "blank_slate_container", id: "dashboard_default_message" do
-     
       tabs do
         tab :student_related_report do
           div class: "widget-container" do
@@ -36,7 +32,7 @@ ActiveAdmin.register_page "Dashboard" do
               div class: "left" do
                 span "study level", class: "widget-title"
                 div class: "each" do
-                 DashboardReport.graduation_status.each do |key, value|
+                  DashboardReport.graduation_status.each do |key, value|
                     div do
                       span "#{key}: "
                       span "#{value} student".pluralize(value)
@@ -102,7 +98,7 @@ ActiveAdmin.register_page "Dashboard" do
               div class: "left" do
                 span "Document verification", class: "widget-title"
                 div class: "each" do
-                 DashboardReport.document_verification.each do |key, value|
+                  DashboardReport.document_verification.each do |key, value|
                     div do
                       span "#{key}: ".camelize
                       span "#{value} document".pluralize(value)
