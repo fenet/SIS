@@ -2055,3 +2055,1481 @@ You have deleted from the Gemfile:
   INFO [d869b8d0] Running /usr/bin/env echo "Branch main (at 432f69dbd2740c70ea18667c8d3a22be851210a3) deployed as release 20230916114050 by fena" >> /home/deploy/yic_production/revisions.log as deploy@148.113.8.52
  DEBUG [d869b8d0] Command: cd /home/deploy/yic_production/releases && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "Branch main (at 432f69dbd2740c70ea18667c8d3a22be851210a3) deployed as release 20230916114050 by fena" >> /home/deploy/yic_production/revisions.log )
   INFO [d869b8d0] Finished in 1.432 seconds with exit status 0 (successful).
+  INFO ---------------------------------------------------------------------------
+  INFO START 2023-09-20 07:22:51 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [937c53b5] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as newdeploy@141.95.85.206
+ DEBUG [937c53b5] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+ DEBUG [937c53b5] Finished in 18.514 seconds with exit status 0 (successful).
+ DEBUG [6c58cd41] Running /usr/bin/env which passenger as newdeploy@141.95.85.206
+ DEBUG [6c58cd41] Command: /usr/bin/env which passenger
+ DEBUG [6c58cd41] 	/usr/bin/passenger
+ DEBUG [6c58cd41] Finished in 2.411 seconds with exit status 0 (successful).
+  INFO [0e789e7d] Running /usr/bin/env mkdir -p /tmp as newdeploy@141.95.85.206
+ DEBUG [0e789e7d] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /tmp )
+  INFO [0e789e7d] Finished in 3.053 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-fe42f0bd3921a56d9c9c.sh 0.0%
+  INFO Uploading /tmp/git-ssh-fe42f0bd3921a56d9c9c.sh 100.0%
+  INFO [32eafad8] Running /usr/bin/env chmod 700 /tmp/git-ssh-fe42f0bd3921a56d9c9c.sh as newdeploy@141.95.85.206
+ DEBUG [32eafad8] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env chmod 700 /tmp/git-ssh-fe42f0bd3921a56d9c9c.sh )
+  INFO [32eafad8] Finished in 3.575 seconds with exit status 0 (successful).
+  INFO [94d14c8c] Running /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD as newdeploy@141.95.85.206
+ DEBUG [94d14c8c] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-fe42f0bd3921a56d9c9c.sh" ; /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD )
+ DEBUG [94d14c8c] 	621ff4fce3bd4c52119dbf97c0f7f11c457d8394	HEAD
+  INFO [94d14c8c] Finished in 2.091 seconds with exit status 0 (successful).
+  INFO [e00f86fb] Running /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/shared /home/newdeploy/ngvcnew/releases as newdeploy@141.95.85.206
+ DEBUG [e00f86fb] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/shared /home/newdeploy/ngvcnew/releases )
+  INFO [e00f86fb] Finished in 2.723 seconds with exit status 0 (successful).
+  INFO [08afeca3] Running /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/shared/log /home/newdeploy/ngvcnew/shared/tmp/pids /home/newdeploy/ngvcnew/shared/tmp/cache /home/newdeploy/ngvcnew/shared/tmp/sockets /home/newdeploy/ngvcnew/shared/vendor/bundle /home/newdeploy/ngvcnew/shared/public/system /home/newdeploy/ngvcnew/shared/public/uploads /home/newdeploy/ngvcnew/shared/public/assets as newdeploy@141.95.85.206
+ DEBUG [08afeca3] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/shared/log /home/newdeploy/ngvcnew/shared/tmp/pids /home/newdeploy/ngvcnew/shared/tmp/cache /home/newdeploy/ngvcnew/shared/tmp/sockets /home/newdeploy/ngvcnew/shared/vendor/bundle /home/newdeploy/ngvcnew/shared/public/system /home/newdeploy/ngvcnew/shared/public/uploads /home/newdeploy/ngvcnew/shared/public/assets )
+  INFO [08afeca3] Finished in 0.761 seconds with exit status 0 (successful).
+ DEBUG [17f18f83] Running [ -f /home/newdeploy/ngvcnew/current/REVISION ] as newdeploy@141.95.85.206
+ DEBUG [17f18f83] Command: [ -f /home/newdeploy/ngvcnew/current/REVISION ]
+ DEBUG [17f18f83] Finished in 1.689 seconds with exit status 1 (failed).
+ DEBUG [838d1372] Running [ -f /home/newdeploy/ngvcnew/repo/HEAD ] as newdeploy@141.95.85.206
+ DEBUG [838d1372] Command: [ -f /home/newdeploy/ngvcnew/repo/HEAD ]
+ DEBUG [838d1372] Finished in 1.944 seconds with exit status 1 (failed).
+ DEBUG [bd68dbbd] Running if test ! -d /home/newdeploy/ngvcnew; then echo "Directory does not exist '/home/newdeploy/ngvcnew'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [bd68dbbd] Command: if test ! -d /home/newdeploy/ngvcnew; then echo "Directory does not exist '/home/newdeploy/ngvcnew'" 1>&2; false; fi
+ DEBUG [bd68dbbd] Finished in 3.176 seconds with exit status 0 (successful).
+  INFO [bd62640b] Running /usr/bin/env git clone --mirror https://fenet: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@github.com/fenet/leadstarlatest.git /home/newdeploy/ngvcnew/repo as newdeploy@141.95.85.206
+ DEBUG [bd62640b] Command: cd /home/newdeploy/ngvcnew && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-fe42f0bd3921a56d9c9c.sh" ; /usr/bin/env git clone --mirror https://fenet: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@github.com/fenet/leadstarlatest.git /home/newdeploy/ngvcnew/repo )
+ DEBUG [bd62640b] 	Cloning into bare repository '/home/newdeploy/ngvcnew/repo'...
+  INFO [bd62640b] Finished in 2.662 seconds with exit status 0 (successful).
+ DEBUG [74353ed4] Running if test ! -d /home/newdeploy/ngvcnew/repo; then echo "Directory does not exist '/home/newdeploy/ngvcnew/repo'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [74353ed4] Command: if test ! -d /home/newdeploy/ngvcnew/repo; then echo "Directory does not exist '/home/newdeploy/ngvcnew/repo'" 1>&2; false; fi
+ DEBUG [74353ed4] Finished in 1.741 seconds with exit status 0 (successful).
+  INFO [bc9720ce] Running /usr/bin/env git remote set-url origin https://fenet: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@github.com/fenet/leadstarlatest.git as newdeploy@141.95.85.206
+ DEBUG [bc9720ce] Command: cd /home/newdeploy/ngvcnew/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-fe42f0bd3921a56d9c9c.sh" ; /usr/bin/env git remote set-url origin https://fenet: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@github.com/fenet/leadstarlatest.git )
+  INFO [bc9720ce] Finished in 1.975 seconds with exit status 0 (successful).
+  INFO [921a7242] Running /usr/bin/env git remote update --prune as newdeploy@141.95.85.206
+ DEBUG [921a7242] Command: cd /home/newdeploy/ngvcnew/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-fe42f0bd3921a56d9c9c.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [921a7242] 	Fetching origin
+  INFO [921a7242] Finished in 1.607 seconds with exit status 0 (successful).
+ DEBUG [5c447dc0] Running if test ! -d /home/newdeploy/ngvcnew/repo; then echo "Directory does not exist '/home/newdeploy/ngvcnew/repo'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [5c447dc0] Command: if test ! -d /home/newdeploy/ngvcnew/repo; then echo "Directory does not exist '/home/newdeploy/ngvcnew/repo'" 1>&2; false; fi
+ DEBUG [5c447dc0] Finished in 2.663 seconds with exit status 0 (successful).
+  INFO [784c2744] Running /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/releases/20230920042328 as newdeploy@141.95.85.206
+ DEBUG [784c2744] Command: cd /home/newdeploy/ngvcnew/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-fe42f0bd3921a56d9c9c.sh" ; /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/releases/20230920042328 )
+  INFO [784c2744] Finished in 1.023 seconds with exit status 0 (successful).
+  INFO [dbac497a] Running /usr/bin/env git archive main | /usr/bin/env tar -x -f - -C /home/newdeploy/ngvcnew/releases/20230920042328 as newdeploy@141.95.85.206
+ DEBUG [dbac497a] Command: cd /home/newdeploy/ngvcnew/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-fe42f0bd3921a56d9c9c.sh" ; /usr/bin/env git archive main | /usr/bin/env tar -x -f - -C /home/newdeploy/ngvcnew/releases/20230920042328 )
+  INFO [dbac497a] Finished in 1.553 seconds with exit status 0 (successful).
+ DEBUG [c9ea60b0] Running if test ! -d /home/newdeploy/ngvcnew/repo; then echo "Directory does not exist '/home/newdeploy/ngvcnew/repo'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [c9ea60b0] Command: if test ! -d /home/newdeploy/ngvcnew/repo; then echo "Directory does not exist '/home/newdeploy/ngvcnew/repo'" 1>&2; false; fi
+ DEBUG [c9ea60b0] Finished in 1.160 seconds with exit status 0 (successful).
+ DEBUG [011c2990] Running /usr/bin/env git rev-list --max-count=1 main as newdeploy@141.95.85.206
+ DEBUG [011c2990] Command: cd /home/newdeploy/ngvcnew/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-fe42f0bd3921a56d9c9c.sh" ; /usr/bin/env git rev-list --max-count=1 main )
+ DEBUG [011c2990] 	621ff4fce3bd4c52119dbf97c0f7f11c457d8394
+ DEBUG [011c2990] Finished in 0.775 seconds with exit status 0 (successful).
+ DEBUG [14beb394] Running if test ! -d /home/newdeploy/ngvcnew/releases/20230920042328; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920042328'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [14beb394] Command: if test ! -d /home/newdeploy/ngvcnew/releases/20230920042328; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920042328'" 1>&2; false; fi
+ DEBUG [14beb394] Finished in 1.627 seconds with exit status 0 (successful).
+  INFO [d2860edd] Running /usr/bin/env echo "621ff4fce3bd4c52119dbf97c0f7f11c457d8394" > REVISION as newdeploy@141.95.85.206
+ DEBUG [d2860edd] Command: cd /home/newdeploy/ngvcnew/releases/20230920042328 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "621ff4fce3bd4c52119dbf97c0f7f11c457d8394" > REVISION )
+  INFO [d2860edd] Finished in 1.843 seconds with exit status 0 (successful).
+  INFO [3b141a55] Running /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/releases/20230920042328 /home/newdeploy/ngvcnew/releases/20230920042328/tmp /home/newdeploy/ngvcnew/releases/20230920042328/vendor /home/newdeploy/ngvcnew/releases/20230920042328/public as newdeploy@141.95.85.206
+ DEBUG [3b141a55] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/releases/20230920042328 /home/newdeploy/ngvcnew/releases/20230920042328/tmp /home/newdeploy/ngvcnew/releases/20230920042328/vendor /home/newdeploy/ngvcnew/releases/20230920042328/public )
+  INFO [3b141a55] Finished in 1.634 seconds with exit status 0 (successful).
+ DEBUG [0b1f181d] Running [ -L /home/newdeploy/ngvcnew/releases/20230920042328/log ] as newdeploy@141.95.85.206
+ DEBUG [0b1f181d] Command: [ -L /home/newdeploy/ngvcnew/releases/20230920042328/log ]
+ DEBUG [0b1f181d] Finished in 2.149 seconds with exit status 1 (failed).
+ DEBUG [e9b8c6e5] Running [ -d /home/newdeploy/ngvcnew/releases/20230920042328/log ] as newdeploy@141.95.85.206
+ DEBUG [e9b8c6e5] Command: [ -d /home/newdeploy/ngvcnew/releases/20230920042328/log ]
+ DEBUG [e9b8c6e5] Finished in 2.359 seconds with exit status 0 (successful).
+  INFO [31747690] Running /usr/bin/env rm -rf /home/newdeploy/ngvcnew/releases/20230920042328/log as newdeploy@141.95.85.206
+ DEBUG [31747690] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env rm -rf /home/newdeploy/ngvcnew/releases/20230920042328/log )
+  INFO [31747690] Finished in 2.453 seconds with exit status 0 (successful).
+  INFO [882b2731] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/log /home/newdeploy/ngvcnew/releases/20230920042328/log as newdeploy@141.95.85.206
+ DEBUG [882b2731] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/log /home/newdeploy/ngvcnew/releases/20230920042328/log )
+  INFO [882b2731] Finished in 1.022 seconds with exit status 0 (successful).
+ DEBUG [55bc9d3e] Running [ -L /home/newdeploy/ngvcnew/releases/20230920042328/tmp/pids ] as newdeploy@141.95.85.206
+ DEBUG [55bc9d3e] Command: [ -L /home/newdeploy/ngvcnew/releases/20230920042328/tmp/pids ]
+ DEBUG [55bc9d3e] Finished in 1.321 seconds with exit status 1 (failed).
+ DEBUG [b415eb1d] Running [ -d /home/newdeploy/ngvcnew/releases/20230920042328/tmp/pids ] as newdeploy@141.95.85.206
+ DEBUG [b415eb1d] Command: [ -d /home/newdeploy/ngvcnew/releases/20230920042328/tmp/pids ]
+ DEBUG [b415eb1d] Finished in 2.057 seconds with exit status 1 (failed).
+  INFO [bab093dc] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/tmp/pids /home/newdeploy/ngvcnew/releases/20230920042328/tmp/pids as newdeploy@141.95.85.206
+ DEBUG [bab093dc] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/tmp/pids /home/newdeploy/ngvcnew/releases/20230920042328/tmp/pids )
+  INFO [bab093dc] Finished in 0.947 seconds with exit status 0 (successful).
+ DEBUG [fb61d975] Running [ -L /home/newdeploy/ngvcnew/releases/20230920042328/tmp/cache ] as newdeploy@141.95.85.206
+ DEBUG [fb61d975] Command: [ -L /home/newdeploy/ngvcnew/releases/20230920042328/tmp/cache ]
+ DEBUG [fb61d975] Finished in 1.098 seconds with exit status 1 (failed).
+ DEBUG [b4349cbb] Running [ -d /home/newdeploy/ngvcnew/releases/20230920042328/tmp/cache ] as newdeploy@141.95.85.206
+ DEBUG [b4349cbb] Command: [ -d /home/newdeploy/ngvcnew/releases/20230920042328/tmp/cache ]
+ DEBUG [b4349cbb] Finished in 1.907 seconds with exit status 0 (successful).
+  INFO [baf55276] Running /usr/bin/env rm -rf /home/newdeploy/ngvcnew/releases/20230920042328/tmp/cache as newdeploy@141.95.85.206
+ DEBUG [baf55276] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env rm -rf /home/newdeploy/ngvcnew/releases/20230920042328/tmp/cache )
+  INFO [baf55276] Finished in 0.859 seconds with exit status 0 (successful).
+  INFO [7db11bc7] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/tmp/cache /home/newdeploy/ngvcnew/releases/20230920042328/tmp/cache as newdeploy@141.95.85.206
+ DEBUG [7db11bc7] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/tmp/cache /home/newdeploy/ngvcnew/releases/20230920042328/tmp/cache )
+  INFO [7db11bc7] Finished in 1.030 seconds with exit status 0 (successful).
+ DEBUG [d4ab47b2] Running [ -L /home/newdeploy/ngvcnew/releases/20230920042328/tmp/sockets ] as newdeploy@141.95.85.206
+ DEBUG [d4ab47b2] Command: [ -L /home/newdeploy/ngvcnew/releases/20230920042328/tmp/sockets ]
+ DEBUG [d4ab47b2] Finished in 1.340 seconds with exit status 1 (failed).
+ DEBUG [1584f8d1] Running [ -d /home/newdeploy/ngvcnew/releases/20230920042328/tmp/sockets ] as newdeploy@141.95.85.206
+ DEBUG [1584f8d1] Command: [ -d /home/newdeploy/ngvcnew/releases/20230920042328/tmp/sockets ]
+ DEBUG [1584f8d1] Finished in 1.752 seconds with exit status 1 (failed).
+  INFO [6ef96264] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/tmp/sockets /home/newdeploy/ngvcnew/releases/20230920042328/tmp/sockets as newdeploy@141.95.85.206
+ DEBUG [6ef96264] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/tmp/sockets /home/newdeploy/ngvcnew/releases/20230920042328/tmp/sockets )
+  INFO [6ef96264] Finished in 2.471 seconds with exit status 0 (successful).
+ DEBUG [4d0b41bb] Running [ -L /home/newdeploy/ngvcnew/releases/20230920042328/vendor/bundle ] as newdeploy@141.95.85.206
+ DEBUG [4d0b41bb] Command: [ -L /home/newdeploy/ngvcnew/releases/20230920042328/vendor/bundle ]
+ DEBUG [4d0b41bb] Finished in 0.616 seconds with exit status 1 (failed).
+ DEBUG [60cb65b4] Running [ -d /home/newdeploy/ngvcnew/releases/20230920042328/vendor/bundle ] as newdeploy@141.95.85.206
+ DEBUG [60cb65b4] Command: [ -d /home/newdeploy/ngvcnew/releases/20230920042328/vendor/bundle ]
+ DEBUG [60cb65b4] Finished in 1.029 seconds with exit status 1 (failed).
+  INFO [3ecea35d] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/vendor/bundle /home/newdeploy/ngvcnew/releases/20230920042328/vendor/bundle as newdeploy@141.95.85.206
+ DEBUG [3ecea35d] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/vendor/bundle /home/newdeploy/ngvcnew/releases/20230920042328/vendor/bundle )
+  INFO [3ecea35d] Finished in 0.830 seconds with exit status 0 (successful).
+ DEBUG [9befdc53] Running [ -L /home/newdeploy/ngvcnew/releases/20230920042328/public/system ] as newdeploy@141.95.85.206
+ DEBUG [9befdc53] Command: [ -L /home/newdeploy/ngvcnew/releases/20230920042328/public/system ]
+ DEBUG [9befdc53] Finished in 1.636 seconds with exit status 1 (failed).
+ DEBUG [2915b5d7] Running [ -d /home/newdeploy/ngvcnew/releases/20230920042328/public/system ] as newdeploy@141.95.85.206
+ DEBUG [2915b5d7] Command: [ -d /home/newdeploy/ngvcnew/releases/20230920042328/public/system ]
+ DEBUG [2915b5d7] Finished in 2.159 seconds with exit status 1 (failed).
+  INFO [4dc9873d] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/public/system /home/newdeploy/ngvcnew/releases/20230920042328/public/system as newdeploy@141.95.85.206
+ DEBUG [4dc9873d] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/public/system /home/newdeploy/ngvcnew/releases/20230920042328/public/system )
+  INFO [4dc9873d] Finished in 1.334 seconds with exit status 0 (successful).
+ DEBUG [05341a2c] Running [ -L /home/newdeploy/ngvcnew/releases/20230920042328/public/uploads ] as newdeploy@141.95.85.206
+ DEBUG [05341a2c] Command: [ -L /home/newdeploy/ngvcnew/releases/20230920042328/public/uploads ]
+ DEBUG [05341a2c] Finished in 1.026 seconds with exit status 1 (failed).
+ DEBUG [a2855f33] Running [ -d /home/newdeploy/ngvcnew/releases/20230920042328/public/uploads ] as newdeploy@141.95.85.206
+ DEBUG [a2855f33] Command: [ -d /home/newdeploy/ngvcnew/releases/20230920042328/public/uploads ]
+ DEBUG [a2855f33] Finished in 1.746 seconds with exit status 1 (failed).
+  INFO [a6dbb9e0] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/public/uploads /home/newdeploy/ngvcnew/releases/20230920042328/public/uploads as newdeploy@141.95.85.206
+ DEBUG [a6dbb9e0] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/public/uploads /home/newdeploy/ngvcnew/releases/20230920042328/public/uploads )
+  INFO [a6dbb9e0] Finished in 1.041 seconds with exit status 0 (successful).
+ DEBUG [526e4854] Running [ -L /home/newdeploy/ngvcnew/releases/20230920042328/public/assets ] as newdeploy@141.95.85.206
+ DEBUG [526e4854] Command: [ -L /home/newdeploy/ngvcnew/releases/20230920042328/public/assets ]
+ DEBUG [526e4854] Finished in 2.037 seconds with exit status 1 (failed).
+ DEBUG [3ad2d7ff] Running [ -d /home/newdeploy/ngvcnew/releases/20230920042328/public/assets ] as newdeploy@141.95.85.206
+ DEBUG [3ad2d7ff] Command: [ -d /home/newdeploy/ngvcnew/releases/20230920042328/public/assets ]
+ DEBUG [3ad2d7ff] Finished in 1.494 seconds with exit status 1 (failed).
+  INFO [336c89cd] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/public/assets /home/newdeploy/ngvcnew/releases/20230920042328/public/assets as newdeploy@141.95.85.206
+ DEBUG [336c89cd] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/public/assets /home/newdeploy/ngvcnew/releases/20230920042328/public/assets )
+  INFO [336c89cd] Finished in 1.275 seconds with exit status 0 (successful).
+ DEBUG [9ec4bece] Running if test ! -d /home/newdeploy/ngvcnew/releases/20230920042328; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920042328'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [9ec4bece] Command: if test ! -d /home/newdeploy/ngvcnew/releases/20230920042328; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920042328'" 1>&2; false; fi
+ DEBUG [9ec4bece] Finished in 1.024 seconds with exit status 0 (successful).
+  INFO [9725d922] Running $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true as newdeploy@141.95.85.206
+ DEBUG [9725d922] Command: cd /home/newdeploy/ngvcnew/releases/20230920042328 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true )
+  INFO [9725d922] Finished in 1.753 seconds with exit status 0 (successful).
+  INFO [bc7ff000] Running $HOME/.rbenv/bin/rbenv exec bundle config --local path /home/newdeploy/ngvcnew/shared/bundle as newdeploy@141.95.85.206
+ DEBUG [bc7ff000] Command: cd /home/newdeploy/ngvcnew/releases/20230920042328 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local path /home/newdeploy/ngvcnew/shared/bundle )
+  INFO [bc7ff000] Finished in 1.322 seconds with exit status 0 (successful).
+  INFO [f6bf4ede] Running $HOME/.rbenv/bin/rbenv exec bundle config --local without development:test as newdeploy@141.95.85.206
+ DEBUG [f6bf4ede] Command: cd /home/newdeploy/ngvcnew/releases/20230920042328 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local without development:test )
+  INFO [f6bf4ede] Finished in 1.669 seconds with exit status 0 (successful).
+ DEBUG [90e386ae] Running if test ! -d /home/newdeploy/ngvcnew/releases/20230920042328; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920042328'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [90e386ae] Command: if test ! -d /home/newdeploy/ngvcnew/releases/20230920042328; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920042328'" 1>&2; false; fi
+ DEBUG [90e386ae] Finished in 1.825 seconds with exit status 0 (successful).
+ DEBUG [58522ede] Running $HOME/.rbenv/bin/rbenv exec bundle check as newdeploy@141.95.85.206
+ DEBUG [58522ede] Command: cd /home/newdeploy/ngvcnew/releases/20230920042328 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle check )
+ DEBUG [58522ede] 	Fetching https://github.com/activeadmin/inherited_resources.git
+ DEBUG [58522ede] 	https://github.com/activeadmin/inherited_resources.git is not yet checked out.
+Run `bundle install` first.
+ DEBUG [58522ede] Finished in 2.656 seconds with exit status 11 (failed).
+  INFO [43fea03e] Running $HOME/.rbenv/bin/rbenv exec bundle install --jobs 4 --quiet as newdeploy@141.95.85.206
+ DEBUG [43fea03e] Command: cd /home/newdeploy/ngvcnew/releases/20230920042328 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle install --jobs 4 --quiet )
+  INFO [43fea03e] Finished in 50.410 seconds with exit status 0 (successful).
+ DEBUG [a2cf2560] Running if test ! -d /home/newdeploy/ngvcnew/releases/20230920042328; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920042328'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [a2cf2560] Command: if test ! -d /home/newdeploy/ngvcnew/releases/20230920042328; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920042328'" 1>&2; false; fi
+ DEBUG [a2cf2560] Finished in 2.866 seconds with exit status 0 (successful).
+  INFO [c597e8db] Running $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile as newdeploy@141.95.85.206
+ DEBUG [c597e8db] Command: cd /home/newdeploy/ngvcnew/releases/20230920042328 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" RAILS_GROUPS="" ; $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile )
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:43.055585 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/active_admin-3f09e58ecf137041dd7501abff24e641e5a612682d8ec79173f27a66840d5b13.css
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:43.055832 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/active_admin-3f09e58ecf137041dd7501abff24e641e5a612682d8ec79173f27a66840d5b13.css.gz
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:43.056238 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fontawesome-webfont-7bfcab6db99d5cfbf1705ca0536ddc78585432cc5fa41bbd7ad0f009033b2979.eot
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:43.057191 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fontawesome-webfont-7bfcab6db99d5cfbf1705ca0536ddc78585432cc5fa41bbd7ad0f009033b2979.eot.gz
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:43.057346 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fontawesome-webfont-2adefcbc041e7d18fcf2d417879dc5a09997aa64d675b7a3c4b6ce33da13f3fe.woff2
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:43.057540 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fontawesome-webfont-ba0c59deb5450f5cb41b3f93609ee2d0d995415877ddfa223e8a8a7533474f07.woff
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:43.057733 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fontawesome-webfont-aa58f33f239a0fb02f5c7a6c45c043d7a9ac9a093335806694ecd6d4edc0d6a8.ttf
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:43.058978 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fontawesome-webfont-aa58f33f239a0fb02f5c7a6c45c043d7a9ac9a093335806694ecd6d4edc0d6a8.ttf.gz
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:43.059151 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fontawesome-webfont-ad6157926c1622ba4e1d03d478f1541368524bfc46f51e42fe0d945f7ef323e4.svg
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:43.059922 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fontawesome-webfont-ad6157926c1622ba4e1d03d478f1541368524bfc46f51e42fe0d945f7ef323e4.svg.gz
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:43.060114 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/logo-e54d227bb30efb8bc9b26c44ebe6935a788bd9cddb5b1ca8a5cb3da538e9f76f.jpg
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:48.051034 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/active_admin-57f0416eb1eba472bbeaa1da5ca9ab3c4c27a1e0c0a2fad19bdb6374609cad13.js
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:48.051149 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/active_admin-57f0416eb1eba472bbeaa1da5ca9ab3c4c27a1e0c0a2fad19bdb6374609cad13.js.gz
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:48.362945 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/actiontext-38aec689ef3fa9f49f46cce3f311351e8f74ed992bdbdafa431f82dc8fc5bbcc.js
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:48.363074 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/actiontext-38aec689ef3fa9f49f46cce3f311351e8f74ed992bdbdafa431f82dc8fc5bbcc.js.gz
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:49.540729 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/trix-5831b173df5bdd3f6ea88e538f3c1794589514af51bbf014892f6efb097e6d53.js
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:49.540903 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/trix-5831b173df5bdd3f6ea88e538f3c1794589514af51bbf014892f6efb097e6d53.js.gz
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:49.754390 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/trix-e646a084ada46a1c869b550dfb1c729d777c20da14931bee9c44487cc7c28438.css
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:49.754497 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/trix-e646a084ada46a1c869b550dfb1c729d777c20da14931bee9c44487cc7c28438.css.gz
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.005265 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/my_print_stylesheet-2aed6148fbee3769b04f7e84bb732fb1e1517b2656b208c3c0e62ef7ecdf53b7.css
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.005428 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/my_print_stylesheet-2aed6148fbee3769b04f7e84bb732fb1e1517b2656b208c3c0e62ef7ecdf53b7.css.gz
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.005611 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/a43-711684e46dc1ae79c2cf8fa2dfa1c67e892707540f1dcd7c24bd7ee3791e7bc4.jpg
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.311008 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/activestorage-cff7ee45a11cc91de2cb576485bea6a6f06e81f8d878593c8a941270e66125cb.js
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.311123 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/activestorage-cff7ee45a11cc91de2cb576485bea6a6f06e81f8d878593c8a941270e66125cb.js.gz
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.570959 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/activestorage.esm-dcc84ca501816288b2ec4891d819183d8309005f79da6756b4c12da4b1edbe02.js
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.571065 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/activestorage.esm-dcc84ca501816288b2ec4891d819183d8309005f79da6756b4c12da4b1edbe02.js.gz
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.704188 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/actioncable-50da8baf37ad2ebc311be45df6420038f114341a0fc3a2a43e9b7979822dca32.js
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.704312 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/actioncable-50da8baf37ad2ebc311be45df6420038f114341a0fc3a2a43e9b7979822dca32.js.gz
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.825563 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/actioncable.esm-fbb5dfe28663d4618729c2c72eb4afc9e78e988d25e37e87267a45c1b34b84df.js
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.825648 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/actioncable.esm-fbb5dfe28663d4618729c2c72eb4afc9e78e988d25e37e87267a45c1b34b84df.js.gz
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.827403 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/Asset 3-6393597a427a0e7d55a707c5bd727fbc7467cad41ab9c5350178aa71a9d14a75.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.828477 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/Asset3-6393597a427a0e7d55a707c5bd727fbc7467cad41ab9c5350178aa71a9d14a75.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.829469 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/a1-ac4971efd3ae8cecab02aa001da56279aab931e757d0b776d53a930f081df04f.jpg
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.830233 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/apple-touch-icon-66e7252ff9afd2c49ca8fd05f708bc330a42beaf1af7fc2ab6998cb3dc654bda.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.830884 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/bank-logo-68492508dcf2849a9aff5c8a3f9ce366c6d26052dfa9a56614c18ec3d3debe88.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.831603 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/banner-82eec36f350c9a12e9f69503cd6818765cee331664eab75272dabee8fc96b97e.jpg
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.832904 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/bg-e0680532465fe0155956feabafe98f574ba0fc1f3164b83354310a959acaadfc.jpg
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.833657 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/blank-profile-picture-973460_640-c6176daa79e0b765aaa2547b00b4f89cc40ca69e274ddcc123d271cd0a0ac574.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.834307 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/church-b851353cb67789c348fd60982cb6eaaedb6391d3dfee46515097f3bf9481979f.jpg
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.834972 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/church-e0636d9437989f670bd89e017b109958091688a3b41d5fe04db5ac2fca063bf8.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.835670 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/favicon-6aef8c074c3a83b3c3c5793ec758bf377d75b70f36a6414a14f57c6ac3da6893.ico
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.835747 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/favicon-6aef8c074c3a83b3c3c5793ec758bf377d75b70f36a6414a14f57c6ac3da6893.ico.gz
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.836398 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/favicon-8eb9ffc8b36969d4a82d36631fb758c4b7b758de4f64aa5b4889cdf723e5debb.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.837116 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/leadstar-880c640a7124f530a8ed3347e6c4f7dcec89bbbf0d08eae589a8d86faecb9d4b.jpg
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.837856 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/leadstar-300f9beff1656adafd9d8d392a3933bec8c2c48e89985edec2f29b60bed3cbe6.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.838732 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/leadstarbanner-65ab30dca80b91852ab33c98a0d0f7825ea224e1a5236421d5ee6db3f0f39fbc.jpg
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.839634 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/logo-90b47cb60a62300354226631dccbcf834da4ce9ba6b58de0e8fdfabaada15fad.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.840263 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/logo2-538b707a765687ab7e72f4e72b25ee52bb8e174c9ebfd6873f9c0ae5a7eae3e1.jpg
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.840946 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/logo2-3e20cb341bba148f0354790e94064777181f6111c0109fb0ba6a81e934ebee91.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.841729 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/placeholder-d52378a9e9af3c40de7651761f9d79d36ae514fed86baf89932a5542964273d3.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.843018 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/sign-in-84f59812207644a71f31bc167ed8e6a1176a1e2aee35d5a15d3e9c5bd22dea6a.jpg
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.843740 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/yesu-bc5e28386442d43a3d8b55b0752340faea6d75b3a78d26ecee296540956ed515.jpg
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:50.844856 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/yesu-78cecd857aa2a446dd4ae260357aafdb1d02a5750dcf61d4d78add09f5f4209d.png
+ DEBUG [c597e8db] 	W, [2023-09-20T04:25:50.904986 #3470110]  WARN -- : Removed sourceMappingURL comment for missing asset 'adminlte.min.js.map' from /home/newdeploy/ngvcnew/releases/20230920042328/app/assets/javascripts/adminlte.min.js
+ DEBUG [c597e8db] 	W, [2023-09-20T04:25:50.912922 #3470110]  WARN -- : Removed sourceMappingURL comment for missing asset 'bs-stepper.min.js.map' from /home/newdeploy/ngvcnew/releases/20230920042328/app/assets/javascripts/bs-stepper.min.js
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:53.982510 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/application-79ffbb47363027e76279fae1172539b8ed6a07002c77a2f8bbd38ce6e7fc2d1e.js
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:53.982616 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/application-79ffbb47363027e76279fae1172539b8ed6a07002c77a2f8bbd38ce6e7fc2d1e.js.gz
+ DEBUG [c597e8db] 	autoprefixer: /home/newdeploy/ngvcnew/releases/20230920042328/app/assets/stylesheets/application.css.scss:20507:3: Replace color-adjust to print-color-adjust. The color-adjust shorthand is currently deprecated.
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.910749 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/application-d596edbf975eeab46755d54cac10a2da6af8639d1bdd79b0c26f3e19c0831964.css
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.910985 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/application-d596edbf975eeab46755d54cac10a2da6af8639d1bdd79b0c26f3e19c0831964.css.gz
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.916681 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/active_material/icons/account_circle-75f753fccce1f1750a37068208ade1fc0e5489d9a98de57f99e2747d390001fb.svg
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.916776 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/active_material/icons/account_circle-75f753fccce1f1750a37068208ade1fc0e5489d9a98de57f99e2747d390001fb.svg.gz
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.917648 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/active_material/icons/arrow-dropdown-93cdb34fae47555088422091da046ff9b252673967f30b017fa9ecd2b4ef7585.svg
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.917720 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/active_material/icons/arrow-dropdown-93cdb34fae47555088422091da046ff9b252673967f30b017fa9ecd2b4ef7585.svg.gz
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.918479 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/active_material/icons/arrow_down-835d6bbde1380b8d1e6ea873abde33215612da0342601fb21ef2c13868094b91.svg
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.918562 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/active_material/icons/arrow_down-835d6bbde1380b8d1e6ea873abde33215612da0342601fb21ef2c13868094b91.svg.gz
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.919298 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/active_material/icons/clear-724e5c08f3c81476319a3e83bae49fff8c747e984232af84541730941eb95c8e.svg
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.919372 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/active_material/icons/clear-724e5c08f3c81476319a3e83bae49fff8c747e984232af84541730941eb95c8e.svg.gz
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.920091 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/active_material/icons/create-60fdaf16949b7b3b816754d3f63a0c1eecd3cc749d4a9079d0e79af416702eb5.svg
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.920167 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/active_material/icons/create-60fdaf16949b7b3b816754d3f63a0c1eecd3cc749d4a9079d0e79af416702eb5.svg.gz
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.920867 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/active_material/icons/email-ff1c595ff9f72629c40d250e5eb8c37c52480ce67d02fd773f165c251046132f.svg
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.920941 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/active_material/icons/email-ff1c595ff9f72629c40d250e5eb8c37c52480ce67d02fd773f165c251046132f.svg.gz
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.921678 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/active_material/icons/event-cdca0160ebdc4e778f5b63df0739b6c60592fa46ddb5f8af9dbe344dbcfed3f8.svg
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.921763 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/active_material/icons/event-cdca0160ebdc4e778f5b63df0739b6c60592fa46ddb5f8af9dbe344dbcfed3f8.svg.gz
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.922456 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/active_material/icons/more-50a9ac99058eaf05a7a8cef5e62c03a533668990fb1eb600f76e3eaf76f1d27a.svg
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.922530 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/active_material/icons/more-50a9ac99058eaf05a7a8cef5e62c03a533668990fb1eb600f76e3eaf76f1d27a.svg.gz
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.923265 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/active_material/icons/reorder-9838b7dd05efc289655b100df8bc3da883697d726c92157dacbb71d3a14545a9.svg
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.923347 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/active_material/icons/reorder-9838b7dd05efc289655b100df8bc3da883697d726c92157dacbb71d3a14545a9.svg.gz
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.924038 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/active_material/icons/search-cde9b818b33af096f81eaeb13c426c9788a3ae9e421ef50b86fd38383315c225.svg
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.924109 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/active_material/icons/search-cde9b818b33af096f81eaeb13c426c9788a3ae9e421ef50b86fd38383315c225.svg.gz
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.924871 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/active_material/icons/secret-4ac1e52d6ea197ec9e0432e44579067a2c265ece3af04e4852875a1d72fe1be5.svg
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.924956 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/active_material/icons/secret-4ac1e52d6ea197ec9e0432e44579067a2c265ece3af04e4852875a1d72fe1be5.svg.gz
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.927113 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_3gp-54a044cbf08c8c2339eefed1e6d6a9418f2267307f55fce9b1a11abbf3141e15.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.927850 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_7z-468112586d1de97c4537a4bae9f047bb418fb683ce2bfdf72e33fd2d7a74be2d.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.928522 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_ace-2536e1b50b76d4014038b7d2536c5845767caf1da1e956323ede417eda7bef0c.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.929229 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_ai-0598426ce798d0ae537ac56e64ab642ac4d423d0d63b19951ee3bfafd5a51401.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.929877 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_aif-4e524ce4cb34a21f908229079dd13456fc34915f7541c985a048928377b5b718.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.930541 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_aiff-51bd36d0f131c5ad0dc3e16253834fbe8c4679de14f955c017319b4b1c2db348.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.931250 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_amr-d89fe352cece522395b8f485576801851b11a04813011fec35c2125d2a84f63c.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.931916 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_asf-8c6b7789acde80e5d56f1835192a65d51d94b44f2ef48ff90831eb13a9de424d.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.932588 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_asx-07061fa581ba5853d8edf1cdb1d202e2fa6816dae97e24184c924c20fda198c0.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.933265 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_bat-42e4aebaea5a62c84e28ce7e0af4223391ba6e9bab99a30281756f206006558c.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.933973 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_bin-7216af2b795c49ddc346340adf4f063a47fd5fd639fef3505c88c59a4a91901e.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.934631 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_bmp-91c9515acc985d9503c01033931f110b549faf47d188f69f75ca477de5212720.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.935319 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_bup-82be1953ec9444a90791c01d11a5ca750d95ea8426a9040f934912dd436f1f92.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.935966 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_cab-2e1f8965b1af82e24c03d8c796cc42e32671ef1226c20ffe3c7122b15af055f6.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.936677 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_cbr-1e40efd741ce5769666eb7a675f2b51d6e0f90b00a80db6556fb54856077b33e.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.937355 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_cda-75ca731ce5c4a7f4dc67d07013d9332718470b1ea0a0aac49d7c80f54d72fcff.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.938032 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_cdl-e934a05655047a11cc2867745623a5b3125a2d70b7f4515817a169626a0074cf.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.938705 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_cdr-e4e9e76910cae758984f62f411020fc8355f59bc7730220501f3adaaa85bea60.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.939355 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_chm-b7933101682b272f5314a625ae1e25a448a4f12c7eaa6cc5272a0cd5b02bc393.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.940015 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_dat-817af8b9969ef03d68e07c0ba5b0bb74c6ce4365820efd7ca13aabeb21e352b2.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.940691 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_divx-7205179c4fc773b59e959cb8befdcb519719ed23058d3847d13959d2f33863e6.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.941331 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_dll-d676d8774f9d4e4397793bdcb8dcef3acf0168d3ce9d38cb77c0dca1874cd135.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.941988 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_dmg-a9adb51fbbd0377a5b14b39bd634b972261d22b914791d2f76c6ddfdaf9180cc.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.942634 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_doc-fc42f726b3c14367328a707cc608c100c7dd218ee03c0c20efe14818f1374c8c.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.943346 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_docx-02de2ddcb6d2c2c66ae2c0ee00768f3c32f292b2bb8f3797049c830e57f5da53.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.944029 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_dss-e3d43589d4f97f4bdb5c424df44ffb32ee4a68620f90c3af1e0c0d37c66f0e66.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.944660 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_dvf-83b706e4a4fe13b85afde50be813aeb7832df178cb662c74d27635fb782e4ab7.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.945324 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_dwg-33a0e7affa2955428fc4cdb275cfda112fb5a29576da3823606e2f5a2e0068c4.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.945945 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_eml-54b8e5d55113439dbd25396430ddefb02fc4d3cd4dcb733eff2bf9b3e91c959f.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.946572 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_eps-a01904c03e0ddc5080a6d1226c6e311388c305342c7be27180a556e5b9e4e2d0.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.947194 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_exe-de3471ceb124ef107b99ead3d3ade615273576f547af1907bb3af8755ce89cae.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.947810 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_fla-790adfa262f3e6d11cdb3e735644d8bed5ddd177038d2b4c699cca215af098e2.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.948450 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_flv-45d3e8ea1527d90fe9d5685ceff7eb105e8b23feaf3c35735fbf34912ce5ba2f.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.949095 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_gif-0295cf8032e6732f657d396aed26dfb9929deaee54cb7e4608b5ce9ad34f7464.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.949737 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_gz-83d9e9a87ca0ab68ac7c281475b2673401952b08e90deaf13de1587df7f52a01.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.950363 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_hqx-e761e0ac864b38870ab328f3e5d4568598c52427726c556ffd1857d07f8c8fd7.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.950991 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_htm-9980d8148ff18f448a06486a2f9bcd8ca7365fc8e335625cee231a094b4c773c.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.951631 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_html-97ae64b96eb9a25058cfc19345a49cde8d5573ce91470f7c13104c647f5050a4.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.952265 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_ifo-ffe4f06b660a46cb20e838bf1b482dcfa78746b5ef32f110f9e5caf04aca5af4.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.952923 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_indd-9174d8dbad8bdeb44b1112b72cbecc8c42ceb4e8a604f1f50e1b50530a18638f.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.953558 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_iso-1c39a2853cfc13dae39e60da1deb28ac2bf20c828f8504153666f412c43e7b83.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.954196 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_jar-5173edf3bb695cf2b75f4644a50f769b3e63a76474b0a8af90602585652bbea1.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.954866 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_jpeg-62792df335519212e478bce6a09e0581a3df75692feeb57161e31116f2811240.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.955501 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_jpg-c2464ad286f7d805dd5cfc4596ceaf1b362f088d8c152b59a59651615456ed86.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.956145 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_lnk-d961979262eb821e2d22167027c0703f58dbf23bd712fbe2934029e7547606cc.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.956804 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_log-d69e49a1847977e9232ef909c4977455feb201409bf5af0fb843da86200289ae.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.957446 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_m4a-10ed68e617b36ec99877c171d4fdfa6a9a762bbdee3e27008617061bf4d38f93.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.958102 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_m4b-37101c08496da5ec8ec5bec0a09b4f1e536a67e7e5f2bf00a6e1550f12a9892b.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.958754 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_m4p-87632d3a16553795cc4f9c85c5ce8209a1fa66471397ecd6464a4ea7e39c583f.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.959409 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_m4v-158e43a86217403fb5bfac656f5702d4c9f0faab1e7d2d2f799b0f064a06fe08.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.960041 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_mcd-6950036cf3adb2653d4d964b7d1cea40d668d1939a56f674c4799ddfd2b2b93b.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.960687 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_mdb-c19f4518c9ff77643c64c6186da9c3c44497f33a37b8d7a33d41b8509e7244cd.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.961341 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_mid-2ee4b60fa6d6b3d2ce9223a3ec68a7767609fe99358d6c7b57be639ed5e5528b.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.961961 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_mov-4b0253c6042a227a28efcb5dbce525190886c47b7e845c004485f64b4b36b949.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.962590 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_mp2-1ea2627940cec6b6a22b182a74cbbd661597855a0853735043dbeb890161186f.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.963226 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_mp3-a5ce6bd5c5c212ee2363b04c9969716d176b500d5b9e7f93891147e9c00db297.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.963845 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_mp4-274217275e9192f5f91c82915480c481d9f9998f6f28a59a146c2e483030172d.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.964505 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_mpeg-51f1a0b25ecd38acd4319587fd5c03770b7937f8cbadd240118194b1387723e6.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.965142 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_mpg-b66bad32a4c5ae817352600ce3d0558773f0a43ce62e23a20c3de110f778c100.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.965796 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_msi-c081358d9af6f1440754e4780634143cfdf5a9db09b7deffcbd8ddad9834df26.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.966442 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_mswmm-0330a4fb990223394ef741e8c76f4fea9c33e9d005e8b2fc6b742969401e07af.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.967103 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_ogg-9a30110c1b5d25ad2a60376453081a8bad8bdc9ca0496adaadc1dd152550c284.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.967742 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_pdf-0406f720d48adde3738673d3991371fdbed92e86e62f3fac9dc5baf02b3614f6.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.968382 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_png-c49066162a1e58670fde49d2ad8bdf59a6bb0414b434dd4a5246d55a39941ca4.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.969042 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_pps-929bfdd0fe4cce7094fd36c61d3167d3d710c7237128671ed21920ee67fc09a6.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.969739 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_ppt-cd4bbfe9681ce6773ec02fa350a9164b743562bca7c8da4e8cae868c799b16ef.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.970431 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_pptx-953fce0096da8eb59e9af39a120fcd0ce26eaa398688e98fb13c63ba02672e03.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.971089 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_ps-ecb7431489438169c3d69fd8d3ddfbb606608fdb57256c1563aa68a301fa376b.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.971707 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_psd-bf29b99e477d2d1d831cbdc3e83acfa5a6585dbfdc93b87a45d999e3777ac055.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.972363 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_pst-b9057b03d66a1de6f148995e4641487ca4ffa0db6b1798bcaf112ffaa5555762.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.972974 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_ptb-7bc37534bd30c42a44c5ce51b0d2128c9d881ae83eacd71bac126c4093734dcc.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.973602 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_pub-afbba4a5a5aad678ec578965beee2be27eab1b2021c6bb8ea4c6bde89ad70235.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.974227 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_qbb-cdf8094ac39e71f6341a152fe42a809ce281ec8adb076c01e924d22bf2f1dad8.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.974872 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_qbw-eabd9bc42cbc2245ca5a88e795d92f96ddf37796b6bb511e0d580ab54d02d8e8.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.975508 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_qxd-17a5c1658a94f0c5689f19dfb4d75a4bdaf42d2f221acbfd07d7943c58cf59dc.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.976160 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_ram-29785222252e609606c445720b1d3a6aa521b04a439123ef7b677a26342ed7ba.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.976810 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_rar-62b6711f9a9face078d1578166735a6d1e4e93b8cbe4ac315522dddf3843c1c7.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.977458 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_rm-20f08ac06a0c85507214714561583580fe817be9cb08a77f3738d99e9593cf44.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.978095 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_rmvb-0ce3dd46b1dad8e1ca4e1220b40d5d28462564e2c2636c1204c906631ac4b234.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.978730 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_rtf-6b3e1848daad7b6edc75f2c711fa1c04862052917c5a603ca923065b6b8cdff6.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.979369 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_sea-68d00c2a1f638a516560226ff9629f714c682538f156817cb1f0a8b8e2b9da09.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.980016 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_ses-7e67456eaa8a9408e5e922eec1222a4c71e2ac3e2299feb853b17143037fded9.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.980670 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_sit-6ff8514be3f60887b99c96ed7279da772334e499753fe068caf83e56541ad479.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.981296 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_sitx-54ad88a27ef662ba860c3d8069ca19af06b32cb44970167a9282daa28a0441b4.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.981928 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_ss-4912a96ac3ebb64748ee99a7397d8f791446da88772dd88117c9ff0c8412bc1f.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.982561 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_swf-25bf87741415a43c90fff010bdf00e3c651d48e1bcc83346c25318d0ca8ae18b.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.983192 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_tgz-576824ed8ee0545f4499988f963a1e7defec34e0fa9a64e67332410f6b1e24cf.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.983847 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_thm-2287198154475ca8e7912abe0287303cebbb77821c80755f882ab6ca46627d37.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.984473 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_tif-f596e59660f32656cd016479a5c605b873d643a3855ffe2f8111a48d9ba50ef3.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.985101 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_tmp-f3cf0d784f8eff53838136caab9eb615fb377e7b331279963c9e284d7b5a4864.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.985741 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_torrent-dfb633e62e83d2452a6440e3a2640473c809d219c0e9085298a8bb36d1286980.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.986345 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_ttf-480ece61c3e4d541f05e2b423a8abd805ea9c24789a72374109bbf7856c9247d.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.986954 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_txt-212035d18b18bd60e748995241eaf5694e68801a8b62175f2e0b57ea036a4919.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.987570 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_unknown-8ca4e76dabefba0019545bd820e48d8a79fa4ca4eb7c61a3513f4c7c01a71eda.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.988209 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_vcd-bd5a2337cd3405225de3405564853594d3c702678502be60920d4dc88a1a9063.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.988854 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_vob-99106bd53af16444225782107934fdd8200c9e9ad57d78fd8d6dc5ecac6ec0c8.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.989468 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_wav-bf26f19c18ad970b7f0216c2ddff4b48876cafea5eb9d677d60bfc0b80ce6b0f.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.990112 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_wma-1a75e23b5d2596555b98c4aabb9779754aaa58d254ec4381657967298dd08c07.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.990732 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_wmv-efcc0506e13c6ebb823ecdc13cdfb76cf4763895dc3e24621b3b2424d044ac85.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.991358 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_wps-2751ce58f23ae6c93dc28f85dbc14d61632fbc3d941ec41f3893a8f2bab4e2e9.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.992013 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_xls-3ecda2bd05bee6aeda9afad17e795749651f92e44c5335a4e55216a642d6dac3.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.992699 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_xlsx-f01389794788ab077b3bdb5777353b7c34a69476c28cca29a1bd8df8135a7225.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.993337 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_xpi-e1bbd4dd137f0411d1a36a116e7e60ccb78593133f082ad5bbffdd02f91dfe92.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.993982 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/fileicons/file_extension_zip-650e2f6fb99c6913f7febcf12830b2b6c53a03b4d261264c4696e3ff866849ca.png
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.994593 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/material/icons/keyboard_arrow_down-3e723d75840e3ff689a2abf03d88ffb6a4a978417ea966a29014e5699839c934.svg
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.994663 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/material/icons/keyboard_arrow_down-3e723d75840e3ff689a2abf03d88ffb6a4a978417ea966a29014e5699839c934.svg.gz
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.995420 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/material/icons/keyboard_arrow_left-3bdc2706e8ca43938810a8e328b49e94712ad95e3e356488218e58e7ee01afe8.svg
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.995490 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/material/icons/keyboard_arrow_left-3bdc2706e8ca43938810a8e328b49e94712ad95e3e356488218e58e7ee01afe8.svg.gz
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.996153 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/material/icons/keyboard_arrow_right-cc10813340ebf42ff696180a03be1f3ab950e7b4aac6bea6b6d9cd10dc9fbd0c.svg
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.996222 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/material/icons/keyboard_arrow_right-cc10813340ebf42ff696180a03be1f3ab950e7b4aac6bea6b6d9cd10dc9fbd0c.svg.gz
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.996897 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/material/icons/keyboard_arrow_up-515c2f1487224089d31ad568ef95bb58d1a00ef57800ad774394d8a0f45e70fa.svg
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.996969 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/material/icons/keyboard_arrow_up-515c2f1487224089d31ad568ef95bb58d1a00ef57800ad774394d8a0f45e70fa.svg.gz
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.997602 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/material/icons/today-de548732f10cc7e60b7094021f884d8a4bd2485f938848bc302003b0accb304a.svg
+ DEBUG [c597e8db] 	I, [2023-09-20T04:25:59.997669 #3470110]  INFO -- : Writing /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/material/icons/today-de548732f10cc7e60b7094021f884d8a4bd2485f938848bc302003b0accb304a.svg.gz
+  INFO [c597e8db] Finished in 24.220 seconds with exit status 0 (successful).
+ DEBUG [698b26f0] Running if test ! -d /home/newdeploy/ngvcnew/releases/20230920042328; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920042328'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [698b26f0] Command: if test ! -d /home/newdeploy/ngvcnew/releases/20230920042328; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920042328'" 1>&2; false; fi
+ DEBUG [698b26f0] Finished in 1.386 seconds with exit status 0 (successful).
+  INFO [1a3d83a7] Running /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/releases/20230920042328/assets_manifest_backup as newdeploy@141.95.85.206
+ DEBUG [1a3d83a7] Command: cd /home/newdeploy/ngvcnew/releases/20230920042328 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/releases/20230920042328/assets_manifest_backup )
+  INFO [1a3d83a7] Finished in 1.637 seconds with exit status 0 (successful).
+ DEBUG [90da0e84] Running /usr/bin/env ls /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/.sprockets-manifest* as newdeploy@141.95.85.206
+ DEBUG [90da0e84] Command: cd /home/newdeploy/ngvcnew/releases/20230920042328 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/.sprockets-manifest* )
+ DEBUG [90da0e84] 	/home/newdeploy/ngvcnew/releases/20230920042328/public/assets/.sprockets-manifest-61fe33c4d38751264a4f36ed3da66f61.json
+ DEBUG [90da0e84] Finished in 2.876 seconds with exit status 0 (successful).
+ DEBUG [49b160b2] Running /usr/bin/env ls /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/.sprockets-manifest* as newdeploy@141.95.85.206
+ DEBUG [49b160b2] Command: cd /home/newdeploy/ngvcnew/releases/20230920042328 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/.sprockets-manifest* )
+ DEBUG [49b160b2] 	/home/newdeploy/ngvcnew/releases/20230920042328/public/assets/.sprockets-manifest-61fe33c4d38751264a4f36ed3da66f61.json
+ DEBUG [49b160b2] Finished in 2.039 seconds with exit status 0 (successful).
+  INFO [1fed2ebd] Running /usr/bin/env cp /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/.sprockets-manifest-61fe33c4d38751264a4f36ed3da66f61.json /home/newdeploy/ngvcnew/releases/20230920042328/assets_manifest_backup as newdeploy@141.95.85.206
+ DEBUG [1fed2ebd] Command: cd /home/newdeploy/ngvcnew/releases/20230920042328 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env cp /home/newdeploy/ngvcnew/releases/20230920042328/public/assets/.sprockets-manifest-61fe33c4d38751264a4f36ed3da66f61.json /home/newdeploy/ngvcnew/releases/20230920042328/assets_manifest_backup )
+  INFO [1fed2ebd] Finished in 1.430 seconds with exit status 0 (successful).
+  INFO [deploy:migrate] Run `rake db:migrate`
+ DEBUG [c821dc66] Running if test ! -d /home/newdeploy/ngvcnew/releases/20230920042328; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920042328'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [c821dc66] Command: if test ! -d /home/newdeploy/ngvcnew/releases/20230920042328; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920042328'" 1>&2; false; fi
+ DEBUG [c821dc66] Finished in 1.630 seconds with exit status 0 (successful).
+  INFO [e704ecd5] Running $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate as newdeploy@141.95.85.206
+ DEBUG [e704ecd5] Command: cd /home/newdeploy/ngvcnew/releases/20230920042328 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" ; $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate )
+ DEBUG [e704ecd5] 	rake aborted!
+StandardError: An error has occurred, this and all later migrations canceled:
+
+PG::InsufficientPrivilege: ERROR:  permission denied to create extension "pgcrypto"
+HINT:  Must be superuser to create this extension.
+ DEBUG [e704ecd5] 	/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/postgresql_adapter.rb:768:in `exec_params'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/postgresql_adapter.rb:768:in `block (2 levels) in exec_no_cache'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/concurrency/share_lock.rb:187:in `yield_shares'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/dependencies/interlock.rb:41:in `permit_concurrent_loads'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/postgresql_adapter.rb:767:in `block in exec_no_cache'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/abstract_adapter.rb:769:in `block in log'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/abstract_adapter.rb:760:in `log'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/postgresql_adapter.rb:766:in `exec_no_cache'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/postgresql_adapter.rb:745:in `execute_and_clear'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/postgresql/database_statements.rb:54:in `exec_query'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/postgresql_adapter.rb:434:in `enable_extension'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:932:in `block in method_missing'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:900:in `block in say_with_time'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:900:in `say_with_time'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:921:in `method_missing'
+/home/newdeploy/ngvcnew/releases/20230920042328/db/migrate/20210619065935_enable_uuid.rb:3:in `change'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:870:in `exec_migration'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:854:in `block (2 levels) in migrate'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:853:in `block in migrate'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:215:in `with_connection'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:852:in `migrate'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1046:in `migrate'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1360:in `block in execute_migration_in_transaction'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/abstract/transaction.rb:319:in `block in within_new_transaction'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/abstract/transaction.rb:317:in `within_new_transaction'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/abstract/database_statements.rb:316:in `transaction'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/transactions.rb:209:in `transaction'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1411:in `ddl_transaction'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1359:in `execute_migration_in_transaction'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1333:in `each'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1333:in `migrate_without_lock'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1282:in `block in migrate'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1432:in `block in with_advisory_lock'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:215:in `with_connection'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1447:in `with_advisory_lock_connection'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1428:in `with_advisory_lock'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1282:in `migrate'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1117:in `up'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1092:in `migrate'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/tasks/database_tasks.rb:262:in `migrate'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/railties/databases.rake:92:in `block (2 levels) in <main>'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/rake-13.0.6/exe/rake:27:in `<top (required)>'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli/exec.rb:58:in `load'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli/exec.rb:58:in `kernel_load'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli/exec.rb:23:in `run'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli.rb:492:in `exec'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/vendor/thor/lib/thor/command.rb:27:in `run'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/vendor/thor/lib/thor/invocation.rb:127:in `invoke_command'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/vendor/thor/lib/thor.rb:392:in `dispatch'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli.rb:34:in `dispatch'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/vendor/thor/lib/thor/base.rb:485:in `start'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli.rb:28:in `start'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/exe/bundle:45:in `block in <top (required)>'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/friendly_errors.rb:117:in `with_friendly_errors'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/exe/bundle:33:in `<top (required)>'
+/home/newdeploy/.rbenv/versions/3.1.2/bin/bundle:25:in `load'
+/home/newdeploy/.rbenv/versions/3.1.2/bin/bundle:25:in `<main>'
+
+Caused by:
+ActiveRecord::StatementInvalid: PG::InsufficientPrivilege: ERROR:  permission denied to create extension "pgcrypto"
+HINT:  Must be superuser to create this extension.
+ DEBUG [e704ecd5] 	/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/postgresql_adapter.rb:768:in `exec_params'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/postgresql_adapter.rb:768:in `block (2 levels) in exec_no_cache'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/concurrency/share_lock.rb:187:in `yield_shares'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/dependencies/interlock.rb:41:in `permit_concurrent_loads'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/postgresql_adapter.rb:767:in `block in exec_no_cache'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/abstract_adapter.rb:769:in `block in log'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/abstract_adapter.rb:760:in `log'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/postgresql_adapter.rb:766:in `exec_no_cache'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/postgresql_adapter.rb:745:in `execute_and_clear'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/postgresql/database_statements.rb:54:in `exec_query'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/postgresql_adapter.rb:434:in `enable_extension'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:932:in `block in method_missing'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:900:in `block in say_with_time'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:900:in `say_with_time'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:921:in `method_missing'
+/home/newdeploy/ngvcnew/releases/20230920042328/db/migrate/20210619065935_enable_uuid.rb:3:in `change'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:870:in `exec_migration'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:854:in `block (2 levels) in migrate'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:853:in `block in migrate'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:215:in `with_connection'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:852:in `migrate'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1046:in `migrate'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1360:in `block in execute_migration_in_transaction'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/abstract/transaction.rb:319:in `block in within_new_transaction'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/abstract/transaction.rb:317:in `within_new_transaction'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/abstract/database_statements.rb:316:in `transaction'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/transactions.rb:209:in `transaction'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1411:in `ddl_transaction'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1359:in `execute_migration_in_transaction'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1333:in `each'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1333:in `migrate_without_lock'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1282:in `block in migrate'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1432:in `block in with_advisory_lock'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:215:in `with_connection'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1447:in `with_advisory_lock_connection'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1428:in `with_advisory_lock'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1282:in `migrate'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1117:in `up'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1092:in `migrate'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/tasks/database_tasks.rb:262:in `migrate'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/railties/databases.rake:92:in `block (2 levels) in <main>'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/rake-13.0.6/exe/rake:27:in `<top (required)>'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli/exec.rb:58:in `load'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli/exec.rb:58:in `kernel_load'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli/exec.rb:23:in `run'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli.rb:492:in `exec'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/vendor/thor/lib/thor/command.rb:27:in `run'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/vendor/thor/lib/thor/invocation.rb:127:in `invoke_command'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/vendor/thor/lib/thor.rb:392:in `dispatch'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli.rb:34:in `dispatch'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/vendor/thor/lib/thor/base.rb:485:in `start'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli.rb:28:in `start'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/exe/bundle:45:in `block in <top (required)>'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/friendly_errors.rb:117:in `with_friendly_errors'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/exe/bundle:33:in `<top (required)>'
+/home/newdeploy/.rbenv/versions/3.1.2/bin/bundle:25:in `load'
+/home/newdeploy/.rbenv/versions/3.1.2/bin/bundle:25:in `<main>'
+
+Caused by:
+PG::InsufficientPrivilege: ERROR:  permission denied to create extension "pgcrypto"
+HINT:  Must be superuser to create this extension.
+ DEBUG [e704ecd5] 	/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/postgresql_adapter.rb:768:in `exec_params'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/postgresql_adapter.rb:768:in `block (2 levels) in exec_no_cache'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/concurrency/share_lock.rb:187:in `yield_shares'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/dependencies/interlock.rb:41:in `permit_concurrent_loads'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/postgresql_adapter.rb:767:in `block in exec_no_cache'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/abstract_adapter.rb:769:in `block in log'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/abstract_adapter.rb:760:in `log'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/postgresql_adapter.rb:766:in `exec_no_cache'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/postgresql_adapter.rb:745:in `execute_and_clear'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/postgresql/database_statements.rb:54:in `exec_query'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/postgresql_adapter.rb:434:in `enable_extension'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:932:in `block in method_missing'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:900:in `block in say_with_time'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:900:in `say_with_time'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:921:in `method_missing'
+/home/newdeploy/ngvcnew/releases/20230920042328/db/migrate/20210619065935_enable_uuid.rb:3:in `change'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:870:in `exec_migration'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:854:in `block (2 levels) in migrate'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:853:in `block in migrate'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:215:in `with_connection'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:852:in `migrate'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1046:in `migrate'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1360:in `block in execute_migration_in_transaction'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/abstract/transaction.rb:319:in `block in within_new_transaction'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.5/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/abstract/transaction.rb:317:in `within_new_transaction'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/abstract/database_statements.rb:316:in `transaction'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/transactions.rb:209:in `transaction'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1411:in `ddl_transaction'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1359:in `execute_migration_in_transaction'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1333:in `each'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1333:in `migrate_without_lock'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1282:in `block in migrate'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1432:in `block in with_advisory_lock'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:215:in `with_connection'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1447:in `with_advisory_lock_connection'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1428:in `with_advisory_lock'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1282:in `migrate'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1117:in `up'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/migration.rb:1092:in `migrate'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/tasks/database_tasks.rb:262:in `migrate'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.5/lib/active_record/railties/databases.rake:92:in `block (2 levels) in <main>'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/rake-13.0.6/exe/rake:27:in `<top (required)>'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli/exec.rb:58:in `load'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli/exec.rb:58:in `kernel_load'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli/exec.rb:23:in `run'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli.rb:492:in `exec'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/vendor/thor/lib/thor/command.rb:27:in `run'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/vendor/thor/lib/thor/invocation.rb:127:in `invoke_command'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/vendor/thor/lib/thor.rb:392:in `dispatch'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli.rb:34:in `dispatch'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/vendor/thor/lib/thor/base.rb:485:in `start'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli.rb:28:in `start'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/exe/bundle:45:in `block in <top (required)>'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/friendly_errors.rb:117:in `with_friendly_errors'
+/home/newdeploy/ngvcnew/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/exe/bundle:33:in `<top (required)>'
+/home/newdeploy/.rbenv/versions/3.1.2/bin/bundle:25:in `load'
+/home/newdeploy/.rbenv/versions/3.1.2/bin/bundle:25:in `<main>'
+Tasks: TOP => db:migrate
+(See full trace by running task with --trace)
+ DEBUG [e704ecd5] 	== 20210619065935 EnableUuid: migrating =======================================
+-- enable_extension("pgcrypto")
+  INFO ---------------------------------------------------------------------------
+  INFO START 2023-09-20 07:36:32 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [933c14c6] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as newdeploy@141.95.85.206
+ DEBUG [933c14c6] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+ DEBUG [933c14c6] Finished in 29.694 seconds with exit status 0 (successful).
+ DEBUG [5c334cc9] Running /usr/bin/env which passenger as newdeploy@141.95.85.206
+ DEBUG [5c334cc9] Command: /usr/bin/env which passenger
+ DEBUG [5c334cc9] 	/usr/bin/passenger
+ DEBUG [5c334cc9] Finished in 4.831 seconds with exit status 0 (successful).
+  INFO [82b97e19] Running /usr/bin/env mkdir -p /tmp as newdeploy@141.95.85.206
+ DEBUG [82b97e19] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /tmp )
+  INFO [82b97e19] Finished in 1.565 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-39df33696b95b2a1df09.sh 0.0%
+  INFO Uploading /tmp/git-ssh-39df33696b95b2a1df09.sh 100.0%
+  INFO [9ab180e5] Running /usr/bin/env chmod 700 /tmp/git-ssh-39df33696b95b2a1df09.sh as newdeploy@141.95.85.206
+ DEBUG [9ab180e5] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env chmod 700 /tmp/git-ssh-39df33696b95b2a1df09.sh )
+  INFO [9ab180e5] Finished in 2.735 seconds with exit status 0 (successful).
+  INFO [c4a7c50f] Running /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD as newdeploy@141.95.85.206
+ DEBUG [c4a7c50f] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-39df33696b95b2a1df09.sh" ; /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD )
+ DEBUG [c4a7c50f] 	621ff4fce3bd4c52119dbf97c0f7f11c457d8394	HEAD
+  INFO [c4a7c50f] Finished in 4.321 seconds with exit status 0 (successful).
+  INFO [93efb392] Running /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/shared /home/newdeploy/ngvcnew/releases as newdeploy@141.95.85.206
+ DEBUG [93efb392] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/shared /home/newdeploy/ngvcnew/releases )
+  INFO [93efb392] Finished in 2.198 seconds with exit status 0 (successful).
+  INFO [2cce8399] Running /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/shared/log /home/newdeploy/ngvcnew/shared/tmp/pids /home/newdeploy/ngvcnew/shared/tmp/cache /home/newdeploy/ngvcnew/shared/tmp/sockets /home/newdeploy/ngvcnew/shared/vendor/bundle /home/newdeploy/ngvcnew/shared/public/system /home/newdeploy/ngvcnew/shared/public/uploads /home/newdeploy/ngvcnew/shared/public/assets as newdeploy@141.95.85.206
+ DEBUG [2cce8399] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/shared/log /home/newdeploy/ngvcnew/shared/tmp/pids /home/newdeploy/ngvcnew/shared/tmp/cache /home/newdeploy/ngvcnew/shared/tmp/sockets /home/newdeploy/ngvcnew/shared/vendor/bundle /home/newdeploy/ngvcnew/shared/public/system /home/newdeploy/ngvcnew/shared/public/uploads /home/newdeploy/ngvcnew/shared/public/assets )
+  INFO [2cce8399] Finished in 2.974 seconds with exit status 0 (successful).
+ DEBUG [300520fb] Running [ -f /home/newdeploy/ngvcnew/current/REVISION ] as newdeploy@141.95.85.206
+ DEBUG [300520fb] Command: [ -f /home/newdeploy/ngvcnew/current/REVISION ]
+ DEBUG [300520fb] Finished in 0.939 seconds with exit status 1 (failed).
+ DEBUG [7a3c4da7] Running [ -f /home/newdeploy/ngvcnew/repo/HEAD ] as newdeploy@141.95.85.206
+ DEBUG [7a3c4da7] Command: [ -f /home/newdeploy/ngvcnew/repo/HEAD ]
+ DEBUG [7a3c4da7] Finished in 2.703 seconds with exit status 0 (successful).
+  INFO The repository mirror is at /home/newdeploy/ngvcnew/repo
+ DEBUG [b531bbe0] Running if test ! -d /home/newdeploy/ngvcnew/repo; then echo "Directory does not exist '/home/newdeploy/ngvcnew/repo'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [b531bbe0] Command: if test ! -d /home/newdeploy/ngvcnew/repo; then echo "Directory does not exist '/home/newdeploy/ngvcnew/repo'" 1>&2; false; fi
+ DEBUG [b531bbe0] Finished in 4.294 seconds with exit status 0 (successful).
+  INFO [da9bba66] Running /usr/bin/env git remote set-url origin https://fenet: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@github.com/fenet/leadstarlatest.git as newdeploy@141.95.85.206
+ DEBUG [da9bba66] Command: cd /home/newdeploy/ngvcnew/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-39df33696b95b2a1df09.sh" ; /usr/bin/env git remote set-url origin https://fenet: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@github.com/fenet/leadstarlatest.git )
+  INFO [da9bba66] Finished in 2.863 seconds with exit status 0 (successful).
+  INFO [922d516d] Running /usr/bin/env git remote update --prune as newdeploy@141.95.85.206
+ DEBUG [922d516d] Command: cd /home/newdeploy/ngvcnew/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-39df33696b95b2a1df09.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [922d516d] 	Fetching origin
+  INFO [922d516d] Finished in 2.552 seconds with exit status 0 (successful).
+ DEBUG [c92d9015] Running if test ! -d /home/newdeploy/ngvcnew/repo; then echo "Directory does not exist '/home/newdeploy/ngvcnew/repo'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [c92d9015] Command: if test ! -d /home/newdeploy/ngvcnew/repo; then echo "Directory does not exist '/home/newdeploy/ngvcnew/repo'" 1>&2; false; fi
+ DEBUG [c92d9015] Finished in 4.142 seconds with exit status 0 (successful).
+  INFO [8c5f3c22] Running /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/releases/20230920043728 as newdeploy@141.95.85.206
+ DEBUG [8c5f3c22] Command: cd /home/newdeploy/ngvcnew/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-39df33696b95b2a1df09.sh" ; /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/releases/20230920043728 )
+  INFO [8c5f3c22] Finished in 2.891 seconds with exit status 0 (successful).
+  INFO [6ee445d0] Running /usr/bin/env git archive main | /usr/bin/env tar -x -f - -C /home/newdeploy/ngvcnew/releases/20230920043728 as newdeploy@141.95.85.206
+ DEBUG [6ee445d0] Command: cd /home/newdeploy/ngvcnew/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-39df33696b95b2a1df09.sh" ; /usr/bin/env git archive main | /usr/bin/env tar -x -f - -C /home/newdeploy/ngvcnew/releases/20230920043728 )
+  INFO [6ee445d0] Finished in 2.715 seconds with exit status 0 (successful).
+ DEBUG [f4187262] Running if test ! -d /home/newdeploy/ngvcnew/repo; then echo "Directory does not exist '/home/newdeploy/ngvcnew/repo'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [f4187262] Command: if test ! -d /home/newdeploy/ngvcnew/repo; then echo "Directory does not exist '/home/newdeploy/ngvcnew/repo'" 1>&2; false; fi
+ DEBUG [f4187262] Finished in 2.543 seconds with exit status 0 (successful).
+ DEBUG [e4902507] Running /usr/bin/env git rev-list --max-count=1 main as newdeploy@141.95.85.206
+ DEBUG [e4902507] Command: cd /home/newdeploy/ngvcnew/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-39df33696b95b2a1df09.sh" ; /usr/bin/env git rev-list --max-count=1 main )
+ DEBUG [e4902507] 	621ff4fce3bd4c52119dbf97c0f7f11c457d8394
+ DEBUG [e4902507] Finished in 1.459 seconds with exit status 0 (successful).
+ DEBUG [79d37b4d] Running if test ! -d /home/newdeploy/ngvcnew/releases/20230920043728; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920043728'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [79d37b4d] Command: if test ! -d /home/newdeploy/ngvcnew/releases/20230920043728; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920043728'" 1>&2; false; fi
+ DEBUG [79d37b4d] Finished in 2.890 seconds with exit status 0 (successful).
+  INFO [b43e63e5] Running /usr/bin/env echo "621ff4fce3bd4c52119dbf97c0f7f11c457d8394" > REVISION as newdeploy@141.95.85.206
+ DEBUG [b43e63e5] Command: cd /home/newdeploy/ngvcnew/releases/20230920043728 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "621ff4fce3bd4c52119dbf97c0f7f11c457d8394" > REVISION )
+  INFO [b43e63e5] Finished in 2.864 seconds with exit status 0 (successful).
+  INFO [0831173a] Running /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/releases/20230920043728 /home/newdeploy/ngvcnew/releases/20230920043728/tmp /home/newdeploy/ngvcnew/releases/20230920043728/vendor /home/newdeploy/ngvcnew/releases/20230920043728/public as newdeploy@141.95.85.206
+ DEBUG [0831173a] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/releases/20230920043728 /home/newdeploy/ngvcnew/releases/20230920043728/tmp /home/newdeploy/ngvcnew/releases/20230920043728/vendor /home/newdeploy/ngvcnew/releases/20230920043728/public )
+  INFO [0831173a] Finished in 2.390 seconds with exit status 0 (successful).
+ DEBUG [8319896a] Running [ -L /home/newdeploy/ngvcnew/releases/20230920043728/log ] as newdeploy@141.95.85.206
+ DEBUG [8319896a] Command: [ -L /home/newdeploy/ngvcnew/releases/20230920043728/log ]
+ DEBUG [8319896a] Finished in 6.097 seconds with exit status 1 (failed).
+ DEBUG [90116138] Running [ -d /home/newdeploy/ngvcnew/releases/20230920043728/log ] as newdeploy@141.95.85.206
+ DEBUG [90116138] Command: [ -d /home/newdeploy/ngvcnew/releases/20230920043728/log ]
+ DEBUG [90116138] Finished in 1.442 seconds with exit status 0 (successful).
+  INFO [63ff7802] Running /usr/bin/env rm -rf /home/newdeploy/ngvcnew/releases/20230920043728/log as newdeploy@141.95.85.206
+ DEBUG [63ff7802] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env rm -rf /home/newdeploy/ngvcnew/releases/20230920043728/log )
+  INFO [63ff7802] Finished in 2.294 seconds with exit status 0 (successful).
+  INFO [a9d53842] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/log /home/newdeploy/ngvcnew/releases/20230920043728/log as newdeploy@141.95.85.206
+ DEBUG [a9d53842] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/log /home/newdeploy/ngvcnew/releases/20230920043728/log )
+  INFO [a9d53842] Finished in 1.461 seconds with exit status 0 (successful).
+ DEBUG [64af4d10] Running [ -L /home/newdeploy/ngvcnew/releases/20230920043728/tmp/pids ] as newdeploy@141.95.85.206
+ DEBUG [64af4d10] Command: [ -L /home/newdeploy/ngvcnew/releases/20230920043728/tmp/pids ]
+ DEBUG [64af4d10] Finished in 3.429 seconds with exit status 1 (failed).
+ DEBUG [50ae0899] Running [ -d /home/newdeploy/ngvcnew/releases/20230920043728/tmp/pids ] as newdeploy@141.95.85.206
+ DEBUG [50ae0899] Command: [ -d /home/newdeploy/ngvcnew/releases/20230920043728/tmp/pids ]
+ DEBUG [50ae0899] Finished in 2.586 seconds with exit status 1 (failed).
+  INFO [bdf56084] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/tmp/pids /home/newdeploy/ngvcnew/releases/20230920043728/tmp/pids as newdeploy@141.95.85.206
+ DEBUG [bdf56084] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/tmp/pids /home/newdeploy/ngvcnew/releases/20230920043728/tmp/pids )
+  INFO [bdf56084] Finished in 4.019 seconds with exit status 0 (successful).
+ DEBUG [b0e2bbd9] Running [ -L /home/newdeploy/ngvcnew/releases/20230920043728/tmp/cache ] as newdeploy@141.95.85.206
+ DEBUG [b0e2bbd9] Command: [ -L /home/newdeploy/ngvcnew/releases/20230920043728/tmp/cache ]
+ DEBUG [b0e2bbd9] Finished in 2.570 seconds with exit status 1 (failed).
+ DEBUG [4dd83e22] Running [ -d /home/newdeploy/ngvcnew/releases/20230920043728/tmp/cache ] as newdeploy@141.95.85.206
+ DEBUG [4dd83e22] Command: [ -d /home/newdeploy/ngvcnew/releases/20230920043728/tmp/cache ]
+ DEBUG [4dd83e22] Finished in 1.953 seconds with exit status 0 (successful).
+  INFO [db9dbf53] Running /usr/bin/env rm -rf /home/newdeploy/ngvcnew/releases/20230920043728/tmp/cache as newdeploy@141.95.85.206
+ DEBUG [db9dbf53] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env rm -rf /home/newdeploy/ngvcnew/releases/20230920043728/tmp/cache )
+  INFO [db9dbf53] Finished in 3.694 seconds with exit status 0 (successful).
+  INFO [31a0f17d] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/tmp/cache /home/newdeploy/ngvcnew/releases/20230920043728/tmp/cache as newdeploy@141.95.85.206
+ DEBUG [31a0f17d] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/tmp/cache /home/newdeploy/ngvcnew/releases/20230920043728/tmp/cache )
+  INFO [31a0f17d] Finished in 6.562 seconds with exit status 0 (successful).
+ DEBUG [68bb1036] Running [ -L /home/newdeploy/ngvcnew/releases/20230920043728/tmp/sockets ] as newdeploy@141.95.85.206
+ DEBUG [68bb1036] Command: [ -L /home/newdeploy/ngvcnew/releases/20230920043728/tmp/sockets ]
+ DEBUG [68bb1036] Finished in 1.134 seconds with exit status 1 (failed).
+ DEBUG [e3925b62] Running [ -d /home/newdeploy/ngvcnew/releases/20230920043728/tmp/sockets ] as newdeploy@141.95.85.206
+ DEBUG [e3925b62] Command: [ -d /home/newdeploy/ngvcnew/releases/20230920043728/tmp/sockets ]
+ DEBUG [e3925b62] Finished in 3.674 seconds with exit status 1 (failed).
+  INFO [83f174c9] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/tmp/sockets /home/newdeploy/ngvcnew/releases/20230920043728/tmp/sockets as newdeploy@141.95.85.206
+ DEBUG [83f174c9] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/tmp/sockets /home/newdeploy/ngvcnew/releases/20230920043728/tmp/sockets )
+  INFO [83f174c9] Finished in 2.484 seconds with exit status 0 (successful).
+ DEBUG [384de953] Running [ -L /home/newdeploy/ngvcnew/releases/20230920043728/vendor/bundle ] as newdeploy@141.95.85.206
+ DEBUG [384de953] Command: [ -L /home/newdeploy/ngvcnew/releases/20230920043728/vendor/bundle ]
+ DEBUG [384de953] Finished in 4.420 seconds with exit status 1 (failed).
+ DEBUG [f182d156] Running [ -d /home/newdeploy/ngvcnew/releases/20230920043728/vendor/bundle ] as newdeploy@141.95.85.206
+ DEBUG [f182d156] Command: [ -d /home/newdeploy/ngvcnew/releases/20230920043728/vendor/bundle ]
+ DEBUG [f182d156] Finished in 2.833 seconds with exit status 1 (failed).
+  INFO [05e9bfef] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/vendor/bundle /home/newdeploy/ngvcnew/releases/20230920043728/vendor/bundle as newdeploy@141.95.85.206
+ DEBUG [05e9bfef] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/vendor/bundle /home/newdeploy/ngvcnew/releases/20230920043728/vendor/bundle )
+  INFO [05e9bfef] Finished in 2.232 seconds with exit status 0 (successful).
+ DEBUG [826206fb] Running [ -L /home/newdeploy/ngvcnew/releases/20230920043728/public/system ] as newdeploy@141.95.85.206
+ DEBUG [826206fb] Command: [ -L /home/newdeploy/ngvcnew/releases/20230920043728/public/system ]
+ DEBUG [826206fb] Finished in 1.436 seconds with exit status 1 (failed).
+ DEBUG [d7aed2f2] Running [ -d /home/newdeploy/ngvcnew/releases/20230920043728/public/system ] as newdeploy@141.95.85.206
+ DEBUG [d7aed2f2] Command: [ -d /home/newdeploy/ngvcnew/releases/20230920043728/public/system ]
+ DEBUG [d7aed2f2] Finished in 2.227 seconds with exit status 1 (failed).
+  INFO [cc78b454] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/public/system /home/newdeploy/ngvcnew/releases/20230920043728/public/system as newdeploy@141.95.85.206
+ DEBUG [cc78b454] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/public/system /home/newdeploy/ngvcnew/releases/20230920043728/public/system )
+  INFO [cc78b454] Finished in 2.543 seconds with exit status 0 (successful).
+ DEBUG [aae34c34] Running [ -L /home/newdeploy/ngvcnew/releases/20230920043728/public/uploads ] as newdeploy@141.95.85.206
+ DEBUG [aae34c34] Command: [ -L /home/newdeploy/ngvcnew/releases/20230920043728/public/uploads ]
+ DEBUG [aae34c34] Finished in 3.988 seconds with exit status 1 (failed).
+ DEBUG [10dd74e0] Running [ -d /home/newdeploy/ngvcnew/releases/20230920043728/public/uploads ] as newdeploy@141.95.85.206
+ DEBUG [10dd74e0] Command: [ -d /home/newdeploy/ngvcnew/releases/20230920043728/public/uploads ]
+ DEBUG [10dd74e0] Finished in 3.679 seconds with exit status 1 (failed).
+  INFO [e6011699] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/public/uploads /home/newdeploy/ngvcnew/releases/20230920043728/public/uploads as newdeploy@141.95.85.206
+ DEBUG [e6011699] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/public/uploads /home/newdeploy/ngvcnew/releases/20230920043728/public/uploads )
+  INFO [e6011699] Finished in 7.055 seconds with exit status 0 (successful).
+ DEBUG [270b0266] Running [ -L /home/newdeploy/ngvcnew/releases/20230920043728/public/assets ] as newdeploy@141.95.85.206
+ DEBUG [270b0266] Command: [ -L /home/newdeploy/ngvcnew/releases/20230920043728/public/assets ]
+ DEBUG [270b0266] Finished in 2.847 seconds with exit status 1 (failed).
+ DEBUG [a701730b] Running [ -d /home/newdeploy/ngvcnew/releases/20230920043728/public/assets ] as newdeploy@141.95.85.206
+ DEBUG [a701730b] Command: [ -d /home/newdeploy/ngvcnew/releases/20230920043728/public/assets ]
+ DEBUG [a701730b] Finished in 1.931 seconds with exit status 1 (failed).
+  INFO [0ec4703e] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/public/assets /home/newdeploy/ngvcnew/releases/20230920043728/public/assets as newdeploy@141.95.85.206
+ DEBUG [0ec4703e] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/public/assets /home/newdeploy/ngvcnew/releases/20230920043728/public/assets )
+  INFO [0ec4703e] Finished in 4.789 seconds with exit status 0 (successful).
+ DEBUG [ffa55865] Running if test ! -d /home/newdeploy/ngvcnew/releases/20230920043728; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920043728'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [ffa55865] Command: if test ! -d /home/newdeploy/ngvcnew/releases/20230920043728; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920043728'" 1>&2; false; fi
+ DEBUG [ffa55865] Finished in 5.106 seconds with exit status 0 (successful).
+  INFO [1ed51568] Running $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true as newdeploy@141.95.85.206
+ DEBUG [1ed51568] Command: cd /home/newdeploy/ngvcnew/releases/20230920043728 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true )
+  INFO [1ed51568] Finished in 3.982 seconds with exit status 0 (successful).
+  INFO [1b8c32ba] Running $HOME/.rbenv/bin/rbenv exec bundle config --local path /home/newdeploy/ngvcnew/shared/bundle as newdeploy@141.95.85.206
+ DEBUG [1b8c32ba] Command: cd /home/newdeploy/ngvcnew/releases/20230920043728 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local path /home/newdeploy/ngvcnew/shared/bundle )
+  INFO [1b8c32ba] Finished in 4.498 seconds with exit status 0 (successful).
+  INFO [c5411de2] Running $HOME/.rbenv/bin/rbenv exec bundle config --local without development:test as newdeploy@141.95.85.206
+ DEBUG [c5411de2] Command: cd /home/newdeploy/ngvcnew/releases/20230920043728 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local without development:test )
+  INFO [c5411de2] Finished in 5.121 seconds with exit status 0 (successful).
+ DEBUG [f9e63249] Running if test ! -d /home/newdeploy/ngvcnew/releases/20230920043728; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920043728'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [f9e63249] Command: if test ! -d /home/newdeploy/ngvcnew/releases/20230920043728; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920043728'" 1>&2; false; fi
+ DEBUG [f9e63249] Finished in 2.549 seconds with exit status 0 (successful).
+ DEBUG [99344476] Running $HOME/.rbenv/bin/rbenv exec bundle check as newdeploy@141.95.85.206
+ DEBUG [99344476] Command: cd /home/newdeploy/ngvcnew/releases/20230920043728 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle check )
+ DEBUG [99344476] 	The Gemfile's dependencies are satisfied
+ DEBUG [99344476] Finished in 1.587 seconds with exit status 0 (successful).
+  INFO The Gemfile's dependencies are satisfied, skipping installation
+ DEBUG [98c2e0f6] Running if test ! -d /home/newdeploy/ngvcnew/releases/20230920043728; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920043728'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [98c2e0f6] Command: if test ! -d /home/newdeploy/ngvcnew/releases/20230920043728; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920043728'" 1>&2; false; fi
+ DEBUG [98c2e0f6] Finished in 1.936 seconds with exit status 0 (successful).
+  INFO [9ad95244] Running $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile as newdeploy@141.95.85.206
+ DEBUG [9ad95244] Command: cd /home/newdeploy/ngvcnew/releases/20230920043728 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" RAILS_GROUPS="" ; $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile )
+  INFO [9ad95244] Finished in 6.092 seconds with exit status 0 (successful).
+ DEBUG [8cb07584] Running if test ! -d /home/newdeploy/ngvcnew/releases/20230920043728; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920043728'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [8cb07584] Command: if test ! -d /home/newdeploy/ngvcnew/releases/20230920043728; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920043728'" 1>&2; false; fi
+ DEBUG [8cb07584] Finished in 1.431 seconds with exit status 0 (successful).
+  INFO [3c5ee1ae] Running /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/releases/20230920043728/assets_manifest_backup as newdeploy@141.95.85.206
+ DEBUG [3c5ee1ae] Command: cd /home/newdeploy/ngvcnew/releases/20230920043728 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/releases/20230920043728/assets_manifest_backup )
+  INFO [3c5ee1ae] Finished in 4.808 seconds with exit status 0 (successful).
+ DEBUG [5aeec5aa] Running /usr/bin/env ls /home/newdeploy/ngvcnew/releases/20230920043728/public/assets/.sprockets-manifest* as newdeploy@141.95.85.206
+ DEBUG [5aeec5aa] Command: cd /home/newdeploy/ngvcnew/releases/20230920043728 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls /home/newdeploy/ngvcnew/releases/20230920043728/public/assets/.sprockets-manifest* )
+ DEBUG [5aeec5aa] 	/home/newdeploy/ngvcnew/releases/20230920043728/public/assets/.sprockets-manifest-61fe33c4d38751264a4f36ed3da66f61.json
+ DEBUG [5aeec5aa] Finished in 3.721 seconds with exit status 0 (successful).
+ DEBUG [de3c080a] Running /usr/bin/env ls /home/newdeploy/ngvcnew/releases/20230920043728/public/assets/.sprockets-manifest* as newdeploy@141.95.85.206
+ DEBUG [de3c080a] Command: cd /home/newdeploy/ngvcnew/releases/20230920043728 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls /home/newdeploy/ngvcnew/releases/20230920043728/public/assets/.sprockets-manifest* )
+ DEBUG [de3c080a] 	/home/newdeploy/ngvcnew/releases/20230920043728/public/assets/.sprockets-manifest-61fe33c4d38751264a4f36ed3da66f61.json
+ DEBUG [de3c080a] Finished in 3.102 seconds with exit status 0 (successful).
+  INFO [687d250f] Running /usr/bin/env cp /home/newdeploy/ngvcnew/releases/20230920043728/public/assets/.sprockets-manifest-61fe33c4d38751264a4f36ed3da66f61.json /home/newdeploy/ngvcnew/releases/20230920043728/assets_manifest_backup as newdeploy@141.95.85.206
+ DEBUG [687d250f] Command: cd /home/newdeploy/ngvcnew/releases/20230920043728 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env cp /home/newdeploy/ngvcnew/releases/20230920043728/public/assets/.sprockets-manifest-61fe33c4d38751264a4f36ed3da66f61.json /home/newdeploy/ngvcnew/releases/20230920043728/assets_manifest_backup )
+  INFO [687d250f] Finished in 4.376 seconds with exit status 0 (successful).
+  INFO [deploy:migrate] Run `rake db:migrate`
+ DEBUG [6ac8e041] Running if test ! -d /home/newdeploy/ngvcnew/releases/20230920043728; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920043728'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [6ac8e041] Command: if test ! -d /home/newdeploy/ngvcnew/releases/20230920043728; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920043728'" 1>&2; false; fi
+ DEBUG [6ac8e041] Finished in 3.700 seconds with exit status 0 (successful).
+  INFO [214dae7c] Running $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate as newdeploy@141.95.85.206
+ DEBUG [214dae7c] Command: cd /home/newdeploy/ngvcnew/releases/20230920043728 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" ; $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate )
+ DEBUG [214dae7c] 	== 20210619065935 EnableUuid: migrating =======================================
+-- enable_extension("pgcrypto")
+   -> 0.0041s
+== 20210619065935 EnableUuid: migrated (0.0041s) ==============================
+
+== 20210619065943 DeviseCreateAdminUsers: migrating ===========================
+-- create_table(:admin_users, {:id=>:uuid})
+   -> 0.1571s
+-- add_index(:admin_users, :email, {:unique=>true})
+   -> 0.0334s
+-- add_index(:admin_users, :reset_password_token, {:unique=>true})
+   -> 0.0503s
+== 20210619065943 DeviseCreateAdminUsers: migrated (0.2410s) ==================
+
+== 20210619065945 CreateActiveAdminComments: migrating ========================
+-- create_table(:active_admin_comments, {:id=>:uuid})
+   -> 0.1458s
+-- add_index(:active_admin_comments, [:namespace])
+   -> 0.0491s
+== 20210619065945 CreateActiveAdminComments: migrated (0.1950s) ===============
+
+== 20210621093322 CreatePrograms: migrating ===================================
+-- create_table(:programs, {:id=>:uuid})
+   -> 0.1383s
+== 20210621093322 CreatePrograms: migrated (0.1384s) ==========================
+
+== 20210703083709 CreateColleges: migrating ===================================
+-- create_table(:colleges, {:id=>:uuid})
+   -> 0.1184s
+== 20210703083709 CreateColleges: migrated (0.1185s) ==========================
+
+== 20210705082253 CreateFaculties: migrating ==================================
+-- create_table(:faculties, {:id=>:uuid})
+   -> 0.0928s
+== 20210705082253 CreateFaculties: migrated (0.0929s) =========================
+
+== 20210705082254 CreateDepartments: migrating ================================
+-- create_table(:departments, {:id=>:uuid})
+   -> 0.1282s
+== 20210705082254 CreateDepartments: migrated (0.1283s) =======================
+
+== 20210705110021 CreateCourseModules: migrating ==============================
+-- create_table(:course_modules, {:id=>:uuid})
+   -> 0.1039s
+== 20210705110021 CreateCourseModules: migrated (0.1040s) =====================
+
+== 20210705113429 CreateCourses: migrating ====================================
+-- create_table(:courses, {:id=>:uuid})
+   -> 0.1801s
+== 20210705113429 CreateCourses: migrated (0.1802s) ===========================
+
+== 20210706060027 CreateCurriculums: migrating ================================
+-- create_table(:curriculums, {:id=>:uuid})
+   -> 0.1261s
+== 20210706060027 CreateCurriculums: migrated (0.1262s) =======================
+
+== 20210713184101 DeviseCreateStudents: migrating =============================
+-- create_table(:students, {:id=>:uuid})
+   -> 0.1942s
+-- add_index(:students, :email, {:unique=>true})
+   -> 0.0334s
+-- add_index(:students, :reset_password_token, {:unique=>true})
+   -> 0.0335s
+== 20210713184101 DeviseCreateStudents: migrated (0.2613s) ====================
+
+== 20210713200356 CreateStudentAddresses: migrating ===========================
+-- create_table(:student_addresses, {:id=>:uuid})
+   -> 0.1370s
+== 20210713200356 CreateStudentAddresses: migrated (0.1371s) ==================
+
+== 20210714060838 CreateEmergencyContacts: migrating ==========================
+-- create_table(:emergency_contacts, {:id=>:uuid})
+   -> 0.1295s
+== 20210714060838 CreateEmergencyContacts: migrated (0.1296s) =================
+
+== 20210714085800 CreateActiveStorageTables: migrating ========================
+-- create_table(:active_storage_blobs, {:id=>:uuid})
+   -> 0.1348s
+-- create_table(:active_storage_attachments, {:id=>:uuid})
+   -> 0.1739s
+== 20210714085800 CreateActiveStorageTables: migrated (0.3088s) ===============
+
+== 20210823171504 CreatePaymentMethods: migrating =============================
+-- create_table(:payment_methods, {:id=>:uuid})
+   -> 0.0925s
+== 20210823171504 CreatePaymentMethods: migrated (0.0926s) ====================
+
+== 20210823174754 CreateAcademicCalendars: migrating ==========================
+-- create_table(:academic_calendars, {:id=>:uuid})
+   -> 0.0931s
+== 20210823174754 CreateAcademicCalendars: migrated (0.0931s) =================
+
+== 20210823180321 CreateActivities: migrating =================================
+-- create_table(:activities, {:id=>:uuid})
+   -> 0.1125s
+== 20210823180321 CreateActivities: migrated (0.1125s) ========================
+
+== 20210823192720 CreateCollegePayments: migrating ============================
+-- create_table(:college_payments, {:id=>:uuid})
+   -> 0.0831s
+== 20210823192720 CreateCollegePayments: migrated (0.0831s) ===================
+
+== 20210823203149 CreateSemesterRegistrations: migrating ======================
+-- create_table(:semester_registrations, {:id=>:uuid})
+   -> 0.2652s
+== 20210823203149 CreateSemesterRegistrations: migrated (0.2653s) =============
+
+== 20210823215242 CreateCourseRegistrations: migrating ========================
+-- create_table(:course_registrations, {:id=>:uuid})
+   -> 0.3534s
+== 20210823215242 CreateCourseRegistrations: migrated (0.3535s) ===============
+
+== 20210824022521 CreateInvoices: migrating ===================================
+-- create_table(:invoices, {:id=>:uuid})
+   -> 0.3076s
+== 20210824022521 CreateInvoices: migrated (0.3077s) ==========================
+
+== 20210824023314 CreateInvoiceItems: migrating ===============================
+-- create_table(:invoice_items, {:id=>:uuid})
+   -> 0.2206s
+== 20210824023314 CreateInvoiceItems: migrated (0.2207s) ======================
+
+== 20210824023417 CreatePaymentTransactions: migrating ========================
+-- create_table(:payment_transactions, {:id=>:uuid})
+   -> 0.1433s
+== 20210824023417 CreatePaymentTransactions: migrated (0.1434s) ===============
+
+== 20211126003036 CreateGradeRules: migrating =================================
+-- create_table(:grade_rules, {:id=>:uuid})
+   -> 0.0711s
+== 20211126003036 CreateGradeRules: migrated (0.0712s) ========================
+
+== 20211126003319 CreateGrades: migrating =====================================
+-- create_table(:grades, {:id=>:uuid})
+   -> 0.1216s
+== 20211126003319 CreateGrades: migrated (0.1217s) ============================
+
+== 20211126003825 CreateStudentGrades: migrating ==============================
+-- create_table(:student_grades, {:id=>:uuid})
+   -> 0.2572s
+== 20211126003825 CreateStudentGrades: migrated (0.2573s) =====================
+
+== 20211126004032 CreateGradeReports: migrating ===============================
+-- create_table(:grade_reports, {:id=>:uuid})
+   -> 0.3119s
+== 20211126004032 CreateGradeReports: migrated (0.3120s) ======================
+
+== 20211126004555 CreateCourseAssessments: migrating ==========================
+-- create_table(:course_assessments, {:id=>:uuid})
+   -> 0.1432s
+== 20211126004555 CreateCourseAssessments: migrated (0.1433s) =================
+
+== 20211126004620 CreateAssessments: migrating ================================
+-- create_table(:assessments, {:id=>:uuid})
+   -> 0.2611s
+== 20211126004620 CreateAssessments: migrated (0.2611s) =======================
+
+== 20211210023830 CreateSections: migrating ===================================
+-- create_table(:sections, {:id=>:uuid})
+   -> 0.1402s
+== 20211210023830 CreateSections: migrated (0.1403s) ==========================
+
+== 20211210060219 CreateAlmunis: migrating ====================================
+-- create_table(:almunis, {:id=>:uuid})
+   -> 0.0930s
+== 20211210060219 CreateAlmunis: migrated (0.0930s) ===========================
+
+== 20220325124058 CreateSchoolOrUniversityInformations: migrating =============
+-- create_table(:school_or_university_informations, {:id=>:uuid})
+   -> 0.1355s
+== 20220325124058 CreateSchoolOrUniversityInformations: migrated (0.1356s) ====
+
+== 20220329120614 CreateStudentCourses: migrating =============================
+-- create_table(:student_courses, {:id=>:uuid})
+   -> 0.1397s
+== 20220329120614 CreateStudentCourses: migrated (0.1398s) ====================
+
+== 20220401001719 CreateCourseSections: migrating =============================
+-- create_table(:course_sections, {:id=>:uuid})
+   -> 0.1184s
+== 20220401001719 CreateCourseSections: migrated (0.1185s) ====================
+
+== 20220401050610 CreateAttendances: migrating ================================
+-- create_table(:attendances, {:id=>:uuid})
+   -> 0.2282s
+== 20220401050610 CreateAttendances: migrated (0.2283s) =======================
+
+== 20220401050858 CreateSessions: migrating ===================================
+ DEBUG [214dae7c] 	
+-- create_table(:sessions, {:id=>:uuid})
+   -> 0.2144s
+== 20220401050858 CreateSessions: migrated (0.2145s) ==========================
+
+== 20220401051159 CreateStudentAttendances: migrating =========================
+-- create_table(:student_attendances, {:id=>:uuid})
+   -> 0.2138s
+== 20220401051159 CreateStudentAttendances: migrated (0.2139s) ================
+
+== 20220407065442 CreateGradeSystems: migrating ===============================
+-- create_table(:grade_systems, {:id=>:uuid})
+   -> 0.1465s
+== 20220407065442 CreateGradeSystems: migrated (0.1466s) ======================
+
+== 20220407065736 CreateAcademicStatuses: migrating ===========================
+-- create_table(:academic_statuses, {:id=>:uuid})
+   -> 0.1292s
+== 20220407065736 CreateAcademicStatuses: migrated (0.1293s) ==================
+
+== 20220407070814 CreateAssessmentPlans: migrating ============================
+-- create_table(:assessment_plans, {:id=>:uuid})
+   -> 0.1266s
+== 20220407070814 CreateAssessmentPlans: migrated (0.1266s) ===================
+
+== 20220508174158 CreateCourseInstructors: migrating ==========================
+-- create_table(:course_instructors)
+   -> 0.2446s
+== 20220508174158 CreateCourseInstructors: migrated (0.2446s) =================
+
+== 20220515102040 CreateSemesters: migrating ==================================
+-- create_table(:semesters, {:id=>:uuid})
+   -> 0.0782s
+== 20220515102040 CreateSemesters: migrated (0.0783s) =========================
+
+== 20220516143513 CreateGradeChanges: migrating ===============================
+-- create_table(:grade_changes, {:id=>:uuid})
+   -> 0.4138s
+== 20220516143513 CreateGradeChanges: migrated (0.4138s) ======================
+
+== 20220525151029 CreateWithdrawals: migrating ================================
+-- create_table(:withdrawals, {:id=>:uuid})
+   -> 0.3173s
+== 20220525151029 CreateWithdrawals: migrated (0.3174s) =======================
+
+== 20220531013443 CreateRecurringPayments: migrating ==========================
+-- create_table(:recurring_payments, {:id=>:uuid})
+   -> 0.3077s
+== 20220531013443 CreateRecurringPayments: migrated (0.3078s) =================
+
+== 20220605154136 CreateOtherPayments: migrating ==============================
+-- create_table(:other_payments, {:id=>:uuid})
+   -> 0.3855s
+== 20220605154136 CreateOtherPayments: migrated (0.3856s) =====================
+
+== 20220605162333 CreateAddAndDrops: migrating ================================
+-- create_table(:add_and_drops, {:id=>:uuid})
+   -> 0.3033s
+== 20220605162333 CreateAddAndDrops: migrated (0.3033s) =======================
+
+== 20220607070646 CreateAddAndDropCourses: migrating ==========================
+-- create_table(:add_and_drop_courses, {:id=>:uuid})
+   -> 0.1624s
+== 20220607070646 CreateAddAndDropCourses: migrated (0.1624s) =================
+
+== 20220612204126 CreateMakeupExams: migrating ================================
+-- create_table(:makeup_exams, {:id=>:uuid})
+   -> 0.4479s
+== 20220612204126 CreateMakeupExams: migrated (0.4480s) =======================
+
+== 20220614112942 CreatePrerequisites: migrating ==============================
+-- create_table(:prerequisites, {:id=>:uuid})
+   -> 0.1742s
+== 20220614112942 CreatePrerequisites: migrated (0.1743s) =====================
+
+== 20220630074608 AddFinalExamStatusToAssessmentPlan: migrating ===============
+-- add_column(:assessment_plans, :final_exam, :boolean, {:default=>false})
+   -> 0.0022s
+== 20220630074608 AddFinalExamStatusToAssessmentPlan: migrated (0.0023s) ======
+
+== 20220704090006 AddFinalExamStatusToAssessment: migrating ===================
+-- add_column(:assessments, :final_exam, :boolean, {:default=>false})
+   -> 0.0020s
+== 20220704090006 AddFinalExamStatusToAssessment: migrated (0.0021s) ==========
+
+== 20220706155410 CreateTransfers: migrating ==================================
+-- create_table(:transfers, {:id=>:uuid})
+   -> 0.3225s
+== 20220706155410 CreateTransfers: migrated (0.3226s) =========================
+
+== 20220706164346 CreateCourseExemptions: migrating ===========================
+-- create_table(:course_exemptions, {:id=>:uuid})
+   -> 0.1651s
+== 20220706164346 CreateCourseExemptions: migrated (0.1652s) ==================
+
+== 20220718104423 AddNewProgramToTranser: migrating ===========================
+-- add_column(:transfers, :new_program, :string)
+   -> 0.0015s
+== 20220718104423 AddNewProgramToTranser: migrated (0.0015s) ==================
+
+== 20220729014407 CreatePayments: migrating ===================================
+-- create_table(:payments, {:id=>:uuid})
+   -> 0.1189s
+== 20220729014407 CreatePayments: migrated (0.1190s) ==========================
+
+== 20220729021637 AddPaymentVersionToStudent: migrating =======================
+-- add_column(:students, :payment_version, :string)
+   -> 0.0013s
+== 20220729021637 AddPaymentVersionToStudent: migrated (0.0014s) ==============
+
+== 20230612095453 AddServiceNameToActiveStorageBlobs: migrating ===============
+-- table_exists?(:active_storage_blobs)
+   -> 0.0014s
+-- column_exists?(:active_storage_blobs, :service_name)
+   -> 0.0028s
+-- add_column(:active_storage_blobs, :service_name, :string)
+   -> 0.0008s
+-- change_column(:active_storage_blobs, :service_name, :string, {:null=>false})
+   -> 0.0004s
+== 20230612095453 AddServiceNameToActiveStorageBlobs: migrated (0.0265s) ======
+
+== 20230612095454 CreateActiveStorageVariantRecords: migrating ================
+-- table_exists?(:active_storage_blobs)
+   -> 0.0009s
+-- create_table(:active_storage_variant_records, {:id=>:primary_key, :if_not_exists=>true})
+   -> 0.1778s
+== 20230612095454 CreateActiveStorageVariantRecords: migrated (0.1788s) =======
+
+== 20230612095455 RemoveNotNullOnActiveStorageBlobsChecksum: migrating ========
+-- table_exists?(:active_storage_blobs)
+   -> 0.0011s
+-- change_column_null(:active_storage_blobs, :checksum, true)
+   -> 0.0005s
+== 20230612095455 RemoveNotNullOnActiveStorageBlobsChecksum: migrated (0.0018s) 
+
+== 20230627115307 AdddefaulttoGreadreport: migrating ==========================
+-- change_column_default(:grade_reports, :dean_approval, {:from=>"pending", :to=>"approved"})
+   -> 0.0019s
+== 20230627115307 AdddefaulttoGreadreport: migrated (0.0020s) =================
+
+== 20230808113913 AddDefaultValue: migrating ==================================
+-- change_column(:students, :graduation_status, :string, {:default=>"pending"})
+   -> 0.0024s
+== 20230808113913 AddDefaultValue: migrated (0.0025s) =========================
+
+== 20230809134022 AddAcademicYearToCourseRegistration: migrating ==============
+-- add_column(:course_registrations, :academic_year, :integer)
+   -> 0.0014s
+== 20230809134022 AddAcademicYearToCourseRegistration: migrated (0.0014s) =====
+
+== 20230809194957 AddAdmissionDateToStudent: migrating ========================
+-- add_column(:students, :admission_date, :date)
+   -> 0.0015s
+== 20230809194957 AddAdmissionDateToStudent: migrated (0.0016s) ===============
+
+== 20230809201329 AddGraduationYearToStudent: migrating =======================
+-- add_column(:students, :graduation_year, :integer)
+   -> 0.0015s
+== 20230809201329 AddGraduationYearToStudent: migrated (0.0015s) ==============
+
+== 20230811213557 ChangeDepartmentApprovalToApprovedByStudentGrade: migrating =
+-- rename_column(:student_grades, :department_head_name, :approved_by)
+   -> 0.0071s
+-- rename_column(:student_grades, :department_head_date_of_response, :approval_date)
+   -> 0.0052s
+-- add_column(:student_grades, :approving_person_role, :string)
+   -> 0.0007s
+== 20230811213557 ChangeDepartmentApprovalToApprovedByStudentGrade: migrated (0.0132s) 
+
+== 20230814205105 AddMajorToCourse: migrating =================================
+-- add_column(:courses, :major, :boolean, {:default=>false})
+   -> 0.0022s
+== 20230814205105 AddMajorToCourse: migrated (0.0023s) ========================
+
+== 20230909104149 AddAllowEditingToStudent: migrating =========================
+-- add_column(:students, :allow_editing, :boolean, {:default=>false})
+   -> 0.0022s
+== 20230909104149 AddAllowEditingToStudent: migrated (0.0022s) ================
+
+== 20230916094345 AddActualPaymentToSemesterRegistration: migrating ===========
+-- add_column(:semester_registrations, :actual_payment, :integer)
+   -> 0.0014s
+ DEBUG [214dae7c] 	
+== 20230916094345 AddActualPaymentToSemesterRegistration: migrated (0.0014s) ==
+
+== 20230916155107 AddBackInvoiceToSemesterRegistration: migrating =============
+-- add_column(:semester_registrations, :is_back_invoice_created, :boolean, {:default=>false})
+   -> 0.0021s
+== 20230916155107 AddBackInvoiceToSemesterRegistration: migrated (0.0022s) ====
+
+== 20230919181514 ChangeActualPaymentToDecimalInSemesterRegistration: migrating 
+-- change_column(:semester_registrations, :actual_payment, :decimal)
+   -> 0.2976s
+== 20230919181514 ChangeActualPaymentToDecimalInSemesterRegistration: migrated (0.2977s) 
+
+  INFO [214dae7c] Finished in 15.095 seconds with exit status 0 (successful).
+ DEBUG [4b772ff8] Running if test ! -d /home/newdeploy/ngvcnew/releases/20230920043728; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920043728'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [4b772ff8] Command: if test ! -d /home/newdeploy/ngvcnew/releases/20230920043728; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920043728'" 1>&2; false; fi
+ DEBUG [4b772ff8] Finished in 3.378 seconds with exit status 0 (successful).
+  INFO [e58a2338] Running $HOME/.rbenv/bin/rbenv exec bundle exec whenever --update-crontab ngvcnew_production --set environment=production --roles=app,web,db  as newdeploy@141.95.85.206
+ DEBUG [e58a2338] Command: cd /home/newdeploy/ngvcnew/releases/20230920043728 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" ; $HOME/.rbenv/bin/rbenv exec bundle exec whenever --update-crontab ngvcnew_production --set environment=production --roles=app,web,db  )
+ DEBUG [e58a2338] 	[write] crontab file updated
+  INFO [e58a2338] Finished in 5.048 seconds with exit status 0 (successful).
+  INFO [2061eef2] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/releases/20230920043728 /home/newdeploy/ngvcnew/releases/current as newdeploy@141.95.85.206
+ DEBUG [2061eef2] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/releases/20230920043728 /home/newdeploy/ngvcnew/releases/current )
+  INFO [2061eef2] Finished in 2.819 seconds with exit status 0 (successful).
+  INFO [ff8dd861] Running /usr/bin/env mv /home/newdeploy/ngvcnew/releases/current /home/newdeploy/ngvcnew as newdeploy@141.95.85.206
+ DEBUG [ff8dd861] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mv /home/newdeploy/ngvcnew/releases/current /home/newdeploy/ngvcnew )
+  INFO [ff8dd861] Finished in 4.462 seconds with exit status 0 (successful).
+ DEBUG [8b29eb60] Running /usr/bin/env pwd as newdeploy@141.95.85.206
+ DEBUG [8b29eb60] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env pwd )
+ DEBUG [8b29eb60] 	/home/newdeploy
+ DEBUG [8b29eb60] Finished in 3.665 seconds with exit status 0 (successful).
+ DEBUG [bb82fd06] Running if test ! -d /home/newdeploy; then echo "Directory does not exist '/home/newdeploy'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [bb82fd06] Command: if test ! -d /home/newdeploy; then echo "Directory does not exist '/home/newdeploy'" 1>&2; false; fi
+ DEBUG [bb82fd06] Finished in 2.854 seconds with exit status 0 (successful).
+  INFO [bd96cbfe] Running /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/releases/20230920043728/tmp as newdeploy@141.95.85.206
+ DEBUG [bd96cbfe] Command: cd /home/newdeploy && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/releases/20230920043728/tmp )
+  INFO [bd96cbfe] Finished in 3.368 seconds with exit status 0 (successful).
+  INFO [05ee0c32] Running /usr/bin/env touch /home/newdeploy/ngvcnew/releases/20230920043728/tmp/restart.txt as newdeploy@141.95.85.206
+ DEBUG [05ee0c32] Command: cd /home/newdeploy && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env touch /home/newdeploy/ngvcnew/releases/20230920043728/tmp/restart.txt )
+  INFO [05ee0c32] Finished in 3.677 seconds with exit status 0 (successful).
+ DEBUG [87c03f53] Running /usr/bin/env ls -x /home/newdeploy/ngvcnew/releases as newdeploy@141.95.85.206
+ DEBUG [87c03f53] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls -x /home/newdeploy/ngvcnew/releases )
+ DEBUG [87c03f53] 	20230920042328	20230920043728
+ DEBUG [87c03f53] Finished in 2.859 seconds with exit status 0 (successful).
+ DEBUG [9d03305a] Running if test ! -d /home/newdeploy/ngvcnew/releases; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [9d03305a] Command: if test ! -d /home/newdeploy/ngvcnew/releases; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases'" 1>&2; false; fi
+ DEBUG [9d03305a] Finished in 8.490 seconds with exit status 0 (successful).
+  INFO [9eca0880] Running /usr/bin/env echo "Branch main (at 621ff4fce3bd4c52119dbf97c0f7f11c457d8394) deployed as release 20230920043728 by fena" >> /home/newdeploy/ngvcnew/revisions.log as newdeploy@141.95.85.206
+ DEBUG [9eca0880] Command: cd /home/newdeploy/ngvcnew/releases && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "Branch main (at 621ff4fce3bd4c52119dbf97c0f7f11c457d8394) deployed as release 20230920043728 by fena" >> /home/newdeploy/ngvcnew/revisions.log )
+  INFO [9eca0880] Finished in 3.679 seconds with exit status 0 (successful).
+  INFO ---------------------------------------------------------------------------
+  INFO START 2023-09-20 09:23:36 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [98dc6db1] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as newdeploy@141.95.85.206
+ DEBUG [98dc6db1] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+  INFO ---------------------------------------------------------------------------
+  INFO START 2023-09-20 14:56:35 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [083a16f0] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as newdeploy@141.95.85.206
+ DEBUG [083a16f0] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+ DEBUG [083a16f0] Finished in 12.918 seconds with exit status 0 (successful).
+ DEBUG [0596fe16] Running /usr/bin/env which passenger as newdeploy@141.95.85.206
+ DEBUG [0596fe16] Command: /usr/bin/env which passenger
+ DEBUG [0596fe16] 	/usr/bin/passenger
+ DEBUG [0596fe16] Finished in 0.314 seconds with exit status 0 (successful).
+  INFO [7239be8c] Running /usr/bin/env mkdir -p /tmp as newdeploy@141.95.85.206
+ DEBUG [7239be8c] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /tmp )
+  INFO [7239be8c] Finished in 0.355 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-a9b9547256fc74e9c6e5.sh 0.0%
+  INFO Uploading /tmp/git-ssh-a9b9547256fc74e9c6e5.sh 100.0%
+  INFO [da3a3dfd] Running /usr/bin/env chmod 700 /tmp/git-ssh-a9b9547256fc74e9c6e5.sh as newdeploy@141.95.85.206
+ DEBUG [da3a3dfd] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env chmod 700 /tmp/git-ssh-a9b9547256fc74e9c6e5.sh )
+  INFO [da3a3dfd] Finished in 0.305 seconds with exit status 0 (successful).
+  INFO [d870acec] Running /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD as newdeploy@141.95.85.206
+ DEBUG [d870acec] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-a9b9547256fc74e9c6e5.sh" ; /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD )
+ DEBUG [d870acec] 	621ff4fce3bd4c52119dbf97c0f7f11c457d8394	HEAD
+  INFO [d870acec] Finished in 0.621 seconds with exit status 0 (successful).
+  INFO [d95d26a7] Running /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/shared /home/newdeploy/ngvcnew/releases as newdeploy@141.95.85.206
+ DEBUG [d95d26a7] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/shared /home/newdeploy/ngvcnew/releases )
+  INFO [d95d26a7] Finished in 0.305 seconds with exit status 0 (successful).
+  INFO [245e1a4f] Running /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/shared/log /home/newdeploy/ngvcnew/shared/tmp/pids /home/newdeploy/ngvcnew/shared/tmp/cache /home/newdeploy/ngvcnew/shared/tmp/sockets /home/newdeploy/ngvcnew/shared/vendor/bundle /home/newdeploy/ngvcnew/shared/public/system /home/newdeploy/ngvcnew/shared/public/uploads /home/newdeploy/ngvcnew/shared/public/assets as newdeploy@141.95.85.206
+ DEBUG [245e1a4f] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/shared/log /home/newdeploy/ngvcnew/shared/tmp/pids /home/newdeploy/ngvcnew/shared/tmp/cache /home/newdeploy/ngvcnew/shared/tmp/sockets /home/newdeploy/ngvcnew/shared/vendor/bundle /home/newdeploy/ngvcnew/shared/public/system /home/newdeploy/ngvcnew/shared/public/uploads /home/newdeploy/ngvcnew/shared/public/assets )
+  INFO [245e1a4f] Finished in 0.400 seconds with exit status 0 (successful).
+ DEBUG [f1ea2389] Running [ -f /home/newdeploy/ngvcnew/current/REVISION ] as newdeploy@141.95.85.206
+ DEBUG [f1ea2389] Command: [ -f /home/newdeploy/ngvcnew/current/REVISION ]
+ DEBUG [f1ea2389] Finished in 0.298 seconds with exit status 0 (successful).
+ DEBUG [5bf47f0e] Running /usr/bin/env cat /home/newdeploy/ngvcnew/current/REVISION 2>/dev/null as newdeploy@141.95.85.206
+ DEBUG [5bf47f0e] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env cat /home/newdeploy/ngvcnew/current/REVISION 2>/dev/null )
+ DEBUG [5bf47f0e] 	621ff4fce3bd4c52119dbf97c0f7f11c457d8394
+ DEBUG [5bf47f0e] Finished in 0.417 seconds with exit status 0 (successful).
+ DEBUG [0d19dc53] Running [ -f /home/newdeploy/ngvcnew/repo/HEAD ] as newdeploy@141.95.85.206
+ DEBUG [0d19dc53] Command: [ -f /home/newdeploy/ngvcnew/repo/HEAD ]
+ DEBUG [0d19dc53] Finished in 0.299 seconds with exit status 0 (successful).
+  INFO The repository mirror is at /home/newdeploy/ngvcnew/repo
+ DEBUG [840d481c] Running if test ! -d /home/newdeploy/ngvcnew/repo; then echo "Directory does not exist '/home/newdeploy/ngvcnew/repo'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [840d481c] Command: if test ! -d /home/newdeploy/ngvcnew/repo; then echo "Directory does not exist '/home/newdeploy/ngvcnew/repo'" 1>&2; false; fi
+ DEBUG [840d481c] Finished in 0.405 seconds with exit status 0 (successful).
+  INFO [a9722323] Running /usr/bin/env git remote set-url origin https://fenet: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@github.com/fenet/leadstarlatest.git as newdeploy@141.95.85.206
+ DEBUG [a9722323] Command: cd /home/newdeploy/ngvcnew/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-a9b9547256fc74e9c6e5.sh" ; /usr/bin/env git remote set-url origin https://fenet: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@github.com/fenet/leadstarlatest.git )
+  INFO [a9722323] Finished in 0.399 seconds with exit status 0 (successful).
+  INFO [33cffd72] Running /usr/bin/env git remote update --prune as newdeploy@141.95.85.206
+ DEBUG [33cffd72] Command: cd /home/newdeploy/ngvcnew/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-a9b9547256fc74e9c6e5.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [33cffd72] 	Fetching origin
+  INFO [33cffd72] Finished in 0.624 seconds with exit status 0 (successful).
+ DEBUG [e4c86e11] Running if test ! -d /home/newdeploy/ngvcnew/repo; then echo "Directory does not exist '/home/newdeploy/ngvcnew/repo'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [e4c86e11] Command: if test ! -d /home/newdeploy/ngvcnew/repo; then echo "Directory does not exist '/home/newdeploy/ngvcnew/repo'" 1>&2; false; fi
+ DEBUG [e4c86e11] Finished in 0.300 seconds with exit status 0 (successful).
+  INFO [3aed5430] Running /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/releases/20230920115652 as newdeploy@141.95.85.206
+ DEBUG [3aed5430] Command: cd /home/newdeploy/ngvcnew/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-a9b9547256fc74e9c6e5.sh" ; /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/releases/20230920115652 )
+  INFO [3aed5430] Finished in 0.424 seconds with exit status 0 (successful).
+  INFO [f17ac50d] Running /usr/bin/env git archive main | /usr/bin/env tar -x -f - -C /home/newdeploy/ngvcnew/releases/20230920115652 as newdeploy@141.95.85.206
+ DEBUG [f17ac50d] Command: cd /home/newdeploy/ngvcnew/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-a9b9547256fc74e9c6e5.sh" ; /usr/bin/env git archive main | /usr/bin/env tar -x -f - -C /home/newdeploy/ngvcnew/releases/20230920115652 )
+  INFO [f17ac50d] Finished in 0.499 seconds with exit status 0 (successful).
+ DEBUG [60fd2928] Running if test ! -d /home/newdeploy/ngvcnew/repo; then echo "Directory does not exist '/home/newdeploy/ngvcnew/repo'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [60fd2928] Command: if test ! -d /home/newdeploy/ngvcnew/repo; then echo "Directory does not exist '/home/newdeploy/ngvcnew/repo'" 1>&2; false; fi
+ DEBUG [60fd2928] Finished in 0.407 seconds with exit status 0 (successful).
+ DEBUG [c8cdc263] Running /usr/bin/env git rev-list --max-count=1 main as newdeploy@141.95.85.206
+ DEBUG [c8cdc263] Command: cd /home/newdeploy/ngvcnew/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-a9b9547256fc74e9c6e5.sh" ; /usr/bin/env git rev-list --max-count=1 main )
+ DEBUG [c8cdc263] 	621ff4fce3bd4c52119dbf97c0f7f11c457d8394
+ DEBUG [c8cdc263] Finished in 0.304 seconds with exit status 0 (successful).
+ DEBUG [44d56d70] Running if test ! -d /home/newdeploy/ngvcnew/releases/20230920115652; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920115652'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [44d56d70] Command: if test ! -d /home/newdeploy/ngvcnew/releases/20230920115652; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920115652'" 1>&2; false; fi
+ DEBUG [44d56d70] Finished in 0.412 seconds with exit status 0 (successful).
+  INFO [4f256373] Running /usr/bin/env echo "621ff4fce3bd4c52119dbf97c0f7f11c457d8394" > REVISION as newdeploy@141.95.85.206
+ DEBUG [4f256373] Command: cd /home/newdeploy/ngvcnew/releases/20230920115652 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "621ff4fce3bd4c52119dbf97c0f7f11c457d8394" > REVISION )
+  INFO [4f256373] Finished in 0.304 seconds with exit status 0 (successful).
+  INFO [39a338a8] Running /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/releases/20230920115652 /home/newdeploy/ngvcnew/releases/20230920115652/tmp /home/newdeploy/ngvcnew/releases/20230920115652/vendor /home/newdeploy/ngvcnew/releases/20230920115652/public as newdeploy@141.95.85.206
+ DEBUG [39a338a8] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/releases/20230920115652 /home/newdeploy/ngvcnew/releases/20230920115652/tmp /home/newdeploy/ngvcnew/releases/20230920115652/vendor /home/newdeploy/ngvcnew/releases/20230920115652/public )
+  INFO [39a338a8] Finished in 0.407 seconds with exit status 0 (successful).
+ DEBUG [5fbc19fe] Running [ -L /home/newdeploy/ngvcnew/releases/20230920115652/log ] as newdeploy@141.95.85.206
+ DEBUG [5fbc19fe] Command: [ -L /home/newdeploy/ngvcnew/releases/20230920115652/log ]
+ DEBUG [5fbc19fe] Finished in 0.302 seconds with exit status 1 (failed).
+ DEBUG [dc88081c] Running [ -d /home/newdeploy/ngvcnew/releases/20230920115652/log ] as newdeploy@141.95.85.206
+ DEBUG [dc88081c] Command: [ -d /home/newdeploy/ngvcnew/releases/20230920115652/log ]
+ DEBUG [dc88081c] Finished in 0.411 seconds with exit status 0 (successful).
+  INFO [fcd32f2d] Running /usr/bin/env rm -rf /home/newdeploy/ngvcnew/releases/20230920115652/log as newdeploy@141.95.85.206
+ DEBUG [fcd32f2d] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env rm -rf /home/newdeploy/ngvcnew/releases/20230920115652/log )
+  INFO [fcd32f2d] Finished in 0.305 seconds with exit status 0 (successful).
+  INFO [38060e00] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/log /home/newdeploy/ngvcnew/releases/20230920115652/log as newdeploy@141.95.85.206
+ DEBUG [38060e00] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/log /home/newdeploy/ngvcnew/releases/20230920115652/log )
+  INFO [38060e00] Finished in 0.411 seconds with exit status 0 (successful).
+ DEBUG [3fb436ba] Running [ -L /home/newdeploy/ngvcnew/releases/20230920115652/tmp/pids ] as newdeploy@141.95.85.206
+ DEBUG [3fb436ba] Command: [ -L /home/newdeploy/ngvcnew/releases/20230920115652/tmp/pids ]
+ DEBUG [3fb436ba] Finished in 0.303 seconds with exit status 1 (failed).
+ DEBUG [a8918998] Running [ -d /home/newdeploy/ngvcnew/releases/20230920115652/tmp/pids ] as newdeploy@141.95.85.206
+ DEBUG [a8918998] Command: [ -d /home/newdeploy/ngvcnew/releases/20230920115652/tmp/pids ]
+ DEBUG [a8918998] Finished in 0.411 seconds with exit status 1 (failed).
+  INFO [ece79808] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/tmp/pids /home/newdeploy/ngvcnew/releases/20230920115652/tmp/pids as newdeploy@141.95.85.206
+ DEBUG [ece79808] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/tmp/pids /home/newdeploy/ngvcnew/releases/20230920115652/tmp/pids )
+  INFO [ece79808] Finished in 0.306 seconds with exit status 0 (successful).
+ DEBUG [91c69a8a] Running [ -L /home/newdeploy/ngvcnew/releases/20230920115652/tmp/cache ] as newdeploy@141.95.85.206
+ DEBUG [91c69a8a] Command: [ -L /home/newdeploy/ngvcnew/releases/20230920115652/tmp/cache ]
+ DEBUG [91c69a8a] Finished in 0.406 seconds with exit status 1 (failed).
+ DEBUG [7b770b2e] Running [ -d /home/newdeploy/ngvcnew/releases/20230920115652/tmp/cache ] as newdeploy@141.95.85.206
+ DEBUG [7b770b2e] Command: [ -d /home/newdeploy/ngvcnew/releases/20230920115652/tmp/cache ]
+ DEBUG [7b770b2e] Finished in 0.311 seconds with exit status 0 (successful).
+  INFO [d57aa588] Running /usr/bin/env rm -rf /home/newdeploy/ngvcnew/releases/20230920115652/tmp/cache as newdeploy@141.95.85.206
+ DEBUG [d57aa588] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env rm -rf /home/newdeploy/ngvcnew/releases/20230920115652/tmp/cache )
+  INFO [d57aa588] Finished in 0.456 seconds with exit status 0 (successful).
+  INFO [56799ac0] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/tmp/cache /home/newdeploy/ngvcnew/releases/20230920115652/tmp/cache as newdeploy@141.95.85.206
+ DEBUG [56799ac0] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/tmp/cache /home/newdeploy/ngvcnew/releases/20230920115652/tmp/cache )
+  INFO [56799ac0] Finished in 0.304 seconds with exit status 0 (successful).
+ DEBUG [6e13837b] Running [ -L /home/newdeploy/ngvcnew/releases/20230920115652/tmp/sockets ] as newdeploy@141.95.85.206
+ DEBUG [6e13837b] Command: [ -L /home/newdeploy/ngvcnew/releases/20230920115652/tmp/sockets ]
+ DEBUG [6e13837b] Finished in 0.358 seconds with exit status 1 (failed).
+ DEBUG [fe3ec0cf] Running [ -d /home/newdeploy/ngvcnew/releases/20230920115652/tmp/sockets ] as newdeploy@141.95.85.206
+ DEBUG [fe3ec0cf] Command: [ -d /home/newdeploy/ngvcnew/releases/20230920115652/tmp/sockets ]
+ DEBUG [fe3ec0cf] Finished in 0.301 seconds with exit status 1 (failed).
+  INFO [fef42196] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/tmp/sockets /home/newdeploy/ngvcnew/releases/20230920115652/tmp/sockets as newdeploy@141.95.85.206
+ DEBUG [fef42196] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/tmp/sockets /home/newdeploy/ngvcnew/releases/20230920115652/tmp/sockets )
+  INFO [fef42196] Finished in 0.417 seconds with exit status 0 (successful).
+ DEBUG [2bfee085] Running [ -L /home/newdeploy/ngvcnew/releases/20230920115652/vendor/bundle ] as newdeploy@141.95.85.206
+ DEBUG [2bfee085] Command: [ -L /home/newdeploy/ngvcnew/releases/20230920115652/vendor/bundle ]
+ DEBUG [2bfee085] Finished in 0.301 seconds with exit status 1 (failed).
+ DEBUG [7f1baa5a] Running [ -d /home/newdeploy/ngvcnew/releases/20230920115652/vendor/bundle ] as newdeploy@141.95.85.206
+ DEBUG [7f1baa5a] Command: [ -d /home/newdeploy/ngvcnew/releases/20230920115652/vendor/bundle ]
+ DEBUG [7f1baa5a] Finished in 0.409 seconds with exit status 1 (failed).
+  INFO [7c3cd622] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/vendor/bundle /home/newdeploy/ngvcnew/releases/20230920115652/vendor/bundle as newdeploy@141.95.85.206
+ DEBUG [7c3cd622] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/vendor/bundle /home/newdeploy/ngvcnew/releases/20230920115652/vendor/bundle )
+  INFO [7c3cd622] Finished in 0.305 seconds with exit status 0 (successful).
+ DEBUG [495a1b4c] Running [ -L /home/newdeploy/ngvcnew/releases/20230920115652/public/system ] as newdeploy@141.95.85.206
+ DEBUG [495a1b4c] Command: [ -L /home/newdeploy/ngvcnew/releases/20230920115652/public/system ]
+ DEBUG [495a1b4c] Finished in 0.408 seconds with exit status 1 (failed).
+ DEBUG [301f54d0] Running [ -d /home/newdeploy/ngvcnew/releases/20230920115652/public/system ] as newdeploy@141.95.85.206
+ DEBUG [301f54d0] Command: [ -d /home/newdeploy/ngvcnew/releases/20230920115652/public/system ]
+ DEBUG [301f54d0] Finished in 0.301 seconds with exit status 1 (failed).
+  INFO [5c75a649] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/public/system /home/newdeploy/ngvcnew/releases/20230920115652/public/system as newdeploy@141.95.85.206
+ DEBUG [5c75a649] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/public/system /home/newdeploy/ngvcnew/releases/20230920115652/public/system )
+  INFO [5c75a649] Finished in 0.419 seconds with exit status 0 (successful).
+ DEBUG [d69bfd1f] Running [ -L /home/newdeploy/ngvcnew/releases/20230920115652/public/uploads ] as newdeploy@141.95.85.206
+ DEBUG [d69bfd1f] Command: [ -L /home/newdeploy/ngvcnew/releases/20230920115652/public/uploads ]
+ DEBUG [d69bfd1f] Finished in 0.304 seconds with exit status 1 (failed).
+ DEBUG [4210640a] Running [ -d /home/newdeploy/ngvcnew/releases/20230920115652/public/uploads ] as newdeploy@141.95.85.206
+ DEBUG [4210640a] Command: [ -d /home/newdeploy/ngvcnew/releases/20230920115652/public/uploads ]
+ DEBUG [4210640a] Finished in 0.406 seconds with exit status 1 (failed).
+  INFO [ef58da89] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/public/uploads /home/newdeploy/ngvcnew/releases/20230920115652/public/uploads as newdeploy@141.95.85.206
+ DEBUG [ef58da89] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/public/uploads /home/newdeploy/ngvcnew/releases/20230920115652/public/uploads )
+  INFO [ef58da89] Finished in 0.304 seconds with exit status 0 (successful).
+ DEBUG [105a6c71] Running [ -L /home/newdeploy/ngvcnew/releases/20230920115652/public/assets ] as newdeploy@141.95.85.206
+ DEBUG [105a6c71] Command: [ -L /home/newdeploy/ngvcnew/releases/20230920115652/public/assets ]
+ DEBUG [105a6c71] Finished in 0.408 seconds with exit status 1 (failed).
+ DEBUG [aa665c9a] Running [ -d /home/newdeploy/ngvcnew/releases/20230920115652/public/assets ] as newdeploy@141.95.85.206
+ DEBUG [aa665c9a] Command: [ -d /home/newdeploy/ngvcnew/releases/20230920115652/public/assets ]
+ DEBUG [aa665c9a] Finished in 0.302 seconds with exit status 1 (failed).
+  INFO [31a2037b] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/public/assets /home/newdeploy/ngvcnew/releases/20230920115652/public/assets as newdeploy@141.95.85.206
+ DEBUG [31a2037b] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/public/assets /home/newdeploy/ngvcnew/releases/20230920115652/public/assets )
+  INFO [31a2037b] Finished in 0.378 seconds with exit status 0 (successful).
+ DEBUG [95037527] Running if test ! -d /home/newdeploy/ngvcnew/releases/20230920115652; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920115652'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [95037527] Command: if test ! -d /home/newdeploy/ngvcnew/releases/20230920115652; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920115652'" 1>&2; false; fi
+ DEBUG [95037527] Finished in 0.298 seconds with exit status 0 (successful).
+  INFO [68e0762d] Running $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true as newdeploy@141.95.85.206
+ DEBUG [68e0762d] Command: cd /home/newdeploy/ngvcnew/releases/20230920115652 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true )
+  INFO [68e0762d] Finished in 0.577 seconds with exit status 0 (successful).
+  INFO [ef2039f3] Running $HOME/.rbenv/bin/rbenv exec bundle config --local path /home/newdeploy/ngvcnew/shared/bundle as newdeploy@141.95.85.206
+ DEBUG [ef2039f3] Command: cd /home/newdeploy/ngvcnew/releases/20230920115652 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local path /home/newdeploy/ngvcnew/shared/bundle )
+  INFO [ef2039f3] Finished in 0.555 seconds with exit status 0 (successful).
+  INFO [c56202b6] Running $HOME/.rbenv/bin/rbenv exec bundle config --local without development:test as newdeploy@141.95.85.206
+ DEBUG [c56202b6] Command: cd /home/newdeploy/ngvcnew/releases/20230920115652 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local without development:test )
+  INFO [c56202b6] Finished in 0.643 seconds with exit status 0 (successful).
+ DEBUG [09f412ce] Running if test ! -d /home/newdeploy/ngvcnew/releases/20230920115652; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920115652'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [09f412ce] Command: if test ! -d /home/newdeploy/ngvcnew/releases/20230920115652; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920115652'" 1>&2; false; fi
+ DEBUG [09f412ce] Finished in 0.309 seconds with exit status 0 (successful).
+ DEBUG [50a44e61] Running $HOME/.rbenv/bin/rbenv exec bundle check as newdeploy@141.95.85.206
+ DEBUG [50a44e61] Command: cd /home/newdeploy/ngvcnew/releases/20230920115652 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle check )
+ DEBUG [50a44e61] 	The Gemfile's dependencies are satisfied
+ DEBUG [50a44e61] Finished in 0.715 seconds with exit status 0 (successful).
+  INFO The Gemfile's dependencies are satisfied, skipping installation
+ DEBUG [f9e7af6e] Running if test ! -d /home/newdeploy/ngvcnew/releases/20230920115652; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920115652'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [f9e7af6e] Command: if test ! -d /home/newdeploy/ngvcnew/releases/20230920115652; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920115652'" 1>&2; false; fi
+ DEBUG [f9e7af6e] Finished in 0.300 seconds with exit status 0 (successful).
+  INFO [2c0a60d5] Running $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile as newdeploy@141.95.85.206
+ DEBUG [2c0a60d5] Command: cd /home/newdeploy/ngvcnew/releases/20230920115652 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" RAILS_GROUPS="" ; $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile )
+  INFO [2c0a60d5] Finished in 4.506 seconds with exit status 0 (successful).
+ DEBUG [538d735a] Running if test ! -d /home/newdeploy/ngvcnew/releases/20230920115652; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920115652'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [538d735a] Command: if test ! -d /home/newdeploy/ngvcnew/releases/20230920115652; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920115652'" 1>&2; false; fi
+ DEBUG [538d735a] Finished in 0.301 seconds with exit status 0 (successful).
+  INFO [dd7e1c29] Running /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/releases/20230920115652/assets_manifest_backup as newdeploy@141.95.85.206
+ DEBUG [dd7e1c29] Command: cd /home/newdeploy/ngvcnew/releases/20230920115652 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/releases/20230920115652/assets_manifest_backup )
+  INFO [dd7e1c29] Finished in 0.415 seconds with exit status 0 (successful).
+ DEBUG [aee6b419] Running /usr/bin/env ls /home/newdeploy/ngvcnew/releases/20230920115652/public/assets/.sprockets-manifest* as newdeploy@141.95.85.206
+ DEBUG [aee6b419] Command: cd /home/newdeploy/ngvcnew/releases/20230920115652 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls /home/newdeploy/ngvcnew/releases/20230920115652/public/assets/.sprockets-manifest* )
+ DEBUG [aee6b419] 	/home/newdeploy/ngvcnew/releases/20230920115652/public/assets/.sprockets-manifest-61fe33c4d38751264a4f36ed3da66f61.json
+ DEBUG [aee6b419] Finished in 0.304 seconds with exit status 0 (successful).
+ DEBUG [1ceb97d1] Running /usr/bin/env ls /home/newdeploy/ngvcnew/releases/20230920115652/public/assets/.sprockets-manifest* as newdeploy@141.95.85.206
+ DEBUG [1ceb97d1] Command: cd /home/newdeploy/ngvcnew/releases/20230920115652 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls /home/newdeploy/ngvcnew/releases/20230920115652/public/assets/.sprockets-manifest* )
+ DEBUG [1ceb97d1] 	/home/newdeploy/ngvcnew/releases/20230920115652/public/assets/.sprockets-manifest-61fe33c4d38751264a4f36ed3da66f61.json
+ DEBUG [1ceb97d1] Finished in 0.412 seconds with exit status 0 (successful).
+  INFO [6bad7e73] Running /usr/bin/env cp /home/newdeploy/ngvcnew/releases/20230920115652/public/assets/.sprockets-manifest-61fe33c4d38751264a4f36ed3da66f61.json /home/newdeploy/ngvcnew/releases/20230920115652/assets_manifest_backup as newdeploy@141.95.85.206
+ DEBUG [6bad7e73] Command: cd /home/newdeploy/ngvcnew/releases/20230920115652 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env cp /home/newdeploy/ngvcnew/releases/20230920115652/public/assets/.sprockets-manifest-61fe33c4d38751264a4f36ed3da66f61.json /home/newdeploy/ngvcnew/releases/20230920115652/assets_manifest_backup )
+  INFO [6bad7e73] Finished in 0.304 seconds with exit status 0 (successful).
+  INFO [deploy:migrate] Run `rake db:migrate`
+ DEBUG [e98a64ed] Running if test ! -d /home/newdeploy/ngvcnew/releases/20230920115652; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920115652'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [e98a64ed] Command: if test ! -d /home/newdeploy/ngvcnew/releases/20230920115652; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920115652'" 1>&2; false; fi
+ DEBUG [e98a64ed] Finished in 0.399 seconds with exit status 0 (successful).
+  INFO [f10e228a] Running $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate as newdeploy@141.95.85.206
+ DEBUG [f10e228a] Command: cd /home/newdeploy/ngvcnew/releases/20230920115652 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" ; $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate )
+  INFO [f10e228a] Finished in 1.433 seconds with exit status 0 (successful).
+ DEBUG [d7e6111e] Running if test ! -d /home/newdeploy/ngvcnew/releases/20230920115652; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920115652'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [d7e6111e] Command: if test ! -d /home/newdeploy/ngvcnew/releases/20230920115652; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230920115652'" 1>&2; false; fi
+ DEBUG [d7e6111e] Finished in 0.406 seconds with exit status 0 (successful).
+  INFO [0f4b9bdc] Running $HOME/.rbenv/bin/rbenv exec bundle exec whenever --update-crontab ngvcnew_production --set environment=production --roles=app,web,db  as newdeploy@141.95.85.206
+ DEBUG [0f4b9bdc] Command: cd /home/newdeploy/ngvcnew/releases/20230920115652 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" ; $HOME/.rbenv/bin/rbenv exec bundle exec whenever --update-crontab ngvcnew_production --set environment=production --roles=app,web,db  )
+ DEBUG [0f4b9bdc] 	[write] crontab file updated
+  INFO [0f4b9bdc] Finished in 0.717 seconds with exit status 0 (successful).
+  INFO [4714d16c] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/releases/20230920115652 /home/newdeploy/ngvcnew/releases/current as newdeploy@141.95.85.206
+ DEBUG [4714d16c] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/releases/20230920115652 /home/newdeploy/ngvcnew/releases/current )
+  INFO [4714d16c] Finished in 0.413 seconds with exit status 0 (successful).
+  INFO [b96724aa] Running /usr/bin/env mv /home/newdeploy/ngvcnew/releases/current /home/newdeploy/ngvcnew as newdeploy@141.95.85.206
+ DEBUG [b96724aa] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mv /home/newdeploy/ngvcnew/releases/current /home/newdeploy/ngvcnew )
+  INFO [b96724aa] Finished in 0.305 seconds with exit status 0 (successful).
+ DEBUG [441a3cda] Running /usr/bin/env pwd as newdeploy@141.95.85.206
+ DEBUG [441a3cda] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env pwd )
+ DEBUG [441a3cda] 	/home/newdeploy
+ DEBUG [441a3cda] Finished in 0.405 seconds with exit status 0 (successful).
+ DEBUG [4f2497c1] Running if test ! -d /home/newdeploy; then echo "Directory does not exist '/home/newdeploy'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [4f2497c1] Command: if test ! -d /home/newdeploy; then echo "Directory does not exist '/home/newdeploy'" 1>&2; false; fi
+ DEBUG [4f2497c1] Finished in 0.301 seconds with exit status 0 (successful).
+  INFO [6a533f9b] Running /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/releases/20230920115652/tmp as newdeploy@141.95.85.206
+ DEBUG [6a533f9b] Command: cd /home/newdeploy && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/releases/20230920115652/tmp )
+  INFO [6a533f9b] Finished in 0.411 seconds with exit status 0 (successful).
+  INFO [527a19f8] Running /usr/bin/env touch /home/newdeploy/ngvcnew/releases/20230920115652/tmp/restart.txt as newdeploy@141.95.85.206
+ DEBUG [527a19f8] Command: cd /home/newdeploy && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env touch /home/newdeploy/ngvcnew/releases/20230920115652/tmp/restart.txt )
+  INFO [527a19f8] Finished in 0.304 seconds with exit status 0 (successful).
+ DEBUG [b345b02b] Running /usr/bin/env ls -x /home/newdeploy/ngvcnew/releases as newdeploy@141.95.85.206
+ DEBUG [b345b02b] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls -x /home/newdeploy/ngvcnew/releases )
+ DEBUG [b345b02b] 	20230920042328	20230920043728	20230920115652
+ DEBUG [b345b02b] Finished in 0.409 seconds with exit status 0 (successful).
+ DEBUG [745613a1] Running if test ! -d /home/newdeploy/ngvcnew/releases; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [745613a1] Command: if test ! -d /home/newdeploy/ngvcnew/releases; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases'" 1>&2; false; fi
+ DEBUG [745613a1] Finished in 0.302 seconds with exit status 0 (successful).
+  INFO [6260732b] Running /usr/bin/env echo "Branch main (at 621ff4fce3bd4c52119dbf97c0f7f11c457d8394) deployed as release 20230920115652 by fena" >> /home/newdeploy/ngvcnew/revisions.log as newdeploy@141.95.85.206
+ DEBUG [6260732b] Command: cd /home/newdeploy/ngvcnew/releases && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "Branch main (at 621ff4fce3bd4c52119dbf97c0f7f11c457d8394) deployed as release 20230920115652 by fena" >> /home/newdeploy/ngvcnew/revisions.log )
+  INFO [6260732b] Finished in 0.411 seconds with exit status 0 (successful).
