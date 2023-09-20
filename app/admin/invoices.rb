@@ -15,10 +15,10 @@ ActiveAdmin.register Invoice, as: "RegistrationPayment" do
     selectable_column
     # column "Invoice NO",:invoice_number
     column "Student" do |s|
-      s.student_full_name
+      s.student.name.full
     end
     column "ID" do |s|
-      s.student_id_number
+      s.student.student_id
     end
     column "Program", sortable: true do |n|
       n.program.program_name

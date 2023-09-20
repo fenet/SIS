@@ -12,11 +12,15 @@ Rails.application.routes.draw do
   get "new/semester/registration", to: "pages#enrollement", as: "enrollement"
   post "create/semester/registration", to: "pages#create_semester_registration", as: "create_semester_registration"
   get "student/grade/report/:year/:semester", to: "grade_reports#student_grade_report", as: "student_grade_report"
+  get "prepare/payment/:semester_registration_id", to: "invoices#prepare_payment", as: "prepare_payment"
+  post "create/invoice", to: "invoices#create_invoice_for_remaining_amount", as: "create_invoice_for_remaining_amount"
+  get "payment/report/fetch/student", to: "payment_report#fetch_student", as: "payment_report_fetch_student"
+  get "get/year", to: "payment_report#get_year", as: "payment_report_get_year"
+  get "get/semester", to: "payment_report#get_semester", as: "payment_report_get_semester"
+  post "generate/payment/report.pdf", to: "payment_report#generate_payment_report", as: "generate_payment_report"
   resources :grade_reports
   resources :academic_calendars, only: [:show, :index]
-  # devise_for :students
-
-  devise_for :students, controllers: {
+   devise_for :students, controllers: {
                           registrations: "registrations",
                         }
   authenticated :student do
