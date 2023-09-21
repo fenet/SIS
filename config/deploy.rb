@@ -5,7 +5,7 @@ lock "~> 3.17.3"
 set :application, "ngvcnew"
 # set :ssh_options, { :forward_agent => true }
 set :repo_url, "https://github.com/fenet/leadstarlatest.git"
-set :branch, "670b8bd6e3fad4ca298cb0eb51fcc000c9df37fd"
+set :branch, "85ae08272b4acf5a3d83dbe6dd19bd59c3c72afe"
 
 set :git_http_username, 'fenet' 
 ask(:github_token, "github_token", echo: false) 
