@@ -5,7 +5,7 @@ role :web, %w{newdeploy@141.95.85.206}
 role :db, %w{newdeploy@141.95.85.206}, :primary => true
 
 #set :branch, "main"
-set :branch, "03ea9acb0c8f18b85c5dbe03cfd0a5f5bf80e5c4"
+set :branch, "81ec5b638ffca3b9ac94d087fb24765cf810bfa3"
 set :rails_env, "production"
 
 set :deploy_to, '/home/newdeploy/ngvcnew' 
