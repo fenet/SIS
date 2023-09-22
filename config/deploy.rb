@@ -2,9 +2,9 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.17.3"
 
-set :application, "leadstar_portal"
+set :application, "ngvcnew"
 # set :ssh_options, { :forward_agent => true }
-set :repo_url, "https://github.com/fenet/Leadstar.git"
+set :repo_url, "https://github.com/fenet/leadstarlatest.git"
 
 set :git_http_username, 'fenet' 
 ask(:github_token, "github_token", echo: false) 
