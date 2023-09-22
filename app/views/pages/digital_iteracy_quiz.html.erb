@@ -95,7 +95,9 @@
     <div class="col-12">
       <h1 class="title-header mt-5 mb-2">Digital Literacy Assesement</h1>
       <p class="text-center header-text mb-5 text-muted">
-        There are certain requirements you have to fulfill in order to be addmitted to NGVC and start Learning. Make sure that you meet the minimum requirements before starting your application process.
+        There are certain requirements you have to fulfill in order to be addmitted to NGVC-Online and start Learning. Make sure that you meet the minimum requirements before starting your application process.
+        <h3>Public IP Address of user is:</h3>
+        <p id="gfg"></p>
       </p>
     </div>
     <div class="col-12 col-md-4">
@@ -111,12 +113,12 @@
         <div class="card-body">
           <p  class="text-center" style="font-size: 20px;"><strong>Select the appropriate answer for multiple choose questions</strong></p>  
           <p class="text-muted text-center">
-            There are certain requirements you have to fulfill in order to be addmitted to NGVC and start Learning. Make sure that you meet the minimum requirements before starting your application process.
+            There are certain requirements you have to fulfill in order to be addmitted to NGVC-Online and start Learning. Make sure that you meet the minimum requirements before starting your application process.
+          </p>
+          <p class="text-muted text-center">
+            the minimum requirement to pass is 5 and above
           </p>
           <hr>
-          <p class="text-muted text-center">
-           <strong> To pass this exam you need to score 6 and more than 6, so take your time and answer the question carefully.</strong>
-          </p>
         </div>
         <!-- /.card-body -->
       </div>
@@ -149,6 +151,14 @@
 </div>
 
 <script type="text/javascript">
+  $.getJSON("https://api.ipify.org?format=json", function(data) {
+         
+        // Setting text of element P with id gfg
+        $("#gfg").html(data.ip);
+    })
+</script>
+<script type="text/javascript">
+  
   (function(){
   // Functions
   function buildQuiz(){
@@ -156,7 +166,7 @@
     const output = [];
 
     // for each question...
-    myQuestions.forEach(
+    myQuestionShuffled.forEach(
       (currentQuestion, questionNumber) => {
 
         // variable to store the list of possible answers
@@ -198,7 +208,7 @@
     let numCorrect = 0;
 
     // for each question...
-    myQuestions.forEach( (currentQuestion, questionNumber) => {
+    myQuestionShuffled.forEach( (currentQuestion, questionNumber) => {
 
       // find selected answer
       const answerContainer = answerContainers[questionNumber];
@@ -223,13 +233,13 @@
     // show number of correct answers out of total
     resultsContainer.innerHTML = ``;
 
-    if(numCorrect >= 6){
-      resultsContainer.innerHTML = `<p class="mb-2" style="color:green;">${numCorrect} out of ${myQuestions.length}</p>
+    if(numCorrect >= 5){
+      resultsContainer.innerHTML = `<p class="mb-2" style="color:green;">${numCorrect} out of ${myQuestionShuffled.length}</p>
       <p style="color:green;">Congratulations you have passed the technical knowledge requirement to enroll to NGVC online. Please continue to the registration process.</p>
-      <%= link_to "Apply Now", new_student_registration_path(modality: "online", study_level: "graduate"), class: "btn btn-primary btn-lg"%>`;
+      <%= link_to "Apply Now", new_student_registration_path, class: "btn btn-primary btn-lg", data: { turbolinks: false }%>`;
     }
     else{
-      resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length} <br>
+      resultsContainer.innerHTML = `${numCorrect} out of ${myQuestionShuffled.length} or ${numCorrect}0% <br>
       <p style="color:red;">Sorry you don't fulfill our minimum requirement for enrolling in NGVC online program. Please upgrade your technical abilities and try again later.</p>`;
     }
     
@@ -271,47 +281,47 @@
   const submitButton = document.getElementById('submit');
   const myQuestions = [
     {
-      question: "1. Mengistu notices that when he runs several programs simultaneously on his computer, the performance of the programs slows down considerably. What is the reason for this?",
+      question: "Mengistu notices that when he runs several programs simultaneously on his computer, the performance of the programs slows down considerably. What is the reason for this?",
       answers: {
         A: "Nonfunctional keyboard",
         B: "Nonfunctional mouse",
         C: "Insufficient random access memory (RAM)",
-        D: "Low monitor speed"
+        d: "Low monitor speed"
       },
       correctAnswer: "C"
     },
     {
-      question: "2. Samuel wants to play a game online. He hears modem tones every time his computer sends a request to the Internet service provider (ISP) to establish an Internet connection. What type of Internet connection does Morten use?",
+      question: "Samuel wants to play a game online. He hears modem tones every time his computer sends a request to the Internet service provider (ISP) to establish an Internet connection. What type of Internet connection does Morten use?",
       answers: {
         A: "Dial-up",
         B: "Broadband",
         C: "WiFi",
-        D: "Dedicated"
+        d: "Dedicated"
       },
       correctAnswer: "A"
     },
     {
-      question: "3. Tewodros teaches his daughter Tina how to work with productivity programs. Tina notices a small blinking bar that stays in place until Eric clicks the mouse in a new location in the document. Tina wants to know the name of this blinking bar. Which of the following terms will Eric use to answer Tina's question?",
+      question: "Tewodros teaches his daughter Tina how to work with productivity programs. Tina notices a small blinking bar that stays in place until Eric clicks the mouse in a new location in the document. Tina wants to know the name of this blinking bar. Which of the following terms will Eric use to answer Tina's question?",
       answers: {
         A: "Mouse pointer",
-        B: "Insertion point",
+        B: "Inseration point",
         C: "Scroll bar",
-        D: "Status bar"
+        d: "Status bar"
       },
       correctAnswer: "B"
     },
     {
-      question: "4. Tsion manages the recruitments for A. Datum Corporation. The company hires 500 employees. Paula needs to store on her computer the personal details, compensation structure, and insurance details for each employee.   Which of the following programs will Paula use?",
+      question: "Tsion manages the recruitments for A. Datum Corporation. The company hires 500 employees. Paula needs to store on her computer the personal details, compensation structure, and insurance details for each employee.   Which of the following programs will Paula use?",
       answers: {
         A: "Microsoft® Notepad",
         B: "Photo editing program",
         C: "Presentation program+",
-        D: "Database program"
+        d: "Database program"
       },
       correctAnswer: "D"
     },
      {
-      question: "5. The _____________ shows what files and applications are open.",
+      question: "The _____________ shows what files and applications are open.",
       answers: {
         A: "Shortcut Menu",
         B: "Documents Library",
@@ -321,17 +331,7 @@
       correctAnswer: "C"
     },
     {
-      question: "6. Nina uses Office Excel 2010 to create a work plan for her team. She wants to print the plan and discuss it with the team members in a meeting. Which of the following menus will Nina use to print the plan?",
-      answers: {
-        A: "Format",
-        B: "File",
-        C: "View",
-        D: "Tools"
-      },
-      correctAnswer: "B"
-    },
-    {
-      question: "7. You want to know more about active volcanoes in the world. You connect your computer to the Internet to find information based on the keyword "active volcanoes." Which of the following features of the World Wide Web (WWW) will you use?'
+      question: "You want to know more about active volcanoes in the world. You connect your computer to the Internet to find information based on the keyword active volcanoes. Which of the following features of the World Wide Web (WWW) will you use?",
       answers: {
         A: "Search engine",
         B: "Plug-in",
@@ -341,7 +341,27 @@
       correctAnswer: "A"
     },
     {
-      question: "8. Eyob creates a business presentation by using Microsoft Office PowerPoint® 2010. He saves it with the name Presentation.ppt. Stephan opens the file to make some changes, and he wants to save it with a different name.   Which of the following commands on the File menu will Stephan use to save the file with a different name?",
+      question: "'Desktop' is a computer term that refers to?",
+      answers: {
+        A: "The list of all of the contents on a particular computer",
+        B: "The initial screen showing icons for folders, files, and applications",
+        C: "Something that can and should be ignored by most users",
+        D: "The part of your work area where the computer monitor sits"
+      },
+      correctAnswer: "B"
+    },
+    {
+      question: "When you're connected to the Internet, you are?",
+      answers: {
+        A: "Out of line",
+        B: "Offline",
+        C: "Outline",
+        D: "Online"
+      },
+      correctAnswer: "D"
+    },
+    {
+      question: "Eyob creates a business presentation by using Microsoft Office PowerPoint® 2010. He saves it with the name Presentation.ppt. Eyob opens the file to make some changes, and he wants to save it with a different name. Which of the following commands on the File menu will Stephan use to save the file with a different name?",
       answers: {
         A: "Save",
         B: "Save As",
@@ -351,7 +371,7 @@
       correctAnswer: "B"
     },
     {
-      question: "9. Beza wants to create a newsletter. She needs a program that provides several newsletter templates.   Which of the following programs will meet her needs?",
+      question: "Beza wants to create a newsletter. She needs a program that provides several newsletter templates.   Which of the following programs will meet her needs?",
       answers: {
         A: "Desktop publishing program",
         B: "Presentation program",
@@ -359,18 +379,9 @@
         D: "Spreadsheet program"
       },
       correctAnswer: "A"
-    },
-    {
-      question: "10. You create a presentation by using PowerPoint. Which of the following toolbars will you use to add geometric shapes to the presentation?",
-      answers: {
-        A: "Reviewing",
-        B: "Illustration",
-        C: "Drawing",
-        D: "Formatting"
-      },
-      correctAnswer: "B"
     }
   ];
+  const myQuestionShuffled = myQuestions.sort(function() { return 0.5 - Math.random() });
 
   // Kick things off
   buildQuiz();
