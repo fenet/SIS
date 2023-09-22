@@ -5991,3 +5991,250 @@ Tasks: TOP => db:migrate
   INFO [b2eace55] Running /usr/bin/env echo "Branch d1d8b9b012ef6b8b3f8f71ac4793ce7ab0ed60f6 (at d1d8b9b012ef6b8b3f8f71ac4793ce7ab0ed60f6) deployed as release 20230922050850 by fena" >> /home/newdeploy/ngvcnew/revisions.log as newdeploy@141.95.85.206
  DEBUG [b2eace55] Command: cd /home/newdeploy/ngvcnew/releases && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "Branch d1d8b9b012ef6b8b3f8f71ac4793ce7ab0ed60f6 (at d1d8b9b012ef6b8b3f8f71ac4793ce7ab0ed60f6) deployed as release 20230922050850 by fena" >> /home/newdeploy/ngvcnew/revisions.log )
   INFO [b2eace55] Finished in 1.248 seconds with exit status 0 (successful).
+  INFO ---------------------------------------------------------------------------
+  INFO START 2023-09-22 08:13:24 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [64d95f5d] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as newdeploy@141.95.85.206
+ DEBUG [64d95f5d] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+ DEBUG [64d95f5d] Finished in 15.672 seconds with exit status 0 (successful).
+ DEBUG [771aff53] Running /usr/bin/env which passenger as newdeploy@141.95.85.206
+ DEBUG [771aff53] Command: /usr/bin/env which passenger
+ DEBUG [771aff53] 	/usr/bin/passenger
+ DEBUG [771aff53] Finished in 1.434 seconds with exit status 0 (successful).
+  INFO [5ea280ce] Running /usr/bin/env mkdir -p /tmp as newdeploy@141.95.85.206
+ DEBUG [5ea280ce] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /tmp )
+  INFO [5ea280ce] Finished in 1.328 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-a759c0524c2a19592f9d.sh 0.0%
+  INFO Uploading /tmp/git-ssh-a759c0524c2a19592f9d.sh 100.0%
+  INFO [80db6a60] Running /usr/bin/env chmod 700 /tmp/git-ssh-a759c0524c2a19592f9d.sh as newdeploy@141.95.85.206
+ DEBUG [80db6a60] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env chmod 700 /tmp/git-ssh-a759c0524c2a19592f9d.sh )
+  INFO [80db6a60] Finished in 3.077 seconds with exit status 0 (successful).
+  INFO [4cbcba70] Running /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD as newdeploy@141.95.85.206
+ DEBUG [4cbcba70] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-a759c0524c2a19592f9d.sh" ; /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD )
+ DEBUG [4cbcba70] 	288463bafb07da833c5f6bf3418e007a5212e2a2	HEAD
+  INFO [4cbcba70] Finished in 2.459 seconds with exit status 0 (successful).
+  INFO [6494566b] Running /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/shared /home/newdeploy/ngvcnew/releases as newdeploy@141.95.85.206
+ DEBUG [6494566b] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/shared /home/newdeploy/ngvcnew/releases )
+  INFO [6494566b] Finished in 0.779 seconds with exit status 0 (successful).
+  INFO [65f38824] Running /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/shared/log /home/newdeploy/ngvcnew/shared/tmp/pids /home/newdeploy/ngvcnew/shared/tmp/cache /home/newdeploy/ngvcnew/shared/tmp/sockets /home/newdeploy/ngvcnew/shared/vendor/bundle /home/newdeploy/ngvcnew/shared/public/system /home/newdeploy/ngvcnew/shared/public/uploads /home/newdeploy/ngvcnew/shared/public/assets as newdeploy@141.95.85.206
+ DEBUG [65f38824] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/shared/log /home/newdeploy/ngvcnew/shared/tmp/pids /home/newdeploy/ngvcnew/shared/tmp/cache /home/newdeploy/ngvcnew/shared/tmp/sockets /home/newdeploy/ngvcnew/shared/vendor/bundle /home/newdeploy/ngvcnew/shared/public/system /home/newdeploy/ngvcnew/shared/public/uploads /home/newdeploy/ngvcnew/shared/public/assets )
+  INFO [65f38824] Finished in 0.849 seconds with exit status 0 (successful).
+ DEBUG [b72f4cb9] Running [ -f /home/newdeploy/ngvcnew/current/REVISION ] as newdeploy@141.95.85.206
+ DEBUG [b72f4cb9] Command: [ -f /home/newdeploy/ngvcnew/current/REVISION ]
+ DEBUG [b72f4cb9] Finished in 1.190 seconds with exit status 0 (successful).
+ DEBUG [0dc405bf] Running /usr/bin/env cat /home/newdeploy/ngvcnew/current/REVISION 2>/dev/null as newdeploy@141.95.85.206
+ DEBUG [0dc405bf] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env cat /home/newdeploy/ngvcnew/current/REVISION 2>/dev/null )
+ DEBUG [0dc405bf] 	d1d8b9b012ef6b8b3f8f71ac4793ce7ab0ed60f6
+ DEBUG [0dc405bf] Finished in 1.269 seconds with exit status 0 (successful).
+ DEBUG [c8b672ee] Running [ -f /home/newdeploy/ngvcnew/repo/HEAD ] as newdeploy@141.95.85.206
+ DEBUG [c8b672ee] Command: [ -f /home/newdeploy/ngvcnew/repo/HEAD ]
+ DEBUG [c8b672ee] Finished in 1.636 seconds with exit status 0 (successful).
+  INFO The repository mirror is at /home/newdeploy/ngvcnew/repo
+ DEBUG [7bb52d29] Running if test ! -d /home/newdeploy/ngvcnew/repo; then echo "Directory does not exist '/home/newdeploy/ngvcnew/repo'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [7bb52d29] Command: if test ! -d /home/newdeploy/ngvcnew/repo; then echo "Directory does not exist '/home/newdeploy/ngvcnew/repo'" 1>&2; false; fi
+ DEBUG [7bb52d29] Finished in 2.049 seconds with exit status 0 (successful).
+  INFO [48b0f280] Running /usr/bin/env git remote set-url origin https://fenet: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@github.com/fenet/leadstarlatest.git as newdeploy@141.95.85.206
+ DEBUG [48b0f280] Command: cd /home/newdeploy/ngvcnew/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-a759c0524c2a19592f9d.sh" ; /usr/bin/env git remote set-url origin https://fenet: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@github.com/fenet/leadstarlatest.git )
+  INFO [48b0f280] Finished in 0.583 seconds with exit status 0 (successful).
+  INFO [11fa751d] Running /usr/bin/env git remote update --prune as newdeploy@141.95.85.206
+ DEBUG [11fa751d] Command: cd /home/newdeploy/ngvcnew/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-a759c0524c2a19592f9d.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [11fa751d] 	Fetching origin
+ DEBUG [11fa751d] 	From https://github.com/fenet/leadstarlatest
+   54b3cca..288463b  main       -> main
+  INFO [11fa751d] Finished in 1.459 seconds with exit status 0 (successful).
+ DEBUG [7a1bda6a] Running if test ! -d /home/newdeploy/ngvcnew/repo; then echo "Directory does not exist '/home/newdeploy/ngvcnew/repo'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [7a1bda6a] Command: if test ! -d /home/newdeploy/ngvcnew/repo; then echo "Directory does not exist '/home/newdeploy/ngvcnew/repo'" 1>&2; false; fi
+ DEBUG [7a1bda6a] Finished in 2.476 seconds with exit status 0 (successful).
+  INFO [b54508c1] Running /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/releases/20230922051356 as newdeploy@141.95.85.206
+ DEBUG [b54508c1] Command: cd /home/newdeploy/ngvcnew/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-a759c0524c2a19592f9d.sh" ; /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/releases/20230922051356 )
+  INFO [b54508c1] Finished in 1.625 seconds with exit status 0 (successful).
+  INFO [a1378ae6] Running /usr/bin/env git archive 81ec5b638ffca3b9ac94d087fb24765cf810bfa3 | /usr/bin/env tar -x -f - -C /home/newdeploy/ngvcnew/releases/20230922051356 as newdeploy@141.95.85.206
+ DEBUG [a1378ae6] Command: cd /home/newdeploy/ngvcnew/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-a759c0524c2a19592f9d.sh" ; /usr/bin/env git archive 81ec5b638ffca3b9ac94d087fb24765cf810bfa3 | /usr/bin/env tar -x -f - -C /home/newdeploy/ngvcnew/releases/20230922051356 )
+  INFO [a1378ae6] Finished in 1.023 seconds with exit status 0 (successful).
+ DEBUG [3bad8f50] Running if test ! -d /home/newdeploy/ngvcnew/repo; then echo "Directory does not exist '/home/newdeploy/ngvcnew/repo'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [3bad8f50] Command: if test ! -d /home/newdeploy/ngvcnew/repo; then echo "Directory does not exist '/home/newdeploy/ngvcnew/repo'" 1>&2; false; fi
+ DEBUG [3bad8f50] Finished in 2.047 seconds with exit status 0 (successful).
+ DEBUG [c71bea0a] Running /usr/bin/env git rev-list --max-count=1 81ec5b638ffca3b9ac94d087fb24765cf810bfa3 as newdeploy@141.95.85.206
+ DEBUG [c71bea0a] Command: cd /home/newdeploy/ngvcnew/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-a759c0524c2a19592f9d.sh" ; /usr/bin/env git rev-list --max-count=1 81ec5b638ffca3b9ac94d087fb24765cf810bfa3 )
+ DEBUG [c71bea0a] 	81ec5b638ffca3b9ac94d087fb24765cf810bfa3
+ DEBUG [c71bea0a] Finished in 1.743 seconds with exit status 0 (successful).
+ DEBUG [c38ae101] Running if test ! -d /home/newdeploy/ngvcnew/releases/20230922051356; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230922051356'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [c38ae101] Command: if test ! -d /home/newdeploy/ngvcnew/releases/20230922051356; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230922051356'" 1>&2; false; fi
+ DEBUG [c38ae101] Finished in 1.022 seconds with exit status 0 (successful).
+  INFO [110d4d25] Running /usr/bin/env echo "81ec5b638ffca3b9ac94d087fb24765cf810bfa3" > REVISION as newdeploy@141.95.85.206
+ DEBUG [110d4d25] Command: cd /home/newdeploy/ngvcnew/releases/20230922051356 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "81ec5b638ffca3b9ac94d087fb24765cf810bfa3" > REVISION )
+  INFO [110d4d25] Finished in 2.765 seconds with exit status 0 (successful).
+  INFO [e214c134] Running /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/releases/20230922051356 /home/newdeploy/ngvcnew/releases/20230922051356/tmp /home/newdeploy/ngvcnew/releases/20230922051356/vendor /home/newdeploy/ngvcnew/releases/20230922051356/public as newdeploy@141.95.85.206
+ DEBUG [e214c134] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/releases/20230922051356 /home/newdeploy/ngvcnew/releases/20230922051356/tmp /home/newdeploy/ngvcnew/releases/20230922051356/vendor /home/newdeploy/ngvcnew/releases/20230922051356/public )
+  INFO [e214c134] Finished in 1.083 seconds with exit status 0 (successful).
+ DEBUG [2e305952] Running [ -L /home/newdeploy/ngvcnew/releases/20230922051356/log ] as newdeploy@141.95.85.206
+ DEBUG [2e305952] Command: [ -L /home/newdeploy/ngvcnew/releases/20230922051356/log ]
+ DEBUG [2e305952] Finished in 1.263 seconds with exit status 1 (failed).
+ DEBUG [0929f507] Running [ -d /home/newdeploy/ngvcnew/releases/20230922051356/log ] as newdeploy@141.95.85.206
+ DEBUG [0929f507] Command: [ -d /home/newdeploy/ngvcnew/releases/20230922051356/log ]
+ DEBUG [0929f507] Finished in 2.771 seconds with exit status 1 (failed).
+  INFO [9cf1bc4e] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/log /home/newdeploy/ngvcnew/releases/20230922051356/log as newdeploy@141.95.85.206
+ DEBUG [9cf1bc4e] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/log /home/newdeploy/ngvcnew/releases/20230922051356/log )
+  INFO [9cf1bc4e] Finished in 3.072 seconds with exit status 0 (successful).
+ DEBUG [38f36a1a] Running [ -L /home/newdeploy/ngvcnew/releases/20230922051356/tmp/pids ] as newdeploy@141.95.85.206
+ DEBUG [38f36a1a] Command: [ -L /home/newdeploy/ngvcnew/releases/20230922051356/tmp/pids ]
+ DEBUG [38f36a1a] Finished in 1.433 seconds with exit status 1 (failed).
+ DEBUG [651e8ab3] Running [ -d /home/newdeploy/ngvcnew/releases/20230922051356/tmp/pids ] as newdeploy@141.95.85.206
+ DEBUG [651e8ab3] Command: [ -d /home/newdeploy/ngvcnew/releases/20230922051356/tmp/pids ]
+ DEBUG [651e8ab3] Finished in 1.638 seconds with exit status 1 (failed).
+  INFO [2fa0de77] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/tmp/pids /home/newdeploy/ngvcnew/releases/20230922051356/tmp/pids as newdeploy@141.95.85.206
+ DEBUG [2fa0de77] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/tmp/pids /home/newdeploy/ngvcnew/releases/20230922051356/tmp/pids )
+  INFO [2fa0de77] Finished in 1.433 seconds with exit status 0 (successful).
+ DEBUG [db909a35] Running [ -L /home/newdeploy/ngvcnew/releases/20230922051356/tmp/cache ] as newdeploy@141.95.85.206
+ DEBUG [db909a35] Command: [ -L /home/newdeploy/ngvcnew/releases/20230922051356/tmp/cache ]
+ DEBUG [db909a35] Finished in 1.330 seconds with exit status 1 (failed).
+ DEBUG [e963f3f9] Running [ -d /home/newdeploy/ngvcnew/releases/20230922051356/tmp/cache ] as newdeploy@141.95.85.206
+ DEBUG [e963f3f9] Command: [ -d /home/newdeploy/ngvcnew/releases/20230922051356/tmp/cache ]
+ DEBUG [e963f3f9] Finished in 1.330 seconds with exit status 1 (failed).
+  INFO [62d238cd] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/tmp/cache /home/newdeploy/ngvcnew/releases/20230922051356/tmp/cache as newdeploy@141.95.85.206
+ DEBUG [62d238cd] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/tmp/cache /home/newdeploy/ngvcnew/releases/20230922051356/tmp/cache )
+  INFO [62d238cd] Finished in 2.458 seconds with exit status 0 (successful).
+ DEBUG [76987732] Running [ -L /home/newdeploy/ngvcnew/releases/20230922051356/tmp/sockets ] as newdeploy@141.95.85.206
+ DEBUG [76987732] Command: [ -L /home/newdeploy/ngvcnew/releases/20230922051356/tmp/sockets ]
+ DEBUG [76987732] Finished in 1.638 seconds with exit status 1 (failed).
+ DEBUG [6d5f51d6] Running [ -d /home/newdeploy/ngvcnew/releases/20230922051356/tmp/sockets ] as newdeploy@141.95.85.206
+ DEBUG [6d5f51d6] Command: [ -d /home/newdeploy/ngvcnew/releases/20230922051356/tmp/sockets ]
+ DEBUG [6d5f51d6] Finished in 1.023 seconds with exit status 1 (failed).
+  INFO [e908bc2c] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/tmp/sockets /home/newdeploy/ngvcnew/releases/20230922051356/tmp/sockets as newdeploy@141.95.85.206
+ DEBUG [e908bc2c] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/tmp/sockets /home/newdeploy/ngvcnew/releases/20230922051356/tmp/sockets )
+  INFO [e908bc2c] Finished in 1.435 seconds with exit status 0 (successful).
+ DEBUG [3be1165a] Running [ -L /home/newdeploy/ngvcnew/releases/20230922051356/vendor/bundle ] as newdeploy@141.95.85.206
+ DEBUG [3be1165a] Command: [ -L /home/newdeploy/ngvcnew/releases/20230922051356/vendor/bundle ]
+ DEBUG [3be1165a] Finished in 1.329 seconds with exit status 1 (failed).
+ DEBUG [c8a25ce5] Running [ -d /home/newdeploy/ngvcnew/releases/20230922051356/vendor/bundle ] as newdeploy@141.95.85.206
+ DEBUG [c8a25ce5] Command: [ -d /home/newdeploy/ngvcnew/releases/20230922051356/vendor/bundle ]
+ DEBUG [c8a25ce5] Finished in 1.331 seconds with exit status 1 (failed).
+  INFO [37492458] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/vendor/bundle /home/newdeploy/ngvcnew/releases/20230922051356/vendor/bundle as newdeploy@141.95.85.206
+ DEBUG [37492458] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/vendor/bundle /home/newdeploy/ngvcnew/releases/20230922051356/vendor/bundle )
+  INFO [37492458] Finished in 1.432 seconds with exit status 0 (successful).
+ DEBUG [3dced210] Running [ -L /home/newdeploy/ngvcnew/releases/20230922051356/public/system ] as newdeploy@141.95.85.206
+ DEBUG [3dced210] Command: [ -L /home/newdeploy/ngvcnew/releases/20230922051356/public/system ]
+ DEBUG [3dced210] Finished in 1.023 seconds with exit status 1 (failed).
+ DEBUG [0989f338] Running [ -d /home/newdeploy/ngvcnew/releases/20230922051356/public/system ] as newdeploy@141.95.85.206
+ DEBUG [0989f338] Command: [ -d /home/newdeploy/ngvcnew/releases/20230922051356/public/system ]
+ DEBUG [0989f338] Finished in 3.073 seconds with exit status 1 (failed).
+  INFO [2aab5870] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/public/system /home/newdeploy/ngvcnew/releases/20230922051356/public/system as newdeploy@141.95.85.206
+ DEBUG [2aab5870] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/public/system /home/newdeploy/ngvcnew/releases/20230922051356/public/system )
+  INFO [2aab5870] Finished in 1.023 seconds with exit status 0 (successful).
+ DEBUG [70c566fb] Running [ -L /home/newdeploy/ngvcnew/releases/20230922051356/public/uploads ] as newdeploy@141.95.85.206
+ DEBUG [70c566fb] Command: [ -L /home/newdeploy/ngvcnew/releases/20230922051356/public/uploads ]
+ DEBUG [70c566fb] Finished in 3.071 seconds with exit status 1 (failed).
+ DEBUG [cb272b47] Running [ -d /home/newdeploy/ngvcnew/releases/20230922051356/public/uploads ] as newdeploy@141.95.85.206
+ DEBUG [cb272b47] Command: [ -d /home/newdeploy/ngvcnew/releases/20230922051356/public/uploads ]
+ DEBUG [cb272b47] Finished in 2.047 seconds with exit status 1 (failed).
+  INFO [40913f4e] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/public/uploads /home/newdeploy/ngvcnew/releases/20230922051356/public/uploads as newdeploy@141.95.85.206
+ DEBUG [40913f4e] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/public/uploads /home/newdeploy/ngvcnew/releases/20230922051356/public/uploads )
+  INFO [40913f4e] Finished in 2.457 seconds with exit status 0 (successful).
+ DEBUG [fcb20f12] Running [ -L /home/newdeploy/ngvcnew/releases/20230922051356/public/assets ] as newdeploy@141.95.85.206
+ DEBUG [fcb20f12] Command: [ -L /home/newdeploy/ngvcnew/releases/20230922051356/public/assets ]
+ DEBUG [fcb20f12] Finished in 1.637 seconds with exit status 1 (failed).
+ DEBUG [c51f4692] Running [ -d /home/newdeploy/ngvcnew/releases/20230922051356/public/assets ] as newdeploy@141.95.85.206
+ DEBUG [c51f4692] Command: [ -d /home/newdeploy/ngvcnew/releases/20230922051356/public/assets ]
+ DEBUG [c51f4692] Finished in 2.048 seconds with exit status 1 (failed).
+  INFO [7aab2f13] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/public/assets /home/newdeploy/ngvcnew/releases/20230922051356/public/assets as newdeploy@141.95.85.206
+ DEBUG [7aab2f13] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/shared/public/assets /home/newdeploy/ngvcnew/releases/20230922051356/public/assets )
+  INFO [7aab2f13] Finished in 1.432 seconds with exit status 0 (successful).
+ DEBUG [f2099ca5] Running if test ! -d /home/newdeploy/ngvcnew/releases/20230922051356; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230922051356'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [f2099ca5] Command: if test ! -d /home/newdeploy/ngvcnew/releases/20230922051356; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230922051356'" 1>&2; false; fi
+ DEBUG [f2099ca5] Finished in 2.046 seconds with exit status 0 (successful).
+  INFO [523bcb0c] Running $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true as newdeploy@141.95.85.206
+ DEBUG [523bcb0c] Command: cd /home/newdeploy/ngvcnew/releases/20230922051356 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true )
+  INFO [523bcb0c] Finished in 1.319 seconds with exit status 0 (successful).
+  INFO [30631fc7] Running $HOME/.rbenv/bin/rbenv exec bundle config --local path /home/newdeploy/ngvcnew/shared/bundle as newdeploy@141.95.85.206
+ DEBUG [30631fc7] Command: cd /home/newdeploy/ngvcnew/releases/20230922051356 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local path /home/newdeploy/ngvcnew/shared/bundle )
+  INFO [30631fc7] Finished in 0.725 seconds with exit status 0 (successful).
+  INFO [6bc9f8da] Running $HOME/.rbenv/bin/rbenv exec bundle config --local without development:test as newdeploy@141.95.85.206
+ DEBUG [6bc9f8da] Command: cd /home/newdeploy/ngvcnew/releases/20230922051356 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local without development:test )
+  INFO [6bc9f8da] Finished in 1.022 seconds with exit status 0 (successful).
+ DEBUG [50dcfc4f] Running if test ! -d /home/newdeploy/ngvcnew/releases/20230922051356; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230922051356'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [50dcfc4f] Command: if test ! -d /home/newdeploy/ngvcnew/releases/20230922051356; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230922051356'" 1>&2; false; fi
+ DEBUG [50dcfc4f] Finished in 3.686 seconds with exit status 0 (successful).
+ DEBUG [2ee9b04f] Running $HOME/.rbenv/bin/rbenv exec bundle check as newdeploy@141.95.85.206
+ DEBUG [2ee9b04f] Command: cd /home/newdeploy/ngvcnew/releases/20230922051356 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle check )
+ DEBUG [2ee9b04f] 	The Gemfile's dependencies are satisfied
+ DEBUG [2ee9b04f] Finished in 2.050 seconds with exit status 0 (successful).
+  INFO The Gemfile's dependencies are satisfied, skipping installation
+ DEBUG [e14cef54] Running if test ! -d /home/newdeploy/ngvcnew/releases/20230922051356; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230922051356'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [e14cef54] Command: if test ! -d /home/newdeploy/ngvcnew/releases/20230922051356; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230922051356'" 1>&2; false; fi
+ DEBUG [e14cef54] Finished in 1.430 seconds with exit status 0 (successful).
+  INFO [39a57ff1] Running $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile as newdeploy@141.95.85.206
+ DEBUG [39a57ff1] Command: cd /home/newdeploy/ngvcnew/releases/20230922051356 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" RAILS_GROUPS="" ; $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile )
+  INFO [39a57ff1] Finished in 6.319 seconds with exit status 0 (successful).
+ DEBUG [a211cf56] Running if test ! -d /home/newdeploy/ngvcnew/releases/20230922051356; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230922051356'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [a211cf56] Command: if test ! -d /home/newdeploy/ngvcnew/releases/20230922051356; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230922051356'" 1>&2; false; fi
+ DEBUG [a211cf56] Finished in 0.849 seconds with exit status 0 (successful).
+  INFO [05451c23] Running /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/releases/20230922051356/assets_manifest_backup as newdeploy@141.95.85.206
+ DEBUG [05451c23] Command: cd /home/newdeploy/ngvcnew/releases/20230922051356 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/releases/20230922051356/assets_manifest_backup )
+  INFO [05451c23] Finished in 4.093 seconds with exit status 0 (successful).
+ DEBUG [d0e8f5ea] Running /usr/bin/env ls /home/newdeploy/ngvcnew/releases/20230922051356/public/assets/.sprockets-manifest* as newdeploy@141.95.85.206
+ DEBUG [d0e8f5ea] Command: cd /home/newdeploy/ngvcnew/releases/20230922051356 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls /home/newdeploy/ngvcnew/releases/20230922051356/public/assets/.sprockets-manifest* )
+ DEBUG [d0e8f5ea] 	/home/newdeploy/ngvcnew/releases/20230922051356/public/assets/.sprockets-manifest-61fe33c4d38751264a4f36ed3da66f61.json
+ DEBUG [d0e8f5ea] Finished in 3.072 seconds with exit status 0 (successful).
+ DEBUG [5b457e8a] Running /usr/bin/env ls /home/newdeploy/ngvcnew/releases/20230922051356/public/assets/.sprockets-manifest* as newdeploy@141.95.85.206
+ DEBUG [5b457e8a] Command: cd /home/newdeploy/ngvcnew/releases/20230922051356 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls /home/newdeploy/ngvcnew/releases/20230922051356/public/assets/.sprockets-manifest* )
+ DEBUG [5b457e8a] 	/home/newdeploy/ngvcnew/releases/20230922051356/public/assets/.sprockets-manifest-61fe33c4d38751264a4f36ed3da66f61.json
+ DEBUG [5b457e8a] Finished in 1.678 seconds with exit status 0 (successful).
+  INFO [4aeb2af2] Running /usr/bin/env cp /home/newdeploy/ngvcnew/releases/20230922051356/public/assets/.sprockets-manifest-61fe33c4d38751264a4f36ed3da66f61.json /home/newdeploy/ngvcnew/releases/20230922051356/assets_manifest_backup as newdeploy@141.95.85.206
+ DEBUG [4aeb2af2] Command: cd /home/newdeploy/ngvcnew/releases/20230922051356 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env cp /home/newdeploy/ngvcnew/releases/20230922051356/public/assets/.sprockets-manifest-61fe33c4d38751264a4f36ed3da66f61.json /home/newdeploy/ngvcnew/releases/20230922051356/assets_manifest_backup )
+  INFO [4aeb2af2] Finished in 1.390 seconds with exit status 0 (successful).
+  INFO [deploy:migrate] Run `rake db:migrate`
+ DEBUG [eeffb4bb] Running if test ! -d /home/newdeploy/ngvcnew/releases/20230922051356; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230922051356'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [eeffb4bb] Command: if test ! -d /home/newdeploy/ngvcnew/releases/20230922051356; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230922051356'" 1>&2; false; fi
+ DEBUG [eeffb4bb] Finished in 1.245 seconds with exit status 0 (successful).
+  INFO [173b1b30] Running $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate as newdeploy@141.95.85.206
+ DEBUG [173b1b30] Command: cd /home/newdeploy/ngvcnew/releases/20230922051356 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" ; $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate )
+  INFO [173b1b30] Finished in 2.845 seconds with exit status 0 (successful).
+ DEBUG [b3ffecc3] Running if test ! -d /home/newdeploy/ngvcnew/releases/20230922051356; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230922051356'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [b3ffecc3] Command: if test ! -d /home/newdeploy/ngvcnew/releases/20230922051356; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases/20230922051356'" 1>&2; false; fi
+ DEBUG [b3ffecc3] Finished in 1.203 seconds with exit status 0 (successful).
+  INFO [6630f255] Running $HOME/.rbenv/bin/rbenv exec bundle exec whenever --update-crontab ngvcnew_production --set environment=production --roles=app,web,db  as newdeploy@141.95.85.206
+ DEBUG [6630f255] Command: cd /home/newdeploy/ngvcnew/releases/20230922051356 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" ; $HOME/.rbenv/bin/rbenv exec bundle exec whenever --update-crontab ngvcnew_production --set environment=production --roles=app,web,db  )
+ DEBUG [6630f255] 	[write] crontab file updated
+  INFO [6630f255] Finished in 1.865 seconds with exit status 0 (successful).
+  INFO [e789c90c] Running /usr/bin/env ln -s /home/newdeploy/ngvcnew/releases/20230922051356 /home/newdeploy/ngvcnew/releases/current as newdeploy@141.95.85.206
+ DEBUG [e789c90c] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/ngvcnew/releases/20230922051356 /home/newdeploy/ngvcnew/releases/current )
+  INFO [e789c90c] Finished in 1.428 seconds with exit status 0 (successful).
+  INFO [3d6ea58b] Running /usr/bin/env mv /home/newdeploy/ngvcnew/releases/current /home/newdeploy/ngvcnew as newdeploy@141.95.85.206
+ DEBUG [3d6ea58b] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mv /home/newdeploy/ngvcnew/releases/current /home/newdeploy/ngvcnew )
+  INFO [3d6ea58b] Finished in 3.068 seconds with exit status 0 (successful).
+ DEBUG [0f7dce17] Running /usr/bin/env pwd as newdeploy@141.95.85.206
+ DEBUG [0f7dce17] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env pwd )
+ DEBUG [0f7dce17] 	/home/newdeploy
+ DEBUG [0f7dce17] Finished in 1.635 seconds with exit status 0 (successful).
+ DEBUG [25523382] Running if test ! -d /home/newdeploy; then echo "Directory does not exist '/home/newdeploy'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [25523382] Command: if test ! -d /home/newdeploy; then echo "Directory does not exist '/home/newdeploy'" 1>&2; false; fi
+ DEBUG [25523382] Finished in 2.046 seconds with exit status 0 (successful).
+  INFO [e4e74e98] Running /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/releases/20230922051356/tmp as newdeploy@141.95.85.206
+ DEBUG [e4e74e98] Command: cd /home/newdeploy && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/ngvcnew/releases/20230922051356/tmp )
+  INFO [e4e74e98] Finished in 2.456 seconds with exit status 0 (successful).
+  INFO [870699ee] Running /usr/bin/env touch /home/newdeploy/ngvcnew/releases/20230922051356/tmp/restart.txt as newdeploy@141.95.85.206
+ DEBUG [870699ee] Command: cd /home/newdeploy && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env touch /home/newdeploy/ngvcnew/releases/20230922051356/tmp/restart.txt )
+  INFO [870699ee] Finished in 2.762 seconds with exit status 0 (successful).
+ DEBUG [ad10b730] Running /usr/bin/env ls -x /home/newdeploy/ngvcnew/releases as newdeploy@141.95.85.206
+ DEBUG [ad10b730] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls -x /home/newdeploy/ngvcnew/releases )
+ DEBUG [ad10b730] 	20230920120601	20230920221930	20230921061018	20230921062414	20230921063300
+20230921063737	20230921065350	20230921065950	20230921070806	20230922050850
+20230922051356
+ DEBUG [ad10b730] Finished in 2.350 seconds with exit status 0 (successful).
+  INFO Keeping 10 of 11 deployed releases on 141.95.85.206
+ DEBUG [e432cccf] Running [ -d /home/newdeploy/ngvcnew/current ] as newdeploy@141.95.85.206
+ DEBUG [e432cccf] Command: [ -d /home/newdeploy/ngvcnew/current ]
+ DEBUG [e432cccf] Finished in 2.045 seconds with exit status 0 (successful).
+ DEBUG [eb54bc12] Running /usr/bin/env readlink /home/newdeploy/ngvcnew/current as newdeploy@141.95.85.206
+ DEBUG [eb54bc12] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env readlink /home/newdeploy/ngvcnew/current )
+ DEBUG [eb54bc12] 	/home/newdeploy/ngvcnew/releases/20230922051356
+ DEBUG [eb54bc12] Finished in 1.194 seconds with exit status 0 (successful).
+  INFO [50bc4ccd] Running /usr/bin/env rm -rf /home/newdeploy/ngvcnew/releases/20230920120601 as newdeploy@141.95.85.206
+ DEBUG [50bc4ccd] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env rm -rf /home/newdeploy/ngvcnew/releases/20230920120601 )
+  INFO [50bc4ccd] Finished in 1.078 seconds with exit status 0 (successful).
+ DEBUG [7f300c07] Running if test ! -d /home/newdeploy/ngvcnew/releases; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases'" 1>&2; false; fi as newdeploy@141.95.85.206
+ DEBUG [7f300c07] Command: if test ! -d /home/newdeploy/ngvcnew/releases; then echo "Directory does not exist '/home/newdeploy/ngvcnew/releases'" 1>&2; false; fi
+ DEBUG [7f300c07] Finished in 1.818 seconds with exit status 0 (successful).
+  INFO [10ca7beb] Running /usr/bin/env echo "Branch 81ec5b638ffca3b9ac94d087fb24765cf810bfa3 (at 81ec5b638ffca3b9ac94d087fb24765cf810bfa3) deployed as release 20230922051356 by fena" >> /home/newdeploy/ngvcnew/revisions.log as newdeploy@141.95.85.206
+ DEBUG [10ca7beb] Command: cd /home/newdeploy/ngvcnew/releases && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "Branch 81ec5b638ffca3b9ac94d087fb24765cf810bfa3 (at 81ec5b638ffca3b9ac94d087fb24765cf810bfa3) deployed as release 20230922051356 by fena" >> /home/newdeploy/ngvcnew/revisions.log )
+  INFO [10ca7beb] Finished in 2.045 seconds with exit status 0 (successful).
