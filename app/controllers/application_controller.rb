@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery prepend: true, with: :exception
 
   def home
-    render html: "Welcome to Leadstar College Online"
+    render html: "Welcome to NGVC"
   end
 
   def access_denied(exception)
