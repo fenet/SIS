@@ -137,4 +137,28 @@ class StudentGrade < ApplicationRecord
       end
     end
   end
+
+  def moodle_grade
+    url = URI("https://lms.ngvc.edu.et/webservice/rest/server.php")
+    moodle = MoodleRb.new('92dac7334a9d4aee7cc3474b81f15c45', 'https://lms.ngvc.edu.et/webservice/rest/server.php')
+    lms_student = moodle.users.search(email: "#{self.student.email}")
+    user = lms_student[0]["id"]
+    https = Net::HTTP.new(url.host, url.port)
+    https.use_ssl = true
+
+    request = Net::HTTP::Post.new(url)
+    form_data = [['wstoken', '92dac7334a9d4aee7cc3474b81f15c45'],['wsfunction', 'gradereport_overview_get_course_grades'],['moodlewsrestformat', 'json'],['userid', "#{user}"]]
+    request.set_form form_data, 'multipart/form-data'
+    response = https.request(request)
+    # puts response.read_body
+    results =  JSON.parse(response.read_body)
+    course_code = moodle.courses.search("#{self.course_registration.course.course_code}")
+    course = course_code["courses"][0]["id"]
+    
+    total_grade = results["grades"].map {|h1| h1['rawgrade'] if h1['courseid']== course}.compact.first
+    grade_letter = results["grades"].map {|h1| h1['grade'] if h1['courseid']== course}.compact.first
+    # self.update_columns(grade_in_letter: grade_letter)
+    self.update(assesment_total: total_grade.to_f)
+  end
+  
 end

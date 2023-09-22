@@ -38,7 +38,7 @@ gem 'redis-rails'
 gem 'bcrypt'
 gem "chartkick"
 # gem "font-awesome-rails"
-
+gem 'moodle_rb', '~> 2.1'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

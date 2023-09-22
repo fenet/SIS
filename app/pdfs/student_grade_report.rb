@@ -38,18 +38,18 @@ class StudentGradeReport < Prawn::Document
   def header_footer
     repeat :all do
       bounding_box [bounds.left, bounds.top], :width => bounds.width do
-        font "Helvetica"
-        image open("app/assets/images/leadstar.png"), fit: [120, 100], position: :center
-        text "Leadstar College Registrar Portal", :align => :center, :size => 25
+        font "Times-Roman"
+        image open("app/assets/images/ngvc.png"), fit: [120, 100], position: :center
+        text "NGVC Registrar Portal", :align => :center, :size => 25
         text "Student grade report", size: 30, align: :center
         stroke_horizontal_rule
       end
 
       bounding_box [bounds.left, bounds.bottom + 40], :width => bounds.width do
-        font "Helvetica"
+        font "Times-Roman"
         stroke_horizontal_rule
         move_down(5)
-        text "Leadstar College Registrar Portal", :size => 16, align: :center
+        text "NGVC Registrar Portal", :size => 16, align: :center
         text "+251-9804523154", :size => 16, align: :center
       end
     end
