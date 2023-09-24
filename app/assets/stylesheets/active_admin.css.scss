@@ -23,7 +23,7 @@
 //   .status_tag { background: #6090DB; }
 // @import "active_admin_flat_skin";
 $skinMainFirstColor: #024d71 !default;
-$skinMainSecondColor: #168C40 !default;
+$skinMainSecondColor: #8c181b !default;
 $menu-arrow-dark-icon-url: 'active_admin/nested_menu_arrow_dark.gif' !default;
 @import "wigu/active_admin_theme";
 // $panelBorder: #42558C;
@@ -584,8 +584,8 @@ body.index.active_admin {
 // header
 #wrapper #header {
   height: 70px !important;
-  background-color: #0d94d5 !important;
-  border-bottom: 1px solid #0d94d5 !important;
+  background-color: #272367 !important;
+  border-bottom: 1px solid #272367 !important;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
 }
 
@@ -619,7 +619,7 @@ body.index.active_admin {
 
 .banner-logo {
 
-  background-image: url(asset_path('leadstar.jpg'));
+  background-image: url(asset_path('premier.jpg'));
   background-position: center;
   background-size: cover;
   width: 128px;

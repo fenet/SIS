@@ -27,13 +27,23 @@ menu parent: "Grade"
     redirect_back(fallback_location: admin_student_grade_path)
   end
 
+  member_action :get_grade_from_lms, method: :put do
+    @student_grade= StudentGrade.find(params[:id])
+    @student_grade.moodle_grade
+    redirect_back(fallback_location: admin_student_grade_path)
+  end
   # member_action :generate_grade, method: :put do
   #   @student_grade = StudentGrade.find(params[:id])
   #   @student_grade.generate_grade
   #   redirect_back(fallback_location: admin_student_grade_path)
   # end
 
-  
+  batch_action "Get Total Grade from LMS for", method: :put, confirm: "Are you sure?" do |ids|
+    StudentGrade.find(ids).each do |student_grade|
+      student_grade.moodle_grade
+    end
+    redirect_to collection_path, notice: "Grade Is Generated Successfully"
+  end
 
   batch_action "Generate Grade for", method: :put, confirm: "Are you sure?" do |ids|
     StudentGrade.find(ids).each do |sg|

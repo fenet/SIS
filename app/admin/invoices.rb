@@ -10,7 +10,40 @@ ActiveAdmin.register Invoice, as: "RegistrationPayment" do
     invoices.update_all(invoice_status: "approved")
     #  redirect_to admin_semester_registrations_path, notice: "#{"student".pluralize(ids.size)} registrar verification status Approved"
   end
+  
 
+  controller do
+    after_action :testmoodle, only: [:update]
+
+    def testmoodle
+      if @registration_payment.payment_transaction.finance_approval_status == "approved"
+        @moodle = MoodleRb.new('18425a712e7668d6339fa671fa05db04', 'https://lms.premiercollege.edu.et/webservice/rest/server.php')
+        if !(@moodle.users.search(email: "#{@registration_payment.student.email}").present?)
+          student = @moodle.users.create(
+              :username => "#{@registration_payment.student.student_id.downcase}",
+              :password => "#{@registration_payment.student.student_password}",
+              :firstname => "#{@registration_payment.student.first_name}",
+              :lastname => "#{@registration_payment.student.last_name}",
+              :email => "#{@registration_payment.student.email}"
+            )
+          lms_student = @moodle.users.search(email: "#{@registration_payment.student.email}")
+          @user = lms_student[0]["id"]
+          @registration_payment.semester_registration.course_registrations.each do |c|
+            s = @moodle.courses.search("#{c.course.course_code}")
+            @course = s["courses"].to_a[0]["id"]
+            @moodle.enrolments.create(
+              :user_id => "#{@user}",
+              :course_id => "#{@course}",
+              # :time_start => 1646312400,
+              # :time_end => 1646398800
+            )
+          end
+        end
+      end
+    end
+  end
+
+  
   index do
     selectable_column
     # column "Invoice NO",:invoice_number
