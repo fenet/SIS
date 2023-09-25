@@ -4,7 +4,7 @@ role :app, %w{newdeploy@139.99.131.12}
 role :web, %w{newdeploy@139.99.131.12}
 role :db, %w{newdeploy@139.99.131.12}, :primary => true
 
-set :branch, "premier"
+set :branch, "leadstar"
 set :rails_env, "production"
 
 set :deploy_to, '/home/newdeploy/leadstar_portal' 
