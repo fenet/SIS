@@ -63,7 +63,8 @@ class Student < ApplicationRecord
   validates :diploma_certificate, attached: true
   validates :degree_certificate, attached: true
   #validates :highschool_transcript, attached: true
-  validates :diploma_certificate, attached: true validates :undergraduate_transcript, attached: true
+  validates :diploma_certificate, attached: true 
+  #validates :undergraduate_transcript, attached: true
   # validates :diploma_certificate, attached: true, if: :grade_12_matric?
   # validates :coc, attached: true, if: :grade_12_matric?
 
