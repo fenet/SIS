@@ -151,15 +151,24 @@ class SemesterRegistration < ApplicationRecord
         invoice.created_by = self.last_updated_by
         invoice.due_date = self.created_at + 10.day
         invoice.invoice_status = "unpaid"
-        invoice.registration_fee = self.student.get_registration_fee
-        tution_price = self.student.get_tution_fee
+        registration_fee = self.student.get_registration_fee
+        
+        #tution_price = self.student.get_tution_fee
+        if self.year == 1 && self.semester == 1
+          tution_price = self.student.get_tution_fee + 2100
+        else
+          tution_price = self.student.get_tution_fee
+        end 
+
         invoice.invoice_number = SecureRandom.random_number(10000000)
         if self.mode_of_payment == "Monthly Payment"
           invoice.total_price = tution_price / 4
+          invoice.registration_fee = registration_fee / 4
         elsif self.mode_of_payment == "Full Semester Payment"
           invoice.total_price = tution_price
         elsif self.mode_of_payment == "Half Semester Payment"
           invoice.total_price = tution_price / 2
+          invoice.registration_fee = registration_fee / 2
         end
       end
     end

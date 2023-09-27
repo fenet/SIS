@@ -23,11 +23,16 @@ default: &default
 
 development:
   <<: *default
-  database: heucbackup
+  #database: heucbackup
+  #port: 5432
+  #host : localhost
+  #username: postgres
+  #password: Fena_1234
+  database: leadstar_db
   port: 5432
   host : localhost
-  username: postgres
-  password: Fena_1234
+  username: leadstardev
+  password: Lead_1234
   # username: <%= ENV['DB_USERNAME'] %>
   # password: <%= ENV['DB_PASSWORD'] %>
   # host: <%= ENV['DB_HOST'] %>

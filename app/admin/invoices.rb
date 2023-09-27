@@ -63,7 +63,9 @@ ActiveAdmin.register Invoice, as: "RegistrationPayment" do
     column :invoice_status do |s|
       status_tag s.invoice_status
     end
+    #number_column :total_price, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
     number_column :total_price, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
+    number_column :registration_fee, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
     column "Academic Year", sortable: true do |n|
       link_to n.academic_calendar.calender_year, admin_academic_calendar_path(n.academic_calendar)
     end

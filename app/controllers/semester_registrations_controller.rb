@@ -30,10 +30,17 @@ class SemesterRegistrationsController < ApplicationController
     #end
     
    # @total = @registration_fee + @tution_fee
-
+    
+   if current_student.year == 1 && current_student.semester == 1
+    @tution_fee = current_student.get_tution_fee + 2100
+  
+   else 
+    @tution_fee = current_student.get_tution_fee
+   end
 
     @registration_fee = current_student.get_registration_fee
-    @tution_fee =  current_student.get_tution_fee
+    
+    #@tution_fee =  current_student.get_tution_fee
 
   end
 
