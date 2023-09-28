@@ -9,8 +9,8 @@
 
 
 AdminUser.create!(first_name: "fenet",   last_name: "Assefa",
-									email: "andu@gmail.com", 
-									password: "Leadstar_1234",  
+									email: "admin3@gmail.com", 
+									password: "1234567",  
 									role: "admin") 
 AdminUser.create!(first_name: "#{Rails.application.credentials.production[:first_name]}",   
 	               last_name: "#{Rails.application.credentials.production[:last_name]}",
