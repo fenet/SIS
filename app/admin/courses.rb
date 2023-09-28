@@ -240,6 +240,7 @@ permit_params(:course_outline,:course_module_id, :major, :curriculum_id,:program
       #   end
       # end
       # 
+    if (course.course_registrations.where(enrollment_status: "enrolled").present?)
       tab "Currently enrolled students" do
         panel "currently enrolled students" do
           table_for course.course_registrations.where(enrollment_status: "enrolled").where(academic_calendar_id: current_academic_calendar(course.program.study_level, course.program.admission_type)).where(semester: SemesterRegistration.find_by(study_level: course.program.study_level, admission_type: course.program.admission_type).semester).order('student_full_name ASC') do
@@ -274,6 +275,7 @@ permit_params(:course_outline,:course_module_id, :major, :curriculum_id,:program
           end
         end
       end
+    end
       tab "Assessment Plan" do
         columns do
           column min_width: "70%" do

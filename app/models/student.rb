@@ -165,7 +165,7 @@ class Student < ApplicationRecord
   def student_id_generator
     if self.document_verification_status == "approved" && !(self.student_id.present?)
       begin
-        self.student_id = "#{self.program.program_code}/#{SecureRandom.random_number(1000..10000)}/#{Time.now.strftime("%y")}"
+        self.student_id = "NGVC/#{self.program.program_code}/#{SecureRandom.random_number(1000..10000)}/#{Time.now.strftime("%y")}"
       end while Student.where(student_id: self.student_id).exists?
     end
   end

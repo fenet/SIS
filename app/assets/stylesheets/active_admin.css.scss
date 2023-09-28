@@ -22,7 +22,7 @@
 //
 //   .status_tag { background: #6090DB; }
 // @import "active_admin_flat_skin";
-$skinMainFirstColor: #2596be !default;
+$skinMainFirstColor: #3366cc !default;
 $skinMainSecondColor: #cc6d14f5!default;
 $menu-arrow-dark-icon-url: 'active_admin/nested_menu_arrow_dark.gif' !default;
 @import "wigu/active_admin_theme";
@@ -98,7 +98,7 @@ body {
 }
 
 .pending .table_tools_button {
-  background: #036899 !important;
+  background: #3366cc !important;
   color: #fff !important;
 }
 
@@ -584,8 +584,8 @@ body.index.active_admin {
 // header
 #wrapper #header {
   height: 70px !important;
-  background-color: #0d94d5 !important;
-  border-bottom: 1px solid #0d94d5 !important;
+  background-color: #3366cc !important;
+  border-bottom: 1px solid #3366cc !important;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
 }
 
