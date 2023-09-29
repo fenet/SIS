@@ -98,7 +98,7 @@ class Ability
     when "registrar head"
       can :manage, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
       can :manage, ActiveAdmin::Page, name: "Graduation", namespace_name: "admin"
-
+      can :manage, ActiveAdmin::Page, name:"StudentReport", namespace_name: "admin"
       can :manage, AcademicCalendar
       can :manage, AdminUser, role: "instructor"
       can :manage, Faculty
