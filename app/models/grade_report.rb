@@ -20,4 +20,8 @@ class GradeReport < ApplicationRecord
 	  belongs_to :academic_calendar
 	  belongs_to :program
 	  belongs_to :section, optional: true
+	  def self.get_gc_students(graduation_status, year, semester, study_level, admission_type)
+		student_ids = Student.where(graduation_status: graduation_status).where(study_level: study_level).where(admission_type: admission_type).select(:id)
+		self.where(student: student_ids).where(year: year).where(semester: semester).includes(:student).includes(:department).includes(:grade_report)
+	  end
 end

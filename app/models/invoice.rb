@@ -25,7 +25,6 @@ class Invoice < ApplicationRecord
 
   def add_invoice_item
     self.semester_registration.course_registrations.each do |course|
-      
       InvoiceItem.create do |invoice_item|
         invoice_item.itemable_id = self.id
         invoice_item.itemable_type = "Invoice"
@@ -48,7 +47,7 @@ class Invoice < ApplicationRecord
 
   def update_status
     if (self.payment_transaction.present?) && (self.payment_transaction.finance_approval_status == "approved") && (self.invoice_status == "approved")
-      self.semester_registration.update_columns(finance_approval_status: "approved")
+      self.semester_registration.update_columns(finance_approval_status: "approved", is_back_invoice_created: false)
       if self.semester_registration.total_price == 0
         tution_price = self.student.get_tution_fee + self.registration_fee + self.late_registration_fee
         remaining_amount = (tution_price - (self.total_price + self.registration_fee)).abs
