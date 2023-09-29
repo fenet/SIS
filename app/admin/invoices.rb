@@ -33,15 +33,13 @@ ActiveAdmin.register Invoice, as: "RegistrationPayment" do
             @course = s["courses"].to_a[0]["id"]
             @moodle.enrolments.create(
               :user_id => "#{@user}",
-              :course_id => "#{@course}",
-              # :time_start => 1646312400,
-              # :time_end => 1646398800
+              :course_id => "#{@course}"
             )
           end
         end
       end
     end
-  end
+  end  
 
   
   index do
