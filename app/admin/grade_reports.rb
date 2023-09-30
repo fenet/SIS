@@ -23,7 +23,7 @@ ActiveAdmin.register GradeReport do
 
   batch_action "Approve Grade Report For", if: proc { current_admin_user.role == "department head" }, method: :put, confirm: "Are you sure?" do |ids|
     GradeReport.find(ids).each do |grade_report|
-      grade_report.update(department_approval: "approved", approved_by: "#{current_admin_user.name.full}")
+      grade_report.update(department_approval: "approved", department_head_name: "#{current_admin_user.name.full}")
     end
     redirect_to collection_path, notice: "Grade Report Is Approved Successfully"
   end
