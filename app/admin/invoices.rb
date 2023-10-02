@@ -2,7 +2,7 @@ ActiveAdmin.register Invoice, as: "RegistrationPayment" do
   menu parent: "Student Payments"
   actions :all, :except => [:new]
   config.clear_action_items!
-  permit_params :student_full_name,:student_id_number,:student_id, :department_id, :program_id, :academic_calendar_id,:semester_registration_id,:invoice_number,:total_price,:registration_fee,:late_registration_fee,:invoice_status,:last_updated_by,:created_by,:due_date,:semester, :year,payment_transaction_attributes: [:id,:invoice_id,:payment_method_id,:account_holder_fullname,:phone_number,:account_number,:transaction_reference,:finance_approval_status,:last_updated_by,:created_by, :receipt_image], inovice_item_ids: []
+  permit_params :student_full_name,:student_id_number,:student_id, :department_id, :program_id, :academic_calendar_id,:semester_registration_id,:invoice_number,:total_price,:registration_fee, :late_registration_fee,:invoice_status,:last_updated_by,:created_by,:due_date,:semester, :year,payment_transaction_attributes: [:id,:invoice_id,:payment_method_id,:account_holder_fullname,:phone_number,:account_number,:transaction_reference,:finance_approval_status,:last_updated_by,:created_by, :receipt_image], inovice_item_ids: []
    
 
   batch_action "Approve invoice status for", method: :put, confirm: "Are you sure?" do |ids|
@@ -64,7 +64,12 @@ ActiveAdmin.register Invoice, as: "RegistrationPayment" do
       status_tag s.invoice_status
     end
     #number_column :total_price, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
-    number_column :total_price, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
+    #number_column :total_price, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
+    
+    column "Tution_fee", :total_price, as: :currency, unit: "ETB", format: "%n %u", delimiter: ",", precision: 2 do |resource|
+      span resource.total_price, class: "tution-fee"
+    end
+    
     number_column :registration_fee, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
     column "Academic Year", sortable: true do |n|
       link_to n.academic_calendar.calender_year, admin_academic_calendar_path(n.academic_calendar)

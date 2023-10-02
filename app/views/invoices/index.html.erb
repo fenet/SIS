@@ -25,7 +25,7 @@
         <thead>
           <tr>
             <th>Mode of Payment</th>
-            <th>Total Payement</th>
+            <th>Total Payment</th>
             <th>Year</th>
             <th>Semester</th>
             <th>Remaining Amount</th>
@@ -38,7 +38,7 @@
           <%@semesters.each do |sm|%>
             <tr>
               <td><%= sm.mode_of_payment %></td>
-              <td><%= (sm.total_price - sm.registration_fee) %> ETB</td>
+              <td><%= (sm.total_price + sm.registration_fee) %> ETB</td>
               <td><%= sm.year %></td>
               <td><%= sm.semester %></td>
               <td><%= sm.remaining_amount %> ETB</td>
