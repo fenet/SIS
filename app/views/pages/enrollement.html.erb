@@ -114,10 +114,12 @@
                         </tr>
                         <tr>
                           <th>Registration Fee:</th>
-                          <td><%= @registration_fee / 4%> ETB</td>
+                          <!-- <td><%= @registration_fee / 4%> ETB</td> -->
+                          <td><%= @registration_fee / 4%> ETB</td> 
                         </tr>
                         <tr>
                           <th>Total:</th>
+                          <!-- <td><b><%= total(@tution_fee, 4 , @registration_fee / 4) %> ETB</b></td> -->
                           <td><b><%= total(@tution_fee, 4 , @registration_fee / 4) %> ETB</b></td>
                         </tr>
                       </tbody>
@@ -141,11 +143,13 @@
                         </tr>
                         <tr>
                           <th>Registration Fee:</th>
+                          <!-- <td><%= @registration_fee / 2%> ETB</td> -->
                           <td><%= @registration_fee / 2%> ETB</td>
                         </tr>
                         <tr>
                           <th>Total:</th>
-                          <td><b><%= total(@tution_fee, 2 , @registration_fee / 2) %> ETB</b></td>
+                          <td><b><%= total(@tution_fee, 2 , @registration_fee ) %> ETB</b></td>
+                         <!-- <td><b><%= total(@tution_fee, 2 , @registration_fee / 2) %> ETB</b></td> -->
                         </tr>
                       </tbody>
                     </table>
