@@ -38,11 +38,11 @@
           <%@semesters.each do |sm|%>
             <tr>
               <td><%= sm.mode_of_payment %></td>
-              <td><%= (sm.total_price + sm.registration_fee) %> ETB</td>
+              <td><%= (sm.total_price ) %> ETB</td>
               <td><%= sm.year %></td>
               <td><%= sm.semester %></td>
               <td><%= sm.remaining_amount %> ETB</td>
-              <td><%= (sm.total_price - sm.registration_fee - sm.remaining_amount)%> ETB</td>
+              <td><%= (sm.total_price - sm.remaining_amount)%> ETB</td>
               <%if sm.remaining_amount.zero? && sm.finance_approval_status=='approved'%>
                 <td><a class="ml-2 badge badge-success p-2 text-white">Completed</a></td>
               <%elsif sm.is_back_invoice_created?%>
