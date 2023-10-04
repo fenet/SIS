@@ -170,9 +170,15 @@ class Student < ApplicationRecord
     end
   end
 
+ # def student_semester_registration
+  #  if self.document_verification_status == "approved" && self.semester_registrations.empty? && self.year == 1 && self.semester == 1 && self.program.entrance_exam_requirement_status == false
+   #   add_student_registration
+   # end
+  #end
+
   def student_semester_registration
-    if self.document_verification_status == "approved" && self.semester_registrations.empty? && self.year == 1 && self.semester == 1 && self.program.entrance_exam_requirement_status == false
-      add_student_registration
+    if self.document_verification_status == "approved" 
+      add_student_registration if self.semester_registrations.find_by(semester: self.semester).nil?
     end
   end
 

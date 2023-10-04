@@ -149,7 +149,7 @@ ActiveAdmin.register SemesterRegistration do
   index do
     selectable_column
     column "student name", sortable: true do |n|
-      n.student.name.full
+     n.student.first_name
     end
     column "Program" do |n|
       n.program.program_name
