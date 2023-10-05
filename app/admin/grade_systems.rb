@@ -23,14 +23,6 @@ menu parent: "Grade"
     actions
   end
 
-  # filter :admission_type
-  # filter :study_level   
-  # filter :min_cgpa_value_to_pass
-  # filter :created_at
-  # filter :updated_at
-
-
-  
   form do |f|
     f.semantic_errors
 

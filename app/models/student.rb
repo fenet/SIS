@@ -105,7 +105,7 @@ class Student < ApplicationRecord
     CollegePayment.find_by(study_level: self.study_level.strip, admission_type: self.admission_type.strip)
   end
 
-  def add_student_registration(mode_of_payment: nil)
+  def add_student_registration(mode_of_payment = nil)
     SemesterRegistration.create do |registration|
       registration.student_id = self.id
       registration.program_id = self.program.id
@@ -152,8 +152,13 @@ class Student < ApplicationRecord
 
   def student_semester_registration
     if self.document_verification_status == "approved" && self.semester_registrations.empty? && self.year == 1 && self.semester == 1 && self.program.entrance_exam_requirement_status == false
-      add_student_registration
+      add_student_registration unless self.semester_registrations.find_by(semester: self.semester).nil?
     end
+  end
+
+  def self.get_online_student(year, semester)
+    # Student.where(admission_type: 'online', year: year, semester: semester).joins(:course_registrations).where(course_registrations: {year: year, semester: semester})
+     self.where(admission_type: 'online').select("id")
   end
 
   def student_course_assign
