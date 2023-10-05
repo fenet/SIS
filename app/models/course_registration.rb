@@ -21,7 +21,9 @@ class CourseRegistration < ApplicationRecord
   def get_academic_year
     "#{self.academic_year}/#{self.academic_year + 1}"
   end
-
+  def self.get_course_per_student(student_ids)
+    self.where(student_id: student_ids).includes(:student).includes(:course)
+  end
   def add_grade
     if self.section.present? && !self.student_grade.present?
       StudentGrade.create do |student_grade|
