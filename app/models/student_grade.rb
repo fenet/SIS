@@ -33,13 +33,19 @@ class StudentGrade < ApplicationRecord
   end
 
   def self.create_student_grade(crs)
-    student_grades = []
+    counter = 0
     crs.each do |cr|
       student = StudentGrade.where(student: cr.student, course_registration_id: cr.id, course: cr.course, program: cr.student.program, department: cr.student.department).first_or_create
       if student.letter_grade == nil || student.assesment_total == nil
-        MoodleGrade.moodle_grade(student)
+        counter += 1 if MoodleGrade.moodle_grade(student)
       end
     end
+    counter
+  end
+
+  def self.online_student_grade(department, year, semester, status)
+    ids = Student.where(admission_type: "online").where(department_id: department).where(year: year).where(semester: semester).select("id")
+    StudentGrade.where(student_id: ids).where(department_approval: status.strip).includes(:student).includes(:department)
   end
 
   def update_subtotal

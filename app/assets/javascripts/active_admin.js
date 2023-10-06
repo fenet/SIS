@@ -9,6 +9,7 @@
 //= require Chart.bundle
 //= require custom
 //= require student_report
+//= require online_student
 $(document).ready(function () {
 
   $("#student_photo").change(function (data) {
