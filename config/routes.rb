@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   get "/prepare/online/student/grade", to: "online_student_grade#prepare", as: "online_student_grade_prepare"
   post "/student/pdf/report.pdf", to: "student_report#student_report_pdf", as: "student_report_pdf"
   post "generate/payment/report.pdf", to: "payment_report#generate_payment_report", as: "generate_payment_report"
+  get "/online/student/grade", to: "online_student_grade#online_grade", as: "online_grade"
+  post "/approve/online/student/grade", to: "online_student_grade#approve_grade", as: "approve_online_grade"
   resources :grade_reports
   resources :academic_calendars, only: [:show, :index]
   devise_for :students, controllers: {
