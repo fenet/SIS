@@ -2,7 +2,7 @@ require "net/https"
 
 module MoodleGrade
   class << self
-    def moodle_grade(student_grade)
+    def moodle_grade(student_grade, credit_hour)
       is_fetched = false
       url = URI("https://lms.premiercollege.edu.et/webservice/rest/server.php")
       moodle = MoodleRb.new('18425a712e7668d6339fa671fa05db04', 'https://lms.premiercollege.edu.et/webservice/rest/server.php')
@@ -17,9 +17,37 @@ module MoodleGrade
         result = grade["gradeitems"].last
         letter_grade = result["gradeformatted"]
         assesment_total = result["graderaw"]
-        student_grade.update(assesment_total: assesment_total, letter_grade: letter_grade)     
+        grade_point = get_grade_point(letter_grade, credit_hour)
+        student_grade.update(assesment_total: assesment_total, letter_grade: letter_grade, grade_point: grade_point)
       end
       is_fetched
+    end
+
+    private
+
+    def get_grade_point(grade_letter, credit_hour)
+      grade_letter = grade_letter.upcase
+      if grade_letter == "A" || grade_letter == "A+"
+        4 * credit_hour
+      elsif grade_letter == "A-"
+        3.75 * credit_hour
+      elsif grade_letter == "B+"
+        3.5 * credit_hour
+      elsif grade_letter == "B"
+        3 * credit_hour
+      elsif grade_letter == "B-"
+        2.75 * credit_hour
+      elsif grade_letter == "C+"
+        2.5 * credit_hour
+      elsif grade_letter == "C"
+        2 * credit_hour
+      elsif grade_letter == "C-"
+        1.75 * credit_hour
+      elsif grade_letter == "D"
+        1 * credit_hour
+      elsif grade_letter == "F"
+        0
+      end
     end
   end
 end
