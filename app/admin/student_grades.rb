@@ -1,26 +1,26 @@
 ActiveAdmin.register StudentGrade do
-menu parent: "Grade"
-# index download_links: [:csv,:json, :xml, :pdf]
-# index download_links: [:xml, :pdf, :csv, :json]
+  menu parent: "Grade"
+  # index download_links: [:csv,:json, :xml, :pdf]
+  # index download_links: [:xml, :pdf, :csv, :json]
 
-  permit_params :department_approval,:approved_by,:approval_date, :course_registration_id,:student_id,:letter_grade,:grade_point,:assesment_total,:grade_point,:course_id,assessments_attributes: [:id,:student_grade_id,:assessment_plan_id,:student_id,:course_id,:result,:created_by,:updated_by, :_destroy]
+  permit_params :department_approval, :approved_by, :approval_date, :course_registration_id, :student_id, :letter_grade, :grade_point, :assesment_total, :grade_point, :course_id, assessments_attributes: [:id, :student_grade_id, :assessment_plan_id, :student_id, :course_id, :result, :created_by, :updated_by, :_destroy]
 
-      active_admin_import validate: true,
-                      headers_rewrites: { "ID"=> :student_id },
+  active_admin_import validate: true,
+                      headers_rewrites: { "ID" => :student_id },
                       timestamps: true,
                       batch_size: 1000,
                       before_batch_import: ->(importer) {
                         student_ids = importer.values_at(:student_id)
                         students = Student.where(id: student_ids).pluck(:student_id, :id)
-                          options = Hash[*students.flatten]
+                        options = Hash[*students.flatten]
                         importer.batch_replace(:student_id, options)
                       }
-                      
-  scoped_collection_action :scoped_collection_update, title: 'Approve Grade', form: -> do
-                                         { 
-                                            department_approval: ["pending","approved", "denied"]
-                                          }
-                                        end
+
+  scoped_collection_action :scoped_collection_update, title: "Approve Grade", form: -> do
+                                                        {
+                                                          department_approval: ["pending", "approved", "denied"],
+                                                        }
+                                                      end
   member_action :generate_grade, method: :put do
     @student_grade = StudentGrade.find(params[:id])
     @student_grade.generate_grade
@@ -47,13 +47,6 @@ menu parent: "Grade"
   #   redirect_back(fallback_location: admin_student_grade_path)
   # end
 
-  batch_action "Get Total Grade from LMS for", method: :put, confirm: "Are you sure?" do |ids|
-    StudentGrade.find(ids).each do |student_grade|
-      student_grade.moodle_grade
-    end
-    redirect_to collection_path, notice: "Grade Is Generated Successfully"
-  end
-  
   batch_action "Generate Grade for", method: :put, confirm: "Are you sure?" do |ids|
     StudentGrade.find(ids).each do |sg|
       sg.generate_grade
@@ -66,15 +59,16 @@ menu parent: "Grade"
     end
     redirect_to collection_path, notice: "Grade is Approved Successfully"
   end
-  batch_action "Denied Grade for", method: :put, if: proc{ current_admin_user.role == "department head" }, confirm: "Are you sure?" do |ids|
+  batch_action "Denied Grade for", method: :put, if: proc { current_admin_user.role == "department head" }, confirm: "Are you sure?" do |ids|
     StudentGrade.find(ids).each do |student_grade|
       student_grade.update(department_approval: "denied", approved_by: "#{current_admin_user.name.full}", approval_date: Time.now)
     end
     redirect_to collection_path, notice: "Grade Is Denied Successfully"
   end
-#  index download_links: [:xml, :pdf, :csv, :json]
+  #  index download_links: [:xml, :pdf, :csv, :json]
 
-  index do 
+  index do
+    
     selectable_column
     column "Full name", sortable: true do |n|
       n.student.name.full if n.student.name.present?
@@ -92,7 +86,7 @@ menu parent: "Grade"
     end
     column :letter_grade
     column :grade_point
-    column :assesment_total 
+    column :assesment_total
     column :department_approval do |c|
       status_tag c.department_approval
     end
@@ -101,20 +95,20 @@ menu parent: "Grade"
     end
     actions
   end
-#  index download_links: [:xml, :pdf, :csv, :json]
+  #  index download_links: [:xml, :pdf, :csv, :json]
 
   filter :student_id, as: :search_select_filter, url: proc { admin_students_path },
-         fields: [:student_id, :id], display_name: 'student_id', minimum_input_length: 2,
-         order_by: 'created_at_asc'
+                      fields: [:student_id, :id], display_name: "student_id", minimum_input_length: 2,
+                      order_by: "created_at_asc"
   filter :course_id, as: :search_select_filter, url: proc { admin_courses_path },
-         fields: [:course_title, :id], display_name: 'course_title', minimum_input_length: 2,
-         order_by: 'created_at_asc'
+                     fields: [:course_title, :id], display_name: "course_title", minimum_input_length: 2,
+                     order_by: "created_at_asc"
   filter :program_id, as: :search_select_filter, url: proc { admin_programs_path },
-         fields: [:program_name, :id], display_name: 'program_name', minimum_input_length: 2,
-         order_by: 'created_at_asc'
+                      fields: [:program_name, :id], display_name: "program_name", minimum_input_length: 2,
+                      order_by: "created_at_asc"
   filter :department_id, as: :search_select_filter, url: proc { admin_departments_path },
-         fields: [:department_name, :id], display_name: 'department_name', minimum_input_length: 2,
-         order_by: 'created_at_asc'
+                         fields: [:department_name, :id], display_name: "department_name", minimum_input_length: 2,
+                         order_by: "created_at_asc"
   filter :letter_grade
   filter :grade_point
   filter :assesment_total
@@ -123,30 +117,29 @@ menu parent: "Grade"
   filter :updated_by
   filter :created_by
 
-  
   form :title => "New Student Grade" do |f|
     f.semantic_errors
-    
+
     if object.new_record?
       if f.object.assessments.empty?
         f.object.assessments << Assessment.new
       end
       panel "Assessment" do
-        f.input :created_by, as: :hidden, :input_html => { :value => current_admin_user.name.full}
+        f.input :created_by, as: :hidden, :input_html => { :value => current_admin_user.name.full }
 
-        f.has_many :assessments,heading: " ", remote: true, allow_destroy: true do |a|
+        f.has_many :assessments, heading: " ", remote: true, allow_destroy: true do |a|
           a.input :student_id, as: :search_select, url: proc { admin_students_path },
-             fields: [:student_id, :id], display_name: 'student_id', minimum_input_length: 2,
-             order_by: 'created_at_asc'
+                               fields: [:student_id, :id], display_name: "student_id", minimum_input_length: 2,
+                               order_by: "created_at_asc"
           a.input :course_id, as: :search_select, url: proc { admin_courses_path },
-             fields: [:course_title, :id], display_name: 'course_title', minimum_input_length: 2,
-             order_by: 'created_at_asc'
+                              fields: [:course_title, :id], display_name: "course_title", minimum_input_length: 2,
+                              order_by: "created_at_asc"
           # a.input :assessment_plan_id, as: :search_select, url: proc { admin_assessment_plans_path },
           #    fields: [:assessment_title, :id], display_name: 'assessment_title', minimum_input_length: 2,
           #    order_by: 'created_at_asc'
           a.input :assessment_plan_id, as: :search_select, url: proc { admin_assessment_plans_path },
-             fields: [:assessment_title, :id], display_name: 'assessment_title', minimum_input_length: 2,
-             order_by: 'created_at_asc', lebel: "Assessment Plan", :input_html => { :disabled => false } 
+                                       fields: [:assessment_title, :id], display_name: "assessment_title", minimum_input_length: 2,
+                                       order_by: "created_at_asc", lebel: "Assessment Plan", :input_html => { :disabled => false }
           a.input :result
           a.label :_destroy
         end
@@ -168,43 +161,42 @@ menu parent: "Grade"
     #     end
     #   end
     # end
-    if !f.object.new_record? && (params[:page_name] == "grade_approve") 
-      inputs 'Department Approval' do
-        f.input :department_approval, as: :select, :collection => ["pending","approved", "denied"], :include_blank => false
-        f.input :approved_by, as: :hidden, :input_html => { :value => current_admin_user.name.full}
-        f.input :approval_date, as: :hidden, :input_html => { :value => Time.now}   
+    if !f.object.new_record? && (params[:page_name] == "grade_approve")
+      inputs "Department Approval" do
+        f.input :department_approval, as: :select, :collection => ["pending", "approved", "denied"], :include_blank => false
+        f.input :approved_by, as: :hidden, :input_html => { :value => current_admin_user.name.full }
+        f.input :approval_date, as: :hidden, :input_html => { :value => Time.now }
       end
     end
     f.actions
   end
 
-
   action_item :new, only: :show, priority: 0 do
     if (current_admin_user.role == "registrar head") || (current_admin_user.role == "admin")
-      link_to 'Add Grade Change', new_admin_grade_change_path(course_id: "#{student_grade.course.id}", section_id: "#{student_grade.course_registration.semester_registration.section.id}", academic_calendar_id: "#{student_grade.course_registration.academic_calendar.id}", semester: "#{student_grade.course_registration.semester}", year: "#{student_grade.course_registration.year}", student_id: "#{student_grade.student.id}", course_registration_id: "#{student_grade.course_registration.id}", student_grade_id: "#{student_grade.id}", department_id: "#{student_grade.student.program.department.id}", program_id: "#{student_grade.student.program.id}")
+      link_to "Add Grade Change", new_admin_grade_change_path(course_id: "#{student_grade.course.id}", section_id: "#{student_grade.course_registration.semester_registration.section.id}", academic_calendar_id: "#{student_grade.course_registration.academic_calendar.id}", semester: "#{student_grade.course_registration.semester}", year: "#{student_grade.course_registration.year}", student_id: "#{student_grade.student.id}", course_registration_id: "#{student_grade.course_registration.id}", student_grade_id: "#{student_grade.id}", department_id: "#{student_grade.student.program.department.id}", program_id: "#{student_grade.student.program.id}")
     end
-    rescue NoMethodError 
-      flash['error'] = "There is error"
+  rescue NoMethodError
+    flash["error"] = "There is error"
   end
 
   action_item :new, only: :show, priority: 0 do
     if (current_admin_user.role == "registrar head") || (current_admin_user.role == "admin")
-      link_to 'Add Makeup exam', new_admin_makeup_exam_path(course_id: "#{student_grade.course.id}", section_id: "#{student_grade.course_registration.semester_registration.section.id}", academic_calendar_id: "#{student_grade.course_registration.academic_calendar.id}", semester: "#{student_grade.course_registration.semester}", year: "#{student_grade.course_registration.year}", student_id: "#{student_grade.student.id}", course_registration_id: "#{student_grade.course_registration.id}", student_grade_id: "#{student_grade.id}", department_id: "#{student_grade.student.program.department.id}", program_id: "#{student_grade.student.program.id}")
+      link_to "Add Makeup exam", new_admin_makeup_exam_path(course_id: "#{student_grade.course.id}", section_id: "#{student_grade.course_registration.semester_registration.section.id}", academic_calendar_id: "#{student_grade.course_registration.academic_calendar.id}", semester: "#{student_grade.course_registration.semester}", year: "#{student_grade.course_registration.year}", student_id: "#{student_grade.student.id}", course_registration_id: "#{student_grade.course_registration.id}", student_grade_id: "#{student_grade.id}", department_id: "#{student_grade.student.program.department.id}", program_id: "#{student_grade.student.program.id}")
     end
   end
-  action_item :edit, only: :show, priority: 1  do
+  action_item :edit, only: :show, priority: 1 do
     if (current_admin_user.role == "department head") || (current_admin_user.role == "admin")
-      link_to 'Approve Grade', edit_admin_student_grade_path(student_grade.id, page_name: "grade_approve")
+      link_to "Approve Grade", edit_admin_student_grade_path(student_grade.id, page_name: "grade_approve")
     end
   end
 
-  show :title => proc{|student| student.student.name.full } do
+  show :title => proc { |student| student.student.name.full } do
     columns do
       column do
         panel "Grade information" do
           attributes_table_for student_grade do
             row "full name", sortable: true do |n|
-              n.student.name.full 
+              n.student.name.full
             end
             row "Student ID" do |si|
               si.student.student_id
@@ -250,8 +242,5 @@ menu parent: "Grade"
         end
       end
     end
-    
-    
-  end 
-  
+  end
 end

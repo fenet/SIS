@@ -29,6 +29,8 @@ class SemesterRegistration < ApplicationRecord
     self.where(department_id: id, is_back_invoice_created: false).where("remaining_amount=?", 0.0).includes(:department).includes(:student)
   end
 
+
+
   def generate_grade_report
     if !self.grade_report.present?
       GradeReport.create do |report|

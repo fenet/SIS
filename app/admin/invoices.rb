@@ -5,42 +5,11 @@ ActiveAdmin.register Invoice, as: "RegistrationPayment" do
   permit_params :student_full_name,:student_id_number,:student_id, :department_id, :program_id, :academic_calendar_id,:semester_registration_id,:invoice_number,:total_price,:registration_fee, :late_registration_fee,:invoice_status,:last_updated_by,:created_by,:due_date,:semester, :year,payment_transaction_attributes: [:id,:invoice_id,:payment_method_id,:account_holder_fullname,:phone_number,:account_number,:transaction_reference,:finance_approval_status,:last_updated_by,:created_by, :receipt_image], inovice_item_ids: []
    
 
-  batch_action "Approve invoice status for", method: :put, confirm: "Are you sure?" do |ids|
-    invoices = Invoice.where(id: ids)
-    invoices.update_all(invoice_status: "approved")
-    #  redirect_to admin_semester_registrations_path, notice: "#{"student".pluralize(ids.size)} registrar verification status Approved"
-  end
-  
-  controller do
-    after_action :testmoodle, only: [:update]
-
-    def testmoodle
-      if @registration_payment.payment_transaction.finance_approval_status == "approved"
-        @moodle = MoodleRb.new('57f6f6934c33bffef1edbef2559c523c', 'https://lms.leadstar.edu.et/webservice/rest/server.php')
-        if !(@moodle.users.search(email: "#{@registration_payment.student.email}").present?)
-          student = @moodle.users.create(
-              :username => "#{@registration_payment.student.student_id.downcase}",
-              :password => "#{@registration_payment.student.student_password}",
-              :firstname => "#{@registration_payment.student.first_name}",
-              :lastname => "#{@registration_payment.student.last_name}",
-              :email => "#{@registration_payment.student.email}"
-            )
-          lms_student = @moodle.users.search(email: "#{@registration_payment.student.email}")
-          @user = lms_student[0]["id"]
-          @registration_payment.semester_registration.course_registrations.each do |c|
-            s = @moodle.courses.search("#{c.course.course_code}")
-            @course = s["courses"].to_a[0]["id"]
-            @moodle.enrolments.create(
-              :user_id => "#{@user}",
-              :course_id => "#{@course}"
-              # :time_start => 1646312400,
-              # :time_end => 1646398800
-            )
-          end
-        end
-      end
-    end
-  end
+  # batch_action "Approve invoice status for", method: :put, confirm: "Are you sure?" do |ids|
+  #   invoices = Invoice.where(id: ids)
+  #   invoices.update_all(invoice_status: "approved")
+    
+  # end
 
   index do
     selectable_column

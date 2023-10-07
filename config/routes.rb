@@ -17,10 +17,20 @@ Rails.application.routes.draw do
   get "payment/report/fetch/student", to: "payment_report#fetch_student", as: "payment_report_fetch_student"
   get "get/year", to: "payment_report#get_year", as: "payment_report_get_year"
   get "get/semester", to: "payment_report#get_semester", as: "payment_report_get_semester"
+  get "student/report", to: "student_report#get_student_list", as: "student_report"
+  get "/student/report/year", to: "student_report#student_report_year", as: "student_report_year"
+  get "/student/report/program", to: "student_report#student_report_program", as: "student_report_program"
+  get "/student/gc/program", to: "student_report#student_report_gc", as: "student_report_gc"
+  get "/student/report/gc/year", to: "student_report#student_report_gc_year", as: "student_report_gc_year"
+  get "/student/report/semester", to: "student_report#student_report_semester", as: "student_report_semester"
+  get "/prepare/online/student/grade", to: "online_student_grade#prepare", as: "online_student_grade_prepare"
+  post "/student/pdf/report.pdf", to: "student_report#student_report_pdf", as: "student_report_pdf"
   post "generate/payment/report.pdf", to: "payment_report#generate_payment_report", as: "generate_payment_report"
+  get "/online/student/grade", to: "online_student_grade#online_grade", as: "online_grade"
+  post "/approve/online/student/grade", to: "online_student_grade#approve_grade", as: "approve_online_grade"
   resources :grade_reports
   resources :academic_calendars, only: [:show, :index]
-   devise_for :students, controllers: {
+  devise_for :students, controllers: {
                           registrations: "registrations",
                         }
   authenticated :student do

@@ -4,13 +4,6 @@ ActiveAdmin.register_page "FinanceReport" do
   breadcrumb do
     ["Financial ", "Report"]
   end
-
-  page_action :foo, method: :get do
-    @student = Student.where(semester: params[:search])
-
-    redirect_to admin_financereport_path
-  end
-  
   content title: "Payment Report" do
     panel "Student Payment Report" do
       div do
