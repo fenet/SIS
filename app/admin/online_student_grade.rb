@@ -6,9 +6,9 @@ ActiveAdmin.register_page "OnlineStudentGrade" do
   end
   content title: "Online Student Grade" do
      tabs do
-      tab "Online Student List" do
-        render "admin/online_student_grade/student_list"
-      end
+     # tab "Online Student List" do
+      #  render "admin/online_student_grade/student_list"
+      #end
 
       tab "Prepare Online Student Grade" do
         render "admin/online_student_grade/prepare_grade"
