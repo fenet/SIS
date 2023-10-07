@@ -32,7 +32,15 @@ menu parent: "Grade"
     @student_grade.moodle_grade
     redirect_back(fallback_location: admin_student_grade_path)
   end
+ 
+  collection_action :fetch_moodle_grade, method: :get do
+    StudentGrade.moodle_grade
+  end 
 
+  action_item :Get_grade, method: :get, priority: 0 do
+    link_to "Generate Pdf Report", fetch_moodle_grade_admin_student_grades_path , target: "_blank"
+  end
+  
   # member_action :generate_grade, method: :put do
   #   @student_grade = StudentGrade.find(params[:id])
   #   @student_grade.generate_grade

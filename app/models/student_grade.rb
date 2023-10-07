@@ -138,7 +138,7 @@ class StudentGrade < ApplicationRecord
     end
   end
 
-  def moodle_grade
+  def self.moodle_grade
     url = URI("https://lms.leadstar.edu.et/webservice/rest/server.php")
     moodle = MoodleRb.new('57f6f6934c33bffef1edbef2559c523c', 'https://lms.leadstar.edu.et/webservice/rest/server.php')
     lms_student = moodle.users.search(email: "#{self.student.email}")
