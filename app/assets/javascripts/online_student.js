@@ -6,7 +6,7 @@ $(function () {
             approvalStatus()
 
         } else {
-           pendingStatus()
+            pendingStatus()
         }
 
     })
@@ -29,14 +29,13 @@ $(function () {
                 data: { department_id: $department, year: $year, semester: $semester, status: $approvalStatus },
                 success: function (result) {
                     $tbody = $("#online-student-list")
-                    console.log(result)
-                    if (result / length == 0) {
-                        $tbody.text("")
+                    if (result.length == 0) {
+                        // $tbody.text("")
                         approvalStatus();
                         $tbody.append("<p class='alert alert-danger'>We didn't find a student</p>")
                     } else {
-                        $tbody.text("")
-                        pendingStatus();
+                        // $tbody.text("")
+                        // pendingStatus();
                         for (let i = 0; i < result.length; i++) {
                             $tr = $("<tr> </tr>")
                             $td = $("<td>  </td>")
@@ -46,10 +45,8 @@ $(function () {
                             <td>${result[i].letter_grade == null ? "No Grade" : result[i].letter_grade}</td>+
                             <td>${result[i].assesment_total == null ? "No Total" : result[i].assesment_total}</td>+
                             <td>${result[i].grade_point == null ? "No Grade Point" : result[i].grade_point}</td>+
-                            <td>${result[i].course.course_title}</td>
-                            <td><span class="online-aproval-status">${result[i].department_approval}</span></td>
-                            `
-                            );
+                            <td>${result[i].course.course_title}</td>+
+                            <td><span class="online-aproval-status">${result[i].department_approval}</span></td>`);
                             $tbody.append($tr)
                         }
                     }
