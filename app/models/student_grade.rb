@@ -37,7 +37,7 @@ class StudentGrade < ApplicationRecord
     crs.each do |cr|
       student = StudentGrade.where(student: cr.student, course_registration_id: cr.id, course: cr.course, program: cr.student.program, department: cr.student.department).first_or_create
       if student.letter_grade == nil || student.assesment_total == nil
-        counter += 1 if MoodleGrade.moodle_grade(student)
+        counter += 1 if MoodleGrade.moodle_grade(student, cr.course.credit_hour)
       end
     end
     counter
