@@ -4,8 +4,8 @@ module MoodleGrade
   class << self
     def moodle_grade(student_grade)
       is_fetched = false
-      url = URI("https://lms.leadstar.edu.et/webservice/rest/server.php")
-      moodle = MoodleRb.new("57f6f6934c33bffef1edbef2559c523c", "https://lms.leadstar.edu.et/webservice/rest/server.php")
+      url = URI("https://lms.premiercollege.edu.et/webservice/rest/server.php")
+      moodle = MoodleRb.new('18425a712e7668d6339fa671fa05db04', 'https://lms.premiercollege.edu.et/webservice/rest/server.php')
       lms_student = moodle.users.search(email: "#{student_grade.student.email}")
       courses = moodle.courses
       lms_course = courses.search("#{student_grade.course.course_code}")
