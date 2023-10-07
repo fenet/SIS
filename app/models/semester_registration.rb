@@ -62,7 +62,7 @@ class SemesterRegistration < ApplicationRecord
             if self.student.study_level == "undergraduate"
               report.academic_status = AddAcademicStatus.academic_status({ sgpa: report.sgpa, cgpa: report.cgpa }, self.student)
             else
-              report.academic_status = AcademicStatusGraduate.get_academic_status(report: report, student: student)
+              report.academic_status = AcademicStatusGraduate.get_academic_status(report: report, student: self.student)
               # report.academic_status = self.student.program.grade_systems.last.academic_statuses.where("min_value < ?", report.cgpa).where("max_value >= ?", report.cgpa).last.status
             end
 
@@ -91,7 +91,7 @@ class SemesterRegistration < ApplicationRecord
             if self.student.study_level == "undergraduate"
               report.academic_status = AddAcademicStatus.academic_status({ sgpa: report.sgpa, cgpa: report.cgpa }, self.student)
             else
-              report.academic_status = AcademicStatusGraduate.get_academic_status(report: report, student: student)
+              report.academic_status = AcademicStatusGraduate.get_academic_status(report: report, student: self.student)
               # report.academic_status = self.student.program.grade_systems.last.academic_statuses.where("min_value <= ?", report.cgpa).where("max_value >= ?", report.cgpa).last.status
             end
             if (report.academic_status != "Academic Dismissal") || (report.academic_status != "Incomplete")
