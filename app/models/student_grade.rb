@@ -35,9 +35,8 @@ class StudentGrade < ApplicationRecord
   def self.create_student_grade(crs)
     counter = 0
     crs.each do |cr|
-      student = StudentGrade.where(student: cr.student, course_registration_id: cr.id, course: cr.course, program: cr.student.program, department: cr.student.department).first_or_create
-      if student.letter_grade == nil || student.assesment_total == nil
-        counter += 1 if MoodleGrade.moodle_grade(student, cr.course.credit_hour)
+      if cr.student_grade.blank?
+        counter += 1 if MoodleGrade.moodle_grade(cr)
       end
     end
     counter
