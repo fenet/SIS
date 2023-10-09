@@ -16,7 +16,7 @@ module MoodleGrade
         result = grade["gradeitems"].last
         letter_grade = result["gradeformatted"]
         assesment_total = result["graderaw"]
-        grade_point = get_grade_point(letter_grade, credit_hour)
+        grade_point = get_grade_point(letter_grade, cr.course.credit_hour)
         student = StudentGrade.new(student_id: cr.student_id, course_registration_id: cr.id, course_id: cr.course_id, program_id: cr.program_id, department_id: cr.department_id, assesment_total: assesment_total, letter_grade: letter_grade, grade_point: grade_point)
         if student.save
           is_fetched = true
