@@ -5,11 +5,11 @@ ActiveAdmin.register Invoice, as: "RegistrationPayment" do
   permit_params :student_full_name,:student_id_number,:student_id, :department_id, :program_id, :academic_calendar_id,:semester_registration_id,:invoice_number,:total_price,:registration_fee,:late_registration_fee,:invoice_status,:last_updated_by,:created_by,:due_date,:semester, :year,payment_transaction_attributes: [:id,:invoice_id,:payment_method_id,:account_holder_fullname,:phone_number,:account_number,:transaction_reference,:finance_approval_status,:last_updated_by,:created_by, :receipt_image], inovice_item_ids: []
    
 
-  batch_action "Approve invoice status for", method: :put, confirm: "Are you sure?" do |ids|
-    invoices = Invoice.where(id: ids)
-    invoices.update_all(invoice_status: "approved")
-    #  redirect_to admin_semester_registrations_path, notice: "#{"student".pluralize(ids.size)} registrar verification status Approved"
-  end
+  # batch_action "Approve invoice status for", method: :put, confirm: "Are you sure?" do |ids|
+  #   invoices = Invoice.where(id: ids)
+  #   invoices.update_all(invoice_status: "approved")
+    
+  # end
 
   controller do
     after_action :testmoodle, only: [:update]
@@ -33,15 +33,14 @@ ActiveAdmin.register Invoice, as: "RegistrationPayment" do
             @moodle.enrolments.create(
               :user_id => "#{@user}",
               :course_id => "#{@course}"
-              # :time_start => 1646312400,
-              # :time_end => 1646398800
             )
           end
         end
       end
     end
-  end
+  end  
 
+  
   index do
     selectable_column
     # column "Invoice NO",:invoice_number
