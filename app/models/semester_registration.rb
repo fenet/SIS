@@ -167,6 +167,7 @@ class SemesterRegistration < ApplicationRecord
           invoice.registration_fee = registration_fee 
         elsif self.mode_of_payment == "Full Semester Payment"
           invoice.total_price = tution_price
+          invoice.registration_fee = registration_fee 
         elsif self.mode_of_payment == "Half Semester Payment"
           invoice.total_price = tution_price / 2
           #invoice.registration_fee = registration_fee / 2
