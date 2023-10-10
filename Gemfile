@@ -69,6 +69,7 @@ gem "active_admin_import"
 gem 'moodle_rb', '~> 2.1'
 gem "rqrcode", "~> 2.1"
 gem "chunky_png", "~> 1.4"
+gem 'sidekiq'
 gem 'matrix', '~> 0.4.2'
 gem "barby", "~> 0.6.8"
 gem 'active_admin_scoped_collection_actions'

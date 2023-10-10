@@ -30,7 +30,6 @@ class SemesterRegistration < ApplicationRecord
   end
 
 
-
   def generate_grade_report
     if !self.grade_report.present?
       GradeReport.create do |report|
@@ -123,10 +122,6 @@ class SemesterRegistration < ApplicationRecord
       self.course_registrations.update(enrollment_status: "denied")
     end
   end
-
-  #  self.course_registrations.update(enrollment_status: 'approved')
-  #end
-  #end
 
   private
 

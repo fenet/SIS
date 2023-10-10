@@ -1,4 +1,9 @@
 <div class="panel_contents">
+  <% if flash[:success] %>
+    <div class="alert alert-success">
+      <%= flash[:success] %>
+    </div>
+  <% end %>
   <form method="get" id="q_search" class="filter_form" action="/prepare/online/student/grade" accept-charset="UTF-8">
     <div class="filter_form_field">
       <label for="student-year" class="label">Select Year:</label>
@@ -20,5 +25,4 @@
     </div>
     <input type="submit" value="Import Grade" name="commit" id="q_submit" />
   </form>
-
 </div>
