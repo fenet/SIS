@@ -49,7 +49,8 @@ class Invoice < ApplicationRecord
     if (self.payment_transaction.present?) && (self.payment_transaction.finance_approval_status == "approved") && (self.invoice_status == "approved")
       self.semester_registration.update_columns(finance_approval_status: "approved", is_back_invoice_created: false)
       if self.semester_registration.total_price == 0
-        tution_price = self.student.get_tution_fee + self.registration_fee + self.late_registration_fee
+        entrance_fee = (self.semester == 1 && self.year == 1)? 2100 : 0
+        tution_price = self.student.get_tution_fee + self.registration_fee + self.late_registration_fee + entrance_fee 
         remaining_amount = (tution_price - (self.total_price + self.registration_fee)).abs
         total_enrolled_course = self.student.get_current_courses.size
         self.semester_registration.update_columns(total_enrolled_course: total_enrolled_course, remaining_amount: remaining_amount, late_registration_fee: self.late_registration_fee, registration_fee: self.registration_fee, total_price: tution_price, actual_payment: self.total_price)
