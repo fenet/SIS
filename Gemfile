@@ -66,8 +66,10 @@ gem 'flatpickr', '~> 4.6', '>= 4.6.3.1'
 gem 'nested_form'
 gem 'whenever', require: false
 gem "active_admin_import"
+gem 'moodle_rb', '~> 2.1'
 gem "rqrcode", "~> 2.1"
 gem "chunky_png", "~> 1.4"
+gem 'sidekiq'
 gem 'matrix', '~> 0.4.2'
 gem "barby", "~> 0.6.8"
 gem 'active_admin_scoped_collection_actions'
@@ -80,6 +82,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'prawn'
 gem 'prawn-table', '~> 0.2.2'
+# gem 'will_paginate'
 
 group :development, :test do
   gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
@@ -96,7 +99,7 @@ group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
-
+  gem "rspec-rails"
   gem "rubocop"
 
 
@@ -113,9 +116,9 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
+  # gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+  # gem 'chromedriver-helper'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

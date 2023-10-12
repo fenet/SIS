@@ -45,34 +45,6 @@ class Student < ApplicationRecord
   has_many :recurring_payments, dependent: :destroy
   has_many :add_and_drops, dependent: :destroy
   has_many :makeup_exams, dependent: :destroy
-  ##validations
-  # validates :first_name , :presence => true,:length => { :within => 2..100 }
-  # validates :middle_name , :presence => true,:length => { :within => 2..100 }
-  # validates :current_location , :presence => true,:length => { :within => 2..100 }
-  # validates :last_name , :presence => true,:length => { :within => 2..100 }
-  # validates :student_id , uniqueness: true
-  # validates :gender, :presence => true
-  # validates :date_of_birth , :presence => true
-  # validates :study_level, :presence => true
-  # validates :admission_type, :presence => true,:length => { :within => 2..10 }
-  # validates :nationality, :presence => true
-  # validates :photo, attached: true, content_type: ['image/gif', 'image/png', 'image/jpg', 'image/jpeg']
-  # validates :highschool_transcript, attached: true
-  # validates :grade_12_matric, attached: true
-  # validates :diploma_certificate, attached: true, if: :grade_12_matric?
-  # validates :coc, attached: true, if: :grade_12_matric?
-
-  # validates :degree_certificate, attached: true, if: :apply_graduate?
-  # /def apply_graduate?
-  #   self.study_level == "graduate"
-  # end
-  # def grade_12_matric?
-  #   !self.grade_12_matric.attached?
-  # end
-
-  # def assign_curriculum
-  #   self[:curriculum_version] = program.curriculums.where(active_status: "active").last.curriculum_version
-  # end
 
   validate :password_complexity
   # validates :student_grades, presence: true
@@ -97,12 +69,26 @@ class Student < ApplicationRecord
   scope :approved, lambda { where(document_verification_status: "approved") }
   scope :denied, lambda { where(document_verification_status: "denied") }
   scope :incomplete, lambda { where(document_verification_status: "incomplete") }
-   
- 
 
   def get_current_courses
     self.program.curriculums.where(active_status: "active").first.courses.where(year: self.year, semester: self.semester).order("year ASC
     ", "semester ASC")
+  end
+
+  def self.get_gc_students(graduation_status, graduation_year, program_id, study_level, admission_type)
+    self.where(graduation_status: graduation_status).where(study_level: study_level).where(graduation_year: graduation_year).where(program_id: program_id).where(admission_type: admission_type).includes(:department).includes(:grade_reports)
+  end
+
+  def self.get_admitted_student(graduation_status, program_id, year, semester, study_level, admission_type)
+    self.where(graduation_status: graduation_status).where(study_level: study_level).where(year: year).where(semester: semester).where(program_id: program_id).where(admission_type: admission_type).includes(:program)
+  end
+
+  def self.report_semester(year)
+    Student.distinct.where(year: year).select(:semester)
+  end
+
+  def self.fetch_student_for_report(status)
+    self.where(graduation_status: status).includes(:department)
   end
 
   def get_registration_fee
@@ -119,7 +105,7 @@ class Student < ApplicationRecord
     CollegePayment.find_by(study_level: self.study_level.strip, admission_type: self.admission_type.strip)
   end
 
-  def add_student_registration(mode_of_payment: nil)
+  def add_student_registration(mode_of_payment = nil)
     SemesterRegistration.create do |registration|
       registration.student_id = self.id
       registration.program_id = self.program.id
@@ -164,8 +150,13 @@ class Student < ApplicationRecord
 
   def student_semester_registration
     if self.document_verification_status == "approved" && self.semester_registrations.empty? && self.year == 1 && self.semester == 1 && self.program.entrance_exam_requirement_status == false
-      add_student_registration
+      add_student_registration if self.semester_registrations.find_by(semester: self.semester).nil?
     end
+  end
+
+  def self.get_online_student(year, semester)
+    # Student.where(admission_type: 'online', year: year, semester: semester).joins(:course_registrations).where(course_registrations: {year: year, semester: semester})
+     self.where(admission_type: 'online').select("id")
   end
 
   def student_course_assign
