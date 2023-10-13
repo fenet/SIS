@@ -5,7 +5,7 @@ role :web, %w{deploy@148.113.8.52}
 role :db, %w{deploy@148.113.8.52}, :primary => true
 
 #set :branch, "main"
-set :branch, "a02f970d6bdad53b9969a729ba0c5f9fd5c406c8" 
+set :branch, "heuc" 
 set :rails_env, "production"
 
 set :deploy_to, '/home/deploy/yic_production' 
