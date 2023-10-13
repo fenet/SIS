@@ -1,14 +1,14 @@
 # server '148.113.8.52', user: 'deploy', roles: %w{app db web}
 
-role :app, %w{newdeploy@141.95.85.206}
-role :web, %w{newdeploy@141.95.85.206}
-role :db, %w{newdeploy@141.95.85.206}, :primary => true
+role :app, %w{deploy@148.113.8.52}
+role :web, %w{deploy@148.113.8.52}
+role :db, %w{deploy@148.113.8.52}, :primary => true
 
 #set :branch, "main"
-set :branch, "81ec5b638ffca3b9ac94d087fb24765cf810bfa3" 
+set :branch, "heuc" 
 set :rails_env, "production"
 
-set :deploy_to, '/home/newdeploy/ngvcnew' 
+set :deploy_to, '/home/deploy/yic_production' 
 
 # server-based syntax
 # ======================

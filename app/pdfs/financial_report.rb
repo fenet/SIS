@@ -19,7 +19,7 @@ class FinancialReport < Prawn::Document
     repeat :all do
       bounding_box [bounds.left, bounds.top], :width => bounds.width do
         font "Helvetica"
-        image open("app/assets/images/ngvc.png"), fit: [120, 100], position: :center
+        image open("app/assets/images/logo.jpg"), fit: [120, 100], position: :center
         text "New Global Vision College Registrar Portal", :align => :center, :size => 25
         text "Student Payment Report", size: 30, align: :center
         stroke_horizontal_rule

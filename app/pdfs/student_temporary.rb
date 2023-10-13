@@ -6,7 +6,7 @@ class StudentTemporary < Prawn::Document
       move_down 100
       #  text "Full Name: <u>#{stud.name.full.capitalize}</u>         Sex: <u>#{stud.gender.capitalize}</u>           Year: <u>#{stud.student.year}</u> ",:inline_format => true, size: 12, font_style: :bold
       move_down 10
-      text "NEW GLOBAL VISION COLLEGE", :inline_format => true, size: 20, align: :center
+      text "HOPE ENTERPRISE UNIVERSITY COLLEGE", :inline_format => true, size: 20, align: :center
       move_down 10
       text "OFFICE OF THE REGISTRAR", inline_format: true, size: 18, align: :center
       move_down 10
@@ -17,7 +17,7 @@ class StudentTemporary < Prawn::Document
       text "#{stud.name.full.upcase} #{stud.middle_name.upcase}", inline_format: true, size: 18, align: :center
       stroke_horizontal_rule
       move_down 20
-      text "Graduated from NEW GLOBAL VISION COLLEGE", inline_format: true, size: 18, align: :center
+      text "Graduated from HOPE ENTERPRISE UNIVERSITY COLLEGE", inline_format: true, size: 18, align: :center
       move_down 20
       text "with", inline_format: true, size: 18, align: :center
       move_down 20
@@ -37,8 +37,8 @@ class StudentTemporary < Prawn::Document
   def header_footer
     repeat :all do
       bounding_box [bounds.left, bounds.top], :width => bounds.width do
-        font "Helvetica"
-        image open("app/assets/images/ngvc.jpg"), fit: [120, 100], position: :center
+        font "Times-Roman"
+        image open("app/assets/images/logo.jpg"), fit: [120, 100], position: :center
         stroke_horizontal_rule
       end
 
