@@ -44,3 +44,4 @@ module AcademicStatusGraduate
     GradeReport.where(student: student, semester: 1, academic_status: "Academic Probation").any?
   end
 end
+end

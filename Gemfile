@@ -28,7 +28,7 @@ gem 'turbolinks', '~> 5'
 # gem 'importmap-rails'
 # gem 'stimulus-rails'
 # gem 'turbo-rails'
-
+gem 'rufo', '~> 0.0.1'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
