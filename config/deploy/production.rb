@@ -1,8 +1,8 @@
 # server '148.113.8.52', user: 'deploy', roles: %w{app db web}
 
-role :app, %w{newdeploy@162.19.169.231}
-role :web, %w{newdeploy@162.19.169.231}
-role :db, %w{newdeploy@162.19.169.231}, :primary => true
+role :app, %w{deploy@162.19.169.231}
+role :web, %w{deploy@162.19.169.231}
+role :db, %w{deploy@162.19.169.231}, :primary => true
 
 set :branch, "ngvcdeploy"
 set :rails_env, "production"
