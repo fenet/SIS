@@ -38,8 +38,8 @@ test:
   password: Hope_1234
 production:
   <<: *default
-  database: ngvcnew
-  username: newdeploy
+  database: ngvc
+  username: deploy
   password: Ngvc_1234
   #database: heucbackup
   #username: deploy

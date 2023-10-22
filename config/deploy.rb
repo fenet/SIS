@@ -2,7 +2,8 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.17.3"
 
-set :application, "ngvcnew"
+#set :application, "ngvcnew"
+set :application, "ngvc"
 # set :ssh_options, { :forward_agent => true }
 set :repo_url, "https://github.com/fenet/leadstarlatest.git"
 

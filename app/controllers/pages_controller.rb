@@ -40,7 +40,8 @@ class PagesController < ApplicationController
   def create_semester_registration
     mode_of_payment = params[:mode_of_payment]
     # total_course = Student.get_current_courses(current_student).size
-    registration = current_student.add_student_registration(mode_of_payment: mode_of_payment)
+    #registration = current_student.add_student_registration(mode_of_payment: mode_of_payment)
+    registration = current_student.add_student_registration(mode_of_payment)
     respond_to do |format|
       if registration.save
         format.html { redirect_to invoice_path(registration.invoices.last.id), notice: "Registration was successfully created." }

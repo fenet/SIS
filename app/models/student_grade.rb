@@ -140,7 +140,7 @@ class StudentGrade < ApplicationRecord
 
   def moodle_grade
     url = URI("https://lms.ngvc.edu.et/webservice/rest/server.php")
-    moodle = MoodleRb.new('a589d303ece0f60524747be8f2366459', 'https://lms.ngvc.edu.et/webservice/rest/server.php')
+    moodle = MoodleRb.new('130482e0eb58ee5f60fbdcc843170112', 'https://lms.ngvc.edu.et/webservice/rest/server.php')
     lms_student = moodle.users.search(email: "#{self.student.email}")
     user = lms_student[0]["id"]
     https = Net::HTTP.new(url.host, url.port)

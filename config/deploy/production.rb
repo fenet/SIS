@@ -1,14 +1,14 @@
 # server '148.113.8.52', user: 'deploy', roles: %w{app db web}
 
-role :app, %w{newdeploy@141.95.85.206}
-role :web, %w{newdeploy@141.95.85.206}
-role :db, %w{newdeploy@141.95.85.206}, :primary => true
+role :app, %w{newdeploy@162.19.169.231}
+role :web, %w{newdeploy@162.19.169.231}
+role :db, %w{newdeploy@162.19.169.231}, :primary => true
 
 set :branch, "ngvcdeploy"
 set :rails_env, "production"
 
-set :deploy_to, '/home/newdeploy/ngvcnew' 
-
+#set :deploy_to, '/home/newdeploy/ngvcnew' 
+set :deploy_to, '/home/deploy/ngvc' 
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
