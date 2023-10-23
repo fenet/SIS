@@ -8,7 +8,7 @@ set :branch, "ngvcdeploy"
 set :rails_env, "production"
 
 #set :deploy_to, '/home/newdeploy/ngvcnew' 
-set :deploy_to, '/home/deploy/ngvc' 
+set :deploy_to, '/home/deploy/portal_system' 
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.

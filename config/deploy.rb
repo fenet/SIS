@@ -3,7 +3,7 @@
 lock "~> 3.17.3"
 
 #set :application, "ngvcnew"
-set :application, "ngvc"
+set :application, "portal_system"
 # set :ssh_options, { :forward_agent => true }
 set :repo_url, "https://github.com/fenet/leadstarlatest.git"
 
