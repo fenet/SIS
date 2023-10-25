@@ -48,6 +48,23 @@ class Student < ApplicationRecord
 
   validate :password_complexity
   # validates :student_grades, presence: true
+  validates :first_name , :presence => true,:length => { :within => 2..100 }, format: { with: /\A[a-zA-Z]+\z/, message: "Only letters are allowed" }
+  validates :middle_name , :presence => true,:length => { :within => 2..100 }, format: { with: /\A[a-zA-Z]+\z/, message: "Only letters are allowed" }
+  # validates :current_location , :presence => true,:length => { :within => 2..100 }
+  validates :last_name , :presence => true,:length => { :within => 2..100 }, format: { with: /\A[a-zA-Z]+\z/, message: "Only letters are allowed" }
+  # validates :student_id , uniqueness: true
+  validates :gender, :presence => true
+  validates :date_of_birth , :presence => true
+  validates :study_level, :presence => true
+  validates :admission_type, :presence => true,:length => { :within => 2..10 }
+  validates :nationality, :presence => true
+  validates :photo, attached: true, content_type: ['image/gif', 'image/png', 'image/jpg', 'image/jpeg'], size: { less_than: 5.megabytes, message: 'File size must be less than 5MB' }
+  validates :highschool_transcript, attached: true, size: { less_than: 5.megabytes, message: 'File size must be less than 5MB' }
+  validates :grade_12_matric, attached: true, size: { less_than: 5.megabytes, message: 'File size must be less than 5MB' }
+  #validates :highschool_transcript, attached: true
+  validates :diploma_certificate, attached: true, size: { less_than: 5.megabytes, message: 'File size must be less than 5MB' }
+  validates :degree_certificate, attached: true, size: { less_than: 5.megabytes, message: 'File size must be less than 5MB' }
+  validates :place_of_birth, format: { with: /\A[a-zA-Z]+\z/, message: "Only letters are allowed"}
 
   def password_complexity
     if password.present?
