@@ -34,13 +34,13 @@
 </style>
 <div class="row">
     <div class="col-12 col-md-6 form-group">
-      <%= f.input :first_name, input_html: { class: 'cap form-control', autofocus: true, autocomplete: "first_name" },placeholder: "First Name", required: true, error: 'Username is mandatory, please specify one' %>
+      <%= f.input :first_name, input_html: { class: 'cap form-control', autofocus: true, autocomplete: "first_name", id: "firstName"},placeholder: "First Name", required: true, error: 'Username is mandatory, please specify one' %>
     </div>
     <div class="col-12 col-md-6 form-group">
-      <%= f.input :middle_name, input_html: { class: 'cap form-control', autocomplete: "middle_name" },placeholder: "Middle Name", label: "Middle Name (Father name)", required: true %>
+      <%= f.input :middle_name, input_html: { class: 'cap form-control', autocomplete: "middle_name", id: "middleName" },placeholder: "middleName", label: "Middle Name (Father name)", required: true %>
     </div>
     <div class="col-12 col-md-6 form-group">
-      <%= f.input :last_name, input_html: { class: 'cap form-control', autocomplete: "Last Name" },placeholder: "Last Name", label: "Last name (Grandfather name)", required: true %>
+      <%= f.input :last_name, input_html: { class: 'cap form-control', autocomplete: "Last Name", id: "lastName" },placeholder: "lastName", label: "Last name (Grandfather name)", required: true %>
     </div>
     
     <div class="col-12 col-md-6 form-group">

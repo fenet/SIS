@@ -256,7 +256,7 @@
                             <div class="card-header">
                               <h3 class="card-title">
                                 <i class="fas fa-info-circle mr-2"></i>
-                                <strong>High School Information</strong>
+                                <!-- <strong>High School Information</strong> -->
                               </h3>
                             </div>
                             <div class="card-body">
@@ -340,6 +340,7 @@
      if(!localStorage.loaded) {
         localStorage.setItem('loaded', 'yes')
         window.location.reload();
+        
       }
     $.fn.multiStepForm = function(args) {
         if(args === null || typeof args !== 'object' || $.isArray(args))
@@ -434,7 +435,7 @@
     // $.validator.addMethod('year', function(value, element, param) {
     //   return (value != 0) && (value >= 1900) && (value == parseInt(value, 10));
     // }, 'Please enter a valid year not less than 1900!');
-    $.validator.addMethod('username', function(value, element, param) {
+    $.validator.addMethod('firstname', function(value, element, param) {
       var nameRegex = /^[a-zA-Z0-9]+$/;
       return value.match(nameRegex);
     }, 'Only a-z, A-Z, 0-9 characters are allowed');
@@ -451,6 +452,10 @@
         'student[date_of_birth]': {
           required:true,
         },
+        firstname:{
+          required:true,
+          minlength:8,
+        }, 
         password:{
           required:true,
           minlength:8,

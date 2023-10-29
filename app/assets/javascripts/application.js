@@ -24,7 +24,7 @@
 //= require jquery.inputmask.min.js
 //= require jquery.slideform.js
 //= require bs-stepper.min.js
-
+//= require validation.js
 
 $(document).on('turbolinks:load', function(){
   

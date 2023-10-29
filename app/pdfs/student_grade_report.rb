@@ -4,7 +4,7 @@ class StudentGradeReport < Prawn::Document
       @students = students
       @students.each_with_index do |stud, index|
      # text "Generated Date :- #{Time.zone.now.strftime('%v-%R')}"
-       move_down 200
+       move_down 180
        text "Student's Name: <u>#{stud.student.first_name.capitalize} #{stud.student.middle_name.capitalize} #{stud.student.last_name.capitalize}</u>           Sex: <u>#{stud.student.gender.capitalize}</u>           Year: <u>#{stud.student.year}</u> ",:inline_format => true, size: 11.5, font_style: :bold
        move_down 10
        text "Semester: <u>#{stud.semester}</u>         Dept: <u> #{stud.department.department_name.capitalize} </u>", :inline_format => true, size: 11.5, font_style: :bold
@@ -14,7 +14,7 @@ class StudentGradeReport < Prawn::Document
 
 
        #stroke_horizontal_rule
-       move_down 20
+       move_down 10
        table each_data_in_table(stud, index) do 
           row(0).font_style = :bold
           row(0).size = 10
@@ -28,16 +28,16 @@ class StudentGradeReport < Prawn::Document
 
 
        end
-       move_down 40
+       move_down 30
        text "Academic Status: #{stud.academic_status}"
        move_down 10
        text "Remark: ___________________________"
-       move_down 30
+       move_down 20
        text " ____________________", align: :center
        move_down 5
        text "REGISTRAR OFFICE", align: :center
       end
-      move_down 30
+      move_down 20
       text " #{Time.zone.now.strftime('%v-%R')}", size: 9, font_style: :bold
       start_new_page
       header_footer
@@ -56,7 +56,7 @@ class StudentGradeReport < Prawn::Document
               move_down 10
               text "OFFICE OF REGISTRAR", size: 14, align: :center 
               move_down 10 
-              text "MBA STUDENT'S GRADE REPORT (ONLINE)", size: 12, align: :center  
+              text "STUDENT'S GRADE REPORT (ONLINE)", size: 12, align: :center  
               stroke_horizontal_rule
           end
       
@@ -65,7 +65,7 @@ class StudentGradeReport < Prawn::Document
               stroke_horizontal_rule
               move_down(5)
               text "Office OF Registrar", :size => 15, align: :center
-              text "+251902552299  PoBox.1697/1250 support@premier.edu.et", :size => 11, align: :center
+              text "++251911803339  PoBox.1697/1250 support@premier.edu.et", :size => 11, align: :center
 
           end
         end
@@ -75,8 +75,9 @@ class StudentGradeReport < Prawn::Document
   def each_data_in_table(data, index)
      [
       ["Title of the course","Course Number", "Credit hours", "Grade", "Grade Point"],
-     ]+ data.semester_registration.course_registrations.where(enrollment_status: 'enrolled').includes(:student_grade).map.with_index do |course, index|
-          [course.course.course_title, course.course.course_code, course.course.credit_hour, StudentGrade.find_by(course: course.course).letter_grade, StudentGrade.find_by(course: course.course).grade_point]
+     ]+ data.semester_registration.course_registrations.where(enrollment_status: 'enrolled').includes(:student_grade).includes(:course).map.with_index do |course, index|
+      [course.course.course_title, course.course.course_code, course.course.credit_hour, course.student_grade.letter_grade, course.student_grade.grade_point]   
+      #[course.course.course_title, course.course.course_code, course.course.credit_hour, StudentGrade.find_by(course: course.course).letter_grade, StudentGrade.find_by(course: course.course).grade_point]
      end
   end
 

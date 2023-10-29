@@ -11,7 +11,7 @@
       <%= a.input :country, as: :country, selected: 'ET', priority_countries: ["ET", "US"], input_html: {class: "form-control custom-select"},include_blank: "select country"%>
     </div>
     <div class="col-12 col-md-6 form-group">
-      <%= a.input :city, input_html: { class: 'form-control', autofocus: true, autocomplete: "city" },placeholder: "City", required: true, error: 'city is mandatory, please specify one' %>
+      <%= a.input :city, input_html: { class: 'form-control', autofocus: true, autocomplete: "city", id: "city"},placeholder: "City", required: true, error: 'city is mandatory, please specify one' %>
     </div>
     
     
@@ -35,7 +35,7 @@
       <%= a.input :house_number, input_html: { class: 'form-control', autocomplete: "house_number" },placeholder: "House Number" %>
     </div>
     <div class="col-12 col-md-6 form-group">
-      <%= a.input :moblie_number, input_html: { class: 'form-control', autocomplete: "moblie_number" }, required: true %>
+      <%= a.input :moblie_number, input_html: { class: 'form-control', autocomplete: "moblie_number", id: "addressmobile" }, required: true %>
       <span id="valid-msg" class="hide"></span>
       <span id="error-msg" class="hide"></span>
     </div>

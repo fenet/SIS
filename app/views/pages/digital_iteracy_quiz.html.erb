@@ -281,31 +281,33 @@
       correctAnswer: "A"
     },
     {
-      question: "2. Do you have a stable internet connection at your place of residence or a travel friendly solution?",
+      question: "2. Videoconferencing involves the use of video cameras connected to two or more computers.",
       answers: {
-        A: "Yes",
-        B: "No"
+        A: "True",
+        B: "False"
+      },
+      correctAnswer: "A"
+    },
+    {
+      question: "3. What does CPU stand for?",
+      answers: {
+        A: "Computer Processing Unit",
+        B: "Central Peripheral Unit",
+        C: "Central Processing Unit",
+        d: "Computer Processing User"
+      },
+      correctAnswer: "A"
+    },
+    {
+      question: "4. The main purpose of a modem in a home network is to connect your home internet connection with your internet service provider (ISP).",
+      answers: {
+        A: "False",
+        B: "True"
       },
       correctAnswer: "B"
     },
-    {
-      question: "3. Are you ok with spending a considerable amount of time infront of a digital device either reading or watching videos?",
-      answers: {
-        A: "Yes",
-        B: "No"
-      },
-      correctAnswer: "A"
-    },
-    {
-      question: "4. Do you have a tendency to be disciplined enough to manage your time and resources for consuming digital contents online?",
-      answers: {
-        A: "Yes",
-        B: "No"
-      },
-      correctAnswer: "A"
-    },
      {
-      question: "5. Your sister travels to another country for an on-site business project. You want to tell her about your new job by sending her an e-mail message from your computer. Which of the following devices will you use to connect your computer to the Internet?",
+      question: "5. Let's say you want to send an e-mail message from your computer. Which of the following devices will you use to connect your computer to the Internet?",
       answers: {
         A: "Sound Card",
         B: "Modem",
@@ -315,14 +317,14 @@
       correctAnswer: "B"
     },
     {
-      question: "6. Nina uses Office Excel 2010 to create a work plan for her team. She wants to print the plan and discuss it with the team members in a meeting. Which of the following menus will Nina use to print the plan?",
+      question: "6. Which of the following allows members to post questions, start a discussion or contribute to various discussions?",
       answers: {
-        A: "Format",
-        B: "File",
-        C: "View",
-        D: "Tools"
+        A: "Discussion forum ",
+        B: "SMS",
+        C: "Video-conferencing ",
+        D: "VoIP"
       },
-      correctAnswer: "B"
+      correctAnswer: "A"
     },
     {
       question: "7. 'Desktop' is a computer term that refers to?",
@@ -365,7 +367,7 @@
       correctAnswer: "B"
     }
   ];
-
+  const myQuestionShuffled = myQuestions.sort(function() {return 0.5 - Math.random() });
   // Kick things off
   buildQuiz();
 
