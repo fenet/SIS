@@ -4,7 +4,7 @@ role :app, %w{newdeploy@162.19.170.198}
 role :web, %w{newdeploy@162.19.170.198}
 role :db, %w{newdeploy@162.19.170.198}, :primary => true
 
-set :branch, "7f4d0361b79a6f03559c7a1cfcf4402f302445d0"
+set :branch, "premier"
 set :rails_env, "production"
 
 set :deploy_to, '/home/newdeploy/premiernew' 
