@@ -535,6 +535,7 @@ DEPENDENCIES
   prawn-table (~> 0.2.2)
   puma (~> 3.11)
   rails
+  redis
   redis-rails
   rqrcode (~> 2.1)
   rspec-rails

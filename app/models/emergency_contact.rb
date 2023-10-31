@@ -1,6 +1,6 @@
 class EmergencyContact < ApplicationRecord
 	##validations
-	    validates :full_name, :presence => true, format: { with: /\A[a-zA-Z]+\z/, message: "Only letters are allowed" }
+	    #validates :full_name, :presence => true, format: { with: /\A[a-zA-Z]+\z/, message: "Only letters are allowed" }
 		# validates :cell_phone, :presence => true
 		validate :email_format
   ##associations
