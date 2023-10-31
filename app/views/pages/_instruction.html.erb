@@ -1,7 +1,7 @@
  <%# Academic Calender %>
 <% if current_student.year!=1 || current_student.semester!=1 %>
   <%if @payment_remaining.present? && @payment_remaining.is_back_invoice_created?%>
-   <div class="col-12">
+    <div class="col-12">
       <div class="card card-primary">
         <div class="card-header">
           <h3 class="card-title">
@@ -22,12 +22,9 @@
             <strong class="text-primary">Your back payment for previous year <%=@payment_remaining.year%>, semester <%=@payment_remaining.semester%> is waiting for approval!</strong>
           </div>
         </div>
-     
       </div>
     </div>
-
-   <%elsif @payment_remaining.present? && !@payment_remaining.is_back_invoice_created?%>
-   
+  <%elsif @payment_remaining.present? && !@payment_remaining.is_back_invoice_created?%>
     <div class="col-12">
       <div class="card card-warning">
         <div class="card-header">
@@ -54,7 +51,6 @@
         </div>
       </div>
     </div>
-
   <%else%>
     <% if @smr.nil?%>
       <div class="col-12">

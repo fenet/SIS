@@ -1,5 +1,11 @@
 
 $(function () {
+
+    $("#search_form").on("submit", (e) => {
+        e.preventDefault();
+        alert("Please enter")
+    })
+   
     $('#student-departement').on('change', (e) => {
         $id = e.target.value;
         $.ajax({
@@ -31,6 +37,7 @@ $(function () {
             }
         })
     })
+
 
     const setYear = (id) => {
         $.ajax({

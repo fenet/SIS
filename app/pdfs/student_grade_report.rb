@@ -48,7 +48,7 @@ class StudentGradeReport < Prawn::Document
                 move_down 10
                 text "OFFICE OF REGISTRAR", size: 14, align: :center 
                 move_down 10 
-                text "MBA STUDENT'S GRADE REPORT (ONLINE)", size: 12, align: :center  
+                text "STUDENT'S GRADE REPORT (ONLINE)", size: 12, align: :center  
                 stroke_horizontal_rule
             end
         
