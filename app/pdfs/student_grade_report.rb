@@ -3,15 +3,8 @@ class StudentGradeReport < Prawn::Document
     super(:page_size => "A4")
     @students = students
     @students.each_with_index do |stud, index|
-      move_down 200
-      # text "Full Name: <u>#{stud.student.name.full.capitalize}</u>         Sex: <u>#{stud.student.gender.capitalize}</u>           Year: <u>#{stud.student.year}</u> ", :inline_format => true, size: 12, font_style: :bold
-      # move_down 10
-      # text "Faculty: <u>#{stud.department.faculty.faculty_name.capitalize}</u>          Department: <u> #{stud.department.department_name.capitalize} </u>", :inline_format => true, size: 12, font_style: :bold
-      # move_down 10
-      # text "Program: <u>#{stud.program.admission_type.capitalize}</u>          Academic Year: <u>#{stud.academic_calendar.calender_year}</u>        Semester: <u>#{stud.semester}</u>   ", inline_format: true, size: 12, font_style: :bold
-      # move_down 10
-      # text "Program: <u>#{stud.program.admission_type.capitalize}</u> "
-      table [
+      move_down 150
+        table [
         ["Full Name: #{stud.student.name.full.capitalize} #{stud.student.middle_name}", "Sex: #{stud.student.gender.capitalize}", "Year #{stud.student.year}"],
         ["Faculty: #{stud.department.faculty.faculty_name.capitalize}", "Department : #{stud.department.department_name.capitalize}", ""],
         ["Program: #{stud.program.admission_type.capitalize}", "Academic Year: #{stud.academic_calendar.calender_year}", "Semester: #{stud.semester}"],
@@ -59,7 +52,7 @@ class StudentGradeReport < Prawn::Document
     [
       ["No", "Course title", "Course Code", "Cr.Hrs", "Letter Grade", "Grade Point", "Remark"],
     ] + data.semester_registration.course_registrations.where(enrollment_status: "enrolled").includes(:student_grade).map.with_index do |course, index|
-      [index + 1, course.course.course_title, course.course.course_code, course.course.credit_hour, StudentGrade.find_by(course: course.course).letter_grade, StudentGrade.find_by(course: course.course).grade_point, ""]
+      [index + 1, course.course.course_title, course.course.course_code, course.course.credit_hour, course.student_grade.letter_grade, course.student_grade.grade_point, ""]
     end
   end
 

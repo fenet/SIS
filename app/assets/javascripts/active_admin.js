@@ -10,6 +10,7 @@
 //= require custom
 //= require student_report
 //= require online_student
+//= require cable
 $(document).ready(function () {
 
   $("#student_photo").change(function (data) {

@@ -32,7 +32,7 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.0'
 gem 'redis-rails'
 # Use ActiveModel has_secure_password
 gem 'bcrypt'
@@ -88,6 +88,7 @@ group :development, :test do
   gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry'
 end
 
 group :development do

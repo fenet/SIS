@@ -413,11 +413,13 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
 <script type="text/javascript">
   $(document).on('turbolinks:load', function(){
+   
     var a = new Date().getFullYear() - 18
     var b = a + "-15"
     flatpickr('.birthdate',{
       maxDate: b
     });
+
     // $('#student_photo').change(function (e) {
     //   var files = [];
     //   for (var i = 0; i < $(this)[0].files.length; i++) {

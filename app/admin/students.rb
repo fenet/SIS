@@ -15,13 +15,13 @@ ActiveAdmin.register Student do
                       batch_size: 1000
   scoped_collection_action :scoped_collection_update, title: "Batch Approve", form: lambda {
                                {
-                                                               document_verification_status: %w[pending approved denied incomplete],
-                              
-                                                             }
+                                 document_verification_status: %w[pending approved denied incomplete],
+
+                               }
                              }
   batch_action "Approve document verification status for", method: :put, confirm: "Are you sure?" do |ids|
     Student.where(id: ids).update(document_verification_status: "approved")
-    #  add_student_registration  
+    #  add_student_registration
     redirect_to admin_students_path, notice: "#{"student".pluralize(ids.size)} document verification status Approved"
   end
 

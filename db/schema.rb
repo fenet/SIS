@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_19_181514) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_29_092507) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -466,6 +466,37 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_19_181514) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["student_id"], name: "index_emergency_contacts_on_student_id"
+  end
+
+  create_table "exemptions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "course_title"
+    t.string "letter_grade"
+    t.string "course_code"
+    t.integer "credit_hour"
+    t.string "department_approval", default: "pending"
+    t.string "dean_approval", default: "pending"
+    t.string "registeral_approval", default: "pending"
+    t.boolean "exemption_needed", default: false
+    t.uuid "external_transfer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["external_transfer_id"], name: "index_exemptions_on_external_transfer_id"
+  end
+
+  create_table "external_transfers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.uuid "department_id", null: false
+    t.string "previous_institution"
+    t.string "previous_student_id"
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "study_level"
+    t.string "admission_type"
+    t.string "message"
+    t.string "email"
+    t.index ["department_id"], name: "index_external_transfers_on_department_id"
   end
 
   create_table "faculties", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -1174,4 +1205,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_19_181514) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "departments", "faculties"
+  add_foreign_key "exemptions", "external_transfers"
+  add_foreign_key "external_transfers", "departments"
 end
