@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  post "create/exemptions/:applicant_id", to: 'exemptions#create', as: 'create_exemptions'
+  get "new/exemptions/:applicant_id", to: 'exemptions#new', as: 'new_exemptions'
+  get "index/exemptions/:applicant_id", to: 'exemptions#index', as: 'index_exemptions'
+  get "edit/exemptions/:applicant_id/:id", to: 'exemptions#edit', as: 'edit_exemptions'
+  get "applicant/search", to: "external_transfers#search", as: 'external_transfer_search'
+
+
+
+  resources :exemptions, except: [:create, :new, :index, :edit]
+  resources :external_transfers
   get "student_temporary/index", as: "student_temporary"
   post "student/tempo/generate", to: "student_temporary#generate_pdf", as: "generate_student_tempo"
   get "pdf_grade_reports/index", as: "pdf_gread_report"

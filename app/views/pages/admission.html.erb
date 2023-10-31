@@ -84,6 +84,16 @@
           <div class="card-body p-5">
             <h2 class="text-center mb-5">In What Study Level And Modality You Want To Enroll?</h2>
             <div class="row justify-content-center">
+             <div class="col-lg-3 col-md-6">
+                <%= link_to new_external_transfer_path,'data-no-turbolink' => false do %>
+                  <div class="icon-box d-flex justify-content-center">
+                    <!-- <div class="icon"><i class="fas fa-heartbeat"></i></div> -->
+                    <h4 class="d-flex align-items-center">
+                      Apply for transfer
+                    </h4>
+                  </div>
+                <%end%>
+              </div>
               <div class="col-lg-3 col-md-6">
                 <%= link_to new_student_registration_path(modality: "regular", study_level: "undergraduate"),'data-no-turbolink' => false do %>
                   <div class="icon-box d-flex justify-content-center">

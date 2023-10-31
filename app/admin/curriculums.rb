@@ -140,7 +140,12 @@ filter :updated_at
                 panel "Semester: #{s}" do
                   table_for curriculum.courses.where(year: i, semester: s).order('year ASC','semester ASC') do
                     ## TODO: wordwrap titles and long texts
-                    
+                    # year
+                    # Semester
+                    # Curri_id 
+                    # study_level
+                    # admission_type 
+                    # total
                     column "course title" do |item|
                       link_to item.course_title, [ :admin, item] 
                     end

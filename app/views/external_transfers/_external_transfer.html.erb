@@ -1,0 +1,34 @@
+<div id="<%= dom_id external_transfer %>">
+  <% if @external_transfer.accepted?%>
+    <p class="text-lg text-success text-bold">Dear   <%= external_transfer&.first_name %>
+      <%= external_transfer&.last_name %>, Congradulations your application is accepted 🎉</p>
+    <p class="text-md text-primary text-bold"> If you want to add course exemption, please click Add course exemption button below! </p>
+    <%if @external_transfer.exemptions.any?%>
+      <%= link_to "See Exemptions",  index_exemptions_path(@external_transfer), class: 'btn btn-success mr-3' %>
+    <%else%>
+      <%= link_to "Add course exemption", new_exemptions_path(@external_transfer), class: 'btn btn-success mr-3' %>
+    <%end%>
+  <%elsif  @external_transfer.rejected?%>
+    <p class="text-lg text-danger text-bold">Dear   <%= external_transfer&.first_name %>
+      <%= external_transfer&.last_name %>, We regreat your application is not accepted!</p>
+    <p class="text-md text-primary text-bold"> <%external_transfer&.message=%></p>
+  <%elsif @external_transfer.pending?%>
+    <p class="text-lg text-warning text-bold">Dear   <%= external_transfer&.first_name %>
+      <%= external_transfer&.last_name %>, Your application is still pending</p>
+    <p class="text-md text-primary text-bold"> <%external_transfer&.message=%></p>
+  <%end%>
+  <p class="text-md text-info">
+    If you wan to check your application later, please use the your previous ID
+    <strong>
+      <%= external_transfer.previous_student_id %>
+    </strong>
+  </p>
+  <p>
+    <strong>Application Sent:
+      <%= external_transfer&.created_at.strftime('%v,%T') %></strong>
+  </p>
+  <p>
+    <strong>Your Email:
+      <%= external_transfer&.email %></strong>
+  </p>
+</div>

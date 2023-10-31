@@ -29,7 +29,6 @@ class SemesterRegistration < ApplicationRecord
     self.where(department_id: id, is_back_invoice_created: false).where("remaining_amount=?", 0.0).includes(:department).includes(:student)
   end
 
-
   def generate_grade_report
     if !self.grade_report.present?
       GradeReport.create do |report|
@@ -38,13 +37,17 @@ class SemesterRegistration < ApplicationRecord
         report.academic_calendar_id = self.academic_calendar.id
         report.program_id = self.program.id
         report.department_id = self.program.department.id
-        # grade_report.section_id = self.section.id
         report.admission_type = self.student.admission_type
         report.study_level = self.student.study_level
         report.semester = self.student.semester
         report.year = self.student.year
-        # grade_report.total_course = self.course_registrations.where(enrollment_status: "enrolled").count
-        # I recommend the official Stimulus.js handbook (https://stimulus.hotwired.dev/handbook/introduction) to anyone who wants to learn the basics of Stimulus.js for Rails. In addition to this (https://dev.to/bhumi/stimulus-rails-7-tutorial-5a6a) is also a great article to learn details about stimulus js.
+
+        report.total_credit_hour = self.course_registrations.where(enrollment_status: "enrolled").collect { |oi| (!!(oi.student_grade&.letter_grade != "I") && oi.student_grade.present? && !!(oi.student_grade&.letter_grade != "NG")) ? (oi.course.credit_hour) : 0 }.sum
+        report.total_grade_point = self.course_registrations.where(enrollment_status: "enrolled").collect { |oi|
+          (!!(oi.student_grade&.letter_grade != "I") && oi.student_grade.present? && !!(oi.student_grade&.letter_grade != "NG")) ? (oi.student_grad
+            e.grade_point) : 0
+        }.sum
+
         if self.student.grade_reports.empty?
           report.total_course = self.course_registrations.count
           report.total_credit_hour = self.course_registrations.where(enrollment_status: "enrolled").collect { |oi| ((oi.student_grade.letter_grade != "I") && (oi.student_grade.letter_grade != "NG")) ? (oi.course.credit_hour) : 0 }.sum
@@ -62,7 +65,6 @@ class SemesterRegistration < ApplicationRecord
               report.academic_status = AddAcademicStatus.academic_status({ sgpa: report.sgpa, cgpa: report.cgpa }, self.student)
             else
               report.academic_status = AcademicStatusGraduate.get_academic_status(report: report, student: self.student)
-              # report.academic_status = self.student.program.grade_systems.last.academic_statuses.where("min_value < ?", report.cgpa).where("max_value >= ?", report.cgpa).last.status
             end
 
             if (report.academic_status.strip != "Academic Dismissal") || (report.academic_status.strip != "Incomplete")
@@ -134,7 +136,6 @@ class SemesterRegistration < ApplicationRecord
   def generate_invoice
     if self.mode_of_payment.present? && self.invoices.where(year: self.year, semester: self.semester).empty?
       self.update_columns(is_back_invoice_created: true)
-
       Invoice.create do |invoice|
         invoice.semester_registration_id = self.id
         invoice.student_id = self.student.id
