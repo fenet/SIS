@@ -4,7 +4,8 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
 
-  config.cache_store = :redis_store, "redis://localhost:6379/0/cache"
+  config.cache_store = :redis_store, "redis://162.19.170.198/0/cache"
+  
   #, { expires_in: 90.minutes }
 
   
