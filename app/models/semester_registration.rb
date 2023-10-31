@@ -47,25 +47,36 @@ class SemesterRegistration < ApplicationRecord
         # I recommend the official Stimulus.js handbook (https://stimulus.hotwired.dev/handbook/introduction) to anyone who wants to learn the basics of Stimulus.js for Rails. In addition to this (https://dev.to/bhumi/stimulus-rails-7-tutorial-5a6a) is also a great article to learn details about stimulus js.
         if self.student.grade_reports.empty?
           report.total_course = self.course_registrations.count
-          report.total_credit_hour = self.course_registrations.where(enrollment_status: "enrolled").collect { |oi| ((oi.student_grade.letter_grade != "I") && (oi.student_grade.letter_grade != "NG")) ? (oi.course.credit_hour) : 0 }.sum
-          report.total_grade_point = self.course_registrations.where(enrollment_status: "enrolled").collect { |oi| ((oi.student_grade.letter_grade != "I") && (oi.student_grade.letter_grade != "NG")) ? (oi.student_grade.grade_point) : 0 }.sum
-          report.sgpa = report.total_credit_hour == 0 ? 0 : (report.total_grade_point / report.total_credit_hour).round(1)
+          
+          #report.total_credit_hour = self.course_registrations.where(enrollment_status: "enrolled").collect { |oi| ((oi.student_grade.letter_grade != "I") && (oi.student_grade&.letter_grade != "NG")) ? (oi.course.credit_hour) : 0 }.sum
+          #report.total_grade_point = self.course_registrations.where(enrollment_status: "enrolled").collect { |oi| ((oi.student_grade.letter_grade != "I") && (oi.student_grade&.letter_grade != "NG")) ? (oi.student_grade.grade_point) : 0 }.sum
+          
+          report.total_credit_hour = self.course_registrations.where(enrollment_status: "enrolled").collect { |oi| (!!(oi.student_grade&.letter_grade != "I") && oi.student_grade.present? && !!(oi.student_grade&.letter_grade != "NG")) ? (oi.course.credit_hour) : 0 }.sum
+          report.total_grade_point = self.course_registrations.where(enrollment_status: "enrolled").collect { |oi|
+          (!!(oi.student_grade&.letter_grade != "I") && oi.student_grade.present? && !!(oi.student_grade&.letter_grade != "NG")) ? (oi.student_grade.grade_point) : 0}.sum
+          report.sgpa = report.total_credit_hour == 0 ? 0 : (report.total_grade_point / report.total_credit_hour).round(2)
 
           report.cumulative_total_credit_hour = report.total_credit_hour
           report.cumulative_total_grade_point = report.total_grade_point
-          report.cgpa = report.cumulative_total_credit_hour == 0 ? 0 : (report.cumulative_total_grade_point / report.cumulative_total_credit_hour).round(1)
+          report.cgpa = report.cumulative_total_credit_hour == 0 ? 0 : (report.cumulative_total_grade_point / report.cumulative_total_credit_hour).round(2)
+         
 
           if ((self.course_registrations.joins(:student_grade).pluck(:letter_grade).include?("I")) || (self.course_registrations.joins(:student_grade).pluck(:letter_grade).include?("NG")))
             report.academic_status = "Incomplete"
           else
+            
             if self.student.study_level == "undergraduate"
-              report.academic_status = AddAcademicStatus.academic_status({ sgpa: report.sgpa, cgpa: report.cgpa }, self.student)
+              report.academic_status = AddAcademicStatus.academic_status({ sgpa: report.sgpa, cgpa: report.cgpa }, self.student) 
             else
+             
+
               report.academic_status = AcademicStatusGraduate.get_academic_status(report: report, student: self.student)
               # report.academic_status = self.student.program.grade_systems.last.academic_statuses.where("min_value < ?", report.cgpa).where("max_value >= ?", report.cgpa).last.status
-            end
 
-            if (report.academic_status.strip != "Academic Dismissal") || (report.academic_status.strip != "Incomplete")
+            end
+            
+            unless (report.academic_status.strip == "Academic Dismissal") || (report.academic_status.strip == "Incomplete")
+             
               if self.program.program_semester > self.student.semester
                 promoted_semester = self.student.semester + 1
                 self.student.update_columns(semester: promoted_semester)
@@ -80,7 +91,7 @@ class SemesterRegistration < ApplicationRecord
           report.total_course = self.course_registrations.count
           report.total_credit_hour = self.course_registrations.collect { |oi| ((oi.student_grade.letter_grade != "I") && (oi.student_grade.letter_grade != "NG")) ? (oi.course.credit_hour) : 0 }.sum
           report.total_grade_point = self.course_registrations.collect { |oi| ((oi.student_grade.letter_grade != "I") && (oi.student_grade.letter_grade != "NG")) ? (oi.course.credit_hour * oi.student_grade.grade_point) : 0 }.sum
-          report.sgpa = report.total_credit_hour == 0 ? 0 : (report.total_grade_point / report.total_credit_hour).round(1)
+          report.sgpa = report.total_credit_hour == 0 ? 0 : (report.total_grade_point / report.total_credit_hour).round(2)
           report.cumulative_total_credit_hour = self.student.grade_reports.order("created_at DESC").first.cumulative_total_credit_hour + report.total_credit_hour
           report.cumulative_total_grade_point = self.student.grade_reports.order("created_at DESC").first.cumulative_total_grade_point + report.total_grade_point
           report.cgpa = report.cumulative_total_grade_point / report.cumulative_total_credit_hour

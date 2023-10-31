@@ -24,7 +24,7 @@ default: &default
 development:
   <<: *default
   #database: leadstar_dev
-  database: heucbackup
+  database: hopecollege
   port: 5432
   host : localhost
   username: postgres

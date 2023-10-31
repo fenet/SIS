@@ -57,7 +57,7 @@ ActiveAdmin.register StudentGrade do
     
     selectable_column
     column "Full name", sortable: true do |n|
-      n.student.name.full if n.student.name.present?
+      n.student.name.full if n.student.present?
     end
     column "Student ID" do |si|
       si.student.student_id

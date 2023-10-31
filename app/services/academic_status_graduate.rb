@@ -1,6 +1,6 @@
 module AcademicStatusGraduate
   class << self
-    def get_academic_status(report:, student:)
+    def get_academic_status(report:, student:) 
       if is_semester_year?(student: student, year: 1, semester: 1)
         if report.sgpa >= 3 && report.sgpa <= 4
           "Academic Pass"
@@ -30,17 +30,17 @@ module AcademicStatusGraduate
       end
     end
 
-  #private
+  private
 
-  def self.is_semester_year?(student:, year:, semester:)
+  def is_semester_year?(student:, year:, semester:)
     student.year == year && student.semester == semester
   end
 
-  def self.is_pass_first_semester?(student:)
+  def is_pass_first_semester?(student:)
     GradeReport.where(student: student, semester: 1, academic_status: "Academic Pass").any?
   end
 
-  def self.is_probation_first_semester?(student:)
+  def is_probation_first_semester?(student:)
     GradeReport.where(student: student, semester: 1, academic_status: "Academic Probation").any?
   end
 end
