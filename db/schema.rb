@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_29_092507) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_05_113304) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -480,6 +480,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_29_092507) do
     t.uuid "external_transfer_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "dean_approval_status"
+    t.integer "registeral_approval_status"
     t.index ["external_transfer_id"], name: "index_exemptions_on_external_transfer_id"
   end
 
@@ -494,8 +496,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_29_092507) do
     t.datetime "updated_at", null: false
     t.string "study_level"
     t.string "admission_type"
-    t.string "message"
+    t.text "message"
     t.string "email"
+    t.string "approved_by"
     t.index ["department_id"], name: "index_external_transfers_on_department_id"
   end
 

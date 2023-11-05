@@ -4,9 +4,9 @@
       <%= external_transfer&.last_name %>, Congradulations your application is accepted 🎉</p>
     <p class="text-md text-primary text-bold"> If you want to add course exemption, please click Add course exemption button below! </p>
     <%if @external_transfer.exemptions.any?%>
-      <%= link_to "See Exemptions",  index_exemptions_path(@external_transfer), class: 'btn btn-success mr-3' %>
+       <p class="badge badge-info p-3 text-md"><%=@external_transfer.exemptions.size%> courses added for exemption, for farther information please contact the department head</p>
     <%else%>
-      <%= link_to "Add course exemption", new_exemptions_path(@external_transfer), class: 'btn btn-success mr-3' %>
+      <p class="badge badge-danger">No Exemption yet</p>
     <%end%>
   <%elsif  @external_transfer.rejected?%>
     <p class="text-lg text-danger text-bold">Dear   <%= external_transfer&.first_name %>
@@ -24,11 +24,7 @@
     </strong>
   </p>
   <p>
-    <strong>Application Sent:
-      <%= external_transfer&.created_at.strftime('%v,%T') %></strong>
+    <strong>Application Sent:<%= external_transfer&.created_at.strftime('%v,%T') %></strong>
   </p>
-  <p>
-    <strong>Your Email:
-      <%= external_transfer&.email %></strong>
-  </p>
+
 </div>

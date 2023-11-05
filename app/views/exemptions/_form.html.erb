@@ -6,8 +6,13 @@
     <%= f.input :letter_grade, required: true, label: 'Letter Grade' %>
     <%= f.input :course_code, required: true, label: 'Course Code' %>
     <%= f.input :credit_hour, required: true, label: 'Credit Hour' %>
-    <%# <%= f.input :department_approval %> 
-    <%# <%= f.input :dean_approval %> 
+    <% if params[:action] == "edit"%>
+      <%= f.input :department_approval, collection: ["Pending", "Rejected",  @approved_by], input_html: {selected: @approved_by}%>
+    <%else%>
+      <%= f.input :department_approval, as: :hidden, input_html: {value: @approved_by}%>
+    <%end%>
+    <%# <%= f.input :department_approval %>
+    <%# <%= f.input :dean_approval %>
     <%# <%= f.input :registeral_approval  %>
     <%# <%= f.input :exemption_needed  %>
     <%# <%= f.association :external_transfer  %>

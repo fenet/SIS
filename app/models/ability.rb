@@ -57,6 +57,7 @@ class Ability
       can :manage, AddAndDrop
       can :manage, OtherPayment
       can :manage, StudentGrade
+      can :manage, Exemption
     when "instructor"
       can :manage, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
       can :read, AcademicCalendar
@@ -81,7 +82,6 @@ class Ability
       can :manage, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
       can :manage, ActiveAdmin::Page, name: "FinanceReport", namespace_name: "admin"
 
-      
       can :read, Program
       #TODO: after one college created disable new action
       # cannot :destroy, College, id: 1
@@ -98,12 +98,12 @@ class Ability
     when "registrar head"
       can :manage, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
       can :manage, ActiveAdmin::Page, name: "Graduation", namespace_name: "admin"
-      can :manage, ActiveAdmin::Page, name:"StudentReport", namespace_name: "admin"
-      can :manage, ActiveAdmin::Page, name:"OnlineStudentGrade", namespace_name: "admin"
+      can :manage, ActiveAdmin::Page, name: "StudentReport", namespace_name: "admin"
+      can :manage, ActiveAdmin::Page, name: "OnlineStudentGrade", namespace_name: "admin"
       can :manage, AcademicCalendar
       can :manage, AdminUser, role: "instructor"
+      can [:read, :update], Exemption, dean_approval_status: "dean_approval_approved"
       can :manage, Faculty
-      # can :manage, Department
       can :read, CourseModule
       can :read, Program
       can :read, Curriculum
@@ -291,10 +291,12 @@ class Ability
       can :manage, Invoice
     when "department head"
       can :read, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
+      can :manage, ActiveAdmin::Page, name: "ExternalTransfer", namespace_name: "admin"
       can [:read, :update], Department, department_name: user.department.department_name
 
       can [:read, :update, :destroy], CourseModule, department_id: user.department.id
       can :create, CourseModule
+      # can :manage, Exemption
 
       can [:read, :update, :destroy], Course, course_module: { department_id: user.department.id }
       can :create, Course
@@ -342,6 +344,7 @@ class Ability
       can :manage, Curriculum
       can :manage, GradeSystem
       can :manage, AssessmentPlan
+      can [:read, :update], Exemption
     when "library head"
       can :manage, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
       can [:read, :update], Withdrawal
