@@ -1,5 +1,5 @@
 class ExternalTransfersController < ApplicationController
-  before_action :set_external_transfer, only: [:show, :edit, :destroy, :update]
+  before_action :set_external_transfer, only: [:show, :approved, :edit, :destroy, :update, :approval]
 
   def new
     @external_transfer = ExternalTransfer.new
@@ -10,6 +10,11 @@ class ExternalTransfersController < ApplicationController
   end
 
   def edit
+  end
+
+  def approval
+    @disable_nav = true
+    @approved_by = params[:approved_by]
   end
 
   def search
@@ -27,6 +32,16 @@ class ExternalTransfersController < ApplicationController
       redirect_to external_transfer_path(transfer.id), notice: "Application was successfully sent!"
     else
       render :new
+    end
+  end
+
+  def approved
+    respond_to do |format|
+      if @external_transfer.update(external_transfer_params)
+        format.html { redirect_to admin_externaltransfer_path, notice: "Your application was successfully updated." }
+      else
+        format.html { render :approval, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -51,7 +66,7 @@ class ExternalTransfersController < ApplicationController
   private
 
   def external_transfer_params
-    params.require(:external_transfer).permit(:first_name, :email, :transcript, :study_level, :admission_type, :last_name, :department_id, :previous_institution, :previous_student_id, :status)
+    params.require(:external_transfer).permit(:first_name, :approved_by, :email, :message, :transcript, :study_level, :admission_type, :last_name, :department_id, :previous_institution, :previous_student_id, :status)
   end
 
   def set_external_transfer

@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   post "create/exemptions/:applicant_id", to: 'exemptions#create', as: 'create_exemptions'
-  get "new/exemptions/:applicant_id", to: 'exemptions#new', as: 'new_exemptions'
-  get "index/exemptions/:applicant_id", to: 'exemptions#index', as: 'index_exemptions'
-  get "edit/exemptions/:applicant_id/:id", to: 'exemptions#edit', as: 'edit_exemptions'
+  get "new/exemptions/:applicant_id/:approved_by", to: 'exemptions#new', as: 'new_exemptions'
+  get "index/exemptions/:applicant_id/:approved_by", to: 'exemptions#index', as: 'index_exemptions'
+  get "edit/exemptions/:applicant_id/:id/:approved_by", to: 'exemptions#edit', as: 'edit_exemptions'
   get "applicant/search", to: "external_transfers#search", as: 'external_transfer_search'
-
-
+  get "transfer/approval/:id/:approved_by", to: "external_transfers#approval", as: "transfer_approval"
+  patch "transfer/approved/:id", to: "external_transfers#approved", as: "transfer_approved"
+  delete "delete/exception", to: "exemptions#destroy", as: "transfer_destroy"
 
   resources :exemptions, except: [:create, :new, :index, :edit]
   resources :external_transfers
