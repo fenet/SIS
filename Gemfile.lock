@@ -523,8 +523,6 @@ DEPENDENCIES
   pry
   puma (~> 3.11)
   rails
-  redis (~> 4.0)
-  redis-rails
   rqrcode (~> 2.1)
   rspec-rails
   rubocop

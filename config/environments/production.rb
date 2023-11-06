@@ -4,14 +4,14 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
 
-  #config.cache_store = :redis_store, {
-  # localhost: "host",
-  # port: "4556",
-  #  db: 0,
-  #  namespace: "catch",
-  #}, {
-  #  expires_in: 2.hour,
-  #}
+  config.cache_store = :redis_store, {
+   localhost: "host",
+   port: "4556",
+    db: 0,
+    namespace: "catch",
+  }, {
+    expires_in: 2.hour,
+  }
   
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
@@ -22,7 +22,7 @@ Rails.application.configure do
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
-
+  config.active_record.cache_versioning = false
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
   config.require_master_key = true
