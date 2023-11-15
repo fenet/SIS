@@ -39,8 +39,8 @@ test:
 production:
   <<: *default
   database: heucbackup
-  username: deploy
-  password: Yic_1234
+  username: newdeploy
+  password: Hope_1234
   #database: heucbackup
   #username: deploy
   #password: Yic_1234
