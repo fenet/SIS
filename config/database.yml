@@ -38,8 +38,8 @@ test:
   password: Hope_1234
 production:
   <<: *default
-  database: heucbackup
-  username: newdeploy
+  database: heucback
+  username: deploy
   password: Hope_1234
   #database: heucbackup
   #username: deploy
