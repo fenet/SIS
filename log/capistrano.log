@@ -8769,3 +8769,223 @@ Install missing gems with `bundle install`
   INFO [565576c7] Running $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true as newdeploy@192.168.0.200
  DEBUG [565576c7] Command: cd /home/newdeploy/heuc_portal/releases/20231120082558 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true )
  DEBUG [565576c7] 	bash: /home/newdeploy/.rbenv/bin/rbenv: No such file or directory
+  INFO ---------------------------------------------------------------------------
+  INFO START 2023-11-20 11:45:39 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [ca0bc6c1] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as deploy@192.168.0.200
+ DEBUG [ca0bc6c1] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+ DEBUG [ca0bc6c1] Finished in 6.835 seconds with exit status 0 (successful).
+ DEBUG [61efcf75] Running /usr/bin/env which passenger as deploy@192.168.0.200
+ DEBUG [61efcf75] Command: /usr/bin/env which passenger
+ DEBUG [61efcf75] 	/usr/bin/passenger
+ DEBUG [61efcf75] Finished in 0.016 seconds with exit status 0 (successful).
+  INFO [10a42244] Running /usr/bin/env mkdir -p /tmp as deploy@192.168.0.200
+ DEBUG [10a42244] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /tmp )
+  INFO [10a42244] Finished in 0.053 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-0b5f5f8dc38926708a9e.sh 0.0%
+  INFO Uploading /tmp/git-ssh-0b5f5f8dc38926708a9e.sh 100.0%
+  INFO [34e05ce1] Running /usr/bin/env chmod 700 /tmp/git-ssh-0b5f5f8dc38926708a9e.sh as deploy@192.168.0.200
+ DEBUG [34e05ce1] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env chmod 700 /tmp/git-ssh-0b5f5f8dc38926708a9e.sh )
+  INFO [34e05ce1] Finished in 0.015 seconds with exit status 0 (successful).
+  INFO [9cd1fe52] Running /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD as deploy@192.168.0.200
+ DEBUG [9cd1fe52] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-0b5f5f8dc38926708a9e.sh" ; /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD )
+ DEBUG [9cd1fe52] 	cd777fc52a864de4b7ff12a1554a623874fed3ec	HEAD
+  INFO [9cd1fe52] Finished in 1.504 seconds with exit status 0 (successful).
+  INFO [1354dce4] Running /usr/bin/env mkdir -p /home/deploy/newheuc/shared /home/deploy/newheuc/releases as deploy@192.168.0.200
+ DEBUG [1354dce4] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/deploy/newheuc/shared /home/deploy/newheuc/releases )
+  INFO [1354dce4] Finished in 0.021 seconds with exit status 0 (successful).
+  INFO [1117f17b] Running /usr/bin/env mkdir -p /home/deploy/newheuc/shared/log /home/deploy/newheuc/shared/tmp/pids /home/deploy/newheuc/shared/tmp/cache /home/deploy/newheuc/shared/tmp/sockets /home/deploy/newheuc/shared/vendor/bundle /home/deploy/newheuc/shared/public/system /home/deploy/newheuc/shared/public/uploads /home/deploy/newheuc/shared/public/assets as deploy@192.168.0.200
+ DEBUG [1117f17b] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/deploy/newheuc/shared/log /home/deploy/newheuc/shared/tmp/pids /home/deploy/newheuc/shared/tmp/cache /home/deploy/newheuc/shared/tmp/sockets /home/deploy/newheuc/shared/vendor/bundle /home/deploy/newheuc/shared/public/system /home/deploy/newheuc/shared/public/uploads /home/deploy/newheuc/shared/public/assets )
+  INFO [1117f17b] Finished in 0.251 seconds with exit status 0 (successful).
+ DEBUG [06835e4f] Running [ -f /home/deploy/newheuc/current/REVISION ] as deploy@192.168.0.200
+ DEBUG [06835e4f] Command: [ -f /home/deploy/newheuc/current/REVISION ]
+ DEBUG [06835e4f] Finished in 0.013 seconds with exit status 1 (failed).
+ DEBUG [e22306d2] Running [ -f /home/deploy/newheuc/repo/HEAD ] as deploy@192.168.0.200
+ DEBUG [e22306d2] Command: [ -f /home/deploy/newheuc/repo/HEAD ]
+ DEBUG [e22306d2] Finished in 0.052 seconds with exit status 1 (failed).
+ DEBUG [3678ba59] Running if test ! -d /home/deploy/newheuc; then echo "Directory does not exist '/home/deploy/newheuc'" 1>&2; false; fi as deploy@192.168.0.200
+ DEBUG [3678ba59] Command: if test ! -d /home/deploy/newheuc; then echo "Directory does not exist '/home/deploy/newheuc'" 1>&2; false; fi
+ DEBUG [3678ba59] Finished in 0.014 seconds with exit status 0 (successful).
+  INFO [455df5ca] Running /usr/bin/env git clone --mirror https://fenet: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@github.com/fenet/leadstarlatest.git /home/deploy/newheuc/repo as deploy@192.168.0.200
+ DEBUG [455df5ca] Command: cd /home/deploy/newheuc && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-0b5f5f8dc38926708a9e.sh" ; /usr/bin/env git clone --mirror https://fenet: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@github.com/fenet/leadstarlatest.git /home/deploy/newheuc/repo )
+ DEBUG [455df5ca] 	Cloning into bare repository '/home/deploy/newheuc/repo'...
+  INFO ---------------------------------------------------------------------------
+  INFO START 2023-11-21 10:29:46 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [97d4b0d2] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as deploy@192.168.0.200
+ DEBUG [97d4b0d2] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+ DEBUG [97d4b0d2] Finished in 8.681 seconds with exit status 0 (successful).
+ DEBUG [20fd23de] Running /usr/bin/env which passenger as deploy@192.168.0.200
+ DEBUG [20fd23de] Command: /usr/bin/env which passenger
+ DEBUG [20fd23de] 	/usr/bin/passenger
+ DEBUG [20fd23de] Finished in 0.017 seconds with exit status 0 (successful).
+  INFO [756b65d4] Running /usr/bin/env mkdir -p /tmp as deploy@192.168.0.200
+ DEBUG [756b65d4] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /tmp )
+  INFO [756b65d4] Finished in 0.058 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-a9794bd487795cdbfae3.sh 0.0%
+  INFO Uploading /tmp/git-ssh-a9794bd487795cdbfae3.sh 100.0%
+  INFO [0cc8ec3c] Running /usr/bin/env chmod 700 /tmp/git-ssh-a9794bd487795cdbfae3.sh as deploy@192.168.0.200
+ DEBUG [0cc8ec3c] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env chmod 700 /tmp/git-ssh-a9794bd487795cdbfae3.sh )
+  INFO [0cc8ec3c] Finished in 0.018 seconds with exit status 0 (successful).
+  INFO [18ed3515] Running /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD as deploy@192.168.0.200
+ DEBUG [18ed3515] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-a9794bd487795cdbfae3.sh" ; /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD )
+ DEBUG [18ed3515] 	cd777fc52a864de4b7ff12a1554a623874fed3ec	HEAD
+  INFO [18ed3515] Finished in 6.194 seconds with exit status 0 (successful).
+  INFO [4b99fe90] Running /usr/bin/env mkdir -p /home/deploy/newheuc/shared /home/deploy/newheuc/releases as deploy@192.168.0.200
+ DEBUG [4b99fe90] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/deploy/newheuc/shared /home/deploy/newheuc/releases )
+  INFO [4b99fe90] Finished in 0.031 seconds with exit status 0 (successful).
+  INFO [c336bd76] Running /usr/bin/env mkdir -p /home/deploy/newheuc/shared/log /home/deploy/newheuc/shared/tmp/pids /home/deploy/newheuc/shared/tmp/cache /home/deploy/newheuc/shared/tmp/sockets /home/deploy/newheuc/shared/vendor/bundle /home/deploy/newheuc/shared/public/system /home/deploy/newheuc/shared/public/uploads /home/deploy/newheuc/shared/public/assets as deploy@192.168.0.200
+ DEBUG [c336bd76] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/deploy/newheuc/shared/log /home/deploy/newheuc/shared/tmp/pids /home/deploy/newheuc/shared/tmp/cache /home/deploy/newheuc/shared/tmp/sockets /home/deploy/newheuc/shared/vendor/bundle /home/deploy/newheuc/shared/public/system /home/deploy/newheuc/shared/public/uploads /home/deploy/newheuc/shared/public/assets )
+  INFO [c336bd76] Finished in 0.056 seconds with exit status 0 (successful).
+ DEBUG [01357e07] Running [ -f /home/deploy/newheuc/current/REVISION ] as deploy@192.168.0.200
+ DEBUG [01357e07] Command: [ -f /home/deploy/newheuc/current/REVISION ]
+ DEBUG [01357e07] Finished in 0.018 seconds with exit status 1 (failed).
+ DEBUG [77e7e48f] Running [ -f /home/deploy/newheuc/repo/HEAD ] as deploy@192.168.0.200
+ DEBUG [77e7e48f] Command: [ -f /home/deploy/newheuc/repo/HEAD ]
+ DEBUG [77e7e48f] Finished in 0.055 seconds with exit status 1 (failed).
+ DEBUG [3aee1325] Running if test ! -d /home/deploy/newheuc; then echo "Directory does not exist '/home/deploy/newheuc'" 1>&2; false; fi as deploy@192.168.0.200
+ DEBUG [3aee1325] Command: if test ! -d /home/deploy/newheuc; then echo "Directory does not exist '/home/deploy/newheuc'" 1>&2; false; fi
+ DEBUG [3aee1325] Finished in 0.013 seconds with exit status 0 (successful).
+  INFO [049195dd] Running /usr/bin/env git clone --mirror https://fenet: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@github.com/fenet/leadstarlatest.git /home/deploy/newheuc/repo as deploy@192.168.0.200
+ DEBUG [049195dd] Command: cd /home/deploy/newheuc && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-a9794bd487795cdbfae3.sh" ; /usr/bin/env git clone --mirror https://fenet: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@github.com/fenet/leadstarlatest.git /home/deploy/newheuc/repo )
+ DEBUG [049195dd] 	Cloning into bare repository '/home/deploy/newheuc/repo'...
+ DEBUG [049195dd] 	fatal: the remote end hung up unexpectedly
+ DEBUG [049195dd] 	fatal: early EOF
+ DEBUG [049195dd] 	fatal: index-pack failed
+  INFO ---------------------------------------------------------------------------
+  INFO START 2023-11-21 11:30:45 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [763d189e] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as deploy@192.168.0.200
+ DEBUG [763d189e] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+  INFO ---------------------------------------------------------------------------
+  INFO START 2023-11-21 11:32:03 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [dc3a6c0f] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as deploy@192.168.0.200
+ DEBUG [dc3a6c0f] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+  INFO ---------------------------------------------------------------------------
+  INFO START 2023-11-21 11:33:25 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [149d97fd] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as deploy@192.168.0.200
+ DEBUG [149d97fd] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+ DEBUG [149d97fd] Finished in 7.591 seconds with exit status 0 (successful).
+ DEBUG [6da947d6] Running /usr/bin/env which passenger as deploy@192.168.0.200
+ DEBUG [6da947d6] Command: /usr/bin/env which passenger
+ DEBUG [6da947d6] 	/usr/bin/passenger
+ DEBUG [6da947d6] Finished in 0.021 seconds with exit status 0 (successful).
+  INFO [1f43d208] Running /usr/bin/env mkdir -p /tmp as deploy@192.168.0.200
+ DEBUG [1f43d208] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /tmp )
+  INFO [1f43d208] Finished in 0.058 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-f413f64d6479dc7fc311.sh 0.0%
+  INFO Uploading /tmp/git-ssh-f413f64d6479dc7fc311.sh 100.0%
+  INFO [6b168944] Running /usr/bin/env chmod 700 /tmp/git-ssh-f413f64d6479dc7fc311.sh as deploy@192.168.0.200
+ DEBUG [6b168944] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env chmod 700 /tmp/git-ssh-f413f64d6479dc7fc311.sh )
+  INFO [6b168944] Finished in 0.017 seconds with exit status 0 (successful).
+  INFO [8462bc6a] Running /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD as deploy@192.168.0.200
+ DEBUG [8462bc6a] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-f413f64d6479dc7fc311.sh" ; /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD )
+ DEBUG [8462bc6a] 	cd777fc52a864de4b7ff12a1554a623874fed3ec	HEAD
+  INFO [8462bc6a] Finished in 1.588 seconds with exit status 0 (successful).
+  INFO [d3d6ed24] Running /usr/bin/env mkdir -p /home/deploy/newheuc/shared /home/deploy/newheuc/releases as deploy@192.168.0.200
+ DEBUG [d3d6ed24] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/deploy/newheuc/shared /home/deploy/newheuc/releases )
+  INFO [d3d6ed24] Finished in 0.017 seconds with exit status 0 (successful).
+  INFO [e52b6440] Running /usr/bin/env mkdir -p /home/deploy/newheuc/shared/log /home/deploy/newheuc/shared/tmp/pids /home/deploy/newheuc/shared/tmp/cache /home/deploy/newheuc/shared/tmp/sockets /home/deploy/newheuc/shared/vendor/bundle /home/deploy/newheuc/shared/public/system /home/deploy/newheuc/shared/public/uploads /home/deploy/newheuc/shared/public/assets as deploy@192.168.0.200
+ DEBUG [e52b6440] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/deploy/newheuc/shared/log /home/deploy/newheuc/shared/tmp/pids /home/deploy/newheuc/shared/tmp/cache /home/deploy/newheuc/shared/tmp/sockets /home/deploy/newheuc/shared/vendor/bundle /home/deploy/newheuc/shared/public/system /home/deploy/newheuc/shared/public/uploads /home/deploy/newheuc/shared/public/assets )
+  INFO [e52b6440] Finished in 0.056 seconds with exit status 0 (successful).
+ DEBUG [85736dd1] Running [ -f /home/deploy/newheuc/current/REVISION ] as deploy@192.168.0.200
+ DEBUG [85736dd1] Command: [ -f /home/deploy/newheuc/current/REVISION ]
+ DEBUG [85736dd1] Finished in 0.013 seconds with exit status 1 (failed).
+ DEBUG [943da569] Running [ -f /home/deploy/newheuc/repo/HEAD ] as deploy@192.168.0.200
+ DEBUG [943da569] Command: [ -f /home/deploy/newheuc/repo/HEAD ]
+ DEBUG [943da569] Finished in 0.054 seconds with exit status 1 (failed).
+ DEBUG [3302b3bd] Running if test ! -d /home/deploy/newheuc; then echo "Directory does not exist '/home/deploy/newheuc'" 1>&2; false; fi as deploy@192.168.0.200
+ DEBUG [3302b3bd] Command: if test ! -d /home/deploy/newheuc; then echo "Directory does not exist '/home/deploy/newheuc'" 1>&2; false; fi
+ DEBUG [3302b3bd] Finished in 0.015 seconds with exit status 0 (successful).
+  INFO [f030a5f0] Running /usr/bin/env git clone --mirror https://fenet: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@github.com/fenet/leadstarlatest.git /home/deploy/newheuc/repo as deploy@192.168.0.200
+ DEBUG [f030a5f0] Command: cd /home/deploy/newheuc && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-f413f64d6479dc7fc311.sh" ; /usr/bin/env git clone --mirror https://fenet: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@github.com/fenet/leadstarlatest.git /home/deploy/newheuc/repo )
+ DEBUG [f030a5f0] 	Cloning into bare repository '/home/deploy/newheuc/repo'...
+  INFO ---------------------------------------------------------------------------
+  INFO START 2023-11-27 10:11:20 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [85ce2154] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as deploy@192.168.0.200
+ DEBUG [85ce2154] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+  INFO ---------------------------------------------------------------------------
+  INFO START 2023-11-27 10:12:27 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [85760047] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as deploy@192.168.0.200
+ DEBUG [85760047] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+ DEBUG [85760047] Finished in 9.047 seconds with exit status 0 (successful).
+ DEBUG [3ff99186] Running /usr/bin/env which passenger as deploy@192.168.0.200
+ DEBUG [3ff99186] Command: /usr/bin/env which passenger
+ DEBUG [3ff99186] 	/usr/bin/passenger
+ DEBUG [3ff99186] Finished in 0.021 seconds with exit status 0 (successful).
+  INFO [dab4f1ff] Running /usr/bin/env mkdir -p /tmp as deploy@192.168.0.200
+ DEBUG [dab4f1ff] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /tmp )
+  INFO [dab4f1ff] Finished in 0.055 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-5fa12e1f377ad7bf072d.sh 0.0%
+  INFO Uploading /tmp/git-ssh-5fa12e1f377ad7bf072d.sh 100.0%
+  INFO [d43ee611] Running /usr/bin/env chmod 700 /tmp/git-ssh-5fa12e1f377ad7bf072d.sh as deploy@192.168.0.200
+ DEBUG [d43ee611] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env chmod 700 /tmp/git-ssh-5fa12e1f377ad7bf072d.sh )
+  INFO [d43ee611] Finished in 0.026 seconds with exit status 0 (successful).
+  INFO [4648961e] Running /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD as deploy@192.168.0.200
+ DEBUG [4648961e] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-5fa12e1f377ad7bf072d.sh" ; /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD )
+ DEBUG [4648961e] 	cd777fc52a864de4b7ff12a1554a623874fed3ec	HEAD
+  INFO [4648961e] Finished in 1.468 seconds with exit status 0 (successful).
+  INFO [1962f144] Running /usr/bin/env mkdir -p /home/deploy/newheuc/shared /home/deploy/newheuc/releases as deploy@192.168.0.200
+ DEBUG [1962f144] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/deploy/newheuc/shared /home/deploy/newheuc/releases )
+  INFO [1962f144] Finished in 0.040 seconds with exit status 0 (successful).
+  INFO [6b988bfb] Running /usr/bin/env mkdir -p /home/deploy/newheuc/shared/log /home/deploy/newheuc/shared/tmp/pids /home/deploy/newheuc/shared/tmp/cache /home/deploy/newheuc/shared/tmp/sockets /home/deploy/newheuc/shared/vendor/bundle /home/deploy/newheuc/shared/public/system /home/deploy/newheuc/shared/public/uploads /home/deploy/newheuc/shared/public/assets as deploy@192.168.0.200
+ DEBUG [6b988bfb] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/deploy/newheuc/shared/log /home/deploy/newheuc/shared/tmp/pids /home/deploy/newheuc/shared/tmp/cache /home/deploy/newheuc/shared/tmp/sockets /home/deploy/newheuc/shared/vendor/bundle /home/deploy/newheuc/shared/public/system /home/deploy/newheuc/shared/public/uploads /home/deploy/newheuc/shared/public/assets )
+  INFO [6b988bfb] Finished in 0.067 seconds with exit status 0 (successful).
+ DEBUG [54a2332d] Running [ -f /home/deploy/newheuc/current/REVISION ] as deploy@192.168.0.200
+ DEBUG [54a2332d] Command: [ -f /home/deploy/newheuc/current/REVISION ]
+ DEBUG [54a2332d] Finished in 0.026 seconds with exit status 1 (failed).
+ DEBUG [e1c39db3] Running [ -f /home/deploy/newheuc/repo/HEAD ] as deploy@192.168.0.200
+ DEBUG [e1c39db3] Command: [ -f /home/deploy/newheuc/repo/HEAD ]
+ DEBUG [e1c39db3] Finished in 0.061 seconds with exit status 0 (successful).
+  INFO The repository mirror is at /home/deploy/newheuc/repo
+ DEBUG [53bf1314] Running if test ! -d /home/deploy/newheuc/repo; then echo "Directory does not exist '/home/deploy/newheuc/repo'" 1>&2; false; fi as deploy@192.168.0.200
+ DEBUG [53bf1314] Command: if test ! -d /home/deploy/newheuc/repo; then echo "Directory does not exist '/home/deploy/newheuc/repo'" 1>&2; false; fi
+ DEBUG [53bf1314] Finished in 0.018 seconds with exit status 0 (successful).
+  INFO [9b962f45] Running /usr/bin/env git remote set-url origin https://fenet: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@github.com/fenet/leadstarlatest.git as deploy@192.168.0.200
+ DEBUG [9b962f45] Command: cd /home/deploy/newheuc/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-5fa12e1f377ad7bf072d.sh" ; /usr/bin/env git remote set-url origin https://fenet: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@github.com/fenet/leadstarlatest.git )
+ DEBUG [9b962f45] 	fatal: not a git repository (or any of the parent directories): .git
+  INFO ---------------------------------------------------------------------------
+  INFO START 2023-11-27 10:39:45 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [12122787] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as deploy@192.168.0.200
+ DEBUG [12122787] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+ DEBUG [12122787] Finished in 14.202 seconds with exit status 0 (successful).
+ DEBUG [ad10aa3c] Running /usr/bin/env which passenger as deploy@192.168.0.200
+ DEBUG [ad10aa3c] Command: /usr/bin/env which passenger
+ DEBUG [ad10aa3c] 	/usr/bin/passenger
+ DEBUG [ad10aa3c] Finished in 0.026 seconds with exit status 0 (successful).
+  INFO [5cfada29] Running /usr/bin/env mkdir -p /tmp as deploy@192.168.0.200
+ DEBUG [5cfada29] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /tmp )
+  INFO [5cfada29] Finished in 0.083 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-a465484c4391e82da619.sh 0.0%
+  INFO Uploading /tmp/git-ssh-a465484c4391e82da619.sh 100.0%
+  INFO [b8f9dcaf] Running /usr/bin/env chmod 700 /tmp/git-ssh-a465484c4391e82da619.sh as deploy@192.168.0.200
+ DEBUG [b8f9dcaf] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env chmod 700 /tmp/git-ssh-a465484c4391e82da619.sh )
+  INFO [b8f9dcaf] Finished in 0.020 seconds with exit status 0 (successful).
+  INFO [5084a63b] Running /usr/bin/env git ls-remote https://fenet:git+stderr%3A+fatal%3A+not+a+git+repository+%28or+any+of+the+parent+directories%29%3A+.git@github.com/fenet/leadstarlatest.git HEAD as deploy@192.168.0.200
+ DEBUG [5084a63b] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-a465484c4391e82da619.sh" ; /usr/bin/env git ls-remote https://fenet:git+stderr%3A+fatal%3A+not+a+git+repository+%28or+any+of+the+parent+directories%29%3A+.git@github.com/fenet/leadstarlatest.git HEAD )
+ DEBUG [5084a63b] 	cd777fc52a864de4b7ff12a1554a623874fed3ec	HEAD
+  INFO [5084a63b] Finished in 3.794 seconds with exit status 0 (successful).
+  INFO [bdfa4f54] Running /usr/bin/env mkdir -p /home/deploy/newheuc/shared /home/deploy/newheuc/releases as deploy@192.168.0.200
+ DEBUG [bdfa4f54] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/deploy/newheuc/shared /home/deploy/newheuc/releases )
+  INFO [bdfa4f54] Finished in 0.025 seconds with exit status 0 (successful).
+  INFO [6e944ec3] Running /usr/bin/env mkdir -p /home/deploy/newheuc/shared/log /home/deploy/newheuc/shared/tmp/pids /home/deploy/newheuc/shared/tmp/cache /home/deploy/newheuc/shared/tmp/sockets /home/deploy/newheuc/shared/vendor/bundle /home/deploy/newheuc/shared/public/system /home/deploy/newheuc/shared/public/uploads /home/deploy/newheuc/shared/public/assets as deploy@192.168.0.200
+ DEBUG [6e944ec3] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/deploy/newheuc/shared/log /home/deploy/newheuc/shared/tmp/pids /home/deploy/newheuc/shared/tmp/cache /home/deploy/newheuc/shared/tmp/sockets /home/deploy/newheuc/shared/vendor/bundle /home/deploy/newheuc/shared/public/system /home/deploy/newheuc/shared/public/uploads /home/deploy/newheuc/shared/public/assets )
+  INFO [6e944ec3] Finished in 0.055 seconds with exit status 0 (successful).
+ DEBUG [2478d0f2] Running [ -f /home/deploy/newheuc/current/REVISION ] as deploy@192.168.0.200
+ DEBUG [2478d0f2] Command: [ -f /home/deploy/newheuc/current/REVISION ]
+ DEBUG [2478d0f2] Finished in 0.023 seconds with exit status 1 (failed).
+ DEBUG [28fe3433] Running [ -f /home/deploy/newheuc/repo/HEAD ] as deploy@192.168.0.200
+ DEBUG [28fe3433] Command: [ -f /home/deploy/newheuc/repo/HEAD ]
+ DEBUG [28fe3433] Finished in 0.053 seconds with exit status 0 (successful).
+  INFO The repository mirror is at /home/deploy/newheuc/repo
+ DEBUG [c39d4deb] Running if test ! -d /home/deploy/newheuc/repo; then echo "Directory does not exist '/home/deploy/newheuc/repo'" 1>&2; false; fi as deploy@192.168.0.200
+ DEBUG [c39d4deb] Command: if test ! -d /home/deploy/newheuc/repo; then echo "Directory does not exist '/home/deploy/newheuc/repo'" 1>&2; false; fi
+ DEBUG [c39d4deb] Finished in 0.016 seconds with exit status 0 (successful).
+  INFO [d4cfb33d] Running /usr/bin/env git remote set-url origin https://fenet:git+stderr%3A+fatal%3A+not+a+git+repository+%28or+any+of+the+parent+directories%29%3A+.git@github.com/fenet/leadstarlatest.git as deploy@192.168.0.200
+ DEBUG [d4cfb33d] Command: cd /home/deploy/newheuc/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-a465484c4391e82da619.sh" ; /usr/bin/env git remote set-url origin https://fenet:git+stderr%3A+fatal%3A+not+a+git+repository+%28or+any+of+the+parent+directories%29%3A+.git@github.com/fenet/leadstarlatest.git )
+ DEBUG [d4cfb33d] 	fatal: No such remote 'origin'
