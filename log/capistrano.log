@@ -8989,3 +8989,872 @@ Install missing gems with `bundle install`
   INFO [d4cfb33d] Running /usr/bin/env git remote set-url origin https://fenet:git+stderr%3A+fatal%3A+not+a+git+repository+%28or+any+of+the+parent+directories%29%3A+.git@github.com/fenet/leadstarlatest.git as deploy@192.168.0.200
  DEBUG [d4cfb33d] Command: cd /home/deploy/newheuc/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-a465484c4391e82da619.sh" ; /usr/bin/env git remote set-url origin https://fenet:git+stderr%3A+fatal%3A+not+a+git+repository+%28or+any+of+the+parent+directories%29%3A+.git@github.com/fenet/leadstarlatest.git )
  DEBUG [d4cfb33d] 	fatal: No such remote 'origin'
+  INFO ---------------------------------------------------------------------------
+  INFO START 2023-11-27 11:22:18 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [b7bb1bfc] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as newdeploy@162.19.170.198
+ DEBUG [b7bb1bfc] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+ DEBUG [b7bb1bfc] Finished in 8.705 seconds with exit status 0 (successful).
+ DEBUG [ce627fb2] Running /usr/bin/env which passenger as newdeploy@162.19.170.198
+ DEBUG [ce627fb2] Command: /usr/bin/env which passenger
+ DEBUG [ce627fb2] 	/usr/bin/passenger
+ DEBUG [ce627fb2] Finished in 0.612 seconds with exit status 0 (successful).
+  INFO [85febb59] Running /usr/bin/env mkdir -p /tmp as newdeploy@162.19.170.198
+ DEBUG [85febb59] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /tmp )
+  INFO [85febb59] Finished in 0.609 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-dbe31bd5a589c4c875b4.sh 0.0%
+  INFO Uploading /tmp/git-ssh-dbe31bd5a589c4c875b4.sh 100.0%
+  INFO [77fd4b43] Running /usr/bin/env chmod 700 /tmp/git-ssh-dbe31bd5a589c4c875b4.sh as newdeploy@162.19.170.198
+ DEBUG [77fd4b43] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env chmod 700 /tmp/git-ssh-dbe31bd5a589c4c875b4.sh )
+  INFO [77fd4b43] Finished in 0.610 seconds with exit status 0 (successful).
+  INFO [bee87007] Running /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD as newdeploy@162.19.170.198
+ DEBUG [bee87007] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-dbe31bd5a589c4c875b4.sh" ; /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD )
+ DEBUG [bee87007] 	cd777fc52a864de4b7ff12a1554a623874fed3ec	HEAD
+  INFO [bee87007] Finished in 0.697 seconds with exit status 0 (successful).
+  INFO [968c7025] Running /usr/bin/env mkdir -p /home/newdeploy/hpremier/shared /home/newdeploy/hpremier/releases as newdeploy@162.19.170.198
+ DEBUG [968c7025] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/hpremier/shared /home/newdeploy/hpremier/releases )
+  INFO [968c7025] Finished in 1.344 seconds with exit status 0 (successful).
+  INFO [00d67372] Running /usr/bin/env mkdir -p /home/newdeploy/hpremier/shared/log /home/newdeploy/hpremier/shared/tmp/pids /home/newdeploy/hpremier/shared/tmp/cache /home/newdeploy/hpremier/shared/tmp/sockets /home/newdeploy/hpremier/shared/vendor/bundle /home/newdeploy/hpremier/shared/public/system /home/newdeploy/hpremier/shared/public/uploads /home/newdeploy/hpremier/shared/public/assets as newdeploy@162.19.170.198
+ DEBUG [00d67372] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/hpremier/shared/log /home/newdeploy/hpremier/shared/tmp/pids /home/newdeploy/hpremier/shared/tmp/cache /home/newdeploy/hpremier/shared/tmp/sockets /home/newdeploy/hpremier/shared/vendor/bundle /home/newdeploy/hpremier/shared/public/system /home/newdeploy/hpremier/shared/public/uploads /home/newdeploy/hpremier/shared/public/assets )
+  INFO [00d67372] Finished in 0.571 seconds with exit status 0 (successful).
+ DEBUG [5ffbce70] Running [ -f /home/newdeploy/hpremier/current/REVISION ] as newdeploy@162.19.170.198
+ DEBUG [5ffbce70] Command: [ -f /home/newdeploy/hpremier/current/REVISION ]
+ DEBUG [5ffbce70] Finished in 0.646 seconds with exit status 1 (failed).
+ DEBUG [3913c0b0] Running [ -f /home/newdeploy/hpremier/repo/HEAD ] as newdeploy@162.19.170.198
+ DEBUG [3913c0b0] Command: [ -f /home/newdeploy/hpremier/repo/HEAD ]
+ DEBUG [3913c0b0] Finished in 1.225 seconds with exit status 1 (failed).
+ DEBUG [0f40095f] Running if test ! -d /home/newdeploy/hpremier; then echo "Directory does not exist '/home/newdeploy/hpremier'" 1>&2; false; fi as newdeploy@162.19.170.198
+ DEBUG [0f40095f] Command: if test ! -d /home/newdeploy/hpremier; then echo "Directory does not exist '/home/newdeploy/hpremier'" 1>&2; false; fi
+ DEBUG [0f40095f] Finished in 0.819 seconds with exit status 0 (successful).
+  INFO [7adbea44] Running /usr/bin/env git clone --mirror https://fenet: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@github.com/fenet/leadstarlatest.git /home/newdeploy/hpremier/repo as newdeploy@162.19.170.198
+ DEBUG [7adbea44] Command: cd /home/newdeploy/hpremier && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-dbe31bd5a589c4c875b4.sh" ; /usr/bin/env git clone --mirror https://fenet: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@github.com/fenet/leadstarlatest.git /home/newdeploy/hpremier/repo )
+ DEBUG [7adbea44] 	Cloning into bare repository '/home/newdeploy/hpremier/repo'...
+  INFO [7adbea44] Finished in 4.519 seconds with exit status 0 (successful).
+ DEBUG [554c5a9e] Running if test ! -d /home/newdeploy/hpremier/repo; then echo "Directory does not exist '/home/newdeploy/hpremier/repo'" 1>&2; false; fi as newdeploy@162.19.170.198
+ DEBUG [554c5a9e] Command: if test ! -d /home/newdeploy/hpremier/repo; then echo "Directory does not exist '/home/newdeploy/hpremier/repo'" 1>&2; false; fi
+ DEBUG [554c5a9e] Finished in 1.374 seconds with exit status 0 (successful).
+  INFO [a5c0b016] Running /usr/bin/env git remote set-url origin https://fenet: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@github.com/fenet/leadstarlatest.git as newdeploy@162.19.170.198
+ DEBUG [a5c0b016] Command: cd /home/newdeploy/hpremier/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-dbe31bd5a589c4c875b4.sh" ; /usr/bin/env git remote set-url origin https://fenet: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@github.com/fenet/leadstarlatest.git )
+  INFO [a5c0b016] Finished in 0.554 seconds with exit status 0 (successful).
+  INFO [dcce8c84] Running /usr/bin/env git remote update --prune as newdeploy@162.19.170.198
+ DEBUG [dcce8c84] Command: cd /home/newdeploy/hpremier/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-dbe31bd5a589c4c875b4.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [dcce8c84] 	Fetching origin
+  INFO [dcce8c84] Finished in 3.934 seconds with exit status 0 (successful).
+ DEBUG [015ff908] Running if test ! -d /home/newdeploy/hpremier/repo; then echo "Directory does not exist '/home/newdeploy/hpremier/repo'" 1>&2; false; fi as newdeploy@162.19.170.198
+ DEBUG [015ff908] Command: if test ! -d /home/newdeploy/hpremier/repo; then echo "Directory does not exist '/home/newdeploy/hpremier/repo'" 1>&2; false; fi
+ DEBUG [015ff908] Finished in 0.826 seconds with exit status 0 (successful).
+  INFO [be9dd6df] Running /usr/bin/env mkdir -p /home/newdeploy/hpremier/releases/20231127082234 as newdeploy@162.19.170.198
+ DEBUG [be9dd6df] Command: cd /home/newdeploy/hpremier/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-dbe31bd5a589c4c875b4.sh" ; /usr/bin/env mkdir -p /home/newdeploy/hpremier/releases/20231127082234 )
+  INFO [be9dd6df] Finished in 1.062 seconds with exit status 0 (successful).
+  INFO [2847afed] Running /usr/bin/env git archive heuc | /usr/bin/env tar -x -f - -C /home/newdeploy/hpremier/releases/20231127082234 as newdeploy@162.19.170.198
+ DEBUG [2847afed] Command: cd /home/newdeploy/hpremier/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-dbe31bd5a589c4c875b4.sh" ; /usr/bin/env git archive heuc | /usr/bin/env tar -x -f - -C /home/newdeploy/hpremier/releases/20231127082234 )
+  INFO [2847afed] Finished in 1.139 seconds with exit status 0 (successful).
+ DEBUG [9720f9f7] Running if test ! -d /home/newdeploy/hpremier/repo; then echo "Directory does not exist '/home/newdeploy/hpremier/repo'" 1>&2; false; fi as newdeploy@162.19.170.198
+ DEBUG [9720f9f7] Command: if test ! -d /home/newdeploy/hpremier/repo; then echo "Directory does not exist '/home/newdeploy/hpremier/repo'" 1>&2; false; fi
+ DEBUG [9720f9f7] Finished in 1.268 seconds with exit status 0 (successful).
+ DEBUG [1f8017e6] Running /usr/bin/env git rev-list --max-count=1 heuc as newdeploy@162.19.170.198
+ DEBUG [1f8017e6] Command: cd /home/newdeploy/hpremier/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-dbe31bd5a589c4c875b4.sh" ; /usr/bin/env git rev-list --max-count=1 heuc )
+ DEBUG [1f8017e6] 	a7b0ff23585814c3d9f40105affdc6f8a87a3aa9
+ DEBUG [1f8017e6] Finished in 1.602 seconds with exit status 0 (successful).
+ DEBUG [531d543e] Running if test ! -d /home/newdeploy/hpremier/releases/20231127082234; then echo "Directory does not exist '/home/newdeploy/hpremier/releases/20231127082234'" 1>&2; false; fi as newdeploy@162.19.170.198
+ DEBUG [531d543e] Command: if test ! -d /home/newdeploy/hpremier/releases/20231127082234; then echo "Directory does not exist '/home/newdeploy/hpremier/releases/20231127082234'" 1>&2; false; fi
+ DEBUG [531d543e] Finished in 0.970 seconds with exit status 0 (successful).
+  INFO [315ddcda] Running /usr/bin/env echo "a7b0ff23585814c3d9f40105affdc6f8a87a3aa9" > REVISION as newdeploy@162.19.170.198
+ DEBUG [315ddcda] Command: cd /home/newdeploy/hpremier/releases/20231127082234 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "a7b0ff23585814c3d9f40105affdc6f8a87a3aa9" > REVISION )
+  INFO [315ddcda] Finished in 1.594 seconds with exit status 0 (successful).
+  INFO [f1468daf] Running /usr/bin/env mkdir -p /home/newdeploy/hpremier/releases/20231127082234 /home/newdeploy/hpremier/releases/20231127082234/tmp /home/newdeploy/hpremier/releases/20231127082234/vendor /home/newdeploy/hpremier/releases/20231127082234/public as newdeploy@162.19.170.198
+ DEBUG [f1468daf] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/hpremier/releases/20231127082234 /home/newdeploy/hpremier/releases/20231127082234/tmp /home/newdeploy/hpremier/releases/20231127082234/vendor /home/newdeploy/hpremier/releases/20231127082234/public )
+  INFO [f1468daf] Finished in 0.827 seconds with exit status 0 (successful).
+ DEBUG [b71a2640] Running [ -L /home/newdeploy/hpremier/releases/20231127082234/log ] as newdeploy@162.19.170.198
+ DEBUG [b71a2640] Command: [ -L /home/newdeploy/hpremier/releases/20231127082234/log ]
+ DEBUG [b71a2640] Finished in 2.435 seconds with exit status 1 (failed).
+ DEBUG [2d852df1] Running [ -d /home/newdeploy/hpremier/releases/20231127082234/log ] as newdeploy@162.19.170.198
+ DEBUG [2d852df1] Command: [ -d /home/newdeploy/hpremier/releases/20231127082234/log ]
+ DEBUG [2d852df1] Finished in 0.747 seconds with exit status 0 (successful).
+  INFO [759ca94a] Running /usr/bin/env rm -rf /home/newdeploy/hpremier/releases/20231127082234/log as newdeploy@162.19.170.198
+ DEBUG [759ca94a] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env rm -rf /home/newdeploy/hpremier/releases/20231127082234/log )
+  INFO [759ca94a] Finished in 1.419 seconds with exit status 0 (successful).
+  INFO [28492e69] Running /usr/bin/env ln -s /home/newdeploy/hpremier/shared/log /home/newdeploy/hpremier/releases/20231127082234/log as newdeploy@162.19.170.198
+ DEBUG [28492e69] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/hpremier/shared/log /home/newdeploy/hpremier/releases/20231127082234/log )
+  INFO [28492e69] Finished in 1.096 seconds with exit status 0 (successful).
+ DEBUG [6ee8ad55] Running [ -L /home/newdeploy/hpremier/releases/20231127082234/tmp/pids ] as newdeploy@162.19.170.198
+ DEBUG [6ee8ad55] Command: [ -L /home/newdeploy/hpremier/releases/20231127082234/tmp/pids ]
+ DEBUG [6ee8ad55] Finished in 2.751 seconds with exit status 1 (failed).
+ DEBUG [7d9b36bb] Running [ -d /home/newdeploy/hpremier/releases/20231127082234/tmp/pids ] as newdeploy@162.19.170.198
+ DEBUG [7d9b36bb] Command: [ -d /home/newdeploy/hpremier/releases/20231127082234/tmp/pids ]
+ DEBUG [7d9b36bb] Finished in 1.114 seconds with exit status 1 (failed).
+  INFO [c2f1e81d] Running /usr/bin/env ln -s /home/newdeploy/hpremier/shared/tmp/pids /home/newdeploy/hpremier/releases/20231127082234/tmp/pids as newdeploy@162.19.170.198
+ DEBUG [c2f1e81d] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/hpremier/shared/tmp/pids /home/newdeploy/hpremier/releases/20231127082234/tmp/pids )
+  INFO [c2f1e81d] Finished in 0.760 seconds with exit status 0 (successful).
+ DEBUG [408b2d70] Running [ -L /home/newdeploy/hpremier/releases/20231127082234/tmp/cache ] as newdeploy@162.19.170.198
+ DEBUG [408b2d70] Command: [ -L /home/newdeploy/hpremier/releases/20231127082234/tmp/cache ]
+ DEBUG [408b2d70] Finished in 2.203 seconds with exit status 1 (failed).
+ DEBUG [3dd13d4f] Running [ -d /home/newdeploy/hpremier/releases/20231127082234/tmp/cache ] as newdeploy@162.19.170.198
+ DEBUG [3dd13d4f] Command: [ -d /home/newdeploy/hpremier/releases/20231127082234/tmp/cache ]
+ DEBUG [3dd13d4f] Finished in 1.954 seconds with exit status 0 (successful).
+  INFO [120ffb6e] Running /usr/bin/env rm -rf /home/newdeploy/hpremier/releases/20231127082234/tmp/cache as newdeploy@162.19.170.198
+ DEBUG [120ffb6e] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env rm -rf /home/newdeploy/hpremier/releases/20231127082234/tmp/cache )
+  INFO [120ffb6e] Finished in 4.065 seconds with exit status 0 (successful).
+  INFO [420dc81a] Running /usr/bin/env ln -s /home/newdeploy/hpremier/shared/tmp/cache /home/newdeploy/hpremier/releases/20231127082234/tmp/cache as newdeploy@162.19.170.198
+ DEBUG [420dc81a] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/hpremier/shared/tmp/cache /home/newdeploy/hpremier/releases/20231127082234/tmp/cache )
+  INFO [420dc81a] Finished in 1.362 seconds with exit status 0 (successful).
+ DEBUG [b5ec71a1] Running [ -L /home/newdeploy/hpremier/releases/20231127082234/tmp/sockets ] as newdeploy@162.19.170.198
+ DEBUG [b5ec71a1] Command: [ -L /home/newdeploy/hpremier/releases/20231127082234/tmp/sockets ]
+ DEBUG [b5ec71a1] Finished in 0.703 seconds with exit status 1 (failed).
+ DEBUG [a90ba95f] Running [ -d /home/newdeploy/hpremier/releases/20231127082234/tmp/sockets ] as newdeploy@162.19.170.198
+ DEBUG [a90ba95f] Command: [ -d /home/newdeploy/hpremier/releases/20231127082234/tmp/sockets ]
+ DEBUG [a90ba95f] Finished in 1.622 seconds with exit status 1 (failed).
+  INFO [bbe29791] Running /usr/bin/env ln -s /home/newdeploy/hpremier/shared/tmp/sockets /home/newdeploy/hpremier/releases/20231127082234/tmp/sockets as newdeploy@162.19.170.198
+ DEBUG [bbe29791] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/hpremier/shared/tmp/sockets /home/newdeploy/hpremier/releases/20231127082234/tmp/sockets )
+  INFO [bbe29791] Finished in 2.251 seconds with exit status 0 (successful).
+ DEBUG [90fde8d3] Running [ -L /home/newdeploy/hpremier/releases/20231127082234/vendor/bundle ] as newdeploy@162.19.170.198
+ DEBUG [90fde8d3] Command: [ -L /home/newdeploy/hpremier/releases/20231127082234/vendor/bundle ]
+ DEBUG [90fde8d3] Finished in 1.747 seconds with exit status 1 (failed).
+ DEBUG [e5dac7e0] Running [ -d /home/newdeploy/hpremier/releases/20231127082234/vendor/bundle ] as newdeploy@162.19.170.198
+ DEBUG [e5dac7e0] Command: [ -d /home/newdeploy/hpremier/releases/20231127082234/vendor/bundle ]
+ DEBUG [e5dac7e0] Finished in 1.017 seconds with exit status 1 (failed).
+  INFO [eeb903a6] Running /usr/bin/env ln -s /home/newdeploy/hpremier/shared/vendor/bundle /home/newdeploy/hpremier/releases/20231127082234/vendor/bundle as newdeploy@162.19.170.198
+ DEBUG [eeb903a6] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/hpremier/shared/vendor/bundle /home/newdeploy/hpremier/releases/20231127082234/vendor/bundle )
+  INFO [eeb903a6] Finished in 0.552 seconds with exit status 0 (successful).
+ DEBUG [ee2db2c1] Running [ -L /home/newdeploy/hpremier/releases/20231127082234/public/system ] as newdeploy@162.19.170.198
+ DEBUG [ee2db2c1] Command: [ -L /home/newdeploy/hpremier/releases/20231127082234/public/system ]
+ DEBUG [ee2db2c1] Finished in 1.914 seconds with exit status 1 (failed).
+ DEBUG [99639f3e] Running [ -d /home/newdeploy/hpremier/releases/20231127082234/public/system ] as newdeploy@162.19.170.198
+ DEBUG [99639f3e] Command: [ -d /home/newdeploy/hpremier/releases/20231127082234/public/system ]
+ DEBUG [99639f3e] Finished in 1.171 seconds with exit status 1 (failed).
+  INFO [3dfcddef] Running /usr/bin/env ln -s /home/newdeploy/hpremier/shared/public/system /home/newdeploy/hpremier/releases/20231127082234/public/system as newdeploy@162.19.170.198
+ DEBUG [3dfcddef] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/hpremier/shared/public/system /home/newdeploy/hpremier/releases/20231127082234/public/system )
+  INFO [3dfcddef] Finished in 0.673 seconds with exit status 0 (successful).
+ DEBUG [76debae6] Running [ -L /home/newdeploy/hpremier/releases/20231127082234/public/uploads ] as newdeploy@162.19.170.198
+ DEBUG [76debae6] Command: [ -L /home/newdeploy/hpremier/releases/20231127082234/public/uploads ]
+ DEBUG [76debae6] Finished in 0.727 seconds with exit status 1 (failed).
+ DEBUG [93be83b8] Running [ -d /home/newdeploy/hpremier/releases/20231127082234/public/uploads ] as newdeploy@162.19.170.198
+ DEBUG [93be83b8] Command: [ -d /home/newdeploy/hpremier/releases/20231127082234/public/uploads ]
+ DEBUG [93be83b8] Finished in 3.641 seconds with exit status 1 (failed).
+  INFO [93505ed1] Running /usr/bin/env ln -s /home/newdeploy/hpremier/shared/public/uploads /home/newdeploy/hpremier/releases/20231127082234/public/uploads as newdeploy@162.19.170.198
+ DEBUG [93505ed1] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/hpremier/shared/public/uploads /home/newdeploy/hpremier/releases/20231127082234/public/uploads )
+  INFO [93505ed1] Finished in 1.666 seconds with exit status 0 (successful).
+ DEBUG [69edb73a] Running [ -L /home/newdeploy/hpremier/releases/20231127082234/public/assets ] as newdeploy@162.19.170.198
+ DEBUG [69edb73a] Command: [ -L /home/newdeploy/hpremier/releases/20231127082234/public/assets ]
+ DEBUG [69edb73a] Finished in 4.276 seconds with exit status 1 (failed).
+ DEBUG [ba9ac46d] Running [ -d /home/newdeploy/hpremier/releases/20231127082234/public/assets ] as newdeploy@162.19.170.198
+ DEBUG [ba9ac46d] Command: [ -d /home/newdeploy/hpremier/releases/20231127082234/public/assets ]
+ DEBUG [ba9ac46d] Finished in 2.096 seconds with exit status 1 (failed).
+  INFO [4546f616] Running /usr/bin/env ln -s /home/newdeploy/hpremier/shared/public/assets /home/newdeploy/hpremier/releases/20231127082234/public/assets as newdeploy@162.19.170.198
+ DEBUG [4546f616] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/hpremier/shared/public/assets /home/newdeploy/hpremier/releases/20231127082234/public/assets )
+  INFO [4546f616] Finished in 3.577 seconds with exit status 0 (successful).
+ DEBUG [d781d06f] Running if test ! -d /home/newdeploy/hpremier/releases/20231127082234; then echo "Directory does not exist '/home/newdeploy/hpremier/releases/20231127082234'" 1>&2; false; fi as newdeploy@162.19.170.198
+ DEBUG [d781d06f] Command: if test ! -d /home/newdeploy/hpremier/releases/20231127082234; then echo "Directory does not exist '/home/newdeploy/hpremier/releases/20231127082234'" 1>&2; false; fi
+ DEBUG [d781d06f] Finished in 3.855 seconds with exit status 0 (successful).
+  INFO [e86229fb] Running $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true as newdeploy@162.19.170.198
+ DEBUG [e86229fb] Command: cd /home/newdeploy/hpremier/releases/20231127082234 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true )
+  INFO [e86229fb] Finished in 1.033 seconds with exit status 0 (successful).
+  INFO [f89f4a1e] Running $HOME/.rbenv/bin/rbenv exec bundle config --local path /home/newdeploy/hpremier/shared/bundle as newdeploy@162.19.170.198
+ DEBUG [f89f4a1e] Command: cd /home/newdeploy/hpremier/releases/20231127082234 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local path /home/newdeploy/hpremier/shared/bundle )
+  INFO [f89f4a1e] Finished in 0.630 seconds with exit status 0 (successful).
+  INFO [72069949] Running $HOME/.rbenv/bin/rbenv exec bundle config --local without development:test as newdeploy@162.19.170.198
+ DEBUG [72069949] Command: cd /home/newdeploy/hpremier/releases/20231127082234 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local without development:test )
+  INFO [72069949] Finished in 2.115 seconds with exit status 0 (successful).
+ DEBUG [2350fae6] Running if test ! -d /home/newdeploy/hpremier/releases/20231127082234; then echo "Directory does not exist '/home/newdeploy/hpremier/releases/20231127082234'" 1>&2; false; fi as newdeploy@162.19.170.198
+ DEBUG [2350fae6] Command: if test ! -d /home/newdeploy/hpremier/releases/20231127082234; then echo "Directory does not exist '/home/newdeploy/hpremier/releases/20231127082234'" 1>&2; false; fi
+ DEBUG [2350fae6] Finished in 1.946 seconds with exit status 0 (successful).
+ DEBUG [f147ec74] Running $HOME/.rbenv/bin/rbenv exec bundle check as newdeploy@162.19.170.198
+ DEBUG [f147ec74] Command: cd /home/newdeploy/hpremier/releases/20231127082234 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle check )
+ DEBUG [f147ec74] 	Fetching https://github.com/activeadmin/inherited_resources.git
+ DEBUG [f147ec74] 	https://github.com/activeadmin/inherited_resources.git is not yet checked out.
+Run `bundle install` first.
+ DEBUG [f147ec74] Finished in 1.339 seconds with exit status 11 (failed).
+  INFO [61100c80] Running $HOME/.rbenv/bin/rbenv exec bundle install --jobs 4 --quiet as newdeploy@162.19.170.198
+ DEBUG [61100c80] Command: cd /home/newdeploy/hpremier/releases/20231127082234 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle install --jobs 4 --quiet )
+  INFO [61100c80] Finished in 49.627 seconds with exit status 0 (successful).
+ DEBUG [114b9f77] Running if test ! -d /home/newdeploy/hpremier/releases/20231127082234; then echo "Directory does not exist '/home/newdeploy/hpremier/releases/20231127082234'" 1>&2; false; fi as newdeploy@162.19.170.198
+ DEBUG [114b9f77] Command: if test ! -d /home/newdeploy/hpremier/releases/20231127082234; then echo "Directory does not exist '/home/newdeploy/hpremier/releases/20231127082234'" 1>&2; false; fi
+ DEBUG [114b9f77] Finished in 1.300 seconds with exit status 0 (successful).
+  INFO [426dd6aa] Running $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile as newdeploy@162.19.170.198
+ DEBUG [426dd6aa] Command: cd /home/newdeploy/hpremier/releases/20231127082234 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" RAILS_GROUPS="" ; $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile )
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:48.872978 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/active_admin-3f09e58ecf137041dd7501abff24e641e5a612682d8ec79173f27a66840d5b13.css
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:48.873454 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/active_admin-3f09e58ecf137041dd7501abff24e641e5a612682d8ec79173f27a66840d5b13.css.gz
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:48.873680 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fontawesome-webfont-7bfcab6db99d5cfbf1705ca0536ddc78585432cc5fa41bbd7ad0f009033b2979.eot
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:48.874511 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fontawesome-webfont-7bfcab6db99d5cfbf1705ca0536ddc78585432cc5fa41bbd7ad0f009033b2979.eot.gz
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:48.874652 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fontawesome-webfont-2adefcbc041e7d18fcf2d417879dc5a09997aa64d675b7a3c4b6ce33da13f3fe.woff2
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:48.874817 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fontawesome-webfont-ba0c59deb5450f5cb41b3f93609ee2d0d995415877ddfa223e8a8a7533474f07.woff
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:48.875860 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fontawesome-webfont-aa58f33f239a0fb02f5c7a6c45c043d7a9ac9a093335806694ecd6d4edc0d6a8.ttf
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:48.876090 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fontawesome-webfont-aa58f33f239a0fb02f5c7a6c45c043d7a9ac9a093335806694ecd6d4edc0d6a8.ttf.gz
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:48.876208 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fontawesome-webfont-ad6157926c1622ba4e1d03d478f1541368524bfc46f51e42fe0d945f7ef323e4.svg
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:48.877273 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fontawesome-webfont-ad6157926c1622ba4e1d03d478f1541368524bfc46f51e42fe0d945f7ef323e4.svg.gz
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:48.877583 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/logo-e54d227bb30efb8bc9b26c44ebe6935a788bd9cddb5b1ca8a5cb3da538e9f76f.jpg
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:53.894795 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/active_admin-bd73b0b96c0cb3232834c7da87a43283513d997a95519133f78e732dcb9af05a.js
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:53.894875 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/active_admin-bd73b0b96c0cb3232834c7da87a43283513d997a95519133f78e732dcb9af05a.js.gz
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:54.204662 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/actiontext-38aec689ef3fa9f49f46cce3f311351e8f74ed992bdbdafa431f82dc8fc5bbcc.js
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:54.204743 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/actiontext-38aec689ef3fa9f49f46cce3f311351e8f74ed992bdbdafa431f82dc8fc5bbcc.js.gz
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:55.383352 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/trix-5831b173df5bdd3f6ea88e538f3c1794589514af51bbf014892f6efb097e6d53.js
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:55.383431 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/trix-5831b173df5bdd3f6ea88e538f3c1794589514af51bbf014892f6efb097e6d53.js.gz
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:55.595507 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/trix-e646a084ada46a1c869b550dfb1c729d777c20da14931bee9c44487cc7c28438.css
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:55.595587 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/trix-e646a084ada46a1c869b550dfb1c729d777c20da14931bee9c44487cc7c28438.css.gz
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:55.788577 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/my_print_stylesheet-2aed6148fbee3769b04f7e84bb732fb1e1517b2656b208c3c0e62ef7ecdf53b7.css
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:55.788673 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/my_print_stylesheet-2aed6148fbee3769b04f7e84bb732fb1e1517b2656b208c3c0e62ef7ecdf53b7.css.gz
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:55.788793 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/a43-711684e46dc1ae79c2cf8fa2dfa1c67e892707540f1dcd7c24bd7ee3791e7bc4.jpg
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.083396 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/activestorage-cff7ee45a11cc91de2cb576485bea6a6f06e81f8d878593c8a941270e66125cb.js
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.083481 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/activestorage-cff7ee45a11cc91de2cb576485bea6a6f06e81f8d878593c8a941270e66125cb.js.gz
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.344706 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/activestorage.esm-dcc84ca501816288b2ec4891d819183d8309005f79da6756b4c12da4b1edbe02.js
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.344799 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/activestorage.esm-dcc84ca501816288b2ec4891d819183d8309005f79da6756b4c12da4b1edbe02.js.gz
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.478676 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/actioncable-50da8baf37ad2ebc311be45df6420038f114341a0fc3a2a43e9b7979822dca32.js
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.478760 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/actioncable-50da8baf37ad2ebc311be45df6420038f114341a0fc3a2a43e9b7979822dca32.js.gz
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.599472 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/actioncable.esm-fbb5dfe28663d4618729c2c72eb4afc9e78e988d25e37e87267a45c1b34b84df.js
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.599563 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/actioncable.esm-fbb5dfe28663d4618729c2c72eb4afc9e78e988d25e37e87267a45c1b34b84df.js.gz
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.601260 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/Asset 3-6393597a427a0e7d55a707c5bd727fbc7467cad41ab9c5350178aa71a9d14a75.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.602322 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/Asset3-6393597a427a0e7d55a707c5bd727fbc7467cad41ab9c5350178aa71a9d14a75.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.603261 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/a1-ac4971efd3ae8cecab02aa001da56279aab931e757d0b776d53a930f081df04f.jpg
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.604103 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/apple-touch-icon-66e7252ff9afd2c49ca8fd05f708bc330a42beaf1af7fc2ab6998cb3dc654bda.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.604744 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/bank-logo-68492508dcf2849a9aff5c8a3f9ce366c6d26052dfa9a56614c18ec3d3debe88.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.605570 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/banner-82eec36f350c9a12e9f69503cd6818765cee331664eab75272dabee8fc96b97e.jpg
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.606841 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/bg-e0680532465fe0155956feabafe98f574ba0fc1f3164b83354310a959acaadfc.jpg
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.607672 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/blank-profile-picture-973460_640-c6176daa79e0b765aaa2547b00b4f89cc40ca69e274ddcc123d271cd0a0ac574.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.608343 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/church-b851353cb67789c348fd60982cb6eaaedb6391d3dfee46515097f3bf9481979f.jpg
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.609013 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/church-e0636d9437989f670bd89e017b109958091688a3b41d5fe04db5ac2fca063bf8.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.609869 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/favicon-6aef8c074c3a83b3c3c5793ec758bf377d75b70f36a6414a14f57c6ac3da6893.ico
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.609968 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/favicon-6aef8c074c3a83b3c3c5793ec758bf377d75b70f36a6414a14f57c6ac3da6893.ico.gz
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.610624 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/favicon-8eb9ffc8b36969d4a82d36631fb758c4b7b758de4f64aa5b4889cdf723e5debb.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.611442 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/leadstar-880c640a7124f530a8ed3347e6c4f7dcec89bbbf0d08eae589a8d86faecb9d4b.jpg
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.612203 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/leadstar-300f9beff1656adafd9d8d392a3933bec8c2c48e89985edec2f29b60bed3cbe6.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.613067 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/leadstarbanner-65ab30dca80b91852ab33c98a0d0f7825ea224e1a5236421d5ee6db3f0f39fbc.jpg
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.613977 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/logo-90b47cb60a62300354226631dccbcf834da4ce9ba6b58de0e8fdfabaada15fad.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.614621 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/logo2-538b707a765687ab7e72f4e72b25ee52bb8e174c9ebfd6873f9c0ae5a7eae3e1.jpg
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.615282 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/logo2-3e20cb341bba148f0354790e94064777181f6111c0109fb0ba6a81e934ebee91.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.615938 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/ngvc-4427cd8dfdb3f1d3a56e649241e5d04c58dde9e06de3e35628b3ef6a3b54a44a.jpg
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.616612 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/ngvc-5b62fca5d981ac8895c060d92fe0675d14d01f0e768b2279477a6b6392698e9e.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.617408 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/placeholder-d52378a9e9af3c40de7651761f9d79d36ae514fed86baf89932a5542964273d3.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.618692 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/sign-in-84f59812207644a71f31bc167ed8e6a1176a1e2aee35d5a15d3e9c5bd22dea6a.jpg
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.619428 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/yesu-bc5e28386442d43a3d8b55b0752340faea6d75b3a78d26ecee296540956ed515.jpg
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:56.620573 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/yesu-78cecd857aa2a446dd4ae260357aafdb1d02a5750dcf61d4d78add09f5f4209d.png
+ DEBUG [426dd6aa] 	W, [2023-11-27T08:24:56.681036 #2818214]  WARN -- : Removed sourceMappingURL comment for missing asset 'adminlte.min.js.map' from /home/newdeploy/hpremier/releases/20231127082234/app/assets/javascripts/adminlte.min.js
+ DEBUG [426dd6aa] 	W, [2023-11-27T08:24:56.688930 #2818214]  WARN -- : Removed sourceMappingURL comment for missing asset 'bs-stepper.min.js.map' from /home/newdeploy/hpremier/releases/20231127082234/app/assets/javascripts/bs-stepper.min.js
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:59.734037 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/application-b6c68200b291c82f2288a7d3463668b7aabb93af722294ba8116fba853483373.js
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:24:59.734120 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/application-b6c68200b291c82f2288a7d3463668b7aabb93af722294ba8116fba853483373.js.gz
+ DEBUG [426dd6aa] 	autoprefixer: /home/newdeploy/hpremier/releases/20231127082234/app/assets/stylesheets/application.css.scss:20507:3: Replace color-adjust to print-color-adjust. The color-adjust shorthand is currently deprecated.
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.855717 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/application-d596edbf975eeab46755d54cac10a2da6af8639d1bdd79b0c26f3e19c0831964.css
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.855795 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/application-d596edbf975eeab46755d54cac10a2da6af8639d1bdd79b0c26f3e19c0831964.css.gz
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.862064 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/active_material/icons/account_circle-75f753fccce1f1750a37068208ade1fc0e5489d9a98de57f99e2747d390001fb.svg
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.862166 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/active_material/icons/account_circle-75f753fccce1f1750a37068208ade1fc0e5489d9a98de57f99e2747d390001fb.svg.gz
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.863063 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/active_material/icons/arrow-dropdown-93cdb34fae47555088422091da046ff9b252673967f30b017fa9ecd2b4ef7585.svg
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.863143 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/active_material/icons/arrow-dropdown-93cdb34fae47555088422091da046ff9b252673967f30b017fa9ecd2b4ef7585.svg.gz
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.863837 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/active_material/icons/arrow_down-835d6bbde1380b8d1e6ea873abde33215612da0342601fb21ef2c13868094b91.svg
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.863918 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/active_material/icons/arrow_down-835d6bbde1380b8d1e6ea873abde33215612da0342601fb21ef2c13868094b91.svg.gz
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.864616 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/active_material/icons/clear-724e5c08f3c81476319a3e83bae49fff8c747e984232af84541730941eb95c8e.svg
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.864697 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/active_material/icons/clear-724e5c08f3c81476319a3e83bae49fff8c747e984232af84541730941eb95c8e.svg.gz
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.865368 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/active_material/icons/create-60fdaf16949b7b3b816754d3f63a0c1eecd3cc749d4a9079d0e79af416702eb5.svg
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.865433 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/active_material/icons/create-60fdaf16949b7b3b816754d3f63a0c1eecd3cc749d4a9079d0e79af416702eb5.svg.gz
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.866118 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/active_material/icons/email-ff1c595ff9f72629c40d250e5eb8c37c52480ce67d02fd773f165c251046132f.svg
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.866191 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/active_material/icons/email-ff1c595ff9f72629c40d250e5eb8c37c52480ce67d02fd773f165c251046132f.svg.gz
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.876946 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/active_material/icons/event-cdca0160ebdc4e778f5b63df0739b6c60592fa46ddb5f8af9dbe344dbcfed3f8.svg
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.877030 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/active_material/icons/event-cdca0160ebdc4e778f5b63df0739b6c60592fa46ddb5f8af9dbe344dbcfed3f8.svg.gz
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.877700 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/active_material/icons/more-50a9ac99058eaf05a7a8cef5e62c03a533668990fb1eb600f76e3eaf76f1d27a.svg
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.877776 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/active_material/icons/more-50a9ac99058eaf05a7a8cef5e62c03a533668990fb1eb600f76e3eaf76f1d27a.svg.gz
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.878472 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/active_material/icons/reorder-9838b7dd05efc289655b100df8bc3da883697d726c92157dacbb71d3a14545a9.svg
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.878538 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/active_material/icons/reorder-9838b7dd05efc289655b100df8bc3da883697d726c92157dacbb71d3a14545a9.svg.gz
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.879191 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/active_material/icons/search-cde9b818b33af096f81eaeb13c426c9788a3ae9e421ef50b86fd38383315c225.svg
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.879259 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/active_material/icons/search-cde9b818b33af096f81eaeb13c426c9788a3ae9e421ef50b86fd38383315c225.svg.gz
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.879958 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/active_material/icons/secret-4ac1e52d6ea197ec9e0432e44579067a2c265ece3af04e4852875a1d72fe1be5.svg
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.880026 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/active_material/icons/secret-4ac1e52d6ea197ec9e0432e44579067a2c265ece3af04e4852875a1d72fe1be5.svg.gz
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.882145 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_3gp-54a044cbf08c8c2339eefed1e6d6a9418f2267307f55fce9b1a11abbf3141e15.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.882871 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_7z-468112586d1de97c4537a4bae9f047bb418fb683ce2bfdf72e33fd2d7a74be2d.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.883594 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_ace-2536e1b50b76d4014038b7d2536c5845767caf1da1e956323ede417eda7bef0c.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.884308 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_ai-0598426ce798d0ae537ac56e64ab642ac4d423d0d63b19951ee3bfafd5a51401.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.884987 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_aif-4e524ce4cb34a21f908229079dd13456fc34915f7541c985a048928377b5b718.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.885675 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_aiff-51bd36d0f131c5ad0dc3e16253834fbe8c4679de14f955c017319b4b1c2db348.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.886354 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_amr-d89fe352cece522395b8f485576801851b11a04813011fec35c2125d2a84f63c.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.887029 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_asf-8c6b7789acde80e5d56f1835192a65d51d94b44f2ef48ff90831eb13a9de424d.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.887749 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_asx-07061fa581ba5853d8edf1cdb1d202e2fa6816dae97e24184c924c20fda198c0.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.888481 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_bat-42e4aebaea5a62c84e28ce7e0af4223391ba6e9bab99a30281756f206006558c.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.889259 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_bin-7216af2b795c49ddc346340adf4f063a47fd5fd639fef3505c88c59a4a91901e.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.889936 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_bmp-91c9515acc985d9503c01033931f110b549faf47d188f69f75ca477de5212720.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.890656 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_bup-82be1953ec9444a90791c01d11a5ca750d95ea8426a9040f934912dd436f1f92.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.891328 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_cab-2e1f8965b1af82e24c03d8c796cc42e32671ef1226c20ffe3c7122b15af055f6.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.892027 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_cbr-1e40efd741ce5769666eb7a675f2b51d6e0f90b00a80db6556fb54856077b33e.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.892680 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_cda-75ca731ce5c4a7f4dc67d07013d9332718470b1ea0a0aac49d7c80f54d72fcff.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.893359 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_cdl-e934a05655047a11cc2867745623a5b3125a2d70b7f4515817a169626a0074cf.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.894038 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_cdr-e4e9e76910cae758984f62f411020fc8355f59bc7730220501f3adaaa85bea60.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.894698 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_chm-b7933101682b272f5314a625ae1e25a448a4f12c7eaa6cc5272a0cd5b02bc393.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.895406 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_dat-817af8b9969ef03d68e07c0ba5b0bb74c6ce4365820efd7ca13aabeb21e352b2.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.896078 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_divx-7205179c4fc773b59e959cb8befdcb519719ed23058d3847d13959d2f33863e6.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.896745 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_dll-d676d8774f9d4e4397793bdcb8dcef3acf0168d3ce9d38cb77c0dca1874cd135.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.897400 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_dmg-a9adb51fbbd0377a5b14b39bd634b972261d22b914791d2f76c6ddfdaf9180cc.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.898064 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_doc-fc42f726b3c14367328a707cc608c100c7dd218ee03c0c20efe14818f1374c8c.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.898780 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_docx-02de2ddcb6d2c2c66ae2c0ee00768f3c32f292b2bb8f3797049c830e57f5da53.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.899428 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_dss-e3d43589d4f97f4bdb5c424df44ffb32ee4a68620f90c3af1e0c0d37c66f0e66.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.900070 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_dvf-83b706e4a4fe13b85afde50be813aeb7832df178cb662c74d27635fb782e4ab7.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.900715 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_dwg-33a0e7affa2955428fc4cdb275cfda112fb5a29576da3823606e2f5a2e0068c4.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.901386 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_eml-54b8e5d55113439dbd25396430ddefb02fc4d3cd4dcb733eff2bf9b3e91c959f.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.902060 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_eps-a01904c03e0ddc5080a6d1226c6e311388c305342c7be27180a556e5b9e4e2d0.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.902724 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_exe-de3471ceb124ef107b99ead3d3ade615273576f547af1907bb3af8755ce89cae.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.903394 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_fla-790adfa262f3e6d11cdb3e735644d8bed5ddd177038d2b4c699cca215af098e2.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.904085 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_flv-45d3e8ea1527d90fe9d5685ceff7eb105e8b23feaf3c35735fbf34912ce5ba2f.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.904753 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_gif-0295cf8032e6732f657d396aed26dfb9929deaee54cb7e4608b5ce9ad34f7464.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.905411 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_gz-83d9e9a87ca0ab68ac7c281475b2673401952b08e90deaf13de1587df7f52a01.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.906073 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_hqx-e761e0ac864b38870ab328f3e5d4568598c52427726c556ffd1857d07f8c8fd7.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.906740 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_htm-9980d8148ff18f448a06486a2f9bcd8ca7365fc8e335625cee231a094b4c773c.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.907406 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_html-97ae64b96eb9a25058cfc19345a49cde8d5573ce91470f7c13104c647f5050a4.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.908093 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_ifo-ffe4f06b660a46cb20e838bf1b482dcfa78746b5ef32f110f9e5caf04aca5af4.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.908749 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_indd-9174d8dbad8bdeb44b1112b72cbecc8c42ceb4e8a604f1f50e1b50530a18638f.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.909425 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_iso-1c39a2853cfc13dae39e60da1deb28ac2bf20c828f8504153666f412c43e7b83.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.910093 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_jar-5173edf3bb695cf2b75f4644a50f769b3e63a76474b0a8af90602585652bbea1.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.910751 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_jpeg-62792df335519212e478bce6a09e0581a3df75692feeb57161e31116f2811240.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.911393 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_jpg-c2464ad286f7d805dd5cfc4596ceaf1b362f088d8c152b59a59651615456ed86.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.912061 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_lnk-d961979262eb821e2d22167027c0703f58dbf23bd712fbe2934029e7547606cc.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.912704 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_log-d69e49a1847977e9232ef909c4977455feb201409bf5af0fb843da86200289ae.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.913376 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_m4a-10ed68e617b36ec99877c171d4fdfa6a9a762bbdee3e27008617061bf4d38f93.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.914006 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_m4b-37101c08496da5ec8ec5bec0a09b4f1e536a67e7e5f2bf00a6e1550f12a9892b.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.914652 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_m4p-87632d3a16553795cc4f9c85c5ce8209a1fa66471397ecd6464a4ea7e39c583f.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.915308 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_m4v-158e43a86217403fb5bfac656f5702d4c9f0faab1e7d2d2f799b0f064a06fe08.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.915966 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_mcd-6950036cf3adb2653d4d964b7d1cea40d668d1939a56f674c4799ddfd2b2b93b.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.916632 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_mdb-c19f4518c9ff77643c64c6186da9c3c44497f33a37b8d7a33d41b8509e7244cd.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.917276 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_mid-2ee4b60fa6d6b3d2ce9223a3ec68a7767609fe99358d6c7b57be639ed5e5528b.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.917942 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_mov-4b0253c6042a227a28efcb5dbce525190886c47b7e845c004485f64b4b36b949.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.918575 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_mp2-1ea2627940cec6b6a22b182a74cbbd661597855a0853735043dbeb890161186f.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.919239 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_mp3-a5ce6bd5c5c212ee2363b04c9969716d176b500d5b9e7f93891147e9c00db297.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.919920 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_mp4-274217275e9192f5f91c82915480c481d9f9998f6f28a59a146c2e483030172d.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.920573 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_mpeg-51f1a0b25ecd38acd4319587fd5c03770b7937f8cbadd240118194b1387723e6.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.921233 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_mpg-b66bad32a4c5ae817352600ce3d0558773f0a43ce62e23a20c3de110f778c100.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.921892 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_msi-c081358d9af6f1440754e4780634143cfdf5a9db09b7deffcbd8ddad9834df26.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.922561 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_mswmm-0330a4fb990223394ef741e8c76f4fea9c33e9d005e8b2fc6b742969401e07af.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.923225 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_ogg-9a30110c1b5d25ad2a60376453081a8bad8bdc9ca0496adaadc1dd152550c284.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.923873 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_pdf-0406f720d48adde3738673d3991371fdbed92e86e62f3fac9dc5baf02b3614f6.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.924565 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_png-c49066162a1e58670fde49d2ad8bdf59a6bb0414b434dd4a5246d55a39941ca4.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.925227 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_pps-929bfdd0fe4cce7094fd36c61d3167d3d710c7237128671ed21920ee67fc09a6.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.925935 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_ppt-cd4bbfe9681ce6773ec02fa350a9164b743562bca7c8da4e8cae868c799b16ef.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.926667 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_pptx-953fce0096da8eb59e9af39a120fcd0ce26eaa398688e98fb13c63ba02672e03.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.927326 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_ps-ecb7431489438169c3d69fd8d3ddfbb606608fdb57256c1563aa68a301fa376b.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.927993 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_psd-bf29b99e477d2d1d831cbdc3e83acfa5a6585dbfdc93b87a45d999e3777ac055.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.928647 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_pst-b9057b03d66a1de6f148995e4641487ca4ffa0db6b1798bcaf112ffaa5555762.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.929298 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_ptb-7bc37534bd30c42a44c5ce51b0d2128c9d881ae83eacd71bac126c4093734dcc.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.929962 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_pub-afbba4a5a5aad678ec578965beee2be27eab1b2021c6bb8ea4c6bde89ad70235.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.930618 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_qbb-cdf8094ac39e71f6341a152fe42a809ce281ec8adb076c01e924d22bf2f1dad8.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.931309 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_qbw-eabd9bc42cbc2245ca5a88e795d92f96ddf37796b6bb511e0d580ab54d02d8e8.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.931976 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_qxd-17a5c1658a94f0c5689f19dfb4d75a4bdaf42d2f221acbfd07d7943c58cf59dc.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.932600 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_ram-29785222252e609606c445720b1d3a6aa521b04a439123ef7b677a26342ed7ba.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.933231 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_rar-62b6711f9a9face078d1578166735a6d1e4e93b8cbe4ac315522dddf3843c1c7.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.933887 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_rm-20f08ac06a0c85507214714561583580fe817be9cb08a77f3738d99e9593cf44.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.934569 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_rmvb-0ce3dd46b1dad8e1ca4e1220b40d5d28462564e2c2636c1204c906631ac4b234.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.935229 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_rtf-6b3e1848daad7b6edc75f2c711fa1c04862052917c5a603ca923065b6b8cdff6.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.935887 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_sea-68d00c2a1f638a516560226ff9629f714c682538f156817cb1f0a8b8e2b9da09.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.936569 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_ses-7e67456eaa8a9408e5e922eec1222a4c71e2ac3e2299feb853b17143037fded9.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.937228 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_sit-6ff8514be3f60887b99c96ed7279da772334e499753fe068caf83e56541ad479.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.937903 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_sitx-54ad88a27ef662ba860c3d8069ca19af06b32cb44970167a9282daa28a0441b4.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.938531 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_ss-4912a96ac3ebb64748ee99a7397d8f791446da88772dd88117c9ff0c8412bc1f.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.939188 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_swf-25bf87741415a43c90fff010bdf00e3c651d48e1bcc83346c25318d0ca8ae18b.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.939867 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_tgz-576824ed8ee0545f4499988f963a1e7defec34e0fa9a64e67332410f6b1e24cf.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.940559 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_thm-2287198154475ca8e7912abe0287303cebbb77821c80755f882ab6ca46627d37.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.941217 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_tif-f596e59660f32656cd016479a5c605b873d643a3855ffe2f8111a48d9ba50ef3.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.941872 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_tmp-f3cf0d784f8eff53838136caab9eb615fb377e7b331279963c9e284d7b5a4864.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.942514 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_torrent-dfb633e62e83d2452a6440e3a2640473c809d219c0e9085298a8bb36d1286980.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.943181 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_ttf-480ece61c3e4d541f05e2b423a8abd805ea9c24789a72374109bbf7856c9247d.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.943849 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_txt-212035d18b18bd60e748995241eaf5694e68801a8b62175f2e0b57ea036a4919.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.944473 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_unknown-8ca4e76dabefba0019545bd820e48d8a79fa4ca4eb7c61a3513f4c7c01a71eda.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.945149 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_vcd-bd5a2337cd3405225de3405564853594d3c702678502be60920d4dc88a1a9063.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.945793 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_vob-99106bd53af16444225782107934fdd8200c9e9ad57d78fd8d6dc5ecac6ec0c8.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.946461 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_wav-bf26f19c18ad970b7f0216c2ddff4b48876cafea5eb9d677d60bfc0b80ce6b0f.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.947119 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_wma-1a75e23b5d2596555b98c4aabb9779754aaa58d254ec4381657967298dd08c07.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.947776 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_wmv-efcc0506e13c6ebb823ecdc13cdfb76cf4763895dc3e24621b3b2424d044ac85.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.948452 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_wps-2751ce58f23ae6c93dc28f85dbc14d61632fbc3d941ec41f3893a8f2bab4e2e9.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.949111 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_xls-3ecda2bd05bee6aeda9afad17e795749651f92e44c5335a4e55216a642d6dac3.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.949836 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_xlsx-f01389794788ab077b3bdb5777353b7c34a69476c28cca29a1bd8df8135a7225.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.950480 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_xpi-e1bbd4dd137f0411d1a36a116e7e60ccb78593133f082ad5bbffdd02f91dfe92.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.951135 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/fileicons/file_extension_zip-650e2f6fb99c6913f7febcf12830b2b6c53a03b4d261264c4696e3ff866849ca.png
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.951808 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/material/icons/keyboard_arrow_down-3e723d75840e3ff689a2abf03d88ffb6a4a978417ea966a29014e5699839c934.svg
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.951894 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/material/icons/keyboard_arrow_down-3e723d75840e3ff689a2abf03d88ffb6a4a978417ea966a29014e5699839c934.svg.gz
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.952636 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/material/icons/keyboard_arrow_left-3bdc2706e8ca43938810a8e328b49e94712ad95e3e356488218e58e7ee01afe8.svg
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.952710 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/material/icons/keyboard_arrow_left-3bdc2706e8ca43938810a8e328b49e94712ad95e3e356488218e58e7ee01afe8.svg.gz
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.953369 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/material/icons/keyboard_arrow_right-cc10813340ebf42ff696180a03be1f3ab950e7b4aac6bea6b6d9cd10dc9fbd0c.svg
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.953437 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/material/icons/keyboard_arrow_right-cc10813340ebf42ff696180a03be1f3ab950e7b4aac6bea6b6d9cd10dc9fbd0c.svg.gz
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.954099 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/material/icons/keyboard_arrow_up-515c2f1487224089d31ad568ef95bb58d1a00ef57800ad774394d8a0f45e70fa.svg
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.954187 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/material/icons/keyboard_arrow_up-515c2f1487224089d31ad568ef95bb58d1a00ef57800ad774394d8a0f45e70fa.svg.gz
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.954838 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/material/icons/today-de548732f10cc7e60b7094021f884d8a4bd2485f938848bc302003b0accb304a.svg
+ DEBUG [426dd6aa] 	I, [2023-11-27T08:25:05.954915 #2818214]  INFO -- : Writing /home/newdeploy/hpremier/releases/20231127082234/public/assets/material/icons/today-de548732f10cc7e60b7094021f884d8a4bd2485f938848bc302003b0accb304a.svg.gz
+  INFO [426dd6aa] Finished in 21.552 seconds with exit status 0 (successful).
+ DEBUG [a479aa9d] Running if test ! -d /home/newdeploy/hpremier/releases/20231127082234; then echo "Directory does not exist '/home/newdeploy/hpremier/releases/20231127082234'" 1>&2; false; fi as newdeploy@162.19.170.198
+ DEBUG [a479aa9d] Command: if test ! -d /home/newdeploy/hpremier/releases/20231127082234; then echo "Directory does not exist '/home/newdeploy/hpremier/releases/20231127082234'" 1>&2; false; fi
+ DEBUG [a479aa9d] Finished in 0.520 seconds with exit status 0 (successful).
+  INFO [c6f54c11] Running /usr/bin/env mkdir -p /home/newdeploy/hpremier/releases/20231127082234/assets_manifest_backup as newdeploy@162.19.170.198
+ DEBUG [c6f54c11] Command: cd /home/newdeploy/hpremier/releases/20231127082234 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/hpremier/releases/20231127082234/assets_manifest_backup )
+  INFO [c6f54c11] Finished in 0.466 seconds with exit status 0 (successful).
+ DEBUG [65adb3db] Running /usr/bin/env ls /home/newdeploy/hpremier/releases/20231127082234/public/assets/.sprockets-manifest* as newdeploy@162.19.170.198
+ DEBUG [65adb3db] Command: cd /home/newdeploy/hpremier/releases/20231127082234 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls /home/newdeploy/hpremier/releases/20231127082234/public/assets/.sprockets-manifest* )
+ DEBUG [65adb3db] 	/home/newdeploy/hpremier/releases/20231127082234/public/assets/.sprockets-manifest-80aae07824593fff970eeef2c871fac7.json
+ DEBUG [65adb3db] Finished in 0.621 seconds with exit status 0 (successful).
+ DEBUG [cc8deb83] Running /usr/bin/env ls /home/newdeploy/hpremier/releases/20231127082234/public/assets/.sprockets-manifest* as newdeploy@162.19.170.198
+ DEBUG [cc8deb83] Command: cd /home/newdeploy/hpremier/releases/20231127082234 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls /home/newdeploy/hpremier/releases/20231127082234/public/assets/.sprockets-manifest* )
+ DEBUG [cc8deb83] 	/home/newdeploy/hpremier/releases/20231127082234/public/assets/.sprockets-manifest-80aae07824593fff970eeef2c871fac7.json
+ DEBUG [cc8deb83] Finished in 0.612 seconds with exit status 0 (successful).
+  INFO [2bdf2162] Running /usr/bin/env cp /home/newdeploy/hpremier/releases/20231127082234/public/assets/.sprockets-manifest-80aae07824593fff970eeef2c871fac7.json /home/newdeploy/hpremier/releases/20231127082234/assets_manifest_backup as newdeploy@162.19.170.198
+ DEBUG [2bdf2162] Command: cd /home/newdeploy/hpremier/releases/20231127082234 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env cp /home/newdeploy/hpremier/releases/20231127082234/public/assets/.sprockets-manifest-80aae07824593fff970eeef2c871fac7.json /home/newdeploy/hpremier/releases/20231127082234/assets_manifest_backup )
+  INFO [2bdf2162] Finished in 1.415 seconds with exit status 0 (successful).
+  INFO [deploy:migrate] Run `rake db:migrate`
+ DEBUG [68b7f60a] Running if test ! -d /home/newdeploy/hpremier/releases/20231127082234; then echo "Directory does not exist '/home/newdeploy/hpremier/releases/20231127082234'" 1>&2; false; fi as newdeploy@162.19.170.198
+ DEBUG [68b7f60a] Command: if test ! -d /home/newdeploy/hpremier/releases/20231127082234; then echo "Directory does not exist '/home/newdeploy/hpremier/releases/20231127082234'" 1>&2; false; fi
+ DEBUG [68b7f60a] Finished in 1.441 seconds with exit status 0 (successful).
+  INFO [7d1dc4fa] Running $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate as newdeploy@162.19.170.198
+ DEBUG [7d1dc4fa] Command: cd /home/newdeploy/hpremier/releases/20231127082234 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" ; $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate )
+ DEBUG [7d1dc4fa] 	== 20210619065935 EnableUuid: migrating =======================================
+-- enable_extension("pgcrypto")
+   -> 0.0208s
+== 20210619065935 EnableUuid: migrated (0.0209s) ==============================
+
+== 20210619065943 DeviseCreateAdminUsers: migrating ===========================
+-- create_table(:admin_users, {:id=>:uuid})
+   -> 0.1666s
+-- add_index(:admin_users, :email, {:unique=>true})
+   -> 0.0295s
+-- add_index(:admin_users, :reset_password_token, {:unique=>true})
+   -> 0.0341s
+== 20210619065943 DeviseCreateAdminUsers: migrated (0.2303s) ==================
+
+== 20210619065945 CreateActiveAdminComments: migrating ========================
+-- create_table(:active_admin_comments, {:id=>:uuid})
+   -> 0.1478s
+-- add_index(:active_admin_comments, [:namespace])
+   -> 0.0335s
+== 20210619065945 CreateActiveAdminComments: migrated (0.1814s) ===============
+
+== 20210621093322 CreatePrograms: migrating ===================================
+-- create_table(:programs, {:id=>:uuid})
+   -> 0.0945s
+== 20210621093322 CreatePrograms: migrated (0.0946s) ==========================
+
+== 20210703083709 CreateColleges: migrating ===================================
+-- create_table(:colleges, {:id=>:uuid})
+   -> 0.0658s
+== 20210703083709 CreateColleges: migrated (0.0659s) ==========================
+
+== 20210705082253 CreateFaculties: migrating ==================================
+-- create_table(:faculties, {:id=>:uuid})
+   -> 0.0703s
+== 20210705082253 CreateFaculties: migrated (0.0704s) =========================
+
+== 20210705082254 CreateDepartments: migrating ================================
+-- create_table(:departments, {:id=>:uuid})
+   -> 0.1215s
+== 20210705082254 CreateDepartments: migrated (0.1215s) =======================
+
+== 20210705110021 CreateCourseModules: migrating ==============================
+-- create_table(:course_modules, {:id=>:uuid})
+   -> 0.1054s
+== 20210705110021 CreateCourseModules: migrated (0.1055s) =====================
+
+== 20210705113429 CreateCourses: migrating ====================================
+-- create_table(:courses, {:id=>:uuid})
+   -> 0.1733s
+== 20210705113429 CreateCourses: migrated (0.1733s) ===========================
+
+== 20210706060027 CreateCurriculums: migrating ================================
+-- create_table(:curriculums, {:id=>:uuid})
+   -> 0.1193s
+== 20210706060027 CreateCurriculums: migrated (0.1194s) =======================
+
+== 20210713184101 DeviseCreateStudents: migrating =============================
+-- create_table(:students, {:id=>:uuid})
+   -> 0.4257s
+-- add_index(:students, :email, {:unique=>true})
+   -> 0.0334s
+-- add_index(:students, :reset_password_token, {:unique=>true})
+   -> 0.0335s
+== 20210713184101 DeviseCreateStudents: migrated (0.4928s) ====================
+
+== 20210713200356 CreateStudentAddresses: migrating ===========================
+-- create_table(:student_addresses, {:id=>:uuid})
+   -> 0.1133s
+== 20210713200356 CreateStudentAddresses: migrated (0.1134s) ==================
+
+== 20210714060838 CreateEmergencyContacts: migrating ==========================
+-- create_table(:emergency_contacts, {:id=>:uuid})
+   -> 0.0931s
+== 20210714060838 CreateEmergencyContacts: migrated (0.0932s) =================
+
+== 20210714085800 CreateActiveStorageTables: migrating ========================
+-- create_table(:active_storage_blobs, {:id=>:uuid})
+   -> 0.1535s
+-- create_table(:active_storage_attachments, {:id=>:uuid})
+   -> 0.1455s
+== 20210714085800 CreateActiveStorageTables: migrated (0.2991s) ===============
+
+== 20210823171504 CreatePaymentMethods: migrating =============================
+-- create_table(:payment_methods, {:id=>:uuid})
+   -> 0.0922s
+== 20210823171504 CreatePaymentMethods: migrated (0.0923s) ====================
+
+== 20210823174754 CreateAcademicCalendars: migrating ==========================
+-- create_table(:academic_calendars, {:id=>:uuid})
+   -> 0.0624s
+== 20210823174754 CreateAcademicCalendars: migrated (0.0625s) =================
+
+== 20210823180321 CreateActivities: migrating =================================
+-- create_table(:activities, {:id=>:uuid})
+   -> 0.0924s
+== 20210823180321 CreateActivities: migrated (0.0924s) ========================
+
+== 20210823192720 CreateCollegePayments: migrating ============================
+-- create_table(:college_payments, {:id=>:uuid})
+   -> 0.0775s
+== 20210823192720 CreateCollegePayments: migrated (0.0776s) ===================
+
+== 20210823203149 CreateSemesterRegistrations: migrating ======================
+-- create_table(:semester_registrations, {:id=>:uuid})
+   -> 0.2531s
+== 20210823203149 CreateSemesterRegistrations: migrated (0.2532s) =============
+
+== 20210823215242 CreateCourseRegistrations: migrating ========================
+-- create_table(:course_registrations, {:id=>:uuid})
+   -> 0.3050s
+== 20210823215242 CreateCourseRegistrations: migrated (0.3051s) ===============
+
+== 20210824022521 CreateInvoices: migrating ===================================
+-- create_table(:invoices, {:id=>:uuid})
+   -> 0.2524s
+== 20210824022521 CreateInvoices: migrated (0.2525s) ==========================
+
+== 20210824023314 CreateInvoiceItems: migrating ===============================
+-- create_table(:invoice_items, {:id=>:uuid})
+   -> 0.1921s
+== 20210824023314 CreateInvoiceItems: migrated (0.1922s) ======================
+
+== 20210824023417 CreatePaymentTransactions: migrating ========================
+-- create_table(:payment_transactions, {:id=>:uuid})
+   -> 0.1127s
+== 20210824023417 CreatePaymentTransactions: migrated (0.1128s) ===============
+
+== 20211126003036 CreateGradeRules: migrating =================================
+-- create_table(:grade_rules, {:id=>:uuid})
+   -> 0.0634s
+== 20211126003036 CreateGradeRules: migrated (0.0634s) ========================
+
+== 20211126003319 CreateGrades: migrating =====================================
+-- create_table(:grades, {:id=>:uuid})
+   -> 0.1229s
+== 20211126003319 CreateGrades: migrated (0.1230s) ============================
+
+== 20211126003825 CreateStudentGrades: migrating ==============================
+-- create_table(:student_grades, {:id=>:uuid})
+   -> 0.2253s
+== 20211126003825 CreateStudentGrades: migrated (0.2254s) =====================
+
+== 20211126004032 CreateGradeReports: migrating ===============================
+-- create_table(:grade_reports, {:id=>:uuid})
+   -> 0.2714s
+== 20211126004032 CreateGradeReports: migrated (0.2714s) ======================
+
+== 20211126004555 CreateCourseAssessments: migrating ==========================
+-- create_table(:course_assessments, {:id=>:uuid})
+   -> 0.1618s
+== 20211126004555 CreateCourseAssessments: migrated (0.1619s) =================
+
+== 20211126004620 CreateAssessments: migrating ================================
+-- create_table(:assessments, {:id=>:uuid})
+   -> 0.2172s
+== 20211126004620 CreateAssessments: migrated (0.2173s) =======================
+
+== 20211210023830 CreateSections: migrating ===================================
+-- create_table(:sections, {:id=>:uuid})
+   -> 0.1116s
+== 20211210023830 CreateSections: migrated (0.1117s) ==========================
+
+== 20211210060219 CreateAlmunis: migrating ====================================
+-- create_table(:almunis, {:id=>:uuid})
+   -> 0.0625s
+== 20211210060219 CreateAlmunis: migrated (0.0626s) ===========================
+
+== 20220325124058 CreateSchoolOrUniversityInformations: migrating =============
+-- create_table(:school_or_university_informations, {:id=>:uuid})
+   -> 0.1000s
+== 20220325124058 CreateSchoolOrUniversityInformations: migrated (0.1001s) ====
+
+== 20220329120614 CreateStudentCourses: migrating =============================
+-- create_table(:student_courses, {:id=>:uuid})
+   -> 0.1611s
+== 20220329120614 CreateStudentCourses: migrated (0.1612s) ====================
+
+== 20220401001719 CreateCourseSections: migrating =============================
+-- create_table(:course_sections, {:id=>:uuid})
+   -> 0.0856s
+== 20220401001719 CreateCourseSections: migrated (0.0857s) ====================
+
+== 20220401050610 CreateAttendances: migrating ================================
+-- create_table(:attendances, {:id=>:uuid})
+   -> 0.2299s
+== 20220401050610 CreateAttendances: migrated (0.2300s) =======================
+
+== 20220401050858 CreateSessions: migrating ===================================
+ DEBUG [7d1dc4fa] 	
+-- create_table(:sessions, {:id=>:uuid})
+   -> 0.1897s
+== 20220401050858 CreateSessions: migrated (0.1898s) ==========================
+
+== 20220401051159 CreateStudentAttendances: migrating =========================
+-- create_table(:student_attendances, {:id=>:uuid})
+   -> 0.2071s
+== 20220401051159 CreateStudentAttendances: migrated (0.2072s) ================
+
+== 20220407065442 CreateGradeSystems: migrating ===============================
+-- create_table(:grade_systems, {:id=>:uuid})
+   -> 0.1584s
+== 20220407065442 CreateGradeSystems: migrated (0.1584s) ======================
+
+== 20220407065736 CreateAcademicStatuses: migrating ===========================
+-- create_table(:academic_statuses, {:id=>:uuid})
+   -> 0.1095s
+== 20220407065736 CreateAcademicStatuses: migrated (0.1096s) ==================
+
+== 20220407070814 CreateAssessmentPlans: migrating ============================
+-- create_table(:assessment_plans, {:id=>:uuid})
+   -> 0.5909s
+== 20220407070814 CreateAssessmentPlans: migrated (0.5910s) ===================
+
+== 20220508174158 CreateCourseInstructors: migrating ==========================
+-- create_table(:course_instructors)
+   -> 0.2343s
+== 20220508174158 CreateCourseInstructors: migrated (0.2344s) =================
+
+== 20220515102040 CreateSemesters: migrating ==================================
+-- create_table(:semesters, {:id=>:uuid})
+   -> 0.0578s
+== 20220515102040 CreateSemesters: migrated (0.0579s) =========================
+
+== 20220516143513 CreateGradeChanges: migrating ===============================
+-- create_table(:grade_changes, {:id=>:uuid})
+   -> 0.3741s
+== 20220516143513 CreateGradeChanges: migrated (0.3742s) ======================
+
+== 20220525151029 CreateWithdrawals: migrating ================================
+-- create_table(:withdrawals, {:id=>:uuid})
+   -> 0.2669s
+== 20220525151029 CreateWithdrawals: migrated (0.2670s) =======================
+
+== 20220531013443 CreateRecurringPayments: migrating ==========================
+-- create_table(:recurring_payments, {:id=>:uuid})
+   -> 0.2937s
+== 20220531013443 CreateRecurringPayments: migrated (0.2938s) =================
+
+== 20220605154136 CreateOtherPayments: migrating ==============================
+-- create_table(:other_payments, {:id=>:uuid})
+   -> 0.3264s
+== 20220605154136 CreateOtherPayments: migrated (0.3265s) =====================
+
+== 20220605162333 CreateAddAndDrops: migrating ================================
+-- create_table(:add_and_drops, {:id=>:uuid})
+   -> 0.3023s
+== 20220605162333 CreateAddAndDrops: migrated (0.3024s) =======================
+
+== 20220607070646 CreateAddAndDropCourses: migrating ==========================
+-- create_table(:add_and_drop_courses, {:id=>:uuid})
+   -> 0.1408s
+== 20220607070646 CreateAddAndDropCourses: migrated (0.1409s) =================
+
+== 20220612204126 CreateMakeupExams: migrating ================================
+-- create_table(:makeup_exams, {:id=>:uuid})
+   -> 0.4066s
+== 20220612204126 CreateMakeupExams: migrated (0.4066s) =======================
+
+== 20220614112942 CreatePrerequisites: migrating ==============================
+-- create_table(:prerequisites, {:id=>:uuid})
+   -> 0.1493s
+== 20220614112942 CreatePrerequisites: migrated (0.1494s) =====================
+
+== 20220630074608 AddFinalExamStatusToAssessmentPlan: migrating ===============
+-- add_column(:assessment_plans, :final_exam, :boolean, {:default=>false})
+   -> 0.0022s
+== 20220630074608 AddFinalExamStatusToAssessmentPlan: migrated (0.0023s) ======
+
+== 20220704090006 AddFinalExamStatusToAssessment: migrating ===================
+-- add_column(:assessments, :final_exam, :boolean, {:default=>false})
+   -> 0.0024s
+== 20220704090006 AddFinalExamStatusToAssessment: migrated (0.0025s) ==========
+
+== 20220706155410 CreateTransfers: migrating ==================================
+-- create_table(:transfers, {:id=>:uuid})
+   -> 0.2597s
+== 20220706155410 CreateTransfers: migrated (0.2598s) =========================
+
+== 20220706164346 CreateCourseExemptions: migrating ===========================
+-- create_table(:course_exemptions, {:id=>:uuid})
+   -> 0.1473s
+== 20220706164346 CreateCourseExemptions: migrated (0.1474s) ==================
+
+== 20220718104423 AddNewProgramToTranser: migrating ===========================
+-- add_column(:transfers, :new_program, :string)
+   -> 0.0014s
+== 20220718104423 AddNewProgramToTranser: migrated (0.0015s) ==================
+
+== 20220729014407 CreatePayments: migrating ===================================
+-- create_table(:payments, {:id=>:uuid})
+   -> 0.1481s
+== 20220729014407 CreatePayments: migrated (0.1482s) ==========================
+
+== 20220729021637 AddPaymentVersionToStudent: migrating =======================
+-- add_column(:students, :payment_version, :string)
+   -> 0.0016s
+== 20220729021637 AddPaymentVersionToStudent: migrated (0.0016s) ==============
+
+== 20230612095453 AddServiceNameToActiveStorageBlobs: migrating ===============
+-- table_exists?(:active_storage_blobs)
+   -> 0.0016s
+-- column_exists?(:active_storage_blobs, :service_name)
+   -> 0.0043s
+-- add_column(:active_storage_blobs, :service_name, :string)
+   -> 0.0009s
+-- change_column(:active_storage_blobs, :service_name, :string, {:null=>false})
+   -> 0.0004s
+== 20230612095453 AddServiceNameToActiveStorageBlobs: migrated (0.0292s) ======
+
+== 20230612095454 CreateActiveStorageVariantRecords: migrating ================
+-- table_exists?(:active_storage_blobs)
+   -> 0.0009s
+-- create_table(:active_storage_variant_records, {:id=>:primary_key, :if_not_exists=>true})
+   -> 0.1042s
+== 20230612095454 CreateActiveStorageVariantRecords: migrated (0.1052s) =======
+
+== 20230612095455 RemoveNotNullOnActiveStorageBlobsChecksum: migrating ========
+-- table_exists?(:active_storage_blobs)
+   -> 0.0016s
+-- change_column_null(:active_storage_blobs, :checksum, true)
+   -> 0.0007s
+== 20230612095455 RemoveNotNullOnActiveStorageBlobsChecksum: migrated (0.0025s) 
+
+== 20230627115307 AdddefaulttoGreadreport: migrating ==========================
+-- change_column_default(:grade_reports, :dean_approval, {:from=>"pending", :to=>"approved"})
+   -> 0.0060s
+== 20230627115307 AdddefaulttoGreadreport: migrated (0.0061s) =================
+
+== 20230808113913 AddDefaultValue: migrating ==================================
+-- change_column(:students, :graduation_status, :string, {:default=>"pending"})
+   -> 0.0023s
+== 20230808113913 AddDefaultValue: migrated (0.0024s) =========================
+
+== 20230809134022 AddAcademicYearToCourseRegistration: migrating ==============
+-- add_column(:course_registrations, :academic_year, :integer)
+   -> 0.0014s
+== 20230809134022 AddAcademicYearToCourseRegistration: migrated (0.0014s) =====
+
+== 20230809194957 AddAdmissionDateToStudent: migrating ========================
+-- add_column(:students, :admission_date, :date)
+   -> 0.0016s
+== 20230809194957 AddAdmissionDateToStudent: migrated (0.0017s) ===============
+
+== 20230809201329 AddGraduationYearToStudent: migrating =======================
+-- add_column(:students, :graduation_year, :integer)
+   -> 0.0017s
+== 20230809201329 AddGraduationYearToStudent: migrated (0.0018s) ==============
+
+== 20230811213557 ChangeDepartmentApprovalToApprovedByStudentGrade: migrating =
+-- rename_column(:student_grades, :department_head_name, :approved_by)
+   -> 0.0084s
+-- rename_column(:student_grades, :department_head_date_of_response, :approval_date)
+   -> 0.0062s
+-- add_column(:student_grades, :approving_person_role, :string)
+   -> 0.0008s
+== 20230811213557 ChangeDepartmentApprovalToApprovedByStudentGrade: migrated (0.0156s) 
+
+== 20230814205105 AddMajorToCourse: migrating =================================
+-- add_column(:courses, :major, :boolean, {:default=>false})
+   -> 0.0022s
+== 20230814205105 AddMajorToCourse: migrated (0.0023s) ========================
+
+== 20230909104149 AddAllowEditingToStudent: migrating =========================
+-- add_column(:students, :allow_editing, :boolean, {:default=>false})
+   -> 0.0024s
+== 20230909104149 AddAllowEditingToStudent: migrated (0.0024s) ================
+
+== 20230916094345 AddActualPaymentToSemesterRegistration: migrating ===========
+-- add_column(:semester_registrations, :actual_payment, :integer)
+   -> 0.0014s
+ DEBUG [7d1dc4fa] 	
+== 20230916094345 AddActualPaymentToSemesterRegistration: migrated (0.0015s) ==
+
+== 20230916155107 AddBackInvoiceToSemesterRegistration: migrating =============
+-- add_column(:semester_registrations, :is_back_invoice_created, :boolean, {:default=>false})
+   -> 0.0022s
+== 20230916155107 AddBackInvoiceToSemesterRegistration: migrated (0.0023s) ====
+
+== 20230919181514 ChangeActualPaymentToDecimalInSemesterRegistration: migrating 
+-- change_column(:semester_registrations, :actual_payment, :decimal)
+   -> 0.2782s
+== 20230919181514 ChangeActualPaymentToDecimalInSemesterRegistration: migrated (0.2782s) 
+
+== 20231028125811 CreateExternalTransfers: migrating ==========================
+-- create_table(:external_transfers, {:id=>:uuid})
+   -> 0.1096s
+== 20231028125811 CreateExternalTransfers: migrated (0.1097s) =================
+
+== 20231028192159 AddstudyToExtrnalTransfer: migrating ========================
+-- add_column(:external_transfers, :study_level, :string)
+   -> 0.0016s
+-- add_column(:external_transfers, :admission_type, :string)
+   -> 0.0008s
+== 20231028192159 AddstudyToExtrnalTransfer: migrated (0.0025s) ===============
+
+== 20231029083456 AddmessageExtrnalTransfer: migrating ========================
+-- add_column(:external_transfers, :message, :string)
+   -> 0.0015s
+== 20231029083456 AddmessageExtrnalTransfer: migrated (0.0016s) ===============
+
+== 20231029084310 AddEmailExtrnalTransfer: migrating ==========================
+-- add_column(:external_transfers, :email, :string, {:index=>true})
+   -> 0.0014s
+== 20231029084310 AddEmailExtrnalTransfer: migrated (0.0015s) =================
+
+== 20231029092507 CreateExemptions: migrating =================================
+-- create_table(:exemptions, {:id=>:uuid})
+   -> 0.1280s
+== 20231029092507 CreateExemptions: migrated (0.1281s) ========================
+
+== 20231102115326 ChangemessagetotextinExtrnalTransfer: migrating =============
+-- change_column(:external_transfers, :message, :text)
+   -> 0.0016s
+== 20231102115326 ChangemessagetotextinExtrnalTransfer: migrated (0.0016s) ====
+
+== 20231103105814 AddApprovedByToExternalTransfer: migrating ==================
+-- add_column(:external_transfers, :approved_by, :string)
+   -> 0.0016s
+== 20231103105814 AddApprovedByToExternalTransfer: migrated (0.0016s) =========
+
+== 20231105113304 AdddeanapprovalStatusToExemption: migrating =================
+-- add_column(:exemptions, :dean_approval_status, :integer, {:deafult=>0})
+   -> 0.0016s
+-- add_column(:exemptions, :registeral_approval_status, :integer, {:deafult=>0})
+   -> 0.0009s
+== 20231105113304 AdddeanapprovalStatusToExemption: migrated (0.0026s) ========
+
+  INFO [7d1dc4fa] Finished in 14.826 seconds with exit status 0 (successful).
+ DEBUG [af2d7fef] Running if test ! -d /home/newdeploy/hpremier/releases/20231127082234; then echo "Directory does not exist '/home/newdeploy/hpremier/releases/20231127082234'" 1>&2; false; fi as newdeploy@162.19.170.198
+ DEBUG [af2d7fef] Command: if test ! -d /home/newdeploy/hpremier/releases/20231127082234; then echo "Directory does not exist '/home/newdeploy/hpremier/releases/20231127082234'" 1>&2; false; fi
+ DEBUG [af2d7fef] Finished in 1.425 seconds with exit status 0 (successful).
+  INFO [1081bec2] Running $HOME/.rbenv/bin/rbenv exec bundle exec whenever --update-crontab hpremier_production --set environment=production --roles=app,web,db  as newdeploy@162.19.170.198
+ DEBUG [1081bec2] Command: cd /home/newdeploy/hpremier/releases/20231127082234 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" ; $HOME/.rbenv/bin/rbenv exec bundle exec whenever --update-crontab hpremier_production --set environment=production --roles=app,web,db  )
+ DEBUG [1081bec2] 	[write] crontab file updated
+  INFO [1081bec2] Finished in 1.023 seconds with exit status 0 (successful).
+  INFO [f7886a76] Running /usr/bin/env ln -s /home/newdeploy/hpremier/releases/20231127082234 /home/newdeploy/hpremier/releases/current as newdeploy@162.19.170.198
+ DEBUG [f7886a76] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/hpremier/releases/20231127082234 /home/newdeploy/hpremier/releases/current )
+  INFO [f7886a76] Finished in 1.430 seconds with exit status 0 (successful).
+  INFO [dd1c8af7] Running /usr/bin/env mv /home/newdeploy/hpremier/releases/current /home/newdeploy/hpremier as newdeploy@162.19.170.198
+ DEBUG [dd1c8af7] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mv /home/newdeploy/hpremier/releases/current /home/newdeploy/hpremier )
+  INFO [dd1c8af7] Finished in 2.250 seconds with exit status 0 (successful).
+ DEBUG [79a1a8b7] Running /usr/bin/env pwd as newdeploy@162.19.170.198
+ DEBUG [79a1a8b7] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env pwd )
+ DEBUG [79a1a8b7] 	/home/newdeploy
+ DEBUG [79a1a8b7] Finished in 0.816 seconds with exit status 0 (successful).
+ DEBUG [52f95c46] Running if test ! -d /home/newdeploy; then echo "Directory does not exist '/home/newdeploy'" 1>&2; false; fi as newdeploy@162.19.170.198
+ DEBUG [52f95c46] Command: if test ! -d /home/newdeploy; then echo "Directory does not exist '/home/newdeploy'" 1>&2; false; fi
+ DEBUG [52f95c46] Finished in 1.029 seconds with exit status 0 (successful).
+  INFO [76a8fe11] Running /usr/bin/env mkdir -p /home/newdeploy/hpremier/releases/20231127082234/tmp as newdeploy@162.19.170.198
+ DEBUG [76a8fe11] Command: cd /home/newdeploy && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/hpremier/releases/20231127082234/tmp )
+  INFO [76a8fe11] Finished in 0.608 seconds with exit status 0 (successful).
+  INFO [8a485166] Running /usr/bin/env touch /home/newdeploy/hpremier/releases/20231127082234/tmp/restart.txt as newdeploy@162.19.170.198
+ DEBUG [8a485166] Command: cd /home/newdeploy && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env touch /home/newdeploy/hpremier/releases/20231127082234/tmp/restart.txt )
+  INFO [8a485166] Finished in 1.021 seconds with exit status 0 (successful).
+ DEBUG [5cabec60] Running /usr/bin/env ls -x /home/newdeploy/hpremier/releases as newdeploy@162.19.170.198
+ DEBUG [5cabec60] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls -x /home/newdeploy/hpremier/releases )
+ DEBUG [5cabec60] 	20231127082234
+ DEBUG [5cabec60] Finished in 1.037 seconds with exit status 0 (successful).
+ DEBUG [11ee48d0] Running if test ! -d /home/newdeploy/hpremier/releases; then echo "Directory does not exist '/home/newdeploy/hpremier/releases'" 1>&2; false; fi as newdeploy@162.19.170.198
+ DEBUG [11ee48d0] Command: if test ! -d /home/newdeploy/hpremier/releases; then echo "Directory does not exist '/home/newdeploy/hpremier/releases'" 1>&2; false; fi
+ DEBUG [11ee48d0] Finished in 0.400 seconds with exit status 0 (successful).
+  INFO [eb93408e] Running /usr/bin/env echo "Branch heuc (at a7b0ff23585814c3d9f40105affdc6f8a87a3aa9) deployed as release 20231127082234 by fena" >> /home/newdeploy/hpremier/revisions.log as newdeploy@162.19.170.198
+ DEBUG [eb93408e] Command: cd /home/newdeploy/hpremier/releases && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "Branch heuc (at a7b0ff23585814c3d9f40105affdc6f8a87a3aa9) deployed as release 20231127082234 by fena" >> /home/newdeploy/hpremier/revisions.log )
+  INFO [eb93408e] Finished in 1.014 seconds with exit status 0 (successful).
