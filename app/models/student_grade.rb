@@ -1,5 +1,6 @@
 class StudentGrade < ApplicationRecord
   after_create :generate_assessment
+  after_create -> { self.course_registration.active_no!}
   after_save :update_subtotal
   # after_save :generate_grade
   after_save :add_course_registration
