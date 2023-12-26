@@ -11,7 +11,7 @@ ActiveAdmin.register StudentGrade do
                       batch_size: 1000,
                       before_batch_import: ->(importer) {
                         student_ids = importer.values_at(:student_id)
-                        students = Student.where(student_id: student_ids).pluck(:student_id, :id)
+                        students = Student.where(id: student_ids).pluck(:student_id, :id)
                         options = Hash[*students.flatten]
                         importer.batch_replace(:student_id, options)
                       }

@@ -43,10 +43,7 @@ class SemesterRegistration < ApplicationRecord
         report.year = self.student.year
 
         report.total_credit_hour = self.course_registrations.where(enrollment_status: "enrolled").collect { |oi| (!!(oi.student_grade&.letter_grade != "I") && oi.student_grade.present? && !!(oi.student_grade&.letter_grade != "NG")) ? (oi.course.credit_hour) : 0 }.sum
-        report.total_grade_point = self.course_registrations.where(enrollment_status: "enrolled").collect { |oi|
-          (!!(oi.student_grade&.letter_grade != "I") && oi.student_grade.present? && !!(oi.student_grade&.letter_grade != "NG")) ? (oi.student_grad
-            e.grade_point) : 0
-        }.sum
+        report.total_grade_point = self.course_registrations.where(enrollment_status: "enrolled").collect { |oi| (!!(oi.student_grade&.letter_grade != "I") && oi.student_grade.present? && !!(oi.student_grade&.letter_grade != "NG")) ? (oi.student_grade.grade_point) : 0 }.sum
 
         if self.student.grade_reports.empty?
           report.total_course = self.course_registrations.count
