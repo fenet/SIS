@@ -7,6 +7,8 @@ module AddAcademicStatus
         "Grate Distinction"
       elsif report[:sgpa] >= 3.25 && report[:sgpa] < 3.5
         "Distinction"
+      elsif report[:sgpa] >=2 && report[:sgpa] < 3.25
+        "Promoted"
       elsif report[:sgpa] >= 1.75 && report[:sgpa] < 2
         "Academic Warning"
       elsif is_semester_year?(student: student, year: 1, semester: 1)
@@ -21,7 +23,6 @@ module AddAcademicStatus
         above_three_year(report: report, student: student)
       end
     end
-
     private
 
     def is_semester_year?(student:, year:, semester:)

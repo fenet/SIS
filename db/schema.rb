@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_05_113304) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_26_192120) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -144,6 +144,27 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_05_113304) do
     t.index ["section_id"], name: "index_add_and_drops_on_section_id"
     t.index ["semester_registration_id"], name: "index_add_and_drops_on_semester_registration_id"
     t.index ["student_id"], name: "index_add_and_drops_on_student_id"
+  end
+
+  create_table "add_courses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "student_id", null: false
+    t.uuid "course_id", null: false
+    t.uuid "department_id", null: false
+    t.integer "year"
+    t.integer "semester"
+    t.integer "status", default: 0
+    t.uuid "section_id"
+    t.integer "credit_hour"
+    t.integer "ects"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "dropcourse_id"
+    t.string "approved_by"
+    t.index ["course_id"], name: "index_add_courses_on_course_id"
+    t.index ["department_id"], name: "index_add_courses_on_department_id"
+    t.index ["dropcourse_id"], name: "index_add_courses_on_dropcourse_id"
+    t.index ["section_id"], name: "index_add_courses_on_section_id"
+    t.index ["student_id"], name: "index_add_courses_on_student_id"
   end
 
   create_table "admin_users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -363,7 +384,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_05_113304) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.integer "academic_year"
+    t.integer "drop_pending_status", default: 0
+    t.integer "is_active", default: 1
+    t.uuid "add_course_id"
     t.index ["academic_calendar_id"], name: "index_course_registrations_on_academic_calendar_id"
+    t.index ["add_course_id"], name: "index_course_registrations_on_add_course_id"
     t.index ["course_id"], name: "index_course_registrations_on_course_id"
     t.index ["department_id"], name: "index_course_registrations_on_department_id"
     t.index ["program_id"], name: "index_course_registrations_on_program_id"
@@ -448,6 +473,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_05_113304) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["faculty_id"], name: "index_departments_on_faculty_id"
+  end
+
+  create_table "dropcourses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "student_id", null: false
+    t.integer "status", default: 0, null: false
+    t.uuid "department_id", null: false
+    t.string "approved_by"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "semester"
+    t.integer "year"
+    t.uuid "course_id", null: false
+    t.index ["course_id"], name: "index_dropcourses_on_course_id"
+    t.index ["department_id"], name: "index_dropcourses_on_department_id"
+    t.index ["student_id"], name: "index_dropcourses_on_student_id"
   end
 
   create_table "emergency_contacts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -950,6 +990,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_05_113304) do
     t.datetime "updated_at", precision: nil, null: false
     t.decimal "actual_payment"
     t.boolean "is_back_invoice_created", default: false
+    t.boolean "out_of_batch", default: false
     t.index ["academic_calendar_id"], name: "index_semester_registrations_on_academic_calendar_id"
     t.index ["department_id"], name: "index_semester_registrations_on_department_id"
     t.index ["program_id"], name: "index_semester_registrations_on_program_id"
@@ -1058,6 +1099,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_05_113304) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.string "approving_person_role"
+    t.integer "f_counter", default: 0
     t.index ["course_id"], name: "index_student_grades_on_course_id"
     t.index ["course_registration_id"], name: "index_student_grades_on_course_registration_id"
     t.index ["department_id"], name: "index_student_grades_on_department_id"
@@ -1207,7 +1249,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_05_113304) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "add_courses", "courses"
+  add_foreign_key "add_courses", "departments"
+  add_foreign_key "add_courses", "dropcourses"
+  add_foreign_key "add_courses", "sections"
+  add_foreign_key "add_courses", "students"
+  add_foreign_key "course_registrations", "add_courses"
   add_foreign_key "departments", "faculties"
+  add_foreign_key "dropcourses", "courses"
+  add_foreign_key "dropcourses", "departments"
+  add_foreign_key "dropcourses", "students"
   add_foreign_key "exemptions", "external_transfers"
   add_foreign_key "external_transfers", "departments"
 end

@@ -2,6 +2,11 @@ class CourseRegistration < ApplicationRecord
   # after_create :add_invoice_item
   after_save :add_grade
   after_save :attribute_assignment
+  after_save do
+    if self.add_course.present?
+      self.add_course.taken!
+    end
+  end
   ##associations
   belongs_to :semester_registration
   belongs_to :department
@@ -13,10 +18,21 @@ class CourseRegistration < ApplicationRecord
   belongs_to :program
   # belongs_to :course_section, optional: true
   belongs_to :section, optional: true
+  belongs_to :add_course, optional: true
   has_many :student_attendances, dependent: :destroy
   has_many :grade_changes, dependent: :destroy
   has_many :makeup_exams
   # validates_associated :student_grades
+
+  enum drop_pending_status: {
+     no_pending: 0,
+     pending: 1
+  }
+
+  enum is_active: {
+    no: 0,
+    yes: 1
+  }, _prefix: "active"
 
   def get_academic_year
     "#{self.academic_year}/#{self.academic_year + 1}"

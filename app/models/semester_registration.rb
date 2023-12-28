@@ -66,7 +66,6 @@ class SemesterRegistration < ApplicationRecord
             else
               report.academic_status = AcademicStatusGraduate.get_academic_status(report: report, student: self.student)
             end
-
             if (report.academic_status.strip != "Academic Dismissal") || (report.academic_status.strip != "Incomplete")
               if self.program.program_semester > self.student.semester
                 promoted_semester = self.student.semester + 1
@@ -149,8 +148,11 @@ class SemesterRegistration < ApplicationRecord
         invoice.created_by = self.last_updated_by
         invoice.due_date = self.created_at + 10.day
         invoice.invoice_status = "unpaid"
-        invoice.registration_fee = self.student.get_registration_fee
-        tution_price = self.student.get_tution_fee
+        
+        invoice.registration_fee = self.student.get_registration_fee unless self.out_of_batch?
+        tution_price = self.student.get_tution_fee unless self.out_of_batch?
+        tution_price = self.student.get_added_tution_fee if self.out_of_batch?
+
         invoice.invoice_number = SecureRandom.random_number(10000000)
         if self.mode_of_payment == "Monthly Payment"
           invoice.total_price = tution_price / 4
@@ -164,9 +166,29 @@ class SemesterRegistration < ApplicationRecord
   end
 
   def semester_course_registration
+   
     if self.finance_approval_status == "pending" && self.registrar_approval_status == "pending"
       # self.program.curriculums.where(curriculum_version: self.student.curriculum_version).last.courses.where(year: self.year, semester: self.semester).each do |co|
       all_courses = []
+    if self.out_of_batch?
+       self.student.get_added_course.each do |added|
+        all_courses << CourseRegistration.new do |course_registration|
+          course_registration.semester_registration_id = self.id
+          course_registration.add_course_id = added.id
+          course_registration.program_id = self.program.id
+          course_registration.department_id = self.department.id
+          course_registration.academic_calendar_id = self.academic_calendar_id
+          course_registration.student_id = self.student.id
+          course_registration.student_full_name = self.student_full_name
+          course_registration.course_id = added.course_id
+          course_registration.academic_year = get_academic_year(self.semester, self.student)
+          course_registration.course_title = added.course.course_title
+          course_registration.semester = self.semester
+          course_registration.year = self.year
+          course_registration.created_by = self.created_by
+        end
+       end
+    else
       self.student.get_current_courses.each do |co|
         all_courses << CourseRegistration.new do |course_registration|
           course_registration.semester_registration_id = self.id
@@ -180,10 +202,10 @@ class SemesterRegistration < ApplicationRecord
           course_registration.course_title = co.course_title
           course_registration.semester = self.semester
           course_registration.year = self.year
-          # course_registration.course_section_id = CourseSection.first.id
           course_registration.created_by = self.created_by
         end
       end
+    end
       CourseRegistration.import! all_courses
     end
   end

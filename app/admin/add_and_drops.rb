@@ -114,7 +114,7 @@ ActiveAdmin.register AddAndDrop do
         f.object.add_and_drop_courses << AddAndDropCourse.new
       end
       panel "Courses to add or drop" do
-        f.has_many :add_and_drop_courses, heading: " ",remote: true , allow_destroy: true, new_record: true do |a|
+        f.has_many :add_and_drop_courses, heading: " ", remote: true , allow_destroy: true, new_record: true do |a|
               a.input :course_id, as: :search_select, url: admin_courses_path,
                   fields: [:course_title, :id], display_name: 'course_title', minimum_input_length: 2,
                   order_by: 'id_asc'

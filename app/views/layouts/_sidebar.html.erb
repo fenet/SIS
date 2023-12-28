@@ -41,14 +41,32 @@
               </p>
             </a>
           </li>
+
           <li class="nav-item">
             <%= link_to semester_registrations_path, :class => "nav-link #{current_class?(semester_registrations_path)}" do %>
               <i class="nav-icon fas fa-sign-in-alt"></i>
               <p>
                 Registrations
-                <!-- <i class="right fas fa-angle-left"></i> -->
               </p>
             <%end%>
+          </li>
+              <li class="nav-item">
+            <a href="<%=add_courses_path%>" class="nav-link <%= current_class?(add_courses_path) %>">
+
+             <i class="nav-icon fas fa-solid fa-plus"></i>
+              <p>
+                Add Course
+              </p>
+            </a>
+          </li>
+
+           <li class="nav-item">
+            <a href="<%= drop_courses_path%>" class="nav-link <%= current_class?(drop_courses_path) %>">
+             <i class=" nav-icon fas fa-solid fa-folder-minus"></i>
+              <p>
+                Drop Course
+              </p>
+            </a>
           </li>
           <li class="nav-item">
             <%= link_to invoices_path, class: "nav-link #{current_class?(invoices_path)}" do %>

@@ -19,6 +19,7 @@ class Student < ApplicationRecord
   belongs_to :program
   belongs_to :academic_calendar, optional: true
   has_one :student_address, dependent: :destroy
+  has_many :add_courses, dependent: :destroy
   accepts_nested_attributes_for :student_address
   has_one :emergency_contact, dependent: :destroy
   accepts_nested_attributes_for :emergency_contact
@@ -87,6 +88,14 @@ class Student < ApplicationRecord
     Student.distinct.where(year: year).select(:semester)
   end
 
+  def get_added_course
+    self.add_courses.where(status: 'approved').includes(:course).includes(:department)
+  end
+
+  def get_added_tution_fee
+    get_added_course.collect { |add| (college_payment.tution_per_credit_hr * add.credit_hour)}.sum
+  end
+
   def self.fetch_student_for_report(status)
     self.where(graduation_status: status).includes(:department)
   end
@@ -105,7 +114,9 @@ class Student < ApplicationRecord
     CollegePayment.find_by(study_level: self.study_level.strip, admission_type: self.admission_type.strip)
   end
 
-  def add_student_registration(mode_of_payment = nil)
+  
+
+  def add_student_registration(mode_of_payment, out_of_batch)
     SemesterRegistration.create do |registration|
       registration.student_id = self.id
       registration.program_id = self.program.id
@@ -120,8 +131,8 @@ class Student < ApplicationRecord
       registration.admission_type = self.admission_type
       registration.study_level = self.study_level
       registration.created_by = self.last_updated_by
+      registration.out_of_batch = out_of_batch if out_of_batch
       registration.mode_of_payment = mode_of_payment unless mode_of_payment.nil?
-      # registration.total_enrolled_course = total_course
     end
   end
 

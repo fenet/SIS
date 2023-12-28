@@ -99,8 +99,19 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <% current_student.program.curriculums.where(active_status: "active").first.courses.where(year: current_student.year, semester: current_student.semester).order('year ASC
-','semester ASC').each do |item| %>
+                
+                <%if @out_of_batch%>
+                 <% current_student.get_added_course.each do |added| %>
+                  <tr>
+                    <td><%= added.course.course_title %></td>
+                    <td><%= added.course.course_module.module_code %></td>
+                    <td><%= added.course.course_code %></td>
+                    <td><%= added.credit_hour %></td>
+                  </tr>
+                <% end %>
+
+                <%else%>
+                 <% current_student.get_current_courses.each do |item| %>
                     <tr>
                       <td><%= item.course_title %></td>
                       <td><%= item.course_module.module_code %></td>
@@ -108,6 +119,8 @@
                       <td><%= item.credit_hour %></td>
                     </tr>
                   <% end %>
+                <%end%>
+                 
                 </tbody>
               </table>
             </div>
