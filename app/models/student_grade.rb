@@ -1,14 +1,18 @@
 class StudentGrade < ApplicationRecord
   after_create :generate_assessment
+  after_create -> { self.course_registration.active_no!}
+
+  after_create do
+    if self.letter_grade == 'F' || self.letter_grade == 'f'
+        Course.increment_counter(:f_counter, self)
+    end
+  end
+  
   after_save :update_subtotal
-  # after_save :generate_grade
   after_save :add_course_registration
   after_save :update_grade_report
-  ##validation
   validates :student, presence: true
   validates :course, presence: true
-  #  validates :course_registration, presence: true
-  ##assocations
   belongs_to :course_registration, optional: true
   belongs_to :student
   belongs_to :course

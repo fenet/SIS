@@ -37,11 +37,18 @@ class PagesController < ApplicationController
     # @total = @registration_fee + tution_fee
   end
 
+  def add_enrollement
+    @total_course = current_student.get_added_course
+    @tution_fee = current_student.get_added_tution_fee
+  end
+
   def create_semester_registration
     mode_of_payment = params[:mode_of_payment]
-  
-    # total_course = Student.get_current_courses(current_student).size
-    registration = current_student.add_student_registration(mode_of_payment)
+    if params[:out_of_batch].present?
+      registration = current_student.add_student_registration(mode_of_payment, true)
+    else
+      registration = current_student.add_student_registration(mode_of_payment, false)
+    end
     respond_to do |format|
       if registration.save
         format.html { redirect_to invoice_path(registration.invoices.last.id), notice: "Registration was successfully created." }

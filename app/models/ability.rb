@@ -55,6 +55,9 @@ class Ability
       can :manage, Almuni
       can :manage, Withdrawal
       can :manage, AddAndDrop
+      can [:read, :update], Dropcourse
+      can [:read, :update], AddCourse
+
       can :manage, OtherPayment
       can :manage, StudentGrade
       can :manage, Exemption
@@ -293,7 +296,8 @@ class Ability
       can :read, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
       can :manage, ActiveAdmin::Page, name: "ExternalTransfer", namespace_name: "admin"
       can [:read, :update], Department, department_name: user.department.department_name
-
+      can [:read, :update], Dropcourse, department_id: user.department_id
+      can [:read, :update], AddCourse, department_id: user.department_id
       can [:read, :update, :destroy], CourseModule, department_id: user.department.id
       can :create, CourseModule
       # can :manage, Exemption
