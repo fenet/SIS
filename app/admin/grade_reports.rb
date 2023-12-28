@@ -1,7 +1,7 @@
 ActiveAdmin.register GradeReport do
   menu parent: "Grade"
   actions :all, :except => [:new]
-  permit_params :semester_registration_id, :student_id, :academic_calendar_id, :program_id, :department_id, :section_id, :admission_type, :study_level, :total_course, :total_credit_hour, :total_grade_point, :cumulative_total_credit_hour, :cumulative_total_grade_point, :cgpa, :sgpa, :semester, :year, :academic_status, :registrar_approval, :registrar_name, :dean_approval, :dean_name, :department_approval, :approved_by, :updated_by, :created_by
+  permit_params :semester_registration_id, :student_id, :academic_calendar_id, :program_id, :department_id, :section_id, :admission_type, :study_level, :total_course, :total_credit_hour, :total_grade_point, :cumulative_total_credit_hour, :cumulative_total_grade_point, :cgpa, :sgpa, :semester, :year, :academic_status, :registrar_approval, :registrar_name, :dean_approval, :dean_name, :department_approval, :updated_by, :created_by
 
   collection_action :pdf_report, method: :get do
     students = GradeReport.all
@@ -126,7 +126,7 @@ ActiveAdmin.register GradeReport do
     f.inputs "Grade Report Approval" do
       if (current_admin_user.role == "department head") || (current_admin_user.role == "admin")
         f.input :department_approval, as: :select, :collection => ["pending", "approved", "denied"], :include_blank => false
-        f.input :approved_by, as: :hidden, :input_html => { :value => current_admin_user.name.full }
+        # f.input :approved_by, as: :hidden, :input_html => { :value => current_admin_user.name.full }
       end
       if (current_admin_user.role == "regular_registrar") || (current_admin_user.role == "extention_registrar") || (current_admin_user.role == "online_registrar") || (current_admin_user.role == "distance_registrar") || (current_admin_user.role == "admin")
         f.input :registrar_approval, as: :select, :collection => ["pending", "approved", "denied"], :include_blank => false
