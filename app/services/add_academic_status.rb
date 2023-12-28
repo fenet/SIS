@@ -7,6 +7,8 @@ module AddAcademicStatus
         "Grate Distinction"
       elsif report[:sgpa] >= 3.25 && report[:sgpa] < 3.5
         "Distinction"
+      elsif report[:sgpa] >=2 && report[:sgpa] < 3.25
+        "Promoted"
       elsif report[:sgpa] >= 1.75 && report[:sgpa] < 2
         "Academic Warning"
       elsif is_semester_year?(student: student, year: 1, semester: 1)
@@ -21,7 +23,6 @@ module AddAcademicStatus
         above_three_year(report: report, student: student)
       end
     end
-
     private
 
     def is_semester_year?(student:, year:, semester:)
@@ -32,11 +33,7 @@ module AddAcademicStatus
       if report[:sgpa] >= 1.5 && report[:sgpa] < 1.75
         "Academic Probation"
       elsif report[:sgpa] >= 1 && report[:sgpa] < 1.5
-        if false # change the condition
-          # Check the wheather this student can re-admit or not
-        else
           "Academic Suspension"
-        end
       else
         "Academic Dismissal"
       end
@@ -55,13 +52,8 @@ module AddAcademicStatus
       if ((report[:sgpa] >= 1.5 && report[:sgpa] < 1.75) || is_warning_before?(student: student))
         "Academic Probation"
       elsif report[:sgpa] >= 1.25 && report[:sgpa] < 1.5
-        if false # change the condition
-          # Check the wheather this student can re-admit or not
-        else
           "Academic Suspension"
-        end
       elsif (report[:sgpa] < 1.25 || is_previous_sgpa_below?(student: student, sgpa: 1.25, cgpa: 1.5)) && report[:cgpa] < 1.5
-        #  check for re-admited students
         "Academic Dismissal"
       end
     end
@@ -78,12 +70,9 @@ module AddAcademicStatus
       elsif (report[:sgpa] < 1.5 || report[:cgpa] < 2) && (is_warning_before?(student: student) || is_probation_before?(student: student))
         "Academic Suspension"
       else
-        if false # change to re-admitional
-        else # for non-admitted student
           if report[:sgpa] < 1.25 || report[:cgpa] < 1.5
             "Academic Dismissal"
           end
-        end
       end
     end
 
@@ -113,14 +102,12 @@ module AddAcademicStatus
         "Academic Probation"
       elsif (report[:sgpa] >= 1 && report[:sgpa] < 1.5) && report[:cgpa] >= 1.75
         "Academic Probation"
-      elsif report[:sgpa] < 1 && report[:cgpa] >= 1.75
+      elsif report[:sgpa] < 1.5 && report[:cgpa] < 1.75
         "Academic Dismissal"
-      else
-        if true && (report[:sgpa] < 1.5 || is_subsequent_semester_dismissal?(student: student, sgpa: 1.5, cgpa: 1.75)) && report[:cgpa] < 1.75
-          "Academic Dismissal"
-        else
-          # do re admission related
-        end
+      # else
+      #   if (report[:sgpa] < 1.5 || is_subsequent_semester_dismissal?(student: student, sgpa: 1.5, cgpa: 1.75)) && report[:cgpa] < 1.75
+      #     "Academic Dismissal"
+      #   end
       end
     end
 
@@ -135,12 +122,8 @@ module AddAcademicStatus
         "Academic Suspension"
       elsif (report[:sgpa] < 1.25) || is_probation_twice?(student: student)
         "Academic Suspension"
-      else
-        if true && report[:sgpa] < 1.25 && report[:cgpa] < 2
+      elsif report[:sgpa] < 1.25 && report[:cgpa] < 2
           "Academic Dismissal"
-        else
-          # DO ADMISSION RELATED Issues
-        end
       end
     end
   end

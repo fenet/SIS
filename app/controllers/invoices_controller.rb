@@ -8,6 +8,7 @@ class InvoicesController < ApplicationController
 
   # GET /invoices/1 or /invoices/1.json
   def show
+    @out_of_batch = @invoice.semester_registration.out_of_batch?
   end
 
   # GET /invoices/new
@@ -41,7 +42,6 @@ class InvoicesController < ApplicationController
 
   def create
     @invoice = Invoice.new(invoice_params)
-
     respond_to do |format|
       if @invoice.save
         format.html { redirect_to @invoice, notice: "Invoice was successfully created." }

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get '/available/courses/:course_id/(:drop_id)', to: "avaliable_courses#index", as: "available_courses"
+  get 'drop_courses/index', as: 'drop_courses'
+  get 'add_courses/index', as: "add_courses"
   post "create/exemptions/:applicant_id", to: 'exemptions#create', as: 'create_exemptions'
   get "new/exemptions/:applicant_id/:approved_by", to: 'exemptions#new', as: 'new_exemptions'
   get "index/exemptions/:applicant_id/:approved_by", to: 'exemptions#index', as: 'index_exemptions'
@@ -7,7 +10,13 @@ Rails.application.routes.draw do
   get "transfer/approval/:id/:approved_by", to: "external_transfers#approval", as: "transfer_approval"
   patch "transfer/approved/:id", to: "external_transfers#approved", as: "transfer_approved"
   delete "delete/exception", to: "exemptions#destroy", as: "transfer_destroy"
-
+  resources :avaliable_courses, except: [:index]
+  resources :drop_courses do
+    member do
+      post "add_course_drop", as: "add_drop_course"
+      post "withdraw_course"
+    end
+  end
   resources :exemptions, except: [:create, :new, :index, :edit]
   resources :external_transfers
   get "student_temporary/index", as: "student_temporary"
@@ -21,7 +30,11 @@ Rails.application.routes.draw do
   get "student/generate/copy", to: "student_copy#index", as: "student_copy"
   post "student_copy/generate_student_copy", as: "generate_student_copy"
   get "new/semester/registration", to: "pages#enrollement", as: "enrollement"
-  post "create/semester/registration", to: "pages#create_semester_registration", as: "create_semester_registration"
+  get "added/course/registration", to: "pages#add_enrollement", as: "add_enrollement"
+
+  # post "added/course/registration", to: "pages#added_course_registration", as: "added_course_registration"
+  post "create/semester/registration/(:out_of_batch)", to: "pages#create_semester_registration", as: "create_semester_registration"
+  
   get "student/grade/report/:year/:semester", to: "grade_reports#student_grade_report", as: "student_grade_report"
   get "prepare/payment/:semester_registration_id", to: "invoices#prepare_payment", as: "prepare_payment"
   post "create/invoice", to: "invoices#create_invoice_for_remaining_amount", as: "create_invoice_for_remaining_amount"

@@ -126,7 +126,7 @@ ActiveAdmin.register GradeReport do
     f.inputs "Grade Report Approval" do
       if (current_admin_user.role == "department head") || (current_admin_user.role == "admin")
         f.input :department_approval, as: :select, :collection => ["pending", "approved", "denied"], :include_blank => false
-        #f.input :approved_by, as: :hidden, :input_html => { :value => current_admin_user.name.full }
+        # f.input :approved_by, as: :hidden, :input_html => { :value => current_admin_user.name.full }
       end
       if (current_admin_user.role == "regular_registrar") || (current_admin_user.role == "extention_registrar") || (current_admin_user.role == "online_registrar") || (current_admin_user.role == "distance_registrar") || (current_admin_user.role == "admin")
         f.input :registrar_approval, as: :select, :collection => ["pending", "approved", "denied"], :include_blank => false
