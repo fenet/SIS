@@ -116,7 +116,7 @@ class Student < ApplicationRecord
 
   
 
-  def add_student_registration(mode_of_payment, out_of_batch)
+  def add_student_registration(mode_of_payment = nil, out_of_batch = false)
     SemesterRegistration.create do |registration|
       registration.student_id = self.id
       registration.program_id = self.program.id
