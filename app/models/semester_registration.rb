@@ -55,7 +55,7 @@ class SemesterRegistration < ApplicationRecord
           report.total_grade_point = self.course_registrations.where(enrollment_status: "enrolled").collect { |oi|
           (!!(oi.student_grade&.letter_grade != "I") && oi.student_grade.present? && !!(oi.student_grade&.letter_grade != "NG")) ? (oi.student_grade.grade_point) : 0}.sum
           report.sgpa = report.total_credit_hour == 0 ? 0 : (report.total_grade_point / report.total_credit_hour).round(2)
-
+         
           report.cumulative_total_credit_hour = report.total_credit_hour
           report.cumulative_total_grade_point = report.total_grade_point
           report.cgpa = report.cumulative_total_credit_hour == 0 ? 0 : (report.cumulative_total_grade_point / report.cumulative_total_credit_hour).round(2)
@@ -65,7 +65,8 @@ class SemesterRegistration < ApplicationRecord
             report.academic_status = "Incomplete"
           else
             
-            if self.student.study_level == "undergraduate"
+            if self.student.study_level.downcase == "undergraduate"
+
               report.academic_status = AddAcademicStatus.academic_status({ sgpa: report.sgpa, cgpa: report.cgpa }, self.student) 
             else
               report.academic_status = AcademicStatusGraduate.get_academic_status(report: report, student: self.student)
@@ -92,7 +93,7 @@ class SemesterRegistration < ApplicationRecord
           if ((self.course_registrations.joins(:student_grade).pluck(:letter_grade).include?("I")) || (self.course_registrations.joins(:student_grade).pluck(:letter_grade).include?("NG")))
             report.academic_status = "Incomplete"
           else
-            if self.student.study_level == "undergraduate"
+            if self.student.study_level.downcase == "undergraduate"
               report.academic_status = AcademicStatusGraduate.get_academic_status(report: report, student: student)
             else
               report.academic_status = AcademicStatusGraduate.get_academic_status(report: report, student: self.student)

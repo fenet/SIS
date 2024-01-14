@@ -1,7 +1,8 @@
 module AddAcademicStatus
   class << self
     def academic_status(report, student)
-      if report[:sgpa] >= 3.75 && report[:sgpa] <= 4
+     
+     if report[:sgpa] >= 3.75 && report[:sgpa] <= 4
         "Very Grate Distinction"
       elsif report[:sgpa] >= 3.5 && report[:sgpa] < 3.75
         "Grate Distinction"
