@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_14_211231) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_22_122150) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -1104,6 +1104,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_14_211231) do
     t.integer "f_counter", default: 0
     t.string "first_name"
     t.string "last_name"
+    t.string "credit_hour"
+    t.string "middle_name"
     t.index ["course_id"], name: "index_student_grades_on_course_id"
     t.index ["course_registration_id"], name: "index_student_grades_on_course_registration_id"
     t.index ["department_id"], name: "index_student_grades_on_department_id"
