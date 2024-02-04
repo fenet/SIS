@@ -28,7 +28,7 @@ development:
   port: 5432
   host : localhost
   username: postgres
-  password: Fena_1234
+  password: 12345678
 test:
   <<: *default
   database: hope_dev

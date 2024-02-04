@@ -11876,3 +11876,260 @@ Run `bundle install` first.
   INFO [619bf331] Running /usr/bin/env echo "Branch heuc (at 21bbea0c88faa5379b2bd36f5635a840e38e88ee) deployed as release 20240114212129 by fena" >> /home/newdeploy/hpremier/revisions.log as newdeploy@162.19.170.198
  DEBUG [619bf331] Command: cd /home/newdeploy/hpremier/releases && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "Branch heuc (at 21bbea0c88faa5379b2bd36f5635a840e38e88ee) deployed as release 20240114212129 by fena" >> /home/newdeploy/hpremier/revisions.log )
   INFO [619bf331] Finished in 0.359 seconds with exit status 0 (successful).
+  INFO ---------------------------------------------------------------------------
+  INFO START 2024-01-22 16:19:56 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [37b5ccd2] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as newdeploy@162.19.170.198
+ DEBUG [37b5ccd2] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+ DEBUG [37b5ccd2] Finished in 14.123 seconds with exit status 0 (successful).
+ DEBUG [f0bcb2b5] Running /usr/bin/env which passenger as newdeploy@162.19.170.198
+ DEBUG [f0bcb2b5] Command: /usr/bin/env which passenger
+ DEBUG [f0bcb2b5] 	/usr/bin/passenger
+ DEBUG [f0bcb2b5] Finished in 0.620 seconds with exit status 0 (successful).
+  INFO [046d2bdf] Running /usr/bin/env mkdir -p /tmp as newdeploy@162.19.170.198
+ DEBUG [046d2bdf] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /tmp )
+  INFO [046d2bdf] Finished in 0.609 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-c5b8c698110e165a86f8.sh 0.0%
+  INFO Uploading /tmp/git-ssh-c5b8c698110e165a86f8.sh 100.0%
+  INFO [ca1d9dcf] Running /usr/bin/env chmod 700 /tmp/git-ssh-c5b8c698110e165a86f8.sh as newdeploy@162.19.170.198
+ DEBUG [ca1d9dcf] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env chmod 700 /tmp/git-ssh-c5b8c698110e165a86f8.sh )
+  INFO [ca1d9dcf] Finished in 0.411 seconds with exit status 0 (successful).
+  INFO [3f205dec] Running /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD as newdeploy@162.19.170.198
+ DEBUG [3f205dec] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-c5b8c698110e165a86f8.sh" ; /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD )
+ DEBUG [3f205dec] 	cd777fc52a864de4b7ff12a1554a623874fed3ec	HEAD
+  INFO [3f205dec] Finished in 0.774 seconds with exit status 0 (successful).
+  INFO [7f10ab59] Running /usr/bin/env mkdir -p /home/newdeploy/hpremier/shared /home/newdeploy/hpremier/releases as newdeploy@162.19.170.198
+ DEBUG [7f10ab59] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/hpremier/shared /home/newdeploy/hpremier/releases )
+  INFO [7f10ab59] Finished in 0.558 seconds with exit status 0 (successful).
+  INFO [003ebd92] Running /usr/bin/env mkdir -p /home/newdeploy/hpremier/shared/log /home/newdeploy/hpremier/shared/tmp/pids /home/newdeploy/hpremier/shared/tmp/cache /home/newdeploy/hpremier/shared/tmp/sockets /home/newdeploy/hpremier/shared/vendor/bundle /home/newdeploy/hpremier/shared/public/system /home/newdeploy/hpremier/shared/public/uploads /home/newdeploy/hpremier/shared/public/assets as newdeploy@162.19.170.198
+ DEBUG [003ebd92] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/hpremier/shared/log /home/newdeploy/hpremier/shared/tmp/pids /home/newdeploy/hpremier/shared/tmp/cache /home/newdeploy/hpremier/shared/tmp/sockets /home/newdeploy/hpremier/shared/vendor/bundle /home/newdeploy/hpremier/shared/public/system /home/newdeploy/hpremier/shared/public/uploads /home/newdeploy/hpremier/shared/public/assets )
+  INFO [003ebd92] Finished in 0.556 seconds with exit status 0 (successful).
+ DEBUG [4891e93f] Running [ -f /home/newdeploy/hpremier/current/REVISION ] as newdeploy@162.19.170.198
+ DEBUG [4891e93f] Command: [ -f /home/newdeploy/hpremier/current/REVISION ]
+ DEBUG [4891e93f] Finished in 0.510 seconds with exit status 0 (successful).
+ DEBUG [7e4a916f] Running /usr/bin/env cat /home/newdeploy/hpremier/current/REVISION 2>/dev/null as newdeploy@162.19.170.198
+ DEBUG [7e4a916f] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env cat /home/newdeploy/hpremier/current/REVISION 2>/dev/null )
+ DEBUG [7e4a916f] 	21bbea0c88faa5379b2bd36f5635a840e38e88ee
+ DEBUG [7e4a916f] Finished in 0.613 seconds with exit status 0 (successful).
+ DEBUG [2b9ba711] Running [ -f /home/newdeploy/hpremier/repo/HEAD ] as newdeploy@162.19.170.198
+ DEBUG [2b9ba711] Command: [ -f /home/newdeploy/hpremier/repo/HEAD ]
+ DEBUG [2b9ba711] Finished in 0.611 seconds with exit status 0 (successful).
+  INFO The repository mirror is at /home/newdeploy/hpremier/repo
+ DEBUG [fa167e1a] Running if test ! -d /home/newdeploy/hpremier/repo; then echo "Directory does not exist '/home/newdeploy/hpremier/repo'" 1>&2; false; fi as newdeploy@162.19.170.198
+ DEBUG [fa167e1a] Command: if test ! -d /home/newdeploy/hpremier/repo; then echo "Directory does not exist '/home/newdeploy/hpremier/repo'" 1>&2; false; fi
+ DEBUG [fa167e1a] Finished in 0.806 seconds with exit status 0 (successful).
+  INFO [214d9787] Running /usr/bin/env git remote set-url origin https://fenet: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@github.com/fenet/leadstarlatest.git as newdeploy@162.19.170.198
+ DEBUG [214d9787] Command: cd /home/newdeploy/hpremier/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-c5b8c698110e165a86f8.sh" ; /usr/bin/env git remote set-url origin https://fenet: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@github.com/fenet/leadstarlatest.git )
+  INFO [214d9787] Finished in 0.476 seconds with exit status 0 (successful).
+  INFO [9efbc19f] Running /usr/bin/env git remote update --prune as newdeploy@162.19.170.198
+ DEBUG [9efbc19f] Command: cd /home/newdeploy/hpremier/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-c5b8c698110e165a86f8.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [9efbc19f] 	Fetching origin
+ DEBUG [9efbc19f] 	From https://github.com/fenet/leadstarlatest
+   21bbea0..c7f368d  heuc       -> heuc
+  INFO [9efbc19f] Finished in 1.297 seconds with exit status 0 (successful).
+ DEBUG [af8da964] Running if test ! -d /home/newdeploy/hpremier/repo; then echo "Directory does not exist '/home/newdeploy/hpremier/repo'" 1>&2; false; fi as newdeploy@162.19.170.198
+ DEBUG [af8da964] Command: if test ! -d /home/newdeploy/hpremier/repo; then echo "Directory does not exist '/home/newdeploy/hpremier/repo'" 1>&2; false; fi
+ DEBUG [af8da964] Finished in 0.374 seconds with exit status 0 (successful).
+  INFO [37ff902f] Running /usr/bin/env mkdir -p /home/newdeploy/hpremier/releases/20240122132016 as newdeploy@162.19.170.198
+ DEBUG [37ff902f] Command: cd /home/newdeploy/hpremier/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-c5b8c698110e165a86f8.sh" ; /usr/bin/env mkdir -p /home/newdeploy/hpremier/releases/20240122132016 )
+  INFO [37ff902f] Finished in 0.693 seconds with exit status 0 (successful).
+  INFO [42095840] Running /usr/bin/env git archive heuc | /usr/bin/env tar -x -f - -C /home/newdeploy/hpremier/releases/20240122132016 as newdeploy@162.19.170.198
+ DEBUG [42095840] Command: cd /home/newdeploy/hpremier/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-c5b8c698110e165a86f8.sh" ; /usr/bin/env git archive heuc | /usr/bin/env tar -x -f - -C /home/newdeploy/hpremier/releases/20240122132016 )
+  INFO [42095840] Finished in 0.866 seconds with exit status 0 (successful).
+ DEBUG [26e2e8d0] Running if test ! -d /home/newdeploy/hpremier/repo; then echo "Directory does not exist '/home/newdeploy/hpremier/repo'" 1>&2; false; fi as newdeploy@162.19.170.198
+ DEBUG [26e2e8d0] Command: if test ! -d /home/newdeploy/hpremier/repo; then echo "Directory does not exist '/home/newdeploy/hpremier/repo'" 1>&2; false; fi
+ DEBUG [26e2e8d0] Finished in 0.592 seconds with exit status 0 (successful).
+ DEBUG [3f92db6e] Running /usr/bin/env git rev-list --max-count=1 heuc as newdeploy@162.19.170.198
+ DEBUG [3f92db6e] Command: cd /home/newdeploy/hpremier/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-c5b8c698110e165a86f8.sh" ; /usr/bin/env git rev-list --max-count=1 heuc )
+ DEBUG [3f92db6e] 	c7f368d3a8010c80bc827ff1847152d8de7e9d9f
+ DEBUG [3f92db6e] Finished in 0.615 seconds with exit status 0 (successful).
+ DEBUG [b10cc6e0] Running if test ! -d /home/newdeploy/hpremier/releases/20240122132016; then echo "Directory does not exist '/home/newdeploy/hpremier/releases/20240122132016'" 1>&2; false; fi as newdeploy@162.19.170.198
+ DEBUG [b10cc6e0] Command: if test ! -d /home/newdeploy/hpremier/releases/20240122132016; then echo "Directory does not exist '/home/newdeploy/hpremier/releases/20240122132016'" 1>&2; false; fi
+ DEBUG [b10cc6e0] Finished in 0.611 seconds with exit status 0 (successful).
+  INFO [3054121c] Running /usr/bin/env echo "c7f368d3a8010c80bc827ff1847152d8de7e9d9f" > REVISION as newdeploy@162.19.170.198
+ DEBUG [3054121c] Command: cd /home/newdeploy/hpremier/releases/20240122132016 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "c7f368d3a8010c80bc827ff1847152d8de7e9d9f" > REVISION )
+  INFO [3054121c] Finished in 0.613 seconds with exit status 0 (successful).
+  INFO [e2d26374] Running /usr/bin/env mkdir -p /home/newdeploy/hpremier/releases/20240122132016 /home/newdeploy/hpremier/releases/20240122132016/tmp /home/newdeploy/hpremier/releases/20240122132016/vendor /home/newdeploy/hpremier/releases/20240122132016/public as newdeploy@162.19.170.198
+ DEBUG [e2d26374] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/hpremier/releases/20240122132016 /home/newdeploy/hpremier/releases/20240122132016/tmp /home/newdeploy/hpremier/releases/20240122132016/vendor /home/newdeploy/hpremier/releases/20240122132016/public )
+  INFO [e2d26374] Finished in 0.609 seconds with exit status 0 (successful).
+ DEBUG [970ee5e5] Running [ -L /home/newdeploy/hpremier/releases/20240122132016/log ] as newdeploy@162.19.170.198
+ DEBUG [970ee5e5] Command: [ -L /home/newdeploy/hpremier/releases/20240122132016/log ]
+ DEBUG [970ee5e5] Finished in 0.543 seconds with exit status 1 (failed).
+ DEBUG [2c97f2e2] Running [ -d /home/newdeploy/hpremier/releases/20240122132016/log ] as newdeploy@162.19.170.198
+ DEBUG [2c97f2e2] Command: [ -d /home/newdeploy/hpremier/releases/20240122132016/log ]
+ DEBUG [2c97f2e2] Finished in 0.683 seconds with exit status 0 (successful).
+  INFO [5dc42352] Running /usr/bin/env rm -rf /home/newdeploy/hpremier/releases/20240122132016/log as newdeploy@162.19.170.198
+ DEBUG [5dc42352] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env rm -rf /home/newdeploy/hpremier/releases/20240122132016/log )
+  INFO [5dc42352] Finished in 0.613 seconds with exit status 0 (successful).
+  INFO [4b3ab780] Running /usr/bin/env ln -s /home/newdeploy/hpremier/shared/log /home/newdeploy/hpremier/releases/20240122132016/log as newdeploy@162.19.170.198
+ DEBUG [4b3ab780] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/hpremier/shared/log /home/newdeploy/hpremier/releases/20240122132016/log )
+  INFO [4b3ab780] Finished in 0.613 seconds with exit status 0 (successful).
+ DEBUG [5f6ce451] Running [ -L /home/newdeploy/hpremier/releases/20240122132016/tmp/pids ] as newdeploy@162.19.170.198
+ DEBUG [5f6ce451] Command: [ -L /home/newdeploy/hpremier/releases/20240122132016/tmp/pids ]
+ DEBUG [5f6ce451] Finished in 0.613 seconds with exit status 1 (failed).
+ DEBUG [d7ad3778] Running [ -d /home/newdeploy/hpremier/releases/20240122132016/tmp/pids ] as newdeploy@162.19.170.198
+ DEBUG [d7ad3778] Command: [ -d /home/newdeploy/hpremier/releases/20240122132016/tmp/pids ]
+ DEBUG [d7ad3778] Finished in 0.819 seconds with exit status 1 (failed).
+  INFO [be8fd817] Running /usr/bin/env ln -s /home/newdeploy/hpremier/shared/tmp/pids /home/newdeploy/hpremier/releases/20240122132016/tmp/pids as newdeploy@162.19.170.198
+ DEBUG [be8fd817] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/hpremier/shared/tmp/pids /home/newdeploy/hpremier/releases/20240122132016/tmp/pids )
+  INFO [be8fd817] Finished in 0.486 seconds with exit status 0 (successful).
+ DEBUG [2ba40b08] Running [ -L /home/newdeploy/hpremier/releases/20240122132016/tmp/cache ] as newdeploy@162.19.170.198
+ DEBUG [2ba40b08] Command: [ -L /home/newdeploy/hpremier/releases/20240122132016/tmp/cache ]
+ DEBUG [2ba40b08] Finished in 0.427 seconds with exit status 1 (failed).
+ DEBUG [17ef6d21] Running [ -d /home/newdeploy/hpremier/releases/20240122132016/tmp/cache ] as newdeploy@162.19.170.198
+ DEBUG [17ef6d21] Command: [ -d /home/newdeploy/hpremier/releases/20240122132016/tmp/cache ]
+ DEBUG [17ef6d21] Finished in 0.378 seconds with exit status 0 (successful).
+  INFO [86318035] Running /usr/bin/env rm -rf /home/newdeploy/hpremier/releases/20240122132016/tmp/cache as newdeploy@162.19.170.198
+ DEBUG [86318035] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env rm -rf /home/newdeploy/hpremier/releases/20240122132016/tmp/cache )
+  INFO [86318035] Finished in 0.547 seconds with exit status 0 (successful).
+  INFO [f41109c2] Running /usr/bin/env ln -s /home/newdeploy/hpremier/shared/tmp/cache /home/newdeploy/hpremier/releases/20240122132016/tmp/cache as newdeploy@162.19.170.198
+ DEBUG [f41109c2] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/hpremier/shared/tmp/cache /home/newdeploy/hpremier/releases/20240122132016/tmp/cache )
+  INFO [f41109c2] Finished in 0.408 seconds with exit status 0 (successful).
+ DEBUG [18cee2e4] Running [ -L /home/newdeploy/hpremier/releases/20240122132016/tmp/sockets ] as newdeploy@162.19.170.198
+ DEBUG [18cee2e4] Command: [ -L /home/newdeploy/hpremier/releases/20240122132016/tmp/sockets ]
+ DEBUG [18cee2e4] Finished in 0.510 seconds with exit status 1 (failed).
+ DEBUG [afe780ee] Running [ -d /home/newdeploy/hpremier/releases/20240122132016/tmp/sockets ] as newdeploy@162.19.170.198
+ DEBUG [afe780ee] Command: [ -d /home/newdeploy/hpremier/releases/20240122132016/tmp/sockets ]
+ DEBUG [afe780ee] Finished in 0.614 seconds with exit status 1 (failed).
+  INFO [4bfb33b7] Running /usr/bin/env ln -s /home/newdeploy/hpremier/shared/tmp/sockets /home/newdeploy/hpremier/releases/20240122132016/tmp/sockets as newdeploy@162.19.170.198
+ DEBUG [4bfb33b7] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/hpremier/shared/tmp/sockets /home/newdeploy/hpremier/releases/20240122132016/tmp/sockets )
+  INFO [4bfb33b7] Finished in 0.613 seconds with exit status 0 (successful).
+ DEBUG [1f3827d5] Running [ -L /home/newdeploy/hpremier/releases/20240122132016/vendor/bundle ] as newdeploy@162.19.170.198
+ DEBUG [1f3827d5] Command: [ -L /home/newdeploy/hpremier/releases/20240122132016/vendor/bundle ]
+ DEBUG [1f3827d5] Finished in 0.613 seconds with exit status 1 (failed).
+ DEBUG [e70faa6d] Running [ -d /home/newdeploy/hpremier/releases/20240122132016/vendor/bundle ] as newdeploy@162.19.170.198
+ DEBUG [e70faa6d] Command: [ -d /home/newdeploy/hpremier/releases/20240122132016/vendor/bundle ]
+ DEBUG [e70faa6d] Finished in 0.616 seconds with exit status 1 (failed).
+  INFO [95e2a9e6] Running /usr/bin/env ln -s /home/newdeploy/hpremier/shared/vendor/bundle /home/newdeploy/hpremier/releases/20240122132016/vendor/bundle as newdeploy@162.19.170.198
+ DEBUG [95e2a9e6] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/hpremier/shared/vendor/bundle /home/newdeploy/hpremier/releases/20240122132016/vendor/bundle )
+  INFO [95e2a9e6] Finished in 0.410 seconds with exit status 0 (successful).
+ DEBUG [f14a2168] Running [ -L /home/newdeploy/hpremier/releases/20240122132016/public/system ] as newdeploy@162.19.170.198
+ DEBUG [f14a2168] Command: [ -L /home/newdeploy/hpremier/releases/20240122132016/public/system ]
+ DEBUG [f14a2168] Finished in 0.462 seconds with exit status 1 (failed).
+ DEBUG [3a66bafe] Running [ -d /home/newdeploy/hpremier/releases/20240122132016/public/system ] as newdeploy@162.19.170.198
+ DEBUG [3a66bafe] Command: [ -d /home/newdeploy/hpremier/releases/20240122132016/public/system ]
+ DEBUG [3a66bafe] Finished in 0.388 seconds with exit status 1 (failed).
+  INFO [83f4425e] Running /usr/bin/env ln -s /home/newdeploy/hpremier/shared/public/system /home/newdeploy/hpremier/releases/20240122132016/public/system as newdeploy@162.19.170.198
+ DEBUG [83f4425e] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/hpremier/shared/public/system /home/newdeploy/hpremier/releases/20240122132016/public/system )
+  INFO [83f4425e] Finished in 0.493 seconds with exit status 0 (successful).
+ DEBUG [9c675f95] Running [ -L /home/newdeploy/hpremier/releases/20240122132016/public/uploads ] as newdeploy@162.19.170.198
+ DEBUG [9c675f95] Command: [ -L /home/newdeploy/hpremier/releases/20240122132016/public/uploads ]
+ DEBUG [9c675f95] Finished in 0.592 seconds with exit status 1 (failed).
+ DEBUG [dba732e6] Running [ -d /home/newdeploy/hpremier/releases/20240122132016/public/uploads ] as newdeploy@162.19.170.198
+ DEBUG [dba732e6] Command: [ -d /home/newdeploy/hpremier/releases/20240122132016/public/uploads ]
+ DEBUG [dba732e6] Finished in 0.614 seconds with exit status 1 (failed).
+  INFO [6f4f3367] Running /usr/bin/env ln -s /home/newdeploy/hpremier/shared/public/uploads /home/newdeploy/hpremier/releases/20240122132016/public/uploads as newdeploy@162.19.170.198
+ DEBUG [6f4f3367] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/hpremier/shared/public/uploads /home/newdeploy/hpremier/releases/20240122132016/public/uploads )
+  INFO [6f4f3367] Finished in 0.613 seconds with exit status 0 (successful).
+ DEBUG [80343c4e] Running [ -L /home/newdeploy/hpremier/releases/20240122132016/public/assets ] as newdeploy@162.19.170.198
+ DEBUG [80343c4e] Command: [ -L /home/newdeploy/hpremier/releases/20240122132016/public/assets ]
+ DEBUG [80343c4e] Finished in 0.581 seconds with exit status 1 (failed).
+ DEBUG [898806db] Running [ -d /home/newdeploy/hpremier/releases/20240122132016/public/assets ] as newdeploy@162.19.170.198
+ DEBUG [898806db] Command: [ -d /home/newdeploy/hpremier/releases/20240122132016/public/assets ]
+ DEBUG [898806db] Finished in 0.390 seconds with exit status 1 (failed).
+  INFO [8e24216e] Running /usr/bin/env ln -s /home/newdeploy/hpremier/shared/public/assets /home/newdeploy/hpremier/releases/20240122132016/public/assets as newdeploy@162.19.170.198
+ DEBUG [8e24216e] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/hpremier/shared/public/assets /home/newdeploy/hpremier/releases/20240122132016/public/assets )
+  INFO [8e24216e] Finished in 0.630 seconds with exit status 0 (successful).
+ DEBUG [88160f10] Running if test ! -d /home/newdeploy/hpremier/releases/20240122132016; then echo "Directory does not exist '/home/newdeploy/hpremier/releases/20240122132016'" 1>&2; false; fi as newdeploy@162.19.170.198
+ DEBUG [88160f10] Command: if test ! -d /home/newdeploy/hpremier/releases/20240122132016; then echo "Directory does not exist '/home/newdeploy/hpremier/releases/20240122132016'" 1>&2; false; fi
+ DEBUG [88160f10] Finished in 0.441 seconds with exit status 0 (successful).
+  INFO [a0a73cb7] Running $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true as newdeploy@162.19.170.198
+ DEBUG [a0a73cb7] Command: cd /home/newdeploy/hpremier/releases/20240122132016 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true )
+  INFO [a0a73cb7] Finished in 0.708 seconds with exit status 0 (successful).
+  INFO [cdf4aef4] Running $HOME/.rbenv/bin/rbenv exec bundle config --local path /home/newdeploy/hpremier/shared/bundle as newdeploy@162.19.170.198
+ DEBUG [cdf4aef4] Command: cd /home/newdeploy/hpremier/releases/20240122132016 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local path /home/newdeploy/hpremier/shared/bundle )
+  INFO [cdf4aef4] Finished in 0.550 seconds with exit status 0 (successful).
+  INFO [2973ea05] Running $HOME/.rbenv/bin/rbenv exec bundle config --local without development:test as newdeploy@162.19.170.198
+ DEBUG [2973ea05] Command: cd /home/newdeploy/hpremier/releases/20240122132016 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local without development:test )
+  INFO [2973ea05] Finished in 0.777 seconds with exit status 0 (successful).
+ DEBUG [294eb3ad] Running if test ! -d /home/newdeploy/hpremier/releases/20240122132016; then echo "Directory does not exist '/home/newdeploy/hpremier/releases/20240122132016'" 1>&2; false; fi as newdeploy@162.19.170.198
+ DEBUG [294eb3ad] Command: if test ! -d /home/newdeploy/hpremier/releases/20240122132016; then echo "Directory does not exist '/home/newdeploy/hpremier/releases/20240122132016'" 1>&2; false; fi
+ DEBUG [294eb3ad] Finished in 0.383 seconds with exit status 0 (successful).
+ DEBUG [6631d509] Running $HOME/.rbenv/bin/rbenv exec bundle check as newdeploy@162.19.170.198
+ DEBUG [6631d509] Command: cd /home/newdeploy/hpremier/releases/20240122132016 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle check )
+ DEBUG [6631d509] 	The Gemfile's dependencies are satisfied
+ DEBUG [6631d509] Finished in 0.843 seconds with exit status 0 (successful).
+  INFO The Gemfile's dependencies are satisfied, skipping installation
+ DEBUG [8e673f0b] Running if test ! -d /home/newdeploy/hpremier/releases/20240122132016; then echo "Directory does not exist '/home/newdeploy/hpremier/releases/20240122132016'" 1>&2; false; fi as newdeploy@162.19.170.198
+ DEBUG [8e673f0b] Command: if test ! -d /home/newdeploy/hpremier/releases/20240122132016; then echo "Directory does not exist '/home/newdeploy/hpremier/releases/20240122132016'" 1>&2; false; fi
+ DEBUG [8e673f0b] Finished in 0.412 seconds with exit status 0 (successful).
+  INFO [0e1b25ef] Running $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile as newdeploy@162.19.170.198
+ DEBUG [0e1b25ef] Command: cd /home/newdeploy/hpremier/releases/20240122132016 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" RAILS_GROUPS="" ; $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile )
+  INFO [0e1b25ef] Finished in 4.711 seconds with exit status 0 (successful).
+ DEBUG [c9328f7c] Running if test ! -d /home/newdeploy/hpremier/releases/20240122132016; then echo "Directory does not exist '/home/newdeploy/hpremier/releases/20240122132016'" 1>&2; false; fi as newdeploy@162.19.170.198
+ DEBUG [c9328f7c] Command: if test ! -d /home/newdeploy/hpremier/releases/20240122132016; then echo "Directory does not exist '/home/newdeploy/hpremier/releases/20240122132016'" 1>&2; false; fi
+ DEBUG [c9328f7c] Finished in 0.610 seconds with exit status 0 (successful).
+  INFO [2c1cff02] Running /usr/bin/env mkdir -p /home/newdeploy/hpremier/releases/20240122132016/assets_manifest_backup as newdeploy@162.19.170.198
+ DEBUG [2c1cff02] Command: cd /home/newdeploy/hpremier/releases/20240122132016 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/hpremier/releases/20240122132016/assets_manifest_backup )
+  INFO [2c1cff02] Finished in 0.511 seconds with exit status 0 (successful).
+ DEBUG [a61b98f2] Running /usr/bin/env ls /home/newdeploy/hpremier/releases/20240122132016/public/assets/.sprockets-manifest* as newdeploy@162.19.170.198
+ DEBUG [a61b98f2] Command: cd /home/newdeploy/hpremier/releases/20240122132016 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls /home/newdeploy/hpremier/releases/20240122132016/public/assets/.sprockets-manifest* )
+ DEBUG [a61b98f2] 	/home/newdeploy/hpremier/releases/20240122132016/public/assets/.sprockets-manifest-80aae07824593fff970eeef2c871fac7.json
+ DEBUG [a61b98f2] Finished in 0.613 seconds with exit status 0 (successful).
+ DEBUG [724f3ffd] Running /usr/bin/env ls /home/newdeploy/hpremier/releases/20240122132016/public/assets/.sprockets-manifest* as newdeploy@162.19.170.198
+ DEBUG [724f3ffd] Command: cd /home/newdeploy/hpremier/releases/20240122132016 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls /home/newdeploy/hpremier/releases/20240122132016/public/assets/.sprockets-manifest* )
+ DEBUG [724f3ffd] 	/home/newdeploy/hpremier/releases/20240122132016/public/assets/.sprockets-manifest-80aae07824593fff970eeef2c871fac7.json
+ DEBUG [724f3ffd] Finished in 0.716 seconds with exit status 0 (successful).
+  INFO [0dadf38d] Running /usr/bin/env cp /home/newdeploy/hpremier/releases/20240122132016/public/assets/.sprockets-manifest-80aae07824593fff970eeef2c871fac7.json /home/newdeploy/hpremier/releases/20240122132016/assets_manifest_backup as newdeploy@162.19.170.198
+ DEBUG [0dadf38d] Command: cd /home/newdeploy/hpremier/releases/20240122132016 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env cp /home/newdeploy/hpremier/releases/20240122132016/public/assets/.sprockets-manifest-80aae07824593fff970eeef2c871fac7.json /home/newdeploy/hpremier/releases/20240122132016/assets_manifest_backup )
+  INFO [0dadf38d] Finished in 0.569 seconds with exit status 0 (successful).
+  INFO [deploy:migrate] Run `rake db:migrate`
+ DEBUG [c14156ef] Running if test ! -d /home/newdeploy/hpremier/releases/20240122132016; then echo "Directory does not exist '/home/newdeploy/hpremier/releases/20240122132016'" 1>&2; false; fi as newdeploy@162.19.170.198
+ DEBUG [c14156ef] Command: if test ! -d /home/newdeploy/hpremier/releases/20240122132016; then echo "Directory does not exist '/home/newdeploy/hpremier/releases/20240122132016'" 1>&2; false; fi
+ DEBUG [c14156ef] Finished in 0.397 seconds with exit status 0 (successful).
+  INFO [11fcc942] Running $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate as newdeploy@162.19.170.198
+ DEBUG [11fcc942] Command: cd /home/newdeploy/hpremier/releases/20240122132016 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" ; $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate )
+ DEBUG [11fcc942] 	== 20240122122150 AddCredithourtoStudentgrade: migrating ======================
+-- add_column(:student_grades, :credit_hour, :string)
+   -> 0.0006s
+-- add_column(:student_grades, :middle_name, :string)
+   -> 0.0002s
+== 20240122122150 AddCredithourtoStudentgrade: migrated (0.0008s) =============
+
+  INFO [11fcc942] Finished in 1.683 seconds with exit status 0 (successful).
+ DEBUG [8e9d1961] Running if test ! -d /home/newdeploy/hpremier/releases/20240122132016; then echo "Directory does not exist '/home/newdeploy/hpremier/releases/20240122132016'" 1>&2; false; fi as newdeploy@162.19.170.198
+ DEBUG [8e9d1961] Command: if test ! -d /home/newdeploy/hpremier/releases/20240122132016; then echo "Directory does not exist '/home/newdeploy/hpremier/releases/20240122132016'" 1>&2; false; fi
+ DEBUG [8e9d1961] Finished in 0.610 seconds with exit status 0 (successful).
+  INFO [3ca959ff] Running $HOME/.rbenv/bin/rbenv exec bundle exec whenever --update-crontab hpremier_production --set environment=production --roles=app,web,db  as newdeploy@162.19.170.198
+ DEBUG [3ca959ff] Command: cd /home/newdeploy/hpremier/releases/20240122132016 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" ; $HOME/.rbenv/bin/rbenv exec bundle exec whenever --update-crontab hpremier_production --set environment=production --roles=app,web,db  )
+ DEBUG [3ca959ff] 	[write] crontab file updated
+  INFO [3ca959ff] Finished in 1.022 seconds with exit status 0 (successful).
+  INFO [0c4c11c5] Running /usr/bin/env ln -s /home/newdeploy/hpremier/releases/20240122132016 /home/newdeploy/hpremier/releases/current as newdeploy@162.19.170.198
+ DEBUG [0c4c11c5] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/newdeploy/hpremier/releases/20240122132016 /home/newdeploy/hpremier/releases/current )
+  INFO [0c4c11c5] Finished in 0.611 seconds with exit status 0 (successful).
+  INFO [9fa5777d] Running /usr/bin/env mv /home/newdeploy/hpremier/releases/current /home/newdeploy/hpremier as newdeploy@162.19.170.198
+ DEBUG [9fa5777d] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mv /home/newdeploy/hpremier/releases/current /home/newdeploy/hpremier )
+  INFO [9fa5777d] Finished in 0.613 seconds with exit status 0 (successful).
+ DEBUG [afd215d8] Running /usr/bin/env pwd as newdeploy@162.19.170.198
+ DEBUG [afd215d8] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env pwd )
+ DEBUG [afd215d8] 	/home/newdeploy
+ DEBUG [afd215d8] Finished in 0.613 seconds with exit status 0 (successful).
+ DEBUG [a48d0815] Running if test ! -d /home/newdeploy; then echo "Directory does not exist '/home/newdeploy'" 1>&2; false; fi as newdeploy@162.19.170.198
+ DEBUG [a48d0815] Command: if test ! -d /home/newdeploy; then echo "Directory does not exist '/home/newdeploy'" 1>&2; false; fi
+ DEBUG [a48d0815] Finished in 0.715 seconds with exit status 0 (successful).
+  INFO [98793d01] Running /usr/bin/env mkdir -p /home/newdeploy/hpremier/releases/20240122132016/tmp as newdeploy@162.19.170.198
+ DEBUG [98793d01] Command: cd /home/newdeploy && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/newdeploy/hpremier/releases/20240122132016/tmp )
+  INFO [98793d01] Finished in 0.511 seconds with exit status 0 (successful).
+  INFO [bccc5de4] Running /usr/bin/env touch /home/newdeploy/hpremier/releases/20240122132016/tmp/restart.txt as newdeploy@162.19.170.198
+ DEBUG [bccc5de4] Command: cd /home/newdeploy && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env touch /home/newdeploy/hpremier/releases/20240122132016/tmp/restart.txt )
+  INFO [bccc5de4] Finished in 0.611 seconds with exit status 0 (successful).
+ DEBUG [dad4db74] Running /usr/bin/env ls -x /home/newdeploy/hpremier/releases as newdeploy@162.19.170.198
+ DEBUG [dad4db74] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls -x /home/newdeploy/hpremier/releases )
+ DEBUG [dad4db74] 	20231127082234	20231204065356	20231220135315	20231226122120	20231227205411
+20231229045048	20240102051530	20240108032358	20240114212129	20240122132016
+ DEBUG [dad4db74] Finished in 0.817 seconds with exit status 0 (successful).
+  INFO Keeping 10 of 10 deployed releases on 162.19.170.198
+ DEBUG [8ec336c5] Running [ -d /home/newdeploy/hpremier/current ] as newdeploy@162.19.170.198
+ DEBUG [8ec336c5] Command: [ -d /home/newdeploy/hpremier/current ]
+ DEBUG [8ec336c5] Finished in 0.613 seconds with exit status 0 (successful).
+ DEBUG [618b35e8] Running /usr/bin/env readlink /home/newdeploy/hpremier/current as newdeploy@162.19.170.198
+ DEBUG [618b35e8] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env readlink /home/newdeploy/hpremier/current )
+ DEBUG [618b35e8] 	/home/newdeploy/hpremier/releases/20240122132016
+ DEBUG [618b35e8] Finished in 0.614 seconds with exit status 0 (successful).
+  INFO No old releases (keeping newest 10) on 162.19.170.198
+ DEBUG [ec72416d] Running if test ! -d /home/newdeploy/hpremier/releases; then echo "Directory does not exist '/home/newdeploy/hpremier/releases'" 1>&2; false; fi as newdeploy@162.19.170.198
+ DEBUG [ec72416d] Command: if test ! -d /home/newdeploy/hpremier/releases; then echo "Directory does not exist '/home/newdeploy/hpremier/releases'" 1>&2; false; fi
+ DEBUG [ec72416d] Finished in 0.612 seconds with exit status 0 (successful).
+  INFO [8b2d8b33] Running /usr/bin/env echo "Branch heuc (at c7f368d3a8010c80bc827ff1847152d8de7e9d9f) deployed as release 20240122132016 by fena" >> /home/newdeploy/hpremier/revisions.log as newdeploy@162.19.170.198
+ DEBUG [8b2d8b33] Command: cd /home/newdeploy/hpremier/releases && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "Branch heuc (at c7f368d3a8010c80bc827ff1847152d8de7e9d9f) deployed as release 20240122132016 by fena" >> /home/newdeploy/hpremier/revisions.log )
+  INFO [8b2d8b33] Finished in 0.611 seconds with exit status 0 (successful).
