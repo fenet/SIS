@@ -30,7 +30,7 @@ class SemesterRegistration < ApplicationRecord
   end
 
   def generate_grade_report
-    if !self.grade_report.present?
+    #if !self.grade_report.present?
       GradeReport.create do |report|
         report.semester_registration_id = self.id
         report.student_id = self.student.id
@@ -94,7 +94,7 @@ class SemesterRegistration < ApplicationRecord
             report.academic_status = "Incomplete"
           else
             if self.student.study_level.downcase == "undergraduate"
-              report.academic_status = AcademicStatusGraduate.get_academic_status(report: report, student: student)
+              report.academic_status = AddAcademicStatus.academic_status({ sgpa: report.sgpa, cgpa: report.cgpa }, self.student)
             else
               report.academic_status = AcademicStatusGraduate.get_academic_status(report: report, student: self.student)
               # report.academic_status = self.student.program.grade_systems.last.academic_statuses.where("min_value <= ?", report.cgpa).where("max_value >= ?", report.cgpa).last.status
@@ -114,7 +114,7 @@ class SemesterRegistration < ApplicationRecord
 
         report.created_by = self.created_by
       end
-    end
+    #end
   end
 
   def approve_enrollment_status

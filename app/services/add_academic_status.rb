@@ -3,9 +3,9 @@ module AddAcademicStatus
     def academic_status(report, student)
      
      if report[:sgpa] >= 3.75 && report[:sgpa] <= 4
-        "Very Grate Distinction"
+        "Very Great Distinction"
       elsif report[:sgpa] >= 3.5 && report[:sgpa] < 3.75
-        "Grate Distinction"
+        "Great Distinction"
       elsif report[:sgpa] >= 3.25 && report[:sgpa] < 3.5
         "Distinction"
       elsif report[:sgpa] >=2 && report[:sgpa] < 3.25
@@ -34,7 +34,7 @@ module AddAcademicStatus
       if report[:sgpa] >= 1.5 && report[:sgpa] < 1.75
         "Academic Probation"
       elsif report[:sgpa] >= 1 && report[:sgpa] < 1.5
-          "Academic Suspension"
+        "Academic Suspension"
       else
         "Academic Dismissal"
       end

@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 ActiveAdmin.register_page "ExternalTransfer" do
   menu label: "Student Transfer"
+  #menu parent: "Add-ons",label: "External Transfer"
+  #permit_params :first_name, :last_name, :previous_institution, :previous_student_id, :status, :study_level, :admission_type, :department_id, :approved_by, :message, :email
+
+  #filter :student 
 
   content do
     div id: "approval" do
