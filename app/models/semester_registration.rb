@@ -96,7 +96,7 @@ class SemesterRegistration < ApplicationRecord
           report.sgpa = report.total_credit_hour == 0 ? 0 : (report.total_grade_point / report.total_credit_hour).round(2)
           report.cumulative_total_credit_hour = self.student.grade_reports.order("created_at DESC").first.cumulative_total_credit_hour + report.total_credit_hour
           report.cumulative_total_grade_point = self.student.grade_reports.order("created_at DESC").first.cumulative_total_grade_point + report.total_grade_point
-          report.cgpa = report.cumulative_total_grade_point / report.cumulative_total_credit_hour
+          report.cgpa = (report.cumulative_total_grade_point / report.cumulative_total_credit_hour).round(2)
 
           #report.cumulative_total_credit_hour = report.total_credit_hour
           #report.cumulative_total_grade_point = report.total_grade_point
