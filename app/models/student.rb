@@ -93,7 +93,7 @@ class Student < ApplicationRecord
   end
 
   def get_added_tution_fee
-    get_added_course.collect { |add| (college_payment.tution_per_credit_hr * add.credit_hour)}.sum
+    get_added_course.collect { |add| (college_payment.tution_per_credit_hr * add.ects)}.sum
   end
 
   def self.fetch_student_for_report(status)
@@ -107,7 +107,7 @@ class Student < ApplicationRecord
 
   def get_tution_fee
     return nil if college_payment.nil?
-    get_current_courses.collect { |oi| oi.valid? ? (college_payment.tution_per_credit_hr * oi.credit_hour) : 0 }.sum
+    get_current_courses.collect { |oi| oi.valid? ? (college_payment.tution_per_credit_hr * oi.ects) : 0 }.sum
   end
 
   def college_payment
@@ -160,7 +160,7 @@ class Student < ApplicationRecord
   end
 
   def student_semester_registration
-    if self.document_verification_status == "approved" && self.year == 1 && self.semester == 3 && self.program.entrance_exam_requirement_status == false
+    if self.document_verification_status == "approved" && self.year == 1 && self.semester == 1 && self.program.entrance_exam_requirement_status == false
   #main one........if self.document_verification_status == "approved" && self.semester_registrations.empty? && self.year == 1 && self.semester == 1 && self.program.entrance_exam_requirement_status == false
       add_student_registration if self.semester_registrations.find_by(semester: self.semester).nil?
     end

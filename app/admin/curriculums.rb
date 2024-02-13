@@ -27,7 +27,7 @@ order_by: 'id_asc'
 filter :curriculum_title
 filter :curriculum_version
 filter :total_course
-filter :total_ects
+#filter :total_ects
 filter :total_credit_hour
 filter :active_status
 filter :curriculum_active_date
@@ -78,7 +78,7 @@ filter :updated_at
           a.input :credit_hour, :required => true, min: 1, as: :select, :collection => [1, 2,3,4,5,6,7], :include_blank => false
           a.input :lecture_hour
           a.input :lab_hour
-          a.input :ects
+          a.input :ects, label:"contact hr"
           a.input :course_description,  :input_html => { :class => 'autogrow', :rows => 5, :cols => 20}
           a.input :year, as: :select, :collection => [1, 2,3,4,5,6,7], :include_blank => false
           a.input :semester, as: :select, :collection => [1, 2,3,4], :include_blank => false
@@ -164,7 +164,7 @@ filter :updated_at
                     column :lab_hour do |item|
                       item.lab_hour
                     end
-                    column "ECTS" do |item|
+                    column "contact hour" do |item|
                       item.ects
                     end
                     column :created_by

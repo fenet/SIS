@@ -202,7 +202,7 @@ ActiveAdmin.register Program do
                       column :lab_hour do |item|
                         item.lab_hour
                       end
-                      column "ECTS" do |item|
+                      column "contact hour" do |item|
                         item.ects
                       end
                       column :created_by

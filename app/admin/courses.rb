@@ -53,7 +53,7 @@ permit_params(:course_outline,:course_module_id, :major, :curriculum_id,:program
   filter :credit_hour
   filter :lecture_hour
   filter :lab_hour
-  filter :ects
+  #filter :ects
   filter :created_by
   filter :last_updated_by
   filter :created_at
