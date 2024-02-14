@@ -96,7 +96,7 @@
         <div class="row">
           <% if @tution_fee.nil? || @registration_fee.nil?%>
             <div class="m-3">
-              <h2 class="card-title text-danger">Collage payment is not set yet, please contact finance head </h2>
+              <h2 class="card-title text-danger">College payment is not set yet, please contact finance head </h2>
             </div>
           <%else%>
             <div class="col-12 col-md-4">
@@ -114,11 +114,13 @@
                         </tr>
                         <tr>
                           <th>Registration Fee:</th>
-                          <td><%= @registration_fee / 4%> ETB</td>
+                          <!-- <td><%= @registration_fee / 4%> ETB</td> -->
+                          <td><%= @registration_fee %> ETB</td>
                         </tr>
                         <tr>
                           <th>Total:</th>
-                          <td><b><%= total(@tution_fee, 4 , @registration_fee / 4) %> ETB</b></td>
+                         <!-- <td><b><%= total(@tution_fee, 4 , @registration_fee / 4) %> ETB</b></td> -->
+                          <td><b><%= total(@tution_fee, 4 , @registration_fee) %> ETB</b></td>
                         </tr>
                       </tbody>
                     </table>
@@ -141,11 +143,13 @@
                         </tr>
                         <tr>
                           <th>Registration Fee:</th>
-                          <td><%= @registration_fee / 2%> ETB</td>
+                          <!-- <td><%= @registration_fee / 2%> ETB</td> -->
+                          <td><%= @registration_fee %> ETB</td>
                         </tr>
                         <tr>
                           <th>Total:</th>
-                          <td><b><%= total(@tution_fee, 2 , @registration_fee / 2) %> ETB</b></td>
+                          <!-- <td><b><%= total(@tution_fee, 2 , @registration_fee / 2) %> ETB</b></td> -->
+                          <td><b><%= total(@tution_fee, 2 , @registration_fee) %> ETB</b></td>
                         </tr>
                       </tbody>
                     </table>
