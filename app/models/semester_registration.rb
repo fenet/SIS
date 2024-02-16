@@ -174,7 +174,7 @@ class SemesterRegistration < ApplicationRecord
 
         invoice.invoice_number = SecureRandom.random_number(10000000)
         if self.mode_of_payment == "Monthly Payment"
-          invoice.total_price = (tution_price / 4 + 750)
+          invoice.total_price = (tution_price / 3 + 750)
           invoice.registration_fee = registration_fee / 4
         elsif self.mode_of_payment == "Full Semester Payment"
           invoice.total_price = (tution_price + 750)

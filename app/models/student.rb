@@ -46,7 +46,7 @@ class Student < ApplicationRecord
   has_many :recurring_payments, dependent: :destroy
   has_many :add_and_drops, dependent: :destroy
   has_many :makeup_exams, dependent: :destroy
-
+  has_many :payments
   validate :password_complexity
   # validates :student_grades, presence: true
 
@@ -117,6 +117,10 @@ class Student < ApplicationRecord
   def program_payment
     Payment.find_by(program_id: self.program_id)
   end
+
+  #def batch_payment
+  #  Payment.find_by(batch: self.batch)
+  #end
 
   def add_student_registration(mode_of_payment = nil, out_of_batch = false)
     SemesterRegistration.create do |registration|

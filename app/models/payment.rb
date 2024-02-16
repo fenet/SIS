@@ -14,7 +14,7 @@ class Payment < ApplicationRecord
 
   ##assocations
   belongs_to :program
-
+  #belongs_to :student
   private
 
   def set_version
