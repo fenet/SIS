@@ -240,40 +240,40 @@ permit_params(:course_outline,:course_module_id, :major, :curriculum_id,:program
       #   end
       # end
       # 
-      tab "Currently enrolled students" do
-        panel "currently enrolled students" do
-          table_for course.course_registrations.where(enrollment_status: "enrolled").where(academic_calendar_id: current_academic_calendar(course.program.study_level, course.program.admission_type)).where(semester: SemesterRegistration.find_by(study_level: course.program.study_level, admission_type: course.program.admission_type).semester).order('student_full_name ASC') do
-            column "Student Full Name" do |n|
-              link_to n.student_full_name, admin_student_path(n.student)
-            end
-            column "Student ID" do |n|
-              n.student.student_id
-            end
-            column "Academic calendar" do |n|
-              n.academic_calendar.calender_year
-            end
-            column "Year" do |s|
-              s.year
-            end
-            column "Semester" do |n|
-              n.semester
-            end
-            column "Section" do |n|
-              n.section.section_short_name if n.section.present?
-            end
-            column "Program Section" do |n|
-              n.semester_registration.section.section_short_name if n.semester_registration.section.present?
-            end
-            column "Add At", sortable: true do |c|
-              c.created_at.strftime("%b %d, %Y")
-            end
-
-            # column "links", sortable: true do |c|
-            #     "#{link_to("View", admin_assessment_plan_path(c))} #{link_to "Edit", edit_admin_course_path(course.id, page_name: "add_assessment")}".html_safe     
-            # end
-          end
-        end
-      end
+      #tab "Currently enrolled students" do
+      #  panel "currently enrolled students" do
+      #    table_for course.course_registrations.where(enrollment_status: "enrolled").where(academic_calendar_id: current_academic_calendar(course.program.study_level, course.program.admission_type)).where(semester: SemesterRegistration.find_by(study_level: course.program.study_level, admission_type: course.program.admission_type).semester).order('student_full_name ASC') do
+      #      column "Student Full Name" do |n|
+      #        link_to n.student_full_name, admin_student_path(n.student)
+      #      end
+      #      column "Student ID" do |n|
+      #        n.student.student_id
+      #      end
+      #      column "Academic calendar" do |n|
+      #        n.academic_calendar.calender_year
+      #      end
+      #      column "Year" do |s|
+      #        s.year
+      #      end
+      #      column "Semester" do |n|
+      #        n.semester
+      #      end
+      #      column "Section" do |n|
+      #        n.section.section_short_name if n.section.present?
+      #      end
+      #      column "Program Section" do |n|
+      #        n.semester_registration.section.section_short_name if n.semester_registration.section.present?
+      #      end
+      #      column "Add At", sortable: true do |c|
+      #        c.created_at.strftime("%b %d, %Y")
+      #      end
+#
+      #      # column "links", sortable: true do |c|
+      #      #     "#{link_to("View", admin_assessment_plan_path(c))} #{link_to "Edit", edit_admin_course_path(course.id, page_name: "add_assessment")}".html_safe     
+      #      # end
+      #    end
+      #  end
+      #end
       tab "Assessment Plan" do
         columns do
           column min_width: "70%" do
