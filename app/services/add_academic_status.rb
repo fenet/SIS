@@ -36,7 +36,7 @@ module AddAcademicStatus
       elsif report[:sgpa] >= 1 && report[:sgpa] < 1.5
         "Academic Suspension"
       else
-        "Academic Dismissal"
+        "Academic Dismissal" 
       end
     end
 

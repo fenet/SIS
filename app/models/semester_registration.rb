@@ -71,7 +71,7 @@ class SemesterRegistration < ApplicationRecord
             else
               report.academic_status = AcademicStatusGraduate.get_academic_status(report: report, student: self.student)
             end
-            if (report.academic_status == "Academic Dismissal") || (report.academic_status == "Incomplete")
+            if (report.academic_status != "Academic Dismissal") || (report.academic_status != "Incomplete")
               if self.program.program_semester > self.student.semester
                 promoted_semester = self.student.semester + 1
                 self.student.update_columns(semester: promoted_semester)
