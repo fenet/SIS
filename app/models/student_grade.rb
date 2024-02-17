@@ -109,7 +109,7 @@ class StudentGrade < ApplicationRecord
         end
 
         if self.course_registration.semester_registration.grade_report.academic_status != academic_status
-          if ((self.course_registration.semester_registration.grade_report.academic_status == "Dismissal") || (self.course_registration.semester_registration.grade_report.academic_status == "Incomplete")) && ((academic_status != "Dismissal") || (academic_status != "Incomplete"))
+          if ((self.course_registration.semester_registration.grade_report.academic_status == "Academic Dismissal") || (self.course_registration.semester_registration.grade_report.academic_status == "Incomplete")) && ((academic_status != "Academic Dismissal") || (academic_status != "Incomplete"))
             if self.program.program_semester > self.student.semester
               promoted_semester = self.student.semester + 1
               self.student.update_columns(semester: promoted_semester)
@@ -141,7 +141,7 @@ class StudentGrade < ApplicationRecord
         end
 
         if self.course_registration.semester_registration.grade_report.academic_status != academic_status
-          if ((self.course_registration.semester_registration.grade_report.academic_status == "Dismissal") || (self.course_registration.semester_registration.grade_report.academic_status == "Incomplete")) && ((academic_status != "Dismissal") || (academic_status != "Incomplete"))
+          if ((self.course_registration.semester_registration.grade_report.academic_status == "Academic Dismissal") || (self.course_registration.semester_registration.grade_report.academic_status == "Incomplete")) && ((academic_status != "Academic Dismissal") || (academic_status != "Incomplete"))
             if self.program.program_semester > self.student.semester
               promoted_semester = self.student.semester + 1
               self.student.update_columns(semester: promoted_semester)
