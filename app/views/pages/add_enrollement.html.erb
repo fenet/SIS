@@ -126,7 +126,7 @@
                 <div class="card-header">
                   <h3 class="card-title">Half Semester Prcing Option</h3>
                 </div>
-                <div class="card-body">
+               <!-- <div class="card-body">
                   <div class="table-responsive">
                     <table class="table">
                       <tbody>
@@ -142,7 +142,7 @@
                       </tbody>
                     </table>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
             <div class="col-12 col-md-4">
@@ -179,7 +179,7 @@
             <div class="card-body">
               <%= form_with(url: create_semester_registration_path(true), method: :post) do |f|%>
                 <div class="col-12 col-md-12 form-group">
-                  <%= f.select :mode_of_payment, [ "Monthly Payment", "Half Semester Payment","Full Semester Payment"], class: "form-control custom-select", :required => true%>
+                  <%= f.select :mode_of_payment, [ "Monthly Payment","Full Semester Payment"], class: "form-control custom-select", :required => true%>
                 </div>
                 <div class="form-actions">
                   <%= f.submit "Finish", class: "btn btn-primary btn-user" %>

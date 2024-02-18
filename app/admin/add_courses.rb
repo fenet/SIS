@@ -43,7 +43,7 @@ ActiveAdmin.register AddCourse do
       c.student.name.full
     end
     column "Student Department", sortable: true do |c|
-           c.student.department.department_name
+       c.student.department.department_name
     end
     column "Student Year", sortable: true do |c|
       c.student.year
@@ -77,6 +77,6 @@ ActiveAdmin.register AddCourse do
         status_tag c.status
       end
     end
-    # actions
+    actions
   end
 end

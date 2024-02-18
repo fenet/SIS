@@ -32,8 +32,8 @@
             <td>CGPA</td>
             <td>SGPA</td>
             <td>Academic Status</td>
-            <th>Download</th>
-            <th>Actions</th>
+            <!-- <th>Download</th> -->
+            <th>Actions</th> 
           </tr>
         </thead>
         <%@grade_reports.each do |sm|%>
@@ -46,9 +46,9 @@
             <td><%= sm.cgpa %></td>
             <td><%= sm.sgpa %></td>
             <td><%= sm.academic_status %></td>
-            <td class="actions">
+           <!-- <td class="actions">
               <%= link_to("Download", student_grade_report_path(year: sm.year, semester: sm.semester, format: 'pdf'), :class => 'btn-sm btn-primary') %>
-            </td>
+            </td> -->
             <td class="actions">
               <%= link_to("View", grade_report_path(sm), :class => 'btn-sm btn-primary') %>
             </td>

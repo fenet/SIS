@@ -37,7 +37,7 @@ class StudentTemporary < Prawn::Document
   def header_footer
     repeat :all do
       bounding_box [bounds.left, bounds.top], :width => bounds.width do
-        font "Times-Roman"
+        font "Helvetica"
         image open("app/assets/images/logo.jpg"), fit: [120, 100], position: :center
         stroke_horizontal_rule
       end

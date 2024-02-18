@@ -51,7 +51,7 @@ module AddAcademicStatus
 
     def first_year_second_semester(report:, student:)
       if ((report[:sgpa] >= 1.5 && report[:sgpa] < 1.75) || is_warning_before?(student: student))
-        "Academic Probation"
+          "Academic Probation"
       elsif report[:sgpa] >= 1.25 && report[:sgpa] < 1.5
           "Academic Suspension"
       elsif (report[:sgpa] < 1.25 || is_previous_sgpa_below?(student: student, sgpa: 1.25, cgpa: 1.5)) && report[:cgpa] < 1.5

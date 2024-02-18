@@ -168,7 +168,7 @@ ActiveAdmin.register StudentGrade do
 
   action_item :new, only: :show, priority: 0 do
     if (current_admin_user.role == "registrar head") || (current_admin_user.role == "admin")
-      link_to "Add Makeup exam", new_admin_makeup_exam_path(course_id: "#{student_grade.course.id}", section_id: "#{student_grade.course_registration.semester_registration.section.id}", academic_calendar_id: "#{student_grade.course_registration.academic_calendar.id}", semester: "#{student_grade.course_registration.semester}", year: "#{student_grade.course_registration.year}", student_id: "#{student_grade.student.id}", course_registration_id: "#{student_grade.course_registration.id}", student_grade_id: "#{student_grade.id}", department_id: "#{student_grade.student.program.department.id}", program_id: "#{student_grade.student.program.id}")
+     # link_to "Add Makeup exam", new_admin_makeup_exam_path(course_id: "#{student_grade.course.id}", section_id: "#{student_grade.course_registration.semester_registration.section.id}", academic_calendar_id: "#{student_grade.course_registration.academic_calendar.id}", semester: "#{student_grade.course_registration.semester}", year: "#{student_grade.course_registration.year}", student_id: "#{student_grade.student.id}", course_registration_id: "#{student_grade.course_registration.id}", student_grade_id: "#{student_grade.id}", department_id: "#{student_grade.student.program.department.id}", program_id: "#{student_grade.student.program.id}")
     end
   end
   action_item :edit, only: :show, priority: 1 do
@@ -230,4 +230,15 @@ ActiveAdmin.register StudentGrade do
       end
     end
   end
+
+  form do |f|
+    f.inputs "Edit student Grade" do
+      f.input :letter_grade
+      f.input :grade_point
+      f.input :assesment_total
+    end
+    f.actions
+
+  end
+ 
 end

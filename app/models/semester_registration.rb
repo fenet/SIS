@@ -253,3 +253,5 @@ class SemesterRegistration < ApplicationRecord
     end
   end
 end
+
+

@@ -164,7 +164,7 @@ filter :updated_at
                     column :lab_hour do |item|
                       item.lab_hour
                     end
-                    column "contact hour" do |item|
+                    column "contact hr." do |item|
                       item.ects
                     end
                     column :created_by

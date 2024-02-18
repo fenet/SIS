@@ -205,14 +205,10 @@ ActiveAdmin.register GradeReport do
               pr.course.credit_hour
             end
             column "Letter Grade" do |pr|
-              if pr.student_grade.letter_grade.present?
-                pr.student_grade.letter_grade
-              else  
-                pr.student_grade.letter_grade = ''
-              end
+              pr.student_grade&.letter_grade
             end
             column "Grade Point" do |pr|
-              pr.student_grade.grade_point
+              pr.student_grade&.grade_point
             end
           end
         end
