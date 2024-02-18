@@ -1,4 +1,4 @@
-'class CreateGrades < ActiveRecord::Migration[5.2]
+class CreateGrades < ActiveRecord::Migration[5.2]
   def change
     create_table :grades, id: :uuid do |t|
     	t.belongs_to :grade_system, index: true, type: :uuid
