@@ -2,7 +2,7 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.17.3"
 
-set :application, "ngvcnew"
+set :application, "hpremier"
 # set :ssh_options, { :forward_agent => true }
 set :repo_url, "https://github.com/fenet/leadstarlatest.git"
 
@@ -63,7 +63,3 @@ set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
-
-
-
-
