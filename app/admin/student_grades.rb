@@ -229,4 +229,15 @@ ActiveAdmin.register StudentGrade do
       end
     end
   end
+
+  form do |f|
+    f.inputs "Edit student Grade" do
+      f.input :letter_grade
+      f.input :grade_point
+      f.input :assesment_total
+    end
+    f.actions
+
+  end
+ 
 end

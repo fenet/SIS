@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_26_192120) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_08_201426) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -561,8 +561,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_26_192120) do
     t.datetime "updated_at", precision: nil, null: false
   end
 
-  create_table "grade_changes", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "academic_calendar_id"
+  create_table "faculty_deans", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "admin_user_id", null: false
+    t.uuid "faculty_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_user_id"], name: "index_faculty_deans_on_admin_user_id"
+    t.index ["faculty_id"], name: "index_faculty_deans_on_faculty_id"
+  end
+
+  create_table "grade_changes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "program_id"
     t.uuid "department_id"
     t.uuid "student_id"
@@ -597,7 +605,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_26_192120) do
     t.string "status"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.index ["academic_calendar_id"], name: "index_grade_changes_on_academic_calendar_id"
     t.index ["assessment_id"], name: "index_grade_changes_on_assessment_id"
     t.index ["course_id"], name: "index_grade_changes_on_course_id"
     t.index ["course_registration_id"], name: "index_grade_changes_on_course_registration_id"
@@ -1261,4 +1268,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_26_192120) do
   add_foreign_key "dropcourses", "students"
   add_foreign_key "exemptions", "external_transfers"
   add_foreign_key "external_transfers", "departments"
+  add_foreign_key "faculty_deans", "admin_users"
+  add_foreign_key "faculty_deans", "faculties"
 end
