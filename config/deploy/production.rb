@@ -5,7 +5,7 @@ role :web, %w{newdeploy@162.19.170.198}
 role :db, %w{newdeploy@162.19.170.198}, :primary => true
 
 #set :branch, "main"
-set :branch, "heuc" 
+set :branch, "main" 
 set :rails_env, "production"
 
 set :deploy_to, '/home/newdeploy/hpremier' 
