@@ -32,14 +32,14 @@ class Invoice < ApplicationRecord
         invoice_item.course_id = course.course.id
         invoice_item.created_by = self.created_by
         if self.semester_registration.mode_of_payment == "Monthly Payment"
-          course_price = self.student.get_tution_fee / 4
+          course_price = self.student.get_tution_fee / 3
           invoice_item.price = course_price
         elsif self.semester_registration.mode_of_payment == "Full Semester Payment"
           course_price = self.student.get_tution_fee
           invoice_item.price = course_price
-        elsif self.semester_registration.mode_of_payment == "Half Semester Payment"
-          course_price = self.student.get_tution_fee / 2
-          invoice_item.price = course_price
+        #elsif self.semester_registration.mode_of_payment == "Half Semester Payment"
+          #course_price = self.student.get_tution_fee / 2
+          #invoice_item.price = course_price
         end
       end
     end

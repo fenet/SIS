@@ -30,7 +30,7 @@ class SemesterRegistration < ApplicationRecord
   end
 
   def generate_grade_report
-    if !self.grade_report.present?
+    #if !self.grade_report.present?
       GradeReport.create do |report|
         report.semester_registration_id = self.id
         report.student_id = self.student.id
@@ -43,30 +43,36 @@ class SemesterRegistration < ApplicationRecord
         report.year = self.student.year
 
         report.total_credit_hour = self.course_registrations.where(enrollment_status: "enrolled").collect { |oi| (!!(oi.student_grade&.letter_grade != "I") && oi.student_grade.present? && !!(oi.student_grade&.letter_grade != "NG")) ? (oi.course.credit_hour) : 0 }.sum
-        report.total_grade_point = self.course_registrations.where(enrollment_status: "enrolled").collect { |oi|
-          (!!(oi.student_grade&.letter_grade != "I") && oi.student_grade.present? && !!(oi.student_grade&.letter_grade != "NG")) ? (oi.student_grad
-            e.grade_point) : 0
-        }.sum
+        report.total_grade_point = self.course_registrations.where(enrollment_status: "enrolled").collect { |oi| (!!(oi.student_grade&.letter_grade != "I") && oi.student_grade.present? && !!(oi.student_grade&.letter_grade != "NG")) ? (oi.student_grade.grade_point) : 0 }.sum
 
         if self.student.grade_reports.empty?
           report.total_course = self.course_registrations.count
-          report.total_credit_hour = self.course_registrations.where(enrollment_status: "enrolled").collect { |oi| ((oi.student_grade.letter_grade != "I") && (oi.student_grade.letter_grade != "NG")) ? (oi.course.credit_hour) : 0 }.sum
-          report.total_grade_point = self.course_registrations.where(enrollment_status: "enrolled").collect { |oi| ((oi.student_grade.letter_grade != "I") && (oi.student_grade.letter_grade != "NG")) ? (oi.student_grade.grade_point) : 0 }.sum
-          report.sgpa = report.total_credit_hour == 0 ? 0 : (report.total_grade_point / report.total_credit_hour).round(1)
-
+          
+          #report.total_credit_hour = self.course_registrations.where(enrollment_status: "enrolled").collect { |oi| ((oi.student_grade.letter_grade != "I") && (oi.student_grade&.letter_grade != "NG")) ? (oi.course.credit_hour) : 0 }.sum
+          #report.total_grade_point = self.course_registrations.where(enrollment_status: "enrolled").collect { |oi| ((oi.student_grade.letter_grade != "I") && (oi.student_grade&.letter_grade != "NG")) ? (oi.student_grade.grade_point) : 0 }.sum
+          
+          report.total_credit_hour = self.course_registrations.where(enrollment_status: "enrolled").collect { |oi| (!!(oi.student_grade&.letter_grade != "I") && oi.student_grade.present? && !!(oi.student_grade&.letter_grade != "NG")) ? (oi.course.credit_hour) : 0 }.sum
+          report.total_grade_point = self.course_registrations.where(enrollment_status: "enrolled").collect { |oi|
+          (!!(oi.student_grade&.letter_grade != "I") && oi.student_grade.present? && !!(oi.student_grade&.letter_grade != "NG")) ? (oi.student_grade.grade_point) : 0}.sum
+          report.sgpa = report.total_credit_hour == 0 ? 0 : (report.total_grade_point / report.total_credit_hour).round(2)
+         
           report.cumulative_total_credit_hour = report.total_credit_hour
           report.cumulative_total_grade_point = report.total_grade_point
-          report.cgpa = report.cumulative_total_credit_hour == 0 ? 0 : (report.cumulative_total_grade_point / report.cumulative_total_credit_hour).round(1)
+          report.cgpa = report.cumulative_total_credit_hour == 0 ? 0 : (report.cumulative_total_grade_point / report.cumulative_total_credit_hour).round(2)
+         
 
           if ((self.course_registrations.joins(:student_grade).pluck(:letter_grade).include?("I")) || (self.course_registrations.joins(:student_grade).pluck(:letter_grade).include?("NG")))
             report.academic_status = "Incomplete"
           else
-            if self.student.study_level == "undergraduate"
-              report.academic_status = AddAcademicStatus.academic_status({ sgpa: report.sgpa, cgpa: report.cgpa }, self.student)
+            
+            if self.student.study_level.downcase == "undergraduate"
+
+              report.academic_status = AddAcademicStatus.academic_status({ sgpa: report.sgpa, cgpa: report.cgpa }, self.student) 
             else
               report.academic_status = AcademicStatusGraduate.get_academic_status(report: report, student: self.student)
             end
-            if (report.academic_status.strip != "Academic Dismissal") #|| (report.academic_status.strip != "Incomplete")
+
+            if (report.academic_status.strip != "Academic Dismissal") #|| (report.academic_status != "Incomplete")
               if self.program.program_semester > self.student.semester
                 promoted_semester = self.student.semester + 1
                 self.student.update_columns(semester: promoted_semester)
@@ -79,22 +85,37 @@ class SemesterRegistration < ApplicationRecord
           end
         elsif self.student.grade_reports.present?
           report.total_course = self.course_registrations.count
-          report.total_credit_hour = self.course_registrations.collect { |oi| ((oi.student_grade.letter_grade != "I") && (oi.student_grade.letter_grade != "NG")) ? (oi.course.credit_hour) : 0 }.sum
-          report.total_grade_point = self.course_registrations.collect { |oi| ((oi.student_grade.letter_grade != "I") && (oi.student_grade.letter_grade != "NG")) ? (oi.course.credit_hour * oi.student_grade.grade_point) : 0 }.sum
-          report.sgpa = report.total_credit_hour == 0 ? 0 : (report.total_grade_point / report.total_credit_hour).round(1)
+          
+          #report.total_credit_hour = self.course_registrations.collect { |oi| ((oi.student_grade.letter_grade != "I") && (oi.student_grade.letter_grade != "NG")) ? (oi.course.credit_hour) : 0 }.sum
+          #report.total_grade_point = self.course_registrations.collect { |oi| ((oi.student_grade.letter_grade != "I") && (oi.student_grade.letter_grade != "NG")) ? (oi.course.credit_hour * oi.student_grade.grade_point) : 0 }.sum
+          #report.sgpa = report.total_credit_hour == 0 ? 0 : (report.total_grade_point / report.total_credit_hour).round(2)
+          
+
+          report.total_credit_hour = self.course_registrations.where(enrollment_status: "enrolled").collect { |oi| (!!(oi.student_grade&.letter_grade != "I") && oi.student_grade.present? && !!(oi.student_grade&.letter_grade != "NG")) ? (oi.course.credit_hour) : 0 }.sum
+          report.total_grade_point = self.course_registrations.where(enrollment_status: "enrolled").collect { |oi|
+          (!!(oi.student_grade&.letter_grade != "I") && oi.student_grade.present? && !!(oi.student_grade&.letter_grade != "NG")) ? (oi.student_grade.grade_point) : 0}.sum
+          report.sgpa = report.total_credit_hour == 0 ? 0 : (report.total_grade_point / report.total_credit_hour).round(2)
           report.cumulative_total_credit_hour = self.student.grade_reports.order("created_at DESC").first.cumulative_total_credit_hour + report.total_credit_hour
           report.cumulative_total_grade_point = self.student.grade_reports.order("created_at DESC").first.cumulative_total_grade_point + report.total_grade_point
-          report.cgpa = report.cumulative_total_grade_point / report.cumulative_total_credit_hour
+          report.cgpa = (report.cumulative_total_grade_point / report.cumulative_total_credit_hour).round(2)
+
+          #report.cumulative_total_credit_hour = report.total_credit_hour
+          #report.cumulative_total_grade_point = report.total_grade_point
+          #report.cgpa = report.cumulative_total_credit_hour == 0 ? 0 : (report.cumulative_total_grade_point / report.cumulative_total_credit_hour).round(2)
+
+          
+
           if ((self.course_registrations.joins(:student_grade).pluck(:letter_grade).include?("I")) || (self.course_registrations.joins(:student_grade).pluck(:letter_grade).include?("NG")))
             report.academic_status = "Incomplete"
           else
-            if self.student.study_level == "undergraduate"
-              report.academic_status = AcademicStatusGraduate.get_academic_status(report: report, student: student)
+            if self.student.study_level.downcase == "undergraduate"
+              report.academic_status = AddAcademicStatus.academic_status({ sgpa: report.sgpa, cgpa: report.cgpa }, self.student)
             else
               report.academic_status = AcademicStatusGraduate.get_academic_status(report: report, student: self.student)
               # report.academic_status = self.student.program.grade_systems.last.academic_statuses.where("min_value <= ?", report.cgpa).where("max_value >= ?", report.cgpa).last.status
             end
-            if (report.academic_status != "Academic Dismissal") #|| (report.academic_status != "Incomplete")
+
+            if (report.academic_status != "Academic Dismissal") || #(report.academic_status != "Incomplete")
               if self.program.program_semester > self.student.semester
                 promoted_semester = self.student.semester + 1
                 self.student.update_columns(semester: promoted_semester)
@@ -109,7 +130,7 @@ class SemesterRegistration < ApplicationRecord
 
         report.created_by = self.created_by
       end
-    end
+    #end
   end
 
   def approve_enrollment_status
@@ -155,12 +176,12 @@ class SemesterRegistration < ApplicationRecord
 
         invoice.invoice_number = SecureRandom.random_number(10000000)
         if self.mode_of_payment == "Monthly Payment"
-          invoice.total_price = tution_price / 4
+          invoice.total_price = (tution_price / 3 + 750)
           invoice.registration_fee = registration_fee / 4
         elsif self.mode_of_payment == "Full Semester Payment"
-          invoice.total_price = tution_price
+          invoice.total_price = (tution_price + 750)
         elsif self.mode_of_payment == "Half Semester Payment"
-          invoice.total_price = tution_price / 2
+          invoice.total_price = (tution_price / 2 + 750)
           invoice.registration_fee = registration_fee / 2
         end
       end
@@ -232,3 +253,5 @@ class SemesterRegistration < ApplicationRecord
     end
   end
 end
+
+

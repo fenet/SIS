@@ -7,10 +7,38 @@ ActiveAdmin.register Invoice, as: "RegistrationPayment" do
 
   # batch_action "Approve invoice status for", method: :put, confirm: "Are you sure?" do |ids|
   #   invoices = Invoice.where(id: ids)
-  #   invoices.update_all(invoice_status: "approved")
-    
-  # end
-
+  ##   invoices.update_all(invoice_status: "approved")
+  #  
+  ## end
+  #controller do
+  #  after_action :testmoodle, only: [:update]
+#
+  #  def testmoodle
+  #    if @registration_payment.payment_transaction.finance_approval_status == "approved"
+  #      @moodle = MoodleRb.new('c9687c85baec73e85ad30c281c25e229', 'https://lms.ngvc.edu.et/webservice/rest/server.php')
+  #      if !(@moodle.users.search(email: "#{@registration_payment.student.email}").present?)
+  #        student = @moodle.users.create(
+  #            :username => "#{@registration_payment.student.student_id.downcase}",
+  #            :password => "#{@registration_payment.student.student_password}",
+  #            :firstname => "#{@registration_payment.student.first_name}",
+  #            :lastname => "#{@registration_payment.student.last_name}",
+  #            :email => "#{@registration_payment.student.email}"
+  #          )
+  #        lms_student = @moodle.users.search(email: "#{@registration_payment.student.email}")
+  #        @user = lms_student[0]["id"]
+  #        @registration_payment.semester_registration.course_registrations.each do |c|
+  #          s = @moodle.courses.search("#{c.course.course_code}")
+  #          @course = s["courses"].to_a[0]["id"]
+  #          @moodle.enrolments.create(
+  #            :user_id => "#{@user}",
+  #            :course_id => "#{@course}"
+  #          )
+  #        end
+  #      end
+  #    end
+  #  end
+  #end  
+  #
   index do
     selectable_column
     # column "Invoice NO",:invoice_number
@@ -33,7 +61,7 @@ ActiveAdmin.register Invoice, as: "RegistrationPayment" do
       status_tag s.invoice_status
     end
     number_column :total_price, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
-    number_column :registration_fee, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
+    #number_column :registration_fee, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
     column "Academic Year", sortable: true do |n|
       link_to n.academic_calendar.calender_year, admin_academic_calendar_path(n.academic_calendar)
     end

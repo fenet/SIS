@@ -38,29 +38,29 @@
 		              <li class="list-group-item mx-3">
 		                <b>Prorgam</b> <a class="text-muted float-right"><%= current_student.program.program_name%></a>
 		              </li>
-		              <li class="list-group-item mx-3">
+		              <!-- <li class="list-group-item mx-3">
 		                <b>Admission Type</b> <a class="text-muted float-right"><%= current_student.admission_type%></a>
-		              </li>
+		              </li> -->
 		              <li class="list-group-item mx-3">
 		                <b>Academic Year</b> <a class="text-muted float-right"><%= AcademicCalendar.last.calender_year%></a>
 		              </li>
-		              <li class="list-group-item mx-3">
+					  <!-- <li class="list-group-item mx-3">
 		                <b>Section</b> <a class="text-muted float-right"><%= @grade_report.semester_registration&.section&.section_short_name%></a>
-		              </li>
+		              </li> -->
 		              
 		            </ul>
 	          	</div>
 	          	<div class="col-12 col-md-6">
 	          		<ul class="list-group list-group-unbordered mb-3">
-	          			<li class="list-group-item mx-3">
+	          			<!-- <li class="list-group-item mx-3">
 		                <b>Study Level</b> <a class="text-muted float-right"><%= current_student.study_level%></a>
-		              </li>
+		              </li> -->
 		              <li class="list-group-item mx-3">
-		                <b>Year</b> <a class="text-muted float-right"><%= current_student.year%></a>
-		              </li>
+					  <!-- <b>Year</b> <a class="text-muted float-right"><%= current_student.year%></a>
+		              </li> -->
 		              <li class="list-group-item mx-3">
-		                <b>Semester</b> <a class="text-muted float-right"><%= current_student.semester%></a>
-		              </li>
+					  <!-- <b>Semester</b> <a class="text-muted float-right"><%= current_student.semester%></a>
+		              </li> -->
 		              <li class="list-group-item mx-3">
 		                <b>SGPA</b> <a class="text-muted float-right"><%= @grade_report.sgpa%></a>
 		              </li>

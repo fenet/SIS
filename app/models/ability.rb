@@ -7,6 +7,18 @@ class Ability
     user ||= AdminUser.new
 
     case user.role
+
+    when "president"
+      can :manage, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
+      can :read, ActiveAdmin::Page, name: "Graduation", namespace_name: "admin"
+      can :read, AcademicCalendar
+
+    when "vice president"
+      can :manage, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
+      can :read, ActiveAdmin::Page, name: "Graduation", namespace_name: "admin"
+      can :read, AcademicCalendar
+      can :read, Curriculum
+        
     when "admin"
       # can :manage, ActiveAdmin::Page, name: "Calendar", namespace_name: "admin"
       can :manage, Transfer

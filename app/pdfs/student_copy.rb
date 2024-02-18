@@ -1,10 +1,10 @@
 class StudentCopy < Prawn::Document
   def initialize(students, gc_date)
-    super(:page_layout => :landscape, background: open("app/assets/images/ngvc.png"))
+    super(:page_layout => :landscape, background: open("app/assets/images/logo.png"))
     @students = students
     gc_date = Date.parse(gc_date)
     @students.each_with_index do |stud, index|
-      text "NGVC", :inline_format => true, size: 12, align: :center, font_style: :bold
+      text "HEUC", :inline_format => true, size: 12, align: :center, font_style: :bold
       move_down 10
       text "OFFICE OF THE REGISTRAR", inline_format: true, size: 12, align: :center, font_style: :bold
       move_down 10

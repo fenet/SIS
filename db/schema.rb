@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_08_201426) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_22_122150) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -167,7 +167,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_08_201426) do
     t.index ["student_id"], name: "index_add_courses_on_student_id"
   end
 
-  create_table "admin_users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "admin_users", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -477,6 +477,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_08_201426) do
 
   create_table "dropcourses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "student_id", null: false
+    t.uuid "course_registration_id", null: false
     t.integer "status", default: 0, null: false
     t.uuid "department_id", null: false
     t.string "approved_by"
@@ -486,11 +487,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_08_201426) do
     t.integer "year"
     t.uuid "course_id", null: false
     t.index ["course_id"], name: "index_dropcourses_on_course_id"
+    t.index ["course_registration_id"], name: "index_dropcourses_on_course_registration_id"
     t.index ["department_id"], name: "index_dropcourses_on_department_id"
     t.index ["student_id"], name: "index_dropcourses_on_student_id"
   end
 
-  create_table "emergency_contacts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "emergency_contacts", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "student_id"
     t.string "full_name", null: false
     t.string "relationship"
@@ -570,7 +572,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_08_201426) do
     t.index ["faculty_id"], name: "index_faculty_deans_on_faculty_id"
   end
 
-  create_table "grade_changes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "grade_changes", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "program_id"
     t.uuid "department_id"
     t.uuid "student_id"
@@ -1107,6 +1109,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_08_201426) do
     t.datetime "updated_at", precision: nil, null: false
     t.string "approving_person_role"
     t.integer "f_counter", default: 0
+    t.string "first_name"
+    t.string "last_name"
+    t.string "credit_hour"
+    t.string "middle_name"
     t.index ["course_id"], name: "index_student_grades_on_course_id"
     t.index ["course_registration_id"], name: "index_student_grades_on_course_registration_id"
     t.index ["department_id"], name: "index_student_grades_on_department_id"
@@ -1263,6 +1269,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_08_201426) do
   add_foreign_key "add_courses", "students"
   add_foreign_key "course_registrations", "add_courses"
   add_foreign_key "departments", "faculties"
+  add_foreign_key "dropcourses", "course_registrations"
   add_foreign_key "dropcourses", "courses"
   add_foreign_key "dropcourses", "departments"
   add_foreign_key "dropcourses", "students"

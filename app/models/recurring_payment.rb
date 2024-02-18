@@ -40,9 +40,9 @@ class RecurringPayment < ApplicationRecord
 					elsif self.semester_registration.mode_of_payment == "Full Semester Payment"
 						course_price =  CollegePayment.where(study_level: self.semester_registration.study_level,admission_type: self.semester_registration.admission_type).first.tution_per_credit_hr * course.course.credit_hour
 						invoice_item.price = course_price
-					elsif self.semester_registration.mode_of_payment == "Half Semester Payment"
-						course_price =  CollegePayment.where(study_level: self.semester_registration.study_level,admission_type: self.semester_registration.admission_type).first.tution_per_credit_hr * course.course.credit_hour / 2
-						invoice_item.price = course_price
+					#elsif self.semester_registration.mode_of_payment == "Half Semester Payment"
+					#	course_price =  CollegePayment.where(study_level: self.semester_registration.study_level,admission_type: self.semester_registration.admission_type).first.tution_per_credit_hr * course.course.credit_hour / 2
+					#	invoice_item.price = course_price
 					end
 					
 				end

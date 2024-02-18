@@ -24,11 +24,11 @@ default: &default
 development:
   <<: *default
   #database: leadstar_dev
-  database: heucbackup
+  database: hopecollege
   port: 5432
   host : localhost
   username: postgres
-  password: Fena_1234
+  password: 12345678
 test:
   <<: *default
   database: hope_dev
@@ -38,9 +38,9 @@ test:
   password: Hope_1234
 production:
   <<: *default
-  database: ngvcnew
+  database: hopedblocal 
   username: newdeploy
-  password: Ngvc_1234
+  password: Premier_1234
   #database: heucbackup
   #username: deploy
   #password: Yic_1234
