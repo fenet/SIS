@@ -18,6 +18,7 @@ class Ability
       can :manage, CourseRegistration
       can :manage, Attendance
       can :manage, Session
+      can :manage, FacultyDean
       # can :manage, Graduation
       can :manage, PaymentTransaction
       can :manage, StudentAddress
@@ -340,7 +341,13 @@ class Ability
       can :manage, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
       can [:read, :update], Withdrawal
       can [:read, :update], GradeReport
-      can [:read, :update], GradeChange
+      can [:read, :update], GradeChange # department: {faculty_id: user.faculty_dean}
+      # do |grade_change|
+      #  grade_change.department == user.faculty_dean
+      # 
+      # 
+      # 
+      # 
       can :read, AcademicCalendar
       can :read, StudentGrade
       can :manage, Course

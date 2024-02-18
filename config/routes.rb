@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'apply_grade_change/index'
   get '/available/courses/:course_id/(:drop_id)', to: "avaliable_courses#index", as: "available_courses"
   get 'drop_courses/index', as: 'drop_courses'
   get 'add_courses/index', as: "add_courses"

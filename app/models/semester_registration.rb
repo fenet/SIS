@@ -66,7 +66,7 @@ class SemesterRegistration < ApplicationRecord
             else
               report.academic_status = AcademicStatusGraduate.get_academic_status(report: report, student: self.student)
             end
-            if (report.academic_status.strip != "Academic Dismissal") || (report.academic_status.strip != "Incomplete")
+            if (report.academic_status.strip != "Academic Dismissal") #|| (report.academic_status.strip != "Incomplete")
               if self.program.program_semester > self.student.semester
                 promoted_semester = self.student.semester + 1
                 self.student.update_columns(semester: promoted_semester)
@@ -94,7 +94,7 @@ class SemesterRegistration < ApplicationRecord
               report.academic_status = AcademicStatusGraduate.get_academic_status(report: report, student: self.student)
               # report.academic_status = self.student.program.grade_systems.last.academic_statuses.where("min_value <= ?", report.cgpa).where("max_value >= ?", report.cgpa).last.status
             end
-            if (report.academic_status != "Academic Dismissal") || (report.academic_status != "Incomplete")
+            if (report.academic_status != "Academic Dismissal") #|| (report.academic_status != "Incomplete")
               if self.program.program_semester > self.student.semester
                 promoted_semester = self.student.semester + 1
                 self.student.update_columns(semester: promoted_semester)
