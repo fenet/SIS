@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :sections, except: [:index] do
+    collection do
+      get "assign", to: "sections#index"
+      # as: "sections" 
+    end
+  end
   get 'apply_grade_change/index'
   get '/available/courses/:course_id/(:drop_id)', to: "avaliable_courses#index", as: "available_courses"
   get 'drop_courses/index', as: 'drop_courses'

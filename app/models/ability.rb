@@ -34,7 +34,9 @@ class Ability
       can :manage, Grade
       can :manage, AdminUser
       can :manage, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
-      can :manage, ActiveAdmin::Page, name: "Graduation", namespace_name: "admin"
+      can :manage, ActiveAdmin::Page, name: "Graduation", namespace_name: "admin" 
+      can :manage, ActiveAdmin::Page, name: "AssignSection", namespace_name: "admin" 
+
       can :manage, Program
       can :manage, College
       can :manage, Faculty
