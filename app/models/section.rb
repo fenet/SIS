@@ -1,6 +1,7 @@
 class Section < ApplicationRecord
   
 	belongs_to :program
+	has_many :students
 	has_many :grade_reports
 	has_many :semester_registrations
 	has_many :course_registrations
@@ -20,5 +21,11 @@ class Section < ApplicationRecord
 		validates :section_full_name, :presence => true, uniqueness: true
 		validates :year, :presence => true
 		validates :semester, :presence => true
+
+  enum section_status: {
+	empty: 0,
+	partial: 1,
+	full: 2
+  }
 
 end
