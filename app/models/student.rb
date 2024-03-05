@@ -16,6 +16,8 @@ class Student < ApplicationRecord
   has_person_name
   ##associations
   belongs_to :department, optional: true
+  belongs_to :section, optional: true
+
   belongs_to :program
   belongs_to :academic_calendar, optional: true
   has_one :student_address, dependent: :destroy
@@ -49,7 +51,10 @@ class Student < ApplicationRecord
 
   validate :password_complexity
   # validates :student_grades, presence: true
-
+  enum section_status: {
+    no_assigned: 0,
+    assigned: 1
+  }
   def password_complexity
     if password.present?
       if !password.match(/^(?=.*[a-z])(?=.*[A-Z])/)
