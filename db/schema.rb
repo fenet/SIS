@@ -968,6 +968,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_122150) do
     t.string "updated_by"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.integer "status", default: 0
+    t.integer "section_status", default: 0
+    t.string "batch"
     t.index ["program_id"], name: "index_sections_on_program_id"
   end
 
@@ -1172,11 +1175,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_122150) do
     t.date "admission_date"
     t.integer "graduation_year"
     t.boolean "allow_editing", default: false
+    t.integer "status", default: 0
+    t.uuid "section_id"
+    t.integer "section_status", default: 0
     t.index ["academic_calendar_id"], name: "index_students_on_academic_calendar_id"
     t.index ["department_id"], name: "index_students_on_department_id"
     t.index ["email"], name: "index_students_on_email", unique: true
     t.index ["program_id"], name: "index_students_on_program_id"
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
+    t.index ["section_id"], name: "index_students_on_section_id"
   end
 
   create_table "transfers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -1277,4 +1284,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_122150) do
   add_foreign_key "external_transfers", "departments"
   add_foreign_key "faculty_deans", "admin_users"
   add_foreign_key "faculty_deans", "faculties"
+  add_foreign_key "students", "sections"
 end

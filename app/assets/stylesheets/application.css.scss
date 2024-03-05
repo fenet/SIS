@@ -177,4 +177,14 @@ p.declaration {
 
 .filed label {
         text-align: right;
+        width: max-content;
+        display: block;
+}
+
+.section > .filed{
+        display: flex;
+        justify-content: space-between;
+        // align-items: center;
+        gap: 25px;
+        border: 3px red solid;   
 }
