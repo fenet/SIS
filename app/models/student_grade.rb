@@ -97,7 +97,7 @@ class StudentGrade < ApplicationRecord
       if self.student.grade_reports.count == 1
         total_credit_hour = self.course_registration.semester_registration.course_registrations.where(enrollment_status: "enrolled").collect { |oi| ((oi.student_grade.letter_grade != "I") && (oi.student_grade.letter_grade != "NG")) ? (oi.course.credit_hour) : 0 }.sum
         total_grade_point = self.course_registration.semester_registration.course_registrations.where(enrollment_status: "enrolled").collect { |oi| ((oi.student_grade.letter_grade != "I") && (oi.student_grade.letter_grade != "NG")) ? (oi.student_grade.grade_point) : 0 }.sum
-        sgpa = total_credit_hour == 0 ? 0 : (total_grade_point / total_credit_hour).round(1)
+        sgpa = total_credit_hour == 0 ? 0 : (total_grade_point / total_credit_hour).round(2)
         cumulative_total_credit_hour = total_credit_hour
         cumulative_total_grade_point = total_grade_point
         cgpa = cumulative_total_credit_hour == 0 ? 0 : (cumulative_total_grade_point / cumulative_total_credit_hour).round(1)
@@ -124,11 +124,11 @@ class StudentGrade < ApplicationRecord
       else
         total_credit_hour = self.course_registration.semester_registration.course_registrations.where(enrollment_status: "enrolled").collect { |oi| ((oi.student_grade.letter_grade != "I") && (oi.student_grade.letter_grade != "NG")) ? (oi.course.credit_hour) : 0 }.sum
         total_grade_point = self.course_registration.semester_registration.course_registrations.where(enrollment_status: "enrolled").collect { |oi| ((oi.student_grade.letter_grade != "I") && (oi.student_grade.letter_grade != "NG")) ? (oi.student_grade.grade_point) : 0 }.sum
-        sgpa = total_credit_hour == 0 ? 0 : (total_grade_point / total_credit_hour).round(1)
+        sgpa = total_credit_hour == 0 ? 0 : (total_grade_point / total_credit_hour).round(2)
 
         cumulative_total_credit_hour = GradeReport.where(student_id: self.student_id).order("created_at ASC").last.cumulative_total_credit_hour + total_credit_hour
         cumulative_total_grade_point = GradeReport.where(student_id: self.student_id).order("created_at ASC").last.cumulative_total_grade_point + total_grade_point
-        cgpa = (cumulative_total_grade_point / cumulative_total_credit_hour).round(1)
+        cgpa = (cumulative_total_grade_point / cumulative_total_credit_hour).round(2)
 
         academic_status = self.program.grade_systems.last.academic_statuses.where("min_value <= ?", cgpa).where("max_value >= ?", cgpa).last.status
 

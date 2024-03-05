@@ -24,7 +24,7 @@ default: &default
 development:
   <<: *default
   #database: leadstar_dev
-  database: hopecollege
+  database: latestfebhopedb
   port: 5432
   host : localhost
   username: postgres

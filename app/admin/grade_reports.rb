@@ -59,7 +59,7 @@ ActiveAdmin.register GradeReport do
       pro.program.program_name
     end
     column :department, sortable: true do |pro|
-      pro.department.department_name
+      pro.department&.department_name
     end
     # column :admission_type
     # column :study_level

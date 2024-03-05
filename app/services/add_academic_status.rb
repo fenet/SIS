@@ -56,6 +56,8 @@ module AddAcademicStatus
           "Academic Suspension"
       elsif (report[:sgpa] < 1.25 || is_previous_sgpa_below?(student: student, sgpa: 1.25, cgpa: 1.5)) && report[:cgpa] < 1.5
         "Academic Dismissal"
+      else
+        "Invalid Status"  
       end
     end
 

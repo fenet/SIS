@@ -167,7 +167,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_122150) do
     t.index ["student_id"], name: "index_add_courses_on_student_id"
   end
 
-  create_table "admin_users", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "admin_users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -395,7 +395,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_122150) do
     t.index ["section_id"], name: "index_course_registrations_on_section_id"
     t.index ["semester_registration_id"], name: "index_course_registrations_on_semester_registration_id"
     t.index ["student_id"], name: "index_course_registrations_on_student_id"
-  end
+  end 
 
   create_table "course_sections", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "section_short_name", null: false
@@ -492,7 +492,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_122150) do
     t.index ["student_id"], name: "index_dropcourses_on_student_id"
   end
 
-  create_table "emergency_contacts", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "emergency_contacts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "student_id"
     t.string "full_name", null: false
     t.string "relationship"
@@ -563,7 +563,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_122150) do
     t.datetime "updated_at", precision: nil, null: false
   end
 
-  create_table "faculty_deans", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "faculty_deans", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "admin_user_id", null: false
     t.uuid "faculty_id", null: false
     t.datetime "created_at", null: false
@@ -572,7 +572,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_122150) do
     t.index ["faculty_id"], name: "index_faculty_deans_on_faculty_id"
   end
 
-  create_table "grade_changes", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "grade_changes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "program_id"
     t.uuid "department_id"
     t.uuid "student_id"

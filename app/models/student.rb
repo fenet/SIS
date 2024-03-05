@@ -72,7 +72,9 @@ class Student < ApplicationRecord
   scope :incomplete, lambda { where(document_verification_status: "incomplete") }
 
   def get_current_courses
-    self.program.curriculums.where(active_status: "active").first.courses.where(year: self.year, semester: self.semester).order("year ASC
+    #self.program.curriculums.where(active_status: "active").first.courses.where(year: self.year, semester: self.semester).order("year ASC
+    #", "semester ASC")
+    self.program.curriculums.where(active_status: "active", curriculum_version: self.curriculum_version).first.courses.where(year: self.year, semester: self.semester).order("year ASC
     ", "semester ASC")
   end
 
