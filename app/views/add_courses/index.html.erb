@@ -69,6 +69,33 @@
               <%end%>
           <%end%>
 
+          <%@next_courses.each do |sg|%>
+             <%unless AddCourse.exists?(student: current_student, course_id: sg.id)%>
+
+             <tr>
+              <td><%= sg.course_title %></td>
+              <td><%= sg.course_code %></td>
+              <td><%= sg.semester %></td>
+              <td><%= sg.year %> </td>
+              <td><%= sg.ects %> </td>
+              <td><%= sg.credit_hour %> </td>  
+              <%if AddCourse.exists?(student: current_student, course_id: sg.id, status: 0)%>
+               <td class="actions">
+                  <span class="alert alert-warning p-0 text-sm">Your application is pending </span>
+                </td>
+              <%elsif sg.credit_hour > @allowed_credit_hour%>            
+                <td class="actions">
+                <span class="alert alert-danger p-0 text-sm"> You can't apply for this, because your maximum credit limit is <%=@allowed_credit_hour%> </span>
+                </td>
+                <%else%>
+                <td class="actions">
+                <%= link_to "Search Deaprtment", available_courses_path(sg.id), class: 'btn-sm btn-primary'%>
+                </td>
+              <%end%>
+            </tr>
+              <%end%>
+          <%end%>
+
 
 
 

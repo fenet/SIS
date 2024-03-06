@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_22_122150) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_01_124229) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -395,7 +395,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_122150) do
     t.index ["section_id"], name: "index_course_registrations_on_section_id"
     t.index ["semester_registration_id"], name: "index_course_registrations_on_semester_registration_id"
     t.index ["student_id"], name: "index_course_registrations_on_student_id"
-  end 
+  end
 
   create_table "course_sections", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "section_short_name", null: false
@@ -968,7 +968,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_122150) do
     t.string "updated_by"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.integer "status", default: 0
     t.integer "section_status", default: 0
     t.string "batch"
     t.index ["program_id"], name: "index_sections_on_program_id"
@@ -1175,7 +1174,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_122150) do
     t.date "admission_date"
     t.integer "graduation_year"
     t.boolean "allow_editing", default: false
-    t.integer "status", default: 0
     t.uuid "section_id"
     t.integer "section_status", default: 0
     t.index ["academic_calendar_id"], name: "index_students_on_academic_calendar_id"
