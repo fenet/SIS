@@ -3,7 +3,8 @@ class AvaliableCoursesController < ApplicationController
     def index
        @course = Course.find(params[:course_id])
        @drop_id = params[:drop_id]
-       @available_courses = CourseRegistration.active_yes.includes(:course).includes(:department).includes(:section).where(course_title: @course.course_title)
+       #@available_courses = CourseRegistration.active_yes.includes(:course).includes(:department).includes(:section).where(course_title: @course.course_title)
+        @available_courses = CourseRegistration.active_yes.distinct(:department_id).includes(:course).includes(:department).includes(:section).where(course_title: @course.course_title)
     end
 
     def create

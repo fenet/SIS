@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_01_124229) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_10_194444) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -477,7 +477,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_01_124229) do
 
   create_table "dropcourses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "student_id", null: false
-    t.uuid "course_registration_id", null: false
     t.integer "status", default: 0, null: false
     t.uuid "department_id", null: false
     t.string "approved_by"
@@ -487,7 +486,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_01_124229) do
     t.integer "year"
     t.uuid "course_id", null: false
     t.index ["course_id"], name: "index_dropcourses_on_course_id"
-    t.index ["course_registration_id"], name: "index_dropcourses_on_course_registration_id"
     t.index ["department_id"], name: "index_dropcourses_on_department_id"
     t.index ["student_id"], name: "index_dropcourses_on_student_id"
   end
@@ -1274,7 +1272,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_01_124229) do
   add_foreign_key "add_courses", "students"
   add_foreign_key "course_registrations", "add_courses"
   add_foreign_key "departments", "faculties"
-  add_foreign_key "dropcourses", "course_registrations"
   add_foreign_key "dropcourses", "courses"
   add_foreign_key "dropcourses", "departments"
   add_foreign_key "dropcourses", "students"
