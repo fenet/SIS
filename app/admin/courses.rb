@@ -242,7 +242,15 @@ permit_params(:course_outline,:course_module_id, :major, :curriculum_id,:program
       # 
       tab "Currently enrolled students" do
         panel "currently enrolled students" do
-          table_for course.course_registrations.where(enrollment_status: "enrolled").where(academic_calendar_id: current_academic_calendar(course.program.study_level, course.program.admission_type)).where(semester: SemesterRegistration.find_by(study_level: course.program.study_level, admission_type: course.program.admission_type).semester).order('student_full_name ASC') do
+          if current_admin_user.role == "admin"
+            enrolled_students =  course.course_registrations.where(enrollment_status: "enrolled", is_active: 'yes').includes(:student).includes(:section).order('student_full_name ASC')
+          else
+            section = CourseInstructor.where(admin_user: current_admin_user).where(course_id: course.id).includes(:course).last.section
+            enrolled_students =  course.course_registrations.where(enrollment_status: "enrolled", is_active: 'yes', section: section).includes(:student).includes(:section).order('student_full_name ASC')
+          end
+          table_for enrolled_students do
+          # table_for course.course_registrations.where(enrollment_status: "enrolled").where(academic_calendar_id: current_academic_calendar(course&.program.study_level, course.program.admission_type)).where(semester: SemesterRegistration.find_by(study_level: course.program.study_level, admission_type: course.program.admission_type)&.semester).order('student_full_name ASC') do
+
             column "Student Full Name" do |n|
               link_to n.student_full_name, admin_student_path(n.student)
             end
@@ -259,7 +267,7 @@ permit_params(:course_outline,:course_module_id, :major, :curriculum_id,:program
               n.semester
             end
             column "Section" do |n|
-              n.section.section_short_name if n.section.present?
+              n.student.section.section_short_name if n.student.section.present?
             end
             column "Program Section" do |n|
               n.semester_registration.section.section_short_name if n.semester_registration.section.present?

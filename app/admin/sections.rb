@@ -16,7 +16,7 @@ menu parent: ["Student managment", "Section managment"], label: "Create Section"
     
     column :total_capacity
     column "Remaining Capacity" do |se|
-      se.total_capacity - se.students.count
+      se.total_capacity || 0 - se.students.count
     end
     column "Created At", sortable: true do |c|
       c.created_at.strftime("%b %d, %Y")

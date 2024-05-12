@@ -26,6 +26,12 @@ Rails.application.routes.draw do
   end
   resources :exemptions, except: [:create, :new, :index, :edit]
   resources :external_transfers
+  resources :assessmens do
+    collection do
+      get :find_course
+      put :update_mark
+    end
+  end
   get "student_temporary/index", as: "student_temporary"
   post "student/tempo/generate", to: "student_temporary#generate_pdf", as: "generate_student_tempo"
   get "pdf_grade_reports/index", as: "pdf_gread_report"

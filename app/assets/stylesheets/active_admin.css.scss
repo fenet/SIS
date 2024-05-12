@@ -860,3 +860,15 @@ font-size: 14px;
 #payment-report-student-list{
   text-transform: capitalize;
 }
+.assessments{
+  display: flex;
+  gap: 0;
+  border: 2px rgb(104, 178, 240) solid;
+ padding: 10px;
+ width: 100%;
+}
+
+.assessment-result{
+  border-right: 2px solid #d4d4d4;
+  
+}
