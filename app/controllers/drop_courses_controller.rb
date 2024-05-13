@@ -13,7 +13,7 @@ class DropCoursesController < ApplicationController
 
     drop_course = Dropcourse.new(year: year, semester: semester, course_id: course_id, student: current_student, department: current_student.department)
     if drop_course.save
-         course_registration.pending!
+      course_registration.pending!
       redirect_to drop_courses_path, notice: 'You application has been sent to department head'
     else
       redirect_to drop_courses_path, alert: 'Something went wrong, please check again later'

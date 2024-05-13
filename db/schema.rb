@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_22_122150) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_07_184507) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -213,23 +213,26 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_122150) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.boolean "final_exam", default: false
+    t.uuid "admin_user_id", null: false
+    t.index ["admin_user_id"], name: "index_assessment_plans_on_admin_user_id"
     t.index ["course_id"], name: "index_assessment_plans_on_course_id"
   end
 
   create_table "assessments", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "student_id"
     t.uuid "course_id"
-    t.uuid "student_grade_id"
-    t.uuid "assessment_plan_id"
-    t.decimal "result"
     t.string "created_by"
     t.string "updated_by"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.boolean "final_exam", default: false
-    t.index ["assessment_plan_id"], name: "index_assessments_on_assessment_plan_id"
+    t.uuid "admin_user_id", null: false
+    t.integer "status", default: 0
+    t.uuid "course_registration_id"
+    t.jsonb "result"
+    t.index ["admin_user_id"], name: "index_assessments_on_admin_user_id"
     t.index ["course_id"], name: "index_assessments_on_course_id"
-    t.index ["student_grade_id"], name: "index_assessments_on_student_grade_id"
+    t.index ["course_registration_id"], name: "index_assessments_on_course_registration_id"
     t.index ["student_id"], name: "index_assessments_on_student_id"
   end
 
@@ -732,7 +735,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_122150) do
     t.index ["student_id"], name: "index_invoices_on_student_id"
   end
 
-  create_table "makeup_exams", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
+  create_table "jsontests", force: :cascade do |t|
+    t.jsonb "result"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "makeup_exams", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "academic_calendar_id"
     t.uuid "program_id"
     t.uuid "department_id"
@@ -968,6 +977,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_122150) do
     t.string "updated_by"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.integer "section_status", default: 0
+    t.string "batch"
     t.index ["program_id"], name: "index_sections_on_program_id"
   end
 
@@ -1172,11 +1183,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_122150) do
     t.date "admission_date"
     t.integer "graduation_year"
     t.boolean "allow_editing", default: false
+    t.uuid "section_id"
+    t.integer "section_status", default: 0
     t.index ["academic_calendar_id"], name: "index_students_on_academic_calendar_id"
     t.index ["department_id"], name: "index_students_on_department_id"
     t.index ["email"], name: "index_students_on_email", unique: true
     t.index ["program_id"], name: "index_students_on_program_id"
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
+    t.index ["section_id"], name: "index_students_on_section_id"
   end
 
   create_table "transfers", id: :uuid, default: -> { "public.gen_random_uuid()" }, force: :cascade do |t|
@@ -1267,6 +1281,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_122150) do
   add_foreign_key "add_courses", "dropcourses"
   add_foreign_key "add_courses", "sections"
   add_foreign_key "add_courses", "students"
+  add_foreign_key "assessment_plans", "admin_users"
+  add_foreign_key "assessments", "admin_users"
+  add_foreign_key "assessments", "course_registrations"
   add_foreign_key "course_registrations", "add_courses"
   add_foreign_key "departments", "faculties"
   add_foreign_key "dropcourses", "course_registrations"
@@ -1277,4 +1294,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_122150) do
   add_foreign_key "external_transfers", "departments"
   add_foreign_key "faculty_deans", "admin_users"
   add_foreign_key "faculty_deans", "faculties"
+  add_foreign_key "students", "sections"
 end

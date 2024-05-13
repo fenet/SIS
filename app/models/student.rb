@@ -16,6 +16,8 @@ class Student < ApplicationRecord
   has_person_name
   ##associations
   belongs_to :department, optional: true
+  belongs_to :section, optional: true
+
   belongs_to :program
   belongs_to :academic_calendar, optional: true
   has_one :student_address, dependent: :destroy
@@ -49,7 +51,10 @@ class Student < ApplicationRecord
   has_many :payments
   validate :password_complexity
   # validates :student_grades, presence: true
-
+  enum section_status: {
+    no_assigned: 0,
+    assigned: 1
+  }
   def password_complexity
     if password.present?
       if !password.match(/^(?=.*[a-z])(?=.*[A-Z])/)
@@ -114,15 +119,9 @@ class Student < ApplicationRecord
     CollegePayment.find_by(study_level: self.study_level.strip, admission_type: self.admission_type.strip)
   end
 
-  def program_payment
-    Payment.find_by(program_id: self.program_id)
-  end
+  
 
-  #def batch_payment
-  #  Payment.find_by(batch: self.batch)
-  #end
-
-  def add_student_registration(mode_of_payment = nil, out_of_batch = false)
+  def add_student_registration(mode_of_payment, out_of_batch)
     SemesterRegistration.create do |registration|
       registration.student_id = self.id
       registration.program_id = self.program.id

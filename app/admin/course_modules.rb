@@ -5,9 +5,9 @@ permit_params :department_id,:module_title,:module_code,:overview,:description,:
   index do
     selectable_column
     column :module_title
-    column "Department", sortable: true do |d|
-     link_to d.department.department_name, [:admin, d.department]
-    end
+    # column "Department", sortable: true do |d|
+    #  link_to d.department&.department_name, [:admin, d.department]
+    # end
     column "courses", sortable: true do |c|
       c.courses.count
     end

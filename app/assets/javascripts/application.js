@@ -27,18 +27,22 @@
 //= require validation.js
 
 
-$(document).on('turbolinks:load', function(){
-  
+$(document).on('turbolinks:load', function () {
+
   //Datemask dd/mm/yyyy
   $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
-    //Datemask2 mm/dd/yyyy
+  //Datemask2 mm/dd/yyyy
   $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
-    //Money Euro
+  //Money Euro
   // $('#student_student_address_attributes_moblie_number').inputmask()
   // $('#student_student_address_attributes_telephone_number').inputmask()
   // $('#student_emergency_contact_attributes_cell_phone').inputmask()
   $('#student_emergency_contact_attributes_office_phone_number').inputmask()
   $('#student_emergency_contact_attributes_email_of_employer').inputmask()
+  $(".student-mark").on('click', (e) => {
+    e.preventDefault()
+    updateMark(e.target)
+  })
 })
 
 
@@ -47,6 +51,28 @@ document.addEventListener('turbolinks:load', function () {
   window.stepper = new Stepper(document.querySelector('.bs-stepper'))
 })
 
-document.addEventListener('turbolinks:load', function() {
+document.addEventListener('turbolinks:load', function () {
   flatpickr('.datepicker');
 })
+
+const updateMark = (target) => {
+  const mark = $(target).prev("input").val()
+  // alert(`${mark}, ${target.dataset.result}, ${target.dataset.key}`)
+  if (mark == target.dataset.result) {
+    alert(`You are not changing the current mark ${mark}`)
+  } else {
+    $.ajax({
+      type: "put",
+      url: `/assessmens/update_mark`,
+      dataType: "json",
+      data: {
+        id: target.dataset.id,
+        key: target.dataset.key,
+        result: mark
+      },
+      success: function (response) {
+        alert(response.result)
+      }
+    })
+  }
+}
