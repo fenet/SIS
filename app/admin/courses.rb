@@ -31,33 +31,33 @@ index do
   actions
 end
 
-filter :course_title
-filter :course_code 
-filter :program_id, as: :search_select_filter, url: proc { admin_programs_path },
-       fields: [:program_name, :id], display_name: 'program_name', minimum_input_length: 2,
-       order_by: 'created_at_asc' 
-filter :curriculum_id, as: :search_select_filter, url: proc { admin_curriculums_path },
-       fields: [:curriculum_version, :id], display_name: 'curriculum_version', minimum_input_length: 1,
-       order_by: 'created_at_asc' 
-filter :course_module_id, as: :search_select_filter, url: proc { admin_course_modules_path },
-       fields: [:module_title, :id], display_name: 'module_title', minimum_input_length: 2,
-       order_by: 'module_code_asc' 
-
-filter :course_title
-filter :course_code
-filter :course_description
-filter :year
-filter :semester
-filter :course_starting_date
-filter :course_ending_date
-filter :credit_hour
-filter :lecture_hour
-filter :lab_hour
-filter :ects
-filter :created_by
-filter :last_updated_by
-filter :created_at
-filter :updated_at
+  filter :course_title
+  filter :course_code 
+  filter :program_id, as: :search_select_filter, url: proc { admin_programs_path },
+         fields: [:program_name, :id], display_name: 'program_name', minimum_input_length: 2,
+         order_by: 'created_at_asc' 
+  filter :curriculum_id, as: :search_select_filter, url: proc { admin_curriculums_path },
+         fields: [:curriculum_version, :id], display_name: 'curriculum_version', minimum_input_length: 1,
+         order_by: 'created_at_asc' 
+  filter :course_module_id, as: :search_select_filter, url: proc { admin_course_modules_path },
+         fields: [:module_title, :id], display_name: 'module_title', minimum_input_length: 2,
+         order_by: 'module_code_asc' 
+  
+  filter :course_title
+  filter :course_code
+  filter :course_description
+  filter :year
+  filter :semester
+  filter :course_starting_date
+  filter :course_ending_date
+  filter :credit_hour
+  filter :lecture_hour
+  filter :lab_hour
+  #filter :ects
+  filter :created_by
+  filter :last_updated_by
+  filter :created_at
+  filter :updated_at
 
 scope :recently_added
 
@@ -350,9 +350,9 @@ end
 # sidebar "program belongs to", :only => :show do
 #   table_for course.course_breakdowns do
 
-#     column "program" do |c|
-#       link_to c.program.program_name, admin_program_path(c.program.id)
-#     end
-#   end
-# end 
+  #     column "program" do |c|
+  #       link_to c.program.program_name, admin_program_path(c.program.id)
+  #     end
+  #   end
+  # end 
 end

@@ -182,6 +182,7 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
+    connection_pool (2.4.1)
     countries (2.1.4)
       i18n_data (~> 0.8.0)
       money (~> 6.9)

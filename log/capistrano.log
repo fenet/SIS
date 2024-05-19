@@ -8283,6 +8283,7 @@ Tasks: TOP => db:migrate
   INFO [cd869300] Running /usr/bin/env echo "Branch heuc (at 6e5ca926198cd2846c70876fc81cae532fc28e61) deployed as release 20240306081005 by fena" >> /home/newdeploy/hpremier/revisions.log as newdeploy@162.19.170.198
  DEBUG [cd869300] Command: cd /home/newdeploy/hpremier/releases && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "Branch heuc (at 6e5ca926198cd2846c70876fc81cae532fc28e61) deployed as release 20240306081005 by fena" >> /home/newdeploy/hpremier/revisions.log )
   INFO [cd869300] Finished in 0.612 seconds with exit status 0 (successful).
+<<<<<<< HEAD
   INFO ---------------------------------------------------------------------------
   INFO START 2024-03-11 08:06:33 +0300 cap production deploy
   INFO ---------------------------------------------------------------------------
@@ -8562,3 +8563,5 @@ Tasks: TOP => db:migrate
   INFO [f4492cf7] Running /usr/bin/env echo "Branch heuc (at b4b12178e94ba2d4e79772bf359d2bd47f324f1a) deployed as release 20240311050749 by fena" >> /home/newdeploy/hpremier/revisions.log as newdeploy@162.19.170.198
  DEBUG [f4492cf7] Command: cd /home/newdeploy/hpremier/releases && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "Branch heuc (at b4b12178e94ba2d4e79772bf359d2bd47f324f1a) deployed as release 20240311050749 by fena" >> /home/newdeploy/hpremier/revisions.log )
   INFO [f4492cf7] Finished in 0.574 seconds with exit status 0 (successful).
+=======
+>>>>>>> origin/heuc
