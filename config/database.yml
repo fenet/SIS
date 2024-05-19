@@ -40,7 +40,7 @@ production:
   <<: *default
   database: heucdbfinal 
   username: newdeploy
-  password: Premier_1234
+  password: 1234_Premiercol
   #database: heucbackup
   #username: deploy
   #password: Yic_1234
