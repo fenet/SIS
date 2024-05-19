@@ -8302,7 +8302,7 @@ Tasks: TOP => db:migrate
   INFO [db37a329] Running /usr/bin/env chmod 700 /tmp/git-ssh-f473d677b3b5a599cccc.sh as newdeploy@162.19.170.198
  DEBUG [db37a329] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env chmod 700 /tmp/git-ssh-f473d677b3b5a599cccc.sh )
   INFO [db37a329] Finished in 0.614 seconds with exit status 0 (successful).
-  INFO [d31ea593] Running /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD as newdeploy@162.19.170.198
+  
  DEBUG [d31ea593] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-f473d677b3b5a599cccc.sh" ; /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD )
  DEBUG [d31ea593] 	fatal: unable to access 'https://github.com/fenet/leadstarlatest.git/': Could not resolve host: github.com
   INFO ---------------------------------------------------------------------------
