@@ -16,6 +16,8 @@ class Student < ApplicationRecord
   has_person_name
   ##associations
   belongs_to :department, optional: true
+  belongs_to :section, optional: true
+
   belongs_to :program
   belongs_to :academic_calendar, optional: true
   has_one :student_address, dependent: :destroy
@@ -49,7 +51,10 @@ class Student < ApplicationRecord
   has_many :payments
   validate :password_complexity
   # validates :student_grades, presence: true
-
+  enum section_status: {
+    no_assigned: 0,
+    assigned: 1
+  }
   def password_complexity
     if password.present?
       if !password.match(/^(?=.*[a-z])(?=.*[A-Z])/)
@@ -72,7 +77,9 @@ class Student < ApplicationRecord
   scope :incomplete, lambda { where(document_verification_status: "incomplete") }
 
   def get_current_courses
-    self.program.curriculums.where(active_status: "active").first.courses.where(year: self.year, semester: self.semester).order("year ASC
+    #self.program.curriculums.where(active_status: "active").first.courses.where(year: self.year, semester: self.semester).order("year ASC
+    #", "semester ASC")
+    self.program.curriculums.where(active_status: "active", curriculum_version: self.curriculum_version).first.courses.where(year: self.year, semester: self.semester, batch: self.batch).order("year ASC
     ", "semester ASC")
   end
 
@@ -107,7 +114,15 @@ class Student < ApplicationRecord
 
   def get_tution_fee
     return nil if program_payment.nil?
-    get_current_courses.collect { |oi| oi.valid? ? (program_payment.tution_per_credit_hr * oi.ects) : 0 }.sum
+    #get_current_courses.collect { |oi| oi.valid? ? (program_payment.tution_per_credit_hr * oi.ects) : 0 }.sum
+  
+    total_fee = 0
+    get_current_courses.each do |course|
+    if student.batch.present? && course.valid?
+      total_fee += program_payment.tution_per_credit_hr * course.ects
+    end
+end
+  
   end
 
   def college_payment
@@ -166,7 +181,7 @@ class Student < ApplicationRecord
   end
 
   def student_semester_registration
-    if self.document_verification_status == "approved" && self.year == 1 && self.semester == 3 && self.program.entrance_exam_requirement_status == false
+    if self.document_verification_status == "approved" && self.year == 1 && self.semester == 1 && self.program.entrance_exam_requirement_status == false
   #main one........if self.document_verification_status == "approved" && self.semester_registrations.empty? && self.year == 1 && self.semester == 1 && self.program.entrance_exam_requirement_status == false
       add_student_registration if self.semester_registrations.find_by(semester: self.semester).nil?
     end

@@ -1,0 +1,14 @@
+<div class="w-50 mx-auto my-5 border border-primary p-5 gap-5" style="gap: 20px">
+<a href="/admin/assessments" class="btn btn-outline-primary">Back to home</a>
+<h1 class="text-center">Student Name: <%=@assessment.student.name.full%></h1>
+<%=form_with url: '', method: :put do |f|%>
+<%@assessment.value.each do |mark|%>
+  <div class="d-flex justify-content-around align-content-center mb-3">
+    <%key, value = mark%>
+    <span><%=key%> </span>
+    <input type="text" value="<%=value%>" class="p-1">
+    <a href="#" class="border-0 btn btn-primary student-mark" id="student-mark" data-id="<%=@assessment.id%>" data-key="<%=key%>" data-result="<%=value%>">Save </a>
+  </div>
+<%end%>
+<%end%>
+</div>

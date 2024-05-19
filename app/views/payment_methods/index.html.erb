@@ -30,7 +30,7 @@
               <div class="col-md-3 col-sm-6 col-12">
                 <%= link_to({controller: "payment_transactions", action: "new", invoice_id: params[:invoice_id], payment_method_id: payment.id} ) do%>
                   <div class="card" style="width: 15rem;">
-                    <%= image_tag(payment.bank_logo, class: "card-img-top")%>
+                  
                     <ul class="list-group list-group-flush">
                       <li class="list-group-item  text-center active"><strong> <%= payment.bank_name%></strong></li>
                     </ul>

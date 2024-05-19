@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :sections, except: [:index] do
+    collection do
+      get "assign", to: "sections#index"
+      # as: "sections" 
+    end
+  end
+  get 'apply_grade_change/index'
   get '/available/courses/:course_id/(:drop_id)', to: "avaliable_courses#index", as: "available_courses"
   get 'drop_courses/index', as: 'drop_courses'
   get 'add_courses/index', as: "add_courses"
@@ -19,6 +26,12 @@ Rails.application.routes.draw do
   end
   resources :exemptions, except: [:create, :new, :index, :edit]
   resources :external_transfers
+  resources :assessmens do
+    collection do
+      get :find_course
+      put :update_mark
+    end
+  end
   get "student_temporary/index", as: "student_temporary"
   post "student/tempo/generate", to: "student_temporary#generate_pdf", as: "generate_student_tempo"
   get "pdf_grade_reports/index", as: "pdf_gread_report"

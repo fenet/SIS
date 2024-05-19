@@ -6,7 +6,7 @@ ActiveAdmin.register Program do
     selectable_column
     column :program_name
     column "Department", sortable: true do |d|
-      link_to d.department.department_name, [:admin, d.department]
+     # link_to d.department&.department_name, [:admin, d.department]
     end
     ## TODO: color label admission_type and study_level
     ## TODO: display number of currently admitted students in this program
@@ -117,7 +117,7 @@ ActiveAdmin.register Program do
             row :overview
             row :program_description
             row "Department", sortable: true do |d|
-              link_to d.department.department_name, [:admin, d.department] 
+              link_to d.department&.department_name, [:admin, d.department] 
             end
             ## TODO: display number of currently admitted students in this program
             ## TODO: color label admission_type and study_level
@@ -202,7 +202,7 @@ ActiveAdmin.register Program do
                       column :lab_hour do |item|
                         item.lab_hour
                       end
-                      column "contact hour" do |item|
+                      column "contact hr." do |item|
                         item.ects
                       end
                       column :created_by

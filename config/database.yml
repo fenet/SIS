@@ -24,7 +24,7 @@ default: &default
 development:
   <<: *default
   #database: leadstar_dev
-  database: hopecollege
+  database: latestfebhopedb
   port: 5432
   host : localhost
   username: postgres
@@ -38,9 +38,9 @@ test:
   password: Hope_1234
 production:
   <<: *default
-  database: hopedblocal
+  database: heucdbfinal 
   username: newdeploy
-  password: Premier_1234
+  password: 1234_Premiercol
   #database: heucbackup
   #username: deploy
   #password: Yic_1234

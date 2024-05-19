@@ -38,8 +38,8 @@ class Invoice < ApplicationRecord
           course_price = self.student.get_tution_fee
           invoice_item.price = course_price
         #elsif self.semester_registration.mode_of_payment == "Half Semester Payment"
-         # course_price = self.student.get_tution_fee / 2
-         # invoice_item.price = course_price
+          #course_price = self.student.get_tution_fee / 2
+          #invoice_item.price = course_price
         end
       end
     end

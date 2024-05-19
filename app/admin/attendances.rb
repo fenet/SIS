@@ -119,10 +119,12 @@ menu parent: "Attendance"
       end
       tab "Student List" do
         panel "Student List" do
-          table_for attendance.section.course_registrations.where(academic_calendar_id: attendance.academic_calendar, course_id: attendance.course ) do
-            column :student_full_name
+          table_for attendance.section.students do #course_registrations.where(academic_calendar_id: attendance.academic_calendar, course_id: attendance.course ) do
+            column :student_full_name do |s|
+              s.first_name
+            end  
             column "STUDENT ID" do |s|
-              s.student.student_id
+              s.student_id
             end
             column :section do |sec|
               sec.section.section_short_name
@@ -130,13 +132,13 @@ menu parent: "Attendance"
             column :total_session do |section|
               attendance.sessions.count
             end
-            column :total_present_days do |section|
-              attendance.sessions.map {|session| session.student_attendances.where(student_id: section.student, present: true).count}.sum
+            #column :total_present_days do |section|
+              #attendance.sessions.map {|session| session.student_attendances.where(student_id: section.student, present: true).count}.sum
               # section.student.student_attendances.where(present: true).count
-            end
-            column :total_absent_days do |section|
-              attendance.sessions.map {|session| session.student_attendances.where(student_id: section.student, absent: true).count}.sum
-            end
+            #end
+            #column :total_absent_days do |section|
+              #attendance.sessions.map {|session| session.student_attendances.where(student_id: section.student, absent: true).count}.sum
+            #end
             # column :avg_present_days do |section|
             #   span ((attendance.sessions.map {|session| session.student_attendances.where(student_id: section.student, present: true).count}.sum).to_i / attendance.sessions.count.to_i)
             # end

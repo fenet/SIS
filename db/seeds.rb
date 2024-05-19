@@ -7,11 +7,20 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # AdminUser.create!(first_name: "#{ENV['FIRST_NAME']}",last_name: "#{ENV['LAST_NAME']}", email: "#{ENV['ADMIN_EMAIL']}", password: "#{ENV['_PASSWORD']}", password_confirmation: "#{ENV['_PASSWORD']}", role: "#{ENV['ROLE']}") if Rails.env.development?
 
-
+AdminUser.delete_all
 AdminUser.create!(first_name: "fenet",   last_name: "Assefa",
 									email: "admin3@gmail.com", 
 									password: "1234567",  
 									role: "admin") 
+AdminUser.create!(first_name: "meshu",   last_name: "Assefa",
+									email: "meshu.amare@gmail.com", 
+									password: "12345678",  
+									role: "admin") 
+AdminUser.create!(first_name: "bini",   last_name: "Assefa",
+									email: "instructor@gmail.com", 
+									password: "12345678",  
+									role: "instructor")
+									
 AdminUser.create!(first_name: "#{Rails.application.credentials.production[:first_name]}",   
 	               last_name: "#{Rails.application.credentials.production[:last_name]}",
  				   email: "#{Rails.application.credentials.production[:admin_email]}", 

@@ -1,13 +1,14 @@
 ActiveAdmin.register Payment do
 
   menu parent: "Finance Setting", label: "Program Payments"
-  permit_params :version,:other,:program_id,:student_nationality,:registration_fee,:late_registration_fee,:makeup_exam_fee,:add_drop,:tution_per_credit_hr,:readmission,:reissuance_of_grade_report,:student_copy,:additional_student_copy,:tempo,:original_certificate,:original_certificate_replacement,:tempo_replacement,:letter,:student_id_card,:student_id_card_replacement,:name_change,:transfer_fee,:created_by, :last_updated_by, :total_fee,:starting_penalty_fee,:daily_penalty_fee
+  permit_params :version,:other,:program_id,:student_nationality,:registration_fee,:late_registration_fee,:makeup_exam_fee,:add_drop,:tution_per_credit_hr,:readmission,:reissuance_of_grade_report,:student_copy,:additional_student_copy,:tempo,:original_certificate,:original_certificate_replacement,:tempo_replacement,:letter,:student_id_card,:student_id_card_replacement,:name_change,:transfer_fee,:created_by, :last_updated_by, :total_fee,:starting_penalty_fee,:daily_penalty_fee, :batch
 
   index do
     selectable_column
     column "Program" do |pr|
       link_to pr.program.program_name, admin_program_path(pr.program.id)
     end
+    column :batch
     column :student_nationality
     number_column :total_fee, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
     ## TODO: add word wraper to created_by and last_updated_by
@@ -62,6 +63,7 @@ ActiveAdmin.register Payment do
     f.inputs "College payment information" do
       f.input :program_id, as: :search_select, url: admin_programs_path,
               fields: [:program_name, :id], display_name: 'program_name', minimum_input_length: 2,lebel: "attendance title", order_by: 'created_at_asc'
+      f.input :batch
       f.input :student_nationality, :collection => ["local", "international"], :include_blank => false
       f.input :total_fee
       f.input :registration_fee

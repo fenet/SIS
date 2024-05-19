@@ -136,6 +136,44 @@
         
       </div>
       <div class="col-12 col-md-4">
+        <% unless @student_grades.blank?%>
+       <div class="col-12">
+        <div class="card card-success">
+          <div class="card-header">
+            <h3 class="card-title">
+              <strong>Year <%=current_student.year %> Semester <%=current_student.semester%> student grade </strong>
+            </h3>
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+              </button>
+              <button type="button" class="btn btn-tool" data-card-widget="remove">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+               <table class="card-body m-4" style="padding: 10px">
+             <thead> 
+              <tr class="p-3">
+                <th>Course Title </th>
+                <th>Grade letter </th>
+                <th>Total Mark </th>
+              </tr>
+              </thead>
+              <tbody class="p-5">
+             <%@student_grades.each do |grade|%>
+             <tr> 
+              <td><%=grade.course.course_title%></td>
+              <td><%=grade.letter_grade%></td>
+              <td><%=grade.assesment_total%></td>
+               </tr>
+             <%end%>
+              </tbody>
+          </table>
+         </div>
+   
+        </div>
+<%end%>
         <%= render 'instruction'%>
         <div class="card card-primary">
           <div class="card-header">

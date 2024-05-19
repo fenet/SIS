@@ -29,7 +29,7 @@ class PaymentReportController < ApplicationController
     end
   end
 
-  def generate_payment_report
+ def generate_payment_report
     department ||= params[:departement]
     year ||= params[:year]
     semester ||= params[:semester]

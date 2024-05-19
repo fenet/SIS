@@ -1,8 +1,8 @@
 # server '148.113.8.52', user: 'deploy', roles: %w{app db web}
 
-role :app, %w{newdeploy@162.19.170.198}
-role :web, %w{newdeploy@162.19.170.198}
-role :db, %w{newdeploy@162.19.170.198}, :primary => true
+role :app, %w{newdeploy@157.245.138.31}
+role :web, %w{newdeploy@157.245.138.31}
+role :db, %w{newdeploy@157.245.138.31}, :primary => true
 
 #set :branch, "main"
 set :branch, "heuc" 
