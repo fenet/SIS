@@ -77,10 +77,10 @@ class Student < ApplicationRecord
   scope :incomplete, lambda { where(document_verification_status: "incomplete") }
 
   def get_current_courses
-    #self.program.curriculums.where(active_status: "active").first.courses.where(year: self.year, semester: self.semester).order("year ASC
-    #", "semester ASC")
-    self.program.curriculums.where(active_status: "active", curriculum_version: self.curriculum_version).first.courses.where(year: self.year, semester: self.semester, batch: self.batch).order("year ASC
+    self.program.curriculums.where(active_status: "active").first.courses.where(year: self.year, semester: self.semester).order("year ASC
     ", "semester ASC")
+    #self.program.curriculums.where(active_status: "active", curriculum_version: self.curriculum_version).first.courses.where(year: self.year, semester: self.semester, batch: self.batch).order("year ASC
+    #", "semester ASC")
   end
 
   def self.get_gc_students(graduation_status, graduation_year, program_id, study_level, admission_type)
@@ -114,15 +114,13 @@ class Student < ApplicationRecord
 
   def get_tution_fee
     return nil if program_payment.nil?
-    #get_current_courses.collect { |oi| oi.valid? ? (program_payment.tution_per_credit_hr * oi.ects) : 0 }.sum
-  
-    total_fee = 0
-    get_current_courses.each do |course|
-    if student.batch.present? && course.valid?
-      total_fee += program_payment.tution_per_credit_hr * course.ects
-    end
-end
-  
+    get_current_courses.collect { |oi| oi.valid? ? (program_payment.tution_per_credit_hr * oi.ects) : 0 }.sum
+    #total_fee = 0
+    #get_current_courses.each do |course|
+    #if student.batch.present? && course.valid?
+    #  total_fee += program_payment.tution_per_credit_hr * course.ects
+    #end
+    #end
   end
 
   def college_payment

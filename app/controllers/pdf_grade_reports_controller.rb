@@ -3,6 +3,7 @@ class PdfGradeReportsController < ApplicationController
   def index
     @disable_nav = true
     @department = Department.select(:department_name, :id)
+    @academic_calendar = AcademicCalendar.select(:calender_year, :id)
   end
 
   def prepare_pdf

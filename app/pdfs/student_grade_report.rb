@@ -9,7 +9,7 @@ class StudentGradeReport < Prawn::Document
          move_down 10
          text "Semester: <u>#{stud.semester}</u>         Dept: <u> #{stud.department.department_name.capitalize} </u>", :inline_format => true, size: 11.5, font_style: :bold
          move_down 10
-         text "Program: <u>Masters</u>          A/C Year: <u>#{stud.academic_calendar.calender_year}</u>        ID NO: <u>#{stud.student.student_id}</u>  ", inline_format: true, size: 11.5, font_style: :bold
+         text "Program: <u>#{stud.program.program_name}</u>          A/C Year: <u>#{stud.academic_calendar.calender_year}</u>        ID NO: <u>#{stud.student.student_id}</u>  ", inline_format: true, size: 11.5, font_style: :bold
          move_down 10
          #stroke_horizontal_rule
          move_down 20
@@ -48,7 +48,7 @@ class StudentGradeReport < Prawn::Document
                 move_down 10
                 text "OFFICE OF REGISTRAR", size: 14, align: :center 
                 move_down 10 
-                text "STUDENT'S GRADE REPORT (ONLINE)", size: 12, align: :center  
+                text "STUDENT'S GRADE REPORT", size: 12, align: :center  
                 stroke_horizontal_rule
             end
         
@@ -68,7 +68,7 @@ class StudentGradeReport < Prawn::Document
        [
         ["Title of the course","Course Number", "Credit hours", "Grade", "Grade Point"],
        ]+ data.semester_registration.course_registrations.where(enrollment_status: 'enrolled').includes(:student_grade).includes(:course).map.with_index do |course, index| 
-        [course.course.course_title, course.course.course_code, course.course.credit_hour, course.student_grade.letter_grade, course.student_grade.grade_point] 
+        [course.course.course_title, course.course.course_code, course.course.credit_hour, course.student_grade&.letter_grade, course.student_grade&.grade_point] 
         #[course.course.course_title, course.course.course_code, course.course.credit_hour, StudentGrade.find_by(course: course.course).letter_grade, StudentGrade.find_by(course: course.course).grade_point]
        end
     end

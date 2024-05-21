@@ -1,7 +1,7 @@
 <div id="<%= dom_id external_transfer %>">
   <% if @external_transfer.accepted?%>
     <p class="text-lg text-success text-bold">Dear   <%= external_transfer&.first_name %>
-      <%= external_transfer&.last_name %>, Congradulations your application is accepted 🎉</p>
+      <%= external_transfer&.last_name %>, Congratulations your application is accepted 🎉</p>
     <p class="text-md text-primary text-bold"> If you want to add course exemption, please click Add course exemption button below! </p>
     <%if @external_transfer.exemptions.any?%>
        <p class="badge badge-info p-3 text-md"><%=@external_transfer.exemptions.size%> courses added for exemption, for farther information please contact the department head</p>
@@ -10,7 +10,7 @@
     <%end%>
   <%elsif  @external_transfer.rejected?%>
     <p class="text-lg text-danger text-bold">Dear   <%= external_transfer&.first_name %>
-      <%= external_transfer&.last_name %>, We regreat your application is not accepted!</p>
+      <%= external_transfer&.last_name %>, We regret to inform you that your application is not accepted!</p>
     <p class="text-md text-primary text-bold"> <%external_transfer&.message=%></p>
   <%elsif @external_transfer.pending?%>
     <p class="text-lg text-warning text-bold">Dear   <%= external_transfer&.first_name %>

@@ -2,9 +2,13 @@
   <%= form_tag(prepare_pdf_path(format: 'pdf'), method: 'post', class: 'search-form') do |form|%>
     <br>
     <div class="filed">
-      <label>Departement Name: </label>
+      <label>Department Name: </label>
       <%= collection_select(:department, :name, @department, :id, :department_name,  {prompt: 'Select a Department'}, required: true) %>
     </div>
+    <!--<div class="filed">
+      <label>Academic Calendar: </label>
+      <%= collection_select(:academic_calendar, :name, @academic_calendar, :id, :calender_year,  {prompt: 'Select a Academic Calendar'}, required: true) %>
+    </div>-->
     <div class="filed">
       <label>Study Level: </label>
       <select name="study_level" id="study_level" required>
@@ -17,10 +21,11 @@
         <label>Year: </label>
         <%= collection_select(:student, :year, Student.select(:year).distinct, :year, :year, {prompt: 'Select a Year'},required: true) %> 
     </div>
-    <div class="filed">
+
+    <!-- <div class="filed">
         <label>Section: </label>
         <%= collection_select(:section, :id, Section.select(:id, :section_full_name).distinct, :id, :section_full_name,{prompt: 'Select a Section'},required: true) %> 
-    </div>
+    </div> -->
 
     <div class="filed">
       <label>Semester: </label>
