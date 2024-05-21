@@ -5,7 +5,7 @@ class StudentGradeReport < Prawn::Document
         @students.each_with_index do |stud, index|
        # text "Generated Date :- #{Time.zone.now.strftime('%v-%R')}"
          move_down 175
-         text "Student's Name: <u>#{stud.student.first_name.capitalize} #{stud.student.middle_name.capitalize} #{stud.student.last_name.capitalize}</u>           Sex: <u>#{stud.student.gender.capitalize}</u>           Year: <u>#{stud.student.year}</u> ",:inline_format => true, size: 11.5, font_style: :bold
+         text "Student's Name: <u>#{stud.student.first_name.capitalize} #{stud.student.middle_name.capitalize} #{stud.student.last_name.capitalize}</u>           Sex: <u>#{stud.student.gender.capitalize}</u>           Year: <u>#{stud.year}</u> ",:inline_format => true, size: 11.5, font_style: :bold
          move_down 10
          text "Semester: <u>#{stud.semester}</u>         Dept: <u> #{stud.department.department_name.capitalize} </u>", :inline_format => true, size: 11.5, font_style: :bold
          move_down 10
@@ -73,15 +73,35 @@ class StudentGradeReport < Prawn::Document
        end
     end
 
+    #def preview_table(data)
+    #    [
+    #        ["","Cr.Hrs", "Grade Point", "Cumlative Grade Point\nAverage(CGPA)"],
+    #        ["This Semester Total", data.total_credit_hour, data.total_grade_point, data.cgpa ],
+    #        ["Previous Semester Total"]+ get_previous_total(data.student, data.semester),
+    #        ["Cumulative Point"]+get_cumulative(get_previous_total(data.student, data.semester), data.total_credit_hour, data.total_grade_point, data.cgpa)
+    #        
+    #    ]
+    #end
     def preview_table(data)
+        current_semester_credit_hours = data.total_credit_hour
+        current_semester_grade_points = data.total_grade_point
+      
+        previous_semester_credit_hours, previous_semester_grade_points, _ = get_previous_total(data.student, data.semester)
+      
+        cumulative_credit_hours = current_semester_credit_hours + previous_semester_credit_hours
+        cumulative_grade_points = current_semester_grade_points + previous_semester_grade_points
+      
+        cgpa_current_semester = current_semester_credit_hours.positive? ? current_semester_grade_points / current_semester_credit_hours : 0.0
+        cgpa_previous_semester = previous_semester_credit_hours.positive? ? previous_semester_grade_points / previous_semester_credit_hours : 0.0
+        cgpa_cumulative = cumulative_credit_hours.positive? ? cumulative_grade_points / cumulative_credit_hours : 0.0
+      
         [
-            ["","Cr.Hrs", "Grade Point", "Cumlative Grade Point\nAverage(CGPA)"],
-            ["This Semester Total", data.total_credit_hour, data.total_grade_point, data.cgpa ],
-            ["Previous Semester Total"]+ get_previous_total(data.student, data.semester),
-            ["Cumulative Point"]+get_cumulative(get_previous_total(data.student, data.semester), data.total_credit_hour, data.total_grade_point, data.cgpa)
-            
+          ["", "Cr.Hrs", "Grade Point", "Cumulative Grade Point\nAverage (CGPA)"],
+          ["This Semester Total", current_semester_credit_hours, current_semester_grade_points, cgpa_current_semester.round(2)],
+          ["Previous Semester Total", previous_semester_credit_hours, previous_semester_grade_points, cgpa_previous_semester.round(2)],
+          ["Cumulative Point", cumulative_credit_hours, cumulative_grade_points, cgpa_cumulative.round(2)]
         ]
-    end
+      end
 
     def get_previous_total(student, current_semester)
      record = GradeReport.select(:total_credit_hour,:total_grade_point, :cgpa).where("semester<#{current_semester}").where(student: student)
@@ -97,7 +117,7 @@ class StudentGradeReport < Prawn::Document
     end
 
     def get_cumulative(previous, *current)
-        [previous[0]+current[0], previous[1]+current[1], previous[2]+current[2]]
+        [previous[0]+current[0], previous[1]+current[1], previous[2]/ current[2]]
     end
     
 

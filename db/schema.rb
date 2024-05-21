@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_15_093622) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_21_145215) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -637,11 +637,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_15_093622) do
     t.integer "semester", null: false
     t.integer "year", null: false
     t.string "academic_status"
-    t.string "registrar_approval", default: "pending"
+    t.string "registrar_approval", default: "approved"
     t.string "registrar_name"
     t.string "dean_approval", default: "approved"
     t.string "dean_name"
-    t.string "department_approval", default: "pending"
+    t.string "department_approval", default: "approved"
     t.string "department_head_name"
     t.string "updated_by"
     t.string "created_by"

@@ -5,10 +5,12 @@
       <label>Department Name: </label>
       <%= collection_select(:department, :name, @department, :id, :department_name,  {prompt: 'Select a Department'}, required: true) %>
     </div>
-    <!--<div class="filed">
-      <label>Academic Calendar: </label>
-      <%= collection_select(:academic_calendar, :name, @academic_calendar, :id, :calender_year,  {prompt: 'Select a Academic Calendar'}, required: true) %>
-    </div>-->
+
+    <div class="filed">
+    <label>Academic Calendar: </label>
+    <%= collection_select(:academic_calendar, :id, @academic_calendars, :id, :calender_year, { prompt: 'Select an Academic Calendar' }, required: true) %>
+   </div>
+    
     <div class="filed">
       <label>Study Level: </label>
       <select name="study_level" id="study_level" required>
@@ -17,9 +19,21 @@
         <option value="graduate">Graduate</option> 
       </select>
     </div>
-     <div class="filed">
+     <!-- <div class="filed">
         <label>Year: </label>
         <%= collection_select(:student, :year, Student.select(:year).distinct, :year, :year, {prompt: 'Select a Year'},required: true) %> 
+    </div> -->
+
+    <div class="filed">
+      <label>Year: </label>
+      <select name="year" id="year" required>
+        <option value="">Select a Year</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
     </div>
 
     <!-- <div class="filed">

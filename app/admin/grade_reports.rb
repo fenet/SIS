@@ -226,14 +226,14 @@ ActiveAdmin.register GradeReport do
               td "#{grade_report.total_grade_point}", class: "form-table__col"
               td "#{grade_report.sgpa}", class: "form-table__col"
             end
-            tr class: "form-table__row" do
-              th "Previous Total", class: "form-table__col"
-              if grade_report.student.grade_reports.count > 1
-                td "#{grade_report.student.grade_reports.last.total_credit_hour}", class: "form-table__col"
-                td "#{grade_report.student.grade_reports.last.total_grade_point}", class: "form-table__col"
-                td "#{grade_report.student.grade_reports.last.cgpa}", class: "form-table__col"
-              end
-            end
+            #tr class: "form-table__row" do
+            #  th "Previous Total", class: "form-table__col"
+            #  if grade_report.student.grade_reports.count > 1
+            #    td "#{grade_report.student.grade_reports.last.total_credit_hour}", class: "form-table__col"
+            #    td "#{grade_report.student.grade_reports.last.total_grade_point}", class: "form-table__col"
+            #    td "#{grade_report.student.grade_reports.last.cgpa}", class: "form-table__col"
+            #  end
+            #end
             tr class: "form-table__row" do
               th "Cumulative", class: "form-table__col"
               td "#{grade_report.cumulative_total_credit_hour}", class: "form-table__col"
