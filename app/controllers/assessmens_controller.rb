@@ -28,6 +28,7 @@ class AssessmensController < ApplicationController
   def update_mark
     assessment = Assessment.find_by(id: params[:id])
     assessment.value["#{params[:key]}"] = "#{params[:result]}"
+    assessment.status = 0 if assessment.final_grade? || assessment.incomplete?
     if assessment.save!
       render json: { result: 'Updated', status: assessment }
     else

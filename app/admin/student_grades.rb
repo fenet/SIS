@@ -3,7 +3,7 @@ ActiveAdmin.register StudentGrade do
   # index download_links: [:csv,:json, :xml, :pdf]
   # index download_links: [:xml, :pdf, :csv, :json]
 
-  permit_params :department_approval, :approved_by, :approval_date, :course_registration_id, :student_id, :letter_grade, :grade_point, :assesment_total, :grade_point, :course_id, assessments_attributes: [:id, :student_grade_id, :assessment_plan_id, :student_id, :course_id, :result, :created_by, :updated_by, :_destroy]
+  permit_params :department_approval, :approved_by, :approval_date, :course_registration_id, :student_id, :letter_grade, :grade_point, :assesment_total, :grade_point, :course_id, assessments_attributes: [:id, :student_grade_id, :student_id, :course_id, :result, :created_by, :updated_by, :_destroy]
 
   active_admin_import validate: true,
                       headers_rewrites: { "ID" => :student_id },
@@ -107,29 +107,29 @@ ActiveAdmin.register StudentGrade do
     f.semantic_errors
 
     if object.new_record?
-      if f.object.assessments.empty?
-        f.object.assessments << Assessment.new
-      end
-      panel "Assessment" do
-        f.input :created_by, as: :hidden, :input_html => { :value => current_admin_user.name.full }
+      # if f.object.assessments.empty?
+      #   f.object.assessments << Assessment.new
+      # end
+      # panel "Assessment" do
+      #   f.input :created_by, as: :hidden, :input_html => { :value => current_admin_user.name.full }
 
-        f.has_many :assessments, heading: " ", remote: true, allow_destroy: true do |a|
-          a.input :student_id, as: :search_select, url: proc { admin_students_path },
-                               fields: [:student_id, :id], display_name: "student_id", minimum_input_length: 2,
-                               order_by: "created_at_asc"
-          a.input :course_id, as: :search_select, url: proc { admin_courses_path },
-                              fields: [:course_title, :id], display_name: "course_title", minimum_input_length: 2,
-                              order_by: "created_at_asc"
-          # a.input :assessment_plan_id, as: :search_select, url: proc { admin_assessment_plans_path },
-          #    fields: [:assessment_title, :id], display_name: 'assessment_title', minimum_input_length: 2,
-          #    order_by: 'created_at_asc'
-          a.input :assessment_plan_id, as: :search_select, url: proc { admin_assessment_plans_path },
-                                       fields: [:assessment_title, :id], display_name: "assessment_title", minimum_input_length: 2,
-                                       order_by: "created_at_asc", lebel: "Assessment Plan", :input_html => { :disabled => false }
-          a.input :result
-          a.label :_destroy
-        end
-      end
+      #   f.has_many :assessments, heading: " ", remote: true, allow_destroy: true do |a|
+      #     a.input :student_id, as: :search_select, url: proc { admin_students_path },
+      #                          fields: [:student_id, :id], display_name: "student_id", minimum_input_length: 2,
+      #                          order_by: "created_at_asc"
+      #     a.input :course_id, as: :search_select, url: proc { admin_courses_path },
+      #                         fields: [:course_title, :id], display_name: "course_title", minimum_input_length: 2,
+      #                         order_by: "created_at_asc"
+      #     # a.input :assessment_plan_id, as: :search_select, url: proc { admin_assessment_plans_path },
+      #     #    fields: [:assessment_title, :id], display_name: 'assessment_title', minimum_input_length: 2,
+      #     #    order_by: 'created_at_asc'
+      #     a.input :assessment_plan_id, as: :search_select, url: proc { admin_assessment_plans_path },
+      #                                  fields: [:assessment_title, :id], display_name: "assessment_title", minimum_input_length: 2,
+      #                                  order_by: "created_at_asc", lebel: "Assessment Plan", :input_html => { :disabled => false }
+      #     a.input :result
+      #     a.label :_destroy
+      #   end
+      # end
     end
     # if (current_admin_user.role == "instructor") || (current_admin_user.role == "admin")
     #   inputs 'Student Assessment' do
@@ -208,25 +208,25 @@ ActiveAdmin.register StudentGrade do
           end
         end
       end
-      column do
-        panel "Assessments Information" do
-          table_for student_grade.assessments do
-            column :assessment_plan do |a|
-              a.assessment_plan.assessment_title
-            end
-            column :assessment_weight do |a|
-              a.assessment_plan.assessment_weight
-            end
-            column :result
-            column "Graded At", sortable: true do |c|
-              c.updated_at.strftime("%b %d, %Y")
-            end
-            column "Graded by", sortable: true do |c|
-              c.updated_by
-            end
-          end
-        end
-      end
+      # column do
+      #   panel "Assessments Information" do
+      #     table_for student_grade.assessments do
+      #       column :assessment_plan do |a|
+      #         a.assessment_plan.assessment_title
+      #       end
+      #       column :assessment_weight do |a|
+      #         a.assessment_plan.assessment_weight
+      #       end
+      #       column :result
+      #       column "Graded At", sortable: true do |c|
+      #         c.updated_at.strftime("%b %d, %Y")
+      #       end
+      #       column "Graded by", sortable: true do |c|
+      #         c.updated_by
+      #       end
+      #     end
+      #   end
+      # end
     end
   end
 
