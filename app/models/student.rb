@@ -127,15 +127,9 @@ class Student < ApplicationRecord
     CollegePayment.find_by(study_level: self.study_level.strip, admission_type: self.admission_type.strip)
   end
 
-  def program_payment
-    Payment.find_by(program_id: self.program_id)
-  end
+  
 
-  #def batch_payment
-  #  Payment.find_by(batch: self.batch)
-  #end
-
-  def add_student_registration(mode_of_payment = nil, out_of_batch = false)
+  def add_student_registration(mode_of_payment=nil, out_of_batch=nil)
     SemesterRegistration.create do |registration|
       registration.student_id = self.id
       registration.program_id = self.program.id

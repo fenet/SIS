@@ -21,7 +21,7 @@ $(function () {
         for (let i = 0; i < result.length; i++) {
           $courseList.append(
             $(
-              `<option value=${result[i].course.id}>${result[i].course.course_title}</option>`
+              `<option value=${result[i].course.id}>Semester ${result[i].course.course_title}</option>`
             )
           );
         }
