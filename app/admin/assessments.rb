@@ -20,7 +20,8 @@ ActiveAdmin.register Assessment do
                                      }
   scope :approved_by_head, default: true, if: proc { current_admin_user.role == 'dean' }
   scope :incomplete_student
-  scope :graded, if: proc { current_admin_user.role == 'dean' }
+  scope :graded
+  #  if: proc { current_admin_user.role == 'dean' }
 
   batch_action :approve_assessment_for, confirm: 'Are you sure?' do |ids|
     if current_admin_user.role == 'instructor'

@@ -72,7 +72,7 @@ class Ability
       can :manage, AssessmentPlan, admin_user_id: user.id
       can :read, CourseRegistration, section_id: Section.instructor_courses(user.id)
       can :manage, StudentGrade, course_id: Section.instructors(user.id)
-      cannot :destroy, StudentGrade
+      # cannot :destroy, StudentGrade
       can :manage, Assessment, admin_user_id: user.id
       can :read, Attendance, section_id: Section.instructor_courses(user.id)
       can :update, Attendance, section_id: Section.instructor_courses(user.id)
