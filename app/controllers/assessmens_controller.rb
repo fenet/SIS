@@ -5,8 +5,10 @@ class AssessmensController < ApplicationController
     course_id = params[:course_id]
     current_admin_user = params[:current_admin_user]
     section = CourseInstructor.where(admin_user_id: current_admin_user).where(course_id:).includes(:course).last.section
-    enrolled_students = CourseRegistration.where(enrollment_status: 'enrolled', course_id:, is_active: 'yes',
-                                                 section:).includes(:student).includes(:section).order('student_full_name ASC')
+    #enrolled_students = CourseRegistration.where(enrollment_status: 'enrolled', course_id:, is_active: 'yes',
+     #                                            section:).includes(:student).includes(:section).order('student_full_name ASC')
+     enrolled_students = CourseRegistration.joins(:student).where(enrollment_status: 'enrolled', course_id:, is_active: 'yes'
+     ).where("students.section_id=?", section.id).includes(:section).order('student_full_name ASC')
     assessment_plans = AssessmentPlan.where(course_id:, admin_user_id: current_admin_user)
     assessment_plans = assessment_plans.to_json(only: %i[id assessment_title assessment_weight])
     students = enrolled_students.to_json(only: [:id],

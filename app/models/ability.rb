@@ -18,7 +18,10 @@ class Ability
       can :read, ActiveAdmin::Page, name: "Graduation", namespace_name: "admin"
       can :read, AcademicCalendar
       can :read, Curriculum
-        
+
+    when "program office"
+      can :read, AcademicCalendar
+
     when "admin"
       # can :manage, ActiveAdmin::Page, name: "Calendar", namespace_name: "admin"
       can :manage, Transfer

@@ -68,8 +68,8 @@ $(function () {
     const assessment_title = target.dataset.assessment;
     const result = target.value;
     const weight = target.dataset.weight;
-    if (result > weight || result < 0) {
-      alert(`Your input is greater that the assessment weight, please fill below ${weight} and above -1`)
+    if (result > 100 || result < 0) {
+      alert(`Your input is greater than 100, please fill below 101 and above -1`)
     } else {
       $.ajax({
         type: "post",
