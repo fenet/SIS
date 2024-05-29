@@ -28,7 +28,7 @@ menu parent: "Attendance"
         f.input :attendance_title
         
         f.input :course_id, as: :search_select, url: admin_courses_path,
-              fields: [:course_title, :id], display_name: 'course_title', minimum_input_length: 2,lebel: "course title",
+              fields: [:course_code, :id], display_name: 'course_code', minimum_input_length: 2,lebel: "course code",
               order_by: 'id_asc'
         f.input :section_id, as: :search_select, url: admin_program_sections_path,
               fields: [:section_full_name, :id], display_name: 'section_full_name', minimum_input_length: 2,

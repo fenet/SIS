@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'grade_changes/new'
+  get 'grade_changes/create'
   resources :sections, except: [:index] do
     collection do
       get "assign", to: "sections#index"
@@ -95,7 +97,7 @@ Rails.application.routes.draw do
   resources :semester_registrations
   resources :invoices
   resources :profiles
-
+  resources :grade_changes, only: [:new, :create]
   resources :payment_methods
   resources :payment_transactions
   devise_for :admin_users, ActiveAdmin::Devise.config

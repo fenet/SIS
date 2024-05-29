@@ -89,12 +89,12 @@ class Ability
       can :manage, StudentGrade, course_id: Section.instructors(user.id)
       # cannot :destroy, StudentGrade
       can :manage, Assessment, admin_user_id: user.id
-      can :read, Attendance, section_id: Section.instructor_courses(user.id)
-      can :update, Attendance, section_id: Section.instructor_courses(user.id)
-      can :create, Session
-      can :read, Session, course_id: Section.instructors(user.id)
-      can :update, Session, course_id: Section.instructors(user.id)
-      cannot :destroy, Session, course_id: Section.instructors(user.id)
+      can :manage, Attendance, section_id: Section.instructor_courses(user.id)
+      #can :update, Attendance, section_id: Section.instructor_courses(user.id)
+      can :manage, Session
+      #can :read, Session, course_id: Section.instructors(user.id)
+      #can :update, Session, course_id: Section.instructors(user.id)
+      #cannot :destroy, Session, course_id: Section.instructors(user.id)
       can :read, GradeChange, course_id: Section.instructors(user.id)
       can :update, GradeChange, course_id: Section.instructors(user.id)
     when 'finance'

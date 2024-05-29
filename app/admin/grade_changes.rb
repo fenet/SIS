@@ -14,9 +14,9 @@ ActiveAdmin.register GradeChange do
     column "Course" do |pd|
       pd.course.course_title
     end
-    column "Academic Year", sortable: true do |n|
-      link_to n.academic_calendar.calender_year, admin_academic_calendar_path(n.academic_calendar)
-    end
+   # column "Academic Year", sortable: true do |n|
+   #   link_to n.academic_calendar.calender_year, admin_academic_calendar_path(n.academic_calendar)
+   # end
     column :year
     column :semester
     column "Program" do |pd|
@@ -146,9 +146,9 @@ ActiveAdmin.register GradeChange do
             row :study_level do |pd|
               pd.program.study_level
             end
-            row "Academic Year", sortable: true do |n|
-              link_to n.academic_calendar.calender_year, admin_academic_calendar_path(n.academic_calendar)
-            end
+            #row "Academic Year", sortable: true do |n|
+            #  link_to n.academic_calendar.calender_year, admin_academic_calendar_path(n.academic_calendar)
+            #end
             row :year
             row :semester
             row "Section" do |pd|
@@ -167,9 +167,9 @@ ActiveAdmin.register GradeChange do
             row :previous_result_total
             row :previous_letter_grade
             row :reason
-            row "Assessment" do |m|
-              m.assessment.assessment_plan.assessment_title
-            end 
+            #row "Assessment" do |m|
+            #  m.assessment.assessment_plan.assessment_title
+            #end 
             row "Added Mark" do |m|
               m.add_mark
             end
@@ -223,5 +223,35 @@ ActiveAdmin.register GradeChange do
     # end
   end
 
+  batch_action :approve_instructor, if: proc { current_admin_user.role == "instructor" || current_admin_user.role == "admin" }, confirm: "Are you sure?" do |ids|
+    GradeChange.find(ids).each do |grade_change|
+      grade_change.update(instructor_approval: "approved", instructor_name: current_admin_user.name.full, instructor_date_of_response: Time.zone.now)
+    end
+    redirect_to collection_path, alert: "The selected grade changes have been approved by the instructor."
+  end
+
+  # Batch action for department approval
+  batch_action :approve_department, if: proc { current_admin_user.role == "department head" || current_admin_user.role == "admin" }, confirm: "Are you sure?" do |ids|
+    GradeChange.find(ids).each do |grade_change|
+      grade_change.update(department_approval: "approved", department_head_name: current_admin_user.name.full, department_head_date_of_response: Time.zone.now)
+    end
+    redirect_to collection_path, alert: "The selected grade changes have been approved by the department."
+  end
+
+  # Batch action for dean approval
+  batch_action :approve_dean, if: proc { current_admin_user.role == "dean" || current_admin_user.role == "admin" }, confirm: "Are you sure?" do |ids|
+    GradeChange.find(ids).each do |grade_change|
+      grade_change.update(dean_approval: "approved", dean_name: current_admin_user.name.full, dean_date_of_response: Time.zone.now)
+    end
+    redirect_to collection_path, alert: "The selected grade changes have been approved by the dean."
+  end
+
+  # Batch action for registrar approval
+  batch_action :approve_registrar, if: proc { current_admin_user.role == "registrar head" || current_admin_user.role == "admin" }, confirm: "Are you sure?" do |ids|
+    GradeChange.find(ids).each do |grade_change|
+      grade_change.update(registrar_approval: "approved", registrar_name: current_admin_user.name.full, registrar_date_of_response: Time.zone.now)
+    end
+    redirect_to collection_path, alert: "The selected grade changes have been approved by the registrar."
+  end
   
 end

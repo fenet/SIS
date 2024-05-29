@@ -75,67 +75,9 @@
 
           </div>
           <!-- /.card-body -->
-        </div>
-        <div class="row">
-          <div class="col-12 col-md-6">
-            <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Emregncy Contact Information</h3>
-              </div>
-              <% if @emergency_contact.present?%>
-              <div class="card-body box-profile">
-                <ul class="list-group list-group-unbordered mb-3">
-                  <li class="list-group-item mx-3">
-                    <b>Full Name</b> <a class="text-muted float-right"><%= @emergency_contact.full_name.present? ? @emergency_contact.full_name : "" %></a>
-                  </li>
-                  
-                  <li class="list-group-item mx-3">
-                    <b>Relationship</b> <a class="text-muted float-right"><%= @emergency_contact.relationship%></a>
-                  </li>
-                  <li class="list-group-item mx-3">
-                    <b>cell phone</b> <a class="text-muted float-right"><%= @emergency_contact.cell_phone%></a>
-                  </li>
-                  <li class="list-group-item mx-3">
-                    <b>email</b> <a class="text-muted float-right"><%= @emergency_contact.email%></a>
-                  </li>
-                  <li class="list-group-item mx-3">
-                    <b>Current occupation</b> <a class="text-muted float-right"><%= @emergency_contact.current_occupation%></a>
-                  </li>
-                </ul>
-              </div>
-              <!-- /.card-body -->
-            </div>
-          </div>
-          <div class="col-12 col-md-6">
-            <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Emregncy Contact Employer Information</h3>
-              </div>
-              <div class="card-body box-profile">
-                <ul class="list-group list-group-unbordered mb-3">
-                  <li class="list-group-item mx-3">
-                    <b>Name employer</b> <a class="text-muted float-right"><%= @emergency_contact.name_of_current_employer%></a>
-                  </li>
-                  <li class="list-group-item mx-3">
-                    <b>Email</b> <a class="text-muted float-right"><%= @emergency_contact.email_of_employer%></a>
-                  </li>
-                  <li class="list-group-item mx-3">
-                    <b>Phone number</b> <a class="text-muted float-right"><%= @emergency_contact.office_phone_number%></a>
-                  </li>
-                  <li class="list-group-item mx-3">
-                    <b>Pobox</b> <a class="text-muted float-right"><%= @emergency_contact.pobox%></a>
-                  </li>
-                </ul>
-              </div>
-              <%end%>
-
-              <!-- /.card-body -->
-            </div>
-          </div>
-        </div>
-        
+        </div>  
       </div>
-      <div class="col-12 col-md-4">
+      <!-- <div class="col-12 col-md-4">
         <% unless @student_grades.blank?%>
        <div class="col-12">
         <div class="card card-success">
@@ -173,7 +115,62 @@
          </div>
    
         </div>
-<%end%>
+<%end%> -->
+
+<div class="col-12 col-md-4">
+  <% unless @student_grades.blank? %>
+  <div class="col-12">
+    <div class="card card-success">
+      <div class="card-header">
+        <h3 class="card-title">
+          <strong>Year <%= current_student.year %> Semester <%= current_student.semester %> Student Grades</strong>
+        </h3>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <table class="card-body m-4" style="padding: 10px">
+        <thead>
+          <tr class="p-3">
+            <th>Course Title</th>
+            <th>Grade Letter</th>
+            <th>Total Mark</th>
+          </tr>
+        </thead>
+        <tbody class="p-5">
+          <% @student_grades.each do |grade| %>
+          <tr>
+            <td><%= grade.course.course_title %></td>
+            <td><%= grade.letter_grade %></td>
+            <td><%= grade.assesment_total %></td>
+            <td>
+            <%= link_to 'Request Grade Change', new_grade_change_path(course_id: grade.course.id, grade_id: grade.id), class: 'btn btn-primary' %>
+
+          
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="card-footer">
+      <%= debug(params) %>
+<%= debug(@course) %>
+<%= debug(@grade) %>
+
+      <% if @course && @course.id %>
+       <%= link_to 'Request Grade Change', new_grade_change_path(course_id: @course.id) %>
+     <% end %>
+        </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
         <%= render 'instruction'%>
         <div class="card card-primary">
           <div class="card-header">
@@ -203,51 +200,7 @@
           </div>
           <!-- /.card-body -->
         </div>
-        <div class="card card-primary">
-          <div class="card-header">
-            <h3 class="card-title">Address Information</h3>
-          </div>
-          <% if @address.present?%>
-          <div class="card-body box-profile">
-            <ul class="list-group list-group-unbordered mb-3">
-              <li class="list-group-item mx-3">
-                <b>Country</b> <a class="text-muted float-right"><%= @address.country%></a>
-              </li>
-              <li class="list-group-item mx-3">
-                <b>City</b> <a class="text-muted float-right"><%= @address.city%></a>
-              </li>
-              <li class="list-group-item mx-3">
-                <b>Region</b> <a class="text-muted float-right"><%= @address.region%></a>
-              </li>
-              <li class="list-group-item mx-3">
-                <b>Zone</b> <a class="text-muted float-right"><%= @address.zone%></a>
-              </li>
-              <li class="list-group-item mx-3">
-                <b>Sub city</b> <a class="text-muted float-right"><%= @address.sub_city%></a>
-              </li>
-              <li class="list-group-item mx-3">
-                <b>Woreda</b> <a class="text-muted float-right"><%= @address.woreda%></a>
-              </li>
-              <li class="list-group-item mx-3">
-                <b>House number</b> <a class="text-muted float-right"><%= @address.house_number%></a>
-              </li>
-              <li class="list-group-item mx-3">
-                <b>Cell phone</b> <a class="text-muted float-right"><%= @address.moblie_number%></a>
-              </li>
-              <li class="list-group-item mx-3">
-                <b>House phone</b> <a class="text-muted float-right"><%= @address.telephone_number%></a>
-              </li>
-              <li class="list-group-item mx-3">
-                <b>Pobox</b> <a class="text-muted float-right"><%= @address.pobox%></a>
-              </li>
-              
-            </ul>
-
-
-          </div>
-          <%end%>
-          <!-- /.card-body -->
-        </div>
+        
       </div>
     </div>
     <!-- /.row -->
