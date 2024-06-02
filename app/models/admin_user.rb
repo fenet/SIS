@@ -30,5 +30,6 @@ class AdminUser < ApplicationRecord
 
     ## associations
       has_many :course_instructors
+      has_many :notices
       belongs_to :department, optional: true
 end

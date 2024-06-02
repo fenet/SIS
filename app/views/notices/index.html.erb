@@ -1,0 +1,13 @@
+<h1>Notices</h1>
+
+<% if admin_user_signed_in? %>
+  <%= link_to 'Post a New Notice', new_notice_path %>
+<% end %>
+
+<% @notices.each do |notice| %>
+  <div>
+    <h2><%= notice.title %></h2>
+    <p><%= notice.body %></p>
+    <small>Posted by: <%= notice.posted_by %> on <%= notice.created_at.strftime("%B %d, %Y") %></small>
+  </div>
+<% end %>

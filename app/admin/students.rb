@@ -1,7 +1,7 @@
 ActiveAdmin.register Student do
   menu parent: "Student managment"
   # config.batch_actions = true
-  permit_params :payment_version, :password_confirmation, :batch, :nationality, :undergraduate_transcript, :highschool_transcript,
+  permit_params :section_id, :payment_version, :password_confirmation, :batch, :nationality, :undergraduate_transcript, :highschool_transcript,
                 :grade_10_matric, :grade_12_matric, :coc, :diploma_certificate, :degree_certificate, :place_of_birth, :sponsorship_status, :entrance_exam_result_status, :student_id_taken_status, :old_id_number, :curriculum_version, :current_occupation, :tempo_status, :created_by, :last_updated_by, :photo, :email, :password, :first_name, :last_name, :middle_name, :gender, :student_id, :date_of_birth, :program_id, :department, :admission_type, :study_level, :marital_status, :year, :semester, :account_verification_status, :document_verification_status, :account_status, :graduation_status, student_address_attributes: %i[id country city region zone sub_city house_number special_location moblie_number telephone_number pobox woreda created_by last_updated_by], emergency_contact_attributes: %i[id full_name relationship cell_phone email current_occupation name_of_current_employer pobox email_of_employer office_phone_number created_by last_updated_by], school_or_university_information_attributes: %i[id level coc_attendance_date college_or_university phone_number address field_of_specialization cgpa last_attended_high_school school_address grade_10_result grade_10_exam_taken_year grade_12_exam_result grade_12_exam_taken_year created_by updated_by]
 
   active_admin_import validate: false,
@@ -80,6 +80,9 @@ ActiveAdmin.register Student do
         link_to "Please add program type", edit_admin_student_path(d)
       end
     end
+    column "section", sortable: true do |student|
+      student.section.section_full_name if student.section
+    end
     column :study_level do |level|
       level.study_level.capitalize
     end
@@ -123,6 +126,7 @@ ActiveAdmin.register Student do
   filter :entrance_exam_result_status
   filter :account_status, as: :select, collection: %w[active suspended]
   filter :graduation_status
+  filter :sponsorship_status
   filter :created_by
   filter :last_updated_by
   filter :created_at
@@ -177,6 +181,7 @@ ActiveAdmin.register Student do
       f.input :password_confirmation
       f.input :semester
       f.input :year
+      f.input :section, as: :select, collection: Section.all.pluck(:section_full_name, :id)
       if f.object.new_record?
         f.input :created_by, as: :hidden, input_html: { value: current_admin_user.name.full }
         f.input :year, as: :hidden, input_html: { value: 1 }
@@ -257,6 +262,7 @@ ActiveAdmin.register Student do
     end
     # end
     f.inputs "Student account and document verification" do
+      f.input :sponsorship_status
       f.input :curriculum_version
       f.input :account_verification_status, as: :select, collection: %w[pending approved denied incomplete],
                                             include_blank: false

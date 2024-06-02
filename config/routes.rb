@@ -1,12 +1,42 @@
 Rails.application.routes.draw do
   get 'grade_changes/new'
   get 'grade_changes/create'
+
   resources :sections, except: [:index] do
     collection do
       get "assign", to: "sections#index"
-      # as: "sections" 
+    end
+    member do
+      get :download_pdf
     end
   end
+  
+  resources :attendances do
+    member do
+      get :download_pdf
+    end
+  end
+
+  resources :academic_calendars do
+    member do
+      get :download_pdf
+    end
+  end
+
+  resources :notices, only: [:index, :show, :new, :create, :destroy]
+  
+ # resources :sections do
+ #   member do
+ #     get :download_pdf
+ #   end
+ # end
+#
+ # resources :sections, except: [:index] do
+ #   collection do
+ #     get "assign", to: "sections#index"
+ #     # as: "sections" 
+ #   end
+ # end
   get 'apply_grade_change/index'
   get '/available/courses/:course_id/(:drop_id)', to: "avaliable_courses#index", as: "available_courses"
   get 'drop_courses/index', as: 'drop_courses'
@@ -85,6 +115,14 @@ Rails.application.routes.draw do
     put "update/degree/certificate", to: "registrations#update_degree_certificate", as: "update_degree_certificate"
   end
 
+  namespace :admin do
+    resources :sections do
+      member do
+        get :download_pdf
+      end
+    end
+  end
+  
   post "prepare_pdf", to: "pdf_grade_reports#prepare_pdf", as: "prepare_pdf"
   get "admission" => "pages#admission"
   get "documents" => "pages#documents", as: "documents"
@@ -105,4 +143,5 @@ Rails.application.routes.draw do
   root to: "pages#home"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # root to: 'application#home'
+
 end

@@ -1,5 +1,6 @@
 class SectionsController < ApplicationController
   before_action { @disable_nav = true }
+  before_action :set_section, only: [:download_pdf]
 
   def index
     @programs = Program.select(:id, :program_name)
@@ -7,6 +8,11 @@ class SectionsController < ApplicationController
       @students = Student.no_assigned.where(program_id: params[:program][:name], year: params[:year], semester: params[:semester], batch: params[:student][:batch]).includes(:program)
       @sections = Section.empty.or(Section.partial).where(program_id: params[:program][:name], year: params[:year], semester: params[:semester], batch: params[:student][:batch]).includes(:students)
     end
+  end
+
+  def download_pdf
+    pdf = SectionPdfGenerator.new(@section).render
+    send_data pdf, filename: "section_#{@section.id}.pdf", type: 'application/pdf', disposition: 'inline'
   end
 
   def new
@@ -35,9 +41,14 @@ class SectionsController < ApplicationController
       redirect_to assign_sections_path, alert: "No students selected for assignment."
     end
   end
+
+
+ private
+
+  def set_section
+    @section = Section.find(params[:id])
+  end
 end
-
-
 
 
 

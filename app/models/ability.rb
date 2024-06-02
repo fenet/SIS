@@ -79,6 +79,7 @@ class Ability
       can :manage, OtherPayment
       can :manage, StudentGrade
       can :manage, Exemption
+      can :manage, Notice
     when 'instructor'
       can :manage, ActiveAdmin::Page, name: 'Dashboard', namespace_name: 'admin'
       can :read, AcademicCalendar
@@ -148,6 +149,7 @@ class Ability
 
       can :manage, AddAndDrop
       cannot :destroy, AddAndDrop, created_by: 'self'
+      can :manage, Notice
     when 'data encoder'
       can :manage, ActiveAdmin::Page, name: 'Dashboard', namespace_name: 'admin'
       can :manage, AcademicCalendar
@@ -249,6 +251,7 @@ class Ability
       can :manage, CollegePayment
       can :read, SemesterRegistration
       can :manage, Invoice
+      can :manage, Notice
     when 'regular_finance'
       can :manage, ActiveAdmin::Page, name: 'Dashboard', namespace_name: 'admin'
       can :read, Program, admission_type: 'regular'
@@ -367,6 +370,7 @@ class Ability
       can :manage, GradeSystem
       can :manage, AssessmentPlan
       can %i[read update], Exemption
+      can :manage, Notice
     when 'library head'
       can :manage, ActiveAdmin::Page, name: 'Dashboard', namespace_name: 'admin'
       can %i[read update], Withdrawal

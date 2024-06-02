@@ -71,9 +71,13 @@ menu parent: "Attendance"
     f.actions
   end
 
-  action_item :edit, only: :show, priority: 0 do
-    link_to 'Add Session', edit_admin_attendance_path(attendance.id, page_name: "add")
+  action_item :download_pdf, only: :show do
+    link_to 'Download Attendance Sheet PDF', download_pdf_admin_attendance_path(attendance), method: :get
   end
+
+  #action_item :edit, only: :show, priority: 0 do
+  #  link_to 'Add Session', edit_admin_attendance_path(attendance.id, page_name: "add")
+  #end
 
   show title: :attendance_title do
     tabs do
@@ -102,19 +106,19 @@ menu parent: "Attendance"
               end
             end
           end
-          column min_width: "60%" do
-            panel "Attendance Session" do
-              table_for attendance.sessions do
-                column :session_title
-                column :starting_date
-                column :ending_date
-                column :created_at
-                column "links" do |c|
-                  "#{link_to("Take Attendance", edit_admin_session_path(c, page_name: "add"))}".html_safe
-                end
-              end
-            end 
-          end 
+          #column min_width: "60%" do
+          #  panel "Attendance Session" do
+          #    table_for attendance.sessions do
+          #      column :session_title
+          #      column :starting_date
+          #      column :ending_date
+          #      column :created_at
+          #      column "links" do |c|
+          #        "#{link_to("Attendance Sheet", edit_admin_session_path(c, page_name: "add"))}".html_safe
+          #      end
+          #    end
+          #  end 
+          #end 
         end
       end
       tab "Student List" do
@@ -129,9 +133,9 @@ menu parent: "Attendance"
             column :section do |sec|
               sec.section.section_short_name
             end
-            column :total_session do |section|
-              attendance.sessions.count
-            end
+            #column :total_session do |section|
+            #  attendance.sessions.count
+            #end
             #column :total_present_days do |section|
               #attendance.sessions.map {|session| session.student_attendances.where(student_id: section.student, present: true).count}.sum
               # section.student.student_attendances.where(present: true).count
@@ -147,11 +151,16 @@ menu parent: "Attendance"
           end
         end 
       end
-      tab "Attendance Report" do
-      end
+      #tab "Attendance Report" do
+      #end
     end
     
   end
 
+  member_action :download_pdf, method: :get do
+    attendance = Attendance.find(params[:id])
+    pdf = AttendancePdfGenerator.new(attendance).render
+    send_data pdf, filename: "attendance_#{attendance.id}.pdf", type: 'application/pdf', disposition: 'inline'
+  end
   
 end
