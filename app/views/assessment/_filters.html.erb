@@ -1,0 +1,28 @@
+<aside class="sidebar_section" id="filters_sidebar_section">
+  <h3>Filters</h3>
+  <div class="panel_contents">
+    <div id="filters_sidebar_section_content" class="attributes_table filters_sidebar_section_content">
+      <% search = assigns[:search] || Assessment.ransack(params[:q]) %>
+      <%= active_admin_form_for search, as: :q, url: collection_path, html: { method: :get } do |f| %>
+        <div class="filter_form_field">
+          <%= f.label :student_id_eq, 'Student' %>
+          <%= f.select :student_id_eq, options_from_collection_for_select(Student.all, 'id', 'full_name'), include_blank: 'Select Student' %>
+        </div>
+
+        <div class="filter_form_field">
+          <%= f.label :course_id_eq, 'Course' %>
+          <%= f.select :course_id_eq, options_from_collection_for_select(Course.all, 'id', 'course_title'), include_blank: 'Select Course' %>
+        </div>
+
+        <div class="filter_form_field">
+          <%= f.label :program_id_eq, 'Program' %>
+          <%= f.select :program_id_eq, options_from_collection_for_select(Program.all, 'id', 'program_name'), include_blank: 'Select Program' %>
+        </div>
+
+        <div class="buttons">
+          <%= f.submit 'Filter', class: 'button' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</aside>

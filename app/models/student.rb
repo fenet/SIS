@@ -131,6 +131,10 @@ class Student < ApplicationRecord
     Payment.find_by(program_id: self.program_id)
   end
 
+  def full_name
+    "#{first_name} #{middle_name} #{last_name}"
+  end
+
   def add_student_registration(mode_of_payment=nil, out_of_batch=nil)
     SemesterRegistration.create do |registration|
       registration.student_id = self.id

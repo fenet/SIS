@@ -2,6 +2,23 @@ ActiveAdmin.register StudentGrade do
   menu parent: "Grade"
 
   permit_params :department_approval, :approved_by, :approval_date, :course_registration_id, :student_id, :letter_grade, :grade_point, :assesment_total, :grade_point, :course_id, assessments_attributes: [:id, :student_grade_id, :student_id, :course_id, :result, :created_by, :updated_by, :_destroy]
+  
+  #active_admin_import validate: true,
+  #                  headers_rewrites: { "ID" => :student_id },
+  #                  timestamps: true,
+  #                  batch_size: 1000,
+  #                  before_batch_import: ->(importer) {
+  #                    student_ids = importer.values_at(:student_id)
+  #                    students = Student.where(student_id: student_ids).pluck(:student_id, :id)
+  #                    options = Hash[*students.flatten]
+  #                    importer.batch_replace(:student_id, options)
+  #                  },
+  #                  after_import: ->(importer) {
+  #                    # Trigger method after import
+  #                    StudentGrade.all.each do |sg|
+  #                      sg.add_course_registration
+  #                    end
+  #                  }
 
   active_admin_import validate: true,
                       headers_rewrites: { "ID" => :student_id },
@@ -13,10 +30,9 @@ ActiveAdmin.register StudentGrade do
                         options = Hash[*students.flatten]
                         importer.batch_replace(:student_id, options)
                       }
-
-  scoped_collection_action :scoped_collection_update, title: "Approve Grade", form: -> do
-                                                        {
-                                                          department_approval: ["pending", "approved", "denied"],
+scoped_collection_action :scoped_collection_update, title: "Approve Grade", form: -> do
+                                                      {
+                                                        department_approval: ["pending", "approved", "denied"],
                                                         }
                                                       end
   member_action :generate_grade, method: :put do

@@ -21,7 +21,7 @@ $(function () {
         for (let i = 0; i < result.length; i++) {
           $courseList.append(
             $(
-              `<option value=${result[i].course.id}>Semester ${result[i].course.course_title}</option>`
+              `<option value=${result[i].course.id}> ${result[i].course.course_title}</option>`
             )
           );
         }
@@ -132,7 +132,7 @@ $(function () {
               return td;
             });
             $td = $("<td>  </td>");
-            $tr.append(`<td>${result.student.first_name + " " + result.student.last_name
+            $tr.append(`<td>${result.student.first_name + " " + result.student.middle_name + " " + result.student.last_name
               }</td>
                         <td>${result.student.semester}</td>+
                         <td>${result.student.year}</td>`);

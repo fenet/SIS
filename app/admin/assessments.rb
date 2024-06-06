@@ -1,6 +1,11 @@
 ActiveAdmin.register Assessment do
   permit_params :student_id, :course_id, :student_grade_id, :assessment_plan_id, :result, :created_by, :updated_by, :final_exam
-
+  filter :student_id, label: 'Student', as: :select, collection: proc { Student.all.map { |student| ["#{student.first_name} #{student.last_name}", student.id] } }
+  filter :course, collection: proc { Course.all.map { |course| [course.course_title, course.id] } }
+  #filter :program, collection: proc { Program.all.map { |program| [program.program_name, program.id] } }
+  #filter :student, collection: proc { Student.all.map { |student| ["#{student.first_name} #{student.last_name}", student.id] } }
+  #filter :course, collection: proc { Course.all.map { |course| [course.course_title, course.id] } }
+  filter :student, collection: proc { Student.all.map { |student| [student.program.program_name, student.program.id] }.uniq }
   scope :assessment_by_instructor, default: true, if: proc { current_admin_user.role == 'instructor' }
   scope :approved_by_instructor, if: proc {
                                        current_admin_user.role == 'department head' || current_admin_user.role == 'dean'
@@ -125,6 +130,14 @@ ActiveAdmin.register Assessment do
   form do |_f|
     years = CourseInstructor.where(admin_user: current_admin_user).distinct.pluck(:year)
     render 'assessment/new', { years: }
+  end
+
+  sidebar :filters, only: :index, if: false do
+    active_admin_filters_sidebar_section
+  end
+
+  action_item :bottom_filters, only: :index do
+    render partial: 'assessment/filters'
   end
 end
 

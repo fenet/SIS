@@ -31,6 +31,39 @@ class StudentGrade < ApplicationRecord
     end
   end
 
+#class StudentGrade < ApplicationRecord
+#  # after_create :generate_assessment
+#  after_create -> { self.course_registration.active_no! }
+#  after_save :add_course_registration # Enable the callback
+#
+#  validates :student, presence: true
+#  validates :course, presence: true
+#  belongs_to :course_registration, optional: true
+#  belongs_to :student
+#  belongs_to :course
+#  belongs_to :department, optional: true
+#  belongs_to :program, optional: true
+#  has_many :grade_changes
+#  has_many :makeup_exams
+#  validates_uniqueness_of :id, scope: [:student_id, :course_id]
+#
+#  def add_course_registration
+#    Rails.logger.debug "add_course_registration called for StudentGrade ID: #{self.id}"
+#    unless self.course_registration.present?
+#      cr = CourseRegistration.where(student_id: self.student.id, course_id: self.course.id).last
+#      if cr.present?
+#        self.update_columns(course_registration_id: cr.id)
+#        Rails.logger.debug "course_registration_id set to #{cr.id} for StudentGrade ID: #{self.id}"
+#      else
+#        Rails.logger.warn "No course registration found for student_id #{self.student.id} and course_id #{self.course.id}"
+#      end
+#    end
+#  end
+#  
+
+  # Rest of the model code...
+
+
   def assesment_total1
     # assessments.collect { |oi| oi.valid? ? (oi.result) : 0 }.sum
     assessments.sum(:result)

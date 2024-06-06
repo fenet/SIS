@@ -11,10 +11,13 @@ class AssessmensController < ApplicationController
      ).where("students.section_id=?", section.id).includes(:section).order('student_full_name ASC')
     assessment_plans = AssessmentPlan.where(course_id:, admin_user_id: current_admin_user)
     assessment_plans = assessment_plans.to_json(only: %i[id assessment_title assessment_weight])
-    students = enrolled_students.to_json(only: [:id],
-                                         include: { student: { only: %i[
-                                           id first_name year semester last_name
-                                         ] }, course: { only: %i[id] } })
+    students = enrolled_students.to_json(only: [:id, :student_id], 
+                                     include: { student: { only: %i[id first_name middle_name last_name year semester] }, 
+                                                course: { only: %i[id] } })
+    #students = enrolled_students.to_json(only: [:id],
+    #                                     include: { student: { only: %i[
+    #                                       id first_name year semester last_name
+    #                                     ] }, course: { only: %i[id] } })
 
     respond_to do |format|
       format.json do

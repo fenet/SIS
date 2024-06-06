@@ -350,7 +350,8 @@ class Ability
       can :read, SemesterRegistration, department_id: user.department.id
       can :read, Attendance, program: { department_id: user.department.id }
       can :read, Session, course: { program: { department_id: user.department.id } }
-      can %i[read update], StudentGrade, department_id: user.department.id
+      can :read, StudentGrade, department_id: user.department.id
+      #can %i[read update], StudentGrade, department_id: user.department.id
       can %i[read update], GradeChange, department_id: user.department.id
       can %i[read update], GradeReport, department_id: user.department.id
       can %i[read update], Withdrawal, department_id: user.department.id
