@@ -132,13 +132,13 @@ ActiveAdmin.register Assessment do
     render 'assessment/new', { years: }
   end
 
-  sidebar :filters, only: :index, if: false do
-    active_admin_filters_sidebar_section
-  end
-
-  action_item :bottom_filters, only: :index do
-    render partial: 'assessment/filters'
-  end
+  #sidebar :filters, only: :index, if: false do
+  #  active_admin_filters_sidebar_section
+  #end
+#
+  #action_item :bottom_filters, only: :index do
+  #  render partial: 'assessment/filters'
+  #end
 end
 
 
