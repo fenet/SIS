@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   end
 
   resources :notices, only: [:index, :show, :new, :create, :destroy]
+  resources :makeup_exams, only: [:new, :create]
+
   
  # resources :sections do
  #   member do

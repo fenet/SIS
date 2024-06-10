@@ -1,0 +1,31 @@
+<h1>Request Makeup Exam</h1>
+
+<%= form_with model: @makeup_exam, local: true do |f| %>
+  <% if @makeup_exam.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@makeup_exam.errors.count, "error") %> prohibited this makeup exam from being saved:</h2>
+      <ul>
+        <% @makeup_exam.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :course_id, "Select Course" %>
+    <%= f.collection_select :course_id, @courses, :id, :course_title, prompt: "Select a course" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :reason, "Reason for Makeup Exam" %>
+    <%= f.text_area :reason %>
+  </div>
+
+  <%= f.hidden_field :year, value: @makeup_exam.year || current_academic_calendar.year %>
+  <%= f.hidden_field :semester, value: @makeup_exam.semester || current_academic_calendar.semester %>
+
+  <div class="actions">
+    <%= f.submit "Submit Request" %>
+  </div>
+<% end %>

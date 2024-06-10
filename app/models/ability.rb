@@ -86,8 +86,17 @@ class Ability
       can :read, Course, id: Course.instructor_courses(user.id)
       can :update, Course, id: Course.instructor_courses(user.id)
       can :manage, AssessmentPlan, admin_user_id: user.id
-      can :read, CourseRegistration, section_id: Section.instructor_courses(user.id)
-      can :manage, StudentGrade, course_id: Section.instructors(user.id)
+      can :read, CourseRegistration, course_id: Course.instructor_courses(user.id)
+      #can :manage, StudentGrade, course_id: Section.instructors(user.id)
+      #can %i[read destroy], StudentGrade, course_id: Course.instructor_courses(user.id)
+      
+      can :read, StudentGrade, course_id: Course.instructor_courses(user.id)
+    
+    # Destroy action with a block for additional conditions
+    can :destroy, StudentGrade do |grade|
+      Course.instructor_courses(user.id).include?(grade.course_id) && grade.created_at >= 15.days.ago
+    end
+      
       # cannot :destroy, StudentGrade
       can :manage, Assessment, admin_user_id: user.id
       can :manage, Attendance, section_id: Section.instructor_courses(user.id)
@@ -317,7 +326,7 @@ class Ability
       can :manage, ActiveAdmin::Page, name: 'ExternalTransfer', namespace_name: 'admin'
       can %i[read update], Department, department_name: user.department.department_name
       can %i[read update], Dropcourse, department_id: user.department_id
-      can %i[read update], AddCourse, department_id: user.department_id
+      can %i[read update destroy], AddCourse, department_id: user.department_id
       can %i[read update destroy], CourseModule#, department_id: user.department.id
       can :create, CourseModule
       # can :manage, Exemption

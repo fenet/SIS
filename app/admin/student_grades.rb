@@ -59,7 +59,10 @@ scoped_collection_action :scoped_collection_update, title: "Approve Grade", form
     end
     redirect_to collection_path, notice: "Grade Is Denied Successfully"
   end
-
+  batch_action :destroy, if: proc { current_admin_user.role == "admin" }, confirm: "Are you sure you want to delete these student grades?" do |ids|
+    StudentGrade.where(id: ids).destroy_all
+    redirect_to collection_path, notice: "Student Grades were successfully deleted"
+  end
   index do
     selectable_column
     column "Full name", sortable: true do |n|

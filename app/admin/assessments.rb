@@ -17,7 +17,70 @@ ActiveAdmin.register Assessment do
   scope :graded
 
   batch_action :approve_assessment_for, confirm: 'Are you sure?' do |ids|
-    # Batch action logic...
+    if current_admin_user.role == 'instructor'
+      approve_accounter = 0
+      incomplete_accounter = 0
+
+      assessments = Assessment.where(id: ids, admin_user_id: current_admin_user.id,
+                                     status: 0).includes(:student).includes(:course)
+
+      assessments.map do |assessment|
+        if assessment.value.keys.size == assessment.course.assessment_plans.size
+          assessment.update(status: 1)
+          approve_accounter += 1
+        else
+          assessment.update(status: 4)
+          incomplete_accounter += 1
+        end
+      end
+      redirect_to admin_assessments_path,
+                  notice: "#{approve_accounter} #{'student'.pluralize(approve_accounter)} assessment approved and #{incomplete_accounter} #{'student'.pluralize(incomplete_accounter)} got incomplete "
+    elsif current_admin_user.role == 'department head'
+      approve_accounter = 0
+      incomplete_accounter = 0
+
+      assessments = Assessment.includes(:student, :course).where(id: ids, status: 1,
+                                                                 student: { department_id: current_admin_user.department_id })
+      assessments.map do |assessment|
+        if assessment.value.keys.size == assessment.course.assessment_plans.size
+          assessment.update(status: 2)
+          approve_accounter += 1
+        else
+          assessment.update(status: 4)
+          incomplete_accounter += 1
+        end
+      end
+      redirect_to admin_assessments_path,
+                  notice: "#{approve_accounter} #{'student'.pluralize(approve_accounter)} assessment approved and #{incomplete_accounter} #{'student'.pluralize(incomplete_accounter)} got incomplete "
+    elsif current_admin_user.role == 'dean'
+      success_counter = 0
+      error_counter = 0
+
+      assessments = Assessment.where(id: ids, status: 2).includes(:student).includes(:course)
+      assessments.each do |assessment|
+        total = Assessment.total_mark(assessment.value)
+        grade = Assessment.get_letter_grade(total)
+        f_counter = if grade.first == 'F'
+          1
+                    else
+                      0
+
+                    end
+        student_grade = StudentGrade.new(student_id: assessment.student_id, course_id: assessment.course_id,
+                                         course_registration_id: assessment.course_registration_id,
+                                         department_id: assessment.student.department_id, program_id:
+                                           assessment.student.program_id, letter_grade: grade.first, assesment_total:
+                                           total, grade_point: grade.last, f_counter:)
+        if student_grade.save
+          assessment.update(status: 5)
+          success_counter += 1
+        else
+          error_counter += 1
+        end
+      end
+      redirect_to admin_assessments_path,
+                  notice: "#{success_counter} #{'student'.pluralize(success_counter)} student grade generated and #{error_counter} #{'student'.pluralize(error_counter)} failed to generate grade "
+      end            
   end
 
   index do
