@@ -35,7 +35,7 @@ class CourseRegistration < ApplicationRecord
   }, _prefix: "active"
 
   def get_academic_year
-    "#{self.academic_year}/#{self.academic_year + 1}"
+    "#{self.academic_year - 1}/#{self.academic_year}"
   end
   def self.get_course_per_student(student_ids)
     self.where(student_id: student_ids).includes(:student).includes(:course).includes(:student_grade)

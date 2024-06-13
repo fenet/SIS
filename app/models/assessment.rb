@@ -30,24 +30,26 @@ class Assessment < ApplicationRecord
   }
 
   def self.get_letter_grade(total)
-    if total <= 100.00 && total >= 95.00
+    if total <= 100.00 && total >= 90.00
       ['A+', 4]
-    elsif total <= 94.99 && total >= 85.00
+    elsif total <= 89.00 && total >= 83.00
       ['A', 4]
-    elsif total <= 84.99 && total >= 80.00
+    elsif total <= 82.00 && total >= 80.00
       ['A-', 3.75]
-    elsif total <= 79.99 && total >= 75.00
+    elsif total <= 79.00 && total >= 75.00
       ['B+', 3.5]
-    elsif total <= 74.99 && total >= 70.00
+    elsif total <= 74.00 && total >= 68.00
       ['B', 3]
-    elsif total <= 69.99 && total >= 65.00
+    elsif total <= 67.00 && total >= 65.00
       ['B-', 2.75]
-    elsif total <= 64.99 && total >= 60.00
+    elsif total <= 64.00 && total >= 60.00
       ['C+', 2.5]
-    elsif total <= 59.99 && total >= 50.00
+    elsif total <= 59.00 && total >= 50.00
       ['C', 2]
-    elsif total <= 49 && total >= 45.00
+    elsif total <= 49.00 && total >= 45.00
       ['C-', 1.75]
+    elsif total <= 44.00 && total >= 40.00
+      ['D', 1.75]  
     else
       ['F', 0]
     end
