@@ -63,6 +63,11 @@ class Assessment < ApplicationRecord
     total
   end
 
+  def self.csv_columns_for_course(course_id)
+    assessments = Assessment.where(course_id: course_id)
+    assessments.map(&:value).map(&:keys).flatten.uniq
+  end
+
   private
 
   def limit_assessment_result

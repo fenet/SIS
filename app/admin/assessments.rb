@@ -95,32 +95,40 @@ ActiveAdmin.register Assessment do
       c.course.course_title
     end
   
-    column 'Assessment', width: '40%' do |c|
-      total = 0
-      columns class: 'assessments', width: '100%' do
-        c.value.each do |val|
-          data = val
-          total += data.last.to_i
-          column class: 'assessment-result', width: '100%' do
-            div style: 'display: block; width: 100%; margin-bottom: 10px;' do
-              span "#{data.first} = #{data.last}"
-            end
-          end
-        end
-      end
-    end
+   # column 'Assessment', width: '40%' do |c|
+   #   total = 0
+   #   columns class: 'assessments', width: '100%' do
+   #     c.value.each do |val|
+   #       data = val
+   #       total += data.last.to_i
+   #       column class: 'assessment-result', width: '100%' do
+   #         div style: 'display: block; width: 100%; margin-bottom: 10px;' do
+   #           span "#{data.first} = #{data.last}"
+   #         end
+   #       end
+   #     end
+   #   end
+   # end
   
-    column 'left', sortable: true do |c|
+    column 'Remaining Assessment', sortable: true do |c|
       span(c.course.assessment_plans.count - c.value.size)
     end
   
-    column 'TOTAL', width: '20%' do |c|
+    column 'Total', width: '20%' do |c|
       total = c.value.map(&:last).map(&:to_i).sum
       div style: 'display: block; margin-bottom: 10px;' do
-        span "Total = #{total}"
+        span "Sum = #{total}"
       end
       div style: 'display: block;' do
         link_to 'Edit', edit_assessmen_path(c), class: 'button', target: '_blank'
+      end
+    end
+
+    column 'Letter Grade', width: '20%' do |c|
+      total = c.value.map(&:last).map(&:to_i).sum
+      grade = Assessment.get_letter_grade(total)
+      div style: 'display: block; margin-bottom: 10px;' do
+        span "#{grade.first}"
       end
     end
   
@@ -134,6 +142,28 @@ ActiveAdmin.register Assessment do
     render 'assessment/new', { years:, sections: }
     #render 'assessment/new', { years: }
   end
+
+ # csv do
+ #   column('Student') { |assessment| "#{assessment.student.first_name} #{assessment.student.middle_name} #{assessment.student.last_name}" }
+ #   column('Course') { |assessment| assessment.course.course_title }
+#
+ #   # Include each unique assessment key as a column for the specific course
+ #   assessment_columns = ->(assessment) { Assessment.csv_columns_for_course(assessment.course_id) }
+ #   
+ #   # For each assessment key, add a column to the CSV
+ #   assessment_columns.call(resource).each do |key|
+ #     column(key) { |assessment| assessment.value[key] }
+ #   end
+#
+ #   column('Total') { |assessment| assessment.value.map(&:last).map(&:to_i).sum }
+ #   column('Grade') { |assessment| Assessment.get_letter_grade(assessment.value.map(&:last).map(&:to_i).sum).first }
+ # end
+
+  # Add a custom action item to download the CSV file
+  action_item :download_csv, only: :index do
+    link_to 'Download CSV', admin_assessments_path(format: :csv)
+  end
+
 end
 
 

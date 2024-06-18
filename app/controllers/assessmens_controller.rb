@@ -101,44 +101,58 @@ class AssessmensController < ApplicationController
     render json: { student: students, assessment_plan: assessment_plans }
   end
   
+  # app/controllers/assessmens_controller.rb
+def find_course
+  admin_user_id = params[:current_admin_user]
+  year = params[:year]
+  semester = params[:semester]
 
-  def find_course
-    year = params[:year]
-    semester = params[:semester]
-    current_admin_user = params[:current_admin_user]
-  
-    course_instructors = CourseInstructor.where(admin_user_id: current_admin_user, year: year, semester: semester).includes(course: :program)
-  
-    result = course_instructors.map do |ci|
-      {
-        course: {
-          id: ci.course.id,
-          course_title: ci.course.course_title
-        },
-        sections: ci.course.program.sections.map { |section| { id: section.id, name: section.section_full_name } }
-      }
-    end
-  
-    Rails.logger.debug "Fetched courses and sections: #{result.inspect}"
-  
-    respond_to do |format|
-      format.json { render json: result }
-    end
+  course_instructors = CourseInstructor.where(admin_user_id: admin_user_id, year: year, semester: semester)
+  courses = Course.where(id: course_instructors.pluck(:course_id))
+  programs = Program.where(id: courses.pluck(:program_id).uniq)
+
+  result = courses.map do |course|
+    {
+      course: {
+        id: course.id,
+        course_title: course.course_title
+      },
+      program: programs.find { |p| p.id == course.program_id },
+      sections: course.program.sections.map { |section| { id: section.id, name: section.section_full_name } }
+    }
   end
+
+  render json: result
+end
+
   
-  
+
   #def find_course
   #  year = params[:year]
   #  semester = params[:semester]
   #  current_admin_user = params[:current_admin_user]
-  #  course_instructor = CourseInstructor.where(admin_user: current_admin_user, year:, semester:).includes(:course)
+  #
+  #  course_instructors = CourseInstructor.where(admin_user_id: current_admin_user, year: year, semester: semester).includes(course: :program)
+  #
+  #  result = course_instructors.map do |ci|
+  #    {
+  #      course: {
+  #        id: ci.course.id,
+  #        course_title: ci.course.course_title
+  #      },
+  #      sections: ci.course.program.sections.map { |section| { id: section.id, name: section.section_full_name } }
+  #    }
+  #  end
+  #
+  #  Rails.logger.debug "Fetched courses and sections: #{result.inspect}"
+  #
   #  respond_to do |format|
-  #    format.json do
-  #      render json: course_instructor.to_json(only: [:id], include: { course: { only: %i[id course_title] } })
-  #    end
+  #    format.json { render json: result }
   #  end
   #end
-
+  
+  
+  
   private
 
   def search_params

@@ -153,9 +153,9 @@ ActiveAdmin.register MakeupExam do
             end
             row :year
             row :semester
-            row "Section" do |pd|
-              pd.section.section_short_name
-            end
+            #row "Section" do |pd|
+            #  pd.section.section_short_name
+            #end
             row "Status" do |pd|
               status_tag pd.status
             end
@@ -169,17 +169,28 @@ ActiveAdmin.register MakeupExam do
             row "Course" do |pd|
               pd.course.course_title
             end
-            row :previous_result_total
-            row :previous_letter_grade
-            row :reason
-            row "Assessment" do |m|
-              m.assessment.assessment_plan.assessment_title
-            end 
-            row "Result" do |m|
-              m.add_mark
+            
+           
+            row "Attachment" do |me|
+              if me.attachment.attached?
+                link_to me.attachment.filename.to_s, url_for(me.attachment)
+              else
+                "No attachment"
+              end
             end
-            row :current_result_total
-            row :current_letter_grade
+           
+
+            #row :previous_result_total
+            #row :previous_letter_grade
+            row :reason
+            #row "Assessment" do |m|
+            #  m.assessment.assessment_plan.assessment_title
+            #end 
+            #row "Result" do |m|
+            #  m.add_mark
+            #end
+            #row :current_result_total
+            #row :current_letter_grade
             row :created_at
             row :updated_at
             row :created_by
@@ -187,6 +198,7 @@ ActiveAdmin.register MakeupExam do
           end
         end
       end
+
       column do
         panel "Makeup Exam Request Approval Status" do
           attributes_table_for makeup_exam do
