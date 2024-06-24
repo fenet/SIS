@@ -71,6 +71,15 @@ class MakeupExam < ApplicationRecord
 	  end
 	end
   
+	#def verified_status
+	#	if department_approval == "approved" && dean_approval == "approved" && instructor_approval == "approved" && registrar_approval == "approved" && academic_affair_approval == "approved"
+	#	  Rails.logger.info "All conditions met, updating status to true"
+	#	  self.update_columns(status: "true", verified: true)
+	#	else
+	#	  Rails.logger.info "Conditions not met: department_approval: #{department_approval}, dean_approval: #{dean_approval}, instructor_approval: #{instructor_approval}, registrar_approval: #{registrar_approval}, academic_affair_approval: #{academic_affair_approval}"
+	#	end
+	#end
+
 	def makeup_exam_update_status
 	  if payment_approved? && self.add_mark.present?
 		self.assessment.update(result: self.add_mark) if self.assessment.present?

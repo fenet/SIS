@@ -24,7 +24,9 @@ class AssessmensController < ApplicationController
     render json: { student: students.to_json, assessment_plan: assessment_plans.to_json }
   end
   
-  
+  def scoped_collection
+    super.includes(:student, :course)
+  end
   
   #def index
   #  course_id = params[:course_id]

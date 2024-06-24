@@ -7,6 +7,19 @@ ActiveAdmin.register Assessment do
   #filter :course, as: :select, collection: proc {
   #  Course.instructor_courses(current_admin_user.id).map { |course| [course.course_title, course.id] }
   #}
+  #filter :course_id, as: :search_select_filter, url: proc { Course.instructor_courses(current_admin_user.id).map },
+  #       fields: [:course_title, :id], display_name: 'course_title', minimum_input_length: 2,
+  #       order_by: 'created_at_asc' 
+  filter :course_id, as: :search_select_filter, 
+       url: proc {
+         # Assuming you have a route that takes the current user's ID and returns the relevant courses
+         admin_courses_path(current_admin_user_id: current_admin_user.id) 
+       },
+       fields: [:course_title, :id], 
+       display_name: 'course_title', 
+       minimum_input_length: 2, 
+       order_by: 'created_at_asc'
+
   filter :course_program_id, as: :select, label: 'Program', collection: proc { Program.all.map { |program| [program.program_name, program.id] } }
 
   # Define scopes and batch actions
@@ -87,11 +100,11 @@ ActiveAdmin.register Assessment do
   index do
     # Columns
     selectable_column
-    column 'Student', sortable: true do |n|
+    column 'Student', sortable: 'student.first_name' do |n|
       "#{n.student.first_name} #{n.student.middle_name} #{n.student.last_name}"
     end
   
-    column 'Course', sortable: true do |c|
+    column 'Course', sortable: 'course.course_title' do |c|
       c.course.course_title
     end
   
@@ -115,7 +128,7 @@ ActiveAdmin.register Assessment do
     end
   
     column 'Total', width: '20%' do |c|
-      total = c.value.map(&:last).map(&:to_i).sum
+      total = c.value.map(&:last).map(&:to_f).sum
       div style: 'display: block; margin-bottom: 10px;' do
         span "Sum = #{total}"
       end
@@ -164,6 +177,11 @@ ActiveAdmin.register Assessment do
     link_to 'Download CSV', admin_assessments_path(format: :csv)
   end
 
+  controller do
+    def scoped_collection
+      super.joins(:student, :course)
+    end
+  end
 end
 
 

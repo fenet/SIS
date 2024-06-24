@@ -86,6 +86,7 @@ class Ability
       can :read, Course, id: Course.instructor_courses(user.id)
       can :update, Course, id: Course.instructor_courses(user.id)
       can :manage, AssessmentPlan, admin_user_id: user.id
+      can %i[read update], MakeupExam
       can :read, CourseRegistration, course_id: Course.instructor_courses(user.id)
       #can :manage, StudentGrade, course_id: Section.instructors(user.id)
       #can %i[read destroy], StudentGrade, course_id: Course.instructor_courses(user.id)
@@ -148,7 +149,7 @@ class Ability
       can :read, Invoice
       can :manage, Attendance
       can :manage, Session
-
+      can %i[read update], MakeupExam
       can %i[update read], GradeReport
       cannot :destroy, GradeReport
       can :read, StudentGrade
@@ -190,6 +191,7 @@ class Ability
 
       can :manage, AddAndDrop
       cannot :destroy, AddAndDrop, created_by: 'self'
+      
     when 'distance_registrar'
       can :manage, CourseSection
       can :manage, ActiveAdmin::Page, name: 'Dashboard', namespace_name: 'admin'
@@ -370,6 +372,7 @@ class Ability
       can :manage, ActiveAdmin::Page, name: 'Dashboard', namespace_name: 'admin'
       can %i[read update], Withdrawal
       can %i[read update], GradeReport
+      can %i[read update], MakeupExam
       can %i[read update], GradeChange # department: {faculty_id: user.faculty_dean}
       can :manage, Assessment
       can :read, AcademicCalendar

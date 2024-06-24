@@ -26,7 +26,18 @@ Rails.application.routes.draw do
   resources :notices, only: [:index, :show, :new, :create, :destroy]
   resources :makeup_exams, only: [:new, :create]
 
+  resources :makeup_exams do
+    member do
+      patch :verify
+    end
+  end
   
+  #resources :payments, only: [:new, :create] do
+  #  member do
+  #    get :pay
+  #  end
+  #end
+
  # resources :sections do
  #   member do
  #     get :download_pdf

@@ -64,9 +64,12 @@
               <li class="list-group-item mx-3">
                 <b>Year</b> <a class="text-muted float-right"><%= current_student.year%></a>
               </li>
-              <!-- <li class="list-group-item mx-3">
-                <b>Section</b> <a class="text-muted float-right"><%= current_student.section.section_full_name%></a>
-              </li> -->
+              <% if current_student.section&.section_full_name %>
+              <li class="list-group-item mx-3">
+                <b>Section</b> <a class="text-muted float-right"><%= current_student.section.section_full_name %></a>
+              </li>
+            <% end %>
+            
               <li class="list-group-item mx-3">
                 <b>Documents</b><%= link_to "click here to see the attachments", documents_path, class: "text-blue float-right"%>
               </li>
@@ -120,6 +123,8 @@
         </div>
 <%end%> -->
 
+
+
 <div class="col-12 col-md-4">
   <% unless @student_grades.blank? %>
   <div class="col-12">
@@ -172,6 +177,13 @@
   <% end %>
 </div>
 
+         #<!-- <% if @verified_makeup_exam %>
+          #    <div class="alert alert-warning" role="alert">
+          #      You have a verified makeup exam. Please <%= link_to "pay for the makeup exam", pay_payment_path(makeup_exam_id: @verified_makeup_exam.id) %>.
+          #    </div>
+          #  <% end %> -->
+          
+
         <%= render 'instruction'%>
         <div class="card card-primary">
           <div class="card-header">
@@ -202,8 +214,5 @@
           <!-- /.card-body -->
         </div>
         
-      </div>
-    </div>
-    <!-- /.row -->
-  </div><!-- /.container-fluid -->
+      
 </section>

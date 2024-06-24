@@ -26,9 +26,13 @@ class PagesController < ApplicationController
     @smr = current_student.semester_registrations.where(year: current_student.year,
                                                         semester: current_student.semester).last
     @payment_remaining = current_student.semester_registrations.where('remaining_amount > ?', 0).last if @smr.nil?
-    @student_grades = StudentGrade.eager_load(:course_registration).where('course_registrations.year=?', current_student.year).where(
-      'course_registrations.year=?', current_student.semester
-    ).where(student: current_student).includes(:course)
+    
+    @student_grades = StudentGrade.eager_load(:course_registration).
+    where('course_registrations.year=?', current_student.year).
+    where('course_registrations.semester=?', current_student.semester).
+    where(student: current_student).includes(:course)
+
+   # @verified_makeup_exam = MakeupExam.find_by(student_id: current_student.id, verified: true)
   end
 
   def enrollement
