@@ -24,7 +24,7 @@ class MakeupExamsController < ApplicationController
       @makeup_exam.course_registration_id = course_registration.id
       student_grade = StudentGrade.find_by(student: current_student, course_id: course.id)
       @makeup_exam.student_grade_id = student_grade.id if student_grade
-      @makeup_exam.previous_result_total = student_grade.assessment_total if student_grade
+      @makeup_exam.previous_result_total = student_grade.assesment_total if student_grade
       @makeup_exam.previous_letter_grade = student_grade.letter_grade if student_grade
     else
       flash[:alert] = "Course selection is required."

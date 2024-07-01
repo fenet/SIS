@@ -9,8 +9,11 @@ class Assessment < ApplicationRecord
   has_many :grade_changes
   has_many :makeup_exams
   belongs_to :admin_user
+  
   delegate :first_name, :middle_name, :last_name, to: :student, prefix: true
   delegate :course_title, to: :course
+  delegate :section_id, to: :student, prefix: true
+
   jsonb_accessor :result, value: [array: true, default: []]
   # jsonb_accessor :result, value: [array: true, default: []]
 

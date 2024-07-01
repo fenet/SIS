@@ -122,3 +122,53 @@ class StudentGradeReport < Prawn::Document
     
 
 end 
+
+
+#### this is from leadstar report works for year2, semester 1 students change the methods 
+
+#def get_previous_total(student, current_year, current_semester)
+#  Rails.logger.debug "Getting previous totals for student: #{student.id}, current year: #{current_year}, current semester: #{current_semester}"
+#  
+#  previous_records = GradeReport
+#                     .where(student: student)
+#                     .where("year < ? OR (year = ? AND semester < ?)", current_year, current_year, current_semester)
+#                     .select(:total_credit_hour, :total_grade_point, :cgpa)
+#
+#  total_credit_hours = 0.0
+#  total_grade_points = 0.0
+#  cumulative_gpa = 0.0
+#
+#  previous_records.each do |record|
+#    Rails.logger.debug "Previous grade record: #{record.inspect}"
+#    total_credit_hours += record.total_credit_hour
+#    total_grade_points += record.total_grade_point
+#    cumulative_gpa += record.cgpa
+#  end
+#
+#  Rails.logger.debug "Total credit hours: #{total_credit_hours}, Total grade points: #{total_grade_points}, Cumulative GPA: #{cumulative_gpa}"
+#  [total_credit_hours, total_grade_points, cumulative_gpa]
+#end
+
+##################################
+
+#def preview_table(data)
+#  current_semester_credit_hours = data.total_credit_hour
+#  current_semester_grade_points = data.total_grade_point
+#
+#  previous_semester_credit_hours, previous_semester_grade_points, _ = get_previous_total(data.student, data.year, data.semester)
+#
+#  cumulative_credit_hours = current_semester_credit_hours + previous_semester_credit_hours
+#  cumulative_grade_points = current_semester_grade_points + previous_semester_grade_points
+#
+#  cgpa_current_semester = current_semester_credit_hours.positive? ? current_semester_grade_points / current_semester_credit_hours : 0.0
+#  cgpa_previous_semester = previous_semester_credit_hours.positive? ? previous_semester_grade_points / previous_semester_credit_hours : 0.0
+#  cgpa_cumulative = cumulative_credit_hours.positive? ? cumulative_grade_points / cumulative_credit_hours : 0.0
+#
+#  [
+#    ["", "Cr.Hrs", "Grade Point", "Cumulative Grade Point\nAverage (CGPA)"],
+#    ["This Semester Total", current_semester_credit_hours, current_semester_grade_points, cgpa_current_semester.round(2)],
+#    ["Previous Semester Total", previous_semester_credit_hours, previous_semester_grade_points, cgpa_previous_semester.round(2)],
+#    ["Cumulative Point", cumulative_credit_hours, cumulative_grade_points, cgpa_cumulative.round(2)]
+#  ]
+#end
+

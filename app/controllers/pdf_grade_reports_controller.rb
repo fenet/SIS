@@ -28,5 +28,6 @@ class PdfGradeReportsController < ApplicationController
         end
       end
     end
+    
   end
 end

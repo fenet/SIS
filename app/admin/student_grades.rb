@@ -1,7 +1,7 @@
 ActiveAdmin.register StudentGrade do
   menu parent: "Grade"
 
-  permit_params :department_approval, :approved_by, :approval_date, :course_registration_id, :student_id, :letter_grade, :grade_point, :assesment_total, :grade_point, :course_id, assessments_attributes: [:id, :student_grade_id, :student_id, :course_id, :result, :created_by, :updated_by, :_destroy]
+  permit_params :reason, :department_approval, :approved_by, :approval_date, :course_registration_id, :student_id, :letter_grade, :grade_point, :assesment_total, :grade_point, :course_id, assessments_attributes: [:id, :student_grade_id, :student_id, :course_id, :result, :created_by, :updated_by, :_destroy]
   
   #active_admin_import validate: true,
   #                  headers_rewrites: { "ID" => :student_id },
@@ -115,6 +115,7 @@ scoped_collection_action :scoped_collection_update, title: "Approve Grade", form
       f.input :grade_point
       f.input :assesment_total
       f.input :course_registration_id, as: :string
+      f.input :reason
     end
     f.actions
   end
@@ -139,6 +140,7 @@ scoped_collection_action :scoped_collection_update, title: "Approve Grade", form
             row :letter_grade
             row :grade_point
             row :assesment_total
+            row :reason
             row :department_approval do |c|
               status_tag c.department_approval
             end

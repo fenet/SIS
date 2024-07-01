@@ -154,7 +154,7 @@ $(function () {
             console.log('Parsed students:', students);
             console.log('Parsed assessment plans:', assessmentPlans);
 
-            // Sort assessment plans by created_at (assuming they have a created_at attribute)
+            assessmentPlans = assessmentPlans.filter(plan => plan.admin_user_id === currentAdminUser);
             assessmentPlans.sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
 
             const $tbody = $("#student-list");
@@ -166,7 +166,7 @@ $(function () {
               $thead.append(`<th>ID</th><th>Name</th><th>Year</th><th>Semester</th>`);
 
               assessmentPlans.forEach(plan => {
-                $thead.append(`<th>${plan.assessment_title}</th>`);
+                $thead.append(`<th>${plan.assessment_title} (Max: ${plan.assessment_weight || 'N/A'})</th>`);
               });
 
               students.sort((a, b) => {
@@ -197,13 +197,17 @@ $(function () {
 
                   studentRow += `
                     <td>
-                      <input type="number" data-cr="${courseRegistrationId}" data-student="${student.id}" data-course="${courseId}" data-admin="${currentAdminUser}" data-assessment="${plan.assessment_title}" class="assessment-input" />
+                      <input type="number" data-cr="${courseRegistrationId}" data-student="${student.id}" data-course="${courseId}" data-admin="${currentAdminUser}" data-assessment="${plan.assessment_title}" data-max="${plan.assessment_weight || 100}" class="assessment-input" />
                     </td>`;
                 });
 
                 studentRow += `</tr>`;
                 $tbody.append(studentRow);
               });
+
+              // Load stored values from local storage
+              loadStoredValues();
+
             } else {
               $tbody.append('<tr><td colspan="4">No students found</td></tr>');
             }
@@ -229,11 +233,15 @@ $(function () {
     const adminUserId = target.dataset.admin;
     const assessmentTitle = target.dataset.assessment;
     const result = target.value;
+    const maxValue = parseFloat(target.dataset.max);
 
-    if (result > 100 || result < 0) {
-      alert("Please enter a valid result between 0 and 100.");
+    if (result > maxValue || result < 0) {
+      alert(`Please enter a valid result between 0 and ${maxValue}.`);
       return;
     }
+
+    // Save the current value in local storage
+    saveCurrentValue(target);
 
     $.ajax({
       type: "POST",
@@ -260,4 +268,22 @@ $(function () {
       }
     });
   });
+
+  // Save current input value in local storage
+  function saveCurrentValue(target) {
+    const key = `assessment_${target.dataset.cr}_${target.dataset.assessment}`;
+    const value = target.value;
+    localStorage.setItem(key, value);
+  }
+
+  // Load stored values from local storage
+  function loadStoredValues() {
+    $('.assessment-input').each(function () {
+      const key = `assessment_${this.dataset.cr}_${this.dataset.assessment}`;
+      const storedValue = localStorage.getItem(key);
+      if (storedValue !== null) {
+        this.value = storedValue;
+      }
+    });
+  }
 });

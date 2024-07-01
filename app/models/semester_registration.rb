@@ -253,7 +253,13 @@ class SemesterRegistration < ApplicationRecord
     if semester == 1
       Date.current.year
     else
-      CourseRegistration.select(:academic_year).where(student: student).where(semester: 1).last.academic_year
+      last_course_registration = CourseRegistration.select(:academic_year).where(student: student).where(semester: 1).last
+      if last_course_registration.nil?
+        # Handle the case where there's no previous course registration
+        Date.current.year # or some other default value
+      else
+        last_course_registration.academic_year
+      end
     end
   end
 

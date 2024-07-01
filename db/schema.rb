@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_22_151341) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_30_124556) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -757,19 +757,19 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_22_151341) do
     t.decimal "current_result_total"
     t.string "current_letter_grade"
     t.string "reason"
-    t.string "instructor_approval", default: "pending"
+    t.string "instructor_approval", default: "approved"
     t.string "instructor_name"
     t.datetime "instructor_date_of_response", precision: nil
-    t.string "registrar_approval", default: "pending"
+    t.string "registrar_approval", default: "approved"
     t.string "registrar_name"
     t.datetime "registrar_date_of_response", precision: nil
-    t.string "dean_approval", default: "pending"
+    t.string "dean_approval", default: "approved"
     t.string "dean_name"
     t.datetime "dean_date_of_response", precision: nil
     t.string "department_approval", default: "pending"
     t.string "department_head_name"
     t.datetime "department_head_date_of_response", precision: nil
-    t.string "academic_affair_approval", default: "pending"
+    t.string "academic_affair_approval", default: "approved"
     t.string "academic_affair_name"
     t.datetime "academic_affair_date_of_response", precision: nil
     t.string "status", default: "pending"
@@ -1133,6 +1133,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_22_151341) do
     t.string "last_name"
     t.string "credit_hour"
     t.string "middle_name"
+    t.string "reason"
     t.index ["course_id"], name: "index_student_grades_on_course_id"
     t.index ["course_registration_id"], name: "index_student_grades_on_course_registration_id"
     t.index ["department_id"], name: "index_student_grades_on_department_id"
