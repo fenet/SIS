@@ -127,6 +127,22 @@ def find_course
   render json: result
 end
 
+
+def missing_assessments_report
+  @report_data = CourseInstructor.left_outer_joins(:admin_user, :course)
+                                 .select('course_instructors.admin_user_id, courses.course_title, admin_users.first_name, admin_users.last_name')
+                                 .distinct
+                                 .where('NOT EXISTS (SELECT 1 FROM assessments WHERE assessments.admin_user_id = course_instructors.admin_user_id AND assessments.course_id = course_instructors.course_id)')
+                                 .order('admin_users.last_name, courses.course_title')
+
+  respond_to do |format|
+    format.html # This will render the missing_assessments_report.html.erb
+    format.json { render json: @report_data }
+  end
+end
+
+
+  # Other methods...
   
 
   #def find_course

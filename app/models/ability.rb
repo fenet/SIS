@@ -126,6 +126,7 @@ class Ability
       can :read, SemesterRegistration
       can :manage, Invoice
     when 'registrar head'
+      can :manage, Assessment
       can :manage, ActiveAdmin::Page, name: 'Dashboard', namespace_name: 'admin'
       can :manage, ActiveAdmin::Page, name: 'Graduation', namespace_name: 'admin'
       can :manage, ActiveAdmin::Page, name: 'StudentReport', namespace_name: 'admin'

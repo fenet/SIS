@@ -69,14 +69,30 @@ Rails.application.routes.draw do
       post "withdraw_course"
     end
   end
+  # config/routes.rb
+resources :courses do
+  resources :assessment_plans, only: [:index, :new, :create, :edit, :update, :destroy]
+end
+
+# config/routes.rb
+#resources :assessmens do
+#  collection do
+#    get :missing_assessments_report
+#  end
+#end
+
+
   resources :exemptions, except: [:create, :new, :index, :edit]
   resources :external_transfers
+  
   resources :assessmens do
     collection do
       get :find_course
+      get :missing_assessments_report
       put :update_mark
     end
   end
+
   get "student_temporary/index", as: "student_temporary"
   post "student/tempo/generate", to: "student_temporary#generate_pdf", as: "generate_student_tempo"
   get "pdf_grade_reports/index", as: "pdf_gread_report"

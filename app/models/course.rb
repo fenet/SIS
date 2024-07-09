@@ -22,13 +22,14 @@ class Course < ApplicationRecord
 	  has_many :invoice_items
 	  # has_many :course_sections, dependent: :destroy
 	  has_many :attendances, dependent: :destroy
+	  has_one_attached :course_outline, dependent: :destroy
+	  #has_many :assessment_plans, dependent: :destroy
+	  #accepts_nested_attributes_for :assessment_plans, reject_if: :all_blank, allow_destroy: true
+	  
 	  has_many :assessment_plans, dependent: :destroy
-		has_one_attached :course_outline, dependent: :destroy
-		accepts_nested_attributes_for :assessment_plans, reject_if: :all_blank, allow_destroy: true
-
-
-		has_many :course_instructors
-		accepts_nested_attributes_for :course_instructors, reject_if: :all_blank, allow_destroy: true
+  	  accepts_nested_attributes_for :assessment_plans, allow_destroy: true
+	  has_many :course_instructors
+	  accepts_nested_attributes_for :course_instructors, reject_if: :all_blank, allow_destroy: true
 
 		has_many :sessions
 

@@ -1,6 +1,12 @@
 ActiveAdmin.register AssessmentPlan do
   menu parent: "Program"
-  permit_params :course_id, :assessment_title, :assessment_weight, :created_by, :updated_by, :final_exam, :admin_user_id
+  permit_params :id, :course_id, :assessment_title, 
+  :assessment_weight, :created_by, :updated_by, 
+  :final_exam, :admin_user_id,
+                assessment_plans_attributes: 
+                [:id, :course_id, :assessment_title, 
+                :assessment_weight, :created_by, :updated_by,
+                :final_exam, :admin_user_id, :_destroy]
 
   controller do
     def create
@@ -36,7 +42,6 @@ ActiveAdmin.register AssessmentPlan do
     column :program do |c|
       link_to c.course.program.program_name, admin_program_path(c.course.program)
     end
-
     column "Created At", sortable: true do |c|
       c.created_at.strftime("%b %d, %Y")
     end
@@ -54,28 +59,32 @@ ActiveAdmin.register AssessmentPlan do
   filter :updated_by
 
   form do |f|
-    f.semantic_errors
-    f.inputs "Assessment Plan" do
+  f.semantic_errors
+  f.inputs "Assessment Plan" do
+    f.has_many :assessment_plans, allow_destroy: true, new_record: true do |a|
+      para "Debug: #{a.object.inspect}"
       if params[:course_id].present?
-        f.input :course_id, as: :hidden, input_html: { value: params[:course_id] }
+        a.input :course_id, as: :hidden, input_html: { value: params[:course_id] }
       else
-        f.input :course_id, as: :search_select, url: admin_courses_path,
+        a.input :course_id, as: :search_select, url: admin_courses_path,
                 fields: [:course_title, :id], display_name: 'course_title', minimum_input_length: 2, order_by: 'created_at_asc'
       end
-      f.input :assessment_title
-      f.input :assessment_weight, input_html: { min: 1, max: 100 }
-      f.input :final_exam
-      if f.object.new_record?
-        f.input :created_by, as: :hidden, input_html: { value: current_admin_user.name.full }
-        f.input :admin_user_id, as: :hidden, input_html: { value: current_admin_user.id }
+      a.input :assessment_title
+      a.input :assessment_weight, input_html: { min: 1, max: 100 }
+      a.input :final_exam
+      if a.object.new_record?
+        a.input :created_by, as: :hidden, input_html: { value: current_admin_user.name.full }
+        a.input :admin_user_id, as: :hidden, input_html: { value: current_admin_user.id }
       else
-        f.input :updated_by, as: :hidden, input_html: { value: current_admin_user.name.full }
-        f.input :admin_user_id, as: :hidden, input_html: { value: current_admin_user.id }
+        a.input :updated_by, as: :hidden, input_html: { value: current_admin_user.name.full }
+        a.input :admin_user_id, as: :hidden, input_html: { value: current_admin_user.id }
       end
     end
-
-    f.actions
   end
+  f.actions
+end
+
+  
 
   show title: :assessment_title do
     panel "Assessment Plan Information" do

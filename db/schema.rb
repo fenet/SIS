@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_30_124556) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_08_113021) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -230,6 +230,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_30_124556) do
     t.integer "status", default: 0
     t.uuid "course_registration_id"
     t.jsonb "result"
+    t.integer "approved_by_instructor_id"
+    t.integer "approved_by_head_id"
     t.index ["admin_user_id"], name: "index_assessments_on_admin_user_id"
     t.index ["course_id"], name: "index_assessments_on_course_id"
     t.index ["course_registration_id"], name: "index_assessments_on_course_registration_id"

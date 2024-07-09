@@ -169,6 +169,8 @@ $(function () {
                 $thead.append(`<th>${plan.assessment_title} (Max: ${plan.assessment_weight || 'N/A'})</th>`);
               });
 
+              $thead.append('<th>Total</th>');
+
               students.sort((a, b) => {
                 const nameA = `${a.first_name} ${a.middle_name} ${a.last_name}`.toUpperCase();
                 const nameB = `${b.first_name} ${b.middle_name} ${b.last_name}`.toUpperCase();
@@ -201,6 +203,7 @@ $(function () {
                     </td>`;
                 });
 
+                studentRow += `<td id="student-total-${student.id}">0</td>`;
                 studentRow += `</tr>`;
                 $tbody.append(studentRow);
               });
@@ -225,65 +228,113 @@ $(function () {
   });
 
   // Event listener for assessment input change
-  $(document).on('change', '.assessment-input', function (e) {
+  $(document).on('input', '.assessment-input', function (e) {
     const target = e.target;
-    const courseRegistration = target.dataset.cr;
-    const studentId = target.dataset.student;
-    const courseId = target.dataset.course;
-    const adminUserId = target.dataset.admin;
-    const assessmentTitle = target.dataset.assessment;
-    const result = target.value;
     const maxValue = parseFloat(target.dataset.max);
 
-    if (result > maxValue || result < 0) {
+    if (target.value > maxValue || target.value < 0) {
       alert(`Please enter a valid result between 0 and ${maxValue}.`);
+      target.value = '';
       return;
     }
 
     // Save the current value in local storage
     saveCurrentValue(target);
 
-    $.ajax({
-      type: "POST",
-      url: "/assessmens",
-      dataType: "json",
-      data: {
-        course_id: courseId,
-        result: result,
-        admin_user_id: adminUserId,
-        student_id: studentId,
-        assessment_title: assessmentTitle,
-        course_registration_id: courseRegistration,
-      },
-      success: function (response) {
-        if (response.status === "created") {
-          $(target).css({ "border": "2px solid green" });
-        } else {
-          $(target).css({ "border": "2px solid red" });
-          alert(response.result);
+    // Sum the values for the same student and display the total
+    sumAssessmentValues();
+  });
+
+  // Function to sum assessment values for the same student and display the total
+  function sumAssessmentValues() {
+    const students = {};
+
+    $('.assessment-input').each(function () {
+      const studentId = $(this).data('student');
+      const value = parseFloat($(this).val()) || 0;
+
+      if (!students[studentId]) {
+        students[studentId] = 0;
+      }
+      students[studentId] += value;
+    });
+
+    for (const studentId in students) {
+      $(`#student-total-${studentId}`).text(students[studentId]);
+    }
+  }
+
+  // Function to save the current value in local storage
+  function saveCurrentValue(target) {
+    const key = `${target.dataset.cr}-${target.dataset.assessment}`;
+    localStorage.setItem(key, target.value);
+  }
+
+  // Function to load stored values from local storage
+  function loadStoredValues() {
+    $('.assessment-input').each(function () {
+      const key = `${this.dataset.cr}-${this.dataset.assessment}`;
+      const storedValue = localStorage.getItem(key);
+      if (storedValue) {
+        $(this).val(storedValue);
+        sumAssessmentValues();
+      }
+    });
+  }
+
+  // Event listener for form submission
+  $("#submit-assessments").on("click", function () {
+    let submissionCount = 0;
+    const totalSubmissions = $(".assessment-input").filter(function() {
+      return $(this).val() !== "";
+    }).length;
+
+    $(".assessment-input").each(function () {
+      const target = this;
+      const courseRegistration = target.dataset.cr;
+      const studentId = target.dataset.student;
+      const courseId = target.dataset.course;
+      const adminUserId = target.dataset.admin;
+      const assessmentTitle = target.dataset.assessment;
+      const result = target.value;
+
+      if (result !== "") { // Only submit if the result is not empty
+        $.ajax({
+          type: "POST",
+          url: "/assessmens",
+          dataType: "json",
+          data: {
+            course_id: courseId,
+            result: result,
+            admin_user_id: adminUserId,
+            student_id: studentId,
+            assessment_title: assessmentTitle,
+            course_registration_id: courseRegistration,
+          },
+          success: function (response) {
+            if (response.status === "created") {
+              $(target).css({ "border": "2px solid green" });
+              $(target).prop("disabled", true);
+            } else {
+              $(target).css({ "border": "2px solid red" });
+              alert(response.result);
+            }
+
+            submissionCount++;
+            if (submissionCount === totalSubmissions) {
+              alert("All values submitted successfully!");
+            }
+          },
+          error: function (error) {
+            console.error("Error saving assessment:", error);
+          }
+        });
+      } else {
+        submissionCount++;
+        if (submissionCount === totalSubmissions) {
+          alert("All values submitted successfully!");
         }
-      },
-      error: function (error) {
-        console.error("Error saving assessment:", error);
       }
     });
   });
-
-  // Save current input value in local storage
-  function saveCurrentValue(target) {
-    const key = `assessment_${target.dataset.cr}_${target.dataset.assessment}`;
-    const value = target.value;
-    localStorage.setItem(key, value);
-  }
-
-  // Load stored values from local storage
-  function loadStoredValues() {
-    $('.assessment-input').each(function () {
-      const key = `assessment_${this.dataset.cr}_${this.dataset.assessment}`;
-      const storedValue = localStorage.getItem(key);
-      if (storedValue !== null) {
-        this.value = storedValue;
-      }
-    });
-  }
 });

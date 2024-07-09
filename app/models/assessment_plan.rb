@@ -5,16 +5,26 @@ class AssessmentPlan < ApplicationRecord
   validate :limit_assessment_plan
 
   # Associations
-  belongs_to :course
+
   belongs_to :admin_user
+  belongs_to :course
+
   has_many :assessments
 
   private
 
-  def limit_assessment_plan
-    total_weight = self.course.assessment_plans.where(created_by: self.created_by).where.not(id: self.id).pluck(:assessment_weight).sum + self.assessment_weight
-    if total_weight > 100
+   def limit_assessment_plan
+    return unless course_id.present? && assessment_weight.present?
+
+    total_weight = course.assessment_plans
+                       .where.not(id: id)
+                       .pluck(:assessment_weight)
+                       .compact
+                       .sum
+
+    if (total_weight + assessment_weight) > 100
       errors.add(:assessment_weight, "The total assessment weight for your section cannot exceed 100.")
     end
   end
+  
 end

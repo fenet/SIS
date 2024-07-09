@@ -1,7 +1,18 @@
 ActiveAdmin.register Course do
   menu parent: "Program"
   
-  permit_params(:course_outline, :course_module_id, :major, :curriculum_id, :program_id, :course_title, :course_code, :course_description, :year, :semester, :course_starting_date, :course_ending_date, :credit_hour, :lecture_hour, :lab_hour, :ects, :created_by, assessment_plans_attributes: [:id, :course_id, :assessment_title, :assessment_weight, :final_exam, :created_by, :updated_by, :_destroy], course_instructors_attributes: [:id, :section_id, :year, :admin_user_id, :course_id, :academic_calendar_id, :semester, :created_by, :updated_by, :_destroy], course_prerequisites_attributes: [:id, :course_id, :prerequisite_id, :created_by, :updated_by, :_destroy])
+  permit_params(:course_outline, :course_module_id, :major, :curriculum_id, :program_id, :course_title, 
+                :course_code, :course_description, :year, :semester, :course_starting_date, :course_ending_date, 
+                :credit_hour, :lecture_hour, :lab_hour, :ects, :created_by,
+                
+                assessment_plans_attributes: [:id, :course_id, :assessment_title, 
+                                              :assessment_weight, :final_exam, :created_by, 
+                                              :updated_by, :admin_user_id, :_destroy], 
+
+                course_instructors_attributes: [:id, :section_id, :year, :admin_user_id, :course_id, 
+                                                :academic_calendar_id, :semester, :created_by, :updated_by, :_destroy], 
+                
+                course_prerequisites_attributes: [:id, :course_id, :prerequisite_id, :created_by, :updated_by, :_destroy])
 
   active_admin_import
 
@@ -57,6 +68,7 @@ ActiveAdmin.register Course do
 
   form do |f|
     f.semantic_errors
+
     if !(params[:page_name] == "add_assessment") && !(params[:page_name] == "course_instructors") && !(current_admin_user.role == "instructor")
       f.inputs "Course information" do
         f.input :major
@@ -86,9 +98,11 @@ ActiveAdmin.register Course do
           f.input :last_updated_by, as: :hidden, input_html: { value: current_admin_user.name.full }
         end
       end
+
       if f.object.course_prerequisites.empty?
         f.object.course_prerequisites << Prerequisite.new
       end
+
       panel "Course Prerequisite" do
         f.has_many :course_prerequisites, heading: " ", remote: true, allow_destroy: true, new_record: true do |a|
           a.input :prerequisite_id, as: :search_select, url: admin_courses_path,
@@ -102,29 +116,40 @@ ActiveAdmin.register Course do
           a.label :_destroy
         end
       end
+
     elsif params[:page_name] == "add_assessment"
       if f.object.assessment_plans.empty?
         f.object.assessment_plans << AssessmentPlan.new
       end
+
       panel "Assessment Plans" do
-        f.has_many :assessment_plans, heading: " ", remote: true, allow_destroy: true, new_record: true do |a|
+        f.has_many :assessment_plans, heading: " ", allow_destroy: true, new_record: true do |a|
+          if params[:course_id].present?
+            a.input :course_id, as: :hidden, input_html: { value: params[:course_id] }
+          else
+            a.input :course_id, as: :search_select, url: admin_courses_path,
+                    fields: [:course_title, :id], display_name: 'course_title', minimum_input_length: 2, order_by: 'created_at_asc'
+          end
           a.input :assessment_title
           a.input :assessment_weight, input_html: { min: 1, max: 100 }
           a.input :final_exam
-          a.label :_destroy
           if a.object.new_record?
             a.input :created_by, as: :hidden, input_html: { value: current_admin_user.name.full }
+            a.input :admin_user_id, as: :hidden, input_html: { value: current_admin_user.id }
           else
             a.input :updated_by, as: :hidden, input_html: { value: current_admin_user.name.full }
+            a.input :admin_user_id, as: :hidden, input_html: { value: current_admin_user.id }
           end
         end
       end
-    end
+    
+  
 
-    if params[:page_name] == "course_instructors"
+    elsif params[:page_name] == "course_instructors"
       if f.object.course_instructors.empty?
         f.object.course_instructors << CourseInstructor.new
       end
+
       panel "Course instructors" do
         f.has_many :course_instructors, heading: " ", remote: true, allow_destroy: true, new_record: true do |a|
           a.input :admin_user_id, as: :search_select, url: proc { admin_instructors_path },
@@ -138,9 +163,8 @@ ActiveAdmin.register Course do
           a.input :semester
         end
       end
-    end
 
-    if params[:page_name] == "course_outlines" || current_admin_user.role == "instructor"
+    elsif params[:page_name] == "course_outlines" || current_admin_user.role == "instructor"
       panel "Add Course Outline" do
         f.inputs do
           f.input :course_outline, as: :file
@@ -153,7 +177,7 @@ ActiveAdmin.register Course do
 
   action_item :edit, only: :show, priority: 1 do
     if (current_admin_user.role == "department head") || (current_admin_user.role == "admin")
-      link_to 'Add Assessment Plan', new_admin_assessment_plan_path(course_id: course.id) 
+      link_to 'Add Assessment Plan', edit_admin_course_path(course_id: course.id, page_name: "add_assessment") 
     end
   end
 
@@ -167,7 +191,6 @@ ActiveAdmin.register Course do
     link_to 'Course Outline', edit_admin_course_path(course.id, page_name: "course_outlines")
   end
 end
-
 
 
 

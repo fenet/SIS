@@ -9,7 +9,9 @@ class Assessment < ApplicationRecord
   has_many :grade_changes
   has_many :makeup_exams
   belongs_to :admin_user
-  
+  belongs_to :approved_by_instructor, class_name: 'AdminUser', optional: true
+  belongs_to :approved_by_head, class_name: 'AdminUser', optional: true
+
   delegate :first_name, :middle_name, :last_name, to: :student, prefix: true
   delegate :course_title, to: :course
   delegate :section_id, to: :student, prefix: true
