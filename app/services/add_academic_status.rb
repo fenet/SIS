@@ -49,17 +49,38 @@ module AddAcademicStatus
       GradeReport.where(student: student).where("sgpa < #{sgpa}").where("cgpa < #{cgpa}").any?
     end
 
-    def first_year_second_semester(report:, student:)
-      if ((report[:sgpa] >= 1.5 && report[:sgpa] < 1.75) || is_warning_before?(student: student))
-          "Academic Probation"
-      elsif report[:sgpa] >= 1.25 && report[:sgpa] < 1.5
-          "Academic Suspension"
-      elsif (report[:sgpa] < 1.25 || is_previous_sgpa_below?(student: student, sgpa: 1.25, cgpa: 1.5)) && report[:cgpa] < 1.5
+   # def first_year_second_semester(report:, student:)
+   #   if ((report[:sgpa] >= 1.5 && report[:sgpa] < 1.75) || is_warning_before?(student: student))
+   #       "Academic Probation"
+   #   elsif report[:sgpa] >= 1.25 && report[:sgpa] < 1.5
+   #       "Academic Suspension"
+   #   elsif (report[:sgpa] < 1.25 || is_previous_sgpa_below?(student: student, sgpa: 1.25, cgpa: 1.5)) && report[:cgpa] < 1.5
+   #     "Academic Dismissal"
+   #   else
+   #     "Invalid Status"  
+   #   end
+   # end
+  
+   def first_year_second_semester(report:, student:)
+    if report[:sgpa] >= 1.75 && report[:sgpa] < 2.00
+      "Academic Warning"
+    elsif report[:sgpa] >= 1.50 && report[:sgpa] < 1.75
+      if is_warning_before?(student: student)
+        "Academic Probation"
+      else
+        "Academic Probation"
+      end
+    elsif report[:sgpa] < 1.50
+      if report[:sgpa] < 1.25 && report[:cgpa] < 1.50
         "Academic Dismissal"
       else
-        "Invalid Status"  
+        "Academic Suspension"
       end
+    else
+      "Good Standing"
     end
+  end
+   
 
     def is_probation_before?(student:)
       GradeReport.where(student: student, academic_status: "Academic Probation").any?

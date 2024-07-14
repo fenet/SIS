@@ -176,7 +176,7 @@ ActiveAdmin.register Course do
   end
 
   action_item :edit, only: :show, priority: 1 do
-    if (current_admin_user.role == "department head") || (current_admin_user.role == "admin")
+    if (current_admin_user.role == "department head") || (current_admin_user.role == "admin") || (current_admin_user.role == "instructor")
       link_to 'Add Assessment Plan', edit_admin_course_path(course_id: course.id, page_name: "add_assessment") 
     end
   end

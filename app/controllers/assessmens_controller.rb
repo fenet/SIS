@@ -129,8 +129,9 @@ end
 
 
 def missing_assessments_report
-  @report_data = CourseInstructor.left_outer_joins(:admin_user, :course)
-                                 .select('course_instructors.admin_user_id, courses.course_title, admin_users.first_name, admin_users.last_name')
+  @report_data = CourseInstructor.left_outer_joins(course: :program)
+                                 .left_outer_joins(:admin_user)
+                                 .select('course_instructors.admin_user_id, courses.course_title, courses.year, courses.semester, programs.program_name AS program_name, admin_users.first_name, admin_users.last_name')
                                  .distinct
                                  .where('NOT EXISTS (SELECT 1 FROM assessments WHERE assessments.admin_user_id = course_instructors.admin_user_id AND assessments.course_id = course_instructors.course_id)')
                                  .order('admin_users.last_name, courses.course_title')
@@ -140,6 +141,7 @@ def missing_assessments_report
     format.json { render json: @report_data }
   end
 end
+
 
 
   # Other methods...

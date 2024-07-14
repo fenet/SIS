@@ -6,6 +6,9 @@
       <tr>
         <th>Assigned Instructors</th>
         <th>Courses Without Assessments</th>
+        <th>Year</th>
+        <th>Semester</th>
+        <th>Program</th>
       </tr>
     </thead>
     <tbody>
@@ -13,6 +16,9 @@
         <tr>
           <td><%= "#{data.first_name} #{data.last_name}" %></td>
           <td><%= data.course_title %></td>
+          <td><%= data.year %></td>
+          <td><%= data.semester %></td>
+          <td><%= data.program_name %></td>
         </tr>
       <% end %>
     </tbody>

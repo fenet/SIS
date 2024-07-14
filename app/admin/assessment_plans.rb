@@ -1,5 +1,5 @@
 ActiveAdmin.register AssessmentPlan do
-  menu parent: "Program"
+  menu parent: "Program", if: proc { false }
   permit_params :id, :course_id, :assessment_title, 
   :assessment_weight, :created_by, :updated_by, 
   :final_exam, :admin_user_id,

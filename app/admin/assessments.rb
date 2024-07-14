@@ -438,8 +438,58 @@ ActiveAdmin.register Assessment do
   end
 
   action_item :download_csv, only: :index do
-    link_to 'Download CSV', admin_assessments_path(format: :csv)
+    link_to 'Download CSV', download_csv_admin_assessments_path(format: :csv)
   end
+
+  collection_action :download_csv, method: :get do
+    csv_data = CSV.generate(headers: true) do |csv|
+      # Initialize the header with the common columns
+      header = ['student_id', 'NAME', 'course_name', 'YEAR', 'SEMESTER', 'TOTAL', 'Letter_Grade']
+      csv << header
+  
+      # Track which headers have been added
+      added_headers = Set.new(header)
+  
+      Assessment.includes(:student, :course).find_each do |assessment|
+        student_id = assessment.student_id
+        student_name = "#{assessment.student.first_name} #{assessment.student.middle_name} #{assessment.student.last_name}"
+        course_name = assessment.course.course_title
+        year = assessment.student.year
+        semester = assessment.student.semester
+  
+        # Fetch the relevant assessment titles for the current course and instructor
+        instructor_assessment_titles = assessment.course.assessment_plans
+                                                    .where(admin_user_id: assessment.admin_user_id)
+                                                    .pluck(:assessment_title)
+                                                    .sort
+  
+        # Update header with the specific course and instructor assessment titles if not already added
+        new_headers = instructor_assessment_titles - added_headers.to_a
+        if new_headers.any?
+          csv << header + new_headers
+          added_headers.merge(new_headers)
+        end
+  
+        outer_result_hash = assessment.result.is_a?(String) ? JSON.parse(assessment.result) : assessment.result
+  
+        # Calculate total
+        total = outer_result_hash.values.map { |v| v["marks"].to_f }.sum
+        letter_grade = Assessment.get_letter_grade(total).first
+  
+        # Create a row with common values
+        row = [student_id, student_name, course_name, year, semester, total, letter_grade]
+  
+        # Append assessment plan values for the specific course and instructor
+        instructor_assessment_titles.each do |title|
+          row << (outer_result_hash[title] && outer_result_hash[title]["marks"] ? outer_result_hash[title]["marks"] : '')
+        end
+  
+        csv << row
+      end
+    end
+    send_data csv_data, filename: "assessments-#{Date.today}.csv"
+  end
+  
   
   action_item :missing_assessments_report, only: :index do
     if current_admin_user.role == 'registrar head'
