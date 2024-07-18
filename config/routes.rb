@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'reports/course_assignments'
   get 'grade_changes/new'
   get 'grade_changes/create'
 
@@ -26,6 +27,8 @@ Rails.application.routes.draw do
   resources :notices, only: [:index, :show, :new, :create, :destroy]
   resources :makeup_exams, only: [:new, :create]
 
+  get 'course_assignments', to: 'reports#course_assignments', as: 'course_assignments_report'
+  
   resources :makeup_exams do
     member do
       patch :verify

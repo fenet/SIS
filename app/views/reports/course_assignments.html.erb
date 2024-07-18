@@ -1,0 +1,18 @@
+<!-- app/views/reports/course_assignments.html.erb -->
+<h1>Instructor Load Report</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Instructor Name</th>
+      <th>Number of Courses</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @instructors.each do |instructor| %>
+      <tr>
+        <td><%= "#{instructor.first_name} #{instructor.last_name}" %></td>
+        <td><%= instructor.courses_count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

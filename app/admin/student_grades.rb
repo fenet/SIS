@@ -157,7 +157,7 @@ scoped_collection_action :scoped_collection_update, title: "Approve Grade", form
   end
 
   action_item :edit, only: :show, priority: 1 do
-    if (current_admin_user.role == "department head") || (current_admin_user.role == "admin")
+    if (current_admin_user.role == "department head") || (current_admin_user.role == "admin") || (current_admin_user.role == "instructor")
       link_to "Approve Grade", edit_admin_student_grade_path(student_grade.id, page_name: "grade_approve")
     end
   end

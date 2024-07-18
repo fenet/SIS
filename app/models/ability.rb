@@ -92,11 +92,11 @@ class Ability
       #can %i[read destroy], StudentGrade, course_id: Course.instructor_courses(user.id)
       
       can :read, StudentGrade, course_id: Course.instructor_courses(user.id)
-    
+      can :update, StudentGrade, course_id: Course.instructor_courses(user.id)
     # Destroy action with a block for additional conditions
-    can :destroy, StudentGrade do |grade|
-      Course.instructor_courses(user.id).include?(grade.course_id) && grade.created_at >= 15.days.ago
-    end
+      can :destroy, StudentGrade do |grade|
+        Course.instructor_courses(user.id).include?(grade.course_id) && grade.created_at >= 15.days.ago
+      end
       
       # cannot :destroy, StudentGrade
       can %i[create read destroy], Assessment, admin_user_id: user.id
