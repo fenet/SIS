@@ -53,9 +53,13 @@
   </div>
 </div>
 
+<div id="success-message" class="notification-message" style="display: none;">Submission successful!</div>
+
 <button id="submit-assessments" class="submit-btn" type="button">Submit Assessments</button>
 
 <div id="submit-message" style="display: none;">Submission successful!</div>
+
+
 
 
 <style>
@@ -75,4 +79,36 @@
   .submit-btn:hover {
     background-color: #45a049;
   }
+
+  .notification-message {
+    display: none;
+    color: white;
+    background-color: green;
+    font-size: 24px;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+    border-radius: 10px;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 40%;
+  }
+
+  .assessment-input {
+    border: 2px solid #007bff; /* Blue border */
+    padding: 10px; /* Increase padding */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #e9f5ff; /* Light blue background */
+    font-size: 16px; /* Larger font size */
+    width: 100px; /* Fixed width for consistency */
+  }
+
+  .assessment-input:focus {
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Add a blue shadow */
+  }
+  
 </style>

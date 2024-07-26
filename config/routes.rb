@@ -90,11 +90,16 @@ end
   
   resources :assessmens do
     collection do
+      post :bulk_create
       get :find_course
       get :missing_assessments_report
+    end
+    member do
       put :update_mark
+      put :batch_update
     end
   end
+  
 
   get "student_temporary/index", as: "student_temporary"
   post "student/tempo/generate", to: "student_temporary#generate_pdf", as: "generate_student_tempo"

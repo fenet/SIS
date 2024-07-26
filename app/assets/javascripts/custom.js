@@ -19,7 +19,7 @@ $(function () {
     });
   };
 
-  // Function to populate courses based on the selected program
+  // Function to populate courses and sections based on the selected program
   const populateCoursesAndSections = (result, selectedProgramId) => {
     const $courseList = $("#course-list");
     const $sectionList = $("#section");
@@ -275,66 +275,64 @@ $(function () {
     $('.assessment-input').each(function () {
       const key = `${this.dataset.cr}-${this.dataset.assessment}`;
       const storedValue = localStorage.getItem(key);
-      if (storedValue) {
+      if (storedValue !== null) {
         $(this).val(storedValue);
-        sumAssessmentValues();
       }
     });
+    sumAssessmentValues();
   }
 
-  // Event listener for form submission
-  $("#submit-assessments").on("click", function () {
-    let submissionCount = 0;
-    const totalSubmissions = $(".assessment-input").filter(function() {
-      return $(this).val() !== "";
-    }).length;
-
-    $(".assessment-input").each(function () {
-      const target = this;
-      const courseRegistration = target.dataset.cr;
-      const studentId = target.dataset.student;
-      const courseId = target.dataset.course;
-      const adminUserId = target.dataset.admin;
-      const assessmentTitle = target.dataset.assessment;
-      const result = target.value;
-
-      if (result !== "") { // Only submit if the result is not empty
-        $.ajax({
-          type: "POST",
-          url: "/assessmens",
-          dataType: "json",
-          data: {
+  // Event listener for submit assessments button
+  $(document).ready(function() {
+    $("#submit-assessments").on("click", function () {
+      let assessmentsData = [];
+      
+      $(".assessment-input").each(function () {
+        const target = $(this);
+        const courseRegistration = target.data("cr");
+        const studentId = target.data("student");
+        const courseId = target.data("course");
+        const adminUserId = target.data("admin");
+        const assessmentTitle = target.data("assessment");
+        const result = target.val();
+  
+        if (result !== "") {
+          assessmentsData.push({
             course_id: courseId,
             result: result,
             admin_user_id: adminUserId,
             student_id: studentId,
             assessment_title: assessmentTitle,
             course_registration_id: courseRegistration,
-          },
+          });
+        }
+      });
+  
+      if (assessmentsData.length > 0) {
+        $.ajax({
+          type: "POST",
+          url: "/assessmens/bulk_create",
+          dataType: "json",
+          contentType: "application/json",
+          data: JSON.stringify({ assessments: assessmentsData }),
           success: function (response) {
-            if (response.status === "created") {
-              $(target).css({ "border": "2px solid green" });
-              $(target).prop("disabled", true);
+            console.log("AJAX Success Response:", response);
+  
+            if (response.status === "success") {
+              // Show the success message
+              $("#success-message").text("Assessments submitted successfully!").fadeIn().delay(1500).fadeOut();
             } else {
-              $(target).css({ "border": "2px solid red" });
-              alert(response.result);
-            }
-
-            submissionCount++;
-            if (submissionCount === totalSubmissions) {
-              alert("All values submitted successfully!");
+              console.error("Unexpected response:", response);
             }
           },
           error: function (error) {
-            console.error("Error saving assessment:", error);
+            console.error("Error saving assessments:", error);
           }
         });
       } else {
-        submissionCount++;
-        if (submissionCount === totalSubmissions) {
-          alert("All values submitted successfully!");
-        }
+        alert("Please enter values");
       }
     });
   });
+
 });
