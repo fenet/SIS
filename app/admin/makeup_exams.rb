@@ -80,7 +80,7 @@ ActiveAdmin.register MakeupExam do
       if f.object.new_record? && ((current_admin_user.role == "registrar head")) || (current_admin_user.role == "admin") && (params[:course_id].present?)
 
         f.input :assessment_id, as: :select, collection: Assessment.where(student_grade_id: params[:student_grade_id]).map {|assess| [assess.assessment_plan.assessment_title, assess.id]}
-        f.input :reason, lebel: "Student Reason"
+        f.input :reason, label: "Student Reason"
         f.input :academic_calendar_id, as: :hidden, input_html: { value: params[:academic_calendar_id] }
         f.input :student_id, as: :hidden, input_html: { value: params[:student_id] }
         f.input :course_id, as: :hidden, input_html: { value: params[:course_id] }
@@ -223,4 +223,40 @@ ActiveAdmin.register MakeupExam do
       end
     end
   end
+
+  #batch_action :approve_selected, form: proc {
+  #  if current_admin_user.role == 'registrar head'
+  #    form do |f|
+  #      f.input :registrar_approval, as: :select, collection: ["approved"], include_blank: false
+  #    end
+  #  elsif current_admin_user.role == 'department head'
+  #    form do |f|
+  #      f.input :department_approval, as: :select, collection: ["approved"], include_blank: false
+  #    end
+  #  elsif current_admin_user.role == 'dean'
+  #    form do |f|
+  #      f.input :dean_approval, as: :select, collection: ["approved"], include_blank: false
+  #    end
+  #  elsif current_admin_user.role == 'academic affair'
+  #    form do |f|
+  #      f.input :academic_affair_approval, as: :select, collection: ["approved"], include_blank: false
+  #    end
+  #  end
+  #} do |ids|
+  #  if current_admin_user.role == 'registrar head'
+  #    MakeupExam.where(id: ids).update_all(registrar_approval: 'approved', registrar_name: current_admin_user.name.full, registrar_date_of_response: Time.zone.now)
+  #  elsif current_admin_user.role == 'department head'
+  #    MakeupExam.where(id: ids).update_all(department_approval: 'approved', department_head_name: current_admin_user.name.full, department_head_date_of_response: Time.zone.now)
+  #  elsif current_admin_user.role == 'dean'
+  #    MakeupExam.where(id: ids).update_all(dean_approval: 'approved', dean_name: current_admin_user.name.full, dean_date_of_response: Time.zone.now)
+  #  elsif current_admin_user.role == 'academic affair'
+  #    MakeupExam.where(id: ids).update_all(academic_affair_approval: 'approved', academic_affair_name: current_admin_user.name.full, academic_affair_date_of_response: Time.zone.now)
+  #  end
+  #  redirect_to collection_path, alert: "Makeup exams have been approved."
+  #end
+#
+  #batch_action :delete_selected, if: proc { current_admin_user.role == 'admin' } do |ids|
+  #  MakeupExam.where(id: ids).destroy_all
+  #  redirect_to collection_path, alert: "Makeup exams have been deleted."
+  #end
 end

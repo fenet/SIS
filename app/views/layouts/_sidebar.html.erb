@@ -107,15 +107,7 @@
             <%end%>
           </li>
 
-          <li class="nav-item">
-            <%= link_to academic_calendars_path, class: "nav-link #{current_class?(academic_calendars_path)}" do %>
-              <i class="nav-icon fas fa-calendar"></i>
-              <p>
-                Academic Calendar
-                <!-- <i class="right fas fa-angle-left"></i> -->
-              </p>
-            <%end%>
-          </li> 
+          
 
           <li class="nav-item">
           <%= link_to new_makeup_exam_path, class: "nav-link #{current_class?(new_makeup_exam_path)}" do %>
@@ -123,6 +115,20 @@
             <p>Request Makeup Exam</p>
           <% end %>
         </li> 
+
+        <li class="nav-item">
+        <%= link_to new_transfer_path, class: "nav-link #{current_class?(new_transfer_path)}" do %>
+          <i class="nav-icon fas fa-edit"></i>
+          <p>Request Transfer</p>
+        <% end %>
+      </li> 
+
+        <li class="nav-item">
+        <%= link_to new_withdrawal_path, class: "nav-link #{current_class?(new_withdrawal_path)}" do %>
+          <i class="nav-icon fas fa-edit"></i>
+          <p>Request Withdrawal / Clearance</p>
+        <% end %>
+      </li> 
 
           <li class="nav-item">
             <%= link_to destroy_student_session_path, method: :delete, class: "nav-link" do%>
@@ -132,6 +138,16 @@
               </p>
             <%end%>
           </li>
+
+          <!-- <li class="nav-item">
+            <%= link_to academic_calendars_path, class: "nav-link #{current_class?(academic_calendars_path)}" do %>
+              <i class="nav-icon fas fa-calendar"></i>
+              <p>
+                Academic Calendar
+                <!-- <i class="right fas fa-angle-left"></i> -->
+              </p>
+            <%end%>
+          </li> -->
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
   resources :notices, only: [:index, :show, :new, :create, :destroy]
   resources :makeup_exams, only: [:new, :create]
+  resources :withdrawals, only: [:new, :create]
 
   get 'course_assignments', to: 'reports#course_assignments', as: 'course_assignments_report'
   
@@ -87,6 +88,13 @@ end
 
   resources :exemptions, except: [:create, :new, :index, :edit]
   resources :external_transfers
+  resources :transfers, only: [:new, :create] do
+    member do
+      patch :process_course_exemption
+    end
+  end
+  
+  resources :program_exemptions, only: [:new, :create]
   
   resources :assessmens do
     collection do

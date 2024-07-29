@@ -5,10 +5,10 @@ menu parent: "Add-ons",label: "Program Transfer"
   index do
     selectable_column
     column :student_name, sortable: true do |n|
-      n.student_full_name
+      "#{n.student.first_name.upcase} #{n.student.middle_name.upcase} #{n.student.last_name.upcase}"
     end
     column :ID, sortable: true do |n|
-      n.id_number
+      n.student.student_id
     end
     column "Academic Year", sortable: true do |n|
       link_to n.academic_calendar.calender_year_in_gc, admin_academic_calendar_path(n.academic_calendar)
@@ -50,9 +50,9 @@ menu parent: "Add-ons",label: "Program Transfer"
   filter :modality_transfer
   filter :reason
   filter :date_of_transfer
-  filter :formal_department_head
-  filter :formal_department_head_approval
-  filter :formal_department_head_approval_date
+  #filter :formal_department_head
+  #filter :formal_department_head_approval
+  #filter :formal_department_head_approval_date
   filter :remark
   filter :new_department_head
   filter :new_department_head_approval
@@ -129,12 +129,12 @@ menu parent: "Add-ons",label: "Program Transfer"
     end
     if !f.object.new_record? && (params[:page_name] == "approve")
       f.inputs "Transfer Request Approval" do
-        if (current_admin_user.role == "department head") || (current_admin_user.role == "admin")
-            f.input :formal_department_head, as: :hidden, :input_html => { :value => current_admin_user.name.full}
-            f.input :formal_department_head_approval, as: :select, :collection => ["pending","approved", "denied"], :include_blank => false
-            f.input :formal_department_head_approval_date, as: :hidden, :input_html => { :value => Time.zone.now}
-            f.input :remark
-        end
+        #if (current_admin_user.role == "department head") || (current_admin_user.role == "admin")
+        #    f.input :formal_department_head, as: :hidden, :input_html => { :value => current_admin_user.name.full}
+        #    f.input :formal_department_head_approval, as: :select, :collection => ["pending","approved", "denied"], :include_blank => false
+        #    f.input :formal_department_head_approval_date, as: :hidden, :input_html => { :value => Time.zone.now}
+        #    f.input :remark
+        #end
         if (current_admin_user.role == "department head") || (current_admin_user.role == "admin")
             f.input :new_department_head, as: :hidden, :input_html => { :value => current_admin_user.name.full}
             f.input :new_department_head_approval, as: :select, :collection => ["pending","approved", "denied"], :include_blank => false
@@ -226,11 +226,11 @@ menu parent: "Add-ons",label: "Program Transfer"
       column do
         panel "Transfer Request Approval Status" do
           attributes_table_for transfer do
-            row :formal_department_head
-            row :formal_department_head_approval_date
-            row :formal_department_head_approval do |c|
-              status_tag c.formal_department_head_approval
-            end
+            #row :formal_department_head
+            #row :formal_department_head_approval_date
+            #row :formal_department_head_approval do |c|
+            #  status_tag c.formal_department_head_approval
+            #end
 
             row :new_department_head
             row :new_department_head_approval_date

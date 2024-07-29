@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_08_113021) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_29_044311) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -905,6 +905,23 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_08_113021) do
     t.index ["prerequisite_id"], name: "index_prerequisites_on_prerequisite_id"
   end
 
+  create_table "program_exemptions", force: :cascade do |t|
+    t.string "course_title"
+    t.string "letter_grade"
+    t.string "course_code"
+    t.integer "credit_hour"
+    t.string "department_approval"
+    t.string "dean_approval"
+    t.string "registrar_approval"
+    t.boolean "exemption_needed"
+    t.uuid "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "department_id"
+    t.index ["department_id"], name: "index_program_exemptions_on_department_id"
+    t.index ["student_id"], name: "index_program_exemptions_on_student_id"
+  end
+
   create_table "programs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "department_id"
     t.string "program_name", null: false
@@ -1237,6 +1254,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_08_113021) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.string "new_program"
+    t.uuid "new_program_id"
+    t.uuid "new_department_id"
+    t.boolean "course_exemption_processed", default: false
     t.index ["academic_calendar_id"], name: "index_transfers_on_academic_calendar_id"
     t.index ["department_id"], name: "index_transfers_on_department_id"
     t.index ["program_id"], name: "index_transfers_on_program_id"
@@ -1305,5 +1325,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_08_113021) do
   add_foreign_key "external_transfers", "departments"
   add_foreign_key "faculty_deans", "admin_users"
   add_foreign_key "faculty_deans", "faculties"
+  add_foreign_key "program_exemptions", "students"
   add_foreign_key "students", "sections"
 end

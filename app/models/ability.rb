@@ -127,13 +127,14 @@ class Ability
       can :manage, Invoice
     when 'registrar head'
       can :manage, Assessment
+      can %i[read update], Transfer
       can :manage, ActiveAdmin::Page, name: 'Dashboard', namespace_name: 'admin'
       can :manage, ActiveAdmin::Page, name: 'Graduation', namespace_name: 'admin'
       can :manage, ActiveAdmin::Page, name: 'StudentReport', namespace_name: 'admin'
       can :manage, ActiveAdmin::Page, name: 'OnlineStudentGrade', namespace_name: 'admin'
       can :manage, AcademicCalendar
       can :manage, AdminUser, role: 'instructor'
-      can %i[read update], Exemption, dean_approval_status: 'dean_approval_approved'
+      can %i[read update], Exemption#, dean_approval_status: 'dean_approval_approved'
       can :manage, Faculty
       can :read, CourseModule
       can :read, Program
@@ -157,7 +158,7 @@ class Ability
       can :manage, GradeChange
       can :manage, Withdrawal
       can :destroy, Withdrawal, created_by: user.name.full
-
+      can %i[read update], ProgramExemption
       can :manage, AddAndDrop
       cannot :destroy, AddAndDrop, created_by: 'self'
       can :manage, Notice
@@ -333,7 +334,7 @@ class Ability
       can %i[read update destroy], CourseModule#, department_id: user.department.id
       can :create, CourseModule
       # can :manage, Exemption
-
+      can :manage, ProgramExemption#, department_id: user.department.id
       can :manage, Course#, course_module: { department_id: user.department.id }
       can :create, Course
 
@@ -352,7 +353,7 @@ class Ability
       can :manage, AssessmentPlan, course: { program: { department_id: user.department.id } }
       can :create, AssessmentPlan
 
-      can %i[read update], Transfer, department_id: user.department.id
+      can %i[read update], Transfer#, department_id: user.department.id
 
       can :read, AcademicCalendar
 
@@ -366,7 +367,7 @@ class Ability
       #can %i[read update], StudentGrade, department_id: user.department.id
       can %i[read update], GradeChange, department_id: user.department.id
       can %i[read update], GradeReport, department_id: user.department.id
-      can %i[read update], Withdrawal, department_id: user.department.id
+      can %i[read update], Withdrawal#, department_id: user.department.id
       can %i[read update], AddAndDrop, department_id: user.department.id
       can %i[read update], MakeupExam, department_id: user.department.id
     when 'dean'

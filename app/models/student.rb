@@ -49,6 +49,7 @@ class Student < ApplicationRecord
   has_many :add_and_drops, dependent: :destroy
   has_many :makeup_exams, dependent: :destroy
   has_many :payments
+  has_many :transfers, dependent: :destroy
   validate :password_complexity
   # validates :student_grades, presence: true
   enum section_status: {
