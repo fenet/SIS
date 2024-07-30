@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :notices, only: [:index, :show, :new, :create, :destroy]
+  resources :notices, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   resources :makeup_exams, only: [:new, :create]
   resources :withdrawals, only: [:new, :create]
 

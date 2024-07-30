@@ -130,6 +130,14 @@
         <% end %>
       </li> 
 
+      <li class="nav-item">
+      <%= link_to notices_path, class: "nav-link #{current_class?(notices_path)}" do %>
+          <i class="nav-icon fas fa-bullhorn"></i>
+          <p>Notices</p>
+        <% end %>
+      </li>
+
+
           <li class="nav-item">
             <%= link_to destroy_student_session_path, method: :delete, class: "nav-link" do%>
               <i class="nav-icon fas fa-sign-out-alt"></i>

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Ability
   include CanCan::Ability
 
@@ -7,6 +5,9 @@ class Ability
     user ||= AdminUser.new
 
     case user.role
+
+    #when "student"
+    #  can :read, Notice
 
     when "president"
       can :manage, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
