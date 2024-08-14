@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'document_requests/new'
+  get 'document_requests/create'
+  get 'document_requests/show'
   get 'reports/course_assignments'
   get 'grade_changes/new'
   get 'grade_changes/create'
@@ -25,13 +28,21 @@ Rails.application.routes.draw do
   end
 
   resources :notices, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-  resources :makeup_exams, only: [:new, :create]
+  #resources :makeup_exams, only: [:new, :create]
   resources :withdrawals, only: [:new, :create]
 
   get 'course_assignments', to: 'reports#course_assignments', as: 'course_assignments_report'
   
-  resources :makeup_exams do
+  #resources :makeup_exams do
+  #  member do
+  #    patch :verify
+  #  end
+  #end
+  
+  resources :makeup_exams, only: [:new, :create] do
     member do
+      get :payment
+      patch :payment, action: :update
       patch :verify
     end
   end
@@ -77,7 +88,21 @@ Rails.application.routes.draw do
 resources :courses do
   resources :assessment_plans, only: [:index, :new, :create, :edit, :update, :destroy]
 end
+resources :courses, only: [:index]
 
+resources :document_requests, only: [:new, :create, :show] do
+
+  member do
+    get :payment
+    patch :upload_receipt
+  end
+
+  collection do
+    get :track_form
+    post :track
+  end
+
+end
 # config/routes.rb
 #resources :assessmens do
 #  collection do

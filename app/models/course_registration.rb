@@ -72,6 +72,7 @@ class CourseRegistration < ApplicationRecord
   # 		end
   # 	end
   # end
+  
   def attribute_assignment
     if !self.section.present? && self.semester_registration.section.present?
       self[:section_id] = self.semester_registration.section.id

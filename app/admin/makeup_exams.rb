@@ -1,6 +1,6 @@
 ActiveAdmin.register MakeupExam do
   menu parent: "Add-ons"
-  permit_params :updated_by, :created_by, :section_id, :academic_calendar_id, :student_id, :course_id, :section_id, :semester, :previous_result_total, :previous_letter_grade, :current_result_total, :current_letter_grade, :reason, :instructor_approval, :instructor_name, :instructor_date_of_response, :registrar_approval, :registrar_name, :registrar_date_of_response, :dean_approval, :dean_name, :dean_date_of_response, :department_approval, :department_head_name, :department_head_date_of_response, :academic_affair_approval, :academic_affair_name, :academic_affair_date_of_response, :course_registration_id, :student_grade_id, :assessment_id, :add_mark, :course_section_id, :program_id, :department_id, :year
+  permit_params :updated_by, :created_by, :section_id, :academic_calendar_id, :student_id, :course_id, :section_id, :semester, :previous_result_total, :previous_letter_grade, :current_result_total, :current_letter_grade, :reason, :instructor_approval, :instructor_name, :instructor_date_of_response, :registrar_approval, :registrar_name, :registrar_date_of_response, :dean_approval, :dean_name, :dean_date_of_response, :department_approval, :department_head_name, :department_head_date_of_response, :academic_affair_approval, :academic_affair_name, :academic_affair_date_of_response, :course_registration_id, :student_grade_id, :assessment_id, :add_mark, :course_section_id, :program_id, :department_id, :year, :attachment, :receipt 
 
   controller do
     def scoped_collection
@@ -10,6 +10,65 @@ ActiveAdmin.register MakeupExam do
         MakeupExam.all
       end
     end
+  end
+
+  batch_action :approve_instructor, if: proc { current_admin_user.role == "instructor" || current_admin_user.role == "admin" }, confirm: "Are you sure?" do |ids|
+    MakeupExam.find(ids).each do |makeup|
+      makeup.update(instructor_approval: "approved", instructor_name: current_admin_user.name.full, instructor_date_of_response: Time.zone.now)
+    end
+    redirect_to collection_path, alert: "The selected have been approved by the instructor."
+  end
+
+  batch_action :deny_instructor, if: proc { current_admin_user.role == "instructor" || current_admin_user.role == "admin" }, confirm: "Are you sure?" do |ids|
+    MakeupExam.find(ids).each do |makeup|
+      makeup.update(instructor_approval: "denied", instructor_name: current_admin_user.name.full, instructor_date_of_response: Time.zone.now)
+    end
+    redirect_to collection_path, alert: "The selected have been denied by the instructor."
+  end
+
+  # Batch action for department approval
+  batch_action :approve_department, if: proc { current_admin_user.role == "department head" || current_admin_user.role == "admin" }, confirm: "Are you sure?" do |ids|
+    MakeupExam.find(ids).each do |makeup|
+      makeup.update(department_approval: "approved", department_head_name: current_admin_user.name.full, department_head_date_of_response: Time.zone.now)
+    end
+    redirect_to collection_path, alert: "The selected have been approved by the department."
+  end
+  
+  batch_action :deny_department, if: proc { current_admin_user.role == "department head" || current_admin_user.role == "admin" }, confirm: "Are you sure?" do |ids|
+    MakeupExam.find(ids).each do |makeup|
+      makeup.update(department_approval: "denied", department_head_name: current_admin_user.name.full, department_head_date_of_response: Time.zone.now)
+    end
+    redirect_to collection_path, alert: "The selected have been denied by the instructor."
+  end
+
+  # Batch action for dean approval
+  batch_action :approve_dean, if: proc { current_admin_user.role == "dean" || current_admin_user.role == "admin" }, confirm: "Are you sure?" do |ids|
+    MakeupExam.find(ids).each do |makeup|
+      makeup.update(dean_approval: "approved", dean_name: current_admin_user.name.full, dean_date_of_response: Time.zone.now)
+    end
+    redirect_to collection_path, alert: "The selected have been approved by the dean."
+  end
+  
+  batch_action :deny_dean, if: proc { current_admin_user.role == "dean" || current_admin_user.role == "admin" }, confirm: "Are you sure?" do |ids|
+    MakeupExam.find(ids).each do |makeup|
+      makeup.update(dean_approval: "denied", dean_name: current_admin_user.name.full, dean_date_of_response: Time.zone.now)
+    end
+    redirect_to collection_path, alert: "The selected have been denied by the instructor."
+  end
+
+  # Batch action for registrar approval
+  batch_action :approve_registrar, if: proc { current_admin_user.role == "registrar head" || current_admin_user.role == "admin" }, confirm: "Are you sure?" do |ids|
+    MakeupExam.find(ids).each do |makeup|
+      makeup.update(registrar_approval: "approved", registrar_name: current_admin_user.name.full, registrar_date_of_response: Time.zone.now)
+    end
+    redirect_to collection_path, alert: "The selected have been approved by the registrar."
+  end
+
+  batch_action :deny_registrar, if: proc { current_admin_user.role == "registrar head" || current_admin_user.role == "admin" }, confirm: "Are you sure?" do |ids|
+    MakeupExam.find(ids).each do |makeup|
+      makeup.update(registrar_approval: "denied", registrar_name: current_admin_user.name.full, registrar_date_of_response: Time.zone.now)
+    end
+    redirect_to collection_path, alert: "The selected have been denied by the instructor."
   end
 
   index do
@@ -22,6 +81,13 @@ ActiveAdmin.register MakeupExam do
     end
     column "Course" do |pd|
       pd.course.course_title
+    end
+    column "Attachment" do |me|
+      if me.receipt.attached?
+        link_to "View Receipt", url_for(me.receipt)
+      else
+        "No Receipt"
+      end
     end
     column "Academic Year", sortable: true do |n|
       link_to n.academic_calendar.calender_year, admin_academic_calendar_path(n.academic_calendar)
@@ -173,14 +239,6 @@ ActiveAdmin.register MakeupExam do
               pd.course.course_title
             end
 
-            row "Attachment" do |me|
-              if me.attachment.attached?
-                link_to me.attachment.filename.to_s, url_for(me.attachment)
-              else
-                "No attachment"
-              end
-            end
-
             row :reason
             row :created_at
             row :updated_at
@@ -211,6 +269,13 @@ ActiveAdmin.register MakeupExam do
             row :instructor_approval do |c|
               status_tag c.instructor_approval
             end
+            row "Attachment" do |me|
+              if me.receipt.attached?
+                link_to me.receipt.filename.to_s, url_for(me.receipt)
+              else
+                "No reciept"
+              end
+            end
             row :instructor_name
             row :instructor_date_of_response
             row :academic_affair_approval do |c|
@@ -223,6 +288,7 @@ ActiveAdmin.register MakeupExam do
       end
     end
   end
+end 
 
   #batch_action :approve_selected, form: proc {
   #  if current_admin_user.role == 'registrar head'
@@ -259,4 +325,4 @@ ActiveAdmin.register MakeupExam do
   #  MakeupExam.where(id: ids).destroy_all
   #  redirect_to collection_path, alert: "Makeup exams have been deleted."
   #end
-end
+#end

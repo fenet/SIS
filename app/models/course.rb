@@ -44,7 +44,9 @@ class Course < ApplicationRecord
   ##scope
   	scope :recently_added, lambda { where('created_at >= ?', 1.week.ago)}
   	scope :instructor_courses, -> (user_id) {CourseInstructor.where(admin_user_id: user_id).pluck(:course_id)}
-
+	scope :for_student, -> (student) {
+		where(program_id: student.program_id, year: student.year, semester: student.semester)
+	  }
 
   private
 

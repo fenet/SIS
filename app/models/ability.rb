@@ -26,6 +26,7 @@ class Ability
     when "admin"
       # can :manage, ActiveAdmin::Page, name: "Calendar", namespace_name: "admin"
       can :manage, Transfer
+      can :manage, DocumentRequest
       can :manage, RecurringPayment
       can :manage, GradeSystem
       can :manage, GradeChange
@@ -35,6 +36,8 @@ class Ability
       can :manage, Attendance
       can :manage, Session
       can :manage, FacultyDean
+      can :manage, ProgramExemption#, department_id: user.department.id
+
       # can :manage, Graduation
       can :manage, PaymentTransaction
       can :manage, StudentAddress

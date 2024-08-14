@@ -19,6 +19,7 @@ ActiveAdmin.register Student do
 
                                }
                              }
+
   batch_action "Approve document verification status for", method: :put, confirm: "Are you sure?" do |ids|
     Student.where(id: ids).update(document_verification_status: "approved")
     #  add_student_registration
@@ -63,6 +64,33 @@ ActiveAdmin.register Student do
       object.send(update_method, *attributes)
     end
   end
+
+  csv do
+    column("No") { |student| student.id }
+    column("Id Number", &:student_id)
+    column("First Name", &:first_name)
+    column("Middle Name", &:middle_name)
+    column("Last Name", &:last_name)
+    column("Gender", &:gender)
+    column("Citizen", &:nationality)
+    column("Date Of Birth", &:date_of_birth)
+    
+    column("Grade 10 result") { |student| student.school_or_university_information&.grade_10_result }
+    column("Grade 10 year") { |student| student.school_or_university_information&.grade_10_exam_taken_year }
+    column("Grade 12 result") { |student| student.school_or_university_information&.grade_12_exam_result }
+    column("Grade 12 year") { |student| student.school_or_university_information&.grade_12_exam_taken_year }
+    
+    #column("Letter of Equivalence") { |student| student.school_or_university_information&.equivalence_letter } # Adjust this column based on your actual field name
+    
+    column("TVET/12+2 Program Attend") { |student| student.school_or_university_information&.college_or_university }
+    column("Level (L3, L4)", &:study_level) # Assuming study_level is Level (L3, L4)
+    #column("Coc ID") { |student| student.school_or_university_information&.coc_id } # Adjust based on your actual field name
+    column("Coc Attended Date") { |student| student.school_or_university_information&.coc_attendance_date }
+    #column("Degree Attended") { |student| student.school_or_university_information&.degree_attended } # Adjust based on your actual field name
+    #column("Total Credit Hour") { |student| student.curriculum&.total_credit_hour } # Adjust based on your actual field name
+    #column("GPA") { |student| student.school_or_university_information&.cgpa }
+  end
+
 
   index do
     selectable_column
@@ -133,6 +161,9 @@ ActiveAdmin.register Student do
   filter :updated_at
 
   # TODO: color label scopes
+  scope :sponsored_students do |students|
+    students.where(sponsorship_status: 'true')
+  end
   scope :recently_added
   scope :pending
   scope :approved

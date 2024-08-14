@@ -18,6 +18,47 @@ ActiveAdmin.register SemesterRegistration do
                                                           mode_of_payment: ["Monthly Payment", "Half Semester Payment", "Full Semester Payment"],
                                                         }
                                                       end
+  
+                                                      member_action :download_pdf, method: :get do
+                                                        @semester_registration = SemesterRegistration.find(params[:id])
+                                                    
+                                                        pdf = Prawn::Document.new
+                                                        pdf.text "Student Registration Information", size: 20, style: :bold
+                                                        pdf.move_down 20
+                                                        pdf.text "Full Name: #{@semester_registration.student_full_name}"
+                                                        pdf.text "Student ID: #{@semester_registration.student_id_number}"
+                                                        pdf.text "Program: #{@semester_registration.program.program_name}"
+                                                        pdf.text "Department: #{@semester_registration.department.department_name}" if @semester_registration.department.present?
+                                                        pdf.text "Year: #{@semester_registration.year}"
+                                                        pdf.text "Semester: #{@semester_registration.semester}"
+                                                        pdf.move_down 20
+                                                    
+                                                        pdf.text "Course Registrations", size: 18, style: :bold
+                                                        pdf.move_down 10
+                                                    
+                                                        table_data = [["Course Name", "Code", "Credit Hour", "Year", "Semester"]]
+                                                        @semester_registration.course_registrations.each do |registration|
+                                                          table_data << [
+                                                            registration.course.course_title,
+                                                            registration.course.course_code,
+                                                            registration.course.credit_hour,
+                                                            registration.course.year,
+                                                            registration.course.semester
+                                                          ]
+                                                        end
+                                                    
+                                                        pdf.table(table_data, header: true, row_colors: ["F0F0F0", "FFFFFF"], cell_style: { borders: [:top, :bottom] }) do
+                                                          row(0).font_style = :bold
+                                                          row(0).background_color = "CCCCCC"
+                                                        end
+                                                    
+                                                        send_data pdf.render, filename: "semester_registration_#{@semester_registration.id}.pdf", type: 'application/pdf'
+                                                      end
+                                                    
+                                                      action_item :download_pdf, only: :show do
+                                                        link_to 'Print_registration_slip', download_pdf_admin_semester_registration_path(semester_registration), class: 'button'
+                                                      end
+                                                    
 
   batch_action "Deny finance status for", method: :put, confirm: "Are you sure?" do |ids|
     smr = SemesterRegistration.where(id: ids)

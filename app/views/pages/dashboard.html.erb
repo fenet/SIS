@@ -52,17 +52,22 @@
                 <b>Program</b> <a class="text-muted float-right"><%= current_student.program.program_name %></a>
               </li>
               <li class="list-group-item">
-                <b>Department</b> <a class="text-muted float-right"><%= current_student.department.department_name %></a>
+                <b>Department</b> <a class="text-muted float-right"><%= current_student.program.department.department_name %></a>
               </li>
               <li class="list-group-item">
                 <b>Admission Type</b> <a class="text-muted float-right"><%= current_student.admission_type %></a>
               </li>
               <li class="list-group-item">
-                <b>Academic Calendar</b>
-                <a href="<%= academic_calendar_path(current_student.academic_calendar.id) %>" class="clickable-link float-right">
-                  <%= current_student.academic_calendar.calender_year %>
-                </a>
-              </li>
+  <b>Academic Calendar</b>
+  <% if current_student.academic_calendar.present? %>
+    <a href="<%= academic_calendar_path(current_student.academic_calendar.id) %>" class="clickable-link float-right">
+      <%= current_student.academic_calendar.calender_year %>
+    </a>
+  <% else %>
+    <span class="float-right">N/A</span>
+  <% end %>
+</li>
+
               <li class="list-group-item">
                 <b>Study Level</b> <a class="text-muted float-right"><%= current_student.study_level %></a>
               </li>

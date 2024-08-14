@@ -24,7 +24,8 @@ class MakeupExam < ApplicationRecord
 	# Custom Validations
 	validate :limit_assessment_result
 	validate :acceptable_attachment
-
+	
+	has_one_attached :receipt
   def acceptable_attachment
     return unless attachment.attached?
 

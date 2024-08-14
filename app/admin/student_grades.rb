@@ -53,7 +53,7 @@ scoped_collection_action :scoped_collection_update, title: "Approve Grade", form
     end
     redirect_to collection_path, notice: "Grade is Approved Successfully"
   end
-  batch_action "Denied Grade for", method: :put, if: proc { current_admin_user.role == "department head" }, confirm: "Are you sure?" do |ids|
+  batch_action "Denied Grade for", method: :put, confirm: "Are you sure?" do |ids|
     StudentGrade.find(ids).each do |student_grade|
       student_grade.update(department_approval: "denied", approved_by: "#{current_admin_user.name.full}", approval_date: Time.now)
     end

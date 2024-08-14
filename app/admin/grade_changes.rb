@@ -230,12 +230,26 @@ ActiveAdmin.register GradeChange do
     redirect_to collection_path, alert: "The selected grade changes have been approved by the instructor."
   end
 
+  batch_action :deny_instructor, if: proc { current_admin_user.role == "instructor" || current_admin_user.role == "admin" }, confirm: "Are you sure?" do |ids|
+    GradeChange.find(ids).each do |grade_change|
+      grade_change.update(instructor_approval: "denied", instructor_name: current_admin_user.name.full, instructor_date_of_response: Time.zone.now)
+    end
+    redirect_to collection_path, alert: "The selected grade changes have been denied by the instructor."
+  end
+
   # Batch action for department approval
   batch_action :approve_department, if: proc { current_admin_user.role == "department head" || current_admin_user.role == "admin" }, confirm: "Are you sure?" do |ids|
     GradeChange.find(ids).each do |grade_change|
       grade_change.update(department_approval: "approved", department_head_name: current_admin_user.name.full, department_head_date_of_response: Time.zone.now)
     end
     redirect_to collection_path, alert: "The selected grade changes have been approved by the department."
+  end
+  
+  batch_action :deny_department, if: proc { current_admin_user.role == "department head" || current_admin_user.role == "admin" }, confirm: "Are you sure?" do |ids|
+    GradeChange.find(ids).each do |grade_change|
+      grade_change.update(department_approval: "denied", department_head_name: current_admin_user.name.full, department_head_date_of_response: Time.zone.now)
+    end
+    redirect_to collection_path, alert: "The selected grade changes have been denied by the department."
   end
 
   # Batch action for dean approval
@@ -245,6 +259,13 @@ ActiveAdmin.register GradeChange do
     end
     redirect_to collection_path, alert: "The selected grade changes have been approved by the dean."
   end
+  
+  batch_action :deny_dean, if: proc { current_admin_user.role == "dean" || current_admin_user.role == "admin" }, confirm: "Are you sure?" do |ids|
+    GradeChange.find(ids).each do |grade_change|
+      grade_change.update(dean_approval: "denied", dean_name: current_admin_user.name.full, dean_date_of_response: Time.zone.now)
+    end
+    redirect_to collection_path, alert: "The selected grade changes have been denied by the dean."
+  end
 
   # Batch action for registrar approval
   batch_action :approve_registrar, if: proc { current_admin_user.role == "registrar head" || current_admin_user.role == "admin" }, confirm: "Are you sure?" do |ids|
@@ -252,6 +273,13 @@ ActiveAdmin.register GradeChange do
       grade_change.update(registrar_approval: "approved", registrar_name: current_admin_user.name.full, registrar_date_of_response: Time.zone.now)
     end
     redirect_to collection_path, alert: "The selected grade changes have been approved by the registrar."
+  end
+
+  batch_action :deny_registrar, if: proc { current_admin_user.role == "registrar head" || current_admin_user.role == "admin" }, confirm: "Are you sure?" do |ids|
+    GradeChange.find(ids).each do |grade_change|
+      grade_change.update(registrar_approval: "denied", registrar_name: current_admin_user.name.full, registrar_date_of_response: Time.zone.now)
+    end
+    redirect_to collection_path, alert: "The selected grade changes have been denied by the registrar."
   end
   
 end

@@ -108,28 +108,89 @@ class Student < ApplicationRecord
     self.where(graduation_status: status).includes(:department)
   end
 
-  def get_registration_fee
+  #def get_registration_fee
+  #  return nil if program_payment.nil?
+  #  program_payment.registration_fee
+  #end
+
+  def get_registration_fee(semester)
     return nil if program_payment.nil?
-    program_payment.registration_fee
+  
+    base_fee = program_payment.registration_fee
+    registration_date = get_registration_date(semester)
+    deadline = get_deadline(semester)
+  
+    # Add late registration fee only if registration date is past the deadline
+    if registration_date && deadline && registration_date > deadline
+      base_fee += program_payment.late_registration_fee
+    end
+  
+    base_fee
+  end
+  
+  def get_tuition_fee(semester)
+    return nil if program_payment.nil?
+  
+    base_fee = get_current_courses.collect do |oi|
+      oi.valid? ? (program_payment.tuition_per_credit_hr * oi.credit_hour) : 0
+    end.sum
+  
+    penalty_fee = calculate_penalty_fee(semester)
+  
+    base_fee + penalty_fee
   end
 
-  def get_tution_fee
-    return nil if program_payment.nil?
-    get_current_courses.collect { |oi| oi.valid? ? (program_payment.tution_per_credit_hr * oi.ects) : 0 }.sum
-    #total_fee = 0
-    #get_current_courses.each do |course|
-    #if student.batch.present? && course.valid?
-    #  total_fee += program_payment.tution_per_credit_hr * course.ects
-    #end
-    #end
+  def calculate_penalty_fee(semester)
+    return 0 if program_payment.nil?
+  
+    deadline, registration_date = get_deadline_and_registration_date(semester)
+  
+    return 0 if deadline.nil? || registration_date.nil? || registration_date <= deadline
+  
+    days_late = (registration_date - deadline).to_i
+    program_payment.starting_penalty_fee +
+      (days_late * program_payment.daily_penalty_fee)
   end
+
+  def get_registration_date(semester)
+    case semester
+    when 1 then semester_1_registration_date
+    when 2 then semester_2_registration_date
+    when 3 then semester_3_registration_date
+    else nil
+    end
+  end
+  
+  def get_deadline(semester)
+    case semester
+    when 1 then program_payment.semester_1_deadline
+    when 2 then program_payment.semester_2_deadline
+    when 3 then program_payment.semester_3_deadline
+    else nil
+    end
+  end
+  
+  def get_deadline_and_registration_date(semester)
+    [get_deadline(semester), get_registration_date(semester)]
+  end
+  
+  #def get_tution_fee
+  #  return nil if program_payment.nil?
+  #  get_current_courses.collect { |oi| oi.valid? ? (program_payment.tution_per_credit_hr * oi.credit_hour) : 0 }.sum
+  #  #total_fee = 0
+  #  #get_current_courses.each do |course|
+  #  #if student.batch.present? && course.valid?
+  #  #  total_fee += program_payment.tution_per_credit_hr * course.ects
+  #  #end
+  #  #end
+  #end
 
   def college_payment
     CollegePayment.find_by(study_level: self.study_level.strip, admission_type: self.admission_type.strip)
   end
 
   def program_payment
-    Payment.find_by(program_id: self.program_id)
+    Payment.find_by(program_id: self.program_id, batch: self.batch.strip, semester: self.semester)
   end
 
   def full_name
@@ -180,7 +241,7 @@ class Student < ApplicationRecord
   end
 
   def student_semester_registration
-    if self.document_verification_status == "approved" && self.year == 2 && self.semester == 1 && self.program.entrance_exam_requirement_status == false
+    if self.document_verification_status == "approved" && self.year == 1 && self.semester == 1 && self.program.entrance_exam_requirement_status == false
   #main one........if self.document_verification_status == "approved" && self.semester_registrations.empty? && self.year == 1 && self.semester == 1 && self.program.entrance_exam_requirement_status == false
       add_student_registration if self.semester_registrations.find_by(semester: self.semester).nil?
     end

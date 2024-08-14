@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_29_044311) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_13_053539) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
   create_table "academic_calendars", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "calender_year", null: false
@@ -480,6 +481,25 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_29_044311) do
     t.index ["faculty_id"], name: "index_departments_on_faculty_id"
   end
 
+  create_table "document_requests", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.string "first_name"
+    t.string "middle_name"
+    t.string "last_name"
+    t.string "mobile_number"
+    t.string "email"
+    t.string "admission_type"
+    t.string "study_level"
+    t.string "program"
+    t.string "department"
+    t.string "student_status"
+    t.integer "year_of_graduation"
+    t.string "status"
+    t.string "track_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "document_type"
+  end
+
   create_table "dropcourses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "student_id", null: false
     t.integer "status", default: 0, null: false
@@ -780,6 +800,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_29_044311) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.boolean "verified"
+    t.string "receipt"
     t.index ["academic_calendar_id"], name: "index_makeup_exams_on_academic_calendar_id"
     t.index ["assessment_id"], name: "index_makeup_exams_on_assessment_id"
     t.index ["course_id"], name: "index_makeup_exams_on_course_id"
@@ -891,6 +912,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_29_044311) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.string "batch"
+    t.date "semester_1_deadline"
+    t.date "semester_2_deadline"
+    t.date "semester_3_deadline"
+    t.date "registration_date"
+    t.date "semester_1_registration_date"
+    t.date "semester_2_registration_date"
+    t.date "semester_3_registration_date"
     t.index ["program_id"], name: "index_payments_on_program_id"
   end
 

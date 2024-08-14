@@ -30,7 +30,7 @@ ActiveAdmin.register CollegePayment do
   filter :readmission
   filter :reissuance_of_grade_report
   filter :student_copy
-  filter :additional_student_copy
+  filter :additional_student_copy, label: "official transcript"
   filter :tempo
   filter :original_certificate
   filter :original_certificate_replacement
@@ -57,7 +57,7 @@ ActiveAdmin.register CollegePayment do
     f.semantic_errors
     f.inputs "College payment information" do
       f.input :study_level, as: :select, :collection => ["undergraduate", "graduate"], :include_blank => false
-      f.input :admission_type, :collection => ["online", "regular", "extention", "distance"], :include_blank => false
+      f.input :admission_type, :collection => ["regular", "extension"], :include_blank => false
       f.input :student_nationality, :collection => ["local", "international"], :include_blank => false
       f.input :total_fee
       f.input :registration_fee
@@ -70,7 +70,7 @@ ActiveAdmin.register CollegePayment do
       f.input :readmission
       f.input :reissuance_of_grade_report
       f.input :student_copy
-      f.input :additional_student_copy
+      f.input :additional_student_copy, label: "offical transcript" 
       f.input :tempo
       f.input :original_certificate
       f.input :original_certificate_replacement
@@ -107,7 +107,7 @@ ActiveAdmin.register CollegePayment do
         number_row :readmission, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
         number_row :reissuance_of_grade_report, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
         number_row :student_copy, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
-        number_row :additional_student_copy, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
+        ##########number_row :additional_student_copy, as: :currency, unit: "ETB", format: "%n %u", delimiter: ",", precision: 2, label: "official transcript"
         number_row :tempo, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
         number_row :original_certificate, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
         number_row :original_certificate_replacement, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
