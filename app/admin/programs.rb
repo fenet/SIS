@@ -2,27 +2,26 @@ ActiveAdmin.register Program do
   menu parent: "Program"
   permit_params :entrance_exam_requirement_status,:program_semester,:department_id,:total_semester,:program_name,:program_code,:overview,:program_description,:created_by,:last_updated_by,:total_tuition,:study_level,:admission_type,:program_duration, curriculums_attributes: [:id, :curriculum_title,:curriculum_version,:total_course,:total_ects,:total_credit_hour,:active_status,:curriculum_active_date,:depreciation_date,:created_by,:last_updated_by, :_destroy]
   active_admin_import
+
   index do
     selectable_column
     column :program_name
     column "Department", sortable: true do |d|
-     # link_to d.department&.department_name, [:admin, d.department]
+      # link_to d.department&.department_name, [:admin, d.department]
     end
-    ## TODO: color label admission_type and study_level
-    ## TODO: display number of currently admitted students in this program
     column "courses" do |c|
       c.courses.count
     end
     column :study_level
     column :admission_type
-    column "duration",:program_duration
+    column "duration", :program_duration
     column :entrance_exam_requirement_status
-    # number_column "Tuition",:total_tuition, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2 
-    column "Created At", sortable: true do |c|
+    column "Created At", :program_created_at do |c|
       c.created_at.strftime("%b %d, %Y")
     end
     actions
   end
+  
 
   filter :program_name
   filter :department_id, as: :search_select_filter, url: proc { admin_departments_path },
@@ -46,6 +45,14 @@ ActiveAdmin.register Program do
   scope :regular, :if => proc { current_admin_user.role == "admin" }
   scope :extention, :if => proc { current_admin_user.role == "admin" }
   scope :distance, :if => proc { current_admin_user.role == "admin" }
+
+  #controller do
+  #  def scoped_collection
+  #    super.my_faculty(current_admin_user).select("programs.*, programs.created_at AS program_created_at")
+  #  end
+  #end
+  
+
   form do |f|
     f.semantic_errors
     f.inputs "porgram information" do
@@ -110,31 +117,28 @@ ActiveAdmin.register Program do
   show title: :program_name do
     tabs do
       tab "Program information" do
-        panel "Program information" do
-          attributes_table_for program do
-            row :program_name
-            row :program_code
-            row :overview
-            row :program_description
-            row "Department", sortable: true do |d|
-              link_to d.department&.department_name, [:admin, d.department] 
-            end
-            ## TODO: display number of currently admitted students in this program
-            ## TODO: color label admission_type and study_level
-            row :study_level
-            row :admission_type
-            row :program_duration
-            row :program_semester
-            # row :total_semester
-            number_row "Tuition",:total_tuition, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2 
-            row :entrance_exam_requirement_status
-            row :created_by
-            row :last_updated_by
-            row :created_at
-            row :updated_at
+      panel "Program information" do
+        attributes_table_for program do
+          row :program_name
+          row :program_code
+          row :overview
+          row :program_description
+          row "Department", sortable: true do |d|
+            link_to d.department&.department_name, [:admin, d.department] 
           end
+          row :study_level
+          row :admission_type
+          row :program_duration
+          row :program_semester
+          number_row "Tuition", :total_tuition, as: :currency, unit: "ETB", format: "%n %u", delimiter: ",", precision: 2
+          row :entrance_exam_requirement_status
+          row :created_by
+          row :last_updated_by
+          row "Created At", :program_created_at
+          row :updated_at
         end
       end
+    end
       tab "Program curriculums" do      
         panel "curriculums list" do
           table_for program.curriculums.order('created_at ASC') do

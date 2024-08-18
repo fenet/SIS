@@ -19,7 +19,18 @@ class Program < ApplicationRecord
   	scope :regular, lambda { where(admission_type: "regular")}
   	scope :extention, lambda { where(admission_type: "extention")}
   	scope :distance, lambda { where(admission_type: "distance")}
+
+    scope :my_faculty, ->(current_admin_user) {
+    if current_admin_user.role == 'dean' && current_admin_user.faculty_id.present?
+      joins(department: :faculty).where(departments: { faculty_id: current_admin_user.faculty_id })
+    else
+      all
+    end
+  }
+
   ##associations
+    has_many :class_schedules
+    has_many :exam_schedules
     has_many :invoices
     has_many :withdrawals
     has_many :student_grades

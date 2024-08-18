@@ -49,25 +49,24 @@
                 <b>Student ID</b> <a class="text-muted float-right"><%= current_student.student_id.present? ? current_student.student_id : "Not Assigned Yet" %></a>
               </li>
               <li class="list-group-item">
-                <b>Program</b> <a class="text-muted float-right"><%= current_student.program.program_name %></a>
+                <b>Program</b> <a class="text-muted float-right"><%= current_student.program&.program_name || "N/A" %></a>
               </li>
               <li class="list-group-item">
-                <b>Department</b> <a class="text-muted float-right"><%= current_student.program.department.department_name %></a>
+                <b>Department</b> <a class="text-muted float-right"><%= current_student.program&.department&.department_name || "N/A" %></a>
               </li>
               <li class="list-group-item">
                 <b>Admission Type</b> <a class="text-muted float-right"><%= current_student.admission_type %></a>
               </li>
               <li class="list-group-item">
-  <b>Academic Calendar</b>
-  <% if current_student.academic_calendar.present? %>
-    <a href="<%= academic_calendar_path(current_student.academic_calendar.id) %>" class="clickable-link float-right">
-      <%= current_student.academic_calendar.calender_year %>
-    </a>
-  <% else %>
-    <span class="float-right">N/A</span>
-  <% end %>
-</li>
-
+                <b>Academic Calendar</b>
+                <% if current_student.academic_calendar.present? %>
+                  <a href="<%= academic_calendar_path(current_student.academic_calendar.id) %>" class="clickable-link float-right">
+                    <%= current_student.academic_calendar.calender_year %>
+                  </a>
+                <% else %>
+                  <span class="float-right">N/A</span>
+                <% end %>
+              </li>
               <li class="list-group-item">
                 <b>Study Level</b> <a class="text-muted float-right"><%= current_student.study_level %></a>
               </li>
@@ -124,9 +123,9 @@
                 <tbody>
                   <% @student_grades.each do |grade| %>
                     <tr>
-                      <td><%= grade.course.course_title %></td>
-                      <td><%= grade.letter_grade %></td>
-                      <td><%= grade.assesment_total %></td>
+                      <td><%= grade.course&.course_title || "N/A" %></td>
+                      <td><%= grade.letter_grade || "N/A" %></td>
+                      <td><%= grade.assesment_total || "N/A" %></td>
                       <td>
                         <%= link_to 'Request Grade Change', new_grade_change_path(course_id: grade.course.id, grade_id: grade.id), class: 'btn btn-primary btn-sm' %>
                       </td>
@@ -160,7 +159,7 @@
             <b>Gender</b> <a class="text-muted float-right"><%= current_student.gender %></a>
           </li>
           <li class="list-group-item">
-            <b>Birth Date</b> <a class="text-muted float-right"><%= current_student.date_of_birth.strftime("%b %d, %Y") %></a>
+            <b>Birth Date</b> <a class="text-muted float-right"><%= current_student.date_of_birth.present? ? current_student.date_of_birth.strftime("%b %d, %Y") : "N/A" %></a>
           </li>
           <li class="list-group-item">
             <b>Marital Status</b> <a class="text-muted float-right"><%= current_student.marital_status %></a>

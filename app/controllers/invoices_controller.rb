@@ -9,6 +9,18 @@ class InvoicesController < ApplicationController
   # GET /invoices/1 or /invoices/1.json
   def show
     @out_of_batch = @invoice.semester_registration.out_of_batch?
+    @invoice = Invoice.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = InvoicePdfGenerator.new(@invoice)
+        send_data pdf.render,
+                  filename: "Invoice_#{@invoice.invoice_number}.pdf",
+                  type: 'application/pdf',
+                  disposition: 'inline' # or 'attachment' to download directly
+      end
+    end
   end
 
   # GET /invoices/new

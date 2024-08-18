@@ -46,6 +46,7 @@ gem "chartkick"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'jquery-rails'
+gem 'cocoon'
 gem 'jquery-datatables', '~> 1.10', '>= 1.10.20'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

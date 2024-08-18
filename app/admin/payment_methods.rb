@@ -5,7 +5,11 @@ permit_params :bank_name,:account_number,:phone_number,:account_type,:payment_me
   index do
     selectable_column
     column "Bank logo" do |pt|
-      span image_tag(pt.bank_logo, size: '50x50')
+      if pt.bank_logo.present?
+        span image_tag(pt.bank_logo, size: '50x50')
+      else
+        span "No logo available"
+      end
     end
     column :account_full_name
     column :bank_name

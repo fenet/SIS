@@ -7,39 +7,41 @@ actions :all, :except => [:new]
 
   index do
     selectable_column
-    # column "Invoice NO",:invoice_number
-    column "Student" do |s|
-      s.student_full_name
+    column "Invoice NO", :invoice_number
+    column "Student" do |payment|
+      payment.student_full_name
     end
-    column "ID" do |s|
-      s.student_id_number
+    column "ID" do |payment|
+      payment.student_id_number
     end
     column :payment_type
+    column :payable_type do |payment|
+      payment.payable_type
+    end
+    column "Details" do |payment|
+      if payment.payable_type == "Readmission"
+        link_to "View Readmission", admin_readmission_path(payment.payable_id)
+      elsif payment.payable_type == "MakeupExam"
+        link_to "View Makeup Exam", admin_makeup_exam_path(payment.payable_id)
+      elsif payment.payable_type == "DocumentProcessing"
+        link_to "View Document Processing", admin_document_request_path(payment.payable_id)
+      else
+        "N/A"
+      end
+    end
     column :invoice_status do |s|
       status_tag s.invoice_status
     end
+    number_column :total_price, as: :currency, unit: "ETB", format: "%n %u", delimiter: ",", precision: 2
     column :due_date, sortable: true do |c|
       c.due_date.strftime("%b %d, %Y")
     end
-    column "Program", sortable: true do |n|
-      link_to n.program.program_name, admin_programs_path(n.program)
-    end
-    column "Admission Type", sortable: true do |n|
-      n.department.department_name
-    end    
-    number_column :total_price, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
-    column "Academic Year", sortable: true do |n|
-      link_to n.academic_calendar.calender_year, admin_academic_calendar_path(n.academic_calendar)
-    end
-    column :semester
-    column :year
-    
-    # column :mode_of_payment
-    column "Created At", sortable: true do |c|
-      c.created_at.strftime("%b %d, %Y")
-    end
     actions
   end
+  
+
+
+
   filter :student_full_name
   filter :student_id_number
   filter :department_id, as: :search_select_filter, url: proc { admin_departments_path },
@@ -67,19 +69,23 @@ actions :all, :except => [:new]
   filter :created_at
   filter :updated_at
 
-  scope :recently_added
-  scope :unpaid
-  scope :pending
-  scope :approved
-  scope :denied
-  scope :incomplete
   scope :due_date_passed
-  # scope :undergraduate
-  # scope :graduate
-  # scope :online
-  # scope :regular
-  # scope :extention
-  # scope :distance
+  scope :readmissions do |payments|
+    payments.where(payable_type: "Readmission")
+  end
+  
+  scope :makeup_exams do |payments|
+    payments.where(payable_type: "MakeupExam")
+  end
+  
+  #scope :withdrawals do |payments|
+  #  payments.where(payable_type: "Withdrawal")
+  #end
+  
+  scope :document_processing do |payments|
+    payments.where(payable_type: "DocumentProcessing")
+  end
+  
 
   form :title => proc{|invoice| "Invoice NO ##{invoice.invoice_number}" } do |f|
     f.semantic_errors
@@ -223,31 +229,32 @@ actions :all, :except => [:new]
       end
     end
 
-    columns do
-      column do
-        panel "Invoice Item Information" do
-          table_for other_payment.invoice_items do
-            if other_payment.payable_type == "AddAndDrop"
-              column "Course title" do |pr|
-                link_to pr.course.course_title, admin_course_path(pr.course.id)
-              end
-            else 
-              column :item_title
-            end
-            column "Course code" do |pr|
-              pr.course.course_code
-            end
-            column "Course module" do |pr|
-              link_to pr.course.course_module.module_code, admin_course_module_path(pr.course.course_module.id) 
-            end
-            column "Credit hour" do |pr|
-              pr.course.credit_hour
-            end
-            number_column :price, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
-          end
-        end
-      end
-    end
+    #columns do
+    #  column do
+    #    panel "Invoice Item Information" do
+    #      table_for other_payment.invoice_items do
+    #        if other_payment.payable_type == "AddAndDrop"
+    #          column "Course title" do |pr|
+    #            link_to pr.course.course_title, admin_course_path(pr.course.id)
+    #          end
+    #        else 
+    #          column :item_title
+    #        end
+    #        column "Course code" do |pr|
+    #          pr.course.course_code
+    #        end
+    #        column "Course module" do |pr|
+    #          link_to pr.course.course_module.module_code, admin_course_module_path(pr.course.course_module.id) 
+    #        end
+    #        column "Credit hour" do |pr|
+    #          pr.course.credit_hour
+    #        end
+    #        number_column :price, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
+    #      end
+    #    end
+    #  end
+    #end
+    
   end 
   
 end

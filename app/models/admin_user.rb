@@ -32,4 +32,5 @@ class AdminUser < ApplicationRecord
       has_many :course_instructors
       has_many :notices
       belongs_to :department, optional: true
+      belongs_to :faculty, optional: true
 end

@@ -1,6 +1,18 @@
 ActiveAdmin.register Course do
   menu parent: "Program"
   
+  scope :all, default: true
+
+scope :my_faculty do |scope|
+  if current_admin_user.role == 'dean' && current_admin_user.faculty_id.present?
+    scope.joins(program: { department: :faculty })
+         .where(departments: { faculty_id: current_admin_user.faculty_id })
+  else
+    scope
+  end
+end
+
+
   permit_params(:course_outline, :course_module_id, :major, :curriculum_id, :program_id, :course_title, 
                 :course_code, :course_description, :year, :semester, :course_starting_date, :course_ending_date, 
                 :credit_hour, :lecture_hour, :lab_hour, :ects, :created_by,

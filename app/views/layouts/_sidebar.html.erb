@@ -104,6 +104,13 @@
         </li>
         <!-- Notices -->
         <li class="nav-item">
+          <%= link_to new_readmission_path, class: "nav-link #{current_class?(new_readmission_path)}", style: "color: #c2c7d0;" do %>
+            <i class="nav-icon fas fa-bullhorn" style="color: #adb5bd;"></i>
+            <p>Readmission</p>
+          <% end %>
+        </li>
+        <!-- Notices -->
+        <li class="nav-item">
           <%= link_to notices_path, class: "nav-link #{current_class?(notices_path)}", style: "color: #c2c7d0;" do %>
             <i class="nav-icon fas fa-bullhorn" style="color: #adb5bd;"></i>
             <p>Notices</p>

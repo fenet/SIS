@@ -44,7 +44,17 @@ ActiveAdmin.register Section, as: "ProgramSection" do
       f.input :section_short_name
       f.input :section_full_name
       f.input :total_capacity
-      f.input :batch
+      f.input :batch, as: :select, collection: [
+                '2021/2022', 
+                '2022/2023', 
+                '2023/2024', 
+                '2024/2025', 
+                '2025/2026', 
+                '2026/2027', 
+                '2027/2028', 
+                '2028/2029', 
+                '2029/2030'
+              ], include_blank: false
       f.input :year
       f.input :semester
       if f.object.new_record?

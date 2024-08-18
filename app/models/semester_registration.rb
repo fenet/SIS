@@ -185,7 +185,7 @@ class SemesterRegistration < ApplicationRecord
         invoice.invoice_status = "unpaid"
         
         invoice.registration_fee = self.student.get_registration_fee unless self.out_of_batch?
-        tution_price = self.student.get_tution_fee unless self.out_of_batch?
+        tution_price = self.student.get_tuition_fee unless self.out_of_batch?
         tution_price = self.student.get_added_tution_fee if self.out_of_batch?
 
         invoice.invoice_number = SecureRandom.random_number(10000000)

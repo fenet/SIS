@@ -176,6 +176,7 @@ ActiveAdmin.register Student do
   scope :regular, if: proc { current_admin_user.role == "admin" }
   scope :extention, if: proc { current_admin_user.role == "admin" }
   scope :distance, if: proc { current_admin_user.role == "admin" }
+  scope :no_section, if: proc { current_admin_user.role == "admin" }
 
   form do |f|
     f.semantic_errors

@@ -2,13 +2,46 @@ class SectionsController < ApplicationController
   before_action { @disable_nav = true }
   before_action :set_section, only: [:download_pdf]
 
+  #def index
+  #  @programs = Program.select(:id, :program_name)
+  #  unless params[:program].nil?
+  #    @students = Student.no_assigned.where(program_id: params[:program][:name], year: params[:year], semester: params[:semester], batch: params[:student][:batch]).includes(:program)
+  #    @sections = Section.empty.or(Section.partial).where(program_id: params[:program][:name], year: params[:year], semester: params[:semester], batch: params[:student][:batch]).includes(:students)
+  #  end
+  #end
+
   def index
     @programs = Program.select(:id, :program_name)
+    
     unless params[:program].nil?
-      @students = Student.no_assigned.where(program_id: params[:program][:name], year: params[:year], semester: params[:semester], batch: params[:student][:batch]).includes(:program)
-      @sections = Section.empty.or(Section.partial).where(program_id: params[:program][:name], year: params[:year], semester: params[:semester], batch: params[:student][:batch]).includes(:students)
+      puts "Params: #{params.inspect}" # Debugging parameters
+      
+      @students = Student.no_assigned.where(
+        program_id: params[:program][:name], 
+        year: params[:year], 
+        semester: params[:semester], 
+        batch: params[:student][:batch].strip
+      ).includes(:program)
+      
+      @sections = Section.empty.or(Section.partial)
+                           .where(
+                             program_id: params[:program][:name], # Match program_id with params[:program][:name]
+                             year: params[:year], 
+                             semester: params[:semester], 
+                             batch: params[:student][:batch].strip # Ensure no trailing spaces
+                           )
+                           .includes(:students)
+  
+      puts "Sections: #{@sections.inspect}" # Debugging query result
+  
+      if @sections.empty?
+        puts "No sections found matching the criteria."
+      end
     end
   end
+  
+  
+  
 
   def download_pdf
     pdf = SectionPdfGenerator.new(@section).render
@@ -19,29 +52,29 @@ class SectionsController < ApplicationController
   end
 
   def create
-    section_id = params[:section]
-    student_ids = params[:student_ids]
+    section_id = params[:section_id]
     section = Section.find(section_id)
-
-    if student_ids.present?
-      students = Student.where(id: student_ids)
-
-      students.each do |student|
+  
+    if section.students.count < section.total_capacity
+      unassigned_students = Student.no_assigned.where(program_id: section.program_id, year: section.year, semester: section.semester, batch: section.batch)
+      students_to_assign = unassigned_students.sample([section.total_capacity - section.students.count, unassigned_students.count].min)
+  
+      students_to_assign.each do |student|
         student.update(section_id: section.id, section_status: 1)
       end
-
+  
       if section.students.count < section.total_capacity
         section.partial!
       else
         section.full!
       end
-
-      redirect_to assign_sections_path, notice: "#{students.count} students assigned to #{section.section_full_name}"
+  
+      redirect_to assign_sections_path, notice: "#{students_to_assign.count} students assigned to #{section.section_full_name}"
     else
-      redirect_to assign_sections_path, alert: "No students selected for assignment."
+      redirect_to assign_sections_path, alert: "Section is already full."
     end
   end
-
+  
 
  private
 

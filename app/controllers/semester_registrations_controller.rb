@@ -33,7 +33,7 @@ class SemesterRegistrationsController < ApplicationController
 
 
     @registration_fee = current_student.get_registration_fee
-    @tution_fee =  current_student.get_tution_fee
+    @tution_fee =  current_student.get_tuition_fee
 
   end
 

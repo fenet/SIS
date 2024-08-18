@@ -1,8 +1,10 @@
 class OtherPayment < ApplicationRecord
+  
   after_create :add_invoice_item_for_add_and_drop
   after_save :add_and_drop_update_status
 
   after_create :add_invoice_item_for_makeup_exam
+  
   
 
   ##validations

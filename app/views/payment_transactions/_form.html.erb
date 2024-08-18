@@ -49,7 +49,7 @@
 													</div>
 													<!-- /.card-header -->
 													<div class="card-body">
-														<p  class="text-center"><strong>Please, transfer <%=(@invoice.total_price + @invoice.registration_fee) if @invoice.present?%> ETB to the account we provide you and fill the form with in your bank information.</strong></p>   
+														<p  class="text-center"><strong>Please, transfer <%=(@invoice.total_price + @invoice.registration_fee).round(2) if @invoice.present?%> ETB to the account we provide you and fill the form with in your bank information.</strong></p>   
 														<hr>
 													</div>
 													<!-- /.card-body -->

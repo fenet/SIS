@@ -1,6 +1,7 @@
 class Course < ApplicationRecord
 	before_save :attribute_assignment
-	
+	scope :by_program, -> (program_id) { where(program_id: program_id) }
+
 	#validations
         validates :semester, :presence => true
 		validates :year, :presence => true
@@ -32,7 +33,8 @@ class Course < ApplicationRecord
 	  accepts_nested_attributes_for :course_instructors, reject_if: :all_blank, allow_destroy: true
 
 		has_many :sessions
-
+		has_many :class_schedules
+		has_many :exam_schedules
 		has_many :grade_changes
 		has_many :makeup_exams
 		has_many :add_and_drop_courses

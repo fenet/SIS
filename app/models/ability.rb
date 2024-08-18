@@ -21,6 +21,9 @@ class Ability
       can :read, Curriculum
 
     when "program office"
+      can :manage, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
+      can :manage, ClassSchedule
+      can :manage, ExamSchedule
       can :read, AcademicCalendar
 
     when "admin"
@@ -37,7 +40,7 @@ class Ability
       can :manage, Session
       can :manage, FacultyDean
       can :manage, ProgramExemption#, department_id: user.department.id
-
+      can :manage, Readmission
       # can :manage, Graduation
       can :manage, PaymentTransaction
       can :manage, StudentAddress
@@ -251,6 +254,7 @@ class Ability
       can :manage, ActiveAdmin::Page, name: 'FinanceReport', namespace_name: 'admin'
 
       can %i[read update], Withdrawal
+      can %i[read update], Readmission
       can :manage, Invoice
       can :manage, Payment
       cannot :destroy, Invoice
@@ -258,7 +262,7 @@ class Ability
       can :read, Program
       # TODO: after one college created disable new action
       # cannot :destroy, College, id: 1
-
+      
       can :read, Department
       can :read, CourseModule
       can :read, Course
@@ -376,20 +380,28 @@ class Ability
       can %i[read update], MakeupExam, department_id: user.department.id
     when 'dean'
       can :manage, ActiveAdmin::Page, name: 'Dashboard', namespace_name: 'admin'
-      can %i[read update], Withdrawal
-      can %i[read update], GradeReport
-      can %i[read update], MakeupExam
+      can %i[read update], Withdrawal, program: { department: { faculty_id: user.faculty_id } }
+      can %i[read update], GradeReport, department: { faculty_id: user.faculty_id }
+      can %i[read update], MakeupExam, program: { department: { faculty_id: user.faculty_id } }
       can %i[read update], GradeChange # department: {faculty_id: user.faculty_dean}
       can :manage, Assessment
       can :read, AcademicCalendar
-      can :read, StudentGrade
-      can :manage, Course
-      can :manage, Program
-      can :manage, Curriculum
+      can :read, StudentGrade, department: { faculty_id: user.faculty_id }
+      can :manage, Course, program: { department: { faculty_id: user.faculty_id } }
+      can :manage, Program, department: { faculty_id: user.faculty_id }
+      can :manage, Curriculum, program: { department: { faculty_id: user.faculty_id } }
       can :manage, GradeSystem
       can :manage, AssessmentPlan
       can %i[read update], Exemption
       can :manage, Notice
+      can :manage, Department, faculty_id: user.faculty_id 
+
+    when 'faculty dean'
+      can :manage, ActiveAdmin::Page, name: 'Dashboard', namespace_name: 'admin'
+      can :manage, Department, faculty_id: user.faculty.id 
+     # can %i[read update destroy], Program, department_id: user.department.id
+
+  
     when 'library head'
       can :manage, ActiveAdmin::Page, name: 'Dashboard', namespace_name: 'admin'
       can %i[read update], Withdrawal

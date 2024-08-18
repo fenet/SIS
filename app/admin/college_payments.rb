@@ -19,28 +19,28 @@ ActiveAdmin.register CollegePayment do
   filter :study_level
   filter :admission_type
   filter :student_nationality
-  filter :total_fee
-  filter :registration_fee
-  filter :late_registration_fee
-  filter :starting_penalty_fee
-  filter :daily_penalty_fee
-  filter :makeup_exam_fee
-  filter :add_drop
-  filter :tution_per_credit_hr
-  filter :readmission
-  filter :reissuance_of_grade_report
-  filter :student_copy
-  filter :additional_student_copy, label: "official transcript"
-  filter :tempo
-  filter :original_certificate
-  filter :original_certificate_replacement
-  filter :tempo_replacement
-  filter :letter
-  filter :student_id_card
-  filter :student_id_card_replacement
-  filter :name_change
-  filter :transfer_fee
-  filter :last_updated_by
+  #filter :total_fee
+  #filter :registration_fee
+  #filter :late_registration_fee
+  #filter :starting_penalty_fee
+  #filter :daily_penalty_fee
+  #filter :makeup_exam_fee
+  #filter :add_drop
+  #filter :tution_per_credit_hr
+  #filter :readmission
+  #filter :reissuance_of_grade_report
+  #filter :student_copy
+  #filter :additional_student_copy, label: "official transcript"
+  #filter :tempo
+  #filter :original_certificate
+  #filter :original_certificate_replacement
+  #filter :tempo_replacement
+  #filter :letter
+  #filter :student_id_card
+  #filter :student_id_card_replacement
+  #filter :name_change
+  #filter :transfer_fee
+  #filter :last_updated_by
   filter :created_by
   filter :created_at
   filter :updated_at
@@ -51,7 +51,7 @@ ActiveAdmin.register CollegePayment do
   scope :online
   scope :regular
   scope :extention
-  scope :distance
+  #scope :distance
   
   form do |f|
     f.semantic_errors
@@ -59,26 +59,26 @@ ActiveAdmin.register CollegePayment do
       f.input :study_level, as: :select, :collection => ["undergraduate", "graduate"], :include_blank => false
       f.input :admission_type, :collection => ["regular", "extension"], :include_blank => false
       f.input :student_nationality, :collection => ["local", "international"], :include_blank => false
-      f.input :total_fee
-      f.input :registration_fee
-      f.input :late_registration_fee
-      f.input :starting_penalty_fee
-      f.input :daily_penalty_fee
+      #f.input :total_fee
+      #f.input :registration_fee
+      #f.input :late_registration_fee
+      #f.input :starting_penalty_fee
+      #f.input :daily_penalty_fee
       f.input :makeup_exam_fee
-      f.input :add_drop
-      f.input :tution_per_credit_hr
+      #f.input :add_drop
+      #f.input :tution_per_credit_hr
       f.input :readmission
-      f.input :reissuance_of_grade_report
+      #f.input :reissuance_of_grade_report
       f.input :student_copy
       f.input :additional_student_copy, label: "offical transcript" 
       f.input :tempo
       f.input :original_certificate
-      f.input :original_certificate_replacement
-      f.input :tempo_replacement
+      #f.input :original_certificate_replacement
+      #f.input :tempo_replacement
       f.input :letter
-      f.input :student_id_card
-      f.input :student_id_card_replacement
-      f.input :name_change
+      #f.input :student_id_card
+      #f.input :student_id_card_replacement
+      #f.input :name_change
       f.input :transfer_fee
 
       if f.object.new_record?
@@ -96,26 +96,26 @@ ActiveAdmin.register CollegePayment do
         row :study_level
         row :admission_type
         row :student_nationality
-        number_row :total_fee, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
-        number_row :registration_fee, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
-        number_row :late_registration_fee, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
+        #number_row :total_fee, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
+        #number_row :registration_fee, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
+        #number_row :late_registration_fee, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
         number_row :makeup_exam_fee, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
-        number_row :add_drop, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
-        number_row :tution_per_credit_hr, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
-        number_row :starting_penalty_fee, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
-        number_row :daily_penalty_fee, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
+        #number_row :add_drop, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
+        #number_row :tution_per_credit_hr, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
+        #number_row :starting_penalty_fee, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
+        #number_row :daily_penalty_fee, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
         number_row :readmission, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
-        number_row :reissuance_of_grade_report, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
+        #number_row :reissuance_of_grade_report, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
         number_row :student_copy, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
         ##########number_row :additional_student_copy, as: :currency, unit: "ETB", format: "%n %u", delimiter: ",", precision: 2, label: "official transcript"
         number_row :tempo, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
         number_row :original_certificate, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
-        number_row :original_certificate_replacement, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
-        number_row :tempo_replacement, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
+        #number_row :original_certificate_replacement, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
+        #number_row :tempo_replacement, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
         number_row :letter, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
-        number_row :student_id_card, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
-        number_row :student_id_card_replacement, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
-        number_row :name_change, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
+        #number_row :student_id_card, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
+        #number_row :student_id_card_replacement, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
+        #number_row :name_change, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
         number_row :transfer_fee, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
         row :last_updated_by
         row :created_by

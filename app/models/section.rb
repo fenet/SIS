@@ -12,7 +12,11 @@ class Section < ApplicationRecord
 	has_many :recurring_payments
 	has_many :add_and_drops
 	has_many :makeup_exams
+	has_many :class_schedules
+	has_many :exam_schedules
 	##scope
+	scope :by_program, -> (program_id) { where(program_id: program_id) }
+
     scope :instructor_courses, -> (user_id) {CourseInstructor.where(admin_user_id: user_id).pluck(:section_id)}
     scope :instructors, -> (user_id) {CourseInstructor.where(section_id: instructor_courses(user_id)).pluck(:course_id)}
 
@@ -27,5 +31,6 @@ class Section < ApplicationRecord
 	partial: 1,
 	full: 2
   }
+
 
 end

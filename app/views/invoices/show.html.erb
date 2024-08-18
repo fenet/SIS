@@ -23,7 +23,7 @@
         <% if @invoice.payment_transaction.present? %>
           <div class="callout callout-info">
             <h5><i class="fas fa-info"></i> Note:</h5>
-            thank you! Your payment transfer is being processed. wait for us until finance officer approve your payment.
+           Thank You! Your payment transfer is being processed. wait for us until finance officer approve your payment.
           </div>
         <%else%>
           <div class="callout callout-info">
@@ -139,6 +139,7 @@
                 </address>
               <%end%>
             </div>
+
             <!-- /.col -->
             <div class="col-6">
               <!-- <p class="lead">Amount Due 2/22/2014</p> -->
@@ -147,28 +148,34 @@
                   <tbody>
                     <tr>
                       <th style="width:50%">Subtotal:</th>
-                      <td><%= @invoice.total_price %> ETB</td>
+                      <td><%= @invoice.total_price.round(2) %> ETB</td>
                     </tr>
-                   <!-- <tr>
+                  <tr>
                       <th>Registration Fee:</th>
                       <td><%= @invoice.registration_fee%> ETB</td>
-                    </tr> -->
+                    </tr> 
                     <tr>
                       <th>Total:</th>
-                      <td><b><%= @invoice.total_price + @invoice.registration_fee%> ETB</b></td>
+                      <td><b><%= (@invoice.total_price + @invoice.registration_fee).round(2)%> ETB</b></td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </div>
+
             <!-- /.col -->
           </div>
           <!-- /.row -->
           <!-- this row will not appear when printing -->
+          
           <div class="row no-print">
             <div class="col-12">
               <!-- <a href="invoice-print.html" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a> -->
-              <%= link_to "dashboard", root_path, class: "btn btn-primary"%>
+              <%= link_to invoice_path(@invoice, format: :pdf), class: "btn btn-primary btn-lg my-4 download-pdf-btn" do %>
+                <i class="fas fa-file-pdf"></i> PRINT
+              <% end %>
+
+              <%= link_to "DASHBOARD", root_path, class: "btn btn-primary"%>
               <!-- <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
 								Payment
 								
@@ -190,3 +197,26 @@
   </div>
   <!-- /.container-fluid -->
 </section>
+
+<style>
+.download-pdf-btn {
+  background-color: #e3342f;
+  border-color: #e3342f;
+  color: white;
+  font-size: 0.90rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.download-pdf-btn:hover {
+  background-color: #cc1f1a;
+  transform: scale(1.05);
+}
+
+.download-pdf-btn i {
+  margin-right: 10px;
+}
+
+</style>

@@ -67,8 +67,13 @@ ActiveAdmin.register DocumentRequest do
         end  
       end
       row :receipt do |doc|
-        link_to doc.receipt.filename.to_s, rails_blob_path(doc.receipt, disposition: "attachment")
+        if doc.receipt.attached?
+          link_to doc.receipt.filename.to_s, rails_blob_path(doc.receipt, disposition: "attachment")
+        else
+          "No receipt attached"
+        end
       end
+      
       row :status
       row :track_number
       row :created_at

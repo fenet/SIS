@@ -65,7 +65,7 @@
 													</div>
 													<!-- /.card-header -->
 													<div class="card-body">
-														<p  class="text-center"><strong>Please, transfer <%=Invoice.find_by(id: params[:invoice_id]).total_price if Invoice.find_by(id: params[:invoice_id]).total_price.present?%> ETB to the account we provide you and fill the form with in your bank information.</strong></p>  
+														<p  class="text-center"><strong>Please, transfer <%=Invoice.find_by(id: params[:invoice_id]).total_price.round(2) if Invoice.find_by(id: params[:invoice_id]).total_price.present?%> ETB to the account we provide you and fill the form with in your bank information.</strong></p>  
 														<hr>
 													</div>
 													<!-- /.card-body -->

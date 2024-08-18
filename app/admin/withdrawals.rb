@@ -2,19 +2,38 @@ ActiveAdmin.register Withdrawal do
   menu parent: "Add-ons", label: "Clearance/Withdrawal"
   permit_params :program_id,:department_id,:student_id,:section_id,:academic_calendar_id,:student_id_number,:semester,:year,:fee_status,:reason_for_withdrawal,:last_class_attended,:finance_head_approval,:finance_head_name,:finance_head_date_of_response,:registrar_approval,:registrar_name,:registrar_date_of_response,:dean_approval,:dean_name,:dean_date_of_response,:department_approval,:department_head_name,:department_head_date_of_response,:library_head_approval,:library_head_name,:library_head_date_of_response,:store_head_approval,:store_head_name,:store_head_date_of_response,:created_by,:updated_by
   
+ # batch_action :approve_selected do |selection|
+ #   batch_action_collection.find(selection).each do |withdrawal|
+ #     if current_admin_user.role == "department head" 
+ #       withdrawal.update(department_approval: "approved", department_head_name: current_admin_user.name, department_head_date_of_response: Time.zone.now)
+ #     elsif current_admin_user.role == "registrar head"
+ #       withdrawal.update(registrar_approval: "approved", registrar_name: current_admin_user.name, registrar_date_of_response: Time.zone.now)
+ #     elsif current_admin_user.role == "dean"
+ #       withdrawal.update(dean_approval: "approved", dean_name: current_admin_user.name, dean_date_of_response: Time.zone.now)
+ #     elsif current_admin_user.role == "finance head"
+ #       withdrawal.update(finance_head_approval: "approved", finance_head_name: current_admin_user.name, finance_head_date_of_response: Time.zone.now)
+ #     end
+ #   end
+ #   redirect_to collection_path, alert: "The selected withdrawals have been approved."
+ # end
+
   batch_action :approve_selected do |selection|
-    batch_action_collection.find(selection).each do |withdrawal|
-      if current_admin_user.role == "department head"
+    Withdrawal.where(id: selection).each do |withdrawal|
+      case current_admin_user.role
+      when "department head"
         withdrawal.update(department_approval: "approved", department_head_name: current_admin_user.name, department_head_date_of_response: Time.zone.now)
-      elsif current_admin_user.role == "registrar head"
+      when "registrar head"
         withdrawal.update(registrar_approval: "approved", registrar_name: current_admin_user.name, registrar_date_of_response: Time.zone.now)
-      elsif current_admin_user.role == "dean"
-        withdrawal.update(dean_approval: "approved", dean_name: current_admin_user.name, dean_date_of_response: Time.zone.now)
-      elsif current_admin_user.role == "finance head"
-        withdrawal.update(finance_head_approval: "approved", finance_head_name: current_admin_user.name, finance_head_date_of_response: Time.zone.now)
+      when "library head"
+        withdrawal.update(library_head_approval: "approved", library_head_name: current_admin_user.name, library_head_date_of_response: Time.zone.now)
+      # Add more roles if needed
+      when "dean"
+        withdrawal.update(dean_approval: "approved", library_head_name: current_admin_user.name, library_head_date_of_response: Time.zone.now)
+      when "finance head"
+        withdrawal.update(finance_head_approval: "approved", library_head_name: current_admin_user.name, library_head_date_of_response: Time.zone.now)
       end
     end
-    redirect_to collection_path, alert: "The selected withdrawals have been approved."
+    redirect_to collection_path, notice: "Selected withdrawals have been approved."
   end
 
   batch_action :delete_selected, if: proc { current_admin_user.role == "admin" } do |selection|

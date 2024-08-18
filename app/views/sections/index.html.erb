@@ -1,175 +1,79 @@
 <div class="p-2 my-1">
-  <% if notice %>
-    <p class="alert alert-success text-center"><%= notice %></p>
-  <% end %>
-
-  <% if alert %>
-    <p class="alert alert-danger text-center"><%= alert %></p>
-  <% end %>
-
-  <h2 class="text-center text-xl text-bold text-primary">Assign Section to Student</h2>
+  <h2 class="text-center text-xl text-sm-md text-bold text-primary">Assign Section to Student</h2>
   <%= link_to "Back to home page", admin_program_sections_path, class: 'btn btn-danger' %>
 
   <%= form_tag(assign_sections_path, method: 'get', class: 'section w-50 mx-auto d-flex flex-column gap-6') do %>
-    <p class="text-center text-bold text-primary">Search Section and Student</p>
-    <%= collection_select(:program, :name, @programs, :id, :program_name, { prompt: 'Select a Program' }, required: true, class: "form-control") %>
+    <p class="text-center text-sm-md text-bold text-primary">Search Section and Student</p>
+    <%= collection_select(:program, :name, @programs, :id, :program_name, {prompt: 'Select a Program'}, required: true, class: "form-control") %>
+    
     <select name="year" id="year" class="form-control mt-2" required>
-      <option value="">Select Year</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
+        <option value="">Select Year</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
     </select>
     <select name="semester" id="semester" class="form-control mt-2" required>
-      <option value="">Select a Semester</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
+        <option value="">Select a Semester</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
     </select>
-    <%= collection_select(:student, :batch, Student.select(:batch).where.not(batch: nil).distinct, :batch, :batch, { prompt: 'Select a batch' }, required: true, class: 'form-control mt-2') %>
+    <%= collection_select(:student, :batch, Student.select(:batch).where.not(batch: nil).distinct, :batch, :batch, {prompt: 'Select a batch'}, required: true, class: 'form-control mt-2') %>
+    
     <div class="text-center my-3">
       <input type="submit" value="Search student and section" class="btn btn-success">
     </div>
   <% end %>
 
-  <% if @sections.present? && @students.present? %>
+  <% if @sections.present? %>
     <div class="d-flex justify-content-between">
       <div class="flex-grow-0 p-2">
-        <% if @sections.empty? %>
-          <p class="text-left text-xl text-danger">No section available!</p>
-        <% else %>
-          <h4 class="text-center text-bold text-primary">Select Section</h4>
-          <%= form_with url: sections_path, method: :post, class: 'py-6' do |form| %>
-            <% @sections.each do |section| %>
-              <div>
-                <%= form.label :ss, "#{section.section_full_name} (You can only assign #{section.total_capacity - section.students.count} students)" %>
-                <%= form.radio_button :section, section.id, required: true %>
-              </div>
-            <% end %>
-
-            <% if @students.empty? %>
-              <span class="text-danger">No student!</span>
-            <% else %>
-              <h4 class="text-left text-bold text-primary">Select Students</h4>
-              <% @students.each do |student| %>
-                <div>
-                  <%= check_box_tag 'student_ids[]', student.id %>
-                  <%= label_tag "student_ids_#{student.id}", "#{student.name.full} (#{student.student_id})" %>
-                </div>
-              <% end %>
-              <input type="submit" value="Assign" class="btn btn-success">
-            <% end %>
+        <h4 class="text-center text-sm-md text-bold text-primary">Select Section</h4>
+        <%= form_with url: sections_path, method: :post, class: 'py-6' do |form| %>
+          <% @sections.each do |section| %>
+            <div>
+              <%= form.radio_button :section_id, section.id, required: true %>
+              <%= form.label :section, "#{section.section_full_name} (You can only assign #{section.total_capacity - section.students.count} students)" %>
+            </div>
           <% end %>
+          
+          <input type="submit" value="Randomly Assign Students" class="btn btn-success">
         <% end %>
       </div>
+
+      <div class="flex-grow-1 p-2">
+        <h4 class="text-left text-sm-md text-bold text-primary"><%= @students.count %> unassigned students available</h4>
+        <table class="responsive nowrap table table-hover">
+          <thead>
+            <tr>
+              <th>Student Full Name</th>
+              <th>Student Program</th>
+              <th>Student ID</th>
+              <th>Year</th>
+              <th>Semester</th>
+              <th>Batch</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @students.each do |student| %>
+              <tr>
+                <td class="text-md text-bold text-capitalize"><%= student.name.full %></td>
+                <td class="text-md text-bold text-capitalize"><%= student.program.program_name %></td>
+                <td class="text-md text-bold text-capitalize"><%= student.student_id %></td>
+                <td class="text-md text-bold text-capitalize"><%= student.year %></td>
+                <td class="text-md text-bold text-capitalize"><%= student.semester %></td>
+                <td class="text-md text-bold text-capitalize"><%= student.batch %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
+  <% else %>
+    <p class="text-left text-xl text-danger">No section available!</p>
   <% end %>
 </div>
-
-
-
-
-
-
-<!-- #<div class="p-2 my-1">
-#  <% if notice%>
-#    <p class="alert alert-success text-center"> <%=notice%></p>
-#  <%end%>
-#
-#  <% if alert%>
-#    <p class="alert alert-danger text-center"> <%=alert%></p>
-#  <%end%>
-#  <h2 class="text-center text-xl text-sm-md text-bold  text-primary">Assign Section to Student</h2>
-#  <%= link_to "Back to home page", admin_program_sections_path, class: 'btn btn-danger'%>
-#
-#  <%= form_tag(assign_sections_path, method: 'get', class: 'section w-50 mx-auto d-flex flex-column gap-6') do |form|%>
-#  <p class="text-center text-sm-md text-bold  text-primary">Search Section and Student</p>
-#    <%= collection_select(:program, :name, @programs, :id, :program_name,  {prompt: 'Select a Program'}, required: true, class: "form-control") %>
-#    <select name="year" id="year" class="form-control mt-2" required>
-#        <option value="">Select  Year</option>
-#        <option value="1">1</option>
-#        <option value="2">2</option>
-#        <option value="3">3</option>
-#        <option value="4">4</option>
-#        <option value="5">5</option>
-#      </select>
-#      <select name="semester" id="semester" class="form-control mt-2" required>
-#        <option value="">Select a Semester</option>
-#        <option value="1">1</option>
-#        <option value="2">2</option>
-#        <option value="3">3</option>
-#        <option value="4">4</option>
-#        <option value="5">5</option>
-#      </select>
-#      <%= collection_select(:student, :batch, Student.select(:batch).where.not(batch:nil).distinct, :batch, :batch, {prompt: 'Select a batch'},required: true, class: 'form-control mt-2') %>
-#    <div class="text-center my-3">
-# 
-#      <input type="submit" value="Search student and section", class="btn btn-success">
-#      
-#    </div>
-#  <% end %> 
-#<%if defined?(@sections) || defined?(@students)%>
-#<div class="d-flex justify-content-between">
-#  
-#  <div class="flex-grow-0 p-2">
-#   <%if @sections.empty?%>
-#   <p class="text-left text-xl text-danger">No section avaliable!</p>
-#   <%else%>
-#     <h4 class="text-center text-sm-md text-bold  text-primary">Select Section</h4>
-#    <%=form_with url: sections_path, method: :post, class: 'py-6' do |form|%>
-#    <%@sections&.each do |section|%>
-#      <div>
-#          <%=form.label :ss, section.section_full_name<<" (You can only assign #{section.total_capacity - section.students.count} students)"%>
-#          <%=form.radio_button :section, section.id, required: true%>
-#      </div>
-#    <%end%>
-#      <%if @students.empty?%>
-#       <span class="text-danger">No student!</span>
-#
-#     <%else%>
-#      <input type="submit" value="Assign", class="btn btn-success">
-#      <%end%>
-#    <%end%>
-#   <%end%>
-#  
-#  </div>
-#
-# <div class="flex-grow-1 p-2">
-#<% if @students.empty?%>
-#   <p class="text-center text-xl text-danger">No student avaliable!</p>
-#<%else%>
-#  <h4 class="text-left text-sm-md text-bold  text-primary"><%=@students&.count%> unassigned students avaliable</h4>
-#  <table class="responsive nowrap table table-hover"  data-sort="true" data-source="<%= url_for(format: :json)%>">
-#    <thead>
-#      <tr>
-#        <th data-data="course_title">Student Full Name</th>
-#        <th data-data="letter_grade">Student Program</th>
-#        <th data-data="course_code">Student Id</th>
-#        <th data-data="credit_hour">Year</th>
-#        <th data-data="dean_approval">Semester</th>
-#        <th data-data="registeral_approval">Batch</th>
-#      </tr>
-#    </thead>
-#    <tbody>
-#      <% @students&.each do |student|%>
-#      <tr>
-#        <td class="text-md text-bold text-capitalize"><%=student.name.full%></td>
-#        <td class="text-md text-bold text-capitalize"><%=student.program.program_name%></td>
-#        <td class="text-md text-bold text-capitalize"><%=student.student_id%></td>
-#        <td class="text-md text-bold text-capitalize"><%=student.year%></td>
-#        <td class="text-md text-bold text-capitalize"><%=student.semester%></td>
-#        <td class="text-md text-bold text-capitalize"><%=student.batch%></td>
-#      </tr>
-#      <%end%>
-#    </tbody>
-#  </table>
-#  <%end%>
-# </div>
-#
-#</div>
-#<%end%>
-#
-#</div> -->

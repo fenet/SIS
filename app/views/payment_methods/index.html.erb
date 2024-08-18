@@ -27,17 +27,24 @@
           </div>
           <div class="card-body row">
             <% @payment_methods.each do |payment|%>
-              <div class="col-md-3 col-sm-6 col-12">
-                <%= link_to({controller: "payment_transactions", action: "new", invoice_id: params[:invoice_id], payment_method_id: payment.id} ) do%>
-                  <div class="card" style="width: 15rem;">
-                  
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item  text-center active"><strong> <%= payment.bank_name%></strong></li>
-                    </ul>
-                  </div>
-                <%end%>
-                <!-- /.info-box -->
-              </div>
+              <div class="col-md-4 col-sm-6 col-12 mb-4">
+  <%= link_to({ controller: "payment_transactions", action: "new", invoice_id: params[:invoice_id], payment_method_id: payment.id }) do %>
+    <div class="card border-primary">
+      <div class="card-body text-center">
+        <% if payment.bank_logo.present? %>
+          <%= image_tag(payment.bank_logo, size: '100x100', class: 'img-fluid rounded-circle') %>
+        <% else %>
+          <i class="fas fa-bank fa-3x text-muted"></i> <!-- Placeholder icon if no logo -->
+        <% end %>
+        <h5 class="card-title mt-2"><%= payment.bank_name %></h5>
+      </div>
+      <div class="card-footer text-muted">
+        <%= link_to 'View Transactions', { controller: "payment_transactions", action: "new", invoice_id: params[:invoice_id], payment_method_id: payment.id }, class: 'btn btn-primary btn-block' %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
             <%end%>
           </div>
         </div>

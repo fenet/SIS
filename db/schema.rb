@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_13_053539) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_18_111721) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -187,6 +187,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_13_053539) do
     t.uuid "department_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.uuid "faculty_id"
     t.index ["department_id"], name: "index_admin_users_on_department_id"
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
@@ -256,6 +257,23 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_13_053539) do
     t.index ["course_id"], name: "index_attendances_on_course_id"
     t.index ["program_id"], name: "index_attendances_on_program_id"
     t.index ["section_id"], name: "index_attendances_on_section_id"
+  end
+
+  create_table "class_schedules", force: :cascade do |t|
+    t.uuid "course_id", null: false
+    t.uuid "program_id", null: false
+    t.uuid "section_id", null: false
+    t.string "day_of_week"
+    t.time "start_time"
+    t.time "end_time"
+    t.string "classroom"
+    t.string "class_type"
+    t.string "instructor_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_class_schedules_on_course_id"
+    t.index ["program_id"], name: "index_class_schedules_on_program_id"
+    t.index ["section_id"], name: "index_class_schedules_on_section_id"
   end
 
   create_table "college_payments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -531,6 +549,24 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_13_053539) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["student_id"], name: "index_emergency_contacts_on_student_id"
+  end
+
+  create_table "exam_schedules", force: :cascade do |t|
+    t.uuid "course_id", null: false
+    t.uuid "program_id", null: false
+    t.uuid "section_id", null: false
+    t.string "day_of_week"
+    t.time "start_time"
+    t.time "end_time"
+    t.string "classroom"
+    t.string "class_type"
+    t.string "instructor_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "exam_date"
+    t.index ["course_id"], name: "index_exam_schedules_on_course_id"
+    t.index ["program_id"], name: "index_exam_schedules_on_program_id"
+    t.index ["section_id"], name: "index_exam_schedules_on_section_id"
   end
 
   create_table "exemptions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -970,6 +1006,29 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_13_053539) do
     t.index ["department_id"], name: "index_programs_on_department_id"
   end
 
+  create_table "readmissions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.decimal "last_earned_cgpa", precision: 4, scale: 2
+    t.integer "readmission_semester"
+    t.integer "readmission_year"
+    t.text "reason_for_withdrawal"
+    t.text "comments"
+    t.uuid "program_id"
+    t.uuid "department_id"
+    t.uuid "student_id"
+    t.uuid "section_id"
+    t.uuid "academic_calendar_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "registrar_approval_status", default: "pending"
+    t.string "finance_approval_status", default: "pending"
+    t.string "receipt"
+    t.index ["academic_calendar_id"], name: "index_readmissions_on_academic_calendar_id"
+    t.index ["department_id"], name: "index_readmissions_on_department_id"
+    t.index ["program_id"], name: "index_readmissions_on_program_id"
+    t.index ["section_id"], name: "index_readmissions_on_section_id"
+    t.index ["student_id"], name: "index_readmissions_on_student_id"
+  end
+
   create_table "recurring_payments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "semester_registration_id"
     t.uuid "student_id"
@@ -1344,15 +1403,26 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_13_053539) do
   add_foreign_key "assessment_plans", "admin_users"
   add_foreign_key "assessments", "admin_users"
   add_foreign_key "assessments", "course_registrations"
+  add_foreign_key "class_schedules", "courses"
+  add_foreign_key "class_schedules", "programs"
+  add_foreign_key "class_schedules", "sections"
   add_foreign_key "course_registrations", "add_courses"
   add_foreign_key "departments", "faculties"
   add_foreign_key "dropcourses", "courses"
   add_foreign_key "dropcourses", "departments"
   add_foreign_key "dropcourses", "students"
+  add_foreign_key "exam_schedules", "courses"
+  add_foreign_key "exam_schedules", "programs"
+  add_foreign_key "exam_schedules", "sections"
   add_foreign_key "exemptions", "external_transfers"
   add_foreign_key "external_transfers", "departments"
   add_foreign_key "faculty_deans", "admin_users"
   add_foreign_key "faculty_deans", "faculties"
   add_foreign_key "program_exemptions", "students"
+  add_foreign_key "readmissions", "academic_calendars"
+  add_foreign_key "readmissions", "departments"
+  add_foreign_key "readmissions", "programs"
+  add_foreign_key "readmissions", "sections"
+  add_foreign_key "readmissions", "students"
   add_foreign_key "students", "sections"
 end

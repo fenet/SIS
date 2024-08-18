@@ -3,7 +3,45 @@ ActiveAdmin.register Invoice, as: "RegistrationPayment" do
   actions :all, :except => [:new]
   config.clear_action_items!
   permit_params :student_full_name,:student_id_number,:student_id, :department_id, :program_id, :academic_calendar_id,:semester_registration_id,:invoice_number,:total_price,:registration_fee,:late_registration_fee,:invoice_status,:last_updated_by,:created_by,:due_date,:semester, :year,payment_transaction_attributes: [:id,:invoice_id,:payment_method_id,:account_holder_fullname,:phone_number,:account_number,:transaction_reference,:finance_approval_status,:last_updated_by,:created_by, :receipt_image], inovice_item_ids: []
-   
+  
+  batch_action :approve_invoices do |ids|
+    invoices = Invoice.includes(:payment_transaction).where(id: ids)
+
+    invoices.each do |invoice|
+      invoice.update(invoice_status: 'approved')
+      
+      if invoice.payment_transaction.present?
+        invoice.payment_transaction.update(finance_approval_status: 'approved')
+      end
+    end
+
+    redirect_to collection_path, alert: "The selected invoices have been approved."
+  end
+
+  batch_action :deny_invoices do |ids|
+    invoices = Invoice.includes(:payment_transaction).where(id: ids)
+
+    invoices.each do |invoice|
+      invoice.update(invoice_status: 'denied')
+
+      if invoice.payment_transaction.present?
+        invoice.payment_transaction.update(finance_approval_status: 'denied')
+      end
+    end
+
+    redirect_to collection_path, alert: "The selected invoices have been denied."
+  end
+
+  member_action :download_pdf, method: :get do
+    invoice = Invoice.find(params[:id])
+    pdf = InvoicePdfGenerator.new(invoice).render
+    send_data pdf, filename: "invoice_#{invoice.invoice_number}.pdf", type: 'application/pdf', disposition: 'inline'
+  end
+
+  action_item :download_pdf, only: :show do
+    link_to 'Print Invoice', download_pdf_admin_registration_payment_path(registration_payment), target: '_blank'
+  end
+
 
   # batch_action "Approve invoice status for", method: :put, confirm: "Are you sure?" do |ids|
   #   invoices = Invoice.where(id: ids)
@@ -217,8 +255,13 @@ ActiveAdmin.register Invoice, as: "RegistrationPayment" do
               pr.transaction_reference
             end
             row "attachement" do |pr|
-              link_to "attachement", rails_blob_path(pr.receipt_image, disposition: 'preview')
+              if pr.receipt_image.attached?
+                link_to "attachement", rails_blob_path(pr.receipt_image, disposition: 'preview')
+              else
+                "No attachment available"
+              end
             end
+            
             row "finance approval" do |s|
               status_tag s.finance_approval_status
             end
@@ -258,27 +301,27 @@ ActiveAdmin.register Invoice, as: "RegistrationPayment" do
       end
     end
 
-    columns do
-      column do
-        panel "Invoice Item Information" do
-          table_for registration_payment.invoice_items do
-            column "Course title" do |pr|
-              link_to pr.course_registration.course.course_title, admin_course_path(pr.course_registration.course.id)
-            end
-            column "Course code" do |pr|
-              pr.course_registration.course.course_code
-            end
-            column "Course module" do |pr|
-              link_to pr.course_registration.course.course_module.module_code, admin_course_module_path(pr.course_registration.course.course_module.id) 
-            end
-            column "Credit hour" do |pr|
-              pr.course_registration.course.credit_hour
-            end
-            number_column :price, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
-          end
-        end
-      end
-    end
+   # columns do
+   #   column do
+   #     panel "Invoice Item Information" do
+   #       table_for registration_payment.invoice_items do
+   #         column "Course title" do |pr|
+   #           link_to pr.course_registration.course.course_title, admin_course_path(pr.course_registration.course.id)
+   #         end
+   #         column "Course code" do |pr|
+   #           pr.course_registration.course.course_code
+   #         end
+   #         column "Course module" do |pr|
+   #           link_to pr.course_registration.course.course_module.module_code, admin_course_module_path(pr.course_registration.course.course_module.id) 
+   #         end
+   #         column "Credit hour" do |pr|
+   #           pr.course_registration.course.credit_hour
+   #         end
+   #         number_column :price, as: :currency, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2
+   #       end
+   #     end
+   #   end
+   # end
     
     
   end 

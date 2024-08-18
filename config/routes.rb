@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'readmissions/new'
+  get 'readmissions/create'
+  get 'readmissions/index'
   get 'document_requests/new'
   get 'document_requests/create'
   get 'document_requests/show'
@@ -39,7 +42,7 @@ Rails.application.routes.draw do
   #  end
   #end
   
-  resources :makeup_exams, only: [:new, :create] do
+  resources :makeup_exams, only: [:index, :new, :create] do
     member do
       get :payment
       patch :payment, action: :update
@@ -90,7 +93,7 @@ resources :courses do
 end
 resources :courses, only: [:index]
 
-resources :document_requests, only: [:new, :create, :show] do
+resources :document_requests, only: [:index, :new, :create, :show] do
 
   member do
     get :payment
@@ -133,6 +136,24 @@ end
     end
   end
   
+  namespace :admin do
+    resources :registration_payments do
+      member do
+        get :download_pdf
+      end
+    end
+  end
+
+  resources :class_schedules, only: [:index]
+  resources :exam_schedules, only: [:index, :new, :create, :edit, :update]
+
+  resources :readmissions, only: [:index, :new, :create] do
+    member do
+      get :payment
+      patch :payment, action: :update
+      patch :verify
+    end
+  end
 
   get "student_temporary/index", as: "student_temporary"
   post "student/tempo/generate", to: "student_temporary#generate_pdf", as: "generate_student_tempo"

@@ -13,6 +13,23 @@
 
 $(document).ready(function () {
 
+  function toggleFacultyField() {
+    var role = $('#admin_user_role').val();
+    if (role === 'dean') {
+      $('.faculty-select').closest('.input').show();
+    } else {
+      $('.faculty-select').closest('.input').hide();
+    }
+  }
+
+  // Initial check
+  toggleFacultyField();
+
+  // Check on role change
+  $('#admin_user_role').change(function() {
+    toggleFacultyField();
+  });
+  
   $("#student_photo").change(function (data) {
 
     var imageFile = data.target.files[0];
