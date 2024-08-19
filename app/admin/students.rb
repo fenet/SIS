@@ -213,6 +213,19 @@ ActiveAdmin.register Student do
       f.input :password_confirmation
       f.input :semester
       f.input :year
+      f.input :batch, as: :select, collection: [
+                '2019/2020',
+                '2020/2021',
+                '2021/2022', 
+                '2022/2023', 
+                '2023/2024', 
+                '2024/2025', 
+                '2025/2026', 
+                '2026/2027', 
+                '2027/2028', 
+                '2028/2029', 
+                '2029/2030'
+              ], include_blank: false
       f.input :section, as: :select, collection: Section.all.pluck(:section_full_name, :id)
       if f.object.new_record?
         f.input :created_by, as: :hidden, input_html: { value: current_admin_user.name.full }

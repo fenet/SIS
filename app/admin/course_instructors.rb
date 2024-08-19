@@ -1,5 +1,7 @@
 ActiveAdmin.register CourseInstructor do
     # Ensure only department heads can access this page
+    menu parent: "Department"
+
     controller do
       def scoped_collection
         if current_admin_user.role == 'department head'

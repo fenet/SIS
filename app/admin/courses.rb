@@ -3,14 +3,28 @@ ActiveAdmin.register Course do
   
   scope :all, default: true
 
-scope :my_faculty do |scope|
-  if current_admin_user.role == 'dean' && current_admin_user.faculty_id.present?
-    scope.joins(program: { department: :faculty })
-         .where(departments: { faculty_id: current_admin_user.faculty_id })
-  else
-    scope
+#scope :my_faculty do |scope|
+#  if current_admin_user.role == 'dean' && current_admin_user.faculty_id.present?
+#    scope.joins(program: { department: :faculty })
+#         .where(departments: { faculty_id: current_admin_user.faculty_id })
+#  else
+#    scope
+#  end
+#end
+
+student_types = ["regular", "extention"] # Replace with actual values used in your Program model
+
+  student_types.each do |student_type|
+    (1..5).each do |year|
+      (1..4).each do |semester|
+        if Course.joins(:program).where(year: year, semester: semester, programs: { admission_type: student_type }).exists?
+          scope "#{student_type} - Year #{year}, Semester #{semester}" do |scope|
+            scope.joins(:program).where(year: year, semester: semester, programs: { admission_type: student_type })
+          end
+        end
+      end
+    end
   end
-end
 
 
   permit_params(:course_outline, :course_module_id, :major, :curriculum_id, :program_id, :course_title, 
@@ -96,11 +110,11 @@ end
         f.input :curriculum_id, as: :search_select, url: proc { admin_curriculums_path },
                 fields: [:curriculum_version, :id], display_name: 'curriculum_version', minimum_input_length: 1,
                 order_by: 'created_at_asc'
-        f.input :credit_hour, required: true, min: 1, as: :select, collection: [1, 2, 3, 4, 5, 6, 7], include_blank: false
+        f.input :credit_hour, required: true, min: 1, as: :select, collection: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], include_blank: false
         f.input :lecture_hour
         f.input :lab_hour
         f.input :ects, label: "Contact Hour"
-        f.input :year, as: :select, collection: [1, 2, 3, 4, 5, 6, 7], include_blank: false
+        f.input :year, as: :select, collection: [1, 2, 3, 4, 5], include_blank: false
         f.input :semester, as: :select, collection: [1, 2, 3, 4], include_blank: false
         f.input :course_starting_date, as: :date_time_picker 
         f.input :course_ending_date, as: :date_time_picker
@@ -163,18 +177,23 @@ end
       end
 
       panel "Course instructors" do
-        f.has_many :course_instructors, heading: " ", remote: true, allow_destroy: true, new_record: true do |a|
-          a.input :admin_user_id, as: :search_select, url: proc { admin_instructors_path },
-                  fields: [:username, :id], display_name: 'username', minimum_input_length: 2,
-                  order_by: 'created_at_asc', label: "Instructor"
-          a.input :section_id, as: :select, collection: course.program.sections.pluck(:section_full_name, :id), label: "Section" 
-          a.input :academic_calendar_id, as: :search_select, url: proc { admin_academic_calendars_path },
-                  fields: [:calender_year, :id], display_name: 'calender_year', minimum_input_length: 2,
-                  order_by: 'created_at_asc'
-          a.input :year
-          a.input :semester
-        end
-      end
+  # Add the debug statements here
+  puts course.inspect
+  puts course.program.inspect
+  
+  f.has_many :course_instructors, heading: " ", remote: true, allow_destroy: true, new_record: true do |a|
+    a.input :admin_user_id, as: :search_select, url: proc { admin_instructors_path },
+            fields: [:first_name, :id], display_name: 'first_name', minimum_input_length: 2,
+            order_by: 'created_at_asc', label: "Instructor"
+    a.input :section_id, as: :select, collection: (course&.program&.sections&.pluck(:section_full_name, :id) || []), label: "Section"
+    a.input :academic_calendar_id, as: :search_select, url: proc { admin_academic_calendars_path },
+            fields: [:calender_year, :id], display_name: 'calender_year', minimum_input_length: 2,
+            order_by: 'created_at_asc'
+    a.input :year
+    a.input :semester
+  end
+end
+
 
     elsif params[:page_name] == "course_outlines" || current_admin_user.role == "instructor"
       panel "Add Course Outline" do

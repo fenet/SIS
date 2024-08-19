@@ -75,7 +75,7 @@ filter :updated_at
             order_by: 'id_asc'
           a.input :course_title
           a.input :course_code
-          a.input :credit_hour, :required => true, min: 1, as: :select, :collection => [1, 2,3,4,5,6,7], :include_blank => false
+          a.input :credit_hour, :required => true, min: 1, as: :select, :collection => [0,1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], :include_blank => false
           a.input :lecture_hour
           a.input :lab_hour
           a.input :ects, label:"contact hr"

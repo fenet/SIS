@@ -340,7 +340,6 @@ class Ability
       can :read, ActiveAdmin::Page, name: 'Dashboard', namespace_name: 'admin'
       #can :manage, ActiveAdmin::Page, name: 'ExternalTransfer', namespace_name: 'admin'
       can :manage, ExternalTransfer, department_id: user.department_id
-
       can %i[read update], Department, department_name: user.department.department_name
       can %i[read update], Dropcourse, department_id: user.department_id
       can %i[read update destroy], AddCourse, department_id: user.department_id
@@ -348,28 +347,21 @@ class Ability
       can :create, CourseModule
       # can :manage, Exemption
       can :manage, ProgramExemption#, department_id: user.department.id
-      can :manage, Course#, course_module: { department_id: user.department.id }
+      can :manage, Course, program: { department_id: user.department.id }
       can :create, Course
-
       can :manage, AdminUser, role: 'instructor'
       can :create, AdminUser
       can :manage, Assessment, student: { department_id: user.department_id } 
       can %i[read update destroy], Program, department_id: user.department.id
       can :create, Program
-
       can %i[read update destroy], Curriculum, program: { department_id: user.department.id }
       can :create, Curriculum
-
       can %i[read update destroy], GradeSystem, program: { department_id: user.department.id }
       can :create, GradeSystem
-
       can :manage, AssessmentPlan, course: { program: { department_id: user.department.id } }
       can :create, AssessmentPlan
-
       can %i[read update], Transfer#, department_id: user.department.id
-
       can :read, AcademicCalendar
-
       can :read, Section, program: { department_id: user.department.id }
       can :read, Student, department_id: "#{user.department_id}"
       can :read, CourseRegistration, department_id: user.department.id

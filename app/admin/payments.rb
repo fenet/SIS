@@ -69,6 +69,8 @@ ActiveAdmin.register Payment do
               fields: [:program_name, :id], display_name: 'program_name', minimum_input_length: 2,lebel: "attendance title", order_by: 'created_at_asc'
       
               f.input :batch, as: :select, collection: [
+                '2019/2020',
+                '2020/2021',
                 '2021/2022', 
                 '2022/2023', 
                 '2023/2024', 

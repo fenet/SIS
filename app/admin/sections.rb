@@ -45,6 +45,8 @@ ActiveAdmin.register Section, as: "ProgramSection" do
       f.input :section_full_name
       f.input :total_capacity
       f.input :batch, as: :select, collection: [
+                '2019/2020',
+                '2020/2021',  
                 '2021/2022', 
                 '2022/2023', 
                 '2023/2024', 
