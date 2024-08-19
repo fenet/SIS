@@ -1,69 +1,116 @@
 # frozen_string_literal: true
-ActiveAdmin.register_page "ExternalTransfer" do
-  menu label: "Student Transfer"
-  #menu parent: "Add-ons",label: "External Transfer"
-  #permit_params :first_name, :last_name, :previous_institution, :previous_student_id, :status, :study_level, :admission_type, :department_id, :approved_by, :message, :email
+ActiveAdmin.register ExternalTransfer do
+  menu parent: "Add-ons", label: "Student Transfer"
 
-  #filter :student 
+  # Filters on the index page
+  filter :first_name
+  filter :last_name
+  filter :email
+  filter :status, as: :select, collection: ExternalTransfer.statuses.keys
+  filter :department
+  filter :previous_institution
+  filter :created_at
+  filter :updated_at
 
-  content do
-    div id: "approval" do
+  # Index page configurations
+  index do
+    selectable_column
+    # id_column
+    column :first_name
+    column :last_name
+    column :email
+    column :department
+    column :previous_institution
+    column :status do |transfer|
+      status_tag transfer.status
     end
-    tabs do
-      transfers = current_admin_user.department.external_transfers
-      tab "New Transfer Application (#{transfers.where(status: 0).size} application on pending)" do
-        table_for transfers.where(status: 0) do
-          column :first_name
-          column :last_name
-          column :previous_institution, sortable: true
-          column "Student ID", sortable: true do |c|
-            c.previous_student_id
-          end
-          column :admission_type do |c|
-            c.admission_type&.capitalize
-          end
-          column :study_level do |c|
-            c.study_level&.capitalize
-          end
+    column :created_at
+    column :updated_at
+    actions
+  end
 
-          column :status do |c|
-            status_tag c.status
-          end
-          column "Action" do |c|
-            link_to "Approve", transfer_approval_path(c, "#{current_admin_user&.first_name} #{current_admin_user&.last_name}"), class: "btn btn-primary", target: "_blank"
-          end
+  # Show page configurations
+  show do
+    attributes_table do
+      row :first_name
+      row :last_name
+      row :email
+      row :department
+      row :previous_institution
+      row :previous_student_id
+      row :status do |transfer|
+        status_tag transfer.status
+      end
+      row :study_level
+      row :admission_type
+      row :message
+      row :approved_by
+      row :transcript do |transfer|
+        if transfer.transcript.attached?
+          link_to 'Download Transcript', rails_blob_path(transfer.transcript, disposition: "attachment")
+        else
+          "No Transcript Attached"
         end
       end
-      tab "Course Exemption" do
-        table_for transfers.where.not(status: 0) do
-          column :first_name
-          column :last_name
-          column :previous_institution, sortable: true
-          column "Student ID", sortable: true do |c|
-            c.previous_student_id
-          end
-          column :admission_type do |c|
-            c.admission_type&.capitalize
-          end
-          column :study_level do |c|
-            c.study_level&.capitalize
-          end
+      row :created_at
+      row :updated_at
+    end
 
-          column :status do |c|
-            status_tag c.status
-          end
-          column "Action" do |c|
-            link_to "Change Status", transfer_approval_path(c, "#{current_admin_user&.first_name} #{current_admin_user&.last_name}"), class: "btn btn-primary", target: "_blank"
-          end
-          column "Exemption" do |c|
-            if c.rejected?
-              status_tag "No Exemption"
-            else
-              link_to "Manage Exemption", index_exemptions_path(c, "Approved by #{current_admin_user&.first_name} #{current_admin_user&.last_name}"), class: "btn btn-primary", target: "_blank"
-            end
-          end
-        end
+    # Button to create a new exemption if the status is accepted
+    if external_transfer.accepted?
+      panel "Actions" do
+        link_to 'Create Exemption', new_admin_exemption_path(external_transfer_id: external_transfer.id), class: 'button'
       end
     end
+
+    active_admin_comments
+  end
+
+  # Form configuration for new and edit actions
+  form do |f|
+    f.semantic_errors
+
+    f.inputs do
+      f.input :first_name
+      f.input :last_name
+      f.input :email
+      f.input :department, as: :select, collection: Department.all.collect { |department| [department.department_name, department.id] }
+      f.input :previous_institution
+      f.input :previous_student_id
+      f.input :status, as: :select, collection: ExternalTransfer.statuses.keys
+      f.input :study_level
+      f.input :admission_type
+      f.input :message
+      f.input :approved_by
+      f.input :transcript, as: :file
+    end
+
+    f.actions
+  end
+
+  # Action Items
+  action_item :approve, only: :show do
+    link_to 'Approve', approval_admin_external_transfer_path(external_transfer), method: :put if external_transfer.pending?
+  end
+
+  # Custom Routes for Approval
+  member_action :approval, method: :put do
+    resource.update(status: ExternalTransfer.statuses[:accepted], approved_by: current_admin_user.email)
+    redirect_to resource_path, notice: "External Transfer approved successfully."
+  end
+
+  # Batch Actions for Accept and Reject
+  batch_action :accept do |ids|
+    batch_action_collection.find(ids).each do |external_transfer|
+      external_transfer.update(status: 1, approved_by: current_admin_user.email)
+    end
+    redirect_to collection_path, alert: "The selected transfers have been accepted."
+  end
+
+  batch_action :reject do |ids|
+    batch_action_collection.find(ids).each do |external_transfer|
+      external_transfer.update(status: 2, approved_by: current_admin_user.email)
+    end
+    redirect_to collection_path, alert: "The selected transfers have been rejected."
   end
 end

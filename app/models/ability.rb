@@ -41,6 +41,9 @@ class Ability
       can :manage, FacultyDean
       can :manage, ProgramExemption#, department_id: user.department.id
       can :manage, Readmission
+      can :manage, ExternalTransfer
+      can :manage, ClassSchedule
+
       # can :manage, Graduation
       can :manage, PaymentTransaction
       can :manage, StudentAddress
@@ -335,7 +338,9 @@ class Ability
       can :manage, Invoice
     when 'department head'
       can :read, ActiveAdmin::Page, name: 'Dashboard', namespace_name: 'admin'
-      can :manage, ActiveAdmin::Page, name: 'ExternalTransfer', namespace_name: 'admin'
+      #can :manage, ActiveAdmin::Page, name: 'ExternalTransfer', namespace_name: 'admin'
+      can :manage, ExternalTransfer, department_id: user.department_id
+
       can %i[read update], Department, department_name: user.department.department_name
       can %i[read update], Dropcourse, department_id: user.department_id
       can %i[read update destroy], AddCourse, department_id: user.department_id

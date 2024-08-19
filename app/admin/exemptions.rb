@@ -1,5 +1,5 @@
 ActiveAdmin.register Exemption do
-  menu parent: "Student managment"
+  menu parent: "Add-ons", label: "Exemption"
   permit_params :course_title, :letter_grade, :course_code, :credit_hour, :department_approval, :dean_approval, :registeral_approval, :exemption_needed, :external_transfer_id
 
   batch_action "Approve application status by registeral for", method: :put, confirm: "Are you sure?", if: proc { current_admin_user.role == "registrar head" || current_admin_user.role == "admin" } do |ids|
@@ -52,6 +52,39 @@ ActiveAdmin.register Exemption do
     column :dean_approval, sortable: true
     column :registeral_approval, sortable: true
     actions
-    # end
+  end
+
+  show do
+    attributes_table do
+      row :external_transfer do |exemption|
+        exemption.external_transfer&.first_name + " " + exemption.external_transfer&.last_name
+      end
+      row :course_title
+      row :letter_grade
+      row :course_code
+      row :credit_hour
+      row :department_approval
+      row :dean_approval
+      row :registeral_approval
+      row :exemption_needed
+      row :created_at
+      row :updated_at
+    end
+    active_admin_comments
+  end
+
+  form do |f|
+    f.inputs "Exemption Details" do
+      f.input :external_transfer_id, as: :select, collection: ExternalTransfer.all.collect { |et| [et.first_name + " " + et.last_name, et.id] }, include_blank: false
+      f.input :course_title
+      f.input :letter_grade
+      f.input :course_code
+      f.input :credit_hour
+      f.input :department_approval
+      f.input :dean_approval
+      f.input :registeral_approval
+      f.input :exemption_needed
+    end
+    f.actions
   end
 end

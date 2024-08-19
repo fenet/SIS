@@ -144,7 +144,17 @@ end
     end
   end
 
-  resources :class_schedules, only: [:index]
+  
+namespace :admin do
+  resources :class_schedules do
+    collection do
+      get :fetch_courses_and_sections
+    end
+  end
+end
+
+resources :class_schedules, only: [:index]
+  #resources :class_schedules, only: [:index]
   resources :exam_schedules, only: [:index, :new, :create, :edit, :update]
 
   resources :readmissions, only: [:index, :new, :create] do

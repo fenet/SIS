@@ -72,7 +72,7 @@ menu parent: "Attendance"
   end
 
   action_item :download_pdf, only: :show do
-    link_to 'Download Attendance Sheet PDF', download_pdf_admin_attendance_path(attendance), method: :get
+    link_to 'Print Attendance Sheet', download_pdf_admin_attendance_path(attendance), method: :get
   end
 
   #action_item :edit, only: :show, priority: 0 do

@@ -11,6 +11,7 @@
 //= require student_report
 //= require online_student
 
+
 $(document).ready(function () {
 
   function toggleFacultyField() {
