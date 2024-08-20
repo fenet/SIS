@@ -4,8 +4,29 @@ class CoursesController < ApplicationController
       end
     
       # Other actions can be added here (show, new, edit, create, update, destroy)
+
+      def pdf_by_scope
+        scope = params[:scope]
+        courses = filtered_courses(scope)
+    
+        pdf = CoursesPdf.new(courses)
+    
+        send_data pdf.render, filename: "courses_#{scope}.pdf", type: 'application/pdf', disposition: 'inline'
+      end
     
       private
+
+      #def filtered_courses(scope)
+      #  case scope
+      #  when 'regular_year_1_semester_1'
+      #    Course.joins(:program).where(year: 1, semester: 1, programs: { admission_type: 'regular' })
+      #  when 'extension_year_1_semester_1'
+      #    Course.joins(:program).where(year: 1, semester: 1, programs: { admission_type: 'extension' })
+      #  # Add more cases for other scopes
+      #  else
+      #    Course.none
+      #  end
+      #end
     
       def set_course
         @course = Course.find(params[:id])

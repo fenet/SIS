@@ -3,6 +3,16 @@ ActiveAdmin.register GradeReport do
   actions :all, :except => [:new]
   permit_params :semester_registration_id, :student_id, :academic_calendar_id, :program_id, :department_id, :section_id, :admission_type, :study_level, :total_course, :total_credit_hour, :total_grade_point, :cumulative_total_credit_hour, :cumulative_total_grade_point, :cgpa, :sgpa, :semester, :year, :academic_status, :registrar_approval, :registrar_name, :dean_approval, :dean_name, :department_approval, :updated_by, :created_by
 
+  scope :all, default: true
+
+  scope :department_approved do |reports|
+    reports.where(department_approval: "approved")
+  end
+
+  scope :dean_approved do |reports|
+    reports.where(dean_approval: "approved")
+  end
+  
   collection_action :pdf_report, method: :get do
     students = GradeReport.all
     respond_to do |format|

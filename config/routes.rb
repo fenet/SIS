@@ -41,6 +41,9 @@ Rails.application.routes.draw do
   #    patch :verify
   #  end
   #end
+  #get 'courses/pdf/:scope', to: 'courses#pdf_by_scope', as: 'courses_pdf_by_scope'
+ # post 'admin/class_schedules/:id/upload_file', to: 'admin/class_schedules#upload_file', as: 'upload_file_admin_class_schedule'
+
   
   resources :makeup_exams, only: [:index, :new, :create] do
     member do

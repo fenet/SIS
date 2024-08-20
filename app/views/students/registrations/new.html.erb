@@ -530,5 +530,26 @@
       validations: val,
     }).navigateTo(0);
   });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var currentTab = 0; // Start at the first tab
+    showTab(currentTab); // Display the current tab
+    
+    function showTab(n) {
+      // Get all tab elements
+      var x = document.getElementsByClassName("tab");
+      x[n].style.display = "block";
+      
+      // Hide or show the submit button based on the step
+      if (n == 5) { // If this is the last step (6th step, zero-indexed)
+        document.querySelector("input[type='submit']").style.display = "inline-block";
+      } else {
+        document.querySelector("input[type='submit']").style.display = "none";
+      }
+    }
+    
+    // Add more navigation handling logic here for previous/next buttons
+  });
+
 </script>
 

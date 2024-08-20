@@ -1,20 +1,20 @@
 ActiveAdmin.register Program do
-  menu parent: "Program"
+  menu parent: "Program",label: "Program Modality"
   permit_params :entrance_exam_requirement_status,:program_semester,:department_id,:total_semester,:program_name,:program_code,:overview,:program_description,:created_by,:last_updated_by,:total_tuition,:study_level,:admission_type,:program_duration, curriculums_attributes: [:id, :curriculum_title,:curriculum_version,:total_course,:total_ects,:total_credit_hour,:active_status,:curriculum_active_date,:depreciation_date,:created_by,:last_updated_by, :_destroy]
   active_admin_import
 
   index do
     selectable_column
     column :program_name
-    column "Department", sortable: true do |d|
-      # link_to d.department&.department_name, [:admin, d.department]
-    end
+    #column "Department", sortable: true do |d|
+    #  # link_to d.department&.department_name, [:admin, d.department]
+    #end
     column "courses" do |c|
       c.courses.count
     end
     column :study_level
     column :admission_type
-    column "duration", :program_duration
+    column "program year", :program_duration
     column :entrance_exam_requirement_status
     column "Created At", :program_created_at do |c|
       c.created_at.strftime("%b %d, %Y")
@@ -65,7 +65,7 @@ ActiveAdmin.register Program do
           order_by: 'id_asc'
       f.input :study_level, as: :select, :collection => ["undergraduate", "graduate", "TPVT"], :include_blank => false
       f.input :admission_type, as: :select, :collection => ["online", "regular", "extention", "distance"], :include_blank => false
-      f.input :program_duration, as: :select, :collection => [1, 2,3,4,5,6,7], :include_blank => false
+      f.input :program_duration, as: :select, :collection => [1, 2,3,4,5,6,7], :include_blank => false, label: "program year"
       f.input :program_semester , as: :select, :collection => [1, 2,3,4], :include_blank => false
       # f.input :monthly_price
       # f.input :full_semester_price
@@ -128,7 +128,7 @@ ActiveAdmin.register Program do
           end
           row :study_level
           row :admission_type
-          row :program_duration
+          row :program_duration, label: 'program year'
           row :program_semester
           number_row "Tuition", :total_tuition, as: :currency, unit: "ETB", format: "%n %u", delimiter: ",", precision: 2
           row :entrance_exam_requirement_status

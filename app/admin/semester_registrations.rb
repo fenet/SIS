@@ -21,7 +21,7 @@ ActiveAdmin.register SemesterRegistration do
   
                                                       member_action :download_pdf, method: :get do
                                                         @semester_registration = SemesterRegistration.find(params[:id])
-                                                    
+                                                      
                                                         pdf = Prawn::Document.new
                                                         pdf.text "Student Registration Information", size: 20, style: :bold
                                                         pdf.move_down 20
@@ -32,28 +32,38 @@ ActiveAdmin.register SemesterRegistration do
                                                         pdf.text "Year: #{@semester_registration.year}"
                                                         pdf.text "Semester: #{@semester_registration.semester}"
                                                         pdf.move_down 20
-                                                    
+                                                      
                                                         pdf.text "Course Registrations", size: 18, style: :bold
                                                         pdf.move_down 10
-                                                    
-                                                        table_data = [["Course Name", "Code", "Credit Hour", "Year", "Semester"]]
+                                                      
+                                                        table_data = [["Course Name", "Code", "Credit Hour", "Contact Hour"]]
+                                                        
+                                                        total_credit_hours = 0
+                                                        total_contact_hours = 0
+                                                        
                                                         @semester_registration.course_registrations.each do |registration|
                                                           table_data << [
                                                             registration.course.course_title,
                                                             registration.course.course_code,
                                                             registration.course.credit_hour,
-                                                            registration.course.year,
-                                                            registration.course.semester
+                                                            registration.course.ects
                                                           ]
+                                                          total_credit_hours += registration.course.credit_hour
+                                                          total_contact_hours += registration.course.ects
                                                         end
-                                                    
+                                                      
                                                         pdf.table(table_data, header: true, row_colors: ["F0F0F0", "FFFFFF"], cell_style: { borders: [:top, :bottom] }) do
                                                           row(0).font_style = :bold
                                                           row(0).background_color = "CCCCCC"
                                                         end
-                                                    
+                                                      
+                                                        pdf.move_down 20
+                                                        pdf.text "Total Credit Hours: #{total_credit_hours}", size: 14, style: :bold
+                                                        pdf.text "Total Contact Hours: #{total_contact_hours}", size: 14, style: :bold
+                                                      
                                                         send_data pdf.render, filename: "semester_registration_#{@semester_registration.id}.pdf", type: 'application/pdf'
                                                       end
+                                                      
                                                     
                                                       action_item :download_pdf, only: :show do
                                                         link_to 'Print_registration_slip', download_pdf_admin_semester_registration_path(semester_registration), class: 'button'
