@@ -110,9 +110,9 @@ class Ability
       
       # cannot :destroy, StudentGrade
       can %i[create read destroy], Assessment, admin_user_id: user.id
-      can :manage, Attendance, section_id: Section.instructor_courses(user.id)
+      can :manage, Attendance
       #can :update, Attendance, section_id: Section.instructor_courses(user.id)
-      can :manage, Session
+      #can :manage, Session
       #can :read, Session, course_id: Section.instructors(user.id)
       #can :update, Session, course_id: Section.instructors(user.id)
       #cannot :destroy, Session, course_id: Section.instructors(user.id)

@@ -14,22 +14,34 @@
 
 $(document).ready(function () {
 
-  function toggleFacultyField() {
+  function toggleFields() {
     var role = $('#admin_user_role').val();
+  
     if (role === 'dean') {
       $('.faculty-select').closest('.input').show();
     } else {
       $('.faculty-select').closest('.input').hide();
     }
+  
+    if (role === 'instructor') {
+      $('.position-select').closest('.input').show();
+      $('.educational-level-select').closest('.input').show();
+      $('.employee-type-select').closest('.input').show();
+    } else {
+      $('.position-select').closest('.input').hide();
+      $('.educational-level-select').closest('.input').hide();
+      $('.employee-type-select').closest('.input').hide();
+    }
   }
-
+  
   // Initial check
-  toggleFacultyField();
-
+  toggleFields();
+  
   // Check on role change
   $('#admin_user_role').change(function() {
-    toggleFacultyField();
+    toggleFields();
   });
+t  
   
   $("#student_photo").change(function (data) {
 

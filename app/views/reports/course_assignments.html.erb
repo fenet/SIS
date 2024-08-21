@@ -3,15 +3,48 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Instructor Name</th>
-      <th>Number of Courses</th>
+      <th>No</th>
+      <th>Instructor's Name</th>
+      <th>Courses</th>
     </tr>
   </thead>
   <tbody>
-    <% @instructors.each do |instructor| %>
+    <% @instructors.each_with_index do |instructor, index| %>
+      <% # Find all course-instructor assignments for this instructor %>
+      <% instructor_courses = @course_instructors.select { |ci| ci.admin_user_id == instructor.id } %>
+      <% courses_grouped = instructor_courses.group_by { |ci| ci.course } %>
       <tr>
+        <td><%= index + 1 %></td>
         <td><%= "#{instructor.first_name} #{instructor.last_name}" %></td>
-        <td><%= instructor.courses_count %></td>
+        <td>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Course Name</th>
+                <th>Credit Hour</th>
+                <th>Section (No of Sections)</th>
+                <th>Contact Hr.</th>
+                <th>Total Contact Hr.</th>
+                <th>Weekly Teaching Load in the Semester</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% courses_grouped.each do |course, course_instructors| %>
+                <% sections_count = course_instructors.map(&:section_id).uniq.size %>
+                <% total_ects = sections_count * course.ects %>
+                <% weekly_teaching_load = course_instructors.sum { |ci| total_ects } %>
+                <tr>
+                  <td><%= course.course_title %></td>
+                  <td><%= course.credit_hour %></td>
+                  <td><%= sections_count %></td>
+                  <td><%= course.ects %></td>
+                  <td><%= total_ects %></td>
+                  <td><%= weekly_teaching_load %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </td>
       </tr>
     <% end %>
   </tbody>

@@ -96,7 +96,7 @@ ActiveAdmin.register Payment do
       f.input :daily_penalty_fee
       #f.input :makeup_exam_fee
       f.input :add_drop
-      f.input :tution_per_credit_hr
+      f.input :tution_per_credit_hr, label: "tution_per_contact_hr"
 
       #f.input :readmission
       #f.input :reissuance_of_grade_report

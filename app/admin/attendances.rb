@@ -23,53 +23,50 @@ menu parent: "Attendance"
 
   form do |f|
     f.semantic_errors
-    if !(params[:page_name] == "add") && !(current_admin_user.role == "instructor")
-      f.inputs "Attendance information" do
-        f.input :attendance_title
-        
-        f.input :course_id, as: :search_select, url: admin_courses_path,
-              fields: [:course_code, :id], display_name: 'course_code', minimum_input_length: 2,lebel: "course code",
-              order_by: 'id_asc'
-        f.input :section_id, as: :search_select, url: admin_program_sections_path,
-              fields: [:section_full_name, :id], display_name: 'section_full_name', minimum_input_length: 2,
-              order_by: 'id_asc'
-        f.input :academic_calendar_id, as: :search_select, url: admin_academic_calendars_path,
-              fields: [:calender_year, :id], display_name: 'calender_year', minimum_input_length: 2,
-              order_by: 'id_asc'
-        f.input :year
-        f.input :semester
-        f.input :created_at, as: :date_time_picker
-        if f.object.new_record?
-          f.input :created_by, as: :hidden, :input_html => { :value => current_admin_user.name.full}
-        else
-          f.input :updated_by, as: :hidden, :input_html => { :value => current_admin_user.name.full}
-        end
-      end
-    else
-      if f.object.sessions.empty?
-        f.object.sessions << Session.new
-      end
-      panel "Session Information" do
-        f.has_many :sessions,heading: " ", remote: true, allow_destroy: true, new_record: true do |a|
-          # a.input :attendance_id, as: :search_select, url: admin_attendances_path,
-          # fields: [:attendance_title, :id], display_name: 'attendance_title', minimum_input_length: 2,
-          # order_by: 'id_asc'
-          a.input :session_title
-          a.input :starting_date, as: :date_time_picker 
-          a.input :ending_date, as: :date_time_picker 
-          # a.input :session_title
-          
-          if a.object.new_record?
-            a.input :created_by, as: :hidden, :input_html => { :value => current_admin_user.name.full}
-          else
-            a.input :last_updated_by, as: :hidden, :input_html => { :value => current_admin_user.name.full}
-          end 
-          a.label :_destroy
-        end
+    
+    f.inputs "Attendance information" do
+      f.input :attendance_title
+      
+      f.input :course_id, as: :search_select, url: admin_courses_path,
+            fields: [:course_code, :id], display_name: 'course_code', minimum_input_length: 2, label: "course code",
+            order_by: 'id_asc'
+      f.input :section_id, as: :search_select, url: admin_program_sections_path,
+            fields: [:section_full_name, :id], display_name: 'section_full_name', minimum_input_length: 2,
+            order_by: 'id_asc'
+      f.input :academic_calendar_id, as: :search_select, url: admin_academic_calendars_path,
+            fields: [:calender_year, :id], display_name: 'calender_year', minimum_input_length: 2,
+            order_by: 'id_asc'
+      f.input :year
+      f.input :semester
+      f.input :created_at, as: :date_time_picker
+      if f.object.new_record?
+        f.input :created_by, as: :hidden, input_html: { value: current_admin_user.name.full }
+      else
+        f.input :updated_by, as: :hidden, input_html: { value: current_admin_user.name.full }
       end
     end
+  
+    if f.object.sessions.empty?
+      f.object.sessions << Session.new
+    end
+    panel "Session Information" do
+      f.has_many :sessions, heading: " ", remote: true, allow_destroy: true, new_record: true do |a|
+        a.input :session_title
+        a.input :starting_date, as: :date_time_picker 
+        a.input :ending_date, as: :date_time_picker 
+  
+        if a.object.new_record?
+          a.input :created_by, as: :hidden, input_html: { value: current_admin_user.name.full }
+        else
+          a.input :last_updated_by, as: :hidden, input_html: { value: current_admin_user.name.full }
+        end 
+        a.label :_destroy
+      end
+    end
+  
     f.actions
   end
+  
 
   action_item :download_pdf, only: :show do
     link_to 'Print Attendance Sheet', download_pdf_admin_attendance_path(attendance), method: :get

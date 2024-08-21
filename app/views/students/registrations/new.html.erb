@@ -37,6 +37,16 @@
     bottom: 0;
     z-index: 1;
   }
+  /* Initially hide the submit button */
+.submit {
+    display: none;
+}
+
+/* Show the submit button when the 5th step is active */
+.step-active-5 .submit {
+    display: block;
+}
+
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/icheck-bootstrap/3.0.1/icheck-bootstrap.min.css" integrity="sha512-8vq2g5nHE062j3xor4XxPeZiPjmRDh6wlufQlfC6pdQ/9urJkU07NM0tEREeymP++NczacJ/Q59ul+/K2eYvcg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <div class="content-wrapper mt-3" style="min-height: 1477.62px;">
@@ -546,10 +556,35 @@
       } else {
         document.querySelector("input[type='submit']").style.display = "none";
       }
+
+      if (n == (x.length - 1)) {
+        document.querySelector(".next").style.display = "none";
+        document.querySelector("input[type=submit]").style.display = "inline";
+      } else {
+        document.querySelector(".next").style.display = "inline";
+        document.querySelector("input[type=submit]").style.display = "none";
+      }
     }
-    
     // Add more navigation handling logic here for previous/next buttons
   });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const steps = document.querySelectorAll('.step');
+    let currentStep = 0;
+
+    function updateStepClass() {
+        document.body.classList.toggle('step-active-5', currentStep === 5);
+    }
+
+    steps.forEach((step, index) => {
+        step.addEventListener('click', function() {
+            currentStep = index;
+            updateStepClass();
+        });
+    });
+
+    updateStepClass(); // Initial check
+});
 
 </script>
 
