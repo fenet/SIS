@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_21_033922) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_22_141206) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -462,6 +462,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_21_033922) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.boolean "major", default: false
+    t.string "batch", default: "2019/2020"
     t.index ["course_module_id"], name: "index_courses_on_course_module_id"
     t.index ["curriculum_id"], name: "index_courses_on_curriculum_id"
     t.index ["program_id"], name: "index_courses_on_program_id"

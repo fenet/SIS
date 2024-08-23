@@ -116,7 +116,20 @@ student_types = ["regular", "extention"] # Replace with actual values used in yo
         f.input :ects, label: "Contact Hour"
         f.input :year, as: :select, collection: [1, 2, 3, 4, 5], include_blank: false
         f.input :semester, as: :select, collection: [1, 2, 3, 4], include_blank: false
-        f.input :course_starting_date, as: :date_time_picker 
+        f.input :batch, as: :select, collection: [
+          '2019/2020',
+          '2020/2021',
+          '2021/2022', 
+          '2022/2023', 
+          '2023/2024', 
+          '2024/2025', 
+          '2025/2026', 
+          '2026/2027', 
+          '2027/2028', 
+          '2028/2029', 
+          '2029/2030'
+        ], include_blank: false
+                f.input :course_starting_date, as: :date_time_picker 
         f.input :course_ending_date, as: :date_time_picker
         if f.object.new_record?
           f.input :created_by, as: :hidden, input_html: { value: current_admin_user.name.full }

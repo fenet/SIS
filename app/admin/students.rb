@@ -65,6 +65,137 @@ ActiveAdmin.register Student do
     end
   end
 
+   # Custom CSV export action for 'registrar stat'
+   ActiveAdmin.register Student do
+    # Existing code...
+  
+    # Custom CSV export action for 'registrar stat'
+    collection_action :export_registrar_stat_csv, method: :get do
+      csv_data = CSV.generate(headers: true) do |csv|
+        # Header row
+        csv << ["Hope Enterprise University College/Office of the Registrar Statistics for Regular and Extension Students"]
+  
+        # Sub-header row for columns
+        header_row = ["Program Type", "Program"]
+        (1..4).each do |year|
+          [1, 2].each do |semester|
+            header_row += [
+              "Year #{year} Semester #{semester} Male Sponsored",
+              "Year #{year} Semester #{semester} Male Fee Payers",
+              "Year #{year} Semester #{semester} Total Males",
+              "Year #{year} Semester #{semester} Female Sponsored",
+              "Year #{year} Semester #{semester} Female Fee Payers",
+              "Year #{year} Semester #{semester} Total Females",
+              "Year #{year} Semester #{semester} Grand Total"
+            ]
+          end
+        end
+        csv << header_row
+  
+        program_types = ["regular", "extention"]
+        overall_totals = {}
+  
+        program_types.each do |program_type|
+          # Ensure totals for this program type are tracked
+          overall_totals[program_type] = Hash.new(0)
+  
+          Program.where(admission_type: program_type).find_each do |program|
+            # Create a row for each program
+            row = [program_type, program.program_name]
+            program_totals = Hash.new(0)
+  
+            (1..4).each do |year|
+              [1, 2].each do |semester|
+                male_sponsored = Student.where(program: program, year: year, semester: semester, gender: 'Male', sponsorship_status: 'Sponsored').count
+                male_fee_payers = Student.where(program: program, year: year, semester: semester, gender: 'Male', sponsorship_status: 'Fee Payer').count
+                female_sponsored = Student.where(program: program, year: year, semester: semester, gender: 'Female', sponsorship_status: 'Sponsored').count
+                female_fee_payers = Student.where(program: program, year: year, semester: semester, gender: 'Female', sponsorship_status: 'Fee Payer').count
+  
+                total_males = male_sponsored + male_fee_payers
+                total_females = female_sponsored + female_fee_payers
+                grand_total = total_males + total_females
+  
+                row += [
+                  male_sponsored,
+                  male_fee_payers,
+                  total_males,
+                  female_sponsored,
+                  female_fee_payers,
+                  total_females,
+                  grand_total
+                ]
+  
+                # Accumulate totals for subtotals and overall totals
+                program_totals["male_sponsored"] += male_sponsored
+                program_totals["male_fee_payers"] += male_fee_payers
+                program_totals["female_sponsored"] += female_sponsored
+                program_totals["female_fee_payers"] += female_fee_payers
+                program_totals["total_males"] += total_males
+                program_totals["total_females"] += total_females
+                program_totals["grand_total"] += grand_total
+  
+                overall_totals[program_type]["male_sponsored"] += male_sponsored
+                overall_totals[program_type]["male_fee_payers"] += male_fee_payers
+                overall_totals[program_type]["female_sponsored"] += female_sponsored
+                overall_totals[program_type]["female_fee_payers"] += female_fee_payers
+                overall_totals[program_type]["total_males"] += total_males
+                overall_totals[program_type]["total_females"] += total_females
+                overall_totals[program_type]["grand_total"] += grand_total
+              end
+            end
+  
+            csv << row
+          end
+  
+          # Add subtotal row for the program type
+          subtotal_row = ["Subtotal for #{program_type}", ""]
+          (1..4).each do |year|
+            [1, 2].each do |semester|
+              subtotal_row += [
+                overall_totals[program_type]["male_sponsored"],
+                overall_totals[program_type]["male_fee_payers"],
+                overall_totals[program_type]["total_males"],
+                overall_totals[program_type]["female_sponsored"],
+                overall_totals[program_type]["female_fee_payers"],
+                overall_totals[program_type]["total_females"],
+                overall_totals[program_type]["grand_total"]
+              ]
+            end
+          end
+          csv << subtotal_row
+        end
+  
+        # Add grand total row
+        grand_total_row = ["Grand Total", ""]
+        grand_totals = overall_totals.values.each_with_object(Hash.new(0)) do |type_totals, grand|
+          type_totals.each { |k, v| grand[k] += v }
+        end
+  
+        (1..4).each do |year|
+          [1, 2].each do |semester|
+            grand_total_row += [
+              grand_totals["male_sponsored"],
+              grand_totals["male_fee_payers"],
+              grand_totals["total_males"],
+              grand_totals["female_sponsored"],
+              grand_totals["female_fee_payers"],
+              grand_totals["total_females"],
+              grand_totals["grand_total"]
+            ]
+          end
+        end
+        csv << grand_total_row
+      end
+  
+      send_data csv_data, filename: "registrar_stat.csv"
+    end
+  
+    # Add a link to the 'registrar stat' CSV export in the index page
+    action_item :export_registrar_stat_csv, only: :index do
+      link_to 'Export Registrar Stat CSV', export_registrar_stat_csv_admin_students_path, method: :get
+    end
+  end
+
   csv do
     column("No") { |student| student.id }
     column("Id Number", &:student_id)

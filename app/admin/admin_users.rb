@@ -13,6 +13,19 @@ ActiveAdmin.register AdminUser do
     end
   end
 
+  #collection_action :index, method: :get do
+  #  if params[:q].present?
+  #    admin_users = AdminUser.ransack(first_name_or_middle_name_or_last_name_cont: params[:q])
+  #                           .result(distinct: true)
+  #                           .select(:id, :first_name, :middle_name, :last_name)
+  #                           .order(params[:order_by] || 'created_at_asc')
+  #  else
+  #    admin_users = AdminUser.all
+  #  end
+#
+  #  render json: admin_users.map { |user| { id: user.id, full_name: user.full_name } }
+  #end
+
   index do
     selectable_column
     column "Full Name", sortable: true do |n|
@@ -95,6 +108,8 @@ ActiveAdmin.register AdminUser do
     end
     f.actions
   end
+
+  
 
   show title: proc { |admin_user| admin_user.name.full } do
     panel "Admin User Information" do

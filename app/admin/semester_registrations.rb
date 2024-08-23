@@ -23,7 +23,13 @@ ActiveAdmin.register SemesterRegistration do
                                                         @semester_registration = SemesterRegistration.find(params[:id])
                                                       
                                                         pdf = Prawn::Document.new
-                                                        pdf.text "Student Registration Information", size: 20, style: :bold
+                                                      
+                                                        # Add the logo at the top center
+                                                        logo_path = Rails.root.join('app/assets/images/logo.jpg')
+                                                        pdf.image logo_path, at: [pdf.bounds.width / 2 - 50, pdf.cursor], width: 100
+                                                        pdf.move_down 60
+                                                      
+                                                        pdf.text "Student Registration Information", size: 20, style: :bold, align: :center
                                                         pdf.move_down 20
                                                         pdf.text "Full Name: #{@semester_registration.student_full_name}"
                                                         pdf.text "Student ID: #{@semester_registration.student_id_number}"
@@ -36,13 +42,14 @@ ActiveAdmin.register SemesterRegistration do
                                                         pdf.text "Course Registrations", size: 18, style: :bold
                                                         pdf.move_down 10
                                                       
-                                                        table_data = [["Course Name", "Code", "Credit Hour", "Contact Hour"]]
-                                                        
+                                                        table_data = [["No", "Course Name", "Code", "Credit Hour", "Contact Hour"]]
+                                                      
                                                         total_credit_hours = 0
                                                         total_contact_hours = 0
-                                                        
-                                                        @semester_registration.course_registrations.each do |registration|
+                                                      
+                                                        @semester_registration.course_registrations.each_with_index do |registration, index|
                                                           table_data << [
+                                                            index + 1,
                                                             registration.course.course_title,
                                                             registration.course.course_code,
                                                             registration.course.credit_hour,
@@ -63,8 +70,7 @@ ActiveAdmin.register SemesterRegistration do
                                                       
                                                         send_data pdf.render, filename: "semester_registration_#{@semester_registration.id}.pdf", type: 'application/pdf'
                                                       end
-                                                      
-                                                    
+                                                                                
                                                       action_item :download_pdf, only: :show do
                                                         link_to 'Print_registration_slip', download_pdf_admin_semester_registration_path(semester_registration), class: 'button'
                                                       end

@@ -33,4 +33,10 @@ class AdminUser < ApplicationRecord
       has_many :notices
       belongs_to :department, optional: true
       belongs_to :faculty, optional: true
+
+
+      def full_name
+        [first_name, middle_name.presence, last_name.presence].compact.join(' ')
+      end
+      
 end

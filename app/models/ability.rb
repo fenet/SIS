@@ -107,7 +107,7 @@ class Ability
       can :destroy, StudentGrade do |grade|
         Course.instructor_courses(user.id).include?(grade.course_id) && grade.created_at >= 15.days.ago
       end
-      
+      can :manage, Program
       # cannot :destroy, StudentGrade
       can %i[create read destroy], Assessment, admin_user_id: user.id
       can :manage, Attendance
@@ -343,7 +343,7 @@ class Ability
       can %i[read update], Department, department_name: user.department.department_name
       can %i[read update], Dropcourse, department_id: user.department_id
       can %i[read update destroy], AddCourse, department_id: user.department_id
-      can %i[read update destroy], CourseModule#, department_id: user.department.id
+      can %i[read update destroy], CourseModule, department_id: user.department.id
       can :create, CourseModule
       # can :manage, Exemption
       can :manage, ProgramExemption#, department_id: user.department.id
