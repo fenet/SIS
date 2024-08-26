@@ -94,7 +94,14 @@ Rails.application.routes.draw do
 resources :courses do
   resources :assessment_plans, only: [:index, :new, :create, :edit, :update, :destroy]
 end
-resources :courses, only: [:index]
+resources :courses, only: [:index, :show]
+
+resources :assessment_plans do
+  resources :assessments do
+    resources :assessment_results, only: [:create]
+  end
+end
+
 
 resources :document_requests, only: [:index, :new, :create, :show] do
 
@@ -117,8 +124,30 @@ end
 #end
 
 
-  resources :exemptions, except: [:create, :new, :index, :edit]
-  resources :external_transfers
+  #resources :exemptions, except: [:create, :new, :index, :edit]
+
+  resources :exemptions, except: [:create, :new, :index, :edit] do
+    collection do
+      get :courses_for_transfer
+    end
+  end
+
+  #resources :external_transfers
+
+  resources :external_transfers do
+    
+    collection do
+      get :filter_programs
+    end
+
+    member do
+      get :payment
+      patch :payment
+    end
+
+  end
+
+
   resources :transfers, only: [:new, :create] do
     member do
       patch :process_course_exemption
@@ -156,6 +185,7 @@ namespace :admin do
   end
 end
 
+resources :course_offerings
 resources :class_schedules, only: [:index]
   #resources :class_schedules, only: [:index]
   resources :exam_schedules, only: [:index, :new, :create, :edit, :update]

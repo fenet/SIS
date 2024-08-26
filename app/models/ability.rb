@@ -43,7 +43,7 @@ class Ability
       can :manage, Readmission
       can :manage, ExternalTransfer
       can :manage, ClassSchedule
-
+      can :manage, CourseOffering
       # can :manage, Graduation
       can :manage, PaymentTransaction
       can :manage, StudentAddress

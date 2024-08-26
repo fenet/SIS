@@ -27,7 +27,7 @@ student_types = ["regular", "extention"] # Replace with actual values used in yo
   end
 
 
-  permit_params(:course_outline, :course_module_id, :major, :curriculum_id, :program_id, :course_title, 
+  permit_params(:course_outline, :course_module_id, :major, :curriculum_id, :program_id, :course_title, :batch, 
                 :course_code, :course_description, :year, :semester, :course_starting_date, :course_ending_date, 
                 :credit_hour, :lecture_hour, :lab_hour, :ects, :created_by,
                 

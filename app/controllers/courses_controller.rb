@@ -33,6 +33,6 @@ class CoursesController < ApplicationController
       end
     
       def course_params
-        params.require(:course).permit(:course_module_id, :curriculum_id, :program_id, :course_title, :course_code, :course_description, :year, :semester, :course_starting_date, :course_ending_date, :credit_hour, :lecture_hour, :lab_hour, :ects, :created_by, :last_updated_by, :major)
+        params.require(:course).permit(:course_module_id, :curriculum_id, :program_id, :course_title, :course_code, :course_description, :year, :semester, :course_starting_date, :course_ending_date, :credit_hour, :lecture_hour, :lab_hour, :ects, :created_by, :last_updated_by, :major, :batch)
       end
 end

@@ -26,6 +26,7 @@ ActiveAdmin.register AcademicCalendar do
     column :calender_year
     column :admission_type
     column :study_level
+    column :batch
     column :from_year
     column :to_year
     column "Activities", sortable: true do |c|
@@ -46,6 +47,7 @@ ActiveAdmin.register AcademicCalendar do
   filter :study_level
   filter :from_year
   filter :to_year
+  filter :batch
   filter :created_at
   filter :updated_at
   filter :created_by
@@ -71,6 +73,7 @@ ActiveAdmin.register AcademicCalendar do
       f.input :study_level, as: :select, collection: ["undergraduate", "graduate"]
       f.input :from_year
       f.input :to_year
+      f.input :batch
       f.input :remark
       f.input :created_at, as: :date_time_picker 
       if f.object.new_record?
@@ -128,6 +131,7 @@ ActiveAdmin.register AcademicCalendar do
             row :study_level
             row :from_year
             row :to_year
+            row :batch
             row :remark
             row :created_by
             row :last_updated_by

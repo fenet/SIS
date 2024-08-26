@@ -12,6 +12,11 @@ ActiveAdmin.register ExternalTransfer do
   filter :created_at
   filter :updated_at
 
+  scope :all, default: true
+  scope :approved_finance_status do |transfers|
+    transfers.where(finance_status: 'approved')
+  end
+  
   # Index page configurations
   index do
     selectable_column
@@ -21,8 +26,12 @@ ActiveAdmin.register ExternalTransfer do
     column :email
     column :department
     column :previous_institution
-    column :status do |transfer|
-      status_tag transfer.status
+    column "Attachment" do |me|
+      if me.receipt.attached?
+        link_to "View Receipt", url_for(me.receipt)
+      else
+        "No Receipt"
+      end
     end
     column :created_at
     column :updated_at
@@ -52,14 +61,28 @@ ActiveAdmin.register ExternalTransfer do
           "No Transcript Attached"
         end
       end
+      row "Attachment" do |me|
+        if me.receipt.attached?
+          link_to me.receipt.filename.to_s, url_for(me.receipt)
+        else
+          "No reciept"
+        end
+      end
       row :created_at
       row :updated_at
     end
 
     # Button to create a new exemption if the status is accepted
-    if external_transfer.accepted?
+    #if external_transfer.accepted?
+    #  panel "Actions" do
+    #  #link_to 'Create Exemption', new_admin_exemption_path(external_transfer_id: external_transfer.id), class: 'button'
+    #  link_to 'Create Exemption', new_admin_exemption_path(external_transfer_id: external_transfer.id, program_id: external_transfer.program_id), class: 'button'
+    #end
+    #end
+
+    if external_transfer.accepted? && external_transfer.finance_status == 'approved'
       panel "Actions" do
-        link_to 'Create Exemption', new_admin_exemption_path(external_transfer_id: external_transfer.id), class: 'button'
+        link_to 'Create Exemption', new_admin_exemption_path(external_transfer_id: external_transfer.id, program_id: external_transfer.program_id), class: 'button'
       end
     end
 
@@ -113,4 +136,12 @@ ActiveAdmin.register ExternalTransfer do
     end
     redirect_to collection_path, alert: "The selected transfers have been rejected."
   end
+
+  batch_action :approve_finance_status do |ids|
+    batch_action_collection.find(ids).each do |external_transfer|
+      external_transfer.update(finance_status: 'approved')
+    end
+    redirect_to collection_path, alert: "The finance status of the selected transfers has been approved."
+  end
+
 end

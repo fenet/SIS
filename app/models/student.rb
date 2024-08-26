@@ -23,6 +23,7 @@ class Student < ApplicationRecord
   has_one :student_address, dependent: :destroy
   has_many :add_courses, dependent: :destroy
   has_many :readmissions
+  has_many :assessment_results
   accepts_nested_attributes_for :student_address
   has_one :emergency_contact, dependent: :destroy
   accepts_nested_attributes_for :emergency_contact
@@ -261,15 +262,33 @@ class Student < ApplicationRecord
   def set_pwd
     self[:student_password] = self.password
   end
+
   def attributies_assignment
-    if (self.document_verification_status == "approved") && (!self.academic_calendar.present?)
-      self.update_columns(academic_calendar_id: AcademicCalendar.where(study_level: self.program.study_level, admission_type: self.program.admission_type).order("created_at DESC").first.id)
-      self.update_columns(department_id: program.department_id)
-      self.update_columns(curriculum_version: program.curriculums.where(active_status: "active").last.curriculum_version)
-      self.update_columns(payment_version: program.payments.order("created_at DESC").first.version)
-      self.update_columns(batch: AcademicCalendar.where(study_level: self.program.study_level).where(admission_type: self.program.admission_type).order("created_at DESC").first.calender_year_in_gc)
+    if self.document_verification_status == "approved" && !self.academic_calendar.present?
+      academic_calendar = AcademicCalendar.where(study_level: self.program.study_level, admission_type: self.program.admission_type)
+                                          .order("created_at DESC").first
+  
+      if academic_calendar.present?
+        self.update_columns(
+          academic_calendar_id: academic_calendar.id,
+          department_id: program.department_id,
+          curriculum_version: program.curriculums.where(active_status: "active").last.curriculum_version,
+          payment_version: program.payments.order("created_at DESC").first.version,
+          batch: academic_calendar.batch || academic_calendar.calender_year_in_gc
+        )
+      end
     end
   end
+  
+  #def attributies_assignment
+  #  if (self.document_verification_status == "approved") && (!self.academic_calendar.present?)
+  #    self.update_columns(academic_calendar_id: AcademicCalendar.where(study_level: self.program.study_level, admission_type: self.program.admission_type).order("created_at DESC").first.id)
+  #    self.update_columns(department_id: program.department_id)
+  #    self.update_columns(curriculum_version: program.curriculums.where(active_status: "active").last.curriculum_version)
+  #    self.update_columns(payment_version: program.payments.order("created_at DESC").first.version)
+  #    self.update_columns(batch: AcademicCalendar.where(study_level: self.program.study_level).where(admission_type: self.program.admission_type).order("created_at DESC").first.calender_year_in_gc)
+  #  end
+  #end
   def student_id_generator
     if self.document_verification_status == "approved" && !(self.student_id.present?)
       begin

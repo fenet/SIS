@@ -29,6 +29,7 @@ class Program < ApplicationRecord
   }
 
   ##associations
+    has_many :external_transfer
     has_many :class_schedules
     has_many :exam_schedules
     has_many :invoices

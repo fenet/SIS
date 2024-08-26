@@ -8,6 +8,7 @@ class Assessment < ApplicationRecord
   # belongs_to :assessment_plan, optional: true
   has_many :grade_changes
   has_many :makeup_exams
+  has_many :assessment_results
   belongs_to :admin_user
   belongs_to :approved_by_instructor, class_name: 'AdminUser', optional: true
   belongs_to :approved_by_head, class_name: 'AdminUser', optional: true

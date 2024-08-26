@@ -2,7 +2,7 @@
   <% if notice%>
     <p class="alert alert-success"><%= notice %></p>
   <%end%>
-  <%= render @external_transfer %>
+  <%= render @external_transfer, external_transfer: @external_transfer %>
   <div>
     <%unless @external_transfer.rejected? || @external_transfer.accepted?%>
       <div class="d-flex">
@@ -12,3 +12,4 @@
     <%end%>
   </div>
 </div>
+

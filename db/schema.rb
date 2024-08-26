@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_22_141206) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_25_094639) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_22_141206) do
     t.string "created_by"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.string "batch"
   end
 
   create_table "academic_statuses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -223,6 +224,18 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_22_141206) do
     t.index ["course_id"], name: "index_assessment_plans_on_course_id"
   end
 
+  create_table "assessment_results", force: :cascade do |t|
+    t.uuid "assessment_plan_id", null: false
+    t.uuid "assessment_id", null: false
+    t.uuid "student_id", null: false
+    t.decimal "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assessment_id"], name: "index_assessment_results_on_assessment_id"
+    t.index ["assessment_plan_id"], name: "index_assessment_results_on_assessment_plan_id"
+    t.index ["student_id"], name: "index_assessment_results_on_student_id"
+  end
+
   create_table "assessments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "student_id"
     t.uuid "course_id"
@@ -395,6 +408,25 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_22_141206) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["department_id"], name: "index_course_modules_on_department_id"
+  end
+
+  create_table "course_offerings", force: :cascade do |t|
+    t.uuid "course_id", null: false
+    t.string "batch"
+    t.integer "year"
+    t.integer "semester"
+    t.datetime "course_starting_date"
+    t.datetime "course_ending_date"
+    t.integer "credit_hour"
+    t.integer "lecture_hour"
+    t.integer "lab_hour"
+    t.integer "ects"
+    t.boolean "major"
+    t.string "created_by"
+    t.string "last_updated_by"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_course_offerings_on_course_id"
   end
 
   create_table "course_registrations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -591,6 +623,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_22_141206) do
     t.datetime "updated_at", null: false
     t.integer "dean_approval_status"
     t.integer "registeral_approval_status"
+    t.uuid "course_id"
+    t.index ["course_id"], name: "index_exemptions_on_course_id"
     t.index ["external_transfer_id"], name: "index_exemptions_on_external_transfer_id"
   end
 
@@ -608,7 +642,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_22_141206) do
     t.text "message"
     t.string "email"
     t.string "approved_by"
+    t.string "finance_status", default: "pending"
+    t.uuid "program_id"
     t.index ["department_id"], name: "index_external_transfers_on_department_id"
+    t.index ["program_id"], name: "index_external_transfers_on_program_id"
   end
 
   create_table "faculties", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -1409,11 +1446,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_22_141206) do
   add_foreign_key "add_courses", "sections"
   add_foreign_key "add_courses", "students"
   add_foreign_key "assessment_plans", "admin_users"
+  add_foreign_key "assessment_results", "assessment_plans"
+  add_foreign_key "assessment_results", "assessments"
+  add_foreign_key "assessment_results", "students"
   add_foreign_key "assessments", "admin_users"
   add_foreign_key "assessments", "course_registrations"
   add_foreign_key "class_schedules", "courses"
   add_foreign_key "class_schedules", "programs"
   add_foreign_key "class_schedules", "sections"
+  add_foreign_key "course_offerings", "courses"
   add_foreign_key "course_registrations", "add_courses"
   add_foreign_key "departments", "faculties"
   add_foreign_key "dropcourses", "courses"

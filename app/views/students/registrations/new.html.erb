@@ -38,16 +38,15 @@
     z-index: 1;
   }
   /* Initially hide the submit button */
-.submit {
-    display: none;
+
+  .submit:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
 }
 
-/* Show the submit button when the 5th step is active */
-.step-active-5 .submit {
-    display: block;
-}
 
 </style>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/icheck-bootstrap/3.0.1/icheck-bootstrap.min.css" integrity="sha512-8vq2g5nHE062j3xor4XxPeZiPjmRDh6wlufQlfC6pdQ/9urJkU07NM0tEREeymP++NczacJ/Q59ul+/K2eYvcg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <div class="content-wrapper mt-3" style="min-height: 1477.62px;">
   <div class="content">
@@ -308,6 +307,9 @@
                             </div>
                             <div class="card-body">
                               <%= render 'document', f: f%>
+                                <div class="mr-2" style="float:right; margin-top: 5px;">
+                                <button type="button" class="submit" style="background-color: blue; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Submit</button>
+                                </div>
                             </div>
                           </div>
                         </div>
@@ -330,9 +332,7 @@
   <span class="step" data-step="5" style="display: inline-block; padding: 5px 10px; margin: 0 5px; background-color: green; color: white; border: none; border-radius: 5px; cursor: pointer; text-align: center; text-decoration: none; font-size: 18px; transition: background-color 0.3s ease;">6</span>
 </div>
 
-    <div class="mr-2" style="float:right; margin-top: 5px;">
-      <button type="button" class="submit">Submit</button>
-    </div>
+   
   </div>
 </div>
 

@@ -10,6 +10,7 @@ class AssessmentPlan < ApplicationRecord
   belongs_to :course
 
   has_many :assessments
+  has_many :assessment_results
 
   private
 

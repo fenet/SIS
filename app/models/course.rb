@@ -1,7 +1,7 @@
 class Course < ApplicationRecord
 	before_save :attribute_assignment
 	scope :by_program, -> (program_id) { where(program_id: program_id) }
-
+	after_save :create_or_update_course_offering
 	#validations
         validates :semester, :presence => true
 		validates :year, :presence => true
@@ -15,10 +15,10 @@ class Course < ApplicationRecord
   	belongs_to :curriculum
   	belongs_to :program, optional: true
  		# has_many :programs, through: :curriculums, dependent: :destroy
+	has_many :course_offerings, dependent: :destroy 
  	has_many :student_grades, dependent: :destroy
-
  	has_many :student_courses, dependent: :destroy
- 		has_many :assessments
+ 	has_many :assessments
 	  has_many :course_registrations, dependent: :destroy
 	  has_many :invoice_items
 	  # has_many :course_sections, dependent: :destroy
@@ -41,7 +41,7 @@ class Course < ApplicationRecord
 		has_many :course_prerequisites, class_name: "Prerequisite"
   	has_many :prerequisites, through: :course_prerequisites, source: :prerequisite
   	accepts_nested_attributes_for :course_prerequisites, reject_if: :all_blank, allow_destroy: true
-
+	  has_many :exemptions 
   	has_many :course_exemptions
   ##scope
   	scope :recently_added, lambda { where('created_at >= ?', 1.week.ago)}
@@ -54,5 +54,23 @@ class Course < ApplicationRecord
 
   def attribute_assignment
     self[:program_id] = self.curriculum.program.id
+  end
+
+  def create_or_update_course_offering
+    course_offering = CourseOffering.find_or_initialize_by(course_id: self.id, batch: self.batch)
+    
+    course_offering.update(
+      year: self.year,
+      semester: self.semester,
+      course_starting_date: self.course_starting_date,
+      course_ending_date: self.course_ending_date,
+      credit_hour: self.credit_hour,
+      lecture_hour: self.lecture_hour,
+      lab_hour: self.lab_hour,
+      ects: self.ects,
+      major: self.major,
+      created_by: self.created_by,
+      last_updated_by: self.last_updated_by
+    )
   end
 end

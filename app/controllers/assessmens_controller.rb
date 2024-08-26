@@ -31,6 +31,7 @@ class AssessmensController < ApplicationController
   def edit
     @assessment = Assessment.includes(:student).find(params[:id])
   end
+  
 
   def update
     assessment = Assessment.find(params[:id])
