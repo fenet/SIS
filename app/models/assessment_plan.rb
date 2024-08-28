@@ -5,7 +5,6 @@ class AssessmentPlan < ApplicationRecord
   validate :limit_assessment_plan
 
   # Associations
-
   belongs_to :admin_user
   belongs_to :course
 
@@ -14,7 +13,7 @@ class AssessmentPlan < ApplicationRecord
 
   private
 
-   def limit_assessment_plan
+  def limit_assessment_plan
     return unless course_id.present? && assessment_weight.present?
 
     total_weight = course.assessment_plans
@@ -23,9 +22,8 @@ class AssessmentPlan < ApplicationRecord
                        .compact
                        .sum
 
-    if (total_weight + assessment_weight) > 100
-      errors.add(:assessment_weight, "The total assessment weight for your section cannot exceed 100.")
+    if total_weight + assessment_weight != 100
+      errors.add(:assessment_weight, "The total assessment weight for the course must equal 100%. Current total: #{total_weight + assessment_weight}%.")
     end
   end
-  
 end

@@ -97,27 +97,25 @@ ActiveAdmin.register Exemption do
     f.inputs "Exemption Details" do
       f.input :external_transfer_id, as: :select,
                                      collection: ExternalTransfer.all.collect { |et| [et.first_name + " " + et.last_name, et.id] },
-                                     include_blank: false,
-                                     input_html: { onchange: "this.form.submit(); return false;" } # Prevent default form submission to avoid reload
-    end
-
-    if f.object.external_transfer.present?
-      f.inputs "Exempted Courses" do
-        f.input :course_id, as: :select,
-                            collection: f.object.external_transfer.program.courses.collect { |course| [course.course_title, course.id] },
-                            include_blank: false,
-                            input_html: { onchange: "this.form.submit(); return false;" } # Prevent default form submission to avoid reload
-
-        # Hidden fields to store course details
-        f.input :course_code, input_html: { disabled: true, value: f.object.course_code }
-        f.input :credit_hour, input_html: { disabled: true, value: f.object.credit_hour }
-        f.input :letter_grade
+                                     include_blank: false
+  
+      if f.object.external_transfer.present?
+        f.inputs "Exempted Courses" do
+          f.input :course_id, as: :select,
+                              collection: f.object.external_transfer.program.courses.collect { |course| [course.course_title, course.id] },
+                              include_blank: false
+          #f.input :course_code, input_html: { disabled: true, value: f.object.course_code }
+          #f.input :credit_hour, input_html: { disabled: true, value: f.object.credit_hour }
+          #f.input :course_title, input_html: { disabled: true, value: f.object.course_title }
+          f.input :letter_grade
+        end
       end
     end
-
+  
     f.actions
   end
-
+  
+  
   # Add a custom controller to populate the course code and credit hour dynamically
   #collection_action :courses_for_transfer, method: :get do
   #  external_transfer = ExternalTransfer.find(params[:external_transfer_id])

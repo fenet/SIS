@@ -129,6 +129,7 @@ end
   resources :exemptions, except: [:create, :new, :index, :edit] do
     collection do
       get :courses_for_transfer
+      post :select_course
     end
   end
 

@@ -230,6 +230,7 @@ class Ability
       can :read, Course
       can :manage, SemesterRegistration, admission_type: 'online'
       can :read, Invoice
+      can :manage, Transfer
     when 'regular_registrar'
       can :manage, CourseSection
       can :manage, ActiveAdmin::Page, name: 'Dashboard', namespace_name: 'admin'
@@ -256,8 +257,12 @@ class Ability
       can :manage, ActiveAdmin::Page, name: 'Dashboard', namespace_name: 'admin'
       can :manage, ActiveAdmin::Page, name: 'FinanceReport', namespace_name: 'admin'
 
+      can %i[read update], MakeupExam
       can %i[read update], Withdrawal
+      can %i[read update], AddCourse
+      can %i[read update], ExternalTransfer
       can %i[read update], Readmission
+
       can :manage, Invoice
       can :manage, Payment
       cannot :destroy, Invoice

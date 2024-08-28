@@ -227,7 +227,7 @@ end
 
   action_item :edit, only: :show, priority: 1 do
     if (current_admin_user.role == "admin") || (current_admin_user.role == "department head")
-      link_to 'Add Instructor', edit_admin_course_path(course.id, page_name: "course_instructors")
+      link_to 'Assign Instructor', edit_admin_course_path(course.id, page_name: "course_instructors")
     end 
   end
 
