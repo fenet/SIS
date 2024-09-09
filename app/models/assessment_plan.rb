@@ -22,8 +22,8 @@ class AssessmentPlan < ApplicationRecord
                        .compact
                        .sum
 
-    if total_weight + assessment_weight != 100
-      errors.add(:assessment_weight, "The total assessment weight for the course must equal 100%. Current total: #{total_weight + assessment_weight}%.")
-    end
+    #if total_weight + assessment_weight != 100
+    #  errors.add(:assessment_weight, "The total assessment weight for the course must equal 100%. Current total: #{total_weight + assessment_weight}%.")
+    #end
   end
 end

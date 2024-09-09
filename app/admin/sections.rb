@@ -15,8 +15,13 @@ ActiveAdmin.register Section, as: "ProgramSection" do
     column :year
     column :total_capacity
     column "Remaining Capacity" do |se|
-      se.total_capacity - se.students.count
+      if se.total_capacity.present? && se.total_capacity > 0
+        se.total_capacity - se.students.count
+      else
+        "No Capacity Defined" # Or any fallback message you prefer
+      end
     end
+    
     column "Created At", sortable: true do |c|
       c.created_at.strftime("%b %d, %Y")
     end

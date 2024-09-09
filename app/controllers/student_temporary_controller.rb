@@ -57,9 +57,9 @@ class StudentTemporaryController < ApplicationController
   private
 
   def filter_student(program, study)
-    grade_system = GradeSystem.select(:min_cgpa_value_to_graduate).find_by(program: program)
+    #grade_system = GradeSystem.select(:min_cgpa_value_to_graduate).find_by(program: program)
     curriculum = Curriculum.select(:total_course).find_by(program: program)
-    min_cgpa_value_to_graduate = grade_system.min_cgpa_value_to_graduate if grade_system.present?
+    #min_cgpa_value_to_graduate = grade_system.min_cgpa_value_to_graduate if grade_system.present?
     students = Student.where(program: program).where(year: program.program_duration).where(graduation_status: "pending").where(semester: program.program_semester).where(study_level: study).includes(:grade_reports).includes(:student_grades)
     number_of_course_in_curriculum = curriculum.total_course if curriculum.present?
     all_student_ids = []

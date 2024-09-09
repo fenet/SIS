@@ -37,7 +37,7 @@
           <% @sections.each do |section| %>
             <div>
               <%= form.radio_button :section_id, section.id, required: true %>
-              <%= form.label :section, "#{section.section_full_name} (You can only assign #{section.total_capacity - section.students.count} students)" %>
+              <%= form.label :section, "#{section.section_full_name} (You can only assign #{section.total_capacity.to_i - section.students.count.to_i} students)" %>
             </div>
           <% end %>
           

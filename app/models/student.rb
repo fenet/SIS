@@ -81,10 +81,16 @@ class Student < ApplicationRecord
   scope :no_section, -> { where(section_id: nil) }
 
   def get_current_courses
-    self.program.curriculums.where(active_status: "active").first.courses.where(year: self.year, semester: self.semester).order("year ASC
-    ", "semester ASC")
-    #self.program.curriculums.where(active_status: "active", curriculum_version: self.curriculum_version).first.courses.where(year: self.year, semester: self.semester, batch: self.batch).order("year ASC
-    #", "semester ASC")
+    all_courses = self.program.curriculums.where(active_status: "active").first.courses
+                       .where(year: self.year, semester: self.semester)
+                       .order("year ASC", "semester ASC")
+  
+    # Filter out courses where the student hasn't met the prerequisites
+    eligible_courses = all_courses.select do |course|
+      passed_all_prerequisites?(self, course)
+    end
+  
+    eligible_courses
   end
 
   def self.get_gc_students(graduation_status, graduation_year, program_id, study_level, admission_type)
@@ -192,7 +198,7 @@ class Student < ApplicationRecord
     return 0 if deadline.nil? || reg_date.nil? || reg_date <= deadline
     
     days_late = (reg_date - deadline).to_i
-    penalty_fee = payment.starting_penalty_fee + (days_late * payment.daily_penalty_fee)
+    penalty_fee = payment.starting_penalty_fee.to_i + (days_late * payment.daily_penalty_fee.to_i)
     
     puts "Days Late: #{days_late}, Penalty Fee: #{penalty_fee}"
     
@@ -259,6 +265,17 @@ class Student < ApplicationRecord
   private
 
   ## callback methods
+  def passed_all_prerequisites?(student, course)
+    prerequisites = Prerequisite.where(course_id: course.id)
+  
+    prerequisites.all? do |prerequisite|
+      prerequisite_course = prerequisite.prerequisite
+      student_grade = StudentGrade.find_by(student_id: student.id, course_id: prerequisite_course.id)
+  
+      student_grade.present? && student_grade.letter_grade != 'F'
+    end
+  end
+
   def set_pwd
     self[:student_password] = self.password
   end

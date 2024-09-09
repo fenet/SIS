@@ -129,6 +129,9 @@ $(function () {
     const courseId = $("#course-list").val();
     const sectionId = $("#section").val();
     const currentAdminUser = $("#current_admin_user").val();
+    const selectedYear = $("#year").val(); 
+    const selectedSemester = $("#semester").val(); 
+
 
     if (courseId && sectionId && currentAdminUser) {
       $.ajax({
@@ -153,6 +156,10 @@ $(function () {
 
             console.log('Parsed students:', students);
             console.log('Parsed assessment plans:', assessmentPlans);
+
+            students = students.filter(student => 
+              student.year == selectedYear && student.semester == selectedSemester
+            );
 
             assessmentPlans = assessmentPlans.filter(plan => plan.admin_user_id === currentAdminUser);
             assessmentPlans.sort((a, b) => new Date(a.created_at) - new Date(b.created_at));

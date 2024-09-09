@@ -6,6 +6,7 @@ ActiveAdmin.register Payment do
   :starting_penalty_fee, :daily_penalty_fee, :makeup_exam_fee, :add_drop, :tution_per_credit_hr,
   :semester_1_registration_date, :semester_2_registration_date, :semester_3_registration_date, :semester_1_deadline, :semester_2_deadline, :semester_3_deadline,
   :created_by, :last_updated_by, :total_fee, :batch
+  
 
   index do
     selectable_column

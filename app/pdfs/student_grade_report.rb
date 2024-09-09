@@ -64,14 +64,21 @@ class StudentGradeReport < Prawn::Document
       
         end
  
-    def each_data_in_table(data, index)
-       [
-        ["Title of the course","Course Number", "Credit hours", "Grade", "Grade Point"],
-       ]+ data.semester_registration.course_registrations.where(enrollment_status: 'enrolled').includes(:student_grade).includes(:course).map.with_index do |course, index| 
-        [course.course.course_title, course.course.course_code, course.course.credit_hour, course.student_grade&.letter_grade, course.student_grade&.grade_point] 
-        #[course.course.course_title, course.course.course_code, course.course.credit_hour, StudentGrade.find_by(course: course.course).letter_grade, StudentGrade.find_by(course: course.course).grade_point]
-       end
-    end
+        def each_data_in_table(data, index)
+          [
+            ["Title of the course", "Course Number", "Credit hours", "Grade", "Grade Point"]
+          ] + data.semester_registration.course_registrations.where(enrollment_status: 'enrolled')
+            .includes(:student_grade)
+            .includes(:course)
+            .map.with_index do |course, index|
+              grade_point = course.student_grade&.grade_point
+              credit_hour = course.course.credit_hour
+              total_grade_point = grade_point && credit_hour ? grade_point * credit_hour : nil
+        
+              [course.course.course_title, course.course.course_code, credit_hour, course.student_grade&.letter_grade, total_grade_point]
+            end
+        end
+        
 
     #def preview_table(data)
     #    [

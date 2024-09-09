@@ -31,6 +31,14 @@ class SemesterRegistration < ApplicationRecord
 
   def generate_grade_report
     #if !self.grade_report.present?
+
+    any_course_missing_grade = self.course_registrations.where(enrollment_status: 'enrolled').any? do |course_registration|
+      course_registration.student_grade.nil? 
+    end
+  
+    # Skip report generation if any enrolled course is missing a valid grade
+    return if any_course_missing_grade
+
       GradeReport.create! do |report|
         report.semester_registration_id = self.id
         report.student_id = self.student.id
@@ -129,7 +137,7 @@ class SemesterRegistration < ApplicationRecord
               # report.academic_status = self.student.program.grade_systems.last.academic_statuses.where("min_value <= ?", report.cgpa).where("max_value >= ?", report.cgpa).last.status
             end
 
-            if (report.academic_status != "Academic Dismissal") || #(report.academic_status != "Incomplete")
+            if (report.academic_status != "Academic Dismissal")  #|| (report.academic_status != "Incomplete")
               if self.program.program_semester > self.student.semester
                 promoted_semester = self.student.semester + 1
                 self.student.update_columns(semester: promoted_semester)
@@ -203,49 +211,83 @@ class SemesterRegistration < ApplicationRecord
   end
 
   def semester_course_registration
-   
     if self.finance_approval_status == "pending" && self.registrar_approval_status == "pending"
-      # self.program.curriculums.where(curriculum_version: self.student.curriculum_version).last.courses.where(year: self.year, semester: self.semester).each do |co|
       all_courses = []
-    if self.out_of_batch?
-       self.student.get_added_course.each do |added|
-        all_courses << CourseRegistration.new do |course_registration|
-          course_registration.semester_registration_id = self.id
-          course_registration.add_course_id = added.id
-          course_registration.program_id = self.program.id
-          course_registration.department_id = self.department.id
-          course_registration.academic_calendar_id = self.academic_calendar_id
-          course_registration.student_id = self.student.id
-          course_registration.student_full_name = self.student_full_name
-          course_registration.course_id = added.course_id
-          course_registration.academic_year = get_academic_year(self.semester, self.student)
-          course_registration.course_title = added.course.course_title
-          course_registration.semester = self.semester
-          course_registration.year = self.year
-          course_registration.created_by = self.created_by
-        end
-       end
-    else
-      self.student.get_current_courses.each do |co|
-        all_courses << CourseRegistration.new do |course_registration|
-          course_registration.semester_registration_id = self.id
-          course_registration.program_id = self.program.id
-          course_registration.department_id = self.department.id
-          course_registration.academic_calendar_id = self.academic_calendar_id
-          course_registration.student_id = self.student.id
-          course_registration.student_full_name = self.student_full_name
-          course_registration.course_id = co.id
-          course_registration.academic_year = get_academic_year(self.semester, self.student)
-          course_registration.course_title = co.course_title
-          course_registration.semester = self.semester
-          course_registration.year = self.year
-          course_registration.created_by = self.created_by
+  
+      courses_to_register = self.out_of_batch? ? self.student.get_added_course : self.student.get_current_courses
+  
+      courses_to_register.each do |course|
+        course_registration = CourseRegistration.new(
+          semester_registration_id: self.id,
+          program_id: self.program.id,
+          department_id: self.department.id,
+          academic_calendar_id: self.academic_calendar_id,
+          student_id: self.student.id,
+          student_full_name: self.student_full_name,
+          course_id: course.id,
+          academic_year: get_academic_year(self.semester, self.student),
+          course_title: course.course_title,
+          semester: self.semester,
+          year: self.year,
+          created_by: self.created_by
+        )
+  
+        if course_registration.valid?
+          all_courses << course_registration
+        else
+          # Handle the error (e.g., log it, notify the user, etc.)
+          puts "Cannot register for course #{course.course_title}: #{course_registration.errors.full_messages.join(', ')}"
         end
       end
-    end
-      CourseRegistration.import! all_courses
+  
+      CourseRegistration.import! all_courses if all_courses.present?
     end
   end
+  
+  #def semester_course_registration
+  # 
+  #  if self.finance_approval_status == "pending" && self.registrar_approval_status == "pending"
+  #    # self.program.curriculums.where(curriculum_version: self.student.curriculum_version).last.courses.where(year: self.year, semester: self.semester).each do |co|
+  #    all_courses = []
+  #  if self.out_of_batch?
+  #     self.student.get_added_course.each do |added|
+  #      all_courses << CourseRegistration.new do |course_registration|
+  #        course_registration.semester_registration_id = self.id
+  #        course_registration.add_course_id = added.id
+  #        course_registration.program_id = self.program.id
+  #        course_registration.department_id = self.department.id
+  #        course_registration.academic_calendar_id = self.academic_calendar_id
+  #        course_registration.student_id = self.student.id
+  #        course_registration.student_full_name = self.student_full_name
+  #        course_registration.course_id = added.course_id
+  #        course_registration.academic_year = get_academic_year(self.semester, self.student)
+  #        course_registration.course_title = added.course.course_title
+  #        course_registration.semester = self.semester
+  #        course_registration.year = self.year
+  #        course_registration.created_by = self.created_by
+  #      end
+  #     end
+  #  else
+  #    self.student.get_current_courses.each do |co|
+  #      all_courses << CourseRegistration.new do |course_registration|
+  #        course_registration.semester_registration_id = self.id
+  #        course_registration.program_id = self.program.id
+  #        course_registration.department_id = self.department.id
+  #        course_registration.academic_calendar_id = self.academic_calendar_id
+  #        course_registration.student_id = self.student.id
+  #        course_registration.student_full_name = self.student_full_name
+  #        course_registration.course_id = co.id
+  #        course_registration.academic_year = get_academic_year(self.semester, self.student)
+  #        course_registration.course_title = co.course_title
+  #        course_registration.semester = self.semester
+  #        course_registration.year = self.year
+  #        course_registration.created_by = self.created_by
+  #      end
+  #    end
+  #  end
+  #    CourseRegistration.import! all_courses
+  #  end
+  #end
 
   def change_course_registration_status
     if (self.registrar_approval_status == "approved")

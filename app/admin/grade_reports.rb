@@ -218,7 +218,11 @@ ActiveAdmin.register GradeReport do
               pr.student_grade&.letter_grade
             end
             column "Grade Point" do |pr|
-              pr.student_grade&.grade_point
+              if pr.student_grade && pr.course.credit_hour
+                pr.student_grade.grade_point * pr.course.credit_hour
+              else
+                nil
+              end
             end
           end
         end

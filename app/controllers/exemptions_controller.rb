@@ -45,10 +45,12 @@ class ExemptionsController < ApplicationController
       puts "Exemption saved successfully!"
       redirect_to new_exemptions_path(@applicant, exemption.department_approval), notice: "Course exemptions were successfully created!"
     else
+      # Debug: Print out errors if saving fails
       puts "Failed to save exemption: #{exemption.errors.full_messages.join(", ")}"
       render :new
     end
   end
+  
   
 
   def update
@@ -76,37 +78,38 @@ class ExemptionsController < ApplicationController
     end
   end
 
-  def select_course
-    @exemption = Exemption.find_or_initialize_by(id: params[:id])
-    course = Course.find(params[:exemption][:course_id])
-    
-    # Assign the course attributes to the exemption
-    @exemption.course_code = course.course_code
-    @exemption.credit_hour = course.credit_hour
-    @exemption.course_title = course.course_title
-  
-    # Debug: Print out the values before saving
-    puts "Course Code: #{@exemption.course_code}"
-    puts "Credit Hour: #{@exemption.credit_hour}"
-    puts "Course Title: #{@exemption.course_title}"
-  
-    # Save the updated exemption record
-    if @exemption.save
-      puts "Exemption saved successfully!"
-      redirect_to new_exemptions_path(@applicant, exemption.department_approval), notice: "Course exemptions were successfully created!"
-    else
-      # Debug: Print out errors if saving fails
-      puts "Failed to save exemption: #{@exemption.errors.full_messages.join(", ")}"
-      render :new
-    end
-  end
+  #def select_course
+  #  @exemption = Exemption.find_or_initialize_by(id: params[:id])
+  #  course = Course.find(params[:exemption][:course_id])
+  #  
+  #  # Assign the course attributes to the exemption
+  #  @exemption.course_code = course.course_code
+  #  @exemption.credit_hour = course.credit_hour
+  #  @exemption.course_title = course.course_title
+  #
+  #  # Debug: Print out the values before saving
+  #  puts "Course Code: #{@exemption.course_code}"
+  #  puts "Credit Hour: #{@exemption.credit_hour}"
+  #  puts "Course Title: #{@exemption.course_title}"
+  #
+  #  # Save the updated exemption record
+  #  if @exemption.save
+  #    puts "Exemption saved successfully!"
+  #    redirect_to new_exemptions_path(@applicant, exemption.department_approval), notice: "Course exemptions were successfully created!"
+  #  else
+  #    # Debug: Print out errors if saving fails
+  #    puts "Failed to save exemption: #{@exemption.errors.full_messages.join(", ")}"
+  #    render :new
+  #  end
+  #end
   
 
   private
 
   def exemption_params
-    params.require(:exemption).permit(:course_title, :department_approval, :letter_grade, :course_code, :credit_hour)
+    params.require(:exemption).permit(:course_title, :department_approval, :letter_grade, :course_code, :credit_hour, :external_transfer_id, :course_id)
   end
+  
 
   def set_applicant_id
     @applicant = ExternalTransfer.find(params[:applicant_id])

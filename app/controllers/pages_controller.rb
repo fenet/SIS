@@ -36,9 +36,12 @@ class PagesController < ApplicationController
   end
 
   def enrollement
-    @total_course = current_student.get_current_courses
+    @total_course = current_student.get_current_courses.select do |course|
+      passed_all_prerequisites?(current_student, course)
+    end
+    # @total_course = current_student.get_current_courses
     @registration_fee = current_student.get_registration_fee
-    @tution_fee = current_student.get_tution_fee
+    @tution_fee = current_student.get_tuition_fee
     # @total = @registration_fee + tution_fee
   end
 
@@ -66,4 +69,17 @@ class PagesController < ApplicationController
       end
     end
   end
+
+  private
+
+  def passed_all_prerequisites?(student, course)
+    prerequisites = Prerequisite.where(course_id: course.id)
+
+    prerequisites.all? do |prerequisite|
+    prerequisite_course = prerequisite.prerequisite
+    student_grade = StudentGrade.find_by(student_id: student.id, course_id: prerequisite_course.id)
+
+    student_grade.present? && student_grade.letter_grade != 'F'
+  end
+ end 
 end

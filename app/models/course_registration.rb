@@ -1,5 +1,6 @@
 class CourseRegistration < ApplicationRecord
   # after_create :add_invoice_item
+  validate :check_prerequisites
   after_save :add_grade
   after_save :attribute_assignment
   after_save do
@@ -72,6 +73,19 @@ class CourseRegistration < ApplicationRecord
   # 		end
   # 	end
   # end
+
+  def check_prerequisites
+    prerequisites = Prerequisite.where(course_id: self.course_id)
+
+    prerequisites.each do |prerequisite|
+      prerequisite_course = prerequisite.prerequisite
+      student_grade = StudentGrade.find_by(student_id: self.student_id, course_id: prerequisite_course.id)
+
+      if student_grade.nil? || student_grade.letter_grade == 'F'
+        errors.add(:base, "You have not passed the prerequisite course #{prerequisite_course.course_title}.")
+      end
+    end
+  end
   
   def attribute_assignment
     if !self.section.present? && self.semester_registration.section.present?

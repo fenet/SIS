@@ -73,25 +73,25 @@ ActiveAdmin.register Exemption do
     active_admin_comments
   end
 
-  controller do
-    before_action :setup_external_transfer, only: [:new, :edit]
-
-    def setup_external_transfer
-      @exemption = Exemption.new if action_name == 'new'
-      @exemption = Exemption.find(params[:id]) if action_name == 'edit'
-
-      if params[:external_transfer_id]
-        @exemption.external_transfer = ExternalTransfer.find(params[:external_transfer_id])
-      end
-
-      if params[:exemption] && params[:exemption][:course_id].present?
-        course = Course.find(params[:exemption][:course_id])
-        @exemption.course_id = course.id
-        @exemption.course_code = course.course_code
-        @exemption.credit_hour = course.credit_hour
-      end
-    end
-  end
+ # controller do
+ #   before_action :setup_external_transfer, only: [:new, :edit]
+#
+ #   def setup_external_transfer
+ #     @exemption = Exemption.new if action_name == 'new'
+ #     @exemption = Exemption.find(params[:id]) if action_name == 'edit'
+#
+ #     if params[:external_transfer_id]
+ #       @exemption.external_transfer = ExternalTransfer.find(params[:external_transfer_id])
+ #     end
+#
+ #     if params[:exemption] && params[:exemption][:course_id].present?
+ #       course = Course.find(params[:exemption][:course_id])
+ #       @exemption.course_id = course.id
+ #       @exemption.course_code = course.course_code
+ #       @exemption.credit_hour = course.credit_hour
+ #     end
+ #   end
+ # end
 
   form do |f|
     f.inputs "Exemption Details" do

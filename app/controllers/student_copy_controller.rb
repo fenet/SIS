@@ -9,8 +9,10 @@ class StudentCopyController < ApplicationController
   def generate_student_copy
     graduation_year = params[:year][:name]
     department_id = params[:department][:name]
+    department = Department.find(department_id)
+
     gc_date = params[:gc][:date]
-    students = Student.where(department_id: department_id).where(graduation_year: graduation_year).where(graduation_status: 'approved').includes(:course_registrations).includes(:student_grades)
+    students = Student.where(department: department).where(graduation_year: graduation_year).where(graduation_status: 'approved').includes(:course_registrations).includes(:student_grades)
     redirect_to student_copy_url, alert: "We could not find a student matching your search criteria. Did you check student graduation status is approved?" if students.empty?
     if students.any?
       respond_to do |format|
