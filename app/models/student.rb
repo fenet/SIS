@@ -272,9 +272,11 @@ class Student < ApplicationRecord
       prerequisite_course = prerequisite.prerequisite
       student_grade = StudentGrade.find_by(student_id: student.id, course_id: prerequisite_course.id)
   
-      student_grade.present? && student_grade.letter_grade != 'F'
+      # First check if student_grade is nil; if not, then check if the grade is not 'F'
+      student_grade.nil? || student_grade.letter_grade != 'F'
     end
   end
+ 
 
   def set_pwd
     self[:student_password] = self.password

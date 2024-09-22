@@ -38,8 +38,8 @@ test:
   password: Hope_1234
 production:
   <<: *default
-  database: heucdbfinal 
-  username: newdeploy
+  database: heucfinaldb 
+  username: erpnext
   password: 1234_Premiercol
   #database: heucbackup
   #username: deploy
