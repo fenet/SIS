@@ -10,7 +10,7 @@ set :repo_url, "https://github.com/fenet/leadstarlatest.git"
 set :git_http_username, 'fenet' 
 ask(:github_token, "github_token", echo: false) 
 set :git_http_password, fetch((:github_token))
-set :git_strategy, Capistrano::Git::SubmoduleStrategy
+#set :git_strategy, Capistrano::Git::SubmoduleStrategy
 
 # set :user, "deploy"
 set :passenger_restart_with_touch, true
