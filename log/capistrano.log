@@ -18546,3 +18546,23 @@ Run `bundle install` first.
   INFO [7f08b931] Running /usr/bin/env echo "Branch heuc (at 5a7b5d4076117ffcb9a389b04c86bf17da8c0b7d) deployed as release 20240909053612 by fena" >> /home/newdeploy/hpremier/revisions.log as newdeploy@157.245.138.31
  DEBUG [7f08b931] Command: cd /home/newdeploy/hpremier/releases && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "Branch heuc (at 5a7b5d4076117ffcb9a389b04c86bf17da8c0b7d) deployed as release 20240909053612 by fena" >> /home/newdeploy/hpremier/revisions.log )
   INFO [7f08b931] Finished in 1.022 seconds with exit status 0 (successful).
+  INFO ---------------------------------------------------------------------------
+  INFO START 2024-09-22 21:50:26 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [7770a699] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as erpnext@141.94.74.186
+ DEBUG [7770a699] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+  INFO ---------------------------------------------------------------------------
+  INFO START 2024-09-22 21:57:24 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [728d8676] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as erpnext@141.94.74.186
+ DEBUG [728d8676] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+  INFO ---------------------------------------------------------------------------
+  INFO START 2024-09-22 22:12:47 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [f99310bb] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as erpnext@141.94.74.186
+ DEBUG [f99310bb] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+  INFO ---------------------------------------------------------------------------
+  INFO START 2024-09-22 22:22:29 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [e0db8ac2] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as erpnext@141.94.74.186
+ DEBUG [e0db8ac2] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]

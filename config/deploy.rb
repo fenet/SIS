@@ -10,6 +10,7 @@ set :repo_url, "https://github.com/fenet/leadstarlatest.git"
 set :git_http_username, 'fenet' 
 ask(:github_token, "github_token", echo: false) 
 set :git_http_password, fetch((:github_token))
+set :git_strategy, Capistrano::Git::SubmoduleStrategy
 
 # set :user, "deploy"
 set :passenger_restart_with_touch, true
@@ -21,6 +22,9 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bund
 
 set :keep_releases, 10
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
+set :ssh_options, {
+  forward_agent: false
+}
 
 # set :git_ssh_command, "ssh -o ForwardAgent=yes"
 
