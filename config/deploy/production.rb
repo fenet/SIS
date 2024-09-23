@@ -10,18 +10,6 @@ set :rails_env, "production"
 
 set :deploy_to, '/home/erpnext/hpremier' 
 
-set :ssh_options, {
-  user: 'erpnext',
-  forward_agent: false,
-  auth_methods: ['publickey'],
-  keys: ['~/.ssh/id_rsa'], # or another private key path
-  verify_host_key: :never
-}
-
-
-# server-based syntax
-# ======================
-# Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value

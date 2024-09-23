@@ -18566,3 +18566,13 @@ Run `bundle install` first.
   INFO ---------------------------------------------------------------------------
  DEBUG [e0db8ac2] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as erpnext@141.94.74.186
  DEBUG [e0db8ac2] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+  INFO ---------------------------------------------------------------------------
+  INFO START 2024-09-22 22:50:03 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [884429cb] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as erpnext@141.94.74.186
+ DEBUG [884429cb] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+  INFO ---------------------------------------------------------------------------
+  INFO START 2024-09-22 22:54:51 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [99ecbc8c] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as erpnext@141.94.74.186
+ DEBUG [99ecbc8c] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
