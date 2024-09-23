@@ -1,4 +1,8 @@
 # server '148.113.8.52', user: 'deploy', roles: %w{app db web}
+set :ssh_options, {
+  forward_agent: false,
+  verify_host_key: :never
+}
 
 role :app, %w{erpnext@141.94.74.186}
 role :web, %w{erpnext@141.94.74.186}

@@ -18576,3 +18576,28 @@ Run `bundle install` first.
   INFO ---------------------------------------------------------------------------
  DEBUG [99ecbc8c] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as erpnext@141.94.74.186
  DEBUG [99ecbc8c] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+  INFO ---------------------------------------------------------------------------
+  INFO START 2024-09-23 07:00:33 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [a4964bf5] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as erpnext@141.94.74.186
+ DEBUG [a4964bf5] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+  INFO ---------------------------------------------------------------------------
+  INFO START 2024-09-23 07:05:14 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [6e2f649c] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as erpnext@141.94.74.186
+ DEBUG [6e2f649c] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+  INFO ---------------------------------------------------------------------------
+  INFO START 2024-09-23 07:14:59 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [0d0995c6] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as erpnext@141.94.74.186
+ DEBUG [0d0995c6] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+  INFO ---------------------------------------------------------------------------
+  INFO START 2024-09-23 07:32:40 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [c2ec0e13] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as erpnext@141.94.74.186
+ DEBUG [c2ec0e13] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+  INFO ---------------------------------------------------------------------------
+  INFO START 2024-09-23 07:32:58 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [86770a88] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as erpnext@141.94.74.186
+ DEBUG [86770a88] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
