@@ -45,6 +45,7 @@ class Student < ApplicationRecord
   has_many :recurring_payments, dependent: :destroy
   has_many :add_and_drops, dependent: :destroy
   has_many :makeup_exams, dependent: :destroy
+  has_many :payments
   ##validations
   validates :first_name , :presence => true,:length => { :within => 2..100 }
   validates :middle_name , :presence => true,:length => { :within => 2..100 }
@@ -116,10 +117,29 @@ class Student < ApplicationRecord
     college_payment.registration_fee
   end
 
+  #def get_tution_fee
+  #  return nil if college_payment.nil?
+  #  get_current_courses.collect { |oi| oi.valid? ? (college_payment.tution_per_credit_hr * oi.credit_hour) : 0 }.sum
+  #end
+
   def get_tution_fee
-    return nil if college_payment.nil?
-    get_current_courses.collect { |oi| oi.valid? ? (college_payment.tution_per_credit_hr * oi.credit_hour) : 0 }.sum
+    program_fee = program_payment&.tution_per_credit_hr || 0
+    batch_fee = batch_payment&.tution_per_credit_hr || 0
+    
+    total_fee = get_current_courses.sum do |course|
+      course.valid? ? ((program_fee + batch_fee) * course.credit_hour) : 0
+    end
+    
+    total_fee
   end
+
+  def program_payment
+    Payment.find_by(program_id: self.program_id)
+  end
+
+  def batch_payment
+    Payment.find_by(batch: self.batch)
+  end  
 
   def college_payment
     CollegePayment.find_by(study_level: self.study_level.strip, admission_type: self.admission_type.strip)

@@ -62,6 +62,16 @@ ActiveAdmin.register Payment do
     f.inputs "College payment information" do
       f.input :program_id, as: :search_select, url: admin_programs_path,
               fields: [:program_name, :id], display_name: 'program_name', minimum_input_length: 2,lebel: "attendance title", order_by: 'created_at_asc'
+              
+              f.input :student_id, as: :search_select, url: admin_students_path,
+        fields: [:batch, :id], display_name: 'batch', 
+        minimum_input_length: 2, label: "batch", order_by: 'created_at_asc'
+
+      
+              #f.input :student_id, as: :search_select, url: admin_students_path,
+              #fields: [:student_id, :id], display_name: 'student_id', minimum_input_length: 2,
+              #order_by: 'id_asc'
+
       f.input :student_nationality, :collection => ["local", "international"], :include_blank => false
       f.input :total_fee
       f.input :registration_fee
