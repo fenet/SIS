@@ -18601,3 +18601,663 @@ Run `bundle install` first.
   INFO ---------------------------------------------------------------------------
  DEBUG [86770a88] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as erpnext@141.94.74.186
  DEBUG [86770a88] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+  INFO ---------------------------------------------------------------------------
+  INFO START 2024-09-23 07:34:57 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [0730839a] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as erpnext@141.94.74.186
+ DEBUG [0730839a] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+ DEBUG [0730839a] Finished in 16.079 seconds with exit status 0 (successful).
+ DEBUG [c8b0175c] Running /usr/bin/env which passenger as erpnext@141.94.74.186
+ DEBUG [c8b0175c] Command: /usr/bin/env which passenger
+ DEBUG [c8b0175c] 	/usr/bin/passenger
+ DEBUG [c8b0175c] Finished in 0.714 seconds with exit status 0 (successful).
+  INFO [d14dd34b] Running /usr/bin/env mkdir -p /tmp as erpnext@141.94.74.186
+ DEBUG [d14dd34b] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /tmp )
+  INFO [d14dd34b] Finished in 0.608 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-69e7ae98ef80c129668b.sh 0.0%
+  INFO Uploading /tmp/git-ssh-69e7ae98ef80c129668b.sh 100.0%
+  INFO [949ec44a] Running /usr/bin/env chmod 700 /tmp/git-ssh-69e7ae98ef80c129668b.sh as erpnext@141.94.74.186
+ DEBUG [949ec44a] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env chmod 700 /tmp/git-ssh-69e7ae98ef80c129668b.sh )
+  INFO [949ec44a] Finished in 0.613 seconds with exit status 0 (successful).
+  INFO [595dbcae] Running /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD as erpnext@141.94.74.186
+ DEBUG [595dbcae] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-69e7ae98ef80c129668b.sh" ; /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD )
+ DEBUG [595dbcae] 	ee3d3f9da04068fc96d9c90ee4fc56c330f608ef	HEAD
+  INFO [595dbcae] Finished in 0.891 seconds with exit status 0 (successful).
+  INFO [c492ace9] Running /usr/bin/env mkdir -p /home/erpnext/hpremier/shared /home/erpnext/hpremier/releases as erpnext@141.94.74.186
+ DEBUG [c492ace9] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/erpnext/hpremier/shared /home/erpnext/hpremier/releases )
+  INFO [c492ace9] Finished in 0.535 seconds with exit status 0 (successful).
+  INFO [6b042dda] Running /usr/bin/env mkdir -p /home/erpnext/hpremier/shared/log /home/erpnext/hpremier/shared/tmp/pids /home/erpnext/hpremier/shared/tmp/cache /home/erpnext/hpremier/shared/tmp/sockets /home/erpnext/hpremier/shared/vendor/bundle /home/erpnext/hpremier/shared/public/system /home/erpnext/hpremier/shared/public/uploads /home/erpnext/hpremier/shared/public/assets as erpnext@141.94.74.186
+ DEBUG [6b042dda] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/erpnext/hpremier/shared/log /home/erpnext/hpremier/shared/tmp/pids /home/erpnext/hpremier/shared/tmp/cache /home/erpnext/hpremier/shared/tmp/sockets /home/erpnext/hpremier/shared/vendor/bundle /home/erpnext/hpremier/shared/public/system /home/erpnext/hpremier/shared/public/uploads /home/erpnext/hpremier/shared/public/assets )
+  INFO [6b042dda] Finished in 0.606 seconds with exit status 0 (successful).
+ DEBUG [d66a98f4] Running [ -f /home/erpnext/hpremier/current/REVISION ] as erpnext@141.94.74.186
+ DEBUG [d66a98f4] Command: [ -f /home/erpnext/hpremier/current/REVISION ]
+ DEBUG [d66a98f4] Finished in 0.612 seconds with exit status 1 (failed).
+ DEBUG [7cf6e288] Running [ -f /home/erpnext/hpremier/repo/HEAD ] as erpnext@141.94.74.186
+ DEBUG [7cf6e288] Command: [ -f /home/erpnext/hpremier/repo/HEAD ]
+ DEBUG [7cf6e288] Finished in 0.919 seconds with exit status 1 (failed).
+ DEBUG [db256dc2] Running if test ! -d /home/erpnext/hpremier; then echo "Directory does not exist '/home/erpnext/hpremier'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [db256dc2] Command: if test ! -d /home/erpnext/hpremier; then echo "Directory does not exist '/home/erpnext/hpremier'" 1>&2; false; fi
+ DEBUG [db256dc2] Finished in 1.125 seconds with exit status 0 (successful).
+  INFO [915baf50] Running /usr/bin/env git clone --mirror https://fenet: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@github.com/fenet/leadstarlatest.git /home/erpnext/hpremier/repo as erpnext@141.94.74.186
+ DEBUG [915baf50] Command: cd /home/erpnext/hpremier && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-69e7ae98ef80c129668b.sh" ; /usr/bin/env git clone --mirror https://fenet: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@github.com/fenet/leadstarlatest.git /home/erpnext/hpremier/repo )
+ DEBUG [915baf50] 	Cloning into bare repository '/home/erpnext/hpremier/repo'...
+  INFO [915baf50] Finished in 2.461 seconds with exit status 0 (successful).
+ DEBUG [d792921e] Running if test ! -d /home/erpnext/hpremier/repo; then echo "Directory does not exist '/home/erpnext/hpremier/repo'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [d792921e] Command: if test ! -d /home/erpnext/hpremier/repo; then echo "Directory does not exist '/home/erpnext/hpremier/repo'" 1>&2; false; fi
+ DEBUG [d792921e] Finished in 0.607 seconds with exit status 0 (successful).
+  INFO [e742a2fd] Running /usr/bin/env git remote set-url origin https://fenet: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@github.com/fenet/leadstarlatest.git as erpnext@141.94.74.186
+ DEBUG [e742a2fd] Command: cd /home/erpnext/hpremier/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-69e7ae98ef80c129668b.sh" ; /usr/bin/env git remote set-url origin https://fenet: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@github.com/fenet/leadstarlatest.git )
+  INFO [e742a2fd] Finished in 0.716 seconds with exit status 0 (successful).
+  INFO [0fcd7ca1] Running /usr/bin/env git remote update --prune as erpnext@141.94.74.186
+ DEBUG [0fcd7ca1] Command: cd /home/erpnext/hpremier/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-69e7ae98ef80c129668b.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [0fcd7ca1] 	Fetching origin
+  INFO [0fcd7ca1] Finished in 1.123 seconds with exit status 0 (successful).
+ DEBUG [3e1ae041] Running if test ! -d /home/erpnext/hpremier/repo; then echo "Directory does not exist '/home/erpnext/hpremier/repo'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [3e1ae041] Command: if test ! -d /home/erpnext/hpremier/repo; then echo "Directory does not exist '/home/erpnext/hpremier/repo'" 1>&2; false; fi
+ DEBUG [3e1ae041] Finished in 0.612 seconds with exit status 0 (successful).
+  INFO [58396364] Running /usr/bin/env mkdir -p /home/erpnext/hpremier/releases/20240923043519 as erpnext@141.94.74.186
+ DEBUG [58396364] Command: cd /home/erpnext/hpremier/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-69e7ae98ef80c129668b.sh" ; /usr/bin/env mkdir -p /home/erpnext/hpremier/releases/20240923043519 )
+  INFO [58396364] Finished in 0.549 seconds with exit status 0 (successful).
+  INFO [8b461bf7] Running /usr/bin/env git archive heuc | /usr/bin/env tar -x -f - -C /home/erpnext/hpremier/releases/20240923043519 as erpnext@141.94.74.186
+ DEBUG [8b461bf7] Command: cd /home/erpnext/hpremier/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-69e7ae98ef80c129668b.sh" ; /usr/bin/env git archive heuc | /usr/bin/env tar -x -f - -C /home/erpnext/hpremier/releases/20240923043519 )
+  INFO [8b461bf7] Finished in 0.925 seconds with exit status 0 (successful).
+ DEBUG [6b8ff17c] Running if test ! -d /home/erpnext/hpremier/repo; then echo "Directory does not exist '/home/erpnext/hpremier/repo'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [6b8ff17c] Command: if test ! -d /home/erpnext/hpremier/repo; then echo "Directory does not exist '/home/erpnext/hpremier/repo'" 1>&2; false; fi
+ DEBUG [6b8ff17c] Finished in 0.671 seconds with exit status 0 (successful).
+ DEBUG [6377bf8c] Running /usr/bin/env git rev-list --max-count=1 heuc as erpnext@141.94.74.186
+ DEBUG [6377bf8c] Command: cd /home/erpnext/hpremier/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-69e7ae98ef80c129668b.sh" ; /usr/bin/env git rev-list --max-count=1 heuc )
+ DEBUG [6377bf8c] 	2366e14fc549bc687695f7225d36d1b9ff330552
+ DEBUG [6377bf8c] Finished in 0.717 seconds with exit status 0 (successful).
+ DEBUG [b0fe5fe7] Running if test ! -d /home/erpnext/hpremier/releases/20240923043519; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20240923043519'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [b0fe5fe7] Command: if test ! -d /home/erpnext/hpremier/releases/20240923043519; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20240923043519'" 1>&2; false; fi
+ DEBUG [b0fe5fe7] Finished in 0.614 seconds with exit status 0 (successful).
+  INFO [fce7b4e8] Running /usr/bin/env echo "2366e14fc549bc687695f7225d36d1b9ff330552" > REVISION as erpnext@141.94.74.186
+ DEBUG [fce7b4e8] Command: cd /home/erpnext/hpremier/releases/20240923043519 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "2366e14fc549bc687695f7225d36d1b9ff330552" > REVISION )
+  INFO [fce7b4e8] Finished in 0.816 seconds with exit status 0 (successful).
+  INFO [cafa3771] Running /usr/bin/env mkdir -p /home/erpnext/hpremier/releases/20240923043519 /home/erpnext/hpremier/releases/20240923043519/tmp /home/erpnext/hpremier/releases/20240923043519/vendor /home/erpnext/hpremier/releases/20240923043519/public as erpnext@141.94.74.186
+ DEBUG [cafa3771] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/erpnext/hpremier/releases/20240923043519 /home/erpnext/hpremier/releases/20240923043519/tmp /home/erpnext/hpremier/releases/20240923043519/vendor /home/erpnext/hpremier/releases/20240923043519/public )
+  INFO [cafa3771] Finished in 0.813 seconds with exit status 0 (successful).
+ DEBUG [946e37b0] Running [ -L /home/erpnext/hpremier/releases/20240923043519/log ] as erpnext@141.94.74.186
+ DEBUG [946e37b0] Command: [ -L /home/erpnext/hpremier/releases/20240923043519/log ]
+ DEBUG [946e37b0] Finished in 1.024 seconds with exit status 1 (failed).
+ DEBUG [6603126c] Running [ -d /home/erpnext/hpremier/releases/20240923043519/log ] as erpnext@141.94.74.186
+ DEBUG [6603126c] Command: [ -d /home/erpnext/hpremier/releases/20240923043519/log ]
+ DEBUG [6603126c] Finished in 0.715 seconds with exit status 0 (successful).
+  INFO [d02438cc] Running /usr/bin/env rm -rf /home/erpnext/hpremier/releases/20240923043519/log as erpnext@141.94.74.186
+ DEBUG [d02438cc] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env rm -rf /home/erpnext/hpremier/releases/20240923043519/log )
+  INFO [d02438cc] Finished in 0.715 seconds with exit status 0 (successful).
+  INFO [db60af41] Running /usr/bin/env ln -s /home/erpnext/hpremier/shared/log /home/erpnext/hpremier/releases/20240923043519/log as erpnext@141.94.74.186
+ DEBUG [db60af41] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/erpnext/hpremier/shared/log /home/erpnext/hpremier/releases/20240923043519/log )
+  INFO [db60af41] Finished in 0.613 seconds with exit status 0 (successful).
+ DEBUG [0481ae6e] Running [ -L /home/erpnext/hpremier/releases/20240923043519/tmp/pids ] as erpnext@141.94.74.186
+ DEBUG [0481ae6e] Command: [ -L /home/erpnext/hpremier/releases/20240923043519/tmp/pids ]
+ DEBUG [0481ae6e] Finished in 0.613 seconds with exit status 1 (failed).
+ DEBUG [f1c25c07] Running [ -d /home/erpnext/hpremier/releases/20240923043519/tmp/pids ] as erpnext@141.94.74.186
+ DEBUG [f1c25c07] Command: [ -d /home/erpnext/hpremier/releases/20240923043519/tmp/pids ]
+ DEBUG [f1c25c07] Finished in 0.818 seconds with exit status 1 (failed).
+  INFO [c11f3b0f] Running /usr/bin/env ln -s /home/erpnext/hpremier/shared/tmp/pids /home/erpnext/hpremier/releases/20240923043519/tmp/pids as erpnext@141.94.74.186
+ DEBUG [c11f3b0f] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/erpnext/hpremier/shared/tmp/pids /home/erpnext/hpremier/releases/20240923043519/tmp/pids )
+  INFO [c11f3b0f] Finished in 0.818 seconds with exit status 0 (successful).
+ DEBUG [c088c6c9] Running [ -L /home/erpnext/hpremier/releases/20240923043519/tmp/cache ] as erpnext@141.94.74.186
+ DEBUG [c088c6c9] Command: [ -L /home/erpnext/hpremier/releases/20240923043519/tmp/cache ]
+ DEBUG [c088c6c9] Finished in 0.614 seconds with exit status 1 (failed).
+ DEBUG [90f57045] Running [ -d /home/erpnext/hpremier/releases/20240923043519/tmp/cache ] as erpnext@141.94.74.186
+ DEBUG [90f57045] Command: [ -d /home/erpnext/hpremier/releases/20240923043519/tmp/cache ]
+ DEBUG [90f57045] Finished in 0.612 seconds with exit status 0 (successful).
+  INFO [7d9a2393] Running /usr/bin/env rm -rf /home/erpnext/hpremier/releases/20240923043519/tmp/cache as erpnext@141.94.74.186
+ DEBUG [7d9a2393] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env rm -rf /home/erpnext/hpremier/releases/20240923043519/tmp/cache )
+  INFO [7d9a2393] Finished in 0.724 seconds with exit status 0 (successful).
+  INFO [2fcfe543] Running /usr/bin/env ln -s /home/erpnext/hpremier/shared/tmp/cache /home/erpnext/hpremier/releases/20240923043519/tmp/cache as erpnext@141.94.74.186
+ DEBUG [2fcfe543] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/erpnext/hpremier/shared/tmp/cache /home/erpnext/hpremier/releases/20240923043519/tmp/cache )
+  INFO [2fcfe543] Finished in 0.605 seconds with exit status 0 (successful).
+ DEBUG [b2730a68] Running [ -L /home/erpnext/hpremier/releases/20240923043519/tmp/sockets ] as erpnext@141.94.74.186
+ DEBUG [b2730a68] Command: [ -L /home/erpnext/hpremier/releases/20240923043519/tmp/sockets ]
+ DEBUG [b2730a68] Finished in 0.613 seconds with exit status 1 (failed).
+ DEBUG [b7280ca0] Running [ -d /home/erpnext/hpremier/releases/20240923043519/tmp/sockets ] as erpnext@141.94.74.186
+ DEBUG [b7280ca0] Command: [ -d /home/erpnext/hpremier/releases/20240923043519/tmp/sockets ]
+ DEBUG [b7280ca0] Finished in 0.615 seconds with exit status 1 (failed).
+  INFO [4996dc07] Running /usr/bin/env ln -s /home/erpnext/hpremier/shared/tmp/sockets /home/erpnext/hpremier/releases/20240923043519/tmp/sockets as erpnext@141.94.74.186
+ DEBUG [4996dc07] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/erpnext/hpremier/shared/tmp/sockets /home/erpnext/hpremier/releases/20240923043519/tmp/sockets )
+  INFO [4996dc07] Finished in 0.714 seconds with exit status 0 (successful).
+ DEBUG [a519fd49] Running [ -L /home/erpnext/hpremier/releases/20240923043519/vendor/bundle ] as erpnext@141.94.74.186
+ DEBUG [a519fd49] Command: [ -L /home/erpnext/hpremier/releases/20240923043519/vendor/bundle ]
+ DEBUG [a519fd49] Finished in 0.554 seconds with exit status 1 (failed).
+ DEBUG [5cec18f5] Running [ -d /home/erpnext/hpremier/releases/20240923043519/vendor/bundle ] as erpnext@141.94.74.186
+ DEBUG [5cec18f5] Command: [ -d /home/erpnext/hpremier/releases/20240923043519/vendor/bundle ]
+ DEBUG [5cec18f5] Finished in 0.572 seconds with exit status 1 (failed).
+  INFO [e9516199] Running /usr/bin/env ln -s /home/erpnext/hpremier/shared/vendor/bundle /home/erpnext/hpremier/releases/20240923043519/vendor/bundle as erpnext@141.94.74.186
+ DEBUG [e9516199] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/erpnext/hpremier/shared/vendor/bundle /home/erpnext/hpremier/releases/20240923043519/vendor/bundle )
+  INFO [e9516199] Finished in 0.714 seconds with exit status 0 (successful).
+ DEBUG [22755ef3] Running [ -L /home/erpnext/hpremier/releases/20240923043519/public/system ] as erpnext@141.94.74.186
+ DEBUG [22755ef3] Command: [ -L /home/erpnext/hpremier/releases/20240923043519/public/system ]
+ DEBUG [22755ef3] Finished in 0.614 seconds with exit status 1 (failed).
+ DEBUG [74da8cf1] Running [ -d /home/erpnext/hpremier/releases/20240923043519/public/system ] as erpnext@141.94.74.186
+ DEBUG [74da8cf1] Command: [ -d /home/erpnext/hpremier/releases/20240923043519/public/system ]
+ DEBUG [74da8cf1] Finished in 0.511 seconds with exit status 1 (failed).
+  INFO [1402df99] Running /usr/bin/env ln -s /home/erpnext/hpremier/shared/public/system /home/erpnext/hpremier/releases/20240923043519/public/system as erpnext@141.94.74.186
+ DEBUG [1402df99] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/erpnext/hpremier/shared/public/system /home/erpnext/hpremier/releases/20240923043519/public/system )
+  INFO [1402df99] Finished in 0.614 seconds with exit status 0 (successful).
+ DEBUG [6a3b0a63] Running [ -L /home/erpnext/hpremier/releases/20240923043519/public/uploads ] as erpnext@141.94.74.186
+ DEBUG [6a3b0a63] Command: [ -L /home/erpnext/hpremier/releases/20240923043519/public/uploads ]
+ DEBUG [6a3b0a63] Finished in 0.509 seconds with exit status 1 (failed).
+ DEBUG [06561433] Running [ -d /home/erpnext/hpremier/releases/20240923043519/public/uploads ] as erpnext@141.94.74.186
+ DEBUG [06561433] Command: [ -d /home/erpnext/hpremier/releases/20240923043519/public/uploads ]
+ DEBUG [06561433] Finished in 0.458 seconds with exit status 1 (failed).
+  INFO [46ce652f] Running /usr/bin/env ln -s /home/erpnext/hpremier/shared/public/uploads /home/erpnext/hpremier/releases/20240923043519/public/uploads as erpnext@141.94.74.186
+ DEBUG [46ce652f] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/erpnext/hpremier/shared/public/uploads /home/erpnext/hpremier/releases/20240923043519/public/uploads )
+  INFO [46ce652f] Finished in 0.769 seconds with exit status 0 (successful).
+ DEBUG [3ad3be34] Running [ -L /home/erpnext/hpremier/releases/20240923043519/public/assets ] as erpnext@141.94.74.186
+ DEBUG [3ad3be34] Command: [ -L /home/erpnext/hpremier/releases/20240923043519/public/assets ]
+ DEBUG [3ad3be34] Finished in 0.613 seconds with exit status 1 (failed).
+ DEBUG [de9aa2fb] Running [ -d /home/erpnext/hpremier/releases/20240923043519/public/assets ] as erpnext@141.94.74.186
+ DEBUG [de9aa2fb] Command: [ -d /home/erpnext/hpremier/releases/20240923043519/public/assets ]
+ DEBUG [de9aa2fb] Finished in 0.716 seconds with exit status 1 (failed).
+  INFO [45a4e198] Running /usr/bin/env ln -s /home/erpnext/hpremier/shared/public/assets /home/erpnext/hpremier/releases/20240923043519/public/assets as erpnext@141.94.74.186
+ DEBUG [45a4e198] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/erpnext/hpremier/shared/public/assets /home/erpnext/hpremier/releases/20240923043519/public/assets )
+  INFO [45a4e198] Finished in 0.649 seconds with exit status 0 (successful).
+ DEBUG [d1a45d63] Running if test ! -d /home/erpnext/hpremier/releases/20240923043519; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20240923043519'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [d1a45d63] Command: if test ! -d /home/erpnext/hpremier/releases/20240923043519; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20240923043519'" 1>&2; false; fi
+ DEBUG [d1a45d63] Finished in 0.576 seconds with exit status 0 (successful).
+  INFO [5a26ac2b] Running $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true as erpnext@141.94.74.186
+ DEBUG [5a26ac2b] Command: cd /home/erpnext/hpremier/releases/20240923043519 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true )
+  INFO [5a26ac2b] Finished in 0.647 seconds with exit status 0 (successful).
+  INFO [32407d41] Running $HOME/.rbenv/bin/rbenv exec bundle config --local path /home/erpnext/hpremier/shared/bundle as erpnext@141.94.74.186
+ DEBUG [32407d41] Command: cd /home/erpnext/hpremier/releases/20240923043519 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local path /home/erpnext/hpremier/shared/bundle )
+  INFO [32407d41] Finished in 0.586 seconds with exit status 0 (successful).
+  INFO [ff34880a] Running $HOME/.rbenv/bin/rbenv exec bundle config --local without development:test as erpnext@141.94.74.186
+ DEBUG [ff34880a] Command: cd /home/erpnext/hpremier/releases/20240923043519 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local without development:test )
+  INFO [ff34880a] Finished in 0.799 seconds with exit status 0 (successful).
+ DEBUG [90fd577a] Running if test ! -d /home/erpnext/hpremier/releases/20240923043519; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20240923043519'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [90fd577a] Command: if test ! -d /home/erpnext/hpremier/releases/20240923043519; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20240923043519'" 1>&2; false; fi
+ DEBUG [90fd577a] Finished in 0.723 seconds with exit status 0 (successful).
+ DEBUG [9f264039] Running $HOME/.rbenv/bin/rbenv exec bundle check as erpnext@141.94.74.186
+ DEBUG [9f264039] Command: cd /home/erpnext/hpremier/releases/20240923043519 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle check )
+ DEBUG [9f264039] 	Fetching https://github.com/activeadmin/inherited_resources.git
+ DEBUG [9f264039] 	Bundler can't satisfy your Gemfile's dependencies.
+Install missing gems with `bundle install`.
+ DEBUG [9f264039] Finished in 0.838 seconds with exit status 1 (failed).
+  INFO [78e49985] Running $HOME/.rbenv/bin/rbenv exec bundle install --jobs 4 --quiet as erpnext@141.94.74.186
+ DEBUG [78e49985] Command: cd /home/erpnext/hpremier/releases/20240923043519 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle install --jobs 4 --quiet )
+  INFO [78e49985] Finished in 63.063 seconds with exit status 0 (successful).
+ DEBUG [2725da6f] Running if test ! -d /home/erpnext/hpremier/releases/20240923043519; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20240923043519'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [2725da6f] Command: if test ! -d /home/erpnext/hpremier/releases/20240923043519; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20240923043519'" 1>&2; false; fi
+ DEBUG [2725da6f] Finished in 1.325 seconds with exit status 0 (successful).
+  INFO [8809e51d] Running $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile as erpnext@141.94.74.186
+ DEBUG [8809e51d] Command: cd /home/erpnext/hpremier/releases/20240923043519 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" RAILS_GROUPS="" ; $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile )
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:04.515172 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/active_admin-3e9081b66168c34c54e05159817c7ed1e19b1d53af99c1b681ddfa5aa6629fb2.css
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:04.515800 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/active_admin-3e9081b66168c34c54e05159817c7ed1e19b1d53af99c1b681ddfa5aa6629fb2.css.gz
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:04.516465 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fontawesome-webfont-7bfcab6db99d5cfbf1705ca0536ddc78585432cc5fa41bbd7ad0f009033b2979.eot
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:04.516763 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fontawesome-webfont-7bfcab6db99d5cfbf1705ca0536ddc78585432cc5fa41bbd7ad0f009033b2979.eot.gz
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:04.517383 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fontawesome-webfont-2adefcbc041e7d18fcf2d417879dc5a09997aa64d675b7a3c4b6ce33da13f3fe.woff2
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:04.518033 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fontawesome-webfont-ba0c59deb5450f5cb41b3f93609ee2d0d995415877ddfa223e8a8a7533474f07.woff
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:04.519554 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fontawesome-webfont-aa58f33f239a0fb02f5c7a6c45c043d7a9ac9a093335806694ecd6d4edc0d6a8.ttf
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:04.519930 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fontawesome-webfont-aa58f33f239a0fb02f5c7a6c45c043d7a9ac9a093335806694ecd6d4edc0d6a8.ttf.gz
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:04.520181 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fontawesome-webfont-ad6157926c1622ba4e1d03d478f1541368524bfc46f51e42fe0d945f7ef323e4.svg
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:04.520422 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fontawesome-webfont-ad6157926c1622ba4e1d03d478f1541368524bfc46f51e42fe0d945f7ef323e4.svg.gz
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:04.520643 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/logo-e54d227bb30efb8bc9b26c44ebe6935a788bd9cddb5b1ca8a5cb3da538e9f76f.jpg
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:11.288023 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/active_admin-495e45285f1cd3e2b58f886872bc83db18019ebf39577ea8402413ebca84ac38.js
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:11.288105 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/active_admin-495e45285f1cd3e2b58f886872bc83db18019ebf39577ea8402413ebca84ac38.js.gz
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:11.757344 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/actiontext-38aec689ef3fa9f49f46cce3f311351e8f74ed992bdbdafa431f82dc8fc5bbcc.js
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:11.757421 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/actiontext-38aec689ef3fa9f49f46cce3f311351e8f74ed992bdbdafa431f82dc8fc5bbcc.js.gz
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:13.301729 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/trix-f389bf4b2d807c1ee4a98123d29999e386f497f4d2ddf74af336cc75e56ed7e9.js
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:13.301810 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/trix-f389bf4b2d807c1ee4a98123d29999e386f497f4d2ddf74af336cc75e56ed7e9.js.gz
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:13.644747 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/trix-e646a084ada46a1c869b550dfb1c729d777c20da14931bee9c44487cc7c28438.css
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:13.644820 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/trix-e646a084ada46a1c869b550dfb1c729d777c20da14931bee9c44487cc7c28438.css.gz
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:13.966216 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/my_print_stylesheet-2aed6148fbee3769b04f7e84bb732fb1e1517b2656b208c3c0e62ef7ecdf53b7.css
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:13.966292 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/my_print_stylesheet-2aed6148fbee3769b04f7e84bb732fb1e1517b2656b208c3c0e62ef7ecdf53b7.css.gz
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:13.966464 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/a43-711684e46dc1ae79c2cf8fa2dfa1c67e892707540f1dcd7c24bd7ee3791e7bc4.jpg
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:14.061683 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/active_material-ecc50566685a515494dc75aa56e30f88f27cbc410afef1a809b75dd17fc561ab.js
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:14.061765 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/active_material-ecc50566685a515494dc75aa56e30f88f27cbc410afef1a809b75dd17fc561ab.js.gz
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:14.503078 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/activestorage-cff7ee45a11cc91de2cb576485bea6a6f06e81f8d878593c8a941270e66125cb.js
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:14.503201 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/activestorage-cff7ee45a11cc91de2cb576485bea6a6f06e81f8d878593c8a941270e66125cb.js.gz
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:14.930532 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/activestorage.esm-dcc84ca501816288b2ec4891d819183d8309005f79da6756b4c12da4b1edbe02.js
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:14.930710 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/activestorage.esm-dcc84ca501816288b2ec4891d819183d8309005f79da6756b4c12da4b1edbe02.js.gz
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:15.148398 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/actioncable-50da8baf37ad2ebc311be45df6420038f114341a0fc3a2a43e9b7979822dca32.js
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:15.148559 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/actioncable-50da8baf37ad2ebc311be45df6420038f114341a0fc3a2a43e9b7979822dca32.js.gz
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:15.351485 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/actioncable.esm-fbb5dfe28663d4618729c2c72eb4afc9e78e988d25e37e87267a45c1b34b84df.js
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:15.351667 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/actioncable.esm-fbb5dfe28663d4618729c2c72eb4afc9e78e988d25e37e87267a45c1b34b84df.js.gz
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:15.353999 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/Asset 3-6393597a427a0e7d55a707c5bd727fbc7467cad41ab9c5350178aa71a9d14a75.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:15.355819 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/Asset3-6393597a427a0e7d55a707c5bd727fbc7467cad41ab9c5350178aa71a9d14a75.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:15.357617 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/a1-ac4971efd3ae8cecab02aa001da56279aab931e757d0b776d53a930f081df04f.jpg
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:15.359074 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/apple-touch-icon-66e7252ff9afd2c49ca8fd05f708bc330a42beaf1af7fc2ab6998cb3dc654bda.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:15.360423 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/bank-logo-68492508dcf2849a9aff5c8a3f9ce366c6d26052dfa9a56614c18ec3d3debe88.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:15.361929 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/banner-82eec36f350c9a12e9f69503cd6818765cee331664eab75272dabee8fc96b97e.jpg
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:15.364064 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/bg-e0680532465fe0155956feabafe98f574ba0fc1f3164b83354310a959acaadfc.jpg
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:15.365633 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/blank-profile-picture-973460_640-c6176daa79e0b765aaa2547b00b4f89cc40ca69e274ddcc123d271cd0a0ac574.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:15.366703 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/church-b851353cb67789c348fd60982cb6eaaedb6391d3dfee46515097f3bf9481979f.jpg
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:15.368106 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/church-e0636d9437989f670bd89e017b109958091688a3b41d5fe04db5ac2fca063bf8.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:15.369576 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/favicon-6aef8c074c3a83b3c3c5793ec758bf377d75b70f36a6414a14f57c6ac3da6893.ico
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:15.369719 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/favicon-6aef8c074c3a83b3c3c5793ec758bf377d75b70f36a6414a14f57c6ac3da6893.ico.gz
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:15.371064 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/favicon-8eb9ffc8b36969d4a82d36631fb758c4b7b758de4f64aa5b4889cdf723e5debb.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:15.372182 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/leadstar-880c640a7124f530a8ed3347e6c4f7dcec89bbbf0d08eae589a8d86faecb9d4b.jpg
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:15.373304 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/leadstar-300f9beff1656adafd9d8d392a3933bec8c2c48e89985edec2f29b60bed3cbe6.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:15.374395 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/leadstarbanner-65ab30dca80b91852ab33c98a0d0f7825ea224e1a5236421d5ee6db3f0f39fbc.jpg
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:15.451397 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/logo-90b47cb60a62300354226631dccbcf834da4ce9ba6b58de0e8fdfabaada15fad.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:15.452347 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/logo2-538b707a765687ab7e72f4e72b25ee52bb8e174c9ebfd6873f9c0ae5a7eae3e1.jpg
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:15.453396 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/logo2-3e20cb341bba148f0354790e94064777181f6111c0109fb0ba6a81e934ebee91.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:15.454351 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/ngvc-4427cd8dfdb3f1d3a56e649241e5d04c58dde9e06de3e35628b3ef6a3b54a44a.jpg
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:15.455360 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/ngvc-5b62fca5d981ac8895c060d92fe0675d14d01f0e768b2279477a6b6392698e9e.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:15.456595 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/placeholder-d52378a9e9af3c40de7651761f9d79d36ae514fed86baf89932a5542964273d3.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:15.458338 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/sign-in-84f59812207644a71f31bc167ed8e6a1176a1e2aee35d5a15d3e9c5bd22dea6a.jpg
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:15.459413 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/yesu-bc5e28386442d43a3d8b55b0752340faea6d75b3a78d26ecee296540956ed515.jpg
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:15.460973 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/yesu-78cecd857aa2a446dd4ae260357aafdb1d02a5750dcf61d4d78add09f5f4209d.png
+ DEBUG [8809e51d] 	W, [2024-09-23T04:37:15.556875 #698947]  WARN -- : Removed sourceMappingURL comment for missing asset 'adminlte.min.js.map' from /home/erpnext/hpremier/releases/20240923043519/app/assets/javascripts/adminlte.min.js
+ DEBUG [8809e51d] 	W, [2024-09-23T04:37:15.566994 #698947]  WARN -- : Removed sourceMappingURL comment for missing asset 'bs-stepper.min.js.map' from /home/erpnext/hpremier/releases/20240923043519/app/assets/javascripts/bs-stepper.min.js
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:19.779535 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/application-5b82b0bb395a83dee5572cc78124c727a6a5bbf8f4166e99daebde86f51c4cb8.js
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:19.779614 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/application-5b82b0bb395a83dee5572cc78124c727a6a5bbf8f4166e99daebde86f51c4cb8.js.gz
+ DEBUG [8809e51d] 	autoprefixer: /home/erpnext/hpremier/releases/20240923043519/app/assets/stylesheets/application.css.scss:20507:3: Replace color-adjust to print-color-adjust. The color-adjust shorthand is currently deprecated.
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.791452 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/application-d581b37e1de19573118eb3fe2bc17e90f90106771407179fd90e82b4ce1c3c38.css
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.791546 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/application-d581b37e1de19573118eb3fe2bc17e90f90106771407179fd90e82b4ce1c3c38.css.gz
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.800295 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_3gp-54a044cbf08c8c2339eefed1e6d6a9418f2267307f55fce9b1a11abbf3141e15.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.801370 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_7z-468112586d1de97c4537a4bae9f047bb418fb683ce2bfdf72e33fd2d7a74be2d.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.802408 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_ace-2536e1b50b76d4014038b7d2536c5845767caf1da1e956323ede417eda7bef0c.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.803494 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_ai-0598426ce798d0ae537ac56e64ab642ac4d423d0d63b19951ee3bfafd5a51401.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.804524 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_aif-4e524ce4cb34a21f908229079dd13456fc34915f7541c985a048928377b5b718.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.805529 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_aiff-51bd36d0f131c5ad0dc3e16253834fbe8c4679de14f955c017319b4b1c2db348.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.806525 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_amr-d89fe352cece522395b8f485576801851b11a04813011fec35c2125d2a84f63c.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.807507 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_asf-8c6b7789acde80e5d56f1835192a65d51d94b44f2ef48ff90831eb13a9de424d.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.808592 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_asx-07061fa581ba5853d8edf1cdb1d202e2fa6816dae97e24184c924c20fda198c0.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.809557 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_bat-42e4aebaea5a62c84e28ce7e0af4223391ba6e9bab99a30281756f206006558c.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.810505 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_bin-7216af2b795c49ddc346340adf4f063a47fd5fd639fef3505c88c59a4a91901e.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.811482 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_bmp-91c9515acc985d9503c01033931f110b549faf47d188f69f75ca477de5212720.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.812529 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_bup-82be1953ec9444a90791c01d11a5ca750d95ea8426a9040f934912dd436f1f92.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.813496 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_cab-2e1f8965b1af82e24c03d8c796cc42e32671ef1226c20ffe3c7122b15af055f6.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.814477 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_cbr-1e40efd741ce5769666eb7a675f2b51d6e0f90b00a80db6556fb54856077b33e.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.815450 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_cda-75ca731ce5c4a7f4dc67d07013d9332718470b1ea0a0aac49d7c80f54d72fcff.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.816460 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_cdl-e934a05655047a11cc2867745623a5b3125a2d70b7f4515817a169626a0074cf.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.817444 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_cdr-e4e9e76910cae758984f62f411020fc8355f59bc7730220501f3adaaa85bea60.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.818384 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_chm-b7933101682b272f5314a625ae1e25a448a4f12c7eaa6cc5272a0cd5b02bc393.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.819338 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_dat-817af8b9969ef03d68e07c0ba5b0bb74c6ce4365820efd7ca13aabeb21e352b2.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.820275 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_divx-7205179c4fc773b59e959cb8befdcb519719ed23058d3847d13959d2f33863e6.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.821319 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_dll-d676d8774f9d4e4397793bdcb8dcef3acf0168d3ce9d38cb77c0dca1874cd135.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.822299 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_dmg-a9adb51fbbd0377a5b14b39bd634b972261d22b914791d2f76c6ddfdaf9180cc.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.823273 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_doc-fc42f726b3c14367328a707cc608c100c7dd218ee03c0c20efe14818f1374c8c.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.824285 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_docx-02de2ddcb6d2c2c66ae2c0ee00768f3c32f292b2bb8f3797049c830e57f5da53.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.825321 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_dss-e3d43589d4f97f4bdb5c424df44ffb32ee4a68620f90c3af1e0c0d37c66f0e66.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.826329 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_dvf-83b706e4a4fe13b85afde50be813aeb7832df178cb662c74d27635fb782e4ab7.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.827352 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_dwg-33a0e7affa2955428fc4cdb275cfda112fb5a29576da3823606e2f5a2e0068c4.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.828389 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_eml-54b8e5d55113439dbd25396430ddefb02fc4d3cd4dcb733eff2bf9b3e91c959f.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.829383 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_eps-a01904c03e0ddc5080a6d1226c6e311388c305342c7be27180a556e5b9e4e2d0.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.830331 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_exe-de3471ceb124ef107b99ead3d3ade615273576f547af1907bb3af8755ce89cae.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.831336 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_fla-790adfa262f3e6d11cdb3e735644d8bed5ddd177038d2b4c699cca215af098e2.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.832316 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_flv-45d3e8ea1527d90fe9d5685ceff7eb105e8b23feaf3c35735fbf34912ce5ba2f.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.833421 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_gif-0295cf8032e6732f657d396aed26dfb9929deaee54cb7e4608b5ce9ad34f7464.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.834390 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_gz-83d9e9a87ca0ab68ac7c281475b2673401952b08e90deaf13de1587df7f52a01.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.835318 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_hqx-e761e0ac864b38870ab328f3e5d4568598c52427726c556ffd1857d07f8c8fd7.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.836237 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_htm-9980d8148ff18f448a06486a2f9bcd8ca7365fc8e335625cee231a094b4c773c.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.837254 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_html-97ae64b96eb9a25058cfc19345a49cde8d5573ce91470f7c13104c647f5050a4.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.838215 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_ifo-ffe4f06b660a46cb20e838bf1b482dcfa78746b5ef32f110f9e5caf04aca5af4.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.839161 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_indd-9174d8dbad8bdeb44b1112b72cbecc8c42ceb4e8a604f1f50e1b50530a18638f.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.840109 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_iso-1c39a2853cfc13dae39e60da1deb28ac2bf20c828f8504153666f412c43e7b83.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.841110 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_jar-5173edf3bb695cf2b75f4644a50f769b3e63a76474b0a8af90602585652bbea1.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.842004 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_jpeg-62792df335519212e478bce6a09e0581a3df75692feeb57161e31116f2811240.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.843033 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_jpg-c2464ad286f7d805dd5cfc4596ceaf1b362f088d8c152b59a59651615456ed86.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.844053 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_lnk-d961979262eb821e2d22167027c0703f58dbf23bd712fbe2934029e7547606cc.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.845070 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_log-d69e49a1847977e9232ef909c4977455feb201409bf5af0fb843da86200289ae.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.845976 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_m4a-10ed68e617b36ec99877c171d4fdfa6a9a762bbdee3e27008617061bf4d38f93.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.847009 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_m4b-37101c08496da5ec8ec5bec0a09b4f1e536a67e7e5f2bf00a6e1550f12a9892b.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.847979 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_m4p-87632d3a16553795cc4f9c85c5ce8209a1fa66471397ecd6464a4ea7e39c583f.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.848961 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_m4v-158e43a86217403fb5bfac656f5702d4c9f0faab1e7d2d2f799b0f064a06fe08.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.850079 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_mcd-6950036cf3adb2653d4d964b7d1cea40d668d1939a56f674c4799ddfd2b2b93b.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.851070 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_mdb-c19f4518c9ff77643c64c6186da9c3c44497f33a37b8d7a33d41b8509e7244cd.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.851978 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_mid-2ee4b60fa6d6b3d2ce9223a3ec68a7767609fe99358d6c7b57be639ed5e5528b.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.852952 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_mov-4b0253c6042a227a28efcb5dbce525190886c47b7e845c004485f64b4b36b949.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.854066 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_mp2-1ea2627940cec6b6a22b182a74cbbd661597855a0853735043dbeb890161186f.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.855087 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_mp3-a5ce6bd5c5c212ee2363b04c9969716d176b500d5b9e7f93891147e9c00db297.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.856007 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_mp4-274217275e9192f5f91c82915480c481d9f9998f6f28a59a146c2e483030172d.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.856996 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_mpeg-51f1a0b25ecd38acd4319587fd5c03770b7937f8cbadd240118194b1387723e6.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.857898 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_mpg-b66bad32a4c5ae817352600ce3d0558773f0a43ce62e23a20c3de110f778c100.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.858877 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_msi-c081358d9af6f1440754e4780634143cfdf5a9db09b7deffcbd8ddad9834df26.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.859878 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_mswmm-0330a4fb990223394ef741e8c76f4fea9c33e9d005e8b2fc6b742969401e07af.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.860830 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_ogg-9a30110c1b5d25ad2a60376453081a8bad8bdc9ca0496adaadc1dd152550c284.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.861919 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_pdf-0406f720d48adde3738673d3991371fdbed92e86e62f3fac9dc5baf02b3614f6.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.862975 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_png-c49066162a1e58670fde49d2ad8bdf59a6bb0414b434dd4a5246d55a39941ca4.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.863938 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_pps-929bfdd0fe4cce7094fd36c61d3167d3d710c7237128671ed21920ee67fc09a6.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.864964 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_ppt-cd4bbfe9681ce6773ec02fa350a9164b743562bca7c8da4e8cae868c799b16ef.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.866043 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_pptx-953fce0096da8eb59e9af39a120fcd0ce26eaa398688e98fb13c63ba02672e03.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.867007 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_ps-ecb7431489438169c3d69fd8d3ddfbb606608fdb57256c1563aa68a301fa376b.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.867946 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_psd-bf29b99e477d2d1d831cbdc3e83acfa5a6585dbfdc93b87a45d999e3777ac055.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.868874 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_pst-b9057b03d66a1de6f148995e4641487ca4ffa0db6b1798bcaf112ffaa5555762.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.869835 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_ptb-7bc37534bd30c42a44c5ce51b0d2128c9d881ae83eacd71bac126c4093734dcc.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.870805 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_pub-afbba4a5a5aad678ec578965beee2be27eab1b2021c6bb8ea4c6bde89ad70235.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.871734 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_qbb-cdf8094ac39e71f6341a152fe42a809ce281ec8adb076c01e924d22bf2f1dad8.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.872672 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_qbw-eabd9bc42cbc2245ca5a88e795d92f96ddf37796b6bb511e0d580ab54d02d8e8.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.873616 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_qxd-17a5c1658a94f0c5689f19dfb4d75a4bdaf42d2f221acbfd07d7943c58cf59dc.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.874552 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_ram-29785222252e609606c445720b1d3a6aa521b04a439123ef7b677a26342ed7ba.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.875492 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_rar-62b6711f9a9face078d1578166735a6d1e4e93b8cbe4ac315522dddf3843c1c7.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.876467 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_rm-20f08ac06a0c85507214714561583580fe817be9cb08a77f3738d99e9593cf44.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.877463 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_rmvb-0ce3dd46b1dad8e1ca4e1220b40d5d28462564e2c2636c1204c906631ac4b234.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.878384 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_rtf-6b3e1848daad7b6edc75f2c711fa1c04862052917c5a603ca923065b6b8cdff6.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.879318 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_sea-68d00c2a1f638a516560226ff9629f714c682538f156817cb1f0a8b8e2b9da09.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.880245 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_ses-7e67456eaa8a9408e5e922eec1222a4c71e2ac3e2299feb853b17143037fded9.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.881179 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_sit-6ff8514be3f60887b99c96ed7279da772334e499753fe068caf83e56541ad479.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.882096 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_sitx-54ad88a27ef662ba860c3d8069ca19af06b32cb44970167a9282daa28a0441b4.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.883039 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_ss-4912a96ac3ebb64748ee99a7397d8f791446da88772dd88117c9ff0c8412bc1f.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.883954 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_swf-25bf87741415a43c90fff010bdf00e3c651d48e1bcc83346c25318d0ca8ae18b.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.884994 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_tgz-576824ed8ee0545f4499988f963a1e7defec34e0fa9a64e67332410f6b1e24cf.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.885933 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_thm-2287198154475ca8e7912abe0287303cebbb77821c80755f882ab6ca46627d37.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.886916 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_tif-f596e59660f32656cd016479a5c605b873d643a3855ffe2f8111a48d9ba50ef3.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.887859 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_tmp-f3cf0d784f8eff53838136caab9eb615fb377e7b331279963c9e284d7b5a4864.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.888852 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_torrent-dfb633e62e83d2452a6440e3a2640473c809d219c0e9085298a8bb36d1286980.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.889778 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_ttf-480ece61c3e4d541f05e2b423a8abd805ea9c24789a72374109bbf7856c9247d.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.890723 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_txt-212035d18b18bd60e748995241eaf5694e68801a8b62175f2e0b57ea036a4919.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.891669 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_unknown-8ca4e76dabefba0019545bd820e48d8a79fa4ca4eb7c61a3513f4c7c01a71eda.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.892687 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_vcd-bd5a2337cd3405225de3405564853594d3c702678502be60920d4dc88a1a9063.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.893657 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_vob-99106bd53af16444225782107934fdd8200c9e9ad57d78fd8d6dc5ecac6ec0c8.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.894614 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_wav-bf26f19c18ad970b7f0216c2ddff4b48876cafea5eb9d677d60bfc0b80ce6b0f.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.895536 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_wma-1a75e23b5d2596555b98c4aabb9779754aaa58d254ec4381657967298dd08c07.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.896478 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_wmv-efcc0506e13c6ebb823ecdc13cdfb76cf4763895dc3e24621b3b2424d044ac85.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.897374 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_wps-2751ce58f23ae6c93dc28f85dbc14d61632fbc3d941ec41f3893a8f2bab4e2e9.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.898310 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_xls-3ecda2bd05bee6aeda9afad17e795749651f92e44c5335a4e55216a642d6dac3.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.899330 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_xlsx-f01389794788ab077b3bdb5777353b7c34a69476c28cca29a1bd8df8135a7225.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.900223 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_xpi-e1bbd4dd137f0411d1a36a116e7e60ccb78593133f082ad5bbffdd02f91dfe92.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.901108 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/fileicons/file_extension_zip-650e2f6fb99c6913f7febcf12830b2b6c53a03b4d261264c4696e3ff866849ca.png
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.901964 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/material/icons/keyboard_arrow_down-3e723d75840e3ff689a2abf03d88ffb6a4a978417ea966a29014e5699839c934.svg
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.902055 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/material/icons/keyboard_arrow_down-3e723d75840e3ff689a2abf03d88ffb6a4a978417ea966a29014e5699839c934.svg.gz
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.903034 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/material/icons/keyboard_arrow_left-3bdc2706e8ca43938810a8e328b49e94712ad95e3e356488218e58e7ee01afe8.svg
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.903136 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/material/icons/keyboard_arrow_left-3bdc2706e8ca43938810a8e328b49e94712ad95e3e356488218e58e7ee01afe8.svg.gz
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.904082 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/material/icons/keyboard_arrow_right-cc10813340ebf42ff696180a03be1f3ab950e7b4aac6bea6b6d9cd10dc9fbd0c.svg
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.904136 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/material/icons/keyboard_arrow_right-cc10813340ebf42ff696180a03be1f3ab950e7b4aac6bea6b6d9cd10dc9fbd0c.svg.gz
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.905116 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/material/icons/keyboard_arrow_up-515c2f1487224089d31ad568ef95bb58d1a00ef57800ad774394d8a0f45e70fa.svg
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.905170 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/material/icons/keyboard_arrow_up-515c2f1487224089d31ad568ef95bb58d1a00ef57800ad774394d8a0f45e70fa.svg.gz
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.906115 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/material/icons/today-de548732f10cc7e60b7094021f884d8a4bd2485f938848bc302003b0accb304a.svg
+ DEBUG [8809e51d] 	I, [2024-09-23T04:37:27.906206 #698947]  INFO -- : Writing /home/erpnext/hpremier/releases/20240923043519/public/assets/material/icons/today-de548732f10cc7e60b7094021f884d8a4bd2485f938848bc302003b0accb304a.svg.gz
+  INFO [8809e51d] Finished in 29.837 seconds with exit status 0 (successful).
+ DEBUG [04e02fdb] Running if test ! -d /home/erpnext/hpremier/releases/20240923043519; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20240923043519'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [04e02fdb] Command: if test ! -d /home/erpnext/hpremier/releases/20240923043519; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20240923043519'" 1>&2; false; fi
+ DEBUG [04e02fdb] Finished in 0.616 seconds with exit status 0 (successful).
+  INFO [f0a7311b] Running /usr/bin/env mkdir -p /home/erpnext/hpremier/releases/20240923043519/assets_manifest_backup as erpnext@141.94.74.186
+ DEBUG [f0a7311b] Command: cd /home/erpnext/hpremier/releases/20240923043519 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/erpnext/hpremier/releases/20240923043519/assets_manifest_backup )
+  INFO [f0a7311b] Finished in 0.570 seconds with exit status 0 (successful).
+ DEBUG [59b6ea12] Running /usr/bin/env ls /home/erpnext/hpremier/releases/20240923043519/public/assets/.sprockets-manifest* as erpnext@141.94.74.186
+ DEBUG [59b6ea12] Command: cd /home/erpnext/hpremier/releases/20240923043519 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls /home/erpnext/hpremier/releases/20240923043519/public/assets/.sprockets-manifest* )
+ DEBUG [59b6ea12] 	/home/erpnext/hpremier/releases/20240923043519/public/assets/.sprockets-manifest-8862ede255e043823c2a09f2fb7c47bb.json
+ DEBUG [59b6ea12] Finished in 0.613 seconds with exit status 0 (successful).
+ DEBUG [e9e511c2] Running /usr/bin/env ls /home/erpnext/hpremier/releases/20240923043519/public/assets/.sprockets-manifest* as erpnext@141.94.74.186
+ DEBUG [e9e511c2] Command: cd /home/erpnext/hpremier/releases/20240923043519 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls /home/erpnext/hpremier/releases/20240923043519/public/assets/.sprockets-manifest* )
+ DEBUG [e9e511c2] 	/home/erpnext/hpremier/releases/20240923043519/public/assets/.sprockets-manifest-8862ede255e043823c2a09f2fb7c47bb.json
+ DEBUG [e9e511c2] Finished in 0.716 seconds with exit status 0 (successful).
+  INFO [bc19a91a] Running /usr/bin/env cp /home/erpnext/hpremier/releases/20240923043519/public/assets/.sprockets-manifest-8862ede255e043823c2a09f2fb7c47bb.json /home/erpnext/hpremier/releases/20240923043519/assets_manifest_backup as erpnext@141.94.74.186
+ DEBUG [bc19a91a] Command: cd /home/erpnext/hpremier/releases/20240923043519 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env cp /home/erpnext/hpremier/releases/20240923043519/public/assets/.sprockets-manifest-8862ede255e043823c2a09f2fb7c47bb.json /home/erpnext/hpremier/releases/20240923043519/assets_manifest_backup )
+  INFO [bc19a91a] Finished in 0.715 seconds with exit status 0 (successful).
+  INFO [deploy:migrate] Run `rake db:migrate`
+ DEBUG [132169e6] Running if test ! -d /home/erpnext/hpremier/releases/20240923043519; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20240923043519'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [132169e6] Command: if test ! -d /home/erpnext/hpremier/releases/20240923043519; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20240923043519'" 1>&2; false; fi
+ DEBUG [132169e6] Finished in 3.844 seconds with exit status 0 (successful).
+  INFO [195c9692] Running $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate as erpnext@141.94.74.186
+ DEBUG [195c9692] Command: cd /home/erpnext/hpremier/releases/20240923043519 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" ; $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate )
+  INFO [195c9692] Finished in 2.914 seconds with exit status 0 (successful).
+ DEBUG [a200cecf] Running if test ! -d /home/erpnext/hpremier/releases/20240923043519; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20240923043519'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [a200cecf] Command: if test ! -d /home/erpnext/hpremier/releases/20240923043519; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20240923043519'" 1>&2; false; fi
+ DEBUG [a200cecf] Finished in 0.812 seconds with exit status 0 (successful).
+  INFO [9745304e] Running $HOME/.rbenv/bin/rbenv exec bundle exec whenever --update-crontab hpremier_production --set environment=production --roles=app,web,db  as erpnext@141.94.74.186
+ DEBUG [9745304e] Command: cd /home/erpnext/hpremier/releases/20240923043519 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" ; $HOME/.rbenv/bin/rbenv exec bundle exec whenever --update-crontab hpremier_production --set environment=production --roles=app,web,db  )
+ DEBUG [9745304e] 	[write] crontab file updated
+  INFO [9745304e] Finished in 1.228 seconds with exit status 0 (successful).
+  INFO [7809fe52] Running /usr/bin/env ln -s /home/erpnext/hpremier/releases/20240923043519 /home/erpnext/hpremier/releases/current as erpnext@141.94.74.186
+ DEBUG [7809fe52] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/erpnext/hpremier/releases/20240923043519 /home/erpnext/hpremier/releases/current )
+  INFO [7809fe52] Finished in 0.612 seconds with exit status 0 (successful).
+  INFO [8ef5b9af] Running /usr/bin/env mv /home/erpnext/hpremier/releases/current /home/erpnext/hpremier as erpnext@141.94.74.186
+ DEBUG [8ef5b9af] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mv /home/erpnext/hpremier/releases/current /home/erpnext/hpremier )
+  INFO [8ef5b9af] Finished in 0.613 seconds with exit status 0 (successful).
+ DEBUG [d6a79004] Running /usr/bin/env pwd as erpnext@141.94.74.186
+ DEBUG [d6a79004] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env pwd )
+ DEBUG [d6a79004] 	/home/erpnext
+ DEBUG [d6a79004] Finished in 0.715 seconds with exit status 0 (successful).
+ DEBUG [c96ce6f8] Running if test ! -d /home/erpnext; then echo "Directory does not exist '/home/erpnext'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [c96ce6f8] Command: if test ! -d /home/erpnext; then echo "Directory does not exist '/home/erpnext'" 1>&2; false; fi
+ DEBUG [c96ce6f8] Finished in 0.715 seconds with exit status 0 (successful).
+  INFO [1a69cadf] Running /usr/bin/env mkdir -p /home/erpnext/hpremier/releases/20240923043519/tmp as erpnext@141.94.74.186
+ DEBUG [1a69cadf] Command: cd /home/erpnext && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/erpnext/hpremier/releases/20240923043519/tmp )
+  INFO [1a69cadf] Finished in 0.613 seconds with exit status 0 (successful).
+  INFO [1c7dfad7] Running /usr/bin/env touch /home/erpnext/hpremier/releases/20240923043519/tmp/restart.txt as erpnext@141.94.74.186
+ DEBUG [1c7dfad7] Command: cd /home/erpnext && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env touch /home/erpnext/hpremier/releases/20240923043519/tmp/restart.txt )
+  INFO [1c7dfad7] Finished in 0.817 seconds with exit status 0 (successful).
+ DEBUG [d00d14a8] Running /usr/bin/env ls -x /home/erpnext/hpremier/releases as erpnext@141.94.74.186
+ DEBUG [d00d14a8] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls -x /home/erpnext/hpremier/releases )
+ DEBUG [d00d14a8] 	20240923043519
+ DEBUG [d00d14a8] Finished in 0.464 seconds with exit status 0 (successful).
+ DEBUG [8702c2de] Running if test ! -d /home/erpnext/hpremier/releases; then echo "Directory does not exist '/home/erpnext/hpremier/releases'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [8702c2de] Command: if test ! -d /home/erpnext/hpremier/releases; then echo "Directory does not exist '/home/erpnext/hpremier/releases'" 1>&2; false; fi
+ DEBUG [8702c2de] Finished in 0.739 seconds with exit status 0 (successful).
+  INFO [1d20ff9d] Running /usr/bin/env echo "Branch heuc (at 2366e14fc549bc687695f7225d36d1b9ff330552) deployed as release 20240923043519 by fena" >> /home/erpnext/hpremier/revisions.log as erpnext@141.94.74.186
+ DEBUG [1d20ff9d] Command: cd /home/erpnext/hpremier/releases && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "Branch heuc (at 2366e14fc549bc687695f7225d36d1b9ff330552) deployed as release 20240923043519 by fena" >> /home/erpnext/hpremier/revisions.log )
+  INFO [1d20ff9d] Finished in 0.734 seconds with exit status 0 (successful).
+  INFO ---------------------------------------------------------------------------
+  INFO START 2024-09-24 14:36:55 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [4271b2c0] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as erpnext@141.94.74.186
+ DEBUG [4271b2c0] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+ DEBUG [4271b2c0] Finished in 13.911 seconds with exit status 0 (successful).
+ DEBUG [7d3fef20] Running /usr/bin/env which passenger as erpnext@141.94.74.186
+ DEBUG [7d3fef20] Command: /usr/bin/env which passenger
+ DEBUG [7d3fef20] 	/usr/bin/passenger
+ DEBUG [7d3fef20] Finished in 0.649 seconds with exit status 0 (successful).
+  INFO [8afbb2dd] Running /usr/bin/env mkdir -p /tmp as erpnext@141.94.74.186
+ DEBUG [8afbb2dd] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /tmp )
+  INFO [8afbb2dd] Finished in 0.611 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-7d675aa980915d86c171.sh 0.0%
+  INFO Uploading /tmp/git-ssh-7d675aa980915d86c171.sh 100.0%
+  INFO [4e7b425f] Running /usr/bin/env chmod 700 /tmp/git-ssh-7d675aa980915d86c171.sh as erpnext@141.94.74.186
+ DEBUG [4e7b425f] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env chmod 700 /tmp/git-ssh-7d675aa980915d86c171.sh )
+  INFO [4e7b425f] Finished in 0.508 seconds with exit status 0 (successful).
+  INFO [f08bed22] Running /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD as erpnext@141.94.74.186
+ DEBUG [f08bed22] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-7d675aa980915d86c171.sh" ; /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD )
+ DEBUG [f08bed22] 	ee3d3f9da04068fc96d9c90ee4fc56c330f608ef	HEAD
+  INFO [f08bed22] Finished in 0.874 seconds with exit status 0 (successful).
+  INFO [5cecdd45] Running /usr/bin/env mkdir -p /home/erpnext/hpremier/shared /home/erpnext/hpremier/releases as erpnext@141.94.74.186
+ DEBUG [5cecdd45] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/erpnext/hpremier/shared /home/erpnext/hpremier/releases )
+  INFO [5cecdd45] Finished in 0.530 seconds with exit status 0 (successful).
+  INFO [092f998d] Running /usr/bin/env mkdir -p /home/erpnext/hpremier/shared/log /home/erpnext/hpremier/shared/tmp/pids /home/erpnext/hpremier/shared/tmp/cache /home/erpnext/hpremier/shared/tmp/sockets /home/erpnext/hpremier/shared/vendor/bundle /home/erpnext/hpremier/shared/public/system /home/erpnext/hpremier/shared/public/uploads /home/erpnext/hpremier/shared/public/assets as erpnext@141.94.74.186
+ DEBUG [092f998d] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/erpnext/hpremier/shared/log /home/erpnext/hpremier/shared/tmp/pids /home/erpnext/hpremier/shared/tmp/cache /home/erpnext/hpremier/shared/tmp/sockets /home/erpnext/hpremier/shared/vendor/bundle /home/erpnext/hpremier/shared/public/system /home/erpnext/hpremier/shared/public/uploads /home/erpnext/hpremier/shared/public/assets )
+  INFO [092f998d] Finished in 0.527 seconds with exit status 0 (successful).
+ DEBUG [2d597541] Running [ -f /home/erpnext/hpremier/current/REVISION ] as erpnext@141.94.74.186
+ DEBUG [2d597541] Command: [ -f /home/erpnext/hpremier/current/REVISION ]
+ DEBUG [2d597541] Finished in 0.491 seconds with exit status 0 (successful).
+ DEBUG [146cf880] Running /usr/bin/env cat /home/erpnext/hpremier/current/REVISION 2>/dev/null as erpnext@141.94.74.186
+ DEBUG [146cf880] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env cat /home/erpnext/hpremier/current/REVISION 2>/dev/null )
+ DEBUG [146cf880] 	2366e14fc549bc687695f7225d36d1b9ff330552
+ DEBUG [146cf880] Finished in 0.530 seconds with exit status 0 (successful).
+ DEBUG [7e51eb65] Running [ -f /home/erpnext/hpremier/repo/HEAD ] as erpnext@141.94.74.186
+ DEBUG [7e51eb65] Command: [ -f /home/erpnext/hpremier/repo/HEAD ]
+ DEBUG [7e51eb65] Finished in 0.620 seconds with exit status 0 (successful).
+  INFO The repository mirror is at /home/erpnext/hpremier/repo
+ DEBUG [c79c0a66] Running if test ! -d /home/erpnext/hpremier/repo; then echo "Directory does not exist '/home/erpnext/hpremier/repo'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [c79c0a66] Command: if test ! -d /home/erpnext/hpremier/repo; then echo "Directory does not exist '/home/erpnext/hpremier/repo'" 1>&2; false; fi
+ DEBUG [c79c0a66] Finished in 0.600 seconds with exit status 0 (successful).
+  INFO [06f2d419] Running /usr/bin/env git remote set-url origin https://fenet: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@github.com/fenet/leadstarlatest.git as erpnext@141.94.74.186
+ DEBUG [06f2d419] Command: cd /home/erpnext/hpremier/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-7d675aa980915d86c171.sh" ; /usr/bin/env git remote set-url origin https://fenet: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@github.com/fenet/leadstarlatest.git )
+  INFO [06f2d419] Finished in 0.494 seconds with exit status 0 (successful).
+  INFO [931e660d] Running /usr/bin/env git remote update --prune as erpnext@141.94.74.186
+ DEBUG [931e660d] Command: cd /home/erpnext/hpremier/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-7d675aa980915d86c171.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [931e660d] 	Fetching origin
+  INFO [931e660d] Finished in 1.214 seconds with exit status 0 (successful).
+ DEBUG [e7d00abf] Running if test ! -d /home/erpnext/hpremier/repo; then echo "Directory does not exist '/home/erpnext/hpremier/repo'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [e7d00abf] Command: if test ! -d /home/erpnext/hpremier/repo; then echo "Directory does not exist '/home/erpnext/hpremier/repo'" 1>&2; false; fi
+ DEBUG [e7d00abf] Finished in 0.609 seconds with exit status 0 (successful).
+  INFO [dbe709a1] Running /usr/bin/env mkdir -p /home/erpnext/hpremier/releases/20240924113715 as erpnext@141.94.74.186
+ DEBUG [dbe709a1] Command: cd /home/erpnext/hpremier/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-7d675aa980915d86c171.sh" ; /usr/bin/env mkdir -p /home/erpnext/hpremier/releases/20240924113715 )
+  INFO [dbe709a1] Finished in 0.525 seconds with exit status 0 (successful).
+  INFO [b9b5c4af] Running /usr/bin/env git archive heuc | /usr/bin/env tar -x -f - -C /home/erpnext/hpremier/releases/20240924113715 as erpnext@141.94.74.186
+ DEBUG [b9b5c4af] Command: cd /home/erpnext/hpremier/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-7d675aa980915d86c171.sh" ; /usr/bin/env git archive heuc | /usr/bin/env tar -x -f - -C /home/erpnext/hpremier/releases/20240924113715 )
+  INFO [b9b5c4af] Finished in 0.813 seconds with exit status 0 (successful).
+ DEBUG [af0aff96] Running if test ! -d /home/erpnext/hpremier/repo; then echo "Directory does not exist '/home/erpnext/hpremier/repo'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [af0aff96] Command: if test ! -d /home/erpnext/hpremier/repo; then echo "Directory does not exist '/home/erpnext/hpremier/repo'" 1>&2; false; fi
+ DEBUG [af0aff96] Finished in 0.731 seconds with exit status 0 (successful).
+ DEBUG [7be66ee3] Running /usr/bin/env git rev-list --max-count=1 heuc as erpnext@141.94.74.186
+ DEBUG [7be66ee3] Command: cd /home/erpnext/hpremier/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-7d675aa980915d86c171.sh" ; /usr/bin/env git rev-list --max-count=1 heuc )
+ DEBUG [7be66ee3] 	2366e14fc549bc687695f7225d36d1b9ff330552
+ DEBUG [7be66ee3] Finished in 0.640 seconds with exit status 0 (successful).
+ DEBUG [85f1ce61] Running if test ! -d /home/erpnext/hpremier/releases/20240924113715; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20240924113715'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [85f1ce61] Command: if test ! -d /home/erpnext/hpremier/releases/20240924113715; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20240924113715'" 1>&2; false; fi
+ DEBUG [85f1ce61] Finished in 0.775 seconds with exit status 0 (successful).
+  INFO [54283db7] Running /usr/bin/env echo "2366e14fc549bc687695f7225d36d1b9ff330552" > REVISION as erpnext@141.94.74.186
+ DEBUG [54283db7] Command: cd /home/erpnext/hpremier/releases/20240924113715 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "2366e14fc549bc687695f7225d36d1b9ff330552" > REVISION )
+  INFO [54283db7] Finished in 0.823 seconds with exit status 0 (successful).
+  INFO [fe632754] Running /usr/bin/env mkdir -p /home/erpnext/hpremier/releases/20240924113715 /home/erpnext/hpremier/releases/20240924113715/tmp /home/erpnext/hpremier/releases/20240924113715/vendor /home/erpnext/hpremier/releases/20240924113715/public as erpnext@141.94.74.186
+ DEBUG [fe632754] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/erpnext/hpremier/releases/20240924113715 /home/erpnext/hpremier/releases/20240924113715/tmp /home/erpnext/hpremier/releases/20240924113715/vendor /home/erpnext/hpremier/releases/20240924113715/public )
+  INFO [fe632754] Finished in 0.536 seconds with exit status 0 (successful).
+ DEBUG [529757a6] Running [ -L /home/erpnext/hpremier/releases/20240924113715/log ] as erpnext@141.94.74.186
+ DEBUG [529757a6] Command: [ -L /home/erpnext/hpremier/releases/20240924113715/log ]
+ DEBUG [529757a6] Finished in 0.708 seconds with exit status 1 (failed).
+ DEBUG [ea2af238] Running [ -d /home/erpnext/hpremier/releases/20240924113715/log ] as erpnext@141.94.74.186
+ DEBUG [ea2af238] Command: [ -d /home/erpnext/hpremier/releases/20240924113715/log ]
+ DEBUG [ea2af238] Finished in 0.579 seconds with exit status 0 (successful).
+  INFO [763152bb] Running /usr/bin/env rm -rf /home/erpnext/hpremier/releases/20240924113715/log as erpnext@141.94.74.186
+ DEBUG [763152bb] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env rm -rf /home/erpnext/hpremier/releases/20240924113715/log )
+  INFO [763152bb] Finished in 1.022 seconds with exit status 0 (successful).
+  INFO [169bdf5b] Running /usr/bin/env ln -s /home/erpnext/hpremier/shared/log /home/erpnext/hpremier/releases/20240924113715/log as erpnext@141.94.74.186
+ DEBUG [169bdf5b] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/erpnext/hpremier/shared/log /home/erpnext/hpremier/releases/20240924113715/log )
+  INFO [169bdf5b] Finished in 0.637 seconds with exit status 0 (successful).
+ DEBUG [ca57b307] Running [ -L /home/erpnext/hpremier/releases/20240924113715/tmp/pids ] as erpnext@141.94.74.186
+ DEBUG [ca57b307] Command: [ -L /home/erpnext/hpremier/releases/20240924113715/tmp/pids ]
+ DEBUG [ca57b307] Finished in 0.593 seconds with exit status 1 (failed).
+ DEBUG [c3e5d76c] Running [ -d /home/erpnext/hpremier/releases/20240924113715/tmp/pids ] as erpnext@141.94.74.186
+ DEBUG [c3e5d76c] Command: [ -d /home/erpnext/hpremier/releases/20240924113715/tmp/pids ]
+ DEBUG [c3e5d76c] Finished in 1.021 seconds with exit status 1 (failed).
+  INFO [e23db4b8] Running /usr/bin/env ln -s /home/erpnext/hpremier/shared/tmp/pids /home/erpnext/hpremier/releases/20240924113715/tmp/pids as erpnext@141.94.74.186
+ DEBUG [e23db4b8] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/erpnext/hpremier/shared/tmp/pids /home/erpnext/hpremier/releases/20240924113715/tmp/pids )
+  INFO [e23db4b8] Finished in 0.880 seconds with exit status 0 (successful).
+ DEBUG [3907c7fa] Running [ -L /home/erpnext/hpremier/releases/20240924113715/tmp/cache ] as erpnext@141.94.74.186
+ DEBUG [3907c7fa] Command: [ -L /home/erpnext/hpremier/releases/20240924113715/tmp/cache ]
+ DEBUG [3907c7fa] Finished in 1.180 seconds with exit status 1 (failed).
+ DEBUG [02eea147] Running [ -d /home/erpnext/hpremier/releases/20240924113715/tmp/cache ] as erpnext@141.94.74.186
+ DEBUG [02eea147] Command: [ -d /home/erpnext/hpremier/releases/20240924113715/tmp/cache ]
+ DEBUG [02eea147] Finished in 0.597 seconds with exit status 0 (successful).
+  INFO [88d68789] Running /usr/bin/env rm -rf /home/erpnext/hpremier/releases/20240924113715/tmp/cache as erpnext@141.94.74.186
+ DEBUG [88d68789] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env rm -rf /home/erpnext/hpremier/releases/20240924113715/tmp/cache )
+  INFO [88d68789] Finished in 0.736 seconds with exit status 0 (successful).
+  INFO [3f2c9a5c] Running /usr/bin/env ln -s /home/erpnext/hpremier/shared/tmp/cache /home/erpnext/hpremier/releases/20240924113715/tmp/cache as erpnext@141.94.74.186
+ DEBUG [3f2c9a5c] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/erpnext/hpremier/shared/tmp/cache /home/erpnext/hpremier/releases/20240924113715/tmp/cache )
+  INFO [3f2c9a5c] Finished in 0.606 seconds with exit status 0 (successful).
+ DEBUG [8e2661e1] Running [ -L /home/erpnext/hpremier/releases/20240924113715/tmp/sockets ] as erpnext@141.94.74.186
+ DEBUG [8e2661e1] Command: [ -L /home/erpnext/hpremier/releases/20240924113715/tmp/sockets ]
+ DEBUG [8e2661e1] Finished in 0.635 seconds with exit status 1 (failed).
+ DEBUG [5193a05b] Running [ -d /home/erpnext/hpremier/releases/20240924113715/tmp/sockets ] as erpnext@141.94.74.186
+ DEBUG [5193a05b] Command: [ -d /home/erpnext/hpremier/releases/20240924113715/tmp/sockets ]
+ DEBUG [5193a05b] Finished in 0.607 seconds with exit status 1 (failed).
+  INFO [0b63c6be] Running /usr/bin/env ln -s /home/erpnext/hpremier/shared/tmp/sockets /home/erpnext/hpremier/releases/20240924113715/tmp/sockets as erpnext@141.94.74.186
+ DEBUG [0b63c6be] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/erpnext/hpremier/shared/tmp/sockets /home/erpnext/hpremier/releases/20240924113715/tmp/sockets )
+  INFO [0b63c6be] Finished in 0.692 seconds with exit status 0 (successful).
+ DEBUG [ee29d2a4] Running [ -L /home/erpnext/hpremier/releases/20240924113715/vendor/bundle ] as erpnext@141.94.74.186
+ DEBUG [ee29d2a4] Command: [ -L /home/erpnext/hpremier/releases/20240924113715/vendor/bundle ]
+ DEBUG [ee29d2a4] Finished in 0.642 seconds with exit status 1 (failed).
+ DEBUG [6606b376] Running [ -d /home/erpnext/hpremier/releases/20240924113715/vendor/bundle ] as erpnext@141.94.74.186
+ DEBUG [6606b376] Command: [ -d /home/erpnext/hpremier/releases/20240924113715/vendor/bundle ]
+ DEBUG [6606b376] Finished in 0.649 seconds with exit status 1 (failed).
+  INFO [a9cc341e] Running /usr/bin/env ln -s /home/erpnext/hpremier/shared/vendor/bundle /home/erpnext/hpremier/releases/20240924113715/vendor/bundle as erpnext@141.94.74.186
+ DEBUG [a9cc341e] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/erpnext/hpremier/shared/vendor/bundle /home/erpnext/hpremier/releases/20240924113715/vendor/bundle )
+  INFO [a9cc341e] Finished in 0.704 seconds with exit status 0 (successful).
+ DEBUG [631a0356] Running [ -L /home/erpnext/hpremier/releases/20240924113715/public/system ] as erpnext@141.94.74.186
+ DEBUG [631a0356] Command: [ -L /home/erpnext/hpremier/releases/20240924113715/public/system ]
+ DEBUG [631a0356] Finished in 0.644 seconds with exit status 1 (failed).
+ DEBUG [a23e5a7a] Running [ -d /home/erpnext/hpremier/releases/20240924113715/public/system ] as erpnext@141.94.74.186
+ DEBUG [a23e5a7a] Command: [ -d /home/erpnext/hpremier/releases/20240924113715/public/system ]
+ DEBUG [a23e5a7a] Finished in 0.673 seconds with exit status 1 (failed).
+  INFO [b295c680] Running /usr/bin/env ln -s /home/erpnext/hpremier/shared/public/system /home/erpnext/hpremier/releases/20240924113715/public/system as erpnext@141.94.74.186
+ DEBUG [b295c680] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/erpnext/hpremier/shared/public/system /home/erpnext/hpremier/releases/20240924113715/public/system )
+  INFO [b295c680] Finished in 0.766 seconds with exit status 0 (successful).
+ DEBUG [37353b73] Running [ -L /home/erpnext/hpremier/releases/20240924113715/public/uploads ] as erpnext@141.94.74.186
+ DEBUG [37353b73] Command: [ -L /home/erpnext/hpremier/releases/20240924113715/public/uploads ]
+ DEBUG [37353b73] Finished in 0.611 seconds with exit status 1 (failed).
+ DEBUG [f78ec41f] Running [ -d /home/erpnext/hpremier/releases/20240924113715/public/uploads ] as erpnext@141.94.74.186
+ DEBUG [f78ec41f] Command: [ -d /home/erpnext/hpremier/releases/20240924113715/public/uploads ]
+ DEBUG [f78ec41f] Finished in 0.613 seconds with exit status 1 (failed).
+  INFO [1f260067] Running /usr/bin/env ln -s /home/erpnext/hpremier/shared/public/uploads /home/erpnext/hpremier/releases/20240924113715/public/uploads as erpnext@141.94.74.186
+ DEBUG [1f260067] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/erpnext/hpremier/shared/public/uploads /home/erpnext/hpremier/releases/20240924113715/public/uploads )
+  INFO [1f260067] Finished in 0.855 seconds with exit status 0 (successful).
+ DEBUG [018aa71c] Running [ -L /home/erpnext/hpremier/releases/20240924113715/public/assets ] as erpnext@141.94.74.186
+ DEBUG [018aa71c] Command: [ -L /home/erpnext/hpremier/releases/20240924113715/public/assets ]
+ DEBUG [018aa71c] Finished in 0.591 seconds with exit status 1 (failed).
+ DEBUG [e1cc63c0] Running [ -d /home/erpnext/hpremier/releases/20240924113715/public/assets ] as erpnext@141.94.74.186
+ DEBUG [e1cc63c0] Command: [ -d /home/erpnext/hpremier/releases/20240924113715/public/assets ]
+ DEBUG [e1cc63c0] Finished in 0.599 seconds with exit status 1 (failed).
+  INFO [06c77f36] Running /usr/bin/env ln -s /home/erpnext/hpremier/shared/public/assets /home/erpnext/hpremier/releases/20240924113715/public/assets as erpnext@141.94.74.186
+ DEBUG [06c77f36] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/erpnext/hpremier/shared/public/assets /home/erpnext/hpremier/releases/20240924113715/public/assets )
+  INFO [06c77f36] Finished in 0.612 seconds with exit status 0 (successful).
+ DEBUG [51e4c214] Running if test ! -d /home/erpnext/hpremier/releases/20240924113715; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20240924113715'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [51e4c214] Command: if test ! -d /home/erpnext/hpremier/releases/20240924113715; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20240924113715'" 1>&2; false; fi
+ DEBUG [51e4c214] Finished in 0.612 seconds with exit status 0 (successful).
+  INFO [6bc955ad] Running $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true as erpnext@141.94.74.186
+ DEBUG [6bc955ad] Command: cd /home/erpnext/hpremier/releases/20240924113715 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true )
+  INFO [6bc955ad] Finished in 0.817 seconds with exit status 0 (successful).
+  INFO [ac5376e6] Running $HOME/.rbenv/bin/rbenv exec bundle config --local path /home/erpnext/hpremier/shared/bundle as erpnext@141.94.74.186
+ DEBUG [ac5376e6] Command: cd /home/erpnext/hpremier/releases/20240924113715 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local path /home/erpnext/hpremier/shared/bundle )
+  INFO [ac5376e6] Finished in 0.716 seconds with exit status 0 (successful).
+  INFO [fc950a92] Running $HOME/.rbenv/bin/rbenv exec bundle config --local without development:test as erpnext@141.94.74.186
+ DEBUG [fc950a92] Command: cd /home/erpnext/hpremier/releases/20240924113715 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local without development:test )
+  INFO [fc950a92] Finished in 0.919 seconds with exit status 0 (successful).
+ DEBUG [9c894d90] Running if test ! -d /home/erpnext/hpremier/releases/20240924113715; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20240924113715'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [9c894d90] Command: if test ! -d /home/erpnext/hpremier/releases/20240924113715; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20240924113715'" 1>&2; false; fi
+ DEBUG [9c894d90] Finished in 0.640 seconds with exit status 0 (successful).
+ DEBUG [13e2e838] Running $HOME/.rbenv/bin/rbenv exec bundle check as erpnext@141.94.74.186
+ DEBUG [13e2e838] Command: cd /home/erpnext/hpremier/releases/20240924113715 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle check )
+ DEBUG [13e2e838] 	The Gemfile's dependencies are satisfied
+ DEBUG [13e2e838] Finished in 0.999 seconds with exit status 0 (successful).
+  INFO The Gemfile's dependencies are satisfied, skipping installation
+ DEBUG [b1b9e038] Running if test ! -d /home/erpnext/hpremier/releases/20240924113715; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20240924113715'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [b1b9e038] Command: if test ! -d /home/erpnext/hpremier/releases/20240924113715; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20240924113715'" 1>&2; false; fi
+ DEBUG [b1b9e038] Finished in 0.628 seconds with exit status 0 (successful).
+  INFO [64df7aaa] Running $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile as erpnext@141.94.74.186
+ DEBUG [64df7aaa] Command: cd /home/erpnext/hpremier/releases/20240924113715 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" RAILS_GROUPS="" ; $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile )
+  INFO [64df7aaa] Finished in 5.717 seconds with exit status 0 (successful).
+ DEBUG [68cef506] Running if test ! -d /home/erpnext/hpremier/releases/20240924113715; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20240924113715'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [68cef506] Command: if test ! -d /home/erpnext/hpremier/releases/20240924113715; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20240924113715'" 1>&2; false; fi
+ DEBUG [68cef506] Finished in 0.628 seconds with exit status 0 (successful).
+  INFO [f5ee662d] Running /usr/bin/env mkdir -p /home/erpnext/hpremier/releases/20240924113715/assets_manifest_backup as erpnext@141.94.74.186
+ DEBUG [f5ee662d] Command: cd /home/erpnext/hpremier/releases/20240924113715 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/erpnext/hpremier/releases/20240924113715/assets_manifest_backup )
+  INFO [f5ee662d] Finished in 0.643 seconds with exit status 0 (successful).
+ DEBUG [f8f74a71] Running /usr/bin/env ls /home/erpnext/hpremier/releases/20240924113715/public/assets/.sprockets-manifest* as erpnext@141.94.74.186
+ DEBUG [f8f74a71] Command: cd /home/erpnext/hpremier/releases/20240924113715 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls /home/erpnext/hpremier/releases/20240924113715/public/assets/.sprockets-manifest* )
+ DEBUG [f8f74a71] 	/home/erpnext/hpremier/releases/20240924113715/public/assets/.sprockets-manifest-8862ede255e043823c2a09f2fb7c47bb.json
+ DEBUG [f8f74a71] Finished in 0.824 seconds with exit status 0 (successful).
+ DEBUG [5faf9757] Running /usr/bin/env ls /home/erpnext/hpremier/releases/20240924113715/public/assets/.sprockets-manifest* as erpnext@141.94.74.186
+ DEBUG [5faf9757] Command: cd /home/erpnext/hpremier/releases/20240924113715 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls /home/erpnext/hpremier/releases/20240924113715/public/assets/.sprockets-manifest* )
+ DEBUG [5faf9757] 	/home/erpnext/hpremier/releases/20240924113715/public/assets/.sprockets-manifest-8862ede255e043823c2a09f2fb7c47bb.json
+ DEBUG [5faf9757] Finished in 0.778 seconds with exit status 0 (successful).
+  INFO [ed4f6f9c] Running /usr/bin/env cp /home/erpnext/hpremier/releases/20240924113715/public/assets/.sprockets-manifest-8862ede255e043823c2a09f2fb7c47bb.json /home/erpnext/hpremier/releases/20240924113715/assets_manifest_backup as erpnext@141.94.74.186
+ DEBUG [ed4f6f9c] Command: cd /home/erpnext/hpremier/releases/20240924113715 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env cp /home/erpnext/hpremier/releases/20240924113715/public/assets/.sprockets-manifest-8862ede255e043823c2a09f2fb7c47bb.json /home/erpnext/hpremier/releases/20240924113715/assets_manifest_backup )
+  INFO [ed4f6f9c] Finished in 0.495 seconds with exit status 0 (successful).
+  INFO [deploy:migrate] Run `rake db:migrate`
+ DEBUG [d8e30585] Running if test ! -d /home/erpnext/hpremier/releases/20240924113715; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20240924113715'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [d8e30585] Command: if test ! -d /home/erpnext/hpremier/releases/20240924113715; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20240924113715'" 1>&2; false; fi
+ DEBUG [d8e30585] Finished in 0.621 seconds with exit status 0 (successful).
+  INFO [971f4c64] Running $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate as erpnext@141.94.74.186
+ DEBUG [971f4c64] Command: cd /home/erpnext/hpremier/releases/20240924113715 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" ; $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate )
+  INFO [971f4c64] Finished in 2.340 seconds with exit status 0 (successful).
+ DEBUG [e4552b13] Running if test ! -d /home/erpnext/hpremier/releases/20240924113715; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20240924113715'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [e4552b13] Command: if test ! -d /home/erpnext/hpremier/releases/20240924113715; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20240924113715'" 1>&2; false; fi
+ DEBUG [e4552b13] Finished in 0.607 seconds with exit status 0 (successful).
+  INFO [fdf4b2c1] Running $HOME/.rbenv/bin/rbenv exec bundle exec whenever --update-crontab hpremier_production --set environment=production --roles=app,web,db  as erpnext@141.94.74.186
+ DEBUG [fdf4b2c1] Command: cd /home/erpnext/hpremier/releases/20240924113715 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" ; $HOME/.rbenv/bin/rbenv exec bundle exec whenever --update-crontab hpremier_production --set environment=production --roles=app,web,db  )
+ DEBUG [fdf4b2c1] 	[write] crontab file updated
+  INFO [fdf4b2c1] Finished in 1.437 seconds with exit status 0 (successful).
+  INFO [95d1b50c] Running /usr/bin/env ln -s /home/erpnext/hpremier/releases/20240924113715 /home/erpnext/hpremier/releases/current as erpnext@141.94.74.186
+ DEBUG [95d1b50c] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/erpnext/hpremier/releases/20240924113715 /home/erpnext/hpremier/releases/current )
+  INFO [95d1b50c] Finished in 0.504 seconds with exit status 0 (successful).
+  INFO [326ba348] Running /usr/bin/env mv /home/erpnext/hpremier/releases/current /home/erpnext/hpremier as erpnext@141.94.74.186
+ DEBUG [326ba348] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mv /home/erpnext/hpremier/releases/current /home/erpnext/hpremier )
+  INFO [326ba348] Finished in 0.664 seconds with exit status 0 (successful).
+ DEBUG [46df188a] Running /usr/bin/env pwd as erpnext@141.94.74.186
+ DEBUG [46df188a] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env pwd )
+ DEBUG [46df188a] 	/home/erpnext
+ DEBUG [46df188a] Finished in 0.537 seconds with exit status 0 (successful).
+ DEBUG [6aa09fd3] Running if test ! -d /home/erpnext; then echo "Directory does not exist '/home/erpnext'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [6aa09fd3] Command: if test ! -d /home/erpnext; then echo "Directory does not exist '/home/erpnext'" 1>&2; false; fi
+ DEBUG [6aa09fd3] Finished in 0.750 seconds with exit status 0 (successful).
+  INFO [e07cc0a2] Running /usr/bin/env mkdir -p /home/erpnext/hpremier/releases/20240924113715/tmp as erpnext@141.94.74.186
+ DEBUG [e07cc0a2] Command: cd /home/erpnext && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/erpnext/hpremier/releases/20240924113715/tmp )
+  INFO [e07cc0a2] Finished in 0.611 seconds with exit status 0 (successful).
+  INFO [4490b800] Running /usr/bin/env touch /home/erpnext/hpremier/releases/20240924113715/tmp/restart.txt as erpnext@141.94.74.186
+ DEBUG [4490b800] Command: cd /home/erpnext && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env touch /home/erpnext/hpremier/releases/20240924113715/tmp/restart.txt )
+  INFO [4490b800] Finished in 0.509 seconds with exit status 0 (successful).
+ DEBUG [398664cd] Running /usr/bin/env ls -x /home/erpnext/hpremier/releases as erpnext@141.94.74.186
+ DEBUG [398664cd] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls -x /home/erpnext/hpremier/releases )
+ DEBUG [398664cd] 	20240923043519	20240924113715
+ DEBUG [398664cd] Finished in 0.608 seconds with exit status 0 (successful).
+ DEBUG [9b171278] Running if test ! -d /home/erpnext/hpremier/releases; then echo "Directory does not exist '/home/erpnext/hpremier/releases'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [9b171278] Command: if test ! -d /home/erpnext/hpremier/releases; then echo "Directory does not exist '/home/erpnext/hpremier/releases'" 1>&2; false; fi
+ DEBUG [9b171278] Finished in 0.500 seconds with exit status 0 (successful).
+  INFO [f7062149] Running /usr/bin/env echo "Branch heuc (at 2366e14fc549bc687695f7225d36d1b9ff330552) deployed as release 20240924113715 by fena" >> /home/erpnext/hpremier/revisions.log as erpnext@141.94.74.186
+ DEBUG [f7062149] Command: cd /home/erpnext/hpremier/releases && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "Branch heuc (at 2366e14fc549bc687695f7225d36d1b9ff330552) deployed as release 20240924113715 by fena" >> /home/erpnext/hpremier/revisions.log )
+  INFO [f7062149] Finished in 0.500 seconds with exit status 0 (successful).

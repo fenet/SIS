@@ -291,7 +291,8 @@ class Student < ApplicationRecord
         self.update_columns(
           academic_calendar_id: academic_calendar.id,
           department_id: program.department_id,
-          curriculum_version: program.curriculums.where(active_status: "active").last.curriculum_version,
+          #curriculum_version: program.curriculums.where(active_status: "active").last.curriculum_version,
+          curriculum_version: program.curriculums.where(active_status: "active").order(curriculum_active_date: :desc).first.curriculum_version,
           payment_version: program.payments.order("created_at DESC").first.version,
           batch: academic_calendar.batch || academic_calendar.calender_year_in_gc
         )
