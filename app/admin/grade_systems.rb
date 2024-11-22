@@ -33,6 +33,7 @@ menu parent: "Grade"
       f.input :curriculum_id, as: :search_select, url: admin_curriculums_path,
       fields: [:curriculum_version, :id], display_name: 'curriculum_version', minimum_input_length: 1,
       order_by: 'id_asc'
+      f.input :study_level, as: :select, collection: %w[undergraduate graduate], include_blank: false
       f.input :min_cgpa_value_to_pass
       f.input :min_cgpa_value_to_graduate
       f.input :remark    

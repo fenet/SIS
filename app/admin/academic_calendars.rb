@@ -145,7 +145,11 @@ ActiveAdmin.register AcademicCalendar do
           table_for academic_calendar.semesters do
             column :semester
             column :starting_date, sortable: true do |c|
-              c.starting_date.strftime("%b %d, %Y")
+              #c.starting_date.strftime("%b %d, %Y")
+              gregorian_start = c.starting_date.strftime("%b %d, %Y")
+            end
+            column :ethiopian_date, sortable: true do |c|
+              academic_calendar.to_ethiopian_date(c.starting_date)
             end
             column :ending_date, sortable: true do |c|
               c.ending_date.strftime("%b %d, %Y")
@@ -161,6 +165,9 @@ ActiveAdmin.register AcademicCalendar do
             end
             column :ending_date, sortable: true do |c|
               c.ending_date.strftime("%b %d, %Y")
+            end
+            column :ethiopian_date, sortable: true do |c|
+              academic_calendar.to_ethiopian_date(c.starting_date)
             end
             column :category
             column :description

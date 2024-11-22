@@ -397,13 +397,10 @@ class Ability
       can %i[read update], Exemption
       can :manage, Notice
       can :manage, Department, faculty_id: user.faculty_id 
-
     when 'faculty dean'
       can :manage, ActiveAdmin::Page, name: 'Dashboard', namespace_name: 'admin'
       can :manage, Department, faculty_id: user.faculty.id 
      # can %i[read update destroy], Program, department_id: user.department.id
-
-  
     when 'library head'
       can :manage, ActiveAdmin::Page, name: 'Dashboard', namespace_name: 'admin'
       can %i[read update], Withdrawal

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_25_094639) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_20_062910) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -776,6 +776,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_25_094639) do
     t.string "updated_by"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.string "study_level", default: "undergraduate", null: false
     t.index ["curriculum_id"], name: "index_grade_systems_on_curriculum_id"
     t.index ["program_id"], name: "index_grade_systems_on_program_id"
   end

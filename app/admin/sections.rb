@@ -60,7 +60,8 @@ ActiveAdmin.register Section, as: "ProgramSection" do
                 '2026/2027', 
                 '2027/2028', 
                 '2028/2029', 
-                '2029/2030'
+                '2029/2030',
+                '2024/25'
               ], include_blank: false
       f.input :year
       f.input :semester
@@ -119,5 +120,10 @@ ActiveAdmin.register Section, as: "ProgramSection" do
     panel "Actions" do
       link_to 'Download PDF', download_pdf_section_path(resource), method: :get, class: 'button'
     end
+
+    panel "Actions" do
+      link_to 'Create Attendance', new_admin_attendance_path(section_id: resource.id), class: 'button'
+    end
+    
   end
 end

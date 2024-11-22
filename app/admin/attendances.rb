@@ -46,23 +46,23 @@ menu parent: "Attendance"
       end
     end
   
-    if f.object.sessions.empty?
-      f.object.sessions << Session.new
-    end
-    panel "Session Information" do
-      f.has_many :sessions, heading: " ", remote: true, allow_destroy: true, new_record: true do |a|
-        a.input :session_title
-        a.input :starting_date, as: :date_time_picker 
-        a.input :ending_date, as: :date_time_picker 
-  
-        if a.object.new_record?
-          a.input :created_by, as: :hidden, input_html: { value: current_admin_user.name.full }
-        else
-          a.input :last_updated_by, as: :hidden, input_html: { value: current_admin_user.name.full }
-        end 
-        a.label :_destroy
-      end
-    end
+   # if f.object.sessions.empty?
+   #   f.object.sessions << Session.new
+   # end
+   # panel "Session Information" do
+   #   f.has_many :sessions, heading: " ", remote: true, allow_destroy: true, new_record: true do |a|
+   #     a.input :session_title
+   #     a.input :starting_date, as: :date_time_picker 
+   #     a.input :ending_date, as: :date_time_picker 
+  #
+   #     if a.object.new_record?
+   #       a.input :created_by, as: :hidden, input_html: { value: current_admin_user.name.full }
+   #     else
+   #       a.input :last_updated_by, as: :hidden, input_html: { value: current_admin_user.name.full }
+   #     end 
+   #     a.label :_destroy
+   #   end
+   # end
   
     f.actions
   end

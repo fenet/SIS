@@ -41,36 +41,37 @@
             </div>
           <% end %>
           
-          <input type="submit" value="Randomly Assign Students" class="btn btn-success">
-        <% end %>
-      </div>
-
-      <div class="flex-grow-1 p-2">
-        <h4 class="text-left text-sm-md text-bold text-primary"><%= @students.count %> unassigned students available</h4>
-        <table class="responsive nowrap table table-hover">
-          <thead>
-            <tr>
-              <th>Student Full Name</th>
-              <th>Student Program</th>
-              <th>Student ID</th>
-              <th>Year</th>
-              <th>Semester</th>
-              <th>Batch</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @students.each do |student| %>
+          <h4 class="text-left text-sm-md text-bold text-primary"><%= @students.count %> unassigned students available</h4>
+          <table class="responsive nowrap table table-hover">
+            <thead>
               <tr>
-                <td class="text-md text-bold text-capitalize"><%= student.name.full %></td>
-                <td class="text-md text-bold text-capitalize"><%= student.program.program_name %></td>
-                <td class="text-md text-bold text-capitalize"><%= student.student_id %></td>
-                <td class="text-md text-bold text-capitalize"><%= student.year %></td>
-                <td class="text-md text-bold text-capitalize"><%= student.semester %></td>
-                <td class="text-md text-bold text-capitalize"><%= student.batch %></td>
+                <th>Select</th>
+                <th>Student Full Name</th>
+                <th>Student Program</th>
+                <th>Student ID</th>
+                <th>Year</th>
+                <th>Semester</th>
+                <th>Batch</th>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              <% @students.each do |student| %>
+                <tr>
+                  <td>
+                    <%= check_box_tag "student_ids[]", student.id, false %>
+                  </td>
+                  <td class="text-md text-bold text-capitalize"><%= student.name.full %></td>
+                  <td class="text-md text-bold text-capitalize"><%= student.program.program_name %></td>
+                  <td class="text-md text-bold text-capitalize"><%= student.student_id %></td>
+                  <td class="text-md text-bold text-capitalize"><%= student.year %></td>
+                  <td class="text-md text-bold text-capitalize"><%= student.semester %></td>
+                  <td class="text-md text-bold text-capitalize"><%= student.batch %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <input type="submit" value="Assign Selected Students" class="btn btn-success mt-3">
+        <% end %>
       </div>
     </div>
   <% else %>

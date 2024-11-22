@@ -81,7 +81,7 @@ ActiveAdmin.register AdminUser do
         ["Dean", "dean"],
         ["Program Officer", "program office"],
         ["Library Head", "library head"],
-        ["Store/Student Service (Graduating Student)", "store head"],
+        ["Store Head/Student Service", "store head"],
         ["Admin", "admin"],
         ["Registrar Head", "registrar head"],
         ["Distance Registrar", "distance registrar"],
