@@ -19261,3 +19261,249 @@ Install missing gems with `bundle install`.
   INFO [f7062149] Running /usr/bin/env echo "Branch heuc (at 2366e14fc549bc687695f7225d36d1b9ff330552) deployed as release 20240924113715 by fena" >> /home/erpnext/hpremier/revisions.log as erpnext@141.94.74.186
  DEBUG [f7062149] Command: cd /home/erpnext/hpremier/releases && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "Branch heuc (at 2366e14fc549bc687695f7225d36d1b9ff330552) deployed as release 20240924113715 by fena" >> /home/erpnext/hpremier/revisions.log )
   INFO [f7062149] Finished in 0.500 seconds with exit status 0 (successful).
+  INFO ---------------------------------------------------------------------------
+  INFO START 2024-12-03 07:45:09 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [190f0bc8] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as erpnext@141.94.74.186
+ DEBUG [190f0bc8] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+ DEBUG [190f0bc8] Finished in 17.976 seconds with exit status 0 (successful).
+ DEBUG [5fa55c73] Running /usr/bin/env which passenger as erpnext@141.94.74.186
+ DEBUG [5fa55c73] Command: /usr/bin/env which passenger
+ DEBUG [5fa55c73] 	/usr/bin/passenger
+ DEBUG [5fa55c73] Finished in 0.820 seconds with exit status 0 (successful).
+  INFO [3bbedbe4] Running /usr/bin/env mkdir -p /tmp as erpnext@141.94.74.186
+ DEBUG [3bbedbe4] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /tmp )
+  INFO [3bbedbe4] Finished in 0.601 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-6f454b11bd2113b3e4ab.sh 0.0%
+  INFO Uploading /tmp/git-ssh-6f454b11bd2113b3e4ab.sh 100.0%
+  INFO [94aa2d4d] Running /usr/bin/env chmod 700 /tmp/git-ssh-6f454b11bd2113b3e4ab.sh as erpnext@141.94.74.186
+ DEBUG [94aa2d4d] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env chmod 700 /tmp/git-ssh-6f454b11bd2113b3e4ab.sh )
+  INFO [94aa2d4d] Finished in 0.648 seconds with exit status 0 (successful).
+  INFO [ba43cf50] Running /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD as erpnext@141.94.74.186
+ DEBUG [ba43cf50] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-6f454b11bd2113b3e4ab.sh" ; /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD )
+ DEBUG [ba43cf50] 	ee3d3f9da04068fc96d9c90ee4fc56c330f608ef	HEAD
+  INFO [ba43cf50] Finished in 1.404 seconds with exit status 0 (successful).
+  INFO [d27ed68b] Running /usr/bin/env mkdir -p /home/erpnext/hpremier/shared /home/erpnext/hpremier/releases as erpnext@141.94.74.186
+ DEBUG [d27ed68b] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/erpnext/hpremier/shared /home/erpnext/hpremier/releases )
+  INFO [d27ed68b] Finished in 0.605 seconds with exit status 0 (successful).
+  INFO [18baea03] Running /usr/bin/env mkdir -p /home/erpnext/hpremier/shared/log /home/erpnext/hpremier/shared/tmp/pids /home/erpnext/hpremier/shared/tmp/cache /home/erpnext/hpremier/shared/tmp/sockets /home/erpnext/hpremier/shared/vendor/bundle /home/erpnext/hpremier/shared/public/system /home/erpnext/hpremier/shared/public/uploads /home/erpnext/hpremier/shared/public/assets as erpnext@141.94.74.186
+ DEBUG [18baea03] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/erpnext/hpremier/shared/log /home/erpnext/hpremier/shared/tmp/pids /home/erpnext/hpremier/shared/tmp/cache /home/erpnext/hpremier/shared/tmp/sockets /home/erpnext/hpremier/shared/vendor/bundle /home/erpnext/hpremier/shared/public/system /home/erpnext/hpremier/shared/public/uploads /home/erpnext/hpremier/shared/public/assets )
+  INFO [18baea03] Finished in 0.638 seconds with exit status 0 (successful).
+ DEBUG [7b39d1dc] Running [ -f /home/erpnext/hpremier/current/REVISION ] as erpnext@141.94.74.186
+ DEBUG [7b39d1dc] Command: [ -f /home/erpnext/hpremier/current/REVISION ]
+ DEBUG [7b39d1dc] Finished in 0.599 seconds with exit status 0 (successful).
+ DEBUG [3f5bf218] Running /usr/bin/env cat /home/erpnext/hpremier/current/REVISION 2>/dev/null as erpnext@141.94.74.186
+ DEBUG [3f5bf218] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env cat /home/erpnext/hpremier/current/REVISION 2>/dev/null )
+ DEBUG [3f5bf218] 	2366e14fc549bc687695f7225d36d1b9ff330552
+ DEBUG [3f5bf218] Finished in 0.573 seconds with exit status 0 (successful).
+ DEBUG [3c62a1a5] Running [ -f /home/erpnext/hpremier/repo/HEAD ] as erpnext@141.94.74.186
+ DEBUG [3c62a1a5] Command: [ -f /home/erpnext/hpremier/repo/HEAD ]
+ DEBUG [3c62a1a5] Finished in 0.657 seconds with exit status 0 (successful).
+  INFO The repository mirror is at /home/erpnext/hpremier/repo
+ DEBUG [7c8072b1] Running if test ! -d /home/erpnext/hpremier/repo; then echo "Directory does not exist '/home/erpnext/hpremier/repo'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [7c8072b1] Command: if test ! -d /home/erpnext/hpremier/repo; then echo "Directory does not exist '/home/erpnext/hpremier/repo'" 1>&2; false; fi
+ DEBUG [7c8072b1] Finished in 0.595 seconds with exit status 0 (successful).
+  INFO [2bd47406] Running /usr/bin/env git remote set-url origin https://fenet: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@github.com/fenet/leadstarlatest.git as erpnext@141.94.74.186
+ DEBUG [2bd47406] Command: cd /home/erpnext/hpremier/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-6f454b11bd2113b3e4ab.sh" ; /usr/bin/env git remote set-url origin https://fenet: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@github.com/fenet/leadstarlatest.git )
+  INFO [2bd47406] Finished in 0.581 seconds with exit status 0 (successful).
+  INFO [46fbc504] Running /usr/bin/env git remote update --prune as erpnext@141.94.74.186
+ DEBUG [46fbc504] Command: cd /home/erpnext/hpremier/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-6f454b11bd2113b3e4ab.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [46fbc504] 	Fetching origin
+ DEBUG [46fbc504] 	From https://github.com/fenet/leadstarlatest
+   2366e14..0db8a54  heuc       -> heuc
+ DEBUG [46fbc504] 	   cd3f735..a46d72b  ngvcdeploy -> ngvcdeploy
+  INFO [46fbc504] Finished in 2.069 seconds with exit status 0 (successful).
+ DEBUG [ee3cde81] Running if test ! -d /home/erpnext/hpremier/repo; then echo "Directory does not exist '/home/erpnext/hpremier/repo'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [ee3cde81] Command: if test ! -d /home/erpnext/hpremier/repo; then echo "Directory does not exist '/home/erpnext/hpremier/repo'" 1>&2; false; fi
+ DEBUG [ee3cde81] Finished in 0.620 seconds with exit status 0 (successful).
+  INFO [0387122a] Running /usr/bin/env mkdir -p /home/erpnext/hpremier/releases/20241203044534 as erpnext@141.94.74.186
+ DEBUG [0387122a] Command: cd /home/erpnext/hpremier/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-6f454b11bd2113b3e4ab.sh" ; /usr/bin/env mkdir -p /home/erpnext/hpremier/releases/20241203044534 )
+  INFO [0387122a] Finished in 0.608 seconds with exit status 0 (successful).
+  INFO [25ce1a3d] Running /usr/bin/env git archive heuc | /usr/bin/env tar -x -f - -C /home/erpnext/hpremier/releases/20241203044534 as erpnext@141.94.74.186
+ DEBUG [25ce1a3d] Command: cd /home/erpnext/hpremier/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-6f454b11bd2113b3e4ab.sh" ; /usr/bin/env git archive heuc | /usr/bin/env tar -x -f - -C /home/erpnext/hpremier/releases/20241203044534 )
+  INFO [25ce1a3d] Finished in 1.012 seconds with exit status 0 (successful).
+ DEBUG [efb71807] Running if test ! -d /home/erpnext/hpremier/repo; then echo "Directory does not exist '/home/erpnext/hpremier/repo'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [efb71807] Command: if test ! -d /home/erpnext/hpremier/repo; then echo "Directory does not exist '/home/erpnext/hpremier/repo'" 1>&2; false; fi
+ DEBUG [efb71807] Finished in 0.539 seconds with exit status 0 (successful).
+ DEBUG [1c4db5e7] Running /usr/bin/env git rev-list --max-count=1 heuc as erpnext@141.94.74.186
+ DEBUG [1c4db5e7] Command: cd /home/erpnext/hpremier/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-6f454b11bd2113b3e4ab.sh" ; /usr/bin/env git rev-list --max-count=1 heuc )
+ DEBUG [1c4db5e7] 	0db8a54591b4d52b543d1a1f593837ac5d7d8c8f
+ DEBUG [1c4db5e7] Finished in 0.483 seconds with exit status 0 (successful).
+ DEBUG [22cb01fc] Running if test ! -d /home/erpnext/hpremier/releases/20241203044534; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20241203044534'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [22cb01fc] Command: if test ! -d /home/erpnext/hpremier/releases/20241203044534; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20241203044534'" 1>&2; false; fi
+ DEBUG [22cb01fc] Finished in 0.612 seconds with exit status 0 (successful).
+  INFO [4f77f2cd] Running /usr/bin/env echo "0db8a54591b4d52b543d1a1f593837ac5d7d8c8f" > REVISION as erpnext@141.94.74.186
+ DEBUG [4f77f2cd] Command: cd /home/erpnext/hpremier/releases/20241203044534 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "0db8a54591b4d52b543d1a1f593837ac5d7d8c8f" > REVISION )
+  INFO [4f77f2cd] Finished in 0.631 seconds with exit status 0 (successful).
+  INFO [8cd23097] Running /usr/bin/env mkdir -p /home/erpnext/hpremier/releases/20241203044534 /home/erpnext/hpremier/releases/20241203044534/tmp /home/erpnext/hpremier/releases/20241203044534/vendor /home/erpnext/hpremier/releases/20241203044534/public as erpnext@141.94.74.186
+ DEBUG [8cd23097] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/erpnext/hpremier/releases/20241203044534 /home/erpnext/hpremier/releases/20241203044534/tmp /home/erpnext/hpremier/releases/20241203044534/vendor /home/erpnext/hpremier/releases/20241203044534/public )
+  INFO [8cd23097] Finished in 0.546 seconds with exit status 0 (successful).
+ DEBUG [b1402d1b] Running [ -L /home/erpnext/hpremier/releases/20241203044534/log ] as erpnext@141.94.74.186
+ DEBUG [b1402d1b] Command: [ -L /home/erpnext/hpremier/releases/20241203044534/log ]
+ DEBUG [b1402d1b] Finished in 0.658 seconds with exit status 1 (failed).
+ DEBUG [4e8e3f57] Running [ -d /home/erpnext/hpremier/releases/20241203044534/log ] as erpnext@141.94.74.186
+ DEBUG [4e8e3f57] Command: [ -d /home/erpnext/hpremier/releases/20241203044534/log ]
+ DEBUG [4e8e3f57] Finished in 0.647 seconds with exit status 0 (successful).
+  INFO [c44c5667] Running /usr/bin/env rm -rf /home/erpnext/hpremier/releases/20241203044534/log as erpnext@141.94.74.186
+ DEBUG [c44c5667] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env rm -rf /home/erpnext/hpremier/releases/20241203044534/log )
+  INFO [c44c5667] Finished in 0.613 seconds with exit status 0 (successful).
+  INFO [0d1955ee] Running /usr/bin/env ln -s /home/erpnext/hpremier/shared/log /home/erpnext/hpremier/releases/20241203044534/log as erpnext@141.94.74.186
+ DEBUG [0d1955ee] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/erpnext/hpremier/shared/log /home/erpnext/hpremier/releases/20241203044534/log )
+  INFO [0d1955ee] Finished in 0.587 seconds with exit status 0 (successful).
+ DEBUG [3c56f8e7] Running [ -L /home/erpnext/hpremier/releases/20241203044534/tmp/pids ] as erpnext@141.94.74.186
+ DEBUG [3c56f8e7] Command: [ -L /home/erpnext/hpremier/releases/20241203044534/tmp/pids ]
+ DEBUG [3c56f8e7] Finished in 0.554 seconds with exit status 1 (failed).
+ DEBUG [ed2c6347] Running [ -d /home/erpnext/hpremier/releases/20241203044534/tmp/pids ] as erpnext@141.94.74.186
+ DEBUG [ed2c6347] Command: [ -d /home/erpnext/hpremier/releases/20241203044534/tmp/pids ]
+ DEBUG [ed2c6347] Finished in 0.672 seconds with exit status 1 (failed).
+  INFO [5a30dc70] Running /usr/bin/env ln -s /home/erpnext/hpremier/shared/tmp/pids /home/erpnext/hpremier/releases/20241203044534/tmp/pids as erpnext@141.94.74.186
+ DEBUG [5a30dc70] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/erpnext/hpremier/shared/tmp/pids /home/erpnext/hpremier/releases/20241203044534/tmp/pids )
+  INFO [5a30dc70] Finished in 0.800 seconds with exit status 0 (successful).
+ DEBUG [aa776bd9] Running [ -L /home/erpnext/hpremier/releases/20241203044534/tmp/cache ] as erpnext@141.94.74.186
+ DEBUG [aa776bd9] Command: [ -L /home/erpnext/hpremier/releases/20241203044534/tmp/cache ]
+ DEBUG [aa776bd9] Finished in 0.635 seconds with exit status 1 (failed).
+ DEBUG [5b2aedfb] Running [ -d /home/erpnext/hpremier/releases/20241203044534/tmp/cache ] as erpnext@141.94.74.186
+ DEBUG [5b2aedfb] Command: [ -d /home/erpnext/hpremier/releases/20241203044534/tmp/cache ]
+ DEBUG [5b2aedfb] Finished in 0.632 seconds with exit status 0 (successful).
+  INFO [2e183db9] Running /usr/bin/env rm -rf /home/erpnext/hpremier/releases/20241203044534/tmp/cache as erpnext@141.94.74.186
+ DEBUG [2e183db9] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env rm -rf /home/erpnext/hpremier/releases/20241203044534/tmp/cache )
+  INFO [2e183db9] Finished in 0.995 seconds with exit status 0 (successful).
+  INFO [653f0b28] Running /usr/bin/env ln -s /home/erpnext/hpremier/shared/tmp/cache /home/erpnext/hpremier/releases/20241203044534/tmp/cache as erpnext@141.94.74.186
+ DEBUG [653f0b28] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/erpnext/hpremier/shared/tmp/cache /home/erpnext/hpremier/releases/20241203044534/tmp/cache )
+  INFO [653f0b28] Finished in 0.639 seconds with exit status 0 (successful).
+ DEBUG [3d26ad36] Running [ -L /home/erpnext/hpremier/releases/20241203044534/tmp/sockets ] as erpnext@141.94.74.186
+ DEBUG [3d26ad36] Command: [ -L /home/erpnext/hpremier/releases/20241203044534/tmp/sockets ]
+ DEBUG [3d26ad36] Finished in 0.511 seconds with exit status 1 (failed).
+ DEBUG [4a247b96] Running [ -d /home/erpnext/hpremier/releases/20241203044534/tmp/sockets ] as erpnext@141.94.74.186
+ DEBUG [4a247b96] Command: [ -d /home/erpnext/hpremier/releases/20241203044534/tmp/sockets ]
+ DEBUG [4a247b96] Finished in 0.589 seconds with exit status 1 (failed).
+  INFO [adccc547] Running /usr/bin/env ln -s /home/erpnext/hpremier/shared/tmp/sockets /home/erpnext/hpremier/releases/20241203044534/tmp/sockets as erpnext@141.94.74.186
+ DEBUG [adccc547] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/erpnext/hpremier/shared/tmp/sockets /home/erpnext/hpremier/releases/20241203044534/tmp/sockets )
+  INFO [adccc547] Finished in 0.615 seconds with exit status 0 (successful).
+ DEBUG [20e99f31] Running [ -L /home/erpnext/hpremier/releases/20241203044534/vendor/bundle ] as erpnext@141.94.74.186
+ DEBUG [20e99f31] Command: [ -L /home/erpnext/hpremier/releases/20241203044534/vendor/bundle ]
+ DEBUG [20e99f31] Finished in 0.622 seconds with exit status 1 (failed).
+ DEBUG [fd45579d] Running [ -d /home/erpnext/hpremier/releases/20241203044534/vendor/bundle ] as erpnext@141.94.74.186
+ DEBUG [fd45579d] Command: [ -d /home/erpnext/hpremier/releases/20241203044534/vendor/bundle ]
+ DEBUG [fd45579d] Finished in 0.527 seconds with exit status 1 (failed).
+  INFO [93ccd2d2] Running /usr/bin/env ln -s /home/erpnext/hpremier/shared/vendor/bundle /home/erpnext/hpremier/releases/20241203044534/vendor/bundle as erpnext@141.94.74.186
+ DEBUG [93ccd2d2] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/erpnext/hpremier/shared/vendor/bundle /home/erpnext/hpremier/releases/20241203044534/vendor/bundle )
+  INFO [93ccd2d2] Finished in 0.598 seconds with exit status 0 (successful).
+ DEBUG [cac8a444] Running [ -L /home/erpnext/hpremier/releases/20241203044534/public/system ] as erpnext@141.94.74.186
+ DEBUG [cac8a444] Command: [ -L /home/erpnext/hpremier/releases/20241203044534/public/system ]
+ DEBUG [cac8a444] Finished in 0.642 seconds with exit status 1 (failed).
+ DEBUG [5cfcd5a4] Running [ -d /home/erpnext/hpremier/releases/20241203044534/public/system ] as erpnext@141.94.74.186
+ DEBUG [5cfcd5a4] Command: [ -d /home/erpnext/hpremier/releases/20241203044534/public/system ]
+ DEBUG [5cfcd5a4] Finished in 0.591 seconds with exit status 1 (failed).
+  INFO [985a7ebf] Running /usr/bin/env ln -s /home/erpnext/hpremier/shared/public/system /home/erpnext/hpremier/releases/20241203044534/public/system as erpnext@141.94.74.186
+ DEBUG [985a7ebf] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/erpnext/hpremier/shared/public/system /home/erpnext/hpremier/releases/20241203044534/public/system )
+  INFO [985a7ebf] Finished in 0.781 seconds with exit status 0 (successful).
+ DEBUG [e2a5b7c1] Running [ -L /home/erpnext/hpremier/releases/20241203044534/public/uploads ] as erpnext@141.94.74.186
+ DEBUG [e2a5b7c1] Command: [ -L /home/erpnext/hpremier/releases/20241203044534/public/uploads ]
+ DEBUG [e2a5b7c1] Finished in 0.528 seconds with exit status 1 (failed).
+ DEBUG [b6bd67c0] Running [ -d /home/erpnext/hpremier/releases/20241203044534/public/uploads ] as erpnext@141.94.74.186
+ DEBUG [b6bd67c0] Command: [ -d /home/erpnext/hpremier/releases/20241203044534/public/uploads ]
+ DEBUG [b6bd67c0] Finished in 0.630 seconds with exit status 1 (failed).
+  INFO [4d62903c] Running /usr/bin/env ln -s /home/erpnext/hpremier/shared/public/uploads /home/erpnext/hpremier/releases/20241203044534/public/uploads as erpnext@141.94.74.186
+ DEBUG [4d62903c] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/erpnext/hpremier/shared/public/uploads /home/erpnext/hpremier/releases/20241203044534/public/uploads )
+  INFO [4d62903c] Finished in 0.698 seconds with exit status 0 (successful).
+ DEBUG [56b6beeb] Running [ -L /home/erpnext/hpremier/releases/20241203044534/public/assets ] as erpnext@141.94.74.186
+ DEBUG [56b6beeb] Command: [ -L /home/erpnext/hpremier/releases/20241203044534/public/assets ]
+ DEBUG [56b6beeb] Finished in 0.635 seconds with exit status 1 (failed).
+ DEBUG [b97757ef] Running [ -d /home/erpnext/hpremier/releases/20241203044534/public/assets ] as erpnext@141.94.74.186
+ DEBUG [b97757ef] Command: [ -d /home/erpnext/hpremier/releases/20241203044534/public/assets ]
+ DEBUG [b97757ef] Finished in 0.544 seconds with exit status 1 (failed).
+  INFO [cb4f5ff4] Running /usr/bin/env ln -s /home/erpnext/hpremier/shared/public/assets /home/erpnext/hpremier/releases/20241203044534/public/assets as erpnext@141.94.74.186
+ DEBUG [cb4f5ff4] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/erpnext/hpremier/shared/public/assets /home/erpnext/hpremier/releases/20241203044534/public/assets )
+  INFO [cb4f5ff4] Finished in 0.670 seconds with exit status 0 (successful).
+ DEBUG [aee6e538] Running if test ! -d /home/erpnext/hpremier/releases/20241203044534; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20241203044534'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [aee6e538] Command: if test ! -d /home/erpnext/hpremier/releases/20241203044534; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20241203044534'" 1>&2; false; fi
+ DEBUG [aee6e538] Finished in 0.648 seconds with exit status 0 (successful).
+  INFO [6b4a95b1] Running $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true as erpnext@141.94.74.186
+ DEBUG [6b4a95b1] Command: cd /home/erpnext/hpremier/releases/20241203044534 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true )
+  INFO [6b4a95b1] Finished in 0.978 seconds with exit status 0 (successful).
+  INFO [0ce4617a] Running $HOME/.rbenv/bin/rbenv exec bundle config --local path /home/erpnext/hpremier/shared/bundle as erpnext@141.94.74.186
+ DEBUG [0ce4617a] Command: cd /home/erpnext/hpremier/releases/20241203044534 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local path /home/erpnext/hpremier/shared/bundle )
+  INFO [0ce4617a] Finished in 1.023 seconds with exit status 0 (successful).
+  INFO [017e1531] Running $HOME/.rbenv/bin/rbenv exec bundle config --local without development:test as erpnext@141.94.74.186
+ DEBUG [017e1531] Command: cd /home/erpnext/hpremier/releases/20241203044534 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local without development:test )
+  INFO [017e1531] Finished in 1.227 seconds with exit status 0 (successful).
+ DEBUG [f5eba5de] Running if test ! -d /home/erpnext/hpremier/releases/20241203044534; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20241203044534'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [f5eba5de] Command: if test ! -d /home/erpnext/hpremier/releases/20241203044534; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20241203044534'" 1>&2; false; fi
+ DEBUG [f5eba5de] Finished in 0.614 seconds with exit status 0 (successful).
+ DEBUG [a2a9faef] Running $HOME/.rbenv/bin/rbenv exec bundle check as erpnext@141.94.74.186
+ DEBUG [a2a9faef] Command: cd /home/erpnext/hpremier/releases/20241203044534 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle check )
+ DEBUG [a2a9faef] 	The Gemfile's dependencies are satisfied
+ DEBUG [a2a9faef] Finished in 1.438 seconds with exit status 0 (successful).
+  INFO The Gemfile's dependencies are satisfied, skipping installation
+ DEBUG [bb86b015] Running if test ! -d /home/erpnext/hpremier/releases/20241203044534; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20241203044534'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [bb86b015] Command: if test ! -d /home/erpnext/hpremier/releases/20241203044534; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20241203044534'" 1>&2; false; fi
+ DEBUG [bb86b015] Finished in 0.607 seconds with exit status 0 (successful).
+  INFO [728f42b3] Running $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile as erpnext@141.94.74.186
+ DEBUG [728f42b3] Command: cd /home/erpnext/hpremier/releases/20241203044534 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" RAILS_GROUPS="" ; $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile )
+  INFO [728f42b3] Finished in 11.063 seconds with exit status 0 (successful).
+ DEBUG [e938e0cc] Running if test ! -d /home/erpnext/hpremier/releases/20241203044534; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20241203044534'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [e938e0cc] Command: if test ! -d /home/erpnext/hpremier/releases/20241203044534; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20241203044534'" 1>&2; false; fi
+ DEBUG [e938e0cc] Finished in 0.612 seconds with exit status 0 (successful).
+  INFO [97e15e1b] Running /usr/bin/env mkdir -p /home/erpnext/hpremier/releases/20241203044534/assets_manifest_backup as erpnext@141.94.74.186
+ DEBUG [97e15e1b] Command: cd /home/erpnext/hpremier/releases/20241203044534 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/erpnext/hpremier/releases/20241203044534/assets_manifest_backup )
+  INFO [97e15e1b] Finished in 0.640 seconds with exit status 0 (successful).
+ DEBUG [d8054426] Running /usr/bin/env ls /home/erpnext/hpremier/releases/20241203044534/public/assets/.sprockets-manifest* as erpnext@141.94.74.186
+ DEBUG [d8054426] Command: cd /home/erpnext/hpremier/releases/20241203044534 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls /home/erpnext/hpremier/releases/20241203044534/public/assets/.sprockets-manifest* )
+ DEBUG [d8054426] 	/home/erpnext/hpremier/releases/20241203044534/public/assets/.sprockets-manifest-8862ede255e043823c2a09f2fb7c47bb.json
+ DEBUG [d8054426] Finished in 0.682 seconds with exit status 0 (successful).
+ DEBUG [937338f4] Running /usr/bin/env ls /home/erpnext/hpremier/releases/20241203044534/public/assets/.sprockets-manifest* as erpnext@141.94.74.186
+ DEBUG [937338f4] Command: cd /home/erpnext/hpremier/releases/20241203044534 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls /home/erpnext/hpremier/releases/20241203044534/public/assets/.sprockets-manifest* )
+ DEBUG [937338f4] 	/home/erpnext/hpremier/releases/20241203044534/public/assets/.sprockets-manifest-8862ede255e043823c2a09f2fb7c47bb.json
+ DEBUG [937338f4] Finished in 0.632 seconds with exit status 0 (successful).
+  INFO [2d8124f1] Running /usr/bin/env cp /home/erpnext/hpremier/releases/20241203044534/public/assets/.sprockets-manifest-8862ede255e043823c2a09f2fb7c47bb.json /home/erpnext/hpremier/releases/20241203044534/assets_manifest_backup as erpnext@141.94.74.186
+ DEBUG [2d8124f1] Command: cd /home/erpnext/hpremier/releases/20241203044534 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env cp /home/erpnext/hpremier/releases/20241203044534/public/assets/.sprockets-manifest-8862ede255e043823c2a09f2fb7c47bb.json /home/erpnext/hpremier/releases/20241203044534/assets_manifest_backup )
+  INFO [2d8124f1] Finished in 0.722 seconds with exit status 0 (successful).
+  INFO [deploy:migrate] Run `rake db:migrate`
+ DEBUG [ccffe4d3] Running if test ! -d /home/erpnext/hpremier/releases/20241203044534; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20241203044534'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [ccffe4d3] Command: if test ! -d /home/erpnext/hpremier/releases/20241203044534; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20241203044534'" 1>&2; false; fi
+ DEBUG [ccffe4d3] Finished in 0.507 seconds with exit status 0 (successful).
+  INFO [bd65cc1c] Running $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate as erpnext@141.94.74.186
+ DEBUG [bd65cc1c] Command: cd /home/erpnext/hpremier/releases/20241203044534 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" ; $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate )
+ DEBUG [bd65cc1c] 	== 20241120062910 AddStudyLevelToGradeSystems: migrating ======================
+-- add_column(:grade_systems, :study_level, :string, {:null=>false, :default=>"undergraduate"})
+   -> 0.1026s
+== 20241120062910 AddStudyLevelToGradeSystems: migrated (0.1027s) =============
+
+  INFO [bd65cc1c] Finished in 4.381 seconds with exit status 0 (successful).
+ DEBUG [ddc656f3] Running if test ! -d /home/erpnext/hpremier/releases/20241203044534; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20241203044534'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [ddc656f3] Command: if test ! -d /home/erpnext/hpremier/releases/20241203044534; then echo "Directory does not exist '/home/erpnext/hpremier/releases/20241203044534'" 1>&2; false; fi
+ DEBUG [ddc656f3] Finished in 0.565 seconds with exit status 0 (successful).
+  INFO [91a26fdf] Running $HOME/.rbenv/bin/rbenv exec bundle exec whenever --update-crontab hpremier_production --set environment=production --roles=app,web,db  as erpnext@141.94.74.186
+ DEBUG [91a26fdf] Command: cd /home/erpnext/hpremier/releases/20241203044534 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" ; $HOME/.rbenv/bin/rbenv exec bundle exec whenever --update-crontab hpremier_production --set environment=production --roles=app,web,db  )
+ DEBUG [91a26fdf] 	[write] crontab file updated
+  INFO [91a26fdf] Finished in 1.478 seconds with exit status 0 (successful).
+  INFO [2847d676] Running /usr/bin/env ln -s /home/erpnext/hpremier/releases/20241203044534 /home/erpnext/hpremier/releases/current as erpnext@141.94.74.186
+ DEBUG [2847d676] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/erpnext/hpremier/releases/20241203044534 /home/erpnext/hpremier/releases/current )
+  INFO [2847d676] Finished in 0.775 seconds with exit status 0 (successful).
+  INFO [66752b18] Running /usr/bin/env mv /home/erpnext/hpremier/releases/current /home/erpnext/hpremier as erpnext@141.94.74.186
+ DEBUG [66752b18] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mv /home/erpnext/hpremier/releases/current /home/erpnext/hpremier )
+  INFO [66752b18] Finished in 0.614 seconds with exit status 0 (successful).
+ DEBUG [032ffcbc] Running /usr/bin/env pwd as erpnext@141.94.74.186
+ DEBUG [032ffcbc] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env pwd )
+ DEBUG [032ffcbc] 	/home/erpnext
+ DEBUG [032ffcbc] Finished in 0.633 seconds with exit status 0 (successful).
+ DEBUG [e680fcf3] Running if test ! -d /home/erpnext; then echo "Directory does not exist '/home/erpnext'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [e680fcf3] Command: if test ! -d /home/erpnext; then echo "Directory does not exist '/home/erpnext'" 1>&2; false; fi
+ DEBUG [e680fcf3] Finished in 0.602 seconds with exit status 0 (successful).
+  INFO [9c641598] Running /usr/bin/env mkdir -p /home/erpnext/hpremier/releases/20241203044534/tmp as erpnext@141.94.74.186
+ DEBUG [9c641598] Command: cd /home/erpnext && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/erpnext/hpremier/releases/20241203044534/tmp )
+  INFO [9c641598] Finished in 0.597 seconds with exit status 0 (successful).
+  INFO [be5024a8] Running /usr/bin/env touch /home/erpnext/hpremier/releases/20241203044534/tmp/restart.txt as erpnext@141.94.74.186
+ DEBUG [be5024a8] Command: cd /home/erpnext && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env touch /home/erpnext/hpremier/releases/20241203044534/tmp/restart.txt )
+  INFO [be5024a8] Finished in 0.543 seconds with exit status 0 (successful).
+ DEBUG [4105ec0c] Running /usr/bin/env ls -x /home/erpnext/hpremier/releases as erpnext@141.94.74.186
+ DEBUG [4105ec0c] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls -x /home/erpnext/hpremier/releases )
+ DEBUG [4105ec0c] 	20240923043519	20240924113715	20241203044534
+ DEBUG [4105ec0c] Finished in 0.680 seconds with exit status 0 (successful).
+ DEBUG [15192324] Running if test ! -d /home/erpnext/hpremier/releases; then echo "Directory does not exist '/home/erpnext/hpremier/releases'" 1>&2; false; fi as erpnext@141.94.74.186
+ DEBUG [15192324] Command: if test ! -d /home/erpnext/hpremier/releases; then echo "Directory does not exist '/home/erpnext/hpremier/releases'" 1>&2; false; fi
+ DEBUG [15192324] Finished in 0.612 seconds with exit status 0 (successful).
+  INFO [5af2338d] Running /usr/bin/env echo "Branch heuc (at 0db8a54591b4d52b543d1a1f593837ac5d7d8c8f) deployed as release 20241203044534 by fena" >> /home/erpnext/hpremier/revisions.log as erpnext@141.94.74.186
+ DEBUG [5af2338d] Command: cd /home/erpnext/hpremier/releases && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "Branch heuc (at 0db8a54591b4d52b543d1a1f593837ac5d7d8c8f) deployed as release 20241203044534 by fena" >> /home/erpnext/hpremier/revisions.log )
+  INFO [5af2338d] Finished in 0.624 seconds with exit status 0 (successful).
