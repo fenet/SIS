@@ -160,7 +160,6 @@ student_types = ["regular", "extention"] # Replace with actual values used in yo
       if f.object.assessment_plans.empty?
         f.object.assessment_plans << AssessmentPlan.new
       end
-
       panel "Assessment Plans" do
         f.has_many :assessment_plans, heading: " ", allow_destroy: true, new_record: true do |a|
           if params[:course_id].present?
@@ -170,7 +169,7 @@ student_types = ["regular", "extention"] # Replace with actual values used in yo
                     fields: [:course_title, :id], display_name: 'course_title', minimum_input_length: 2, order_by: 'created_at_asc'
           end
           a.input :assessment_title
-          a.input :assessment_weight, input_html: { min: 1, max: 100 }
+          a.input :assessment_weight, input_html: { class: 'assessment-weight', min: 1, max: 100 }
           a.input :final_exam
           if a.object.new_record?
             a.input :created_by, as: :hidden, input_html: { value: current_admin_user.name.full }
@@ -180,6 +179,26 @@ student_types = ["regular", "extention"] # Replace with actual values used in yo
             a.input :admin_user_id, as: :hidden, input_html: { value: current_admin_user.id }
           end
         end
+      end
+      
+      # JavaScript for client-side validation
+      script do
+        raw <<-JS
+          document.addEventListener('DOMContentLoaded', function() {
+            var form = document.querySelector('form');
+            form.addEventListener('submit', function(event) {
+              var weights = document.querySelectorAll('.assessment-weight');
+              var totalWeight = Array.from(weights).reduce(function(sum, input) {
+                return sum + parseFloat(input.value || 0);
+              }, 0);
+      
+              if (totalWeight !== 100) {
+                alert('The total assessment weight must equal 100.');
+                event.preventDefault();
+              }
+            });
+          });
+        JS
       end
     
   
@@ -218,6 +237,39 @@ end
 
     f.actions
   end
+
+  show do
+    attributes_table do
+      row :course_title
+      row :course_code
+      row :credit_hour
+      row :year
+      row :semester
+      row :program do |course|
+        link_to course.program.program_name, [:admin, course.program] if course.program.present?
+      end
+      row :curriculum do |course|
+        link_to course.curriculum.curriculum_version, [:admin, course.curriculum] if course.curriculum.present?
+      end
+      row :course_description
+      row :created_by
+      row :last_updated_by
+      row :created_at
+      row :updated_at
+  
+      # Display the course outline
+      row :course_outline do |course|
+        if course.course_outline.attached?
+          link_to "Download Course Outline", rails_blob_path(course.course_outline, disposition: "attachment"), target: "_blank"
+        else
+          "No course outline available"
+        end
+      end
+    end
+  
+    active_admin_comments
+  end
+  
 
   action_item :edit, only: :show, priority: 1 do
     if (current_admin_user.role == "department head") || (current_admin_user.role == "admin") || (current_admin_user.role == "instructor")

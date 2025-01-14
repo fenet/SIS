@@ -2,6 +2,7 @@ class Course < ApplicationRecord
 	before_save :attribute_assignment
 	scope :by_program, -> (program_id) { where(program_id: program_id) }
 	after_save :create_or_update_course_offering
+	after_create :copy_to_uneditable_course
 	#validations
         validates :semester, :presence => true
 		validates :year, :presence => true
@@ -14,6 +15,8 @@ class Course < ApplicationRecord
   	belongs_to :course_module
   	belongs_to :curriculum
   	belongs_to :program, optional: true
+
+	
  		# has_many :programs, through: :curriculums, dependent: :destroy
 	has_many :course_offerings, dependent: :destroy 
  	has_many :student_grades, dependent: :destroy
@@ -49,8 +52,31 @@ class Course < ApplicationRecord
 	scope :for_student, -> (student) {
 		where(program_id: student.program_id, year: student.year, semester: student.semester)
 	  }
+	
 
+	  
   private
+
+  def copy_to_uneditable_course
+    UneditableCourse.create(
+      course_module_id: self.course_module_id,
+      curriculum_id: self.curriculum_id,
+      program_id: self.program_id,
+      course_title: self.course_title,
+      course_code: self.course_code,
+      course_description: self.course_description,
+      year: self.year,
+      semester: self.semester,
+      course_starting_date: self.course_starting_date,
+      course_ending_date: self.course_ending_date,
+      credit_hour: self.credit_hour,
+      lecture_hour: self.lecture_hour,
+      lab_hour: self.lab_hour,
+      ects: self.ects,
+      created_by: self.created_by,
+      last_updated_by: self.last_updated_by
+    )
+  end
 
   def attribute_assignment
     self[:program_id] = self.curriculum.program.id

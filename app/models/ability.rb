@@ -22,12 +22,13 @@ class Ability
 
     when "program office"
       can :manage, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
-      can :manage, ClassSchedule
-      can :manage, ExamSchedule
-      can :read, AcademicCalendar
+      #can :manage, ClassSchedule
+      #can :manage, ExamSchedule
+      #can :read, AcademicCalendar
 
     when "admin"
       # can :manage, ActiveAdmin::Page, name: "Calendar", namespace_name: "admin"
+      can :read, UneditableCurriculum
       can :manage, Transfer
       can :manage, DocumentRequest
       can :manage, RecurringPayment
@@ -42,7 +43,9 @@ class Ability
       can :manage, ProgramExemption#, department_id: user.department.id
       can :manage, Readmission
       can :manage, ExternalTransfer
-      can :manage, ClassSchedule
+      #can :manage, ClassSchedule
+      can :manage, ClassScheduleWithFile
+      can :manage, ExamScheduleWithFile
       can :manage, CourseOffering
       # can :manage, Graduation
       can :manage, PaymentTransaction
@@ -100,7 +103,7 @@ class Ability
       can :read, CourseRegistration, course_id: Course.instructor_courses(user.id)
       #can :manage, StudentGrade, course_id: Section.instructors(user.id)
       #can %i[read destroy], StudentGrade, course_id: Course.instructor_courses(user.id)
-      
+      can :read, Notice
       can :read, StudentGrade, course_id: Course.instructor_courses(user.id)
       can :update, StudentGrade, course_id: Course.instructor_courses(user.id)
     # Destroy action with a block for additional conditions

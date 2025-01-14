@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_20_062910) do
+ActiveRecord::Schema[7.0].define(version: 2025_01_14_080006) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -275,6 +275,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_20_062910) do
     t.index ["section_id"], name: "index_attendances_on_section_id"
   end
 
+  create_table "class_schedule_with_files", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "class_schedules", force: :cascade do |t|
     t.uuid "course_id", null: false
     t.uuid "program_id", null: false
@@ -495,6 +501,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_20_062910) do
     t.datetime "updated_at", precision: nil, null: false
     t.boolean "major", default: false
     t.string "batch", default: "2019/2020"
+    t.string "course_type"
     t.index ["course_module_id"], name: "index_courses_on_course_module_id"
     t.index ["curriculum_id"], name: "index_courses_on_curriculum_id"
     t.index ["program_id"], name: "index_courses_on_program_id"
@@ -589,6 +596,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_20_062910) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["student_id"], name: "index_emergency_contacts_on_student_id"
+  end
+
+  create_table "exam_schedule_with_files", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "exam_schedules", force: :cascade do |t|
@@ -900,7 +913,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_20_062910) do
     t.string "posted_by"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "admin_user_id"
+    t.uuid "admin_user_id"
   end
 
   create_table "other_payments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -1397,6 +1410,98 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_20_062910) do
     t.index ["student_id"], name: "index_transfers_on_student_id"
   end
 
+  create_table "uneditable_academic_statuses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "grade_system_id"
+    t.string "status"
+    t.decimal "min_value"
+    t.decimal "max_value"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "uneditable_course_modules", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "module_title", null: false
+    t.uuid "department_id"
+    t.string "module_code", null: false
+    t.text "overview"
+    t.text "description"
+    t.string "created_by"
+    t.string "last_updated_by"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "uneditable_courses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "course_module_id"
+    t.uuid "curriculum_id"
+    t.uuid "program_id"
+    t.string "course_title", null: false
+    t.string "course_code", null: false
+    t.text "course_description"
+    t.integer "year", default: 1, null: false
+    t.integer "semester", default: 1, null: false
+    t.datetime "course_starting_date", precision: nil
+    t.datetime "course_ending_date", precision: nil
+    t.integer "credit_hour", null: false
+    t.integer "lecture_hour", null: false
+    t.integer "lab_hour", default: 0
+    t.integer "ects", null: false
+    t.string "created_by"
+    t.string "last_updated_by"
+    t.string "source_table", default: "courses", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "uneditable_curriculum_id"
+  end
+
+  create_table "uneditable_curriculums", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "program_id"
+    t.string "curriculum_title", null: false
+    t.string "curriculum_version", null: false
+    t.integer "total_course"
+    t.integer "total_ects"
+    t.integer "total_credit_hour"
+    t.string "active_status", default: "active"
+    t.datetime "curriculum_active_date", precision: nil, null: false
+    t.datetime "depreciation_date", precision: nil
+    t.string "created_by"
+    t.string "last_updated_by"
+    t.string "source_table", default: "curriculums", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "uneditable_grade_systems", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "program_id"
+    t.uuid "curriculum_id"
+    t.decimal "min_cgpa_value_to_pass"
+    t.decimal "min_cgpa_value_to_graduate"
+    t.string "remark"
+    t.string "created_by"
+    t.string "updated_by"
+    t.string "study_level", default: "undergraduate", null: false
+    t.string "source_table", default: "grade_systems", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "uneditable_curriculum_id"
+    t.index ["uneditable_curriculum_id"], name: "index_uneditable_grade_systems_on_uneditable_curriculum_id"
+  end
+
+  create_table "uneditable_grades", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "grade_system_id"
+    t.string "letter_grade", null: false
+    t.decimal "grade_point", null: false
+    t.integer "min_row_mark", null: false
+    t.integer "max_row_mark", null: false
+    t.string "updated_by"
+    t.string "created_by"
+    t.string "source_table", default: "grades", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "withdrawals", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "program_id"
     t.uuid "department_id"
@@ -1475,4 +1580,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_20_062910) do
   add_foreign_key "readmissions", "sections"
   add_foreign_key "readmissions", "students"
   add_foreign_key "students", "sections"
+  add_foreign_key "uneditable_grade_systems", "uneditable_curriculums"
 end

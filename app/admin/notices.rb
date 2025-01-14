@@ -23,7 +23,8 @@ ActiveAdmin.register Notice do
     column :created_at
     column :updated_at
     column :posted_by do |notice|
-      notice.admin_user.role.humanize if notice.admin_user
+      "#{notice.admin_user&.first_name} #{notice.admin_user&.last_name}".strip
+
     end
     actions
   end
@@ -43,8 +44,9 @@ ActiveAdmin.register Notice do
       row :created_at
       row :updated_at
       row :posted_by do |notice|
-        notice.current_admin_user.name.full if notice.admin_user
+        "#{notice.admin_user&.first_name} #{notice.admin_user&.last_name}".strip
       end
+      
     end
   end
 end

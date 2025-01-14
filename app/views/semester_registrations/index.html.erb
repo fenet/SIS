@@ -47,8 +47,10 @@
 								<td><%= sm.created_at.strftime("%b %d, %Y") %></td>
 								
 								<td class="actions">
-					        <%= link_to("View", semester_registration_path(sm), :class => 'btn-sm btn-primary') %>
-					      </td>
+  									<%= link_to("View", semester_registration_path(sm), class: 'btn-sm btn-primary') %>
+ 								    <%= link_to("Download", download_pdf_semester_registration_path(sm), class: 'btn-sm btn-success') %>
+								</td>
+
 							</tr>
 					<%end%>
 				</tbody>

@@ -1,6 +1,6 @@
 ActiveAdmin.register CourseOffering do
   
-  menu parent: "Program"
+  menu false
   # Permitting parameters
   permit_params :course_id, :batch, :year, :semester, :course_starting_date, :course_ending_date, :credit_hour, :lecture_hour, :lab_hour, :ects, :major, :created_by, :last_updated_by
 

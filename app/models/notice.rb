@@ -1,5 +1,6 @@
 class Notice < ApplicationRecord
-    belongs_to :admin_user
+  
+  belongs_to :admin_user
 
   validates :title, presence: true
   validates :body, presence: true

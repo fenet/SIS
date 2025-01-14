@@ -35,13 +35,28 @@
   <%elsif student_signed_in?%>
     <%if !(params[:update_pwd] == "update_pwd")%>
     <body class="hold-transition sidebar-mini layout-fixed <%= yield(:side)%>">
-      <div class="wrapper">
-        <%= render 'layouts/navbar'%>
-        <%= render 'layouts/sidebar'%>
-        <div class="content-wrapper">
-          <%= yield %>
+    <div class="wrapper">
+    <!-- Flash messages outside the sidebar -->
+    <div class="flash-messages">
+      <% if flash[:notice] %>
+        <div class="alert alert-success">
+          <%= flash[:notice] %>
         </div>
-      </div>
+      <% end %>
+
+      <% if flash[:alert] %>
+        <div class="alert alert-danger">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+    </div>
+
+    <%= render 'layouts/navbar' %>
+    <%= render 'layouts/sidebar' %>
+    <div class="content-wrapper">
+      <%= yield %>
+    </div>
+  </div>
     </body>
     <%else%>
       <body class="hold-transition control-sidebar-slide-open sidebar-collapse">

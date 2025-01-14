@@ -16,7 +16,7 @@ class NoticesController < ApplicationController
 
   def create
     @notice = Notice.new(notice_params)
-    @notice.admin_user = current_admin_user
+    @notice.admin_user = current_admin_user.id
     if @notice.save
       redirect_to admin_notices_path, notice: 'Notice was successfully created.'
     else

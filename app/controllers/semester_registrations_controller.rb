@@ -73,7 +73,60 @@ class SemesterRegistrationsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
+  def download_pdf
+    @semester_registration = SemesterRegistration.find(params[:id])
+                                                      
+    pdf = Prawn::Document.new
+  
+    # Add the logo at the top center
+    logo_path = Rails.root.join('app/assets/images/logo.jpg')
+    pdf.image logo_path, at: [pdf.bounds.width / 2 - 50, pdf.cursor], width: 100
+    pdf.move_down 60
+  
+    pdf.text "Student Registration Information", size: 20, style: :bold, align: :center
+    pdf.move_down 20
+    pdf.text "Full Name: #{@semester_registration.student_full_name}"
+    pdf.text "Student ID: #{@semester_registration.student_id_number}"
+    pdf.text "Program: #{@semester_registration.program.program_name}"
+    pdf.text "Department: #{@semester_registration.department.department_name}" if @semester_registration.department.present?
+    pdf.text "Year: #{@semester_registration.year}"
+    pdf.text "Semester: #{@semester_registration.semester}"
+    pdf.move_down 20
+  
+    pdf.text "Course Registrations", size: 18, style: :bold
+    pdf.move_down 10
+  
+    table_data = [["No", "Course Name", "Code", "Credit Hour", "Contact Hour"]]
+  
+    total_credit_hours = 0
+    total_contact_hours = 0
+  
+    @semester_registration.course_registrations.each_with_index do |registration, index|
+      table_data << [
+        index + 1,
+        registration.course.course_title,
+        registration.course.course_code,
+        registration.course.credit_hour,
+        registration.course.ects
+      ]
+      total_credit_hours += registration.course.credit_hour
+      total_contact_hours += registration.course.ects
+    end
+  
+    pdf.table(table_data, header: true, row_colors: ["F0F0F0", "FFFFFF"], cell_style: { borders: [:top, :bottom] }) do
+      row(0).font_style = :bold
+      row(0).background_color = "CCCCCC"
+    end
+  
+    pdf.move_down 20
+    pdf.text "Total Credit Hours: #{total_credit_hours}", size: 14, style: :bold
+    pdf.text "Total Contact Hours: #{total_contact_hours}", size: 14, style: :bold
+  
+    send_data pdf.render, filename: "semester_registration_#{@semester_registration.id}.pdf", type: 'application/pdf'
+   
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_registration

@@ -257,6 +257,13 @@ resources :class_schedules, only: [:index]
       end
     end
   end
+
+  resources :semester_registrations do
+    member do
+      get :download_pdf
+    end
+  end
+  
   
   post "prepare_pdf", to: "pdf_grade_reports#prepare_pdf", as: "prepare_pdf"
   get "admission" => "pages#admission"

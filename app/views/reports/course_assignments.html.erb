@@ -1,50 +1,35 @@
-<!-- app/views/reports/course_assignments.html.erb -->
 <h1>Instructor Load Report</h1>
-<table class="table">
+
+<table>
   <thead>
     <tr>
-      <th>No</th>
-      <th>Instructor's Name</th>
+      <th>Instructor Name</th>
+      <th>Email</th>
       <th>Courses</th>
+      <th>Total Sections</th>
+      <th>Total ECTS</th>
+      <th>Weekly Teaching Load</th>
     </tr>
   </thead>
   <tbody>
-    <% @instructors.each_with_index do |instructor, index| %>
-      <% # Find all course-instructor assignments for this instructor %>
-      <% instructor_courses = @course_instructors.select { |ci| ci.admin_user_id == instructor.id } %>
-      <% courses_grouped = instructor_courses.group_by { |ci| ci.course } %>
+    <% @instructor_data.each do |data| %>
       <tr>
-        <td><%= index + 1 %></td>
-        <td><%= "#{instructor.first_name} #{instructor.last_name}" %></td>
+        <td><%= "#{data[:instructor].first_name} #{data[:instructor].last_name}" %></td>
+        <td><%= data[:instructor].email %></td>
         <td>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Course Name</th>
-                <th>Credit Hour</th>
-                <th>No of Sections</th>
-                <th>Contact Hr.</th>
-                <th>Total Contact Hr.</th>
-                <th>Weekly Teaching Load in the Semester</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% courses_grouped.each do |course, course_instructors| %>
-                <% sections_count = course_instructors.map(&:section_id).uniq.size %>
-                <% total_ects = sections_count * course.ects %>
-                <% weekly_teaching_load = course_instructors.sum { |ci| total_ects } %>
-                <tr>
-                  <td><%= course.course_title %></td>
-                  <td><%= course.credit_hour %></td>
-                  <td><%= sections_count %></td>
-                  <td><%= course.ects %></td>
-                  <td><%= total_ects %></td>
-                  <td><%= weekly_teaching_load %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
+          <ul>
+            <% data[:courses].each do |course, stats| %>
+              <li>
+                <strong><%= course.course_code %>:</strong>
+                <%= course.course_title %> 
+                (Credit Hour: <%= stats[:credit_hour] %>)
+              </li>
+            <% end %>
+          </ul>
         </td>
+        <td><%= data[:courses].values.sum { |stats| stats[:sections_count] } %></td>
+        <td><%= data[:courses].values.sum { |stats| stats[:total_ects] } %></td>
+        <td><%= data[:courses].values.sum { |stats| stats[:weekly_teaching_load] } %></td>
       </tr>
     <% end %>
   </tbody>
