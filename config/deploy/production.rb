@@ -6,7 +6,7 @@ set :ssh_options, {
 
 role :app, %w{aacp@15.235.65.231}, port: 77
 role :web, %w{aacp@15.235.65.231}, port: 77
-role :db, %w{aacp@15.235.65.231}, , port: 77, :primary => true
+role :db, %w{aacp@15.235.65.231}, port: 77, :primary => true
 
 #set :branch, "main"
 set :branch, "heuc" 
