@@ -4,15 +4,15 @@ set :ssh_options, {
   verify_host_key: :never
 }
 
-role :app, %w{erpnext@141.94.74.186}
-role :web, %w{erpnext@141.94.74.186}
-role :db, %w{erpnext@141.94.74.186}, :primary => true
+role :app, %w{aacp@15.235.65.231}, port: 77
+role :web, %w{aacp@15.235.65.231}, port: 77
+role :db, %w{aacp@15.235.65.231}, , port: 77, :primary => true
 
 #set :branch, "main"
 set :branch, "heuc" 
 set :rails_env, "production"
 
-set :deploy_to, '/home/erpnext/hpremier' 
+set :deploy_to, '/home/aacp/heuc' 
 
 # You can define all roles on a single server, or split them:
 

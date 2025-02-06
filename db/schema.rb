@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_01_14_080006) do
+ActiveRecord::Schema[7.0].define(version: 2025_02_03_095125) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -1137,6 +1137,10 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_14_080006) do
     t.string "updated_by"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.string "coc_id"
+    t.string "tvet"
+    t.string "letter_of_equivalence"
+    t.string "entrance_exam_id"
     t.index ["student_id"], name: "index_school_or_university_informations_on_student_id"
   end
 
@@ -1222,7 +1226,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_14_080006) do
 
   create_table "student_addresses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "student_id"
-    t.string "country", null: false
+    t.string "country", default: "Ethiopia", null: false
     t.string "city"
     t.string "region"
     t.string "zone"
