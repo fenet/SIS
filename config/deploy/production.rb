@@ -12,7 +12,7 @@ role :db, %w{aacp@15.235.65.231}, port: 77, :primary => true
 set :branch, "heuc" 
 set :rails_env, "production"
 
-set :deploy_to, '/home/aacp/heuc' 
+set :deploy_to, '/home/aacp/heuc_portal' 
 
 # You can define all roles on a single server, or split them:
 

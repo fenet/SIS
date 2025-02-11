@@ -38,7 +38,7 @@ test:
   password: Hope_1234
 production:
   <<: *default
-  database: heucdb 
+  database: heucfinaldb
   username: aacp
   password: aacpp
   #database: heucbackup
