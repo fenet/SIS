@@ -2,104 +2,25 @@ ActiveAdmin.register Student do
   menu parent: "Student managment"
   # config.batch_actions = true
   permit_params :section_id, :payment_version, :password_confirmation, :batch, :nationality, :undergraduate_transcript, :highschool_transcript,
-                :grade_10_matric, :grade_12_matric, :coc, :diploma_certificate, :degree_certificate, :place_of_birth, :sponsorship_status, :entrance_exam_result_status, :student_id_taken_status, :old_id_number, :curriculum_version, :current_occupation, :tempo_status, :created_by, :last_updated_by, :photo, :email, :password, :first_name, :last_name, :middle_name, :gender, :student_id, :date_of_birth, :program_id, :department, :admission_type, :study_level, :marital_status, :year, :semester, :account_verification_status, :document_verification_status, :account_status, :graduation_status, student_address_attributes: %i[id country city region zone sub_city house_number special_location moblie_number telephone_number pobox woreda created_by last_updated_by], emergency_contact_attributes: %i[id full_name relationship cell_phone email current_occupation name_of_current_employer pobox email_of_employer office_phone_number created_by last_updated_by], school_or_university_information_attributes: %i[id level coc_attendance_date college_or_university phone_number address field_of_specialization cgpa last_attended_high_school school_address grade_10_result grade_10_exam_taken_year grade_12_exam_result grade_12_exam_taken_year created_by updated_by coc_id tvet letter_of_equivalence entrance_exam_id]
+                :grade_10_matric, :grade_12_matric, :coc, :diploma_certificate, :degree_certificate, :place_of_birth, :sponsorship_status, :entrance_exam_result_status, :student_id_taken_status, :old_id_number, :curriculum_version, :current_occupation, :tempo_status, :created_by, :last_updated_by, :photo, :email, :password, :first_name, :last_name, :middle_name, :gender, :student_id, :date_of_birth, :program_id, :department, :admission_type, :study_level, :marital_status, :year, :semester, :account_verification_status, :document_verification_status, :account_status, :graduation_status, student_address_attributes: %i[id country city region zone sub_city house_number special_location mobile_number telephone_number pobox woreda created_by last_updated_by], emergency_contact_attributes: %i[id full_name relationship cell_phone email current_occupation name_of_current_employer pobox email_of_employer office_phone_number created_by last_updated_by], school_or_university_information_attributes: %i[id level coc_attendance_date college_or_university phone_number address field_of_specialization cgpa last_attended_high_school school_address grade_10_result grade_10_exam_taken_year grade_12_exam_result grade_12_exam_taken_year created_by updated_by coc_id tvet letter_of_equivalence entrance_exam_id]
 
- # active_admin_import validate: false,
- #                     before_batch_import: proc { |import|
- #                       import.csv_lines.length.times do |i|
- #                         import.csv_lines[i][1] =
- #                           Student.new(password: import.csv_lines[i][1]).encrypted_password
- #                       end
- #                     },
- #                     timestamps: true,
- #                     batch_size: 1000
- # scoped_collection_action :scoped_collection_update, title: "Batch Approve", form: lambda {
- #                              {
- #                                document_verification_status: %w[pending approved denied incomplete],
-#
- #                              }
- #                            }
+  active_admin_import validate: false,
+  before_batch_import: proc { |import|
+    import.csv_lines.each_with_index do |row, i|
+      puts "Row #{i}: #{row.inspect}"  # Debugging line
+      row[1] = Student.new(password: row[1]).encrypted_password
+    end
+  },
+  timestamps: true,
+  batch_size: 1000
+  scoped_collection_action :scoped_collection_update, title: "Batch Approve", form: lambda {
+                               {
+                                 document_verification_status: %w[pending approved denied incomplete],
+
+                               }
+                             }
 
 
- active_admin_import(
-    validate: false,
-    timestamps: true,
-    batch_size: 1000,
-    headers_rewrites: {
-      "Phone number" => :phone_number,  # Maps CSV "Phone Number" to the `mobile_number` column in student_addresses
-      "Grade 10 Result" => :grade_10_result,
-      "Grade 10 Year" => :grade_10_exam_taken_year,
-      "Grade 12 Result" => :grade_12_exam_result,
-      "Grade 12 Year" => :grade_12_exam_taken_year,
-      "Entrance Exam ID Number" => :entrance_exam_id,
-      "Letter of Equivalence" => :letter_of_equivalence,
-      "TVET/12+2 Program Attend" => :college_or_university,
-      "Level(L3,L4)" => :level,
-      "Coc ID" => :coc_id,
-      "Coc Attended Date" => :coc_attendance_date
-    },
-   
-    before_batch_import: -> (import) {
-      headers = import.csv_lines.first  # Get the headers from the first row
-      puts "CSV Headers: #{headers.inspect}"  # Debugging step
-    
-      student_id_index = headers.index('student_id') || headers.index('Student ID')
-      raise "Error: 'student_id' column not found! Available headers: #{headers.inspect}" unless student_id_index
-    
-      import.csv_lines.drop(1).each do |row|  # Skip header row
-        student = Student.find_or_initialize_by(student_id: row[student_id_index])
-    
-        student.assign_attributes(
-          first_name: row[headers.index('first_name')],
-          middle_name: row[headers.index('middle_name')],
-          last_name: row[headers.index('last_name')],
-          gender: row[headers.index('gender')],
-          nationality: row[headers.index('nationality')],
-          date_of_birth: row[headers.index('date_of_birth')],
-          email: row[headers.index('email')],
-          password: row[headers.index('encrypted_password')],
-          admission_type: row[headers.index('admission_type')],
-          study_level: row[headers.index('study_level')],
-          entrance_exam_result_status: row[headers.index('entrance_exam_result_status')]
-        )
-        
-        program_name = row[headers.index('NameofProgram')]  # Ensure the column name is correct
-        if program_name.blank?
-          puts "Warning: 'NameofProgram' is blank for student_id: #{row[student_id_index]}"
-        else
-          program = Program.find_by(program_name: program_name)
-          if program
-            student.program_id = program.id  # Assign program_id if found
-          else
-            puts "Warning: Program '#{program_name}' not found for student_id: #{row[student_id_index]}"
-          end
-        end
-
-        # ✅ Handling `student_addresses`
-        student.student_address ||= StudentAddress.new
-        student.student_address.moblie_number = row[headers.index('Phone number')] if headers.include?('Phone number')
-    
-        # ✅ Handling `school_or_university_information`
-        student.school_or_university_information ||= SchoolOrUniversityInformation.new
-        student.school_or_university_information.assign_attributes(
-          grade_10_result: row[headers.index('Grade 10  result')],
-          grade_10_exam_taken_year: row[headers.index('Grade 10  Year')],
-          grade_12_exam_result: row[headers.index('Grade 12 Result')],
-          grade_12_exam_taken_year: row[headers.index('Grade 12 Year')],
-          entrance_exam_id: row[headers.index('Entrance Exam ID Number')],
-          letter_of_equivalence: row[headers.index('Letter of Equivalence')],
-          college_or_university: row[headers.index('TVET')],
-          level: row[headers.index('Level')],
-          coc_id: row[headers.index('Coc ID')],
-          coc_attendance_date: row[headers.index('Coc Attended Date')]
-        )
-    
-        student.save!
-        student.student_address&.save!
-        student.school_or_university_information&.save!
-      end
-    }
-)
   
   batch_action "Approve document verification status for", method: :put, confirm: "Are you sure?" do |ids|
     Student.where(id: ids).update(document_verification_status: "approved")
@@ -472,7 +393,7 @@ ActiveAdmin.register Student do
       a.input :woreda
       a.input :house_number
       a.input :special_location
-      a.input :moblie_number
+      a.input :mobile_number
       a.input :telephone_number
       a.input :pobox
     end
@@ -843,7 +764,7 @@ ActiveAdmin.register Student do
                 row :sub_city
                 row :house_number
                 row :special_location
-                row :moblie_number
+                row :mobile_number
                 row :telephone_number
                 row :pobox
                 row :woreda

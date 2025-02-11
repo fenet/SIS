@@ -19507,3 +19507,470 @@ Install missing gems with `bundle install`.
   INFO [5af2338d] Running /usr/bin/env echo "Branch heuc (at 0db8a54591b4d52b543d1a1f593837ac5d7d8c8f) deployed as release 20241203044534 by fena" >> /home/erpnext/hpremier/revisions.log as erpnext@141.94.74.186
  DEBUG [5af2338d] Command: cd /home/erpnext/hpremier/releases && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "Branch heuc (at 0db8a54591b4d52b543d1a1f593837ac5d7d8c8f) deployed as release 20241203044534 by fena" >> /home/erpnext/hpremier/revisions.log )
   INFO [5af2338d] Finished in 0.624 seconds with exit status 0 (successful).
+  INFO ---------------------------------------------------------------------------
+  INFO START 2025-02-07 00:22:06 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [46c51d2f] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as aacp@15.235.65.231
+ DEBUG [46c51d2f] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+ DEBUG [46c51d2f] Finished in 9.117 seconds with exit status 0 (successful).
+ DEBUG [dac0438c] Running /usr/bin/env which passenger as aacp@15.235.65.231
+ DEBUG [dac0438c] Command: /usr/bin/env which passenger
+ DEBUG [dac0438c] 	/usr/bin/passenger
+ DEBUG [dac0438c] Finished in 1.329 seconds with exit status 0 (successful).
+  INFO [58c16dea] Running /usr/bin/env mkdir -p /tmp as aacp@15.235.65.231
+ DEBUG [58c16dea] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /tmp )
+  INFO [58c16dea] Finished in 1.120 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-c315228f4984d17a25ff.sh 0.0%
+  INFO Uploading /tmp/git-ssh-c315228f4984d17a25ff.sh 100.0%
+  INFO [f6054cb6] Running /usr/bin/env chmod 700 /tmp/git-ssh-c315228f4984d17a25ff.sh as aacp@15.235.65.231
+ DEBUG [f6054cb6] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env chmod 700 /tmp/git-ssh-c315228f4984d17a25ff.sh )
+  INFO [f6054cb6] Finished in 1.228 seconds with exit status 0 (successful).
+  INFO [ce7c8bcb] Running /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD as aacp@15.235.65.231
+ DEBUG [ce7c8bcb] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-c315228f4984d17a25ff.sh" ; /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD )
+ DEBUG [ce7c8bcb] 	ee3d3f9da04068fc96d9c90ee4fc56c330f608ef	HEAD
+  INFO [ce7c8bcb] Finished in 1.431 seconds with exit status 0 (successful).
+  INFO [ada9289b] Running /usr/bin/env mkdir -p /home/aacp/heuc/shared /home/aacp/heuc/releases as aacp@15.235.65.231
+ DEBUG [ada9289b] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/aacp/heuc/shared /home/aacp/heuc/releases )
+  INFO [ada9289b] Finished in 1.021 seconds with exit status 0 (successful).
+  INFO [e24dde4f] Running /usr/bin/env mkdir -p /home/aacp/heuc/shared/log /home/aacp/heuc/shared/tmp/pids /home/aacp/heuc/shared/tmp/cache /home/aacp/heuc/shared/tmp/sockets /home/aacp/heuc/shared/vendor/bundle /home/aacp/heuc/shared/public/system /home/aacp/heuc/shared/public/uploads /home/aacp/heuc/shared/public/assets as aacp@15.235.65.231
+ DEBUG [e24dde4f] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/aacp/heuc/shared/log /home/aacp/heuc/shared/tmp/pids /home/aacp/heuc/shared/tmp/cache /home/aacp/heuc/shared/tmp/sockets /home/aacp/heuc/shared/vendor/bundle /home/aacp/heuc/shared/public/system /home/aacp/heuc/shared/public/uploads /home/aacp/heuc/shared/public/assets )
+  INFO [e24dde4f] Finished in 1.022 seconds with exit status 0 (successful).
+ DEBUG [e939c740] Running [ -f /home/aacp/heuc/current/REVISION ] as aacp@15.235.65.231
+ DEBUG [e939c740] Command: [ -f /home/aacp/heuc/current/REVISION ]
+ DEBUG [e939c740] Finished in 0.913 seconds with exit status 1 (failed).
+ DEBUG [b4f57862] Running [ -f /home/aacp/heuc/repo/HEAD ] as aacp@15.235.65.231
+ DEBUG [b4f57862] Command: [ -f /home/aacp/heuc/repo/HEAD ]
+ DEBUG [b4f57862] Finished in 0.976 seconds with exit status 1 (failed).
+ DEBUG [e140f4da] Running if test ! -d /home/aacp/heuc; then echo "Directory does not exist '/home/aacp/heuc'" 1>&2; false; fi as aacp@15.235.65.231
+ DEBUG [e140f4da] Command: if test ! -d /home/aacp/heuc; then echo "Directory does not exist '/home/aacp/heuc'" 1>&2; false; fi
+ DEBUG [e140f4da] Finished in 0.966 seconds with exit status 0 (successful).
+  INFO [2222b46a] Running /usr/bin/env git clone --mirror https://fenet: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@github.com/fenet/leadstarlatest.git /home/aacp/heuc/repo as aacp@15.235.65.231
+ DEBUG [2222b46a] Command: cd /home/aacp/heuc && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-c315228f4984d17a25ff.sh" ; /usr/bin/env git clone --mirror https://fenet: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@github.com/fenet/leadstarlatest.git /home/aacp/heuc/repo )
+ DEBUG [2222b46a] 	Cloning into bare repository '/home/aacp/heuc/repo'...
+  INFO [2222b46a] Finished in 2.463 seconds with exit status 0 (successful).
+ DEBUG [276d1092] Running if test ! -d /home/aacp/heuc/repo; then echo "Directory does not exist '/home/aacp/heuc/repo'" 1>&2; false; fi as aacp@15.235.65.231
+ DEBUG [276d1092] Command: if test ! -d /home/aacp/heuc/repo; then echo "Directory does not exist '/home/aacp/heuc/repo'" 1>&2; false; fi
+ DEBUG [276d1092] Finished in 0.957 seconds with exit status 0 (successful).
+  INFO [6e92bf63] Running /usr/bin/env git remote set-url origin https://fenet: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@github.com/fenet/leadstarlatest.git as aacp@15.235.65.231
+ DEBUG [6e92bf63] Command: cd /home/aacp/heuc/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-c315228f4984d17a25ff.sh" ; /usr/bin/env git remote set-url origin https://fenet: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@github.com/fenet/leadstarlatest.git )
+  INFO [6e92bf63] Finished in 1.081 seconds with exit status 0 (successful).
+  INFO [15bbfd17] Running /usr/bin/env git remote update --prune as aacp@15.235.65.231
+ DEBUG [15bbfd17] Command: cd /home/aacp/heuc/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-c315228f4984d17a25ff.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [15bbfd17] 	Fetching origin
+  INFO [15bbfd17] Finished in 1.252 seconds with exit status 0 (successful).
+ DEBUG [6a180c6a] Running if test ! -d /home/aacp/heuc/repo; then echo "Directory does not exist '/home/aacp/heuc/repo'" 1>&2; false; fi as aacp@15.235.65.231
+ DEBUG [6a180c6a] Command: if test ! -d /home/aacp/heuc/repo; then echo "Directory does not exist '/home/aacp/heuc/repo'" 1>&2; false; fi
+ DEBUG [6a180c6a] Finished in 1.199 seconds with exit status 0 (successful).
+  INFO [01c68177] Running /usr/bin/env mkdir -p /home/aacp/heuc/releases/20250206212226 as aacp@15.235.65.231
+ DEBUG [01c68177] Command: cd /home/aacp/heuc/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-c315228f4984d17a25ff.sh" ; /usr/bin/env mkdir -p /home/aacp/heuc/releases/20250206212226 )
+  INFO [01c68177] Finished in 1.225 seconds with exit status 0 (successful).
+  INFO [9ec7abf6] Running /usr/bin/env git archive heuc | /usr/bin/env tar -x -f - -C /home/aacp/heuc/releases/20250206212226 as aacp@15.235.65.231
+ DEBUG [9ec7abf6] Command: cd /home/aacp/heuc/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-c315228f4984d17a25ff.sh" ; /usr/bin/env git archive heuc | /usr/bin/env tar -x -f - -C /home/aacp/heuc/releases/20250206212226 )
+  INFO [9ec7abf6] Finished in 1.334 seconds with exit status 0 (successful).
+ DEBUG [a2531c5c] Running if test ! -d /home/aacp/heuc/repo; then echo "Directory does not exist '/home/aacp/heuc/repo'" 1>&2; false; fi as aacp@15.235.65.231
+ DEBUG [a2531c5c] Command: if test ! -d /home/aacp/heuc/repo; then echo "Directory does not exist '/home/aacp/heuc/repo'" 1>&2; false; fi
+ DEBUG [a2531c5c] Finished in 1.221 seconds with exit status 0 (successful).
+ DEBUG [c1819611] Running /usr/bin/env git rev-list --max-count=1 heuc as aacp@15.235.65.231
+ DEBUG [c1819611] Command: cd /home/aacp/heuc/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-c315228f4984d17a25ff.sh" ; /usr/bin/env git rev-list --max-count=1 heuc )
+ DEBUG [c1819611] 	d9c165711bd5ff1284753acac7637dcb26638d29
+ DEBUG [c1819611] Finished in 0.921 seconds with exit status 0 (successful).
+ DEBUG [87a032c9] Running if test ! -d /home/aacp/heuc/releases/20250206212226; then echo "Directory does not exist '/home/aacp/heuc/releases/20250206212226'" 1>&2; false; fi as aacp@15.235.65.231
+ DEBUG [87a032c9] Command: if test ! -d /home/aacp/heuc/releases/20250206212226; then echo "Directory does not exist '/home/aacp/heuc/releases/20250206212226'" 1>&2; false; fi
+ DEBUG [87a032c9] Finished in 1.226 seconds with exit status 0 (successful).
+  INFO [f12bc995] Running /usr/bin/env echo "d9c165711bd5ff1284753acac7637dcb26638d29" > REVISION as aacp@15.235.65.231
+ DEBUG [f12bc995] Command: cd /home/aacp/heuc/releases/20250206212226 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "d9c165711bd5ff1284753acac7637dcb26638d29" > REVISION )
+  INFO [f12bc995] Finished in 1.022 seconds with exit status 0 (successful).
+  INFO [72716e3b] Running /usr/bin/env mkdir -p /home/aacp/heuc/releases/20250206212226 /home/aacp/heuc/releases/20250206212226/tmp /home/aacp/heuc/releases/20250206212226/vendor /home/aacp/heuc/releases/20250206212226/public as aacp@15.235.65.231
+ DEBUG [72716e3b] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/aacp/heuc/releases/20250206212226 /home/aacp/heuc/releases/20250206212226/tmp /home/aacp/heuc/releases/20250206212226/vendor /home/aacp/heuc/releases/20250206212226/public )
+  INFO [72716e3b] Finished in 1.020 seconds with exit status 0 (successful).
+ DEBUG [1492aad0] Running [ -L /home/aacp/heuc/releases/20250206212226/log ] as aacp@15.235.65.231
+ DEBUG [1492aad0] Command: [ -L /home/aacp/heuc/releases/20250206212226/log ]
+ DEBUG [1492aad0] Finished in 1.227 seconds with exit status 1 (failed).
+ DEBUG [6592639d] Running [ -d /home/aacp/heuc/releases/20250206212226/log ] as aacp@15.235.65.231
+ DEBUG [6592639d] Command: [ -d /home/aacp/heuc/releases/20250206212226/log ]
+ DEBUG [6592639d] Finished in 1.024 seconds with exit status 0 (successful).
+  INFO [9ff6a517] Running /usr/bin/env rm -rf /home/aacp/heuc/releases/20250206212226/log as aacp@15.235.65.231
+ DEBUG [9ff6a517] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env rm -rf /home/aacp/heuc/releases/20250206212226/log )
+  INFO [9ff6a517] Finished in 1.125 seconds with exit status 0 (successful).
+  INFO [f2b35248] Running /usr/bin/env ln -s /home/aacp/heuc/shared/log /home/aacp/heuc/releases/20250206212226/log as aacp@15.235.65.231
+ DEBUG [f2b35248] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/aacp/heuc/shared/log /home/aacp/heuc/releases/20250206212226/log )
+  INFO [f2b35248] Finished in 1.227 seconds with exit status 0 (successful).
+ DEBUG [1c175a34] Running [ -L /home/aacp/heuc/releases/20250206212226/tmp/pids ] as aacp@15.235.65.231
+ DEBUG [1c175a34] Command: [ -L /home/aacp/heuc/releases/20250206212226/tmp/pids ]
+ DEBUG [1c175a34] Finished in 1.125 seconds with exit status 1 (failed).
+ DEBUG [37b5df2a] Running [ -d /home/aacp/heuc/releases/20250206212226/tmp/pids ] as aacp@15.235.65.231
+ DEBUG [37b5df2a] Command: [ -d /home/aacp/heuc/releases/20250206212226/tmp/pids ]
+ DEBUG [37b5df2a] Finished in 1.228 seconds with exit status 1 (failed).
+  INFO [6e32763e] Running /usr/bin/env ln -s /home/aacp/heuc/shared/tmp/pids /home/aacp/heuc/releases/20250206212226/tmp/pids as aacp@15.235.65.231
+ DEBUG [6e32763e] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/aacp/heuc/shared/tmp/pids /home/aacp/heuc/releases/20250206212226/tmp/pids )
+  INFO [6e32763e] Finished in 1.023 seconds with exit status 0 (successful).
+ DEBUG [d5db76a4] Running [ -L /home/aacp/heuc/releases/20250206212226/tmp/cache ] as aacp@15.235.65.231
+ DEBUG [d5db76a4] Command: [ -L /home/aacp/heuc/releases/20250206212226/tmp/cache ]
+ DEBUG [d5db76a4] Finished in 1.023 seconds with exit status 1 (failed).
+ DEBUG [dbede685] Running [ -d /home/aacp/heuc/releases/20250206212226/tmp/cache ] as aacp@15.235.65.231
+ DEBUG [dbede685] Command: [ -d /home/aacp/heuc/releases/20250206212226/tmp/cache ]
+ DEBUG [dbede685] Finished in 1.331 seconds with exit status 0 (successful).
+  INFO [725f3219] Running /usr/bin/env rm -rf /home/aacp/heuc/releases/20250206212226/tmp/cache as aacp@15.235.65.231
+ DEBUG [725f3219] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env rm -rf /home/aacp/heuc/releases/20250206212226/tmp/cache )
+  INFO [725f3219] Finished in 0.988 seconds with exit status 0 (successful).
+  INFO [c9d59d11] Running /usr/bin/env ln -s /home/aacp/heuc/shared/tmp/cache /home/aacp/heuc/releases/20250206212226/tmp/cache as aacp@15.235.65.231
+ DEBUG [c9d59d11] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/aacp/heuc/shared/tmp/cache /home/aacp/heuc/releases/20250206212226/tmp/cache )
+  INFO [c9d59d11] Finished in 0.852 seconds with exit status 0 (successful).
+ DEBUG [7fb680c1] Running [ -L /home/aacp/heuc/releases/20250206212226/tmp/sockets ] as aacp@15.235.65.231
+ DEBUG [7fb680c1] Command: [ -L /home/aacp/heuc/releases/20250206212226/tmp/sockets ]
+ DEBUG [7fb680c1] Finished in 1.100 seconds with exit status 1 (failed).
+ DEBUG [5e5d2da2] Running [ -d /home/aacp/heuc/releases/20250206212226/tmp/sockets ] as aacp@15.235.65.231
+ DEBUG [5e5d2da2] Command: [ -d /home/aacp/heuc/releases/20250206212226/tmp/sockets ]
+ DEBUG [5e5d2da2] Finished in 0.842 seconds with exit status 1 (failed).
+  INFO [03ce5612] Running /usr/bin/env ln -s /home/aacp/heuc/shared/tmp/sockets /home/aacp/heuc/releases/20250206212226/tmp/sockets as aacp@15.235.65.231
+ DEBUG [03ce5612] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/aacp/heuc/shared/tmp/sockets /home/aacp/heuc/releases/20250206212226/tmp/sockets )
+  INFO [03ce5612] Finished in 0.715 seconds with exit status 0 (successful).
+ DEBUG [81f8a88b] Running [ -L /home/aacp/heuc/releases/20250206212226/vendor/bundle ] as aacp@15.235.65.231
+ DEBUG [81f8a88b] Command: [ -L /home/aacp/heuc/releases/20250206212226/vendor/bundle ]
+ DEBUG [81f8a88b] Finished in 1.228 seconds with exit status 1 (failed).
+ DEBUG [95466086] Running [ -d /home/aacp/heuc/releases/20250206212226/vendor/bundle ] as aacp@15.235.65.231
+ DEBUG [95466086] Command: [ -d /home/aacp/heuc/releases/20250206212226/vendor/bundle ]
+ DEBUG [95466086] Finished in 0.922 seconds with exit status 1 (failed).
+  INFO [a91a783c] Running /usr/bin/env ln -s /home/aacp/heuc/shared/vendor/bundle /home/aacp/heuc/releases/20250206212226/vendor/bundle as aacp@15.235.65.231
+ DEBUG [a91a783c] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/aacp/heuc/shared/vendor/bundle /home/aacp/heuc/releases/20250206212226/vendor/bundle )
+  INFO [a91a783c] Finished in 1.023 seconds with exit status 0 (successful).
+ DEBUG [dfd92aa9] Running [ -L /home/aacp/heuc/releases/20250206212226/public/system ] as aacp@15.235.65.231
+ DEBUG [dfd92aa9] Command: [ -L /home/aacp/heuc/releases/20250206212226/public/system ]
+ DEBUG [dfd92aa9] Finished in 1.023 seconds with exit status 1 (failed).
+ DEBUG [64a7b940] Running [ -d /home/aacp/heuc/releases/20250206212226/public/system ] as aacp@15.235.65.231
+ DEBUG [64a7b940] Command: [ -d /home/aacp/heuc/releases/20250206212226/public/system ]
+ DEBUG [64a7b940] Finished in 1.230 seconds with exit status 1 (failed).
+  INFO [ef5f6630] Running /usr/bin/env ln -s /home/aacp/heuc/shared/public/system /home/aacp/heuc/releases/20250206212226/public/system as aacp@15.235.65.231
+ DEBUG [ef5f6630] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/aacp/heuc/shared/public/system /home/aacp/heuc/releases/20250206212226/public/system )
+  INFO [ef5f6630] Finished in 1.435 seconds with exit status 0 (successful).
+ DEBUG [60a30d72] Running [ -L /home/aacp/heuc/releases/20250206212226/public/uploads ] as aacp@15.235.65.231
+ DEBUG [60a30d72] Command: [ -L /home/aacp/heuc/releases/20250206212226/public/uploads ]
+ DEBUG [60a30d72] Finished in 1.121 seconds with exit status 1 (failed).
+ DEBUG [aa86e574] Running [ -d /home/aacp/heuc/releases/20250206212226/public/uploads ] as aacp@15.235.65.231
+ DEBUG [aa86e574] Command: [ -d /home/aacp/heuc/releases/20250206212226/public/uploads ]
+ DEBUG [aa86e574] Finished in 0.921 seconds with exit status 1 (failed).
+  INFO [e82ab87c] Running /usr/bin/env ln -s /home/aacp/heuc/shared/public/uploads /home/aacp/heuc/releases/20250206212226/public/uploads as aacp@15.235.65.231
+ DEBUG [e82ab87c] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/aacp/heuc/shared/public/uploads /home/aacp/heuc/releases/20250206212226/public/uploads )
+  INFO [e82ab87c] Finished in 1.022 seconds with exit status 0 (successful).
+ DEBUG [03d86533] Running [ -L /home/aacp/heuc/releases/20250206212226/public/assets ] as aacp@15.235.65.231
+ DEBUG [03d86533] Command: [ -L /home/aacp/heuc/releases/20250206212226/public/assets ]
+ DEBUG [03d86533] Finished in 0.817 seconds with exit status 1 (failed).
+ DEBUG [1c5c719c] Running [ -d /home/aacp/heuc/releases/20250206212226/public/assets ] as aacp@15.235.65.231
+ DEBUG [1c5c719c] Command: [ -d /home/aacp/heuc/releases/20250206212226/public/assets ]
+ DEBUG [1c5c719c] Finished in 1.126 seconds with exit status 1 (failed).
+  INFO [6d8317f2] Running /usr/bin/env ln -s /home/aacp/heuc/shared/public/assets /home/aacp/heuc/releases/20250206212226/public/assets as aacp@15.235.65.231
+ DEBUG [6d8317f2] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/aacp/heuc/shared/public/assets /home/aacp/heuc/releases/20250206212226/public/assets )
+  INFO [6d8317f2] Finished in 1.125 seconds with exit status 0 (successful).
+ DEBUG [57556370] Running if test ! -d /home/aacp/heuc/releases/20250206212226; then echo "Directory does not exist '/home/aacp/heuc/releases/20250206212226'" 1>&2; false; fi as aacp@15.235.65.231
+ DEBUG [57556370] Command: if test ! -d /home/aacp/heuc/releases/20250206212226; then echo "Directory does not exist '/home/aacp/heuc/releases/20250206212226'" 1>&2; false; fi
+ DEBUG [57556370] Finished in 1.124 seconds with exit status 0 (successful).
+  INFO [fdff57be] Running $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true as aacp@15.235.65.231
+ DEBUG [fdff57be] Command: cd /home/aacp/heuc/releases/20250206212226 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true )
+  INFO [fdff57be] Finished in 1.947 seconds with exit status 0 (successful).
+  INFO [9851a10c] Running $HOME/.rbenv/bin/rbenv exec bundle config --local path /home/aacp/heuc/shared/bundle as aacp@15.235.65.231
+ DEBUG [9851a10c] Command: cd /home/aacp/heuc/releases/20250206212226 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local path /home/aacp/heuc/shared/bundle )
+  INFO [9851a10c] Finished in 1.223 seconds with exit status 0 (successful).
+  INFO [13f05760] Running $HOME/.rbenv/bin/rbenv exec bundle config --local without development:test as aacp@15.235.65.231
+ DEBUG [13f05760] Command: cd /home/aacp/heuc/releases/20250206212226 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local without development:test )
+  INFO [13f05760] Finished in 1.022 seconds with exit status 0 (successful).
+ DEBUG [1168e0f9] Running if test ! -d /home/aacp/heuc/releases/20250206212226; then echo "Directory does not exist '/home/aacp/heuc/releases/20250206212226'" 1>&2; false; fi as aacp@15.235.65.231
+ DEBUG [1168e0f9] Command: if test ! -d /home/aacp/heuc/releases/20250206212226; then echo "Directory does not exist '/home/aacp/heuc/releases/20250206212226'" 1>&2; false; fi
+ DEBUG [1168e0f9] Finished in 1.124 seconds with exit status 0 (successful).
+ DEBUG [3ea41816] Running $HOME/.rbenv/bin/rbenv exec bundle check as aacp@15.235.65.231
+ DEBUG [3ea41816] Command: cd /home/aacp/heuc/releases/20250206212226 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle check )
+ DEBUG [3ea41816] 	Fetching https://github.com/activeadmin/inherited_resources.git
+ DEBUG [3ea41816] 	Bundler can't satisfy your Gemfile's dependencies.
+Install missing gems with `bundle install`.
+ DEBUG [3ea41816] Finished in 1.330 seconds with exit status 1 (failed).
+  INFO [41e2329e] Running $HOME/.rbenv/bin/rbenv exec bundle install --jobs 4 --quiet as aacp@15.235.65.231
+ DEBUG [41e2329e] Command: cd /home/aacp/heuc/releases/20250206212226 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle install --jobs 4 --quiet )
+  INFO [41e2329e] Finished in 72.912 seconds with exit status 0 (successful).
+ DEBUG [c8abdb4c] Running if test ! -d /home/aacp/heuc/releases/20250206212226; then echo "Directory does not exist '/home/aacp/heuc/releases/20250206212226'" 1>&2; false; fi as aacp@15.235.65.231
+ DEBUG [c8abdb4c] Command: if test ! -d /home/aacp/heuc/releases/20250206212226; then echo "Directory does not exist '/home/aacp/heuc/releases/20250206212226'" 1>&2; false; fi
+ DEBUG [c8abdb4c] Finished in 1.054 seconds with exit status 0 (successful).
+  INFO [983778bf] Running $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile as aacp@15.235.65.231
+ DEBUG [983778bf] Command: cd /home/aacp/heuc/releases/20250206212226 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" RAILS_GROUPS="" ; $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile )
+ DEBUG [983778bf] 	rake aborted!
+ActiveAdmin::DatabaseHitDuringLoad: Your file, app/admin/courses.rb (line 20), caused a database error while Active Admin was loading. This is most common when your database is missing or doesn't have the latest migrations applied. To prevent this error, move the code to a place where it will only be run when a page is rendered. One solution can be, to wrap the query in a Proc. Original error message: PG::UndefinedTable: ERROR:  relation "courses" does not exist
+LINE 9:  WHERE a.attrelid = '"courses"'::regclass
+                            ^
+ DEBUG [983778bf] 	/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/error.rb:46:in `rescue in capture'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/error.rb:43:in `capture'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/application.rb:124:in `load'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/application.rb:116:in `block in load!'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/application.rb:116:in `each'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/application.rb:116:in `load!'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/application.rb:142:in `routes'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin.rb:76:in `routes'
+/home/aacp/heuc/releases/20250206212226/config/routes.rb:284:in `block in <main>'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/actionpack-7.0.8.4/lib/action_dispatch/routing/route_set.rb:428:in `instance_exec'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/actionpack-7.0.8.4/lib/action_dispatch/routing/route_set.rb:428:in `eval_block'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/actionpack-7.0.8.4/lib/action_dispatch/routing/route_set.rb:410:in `draw'
+/home/aacp/heuc/releases/20250206212226/config/routes.rb:1:in `<main>'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application/routes_reloader.rb:50:in `load'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application/routes_reloader.rb:50:in `block in load_paths'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application/routes_reloader.rb:50:in `each'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application/routes_reloader.rb:50:in `load_paths'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application/routes_reloader.rb:24:in `reload!'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application/routes_reloader.rb:38:in `block in updater'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.8.4/lib/active_support/file_update_checker.rb:83:in `execute'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application/routes_reloader.rb:13:in `execute'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application/finisher.rb:158:in `block in <module:Finisher>'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/initializable.rb:32:in `instance_exec'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/initializable.rb:32:in `run'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/initializable.rb:61:in `block in run_initializers'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/initializable.rb:60:in `run_initializers'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application.rb:372:in `initialize!'
+/home/aacp/heuc/releases/20250206212226/config/environment.rb:4:in `<main>'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in `require'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in `require'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/zeitwerk-2.6.17/lib/zeitwerk/kernel.rb:34:in `require'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application.rb:348:in `require_environment!'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application.rb:506:in `block in run_tasks_blocks'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/sprockets-rails-3.5.2/lib/sprockets/rails/task.rb:61:in `block (2 levels) in define'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/rake-13.2.1/exe/rake:27:in `<top (required)>'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli/exec.rb:58:in `load'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli/exec.rb:58:in `kernel_load'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli/exec.rb:23:in `run'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli.rb:492:in `exec'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/vendor/thor/lib/thor/command.rb:27:in `run'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/vendor/thor/lib/thor/invocation.rb:127:in `invoke_command'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/vendor/thor/lib/thor.rb:392:in `dispatch'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli.rb:34:in `dispatch'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/vendor/thor/lib/thor/base.rb:485:in `start'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli.rb:28:in `start'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/exe/bundle:45:in `block in <top (required)>'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/friendly_errors.rb:117:in `with_friendly_errors'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/exe/bundle:33:in `<top (required)>'
+/home/aacp/.rbenv/versions/3.1.2/bin/bundle:25:in `load'
+/home/aacp/.rbenv/versions/3.1.2/bin/bundle:25:in `<main>'
+
+Caused by:
+ DEBUG [983778bf] 	ActiveRecord::StatementInvalid: PG::UndefinedTable: ERROR:  relation "courses" does not exist
+LINE 9:  WHERE a.attrelid = '"courses"'::regclass
+                            ^
+ DEBUG [983778bf] 	/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/connection_adapters/postgresql/database_statements.rb:19:in `exec'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/connection_adapters/postgresql/database_statements.rb:19:in `block (2 levels) in query'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.8.4/lib/active_support/concurrency/share_lock.rb:187:in `yield_shares'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.8.4/lib/active_support/dependencies/interlock.rb:41:in `permit_concurrent_loads'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/connection_adapters/postgresql/database_statements.rb:18:in `block in query'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.8.4/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.8.4/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.8.4/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.8.4/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/connection_adapters/abstract_adapter.rb:752:in `block in log'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.8.4/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/connection_adapters/abstract_adapter.rb:743:in `log'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/connection_adapters/postgresql/database_statements.rb:17:in `query'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/connection_adapters/postgresql_adapter.rb:916:in `column_definitions'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/connection_adapters/abstract/schema_statements.rb:117:in `columns'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/connection_adapters/schema_cache.rb:117:in `block in columns'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/connection_adapters/schema_cache.rb:116:in `fetch'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/connection_adapters/schema_cache.rb:116:in `columns'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/connection_adapters/schema_cache.rb:125:in `block in columns_hash'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/connection_adapters/schema_cache.rb:124:in `fetch'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/connection_adapters/schema_cache.rb:124:in `columns_hash'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/model_schema.rb:580:in `load_schema!'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/attributes.rb:264:in `load_schema!'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/encryption/encryptable_record.rb:122:in `load_schema!'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/model_schema.rb:566:in `block in load_schema'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/model_schema.rb:563:in `synchronize'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/model_schema.rb:563:in `load_schema'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/model_schema.rb:429:in `attribute_types'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/model_schema.rb:455:in `type_for_attribute'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/type_caster/map.rb:16:in `type_for_attribute'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/arel/table.rb:107:in `type_for_attribute'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/table_metadata.rb:18:in `type'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/relation/predicate_builder.rb:59:in `build'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/relation/predicate_builder.rb:54:in `[]'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/relation/predicate_builder.rb:126:in `block in expand_from_hash'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/relation/predicate_builder.rb:79:in `each'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/relation/predicate_builder.rb:79:in `flat_map'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/relation/predicate_builder.rb:79:in `expand_from_hash'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/relation/predicate_builder.rb:25:in `build_from_hash'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/relation/query_methods.rb:1333:in `build_where_clause'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/relation/query_methods.rb:774:in `where!'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/relation/query_methods.rb:769:in `where'
+/home/aacp/heuc/releases/20250206212226/app/admin/courses.rb:20:in `block (4 levels) in <main>'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.8.4/lib/active_support/core_ext/range/each.rb:9:in `each'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.8.4/lib/active_support/core_ext/range/each.rb:9:in `each'
+/home/aacp/heuc/releases/20250206212226/app/admin/courses.rb:19:in `block (3 levels) in <main>'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.8.4/lib/active_support/core_ext/range/each.rb:9:in `each'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.8.4/lib/active_support/core_ext/range/each.rb:9:in `each'
+/home/aacp/heuc/releases/20250206212226/app/admin/courses.rb:18:in `block (2 levels) in <main>'
+/home/aacp/heuc/releases/20250206212226/app/admin/courses.rb:17:in `each'
+/home/aacp/heuc/releases/20250206212226/app/admin/courses.rb:17:in `block in <main>'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/dsl.rb:16:in `instance_exec'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/dsl.rb:16:in `run_registration_block'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/namespace.rb:243:in `parse_registration_block'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/namespace.rb:71:in `register'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/application.rb:66:in `register'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin.rb:72:in `register'
+/home/aacp/heuc/releases/20250206212226/app/admin/courses.rb:1:in `<main>'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/application.rb:124:in `load'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/application.rb:124:in `block in load'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/error.rb:44:in `capture'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/application.rb:124:in `load'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/application.rb:116:in `block in load!'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/application.rb:116:in `each'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/application.rb:116:in `load!'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/application.rb:142:in `routes'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin.rb:76:in `routes'
+/home/aacp/heuc/releases/20250206212226/config/routes.rb:284:in `block in <main>'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/actionpack-7.0.8.4/lib/action_dispatch/routing/route_set.rb:428:in `instance_exec'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/actionpack-7.0.8.4/lib/action_dispatch/routing/route_set.rb:428:in `eval_block'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/actionpack-7.0.8.4/lib/action_dispatch/routing/route_set.rb:410:in `draw'
+/home/aacp/heuc/releases/20250206212226/config/routes.rb:1:in `<main>'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application/routes_reloader.rb:50:in `load'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application/routes_reloader.rb:50:in `block in load_paths'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application/routes_reloader.rb:50:in `each'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application/routes_reloader.rb:50:in `load_paths'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application/routes_reloader.rb:24:in `reload!'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application/routes_reloader.rb:38:in `block in updater'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.8.4/lib/active_support/file_update_checker.rb:83:in `execute'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application/routes_reloader.rb:13:in `execute'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application/finisher.rb:158:in `block in <module:Finisher>'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/initializable.rb:32:in `instance_exec'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/initializable.rb:32:in `run'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/initializable.rb:61:in `block in run_initializers'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/initializable.rb:60:in `run_initializers'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application.rb:372:in `initialize!'
+/home/aacp/heuc/releases/20250206212226/config/environment.rb:4:in `<main>'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in `require'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in `require'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/zeitwerk-2.6.17/lib/zeitwerk/kernel.rb:34:in `require'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application.rb:348:in `require_environment!'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application.rb:506:in `block in run_tasks_blocks'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/sprockets-rails-3.5.2/lib/sprockets/rails/task.rb:61:in `block (2 levels) in define'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/rake-13.2.1/exe/rake:27:in `<top (required)>'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli/exec.rb:58:in `load'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli/exec.rb:58:in `kernel_load'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli/exec.rb:23:in `run'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli.rb:492:in `exec'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/vendor/thor/lib/thor/command.rb:27:in `run'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/vendor/thor/lib/thor/invocation.rb:127:in `invoke_command'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/vendor/thor/lib/thor.rb:392:in `dispatch'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli.rb:34:in `dispatch'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/vendor/thor/lib/thor/base.rb:485:in `start'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli.rb:28:in `start'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/exe/bundle:45:in `block in <top (required)>'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/friendly_errors.rb:117:in `with_friendly_errors'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/exe/bundle:33:in `<top (required)>'
+/home/aacp/.rbenv/versions/3.1.2/bin/bundle:25:in `load'
+/home/aacp/.rbenv/versions/3.1.2/bin/bundle:25:in `<main>'
+ DEBUG [983778bf] 	
+Caused by:
+PG::UndefinedTable: ERROR:  relation "courses" does not exist
+LINE 9:  WHERE a.attrelid = '"courses"'::regclass
+                            ^
+ DEBUG [983778bf] 	/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/connection_adapters/postgresql/database_statements.rb:19:in `exec'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/connection_adapters/postgresql/database_statements.rb:19:in `block (2 levels) in query'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.8.4/lib/active_support/concurrency/share_lock.rb:187:in `yield_shares'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.8.4/lib/active_support/dependencies/interlock.rb:41:in `permit_concurrent_loads'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/connection_adapters/postgresql/database_statements.rb:18:in `block in query'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.8.4/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.8.4/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.8.4/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.8.4/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/connection_adapters/abstract_adapter.rb:752:in `block in log'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.8.4/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/connection_adapters/abstract_adapter.rb:743:in `log'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/connection_adapters/postgresql/database_statements.rb:17:in `query'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/connection_adapters/postgresql_adapter.rb:916:in `column_definitions'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/connection_adapters/abstract/schema_statements.rb:117:in `columns'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/connection_adapters/schema_cache.rb:117:in `block in columns'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/connection_adapters/schema_cache.rb:116:in `fetch'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/connection_adapters/schema_cache.rb:116:in `columns'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/connection_adapters/schema_cache.rb:125:in `block in columns_hash'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/connection_adapters/schema_cache.rb:124:in `fetch'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/connection_adapters/schema_cache.rb:124:in `columns_hash'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/model_schema.rb:580:in `load_schema!'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/attributes.rb:264:in `load_schema!'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/encryption/encryptable_record.rb:122:in `load_schema!'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/model_schema.rb:566:in `block in load_schema'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/model_schema.rb:563:in `synchronize'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/model_schema.rb:563:in `load_schema'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/model_schema.rb:429:in `attribute_types'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/model_schema.rb:455:in `type_for_attribute'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/type_caster/map.rb:16:in `type_for_attribute'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/arel/table.rb:107:in `type_for_attribute'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/table_metadata.rb:18:in `type'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/relation/predicate_builder.rb:59:in `build'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/relation/predicate_builder.rb:54:in `[]'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/relation/predicate_builder.rb:126:in `block in expand_from_hash'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/relation/predicate_builder.rb:79:in `each'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/relation/predicate_builder.rb:79:in `flat_map'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/relation/predicate_builder.rb:79:in `expand_from_hash'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/relation/predicate_builder.rb:25:in `build_from_hash'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/relation/query_methods.rb:1333:in `build_where_clause'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/relation/query_methods.rb:774:in `where!'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activerecord-7.0.8.4/lib/active_record/relation/query_methods.rb:769:in `where'
+/home/aacp/heuc/releases/20250206212226/app/admin/courses.rb:20:in `block (4 levels) in <main>'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.8.4/lib/active_support/core_ext/range/each.rb:9:in `each'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.8.4/lib/active_support/core_ext/range/each.rb:9:in `each'
+/home/aacp/heuc/releases/20250206212226/app/admin/courses.rb:19:in `block (3 levels) in <main>'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.8.4/lib/active_support/core_ext/range/each.rb:9:in `each'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.8.4/lib/active_support/core_ext/range/each.rb:9:in `each'
+/home/aacp/heuc/releases/20250206212226/app/admin/courses.rb:18:in `block (2 levels) in <main>'
+/home/aacp/heuc/releases/20250206212226/app/admin/courses.rb:17:in `each'
+/home/aacp/heuc/releases/20250206212226/app/admin/courses.rb:17:in `block in <main>'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/dsl.rb:16:in `instance_exec'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/dsl.rb:16:in `run_registration_block'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/namespace.rb:243:in `parse_registration_block'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/namespace.rb:71:in `register'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/application.rb:66:in `register'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin.rb:72:in `register'
+/home/aacp/heuc/releases/20250206212226/app/admin/courses.rb:1:in `<main>'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/application.rb:124:in `load'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/application.rb:124:in `block in load'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/error.rb:44:in `capture'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/application.rb:124:in `load'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/application.rb:116:in `block in load!'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/application.rb:116:in `each'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/application.rb:116:in `load!'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin/application.rb:142:in `routes'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activeadmin-2.14.0/lib/active_admin.rb:76:in `routes'
+/home/aacp/heuc/releases/20250206212226/config/routes.rb:284:in `block in <main>'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/actionpack-7.0.8.4/lib/action_dispatch/routing/route_set.rb:428:in `instance_exec'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/actionpack-7.0.8.4/lib/action_dispatch/routing/route_set.rb:428:in `eval_block'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/actionpack-7.0.8.4/lib/action_dispatch/routing/route_set.rb:410:in `draw'
+/home/aacp/heuc/releases/20250206212226/config/routes.rb:1:in `<main>'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application/routes_reloader.rb:50:in `load'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application/routes_reloader.rb:50:in `block in load_paths'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application/routes_reloader.rb:50:in `each'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application/routes_reloader.rb:50:in `load_paths'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application/routes_reloader.rb:24:in `reload!'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application/routes_reloader.rb:38:in `block in updater'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/activesupport-7.0.8.4/lib/active_support/file_update_checker.rb:83:in `execute'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application/routes_reloader.rb:13:in `execute'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application/finisher.rb:158:in `block in <module:Finisher>'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/initializable.rb:32:in `instance_exec'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/initializable.rb:32:in `run'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/initializable.rb:61:in `block in run_initializers'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/initializable.rb:60:in `run_initializers'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application.rb:372:in `initialize!'
+/home/aacp/heuc/releases/20250206212226/config/environment.rb:4:in `<main>'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in `require'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in `require'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/zeitwerk-2.6.17/lib/zeitwerk/kernel.rb:34:in `require'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application.rb:348:in `require_environment!'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/railties-7.0.8.4/lib/rails/application.rb:506:in `block in run_tasks_blocks'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/sprockets-rails-3.5.2/lib/sprockets/rails/task.rb:61:in `block (2 levels) in define'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/rake-13.2.1/exe/rake:27:in `<top (required)>'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli/exec.rb:58:in `load'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli/exec.rb:58:in `kernel_load'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli/exec.rb:23:in `run'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli.rb:492:in `exec'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/vendor/thor/lib/thor/command.rb:27:in `run'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/vendor/thor/lib/thor/invocation.rb:127:in `invoke_command'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/vendor/thor/lib/thor.rb:392:in `dispatch'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli.rb:34:in `dispatch'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/vendor/thor/lib/thor/base.rb:485:in `start'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/cli.rb:28:in `start'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/exe/bundle:45:in `block in <top (required)>'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/lib/bundler/friendly_errors.rb:117:in `with_friendly_errors'
+/home/aacp/heuc/shared/bundle/ruby/3.1.0/gems/bundler-2.4.13/exe/bundle:33:in `<top (required)>'
+/home/aacp/.rbenv/versions/3.1.2/bin/bundle:25:in `load'
+/home/aacp/.rbenv/versions/3.1.2/bin/bundle:25:in `<main>'
+ DEBUG [983778bf] 	Tasks: TOP => environment
+(See full trace by running task with --trace)

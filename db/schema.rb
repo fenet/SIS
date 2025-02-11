@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_02_03_095125) do
+ActiveRecord::Schema[7.0].define(version: 2025_02_11_095427) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -1234,7 +1234,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_03_095125) do
     t.string "woreda"
     t.string "special_location"
     t.string "house_number"
-    t.string "moblie_number", null: false
+    t.string "mobile_number"
     t.string "telephone_number"
     t.string "pobox"
     t.string "created_by", default: "self"
@@ -1325,7 +1325,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_03_095125) do
     t.string "last_name", null: false
     t.string "middle_name"
     t.string "gender", null: false
-    t.datetime "date_of_birth", precision: nil, null: false
+    t.datetime "date_of_birth", precision: nil
     t.string "place_of_birth"
     t.string "marital_status"
     t.string "nationality", null: false

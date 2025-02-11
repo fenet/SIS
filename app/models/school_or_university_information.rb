@@ -1,6 +1,6 @@
 class SchoolOrUniversityInformation < ApplicationRecord
   ##associations
-  	belongs_to :student
+  belongs_to :student
 
   ##validations
   # 	validates :college_or_university, :presence => true, if: :apply_graduate?
