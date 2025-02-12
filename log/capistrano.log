@@ -19974,3 +19974,373 @@ LINE 9:  WHERE a.attrelid = '"courses"'::regclass
 /home/aacp/.rbenv/versions/3.1.2/bin/bundle:25:in `<main>'
  DEBUG [983778bf] 	Tasks: TOP => environment
 (See full trace by running task with --trace)
+  INFO ---------------------------------------------------------------------------
+  INFO START 2025-02-11 13:01:56 +0300 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [9cbe6b4e] Running [ -d $HOME/.rbenv/versions/3.1.2 ] as aacp@15.235.65.231
+ DEBUG [9cbe6b4e] Command: [ -d $HOME/.rbenv/versions/3.1.2 ]
+ DEBUG [9cbe6b4e] Finished in 7.893 seconds with exit status 0 (successful).
+ DEBUG [7f2a4c00] Running /usr/bin/env which passenger as aacp@15.235.65.231
+ DEBUG [7f2a4c00] Command: /usr/bin/env which passenger
+ DEBUG [7f2a4c00] 	/usr/bin/passenger
+ DEBUG [7f2a4c00] Finished in 1.034 seconds with exit status 0 (successful).
+  INFO [ef769dfa] Running /usr/bin/env mkdir -p /tmp as aacp@15.235.65.231
+ DEBUG [ef769dfa] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /tmp )
+  INFO [ef769dfa] Finished in 1.044 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-168f73b1bfa256c56248.sh 0.0%
+  INFO Uploading /tmp/git-ssh-168f73b1bfa256c56248.sh 100.0%
+  INFO [d945a507] Running /usr/bin/env chmod 700 /tmp/git-ssh-168f73b1bfa256c56248.sh as aacp@15.235.65.231
+ DEBUG [d945a507] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env chmod 700 /tmp/git-ssh-168f73b1bfa256c56248.sh )
+  INFO [d945a507] Finished in 1.229 seconds with exit status 0 (successful).
+  INFO [b401a916] Running /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD as aacp@15.235.65.231
+ DEBUG [b401a916] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-168f73b1bfa256c56248.sh" ; /usr/bin/env git ls-remote https://fenet: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@github.com/fenet/leadstarlatest.git HEAD )
+ DEBUG [b401a916] 	ee3d3f9da04068fc96d9c90ee4fc56c330f608ef	HEAD
+  INFO [b401a916] Finished in 1.237 seconds with exit status 0 (successful).
+  INFO [e6f8b95c] Running /usr/bin/env mkdir -p /home/aacp/heuc_portal/shared /home/aacp/heuc_portal/releases as aacp@15.235.65.231
+ DEBUG [e6f8b95c] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/aacp/heuc_portal/shared /home/aacp/heuc_portal/releases )
+  INFO [e6f8b95c] Finished in 0.713 seconds with exit status 0 (successful).
+  INFO [e1eb8b14] Running /usr/bin/env mkdir -p /home/aacp/heuc_portal/shared/log /home/aacp/heuc_portal/shared/tmp/pids /home/aacp/heuc_portal/shared/tmp/cache /home/aacp/heuc_portal/shared/tmp/sockets /home/aacp/heuc_portal/shared/vendor/bundle /home/aacp/heuc_portal/shared/public/system /home/aacp/heuc_portal/shared/public/uploads /home/aacp/heuc_portal/shared/public/assets as aacp@15.235.65.231
+ DEBUG [e1eb8b14] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/aacp/heuc_portal/shared/log /home/aacp/heuc_portal/shared/tmp/pids /home/aacp/heuc_portal/shared/tmp/cache /home/aacp/heuc_portal/shared/tmp/sockets /home/aacp/heuc_portal/shared/vendor/bundle /home/aacp/heuc_portal/shared/public/system /home/aacp/heuc_portal/shared/public/uploads /home/aacp/heuc_portal/shared/public/assets )
+  INFO [e1eb8b14] Finished in 0.655 seconds with exit status 0 (successful).
+ DEBUG [cd079c42] Running [ -f /home/aacp/heuc_portal/current/REVISION ] as aacp@15.235.65.231
+ DEBUG [cd079c42] Command: [ -f /home/aacp/heuc_portal/current/REVISION ]
+ DEBUG [cd079c42] Finished in 0.792 seconds with exit status 0 (successful).
+ DEBUG [2e0d7da9] Running /usr/bin/env cat /home/aacp/heuc_portal/current/REVISION 2>/dev/null as aacp@15.235.65.231
+ DEBUG [2e0d7da9] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env cat /home/aacp/heuc_portal/current/REVISION 2>/dev/null )
+ DEBUG [2e0d7da9] 	87b386420f6389c1e02eada5651915609f59fe14
+ DEBUG [2e0d7da9] Finished in 1.094 seconds with exit status 0 (successful).
+ DEBUG [01be7d33] Running [ -f /home/aacp/heuc_portal/repo/HEAD ] as aacp@15.235.65.231
+ DEBUG [01be7d33] Command: [ -f /home/aacp/heuc_portal/repo/HEAD ]
+ DEBUG [01be7d33] Finished in 1.225 seconds with exit status 0 (successful).
+  INFO The repository mirror is at /home/aacp/heuc_portal/repo
+ DEBUG [2bb3e09f] Running if test ! -d /home/aacp/heuc_portal/repo; then echo "Directory does not exist '/home/aacp/heuc_portal/repo'" 1>&2; false; fi as aacp@15.235.65.231
+ DEBUG [2bb3e09f] Command: if test ! -d /home/aacp/heuc_portal/repo; then echo "Directory does not exist '/home/aacp/heuc_portal/repo'" 1>&2; false; fi
+ DEBUG [2bb3e09f] Finished in 0.816 seconds with exit status 0 (successful).
+  INFO [94851f3c] Running /usr/bin/env git remote set-url origin https://fenet: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@github.com/fenet/leadstarlatest.git as aacp@15.235.65.231
+ DEBUG [94851f3c] Command: cd /home/aacp/heuc_portal/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-168f73b1bfa256c56248.sh" ; /usr/bin/env git remote set-url origin https://fenet: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@github.com/fenet/leadstarlatest.git )
+  INFO [94851f3c] Finished in 1.230 seconds with exit status 0 (successful).
+  INFO [bb750810] Running /usr/bin/env git remote update --prune as aacp@15.235.65.231
+ DEBUG [bb750810] Command: cd /home/aacp/heuc_portal/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-168f73b1bfa256c56248.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [bb750810] 	Fetching origin
+ DEBUG [bb750810] 	From https://github.com/fenet/leadstarlatest
+ - [deleted]         (none)     -> master
+ DEBUG [bb750810] 	 * [new branch]      heuc           -> heuc
+ DEBUG [bb750810] 	 * [new branch]      leadstar       -> leadstar
+ DEBUG [bb750810] 	 * [new branch]      main           -> main
+ DEBUG [bb750810] 	 * [new branch]      ngvcdeploy     -> ngvcdeploy
+ DEBUG [bb750810] 	 * [new branch]      premier        -> premier
+ DEBUG [bb750810] 	 * [new branch]      working-branch -> working-branch
+  INFO [bb750810] Finished in 3.281 seconds with exit status 0 (successful).
+ DEBUG [196a1f15] Running if test ! -d /home/aacp/heuc_portal/repo; then echo "Directory does not exist '/home/aacp/heuc_portal/repo'" 1>&2; false; fi as aacp@15.235.65.231
+ DEBUG [196a1f15] Command: if test ! -d /home/aacp/heuc_portal/repo; then echo "Directory does not exist '/home/aacp/heuc_portal/repo'" 1>&2; false; fi
+ DEBUG [196a1f15] Finished in 0.616 seconds with exit status 0 (successful).
+  INFO [20363319] Running /usr/bin/env mkdir -p /home/aacp/heuc_portal/releases/20250211100214 as aacp@15.235.65.231
+ DEBUG [20363319] Command: cd /home/aacp/heuc_portal/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-168f73b1bfa256c56248.sh" ; /usr/bin/env mkdir -p /home/aacp/heuc_portal/releases/20250211100214 )
+  INFO [20363319] Finished in 0.666 seconds with exit status 0 (successful).
+  INFO [08f0f38a] Running /usr/bin/env git archive heuc | /usr/bin/env tar -x -f - -C /home/aacp/heuc_portal/releases/20250211100214 as aacp@15.235.65.231
+ DEBUG [08f0f38a] Command: cd /home/aacp/heuc_portal/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-168f73b1bfa256c56248.sh" ; /usr/bin/env git archive heuc | /usr/bin/env tar -x -f - -C /home/aacp/heuc_portal/releases/20250211100214 )
+  INFO [08f0f38a] Finished in 0.956 seconds with exit status 0 (successful).
+ DEBUG [c437feb8] Running if test ! -d /home/aacp/heuc_portal/repo; then echo "Directory does not exist '/home/aacp/heuc_portal/repo'" 1>&2; false; fi as aacp@15.235.65.231
+ DEBUG [c437feb8] Command: if test ! -d /home/aacp/heuc_portal/repo; then echo "Directory does not exist '/home/aacp/heuc_portal/repo'" 1>&2; false; fi
+ DEBUG [c437feb8] Finished in 1.228 seconds with exit status 0 (successful).
+ DEBUG [a5dffdbd] Running /usr/bin/env git rev-list --max-count=1 heuc as aacp@15.235.65.231
+ DEBUG [a5dffdbd] Command: cd /home/aacp/heuc_portal/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-168f73b1bfa256c56248.sh" ; /usr/bin/env git rev-list --max-count=1 heuc )
+ DEBUG [a5dffdbd] 	66d14ecb916e08dc020c239837574e3e6803c85f
+ DEBUG [a5dffdbd] Finished in 1.228 seconds with exit status 0 (successful).
+ DEBUG [d7b7c0d2] Running if test ! -d /home/aacp/heuc_portal/releases/20250211100214; then echo "Directory does not exist '/home/aacp/heuc_portal/releases/20250211100214'" 1>&2; false; fi as aacp@15.235.65.231
+ DEBUG [d7b7c0d2] Command: if test ! -d /home/aacp/heuc_portal/releases/20250211100214; then echo "Directory does not exist '/home/aacp/heuc_portal/releases/20250211100214'" 1>&2; false; fi
+ DEBUG [d7b7c0d2] Finished in 1.227 seconds with exit status 0 (successful).
+  INFO [f9aa06d4] Running /usr/bin/env echo "66d14ecb916e08dc020c239837574e3e6803c85f" > REVISION as aacp@15.235.65.231
+ DEBUG [f9aa06d4] Command: cd /home/aacp/heuc_portal/releases/20250211100214 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "66d14ecb916e08dc020c239837574e3e6803c85f" > REVISION )
+  INFO [f9aa06d4] Finished in 0.931 seconds with exit status 0 (successful).
+  INFO [31e0b057] Running /usr/bin/env mkdir -p /home/aacp/heuc_portal/releases/20250211100214 /home/aacp/heuc_portal/releases/20250211100214/tmp /home/aacp/heuc_portal/releases/20250211100214/vendor /home/aacp/heuc_portal/releases/20250211100214/public as aacp@15.235.65.231
+ DEBUG [31e0b057] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/aacp/heuc_portal/releases/20250211100214 /home/aacp/heuc_portal/releases/20250211100214/tmp /home/aacp/heuc_portal/releases/20250211100214/vendor /home/aacp/heuc_portal/releases/20250211100214/public )
+  INFO [31e0b057] Finished in 0.907 seconds with exit status 0 (successful).
+ DEBUG [99260271] Running [ -L /home/aacp/heuc_portal/releases/20250211100214/log ] as aacp@15.235.65.231
+ DEBUG [99260271] Command: [ -L /home/aacp/heuc_portal/releases/20250211100214/log ]
+ DEBUG [99260271] Finished in 0.872 seconds with exit status 1 (failed).
+ DEBUG [29f99196] Running [ -d /home/aacp/heuc_portal/releases/20250211100214/log ] as aacp@15.235.65.231
+ DEBUG [29f99196] Command: [ -d /home/aacp/heuc_portal/releases/20250211100214/log ]
+ DEBUG [29f99196] Finished in 1.173 seconds with exit status 0 (successful).
+  INFO [2710a8a0] Running /usr/bin/env rm -rf /home/aacp/heuc_portal/releases/20250211100214/log as aacp@15.235.65.231
+ DEBUG [2710a8a0] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env rm -rf /home/aacp/heuc_portal/releases/20250211100214/log )
+  INFO [2710a8a0] Finished in 1.229 seconds with exit status 0 (successful).
+  INFO [1e181509] Running /usr/bin/env ln -s /home/aacp/heuc_portal/shared/log /home/aacp/heuc_portal/releases/20250211100214/log as aacp@15.235.65.231
+ DEBUG [1e181509] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/aacp/heuc_portal/shared/log /home/aacp/heuc_portal/releases/20250211100214/log )
+  INFO [1e181509] Finished in 1.228 seconds with exit status 0 (successful).
+ DEBUG [aa737584] Running [ -L /home/aacp/heuc_portal/releases/20250211100214/tmp/pids ] as aacp@15.235.65.231
+ DEBUG [aa737584] Command: [ -L /home/aacp/heuc_portal/releases/20250211100214/tmp/pids ]
+ DEBUG [aa737584] Finished in 0.821 seconds with exit status 1 (failed).
+ DEBUG [efd5ebba] Running [ -d /home/aacp/heuc_portal/releases/20250211100214/tmp/pids ] as aacp@15.235.65.231
+ DEBUG [efd5ebba] Command: [ -d /home/aacp/heuc_portal/releases/20250211100214/tmp/pids ]
+ DEBUG [efd5ebba] Finished in 1.223 seconds with exit status 1 (failed).
+  INFO [8ebb5661] Running /usr/bin/env ln -s /home/aacp/heuc_portal/shared/tmp/pids /home/aacp/heuc_portal/releases/20250211100214/tmp/pids as aacp@15.235.65.231
+ DEBUG [8ebb5661] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/aacp/heuc_portal/shared/tmp/pids /home/aacp/heuc_portal/releases/20250211100214/tmp/pids )
+  INFO [8ebb5661] Finished in 1.228 seconds with exit status 0 (successful).
+ DEBUG [0d9c1136] Running [ -L /home/aacp/heuc_portal/releases/20250211100214/tmp/cache ] as aacp@15.235.65.231
+ DEBUG [0d9c1136] Command: [ -L /home/aacp/heuc_portal/releases/20250211100214/tmp/cache ]
+ DEBUG [0d9c1136] Finished in 1.022 seconds with exit status 1 (failed).
+ DEBUG [15d6fe4c] Running [ -d /home/aacp/heuc_portal/releases/20250211100214/tmp/cache ] as aacp@15.235.65.231
+ DEBUG [15d6fe4c] Command: [ -d /home/aacp/heuc_portal/releases/20250211100214/tmp/cache ]
+ DEBUG [15d6fe4c] Finished in 1.228 seconds with exit status 0 (successful).
+  INFO [f61932ab] Running /usr/bin/env rm -rf /home/aacp/heuc_portal/releases/20250211100214/tmp/cache as aacp@15.235.65.231
+ DEBUG [f61932ab] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env rm -rf /home/aacp/heuc_portal/releases/20250211100214/tmp/cache )
+  INFO [f61932ab] Finished in 0.981 seconds with exit status 0 (successful).
+  INFO [8f01a910] Running /usr/bin/env ln -s /home/aacp/heuc_portal/shared/tmp/cache /home/aacp/heuc_portal/releases/20250211100214/tmp/cache as aacp@15.235.65.231
+ DEBUG [8f01a910] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/aacp/heuc_portal/shared/tmp/cache /home/aacp/heuc_portal/releases/20250211100214/tmp/cache )
+  INFO [8f01a910] Finished in 1.168 seconds with exit status 0 (successful).
+ DEBUG [ceb7730d] Running [ -L /home/aacp/heuc_portal/releases/20250211100214/tmp/sockets ] as aacp@15.235.65.231
+ DEBUG [ceb7730d] Command: [ -L /home/aacp/heuc_portal/releases/20250211100214/tmp/sockets ]
+ DEBUG [ceb7730d] Finished in 0.715 seconds with exit status 1 (failed).
+ DEBUG [886760b1] Running [ -d /home/aacp/heuc_portal/releases/20250211100214/tmp/sockets ] as aacp@15.235.65.231
+ DEBUG [886760b1] Command: [ -d /home/aacp/heuc_portal/releases/20250211100214/tmp/sockets ]
+ DEBUG [886760b1] Finished in 0.876 seconds with exit status 1 (failed).
+  INFO [74b8147e] Running /usr/bin/env ln -s /home/aacp/heuc_portal/shared/tmp/sockets /home/aacp/heuc_portal/releases/20250211100214/tmp/sockets as aacp@15.235.65.231
+ DEBUG [74b8147e] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/aacp/heuc_portal/shared/tmp/sockets /home/aacp/heuc_portal/releases/20250211100214/tmp/sockets )
+  INFO [74b8147e] Finished in 0.759 seconds with exit status 0 (successful).
+ DEBUG [40547e80] Running [ -L /home/aacp/heuc_portal/releases/20250211100214/vendor/bundle ] as aacp@15.235.65.231
+ DEBUG [40547e80] Command: [ -L /home/aacp/heuc_portal/releases/20250211100214/vendor/bundle ]
+ DEBUG [40547e80] Finished in 1.026 seconds with exit status 1 (failed).
+ DEBUG [ac6652c5] Running [ -d /home/aacp/heuc_portal/releases/20250211100214/vendor/bundle ] as aacp@15.235.65.231
+ DEBUG [ac6652c5] Command: [ -d /home/aacp/heuc_portal/releases/20250211100214/vendor/bundle ]
+ DEBUG [ac6652c5] Finished in 1.039 seconds with exit status 1 (failed).
+  INFO [0590c4ec] Running /usr/bin/env ln -s /home/aacp/heuc_portal/shared/vendor/bundle /home/aacp/heuc_portal/releases/20250211100214/vendor/bundle as aacp@15.235.65.231
+ DEBUG [0590c4ec] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/aacp/heuc_portal/shared/vendor/bundle /home/aacp/heuc_portal/releases/20250211100214/vendor/bundle )
+  INFO [0590c4ec] Finished in 0.799 seconds with exit status 0 (successful).
+ DEBUG [bedf0bf2] Running [ -L /home/aacp/heuc_portal/releases/20250211100214/public/system ] as aacp@15.235.65.231
+ DEBUG [bedf0bf2] Command: [ -L /home/aacp/heuc_portal/releases/20250211100214/public/system ]
+ DEBUG [bedf0bf2] Finished in 1.229 seconds with exit status 1 (failed).
+ DEBUG [42e9c037] Running [ -d /home/aacp/heuc_portal/releases/20250211100214/public/system ] as aacp@15.235.65.231
+ DEBUG [42e9c037] Command: [ -d /home/aacp/heuc_portal/releases/20250211100214/public/system ]
+ DEBUG [42e9c037] Finished in 0.730 seconds with exit status 1 (failed).
+  INFO [2fc3d10b] Running /usr/bin/env ln -s /home/aacp/heuc_portal/shared/public/system /home/aacp/heuc_portal/releases/20250211100214/public/system as aacp@15.235.65.231
+ DEBUG [2fc3d10b] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/aacp/heuc_portal/shared/public/system /home/aacp/heuc_portal/releases/20250211100214/public/system )
+  INFO [2fc3d10b] Finished in 0.699 seconds with exit status 0 (successful).
+ DEBUG [5cf33a90] Running [ -L /home/aacp/heuc_portal/releases/20250211100214/public/uploads ] as aacp@15.235.65.231
+ DEBUG [5cf33a90] Command: [ -L /home/aacp/heuc_portal/releases/20250211100214/public/uploads ]
+ DEBUG [5cf33a90] Finished in 1.024 seconds with exit status 1 (failed).
+ DEBUG [8cc2b33d] Running [ -d /home/aacp/heuc_portal/releases/20250211100214/public/uploads ] as aacp@15.235.65.231
+ DEBUG [8cc2b33d] Command: [ -d /home/aacp/heuc_portal/releases/20250211100214/public/uploads ]
+ DEBUG [8cc2b33d] Finished in 1.228 seconds with exit status 1 (failed).
+  INFO [9e5ad6d3] Running /usr/bin/env ln -s /home/aacp/heuc_portal/shared/public/uploads /home/aacp/heuc_portal/releases/20250211100214/public/uploads as aacp@15.235.65.231
+ DEBUG [9e5ad6d3] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/aacp/heuc_portal/shared/public/uploads /home/aacp/heuc_portal/releases/20250211100214/public/uploads )
+  INFO [9e5ad6d3] Finished in 1.023 seconds with exit status 0 (successful).
+ DEBUG [1224a029] Running [ -L /home/aacp/heuc_portal/releases/20250211100214/public/assets ] as aacp@15.235.65.231
+ DEBUG [1224a029] Command: [ -L /home/aacp/heuc_portal/releases/20250211100214/public/assets ]
+ DEBUG [1224a029] Finished in 1.228 seconds with exit status 1 (failed).
+ DEBUG [303b13e6] Running [ -d /home/aacp/heuc_portal/releases/20250211100214/public/assets ] as aacp@15.235.65.231
+ DEBUG [303b13e6] Command: [ -d /home/aacp/heuc_portal/releases/20250211100214/public/assets ]
+ DEBUG [303b13e6] Finished in 1.227 seconds with exit status 1 (failed).
+  INFO [be84cad5] Running /usr/bin/env ln -s /home/aacp/heuc_portal/shared/public/assets /home/aacp/heuc_portal/releases/20250211100214/public/assets as aacp@15.235.65.231
+ DEBUG [be84cad5] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/aacp/heuc_portal/shared/public/assets /home/aacp/heuc_portal/releases/20250211100214/public/assets )
+  INFO [be84cad5] Finished in 1.227 seconds with exit status 0 (successful).
+ DEBUG [b79c0554] Running if test ! -d /home/aacp/heuc_portal/releases/20250211100214; then echo "Directory does not exist '/home/aacp/heuc_portal/releases/20250211100214'" 1>&2; false; fi as aacp@15.235.65.231
+ DEBUG [b79c0554] Command: if test ! -d /home/aacp/heuc_portal/releases/20250211100214; then echo "Directory does not exist '/home/aacp/heuc_portal/releases/20250211100214'" 1>&2; false; fi
+ DEBUG [b79c0554] Finished in 0.934 seconds with exit status 0 (successful).
+  INFO [486ae383] Running $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true as aacp@15.235.65.231
+ DEBUG [486ae383] Command: cd /home/aacp/heuc_portal/releases/20250211100214 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true )
+  INFO [486ae383] Finished in 0.904 seconds with exit status 0 (successful).
+  INFO [7c0e26a9] Running $HOME/.rbenv/bin/rbenv exec bundle config --local path /home/aacp/heuc_portal/shared/bundle as aacp@15.235.65.231
+ DEBUG [7c0e26a9] Command: cd /home/aacp/heuc_portal/releases/20250211100214 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local path /home/aacp/heuc_portal/shared/bundle )
+  INFO [7c0e26a9] Finished in 1.226 seconds with exit status 0 (successful).
+  INFO [aec93ee5] Running $HOME/.rbenv/bin/rbenv exec bundle config --local without development:test as aacp@15.235.65.231
+ DEBUG [aec93ee5] Command: cd /home/aacp/heuc_portal/releases/20250211100214 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle config --local without development:test )
+  INFO [aec93ee5] Finished in 1.109 seconds with exit status 0 (successful).
+ DEBUG [54f32cfe] Running if test ! -d /home/aacp/heuc_portal/releases/20250211100214; then echo "Directory does not exist '/home/aacp/heuc_portal/releases/20250211100214'" 1>&2; false; fi as aacp@15.235.65.231
+ DEBUG [54f32cfe] Command: if test ! -d /home/aacp/heuc_portal/releases/20250211100214; then echo "Directory does not exist '/home/aacp/heuc_portal/releases/20250211100214'" 1>&2; false; fi
+ DEBUG [54f32cfe] Finished in 0.730 seconds with exit status 0 (successful).
+ DEBUG [38243720] Running $HOME/.rbenv/bin/rbenv exec bundle check as aacp@15.235.65.231
+ DEBUG [38243720] Command: cd /home/aacp/heuc_portal/releases/20250211100214 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; $HOME/.rbenv/bin/rbenv exec bundle check )
+ DEBUG [38243720] 	The Gemfile's dependencies are satisfied
+ DEBUG [38243720] Finished in 1.432 seconds with exit status 0 (successful).
+  INFO The Gemfile's dependencies are satisfied, skipping installation
+ DEBUG [5ca97c2d] Running if test ! -d /home/aacp/heuc_portal/releases/20250211100214; then echo "Directory does not exist '/home/aacp/heuc_portal/releases/20250211100214'" 1>&2; false; fi as aacp@15.235.65.231
+ DEBUG [5ca97c2d] Command: if test ! -d /home/aacp/heuc_portal/releases/20250211100214; then echo "Directory does not exist '/home/aacp/heuc_portal/releases/20250211100214'" 1>&2; false; fi
+ DEBUG [5ca97c2d] Finished in 1.022 seconds with exit status 0 (successful).
+  INFO [527d212e] Running $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile as aacp@15.235.65.231
+ DEBUG [527d212e] Command: cd /home/aacp/heuc_portal/releases/20250211100214 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" RAILS_GROUPS="" ; $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile )
+  INFO [527d212e] Finished in 7.478 seconds with exit status 0 (successful).
+ DEBUG [2b67c104] Running if test ! -d /home/aacp/heuc_portal/releases/20250211100214; then echo "Directory does not exist '/home/aacp/heuc_portal/releases/20250211100214'" 1>&2; false; fi as aacp@15.235.65.231
+ DEBUG [2b67c104] Command: if test ! -d /home/aacp/heuc_portal/releases/20250211100214; then echo "Directory does not exist '/home/aacp/heuc_portal/releases/20250211100214'" 1>&2; false; fi
+ DEBUG [2b67c104] Finished in 1.119 seconds with exit status 0 (successful).
+  INFO [64ec4255] Running /usr/bin/env mkdir -p /home/aacp/heuc_portal/releases/20250211100214/assets_manifest_backup as aacp@15.235.65.231
+ DEBUG [64ec4255] Command: cd /home/aacp/heuc_portal/releases/20250211100214 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/aacp/heuc_portal/releases/20250211100214/assets_manifest_backup )
+  INFO [64ec4255] Finished in 1.240 seconds with exit status 0 (successful).
+ DEBUG [18bdd410] Running /usr/bin/env ls /home/aacp/heuc_portal/releases/20250211100214/public/assets/.sprockets-manifest* as aacp@15.235.65.231
+ DEBUG [18bdd410] Command: cd /home/aacp/heuc_portal/releases/20250211100214 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls /home/aacp/heuc_portal/releases/20250211100214/public/assets/.sprockets-manifest* )
+ DEBUG [18bdd410] 	/home/aacp/heuc_portal/releases/20250211100214/public/assets/.sprockets-manifest-95f9ea56fd8182906b9f4172672bf140.json
+ DEBUG [18bdd410] Finished in 0.955 seconds with exit status 0 (successful).
+ DEBUG [202bce60] Running /usr/bin/env ls /home/aacp/heuc_portal/releases/20250211100214/public/assets/.sprockets-manifest* as aacp@15.235.65.231
+ DEBUG [202bce60] Command: cd /home/aacp/heuc_portal/releases/20250211100214 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls /home/aacp/heuc_portal/releases/20250211100214/public/assets/.sprockets-manifest* )
+ DEBUG [202bce60] 	/home/aacp/heuc_portal/releases/20250211100214/public/assets/.sprockets-manifest-95f9ea56fd8182906b9f4172672bf140.json
+ DEBUG [202bce60] Finished in 0.877 seconds with exit status 0 (successful).
+  INFO [39504a2d] Running /usr/bin/env cp /home/aacp/heuc_portal/releases/20250211100214/public/assets/.sprockets-manifest-95f9ea56fd8182906b9f4172672bf140.json /home/aacp/heuc_portal/releases/20250211100214/assets_manifest_backup as aacp@15.235.65.231
+ DEBUG [39504a2d] Command: cd /home/aacp/heuc_portal/releases/20250211100214 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env cp /home/aacp/heuc_portal/releases/20250211100214/public/assets/.sprockets-manifest-95f9ea56fd8182906b9f4172672bf140.json /home/aacp/heuc_portal/releases/20250211100214/assets_manifest_backup )
+  INFO [39504a2d] Finished in 1.222 seconds with exit status 0 (successful).
+  INFO [deploy:migrate] Run `rake db:migrate`
+ DEBUG [e2414c25] Running if test ! -d /home/aacp/heuc_portal/releases/20250211100214; then echo "Directory does not exist '/home/aacp/heuc_portal/releases/20250211100214'" 1>&2; false; fi as aacp@15.235.65.231
+ DEBUG [e2414c25] Command: if test ! -d /home/aacp/heuc_portal/releases/20250211100214; then echo "Directory does not exist '/home/aacp/heuc_portal/releases/20250211100214'" 1>&2; false; fi
+ DEBUG [e2414c25] Finished in 1.222 seconds with exit status 0 (successful).
+  INFO [ab23880b] Running $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate as aacp@15.235.65.231
+ DEBUG [ab23880b] Command: cd /home/aacp/heuc_portal/releases/20250211100214 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" ; $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate )
+ DEBUG [ab23880b] 	== 20250103150835 CreateUneditableCourses: migrating ==========================
+-- create_table(:uneditable_courses, {:id=>:uuid})
+   -> 0.2869s
+== 20250103150835 CreateUneditableCourses: migrated (0.2870s) =================
+
+== 20250103150857 CreateUneditableCurriculums: migrating ======================
+-- create_table(:uneditable_curriculums, {:id=>:uuid})
+   -> 0.0474s
+== 20250103150857 CreateUneditableCurriculums: migrated (0.0475s) =============
+
+== 20250103150913 CreateUneditableGradeSystems: migrating =====================
+-- create_table(:uneditable_grade_systems, {:id=>:uuid})
+   -> 0.0642s
+== 20250103150913 CreateUneditableGradeSystems: migrated (0.0642s) ============
+
+== 20250103150929 CreateUneditableGrades: migrating ===========================
+-- create_table(:uneditable_grades, {:id=>:uuid})
+   -> 0.0567s
+== 20250103150929 CreateUneditableGrades: migrated (0.0567s) ==================
+
+== 20250103195818 CreateUneditableCourseModules: migrating ====================
+-- create_table(:uneditable_course_modules, {:id=>:uuid})
+   -> 0.0568s
+== 20250103195818 CreateUneditableCourseModules: migrated (0.0568s) ===========
+
+== 20250103195833 CreateUneditableAcademicStatuses: migrating =================
+-- create_table(:uneditable_academic_statuses, {:id=>:uuid})
+   -> 0.0491s
+== 20250103195833 CreateUneditableAcademicStatuses: migrated (0.0492s) ========
+
+== 20250104055659 AddUneditableCurriculumIdToUneditableCourses: migrating =====
+-- add_column(:uneditable_courses, :uneditable_curriculum_id, :uuid)
+   -> 0.0009s
+== 20250104055659 AddUneditableCurriculumIdToUneditableCourses: migrated (0.0009s) 
+
+== 20250105101737 AddUneditableCurriculumToUneditableGradeSystems: migrating ==
+-- add_reference(:uneditable_grade_systems, :uneditable_curriculum, {:type=>:uuid, :null=>false, :foreign_key=>true})
+   -> 0.0465s
+== 20250105101737 AddUneditableCurriculumToUneditableGradeSystems: migrated (0.0465s) 
+
+== 20250107155528 ChangeUneditableCurriculumIdNullInUneditableGradeSystems: migrating 
+-- change_column_null(:uneditable_grade_systems, :uneditable_curriculum_id, true)
+   -> 0.0008s
+== 20250107155528 ChangeUneditableCurriculumIdNullInUneditableGradeSystems: migrated (0.0008s) 
+
+== 20250109024701 AddCourseTypeToCourses: migrating ===========================
+-- add_column(:courses, :course_type, :string)
+   -> 0.0095s
+== 20250109024701 AddCourseTypeToCourses: migrated (0.0096s) ==================
+
+== 20250110125137 CreateClassScheduleWithFiles: migrating =====================
+-- create_table(:class_schedule_with_files)
+   -> 0.0595s
+== 20250110125137 CreateClassScheduleWithFiles: migrated (0.0595s) ============
+
+== 20250110132248 RemoveFileAttachmentFromClassScheduleWithFiles: migrating ===
+-- remove_column(:class_schedule_with_files, :file_attachment, :string)
+   -> 0.0127s
+== 20250110132248 RemoveFileAttachmentFromClassScheduleWithFiles: migrated (0.0127s) 
+
+== 20250110150506 AddNameToClassScheduleWithFiles: migrating ==================
+-- add_column(:class_schedule_with_files, :name, :string, {:null=>false})
+   -> 0.0009s
+== 20250110150506 AddNameToClassScheduleWithFiles: migrated (0.0010s) =========
+
+== 20250110153321 CreateExamScheduleWithFiles: migrating ======================
+-- create_table(:exam_schedule_with_files)
+   -> 0.0782s
+== 20250110153321 CreateExamScheduleWithFiles: migrated (0.0783s) =============
+
+== 20250113100034 ChangeAdminUserIdTypeInNotices: migrating ===================
+-- rename_column(:notices, :admin_user_id, :admin_user_id_old)
+   -> 0.0216s
+-- add_column(:notices, :admin_user_id, :uuid)
+   -> 0.0006s
+-- remove_column(:notices, :admin_user_id_old)
+   -> 0.0005s
+== 20250113100034 ChangeAdminUserIdTypeInNotices: migrated (0.0540s) ==========
+
+== 20250114072211 ChangeIdToUuidInClassScheduleWithFiles: migrating ===========
+-- drop_table(:class_schedule_with_files, {:if_exists=>true})
+   -> 0.0106s
+-- create_table(:class_schedule_with_files, {:id=>:uuid})
+   -> 0.0735s
+== 20250114072211 ChangeIdToUuidInClassScheduleWithFiles: migrated (0.0842s) ==
+
+== 20250114080006 ChangeIdToUuidInExamScheduleWithFiles: migrating ============
+-- drop_table(:exam_schedule_with_files, {:if_exists=>true})
+   -> 0.0011s
+-- create_table(:exam_schedule_with_files, {:id=>:uuid})
+   -> 0.0583s
+== 20250114080006 ChangeIdToUuidInExamScheduleWithFiles: migrated (0.0596s) ===
+
+== 20250203084700 AddFieldsToSchoolOrUniversityInformations: migrating ========
+-- add_column(:school_or_university_informations, :coc_id, :string)
+   -> 0.0015s
+-- add_column(:school_or_university_informations, :tvet, :string)
+   -> 0.0005s
+-- add_column(:school_or_university_informations, :letter_of_equivalence, :string)
+   -> 0.0004s
+-- add_column(:school_or_university_informations, :entrance_exam_id, :string)
+   -> 0.0005s
+== 20250203084700 AddFieldsToSchoolOrUniversityInformations: migrated (0.0031s) 
+
+== 20250203095125 AddDefaultToCountryInStudentAddresses: migrating ============
+-- change_column_default(:student_addresses, :country, "Ethiopia")
+   -> 0.0170s
+== 20250203095125 AddDefaultToCountryInStudentAddresses: migrated (0.0170s) ===
+
+== 20250209135953 RemoveNullFromMobileNumberInStudentAddresses: migrating =====
+-- change_column_null(:student_addresses, :moblie_number, true)
+   -> 0.0008s
+== 20250209135953 RemoveNullFromMobileNumberInStudentAddresses: migrated (0.0009s) 
+
+== 20250209173125 RenameMoblieNumberToMobileNumberInStudentAddresses: migrating 
+-- rename_column(:student_addresses, :moblie_number, :mobile_number)
+   -> 0.0023s
+== 20250209173125 RenameMoblieNumberToMobileNumberInStudentAddresses: migrated (0.0024s) 
+
+== 20250211095427 ChangeDateOfBirthNullConstraintOnStudents: migrating ========
+-- change_column_null(:students, :date_of_birth, true)
+   -> 0.0009s
+== 20250211095427 ChangeDateOfBirthNullConstraintOnStudents: migrated (0.0009s) 
+
+  INFO [ab23880b] Finished in 4.930 seconds with exit status 0 (successful).
+ DEBUG [ed42c21e] Running if test ! -d /home/aacp/heuc_portal/releases/20250211100214; then echo "Directory does not exist '/home/aacp/heuc_portal/releases/20250211100214'" 1>&2; false; fi as aacp@15.235.65.231
+ DEBUG [ed42c21e] Command: if test ! -d /home/aacp/heuc_portal/releases/20250211100214; then echo "Directory does not exist '/home/aacp/heuc_portal/releases/20250211100214'" 1>&2; false; fi
+ DEBUG [ed42c21e] Finished in 1.210 seconds with exit status 0 (successful).
+  INFO [a0db1d46] Running $HOME/.rbenv/bin/rbenv exec bundle exec whenever --update-crontab heuc_production --set environment=production --roles=app,web,db  as aacp@15.235.65.231
+ DEBUG [a0db1d46] Command: cd /home/aacp/heuc_portal/releases/20250211100214 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" RAILS_ENV="production" ; $HOME/.rbenv/bin/rbenv exec bundle exec whenever --update-crontab heuc_production --set environment=production --roles=app,web,db  )
+ DEBUG [a0db1d46] 	[write] crontab file updated
+  INFO [a0db1d46] Finished in 1.842 seconds with exit status 0 (successful).
+  INFO [e3111738] Running /usr/bin/env ln -s /home/aacp/heuc_portal/releases/20250211100214 /home/aacp/heuc_portal/releases/current as aacp@15.235.65.231
+ DEBUG [e3111738] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ln -s /home/aacp/heuc_portal/releases/20250211100214 /home/aacp/heuc_portal/releases/current )
+  INFO [e3111738] Finished in 1.225 seconds with exit status 0 (successful).
+  INFO [8ab850ae] Running /usr/bin/env mv /home/aacp/heuc_portal/releases/current /home/aacp/heuc_portal as aacp@15.235.65.231
+ DEBUG [8ab850ae] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mv /home/aacp/heuc_portal/releases/current /home/aacp/heuc_portal )
+  INFO [8ab850ae] Finished in 1.227 seconds with exit status 0 (successful).
+ DEBUG [b95a1c7e] Running /usr/bin/env pwd as aacp@15.235.65.231
+ DEBUG [b95a1c7e] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env pwd )
+ DEBUG [b95a1c7e] 	/home/aacp
+ DEBUG [b95a1c7e] Finished in 0.878 seconds with exit status 0 (successful).
+ DEBUG [7658bd07] Running if test ! -d /home/aacp; then echo "Directory does not exist '/home/aacp'" 1>&2; false; fi as aacp@15.235.65.231
+ DEBUG [7658bd07] Command: if test ! -d /home/aacp; then echo "Directory does not exist '/home/aacp'" 1>&2; false; fi
+ DEBUG [7658bd07] Finished in 0.739 seconds with exit status 0 (successful).
+  INFO [79223b87] Running /usr/bin/env mkdir -p /home/aacp/heuc_portal/releases/20250211100214/tmp as aacp@15.235.65.231
+ DEBUG [79223b87] Command: cd /home/aacp && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env mkdir -p /home/aacp/heuc_portal/releases/20250211100214/tmp )
+  INFO [79223b87] Finished in 1.042 seconds with exit status 0 (successful).
+  INFO [b50c41d5] Running /usr/bin/env touch /home/aacp/heuc_portal/releases/20250211100214/tmp/restart.txt as aacp@15.235.65.231
+ DEBUG [b50c41d5] Command: cd /home/aacp && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env touch /home/aacp/heuc_portal/releases/20250211100214/tmp/restart.txt )
+  INFO [b50c41d5] Finished in 1.183 seconds with exit status 0 (successful).
+ DEBUG [16f88090] Running /usr/bin/env ls -x /home/aacp/heuc_portal/releases as aacp@15.235.65.231
+ DEBUG [16f88090] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env ls -x /home/aacp/heuc_portal/releases )
+ DEBUG [16f88090] 	20250207114803	20250207115513	20250207115915	20250207120638	20250211100214
+ DEBUG [16f88090] Finished in 1.065 seconds with exit status 0 (successful).
+ DEBUG [f635d551] Running if test ! -d /home/aacp/heuc_portal/releases; then echo "Directory does not exist '/home/aacp/heuc_portal/releases'" 1>&2; false; fi as aacp@15.235.65.231
+ DEBUG [f635d551] Command: if test ! -d /home/aacp/heuc_portal/releases; then echo "Directory does not exist '/home/aacp/heuc_portal/releases'" 1>&2; false; fi
+ DEBUG [f635d551] Finished in 0.819 seconds with exit status 0 (successful).
+  INFO [d262cd0b] Running /usr/bin/env echo "Branch heuc (at 66d14ecb916e08dc020c239837574e3e6803c85f) deployed as release 20250211100214 by fena" >> /home/aacp/heuc_portal/revisions.log as aacp@15.235.65.231
+ DEBUG [d262cd0b] Command: cd /home/aacp/heuc_portal/releases && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="3.1.2" ; /usr/bin/env echo "Branch heuc (at 66d14ecb916e08dc020c239837574e3e6803c85f) deployed as release 20250211100214 by fena" >> /home/aacp/heuc_portal/revisions.log )
+  INFO [d262cd0b] Finished in 1.019 seconds with exit status 0 (successful).

@@ -35,7 +35,7 @@
       <%= a.input :house_number, input_html: { class: 'form-control', autocomplete: "house_number" },placeholder: "House Number" %>
     </div>
     <div class="col-12 col-md-6 form-group">
-      <%= a.input :moblie_number, input_html: { class: 'form-control', autocomplete: "moblie_number" }, required: true %>
+      <%= a.input :mobile_number, input_html: { class: 'form-control', autocomplete: "mobile_number" }, required: true %>
       <span id="valid-msg" class="hide"></span>
       <span id="error-msg" class="hide"></span>
     </div>
@@ -49,7 +49,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
 <script >
 
-  var phoneNumber = document.querySelector("#student_student_address_attributes_moblie_number"),
+  var phoneNumber = document.querySelector("#student_student_address_attributes_mobile_number"),
   errorMsg = document.querySelector("#error-msg"),
   validMsg = document.querySelector("#valid-msg");
   // here, the index maps to the error code returned from getValidationError - see readme

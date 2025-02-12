@@ -34,7 +34,7 @@ $(document).on('turbolinks:load', function () {
   //Datemask2 mm/dd/yyyy
   $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
   //Money Euro
-  // $('#student_student_address_attributes_moblie_number').inputmask()
+  // $('#student_student_address_attributes_mobile_number').inputmask()
   // $('#student_student_address_attributes_telephone_number').inputmask()
   // $('#student_emergency_contact_attributes_cell_phone').inputmask()
   $('#student_emergency_contact_attributes_office_phone_number').inputmask()
